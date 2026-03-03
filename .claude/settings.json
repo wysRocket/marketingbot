@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mostlogin": {
+      "command": "npx",
+      "args": [
+        "ts-node",
+        "src/mcp/mostlogin/server.ts"
+      ],
+      "cwd": "/Users/wysmyfree/Projects/marketingbot"
+    }
+  }
+}
