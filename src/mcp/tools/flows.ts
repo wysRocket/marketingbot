@@ -6,6 +6,9 @@ import { login } from "../../flows/login";
 import { explorePricing } from "../../flows/explorePricing";
 import { accountDashboard } from "../../flows/accountDashboard";
 import type { Browser } from "playwright";
+import { getActiveSiteProfile } from "../../sites";
+
+const SITE = getActiveSiteProfile();
 
 // ── Schemas ───────────────────────────────────────────────────────────
 
@@ -26,8 +29,8 @@ export const RunBrowseFooterLinksSchema = {
 };
 
 export const RunLoginSchema = {
-  username: z.string().describe("EuroCookFlow username/email"),
-  password: z.string().describe("EuroCookFlow password"),
+  username: z.string().describe(`${SITE.label} username/email`),
+  password: z.string().describe(`${SITE.label} password`),
   profileId: profileIdField,
 };
 
@@ -39,9 +42,9 @@ export const RunAccountDashboardSchema = {
   username: z
     .string()
     .describe(
-      "EuroCookFlow username/email — the flow will login before loading /app/courses",
+      `${SITE.label} username/email — the flow will login before loading the configured dashboard route`,
     ),
-  password: z.string().describe("EuroCookFlow password"),
+  password: z.string().describe(`${SITE.label} password`),
   profileId: profileIdField,
 };
 
@@ -60,7 +63,7 @@ export async function runBrowseHomepage(profileId?: string) {
   const browser = await openBrowser(profileId);
   try {
     const page = await browser.newPage();
-    const result = await browseHomepage(page);
+    const result = await browseHomepage(page, SITE);
     await page.close();
     return result;
   } finally {
@@ -72,7 +75,7 @@ export async function runBrowseFooterLinks(profileId?: string) {
   const browser = await openBrowser(profileId);
   try {
     const page = await browser.newPage();
-    const result = await browseFooterLinks(page);
+    const result = await browseFooterLinks(page, SITE);
     await page.close();
     return result;
   } finally {
@@ -88,7 +91,7 @@ export async function runLogin(
   const browser = await openBrowser(profileId);
   try {
     const page = await browser.newPage();
-    const result = await login(page, username, password);
+    const result = await login(page, username, password, SITE);
     await page.close();
     return result;
   } finally {
@@ -100,7 +103,7 @@ export async function runExplorePricing(profileId?: string) {
   const browser = await openBrowser(profileId);
   try {
     const page = await browser.newPage();
-    const result = await explorePricing(page);
+    const result = await explorePricing(page, SITE);
     await page.close();
     return result;
   } finally {
@@ -118,12 +121,12 @@ export async function runAccountDashboard(
     const page = await browser.newPage();
 
     // accountDashboard requires an authenticated session — login first
-    const loginResult = await login(page, username, password);
+    const loginResult = await login(page, username, password, SITE);
     if (!loginResult.success) {
       throw new Error(`Login failed: ${loginResult.errorMessage}`);
     }
 
-    const accountResult = await accountDashboard(page);
+    const accountResult = await accountDashboard(page, SITE);
     await page.close();
     return { login: loginResult, account: accountResult };
   } finally {

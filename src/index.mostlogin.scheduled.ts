@@ -1,5 +1,4 @@
 import "dotenv/config";
-import { Page } from "playwright";
 import { connectMostLoginProfile } from "./browser";
 import { browseHomepage } from "./flows/browseHomepage";
 import { browseFooterLinks } from "./flows/browseFooterLinks";
@@ -8,77 +7,117 @@ import { explorePricing } from "./flows/explorePricing";
 import { accountDashboard } from "./flows/accountDashboard";
 import { listProfiles } from "./mcp/mostlogin/tools/profiles";
 import { closeProfiles } from "./mcp/mostlogin/tools/browsers";
+import {
+  getSessionPolicyFromEnv,
+  runComplexSession,
+  type NamedFlow,
+} from "./session/complexSession";
+import { createTelemetryPersistence } from "./session/telemetryPersistence";
+import { getActiveSiteProfile, isFlowEnabled } from "./sites";
 
 // -------------------------------------------------------------------
 // CONFIG
 // -------------------------------------------------------------------
-const ROUNDS = 30;
-const PROFILES_PER_ROUND = 12;
-const ROUND_INTERVAL_MS = 60_000; // 1 minute between each round start
-const LAUNCH_STAGGER_MS = 2_000; // 2 s between profile launches within a round
+const ROUNDS = 180; // 30 min / 10 s per launch
+const PROFILES_PER_ROUND = 1;
+const ROUND_INTERVAL_MS = 10_000; // 10 seconds between each profile launch
+const LAUNCH_STAGGER_MS = 0; // no stagger needed for 1 profile per round
 
 const USERNAME = process.env.BOT_USERNAME ?? "";
 const PASSWORD = process.env.BOT_PASSWORD ?? "";
+const SESSION_POLICY = getSessionPolicyFromEnv();
+const TELEMETRY = createTelemetryPersistence("mostlogin_scheduled");
+const SITE = getActiveSiteProfile();
 
-// -------------------------------------------------------------------
-// FLOW DEFINITIONS  (same set as index.mostlogin.ts)
-// -------------------------------------------------------------------
-type FlowRunner = (page: Page, label: string) => Promise<void>;
+function buildFlowSequence(username: string, password: string): NamedFlow[] {
+  const flows: NamedFlow[] = [];
 
-const PUBLIC_FLOWS: Array<{ name: string; run: FlowRunner }> = [
-  {
-    name: "browseHomepage",
-    run: async (page, label) => {
-      const r = await browseHomepage(page);
-      console.log(`  [${label}] hero: ${r.heroHeading}`);
-      console.log(
-        `  [${label}] features: ${r.featureNames.length}  tiers: ${r.pricingTiers.length}  footer: ${r.footerLinks.length}`,
-      );
-    },
-  },
-  {
-    name: "browseFooterLinks",
-    run: async (page, label) => {
-      const r = await browseFooterLinks(page);
-      for (const v of r.visited) {
-        console.log(`  [${label}] ${v.path} → "${v.heading}"`);
-      }
-    },
-  },
-  {
-    name: "explorePricing",
-    run: async (page, label) => {
-      const r = await explorePricing(page);
-      console.log(
-        `  [${label}] tiers: ${r.tiers.map((t) => t.name).join(", ") || "(none)"}`,
-      );
-      console.log(`  [${label}] CTAs valid: ${r.ctaLinksValid}`);
-    },
-  },
-];
+  if (isFlowEnabled(SITE, "browseHomepage")) {
+    flows.push({
+      name: "browseHomepage",
+      run: async (page, label, ctx) => {
+        const result = await browseHomepage(page, SITE);
+        ctx.trackNavigation(page.url());
+        ctx.addInteraction(3);
 
-const AUTH_FLOW: { name: string; run: FlowRunner } = {
-  name: "login+dashboard",
-  run: async (page, label) => {
-    const lr = await login(page, USERNAME, PASSWORD);
-    if (!lr.success) {
-      console.error(`  [${label}] Login failed: ${lr.errorMessage}`);
-      return;
-    }
-    console.log(`  [${label}] Logged in: ${lr.finalUrl}`);
-    const ar = await accountDashboard(page);
-    console.log(
-      `  [${label}] balance: ${ar.creditBalance}  orders: ${ar.orders.length}`,
+        console.log(`  [${label}] hero: ${result.heroHeading}`);
+        console.log(
+          `  [${label}] features: ${result.featureNames.length}  tiers: ${result.pricingTiers.length}  footer: ${result.footerLinks.length}`,
+        );
+      },
+    });
+  }
+
+  if (isFlowEnabled(SITE, "explorePricing")) {
+    flows.push({
+      name: "explorePricing",
+      run: async (page, label, ctx) => {
+        const result = await explorePricing(page, SITE);
+        ctx.trackNavigation(page.url());
+        ctx.addInteraction(3);
+
+        console.log(
+          `  [${label}] tiers: ${result.tiers.map((t) => t.name).join(", ") || "(none)"}`,
+        );
+        console.log(`  [${label}] CTAs valid: ${result.ctaLinksValid}`);
+      },
+    });
+  }
+
+  if (isFlowEnabled(SITE, "browseFooterLinks")) {
+    flows.push({
+      name: "browseFooterLinks",
+      run: async (page, label, ctx) => {
+        const result = await browseFooterLinks(page, SITE);
+        ctx.trackNavigation(page.url());
+        ctx.addInteraction(result.visited.length + 1);
+
+        for (const visit of result.visited) {
+          console.log(`  [${label}] ${visit.path} → "${visit.heading}"`);
+        }
+      },
+    });
+  }
+
+  if (username && password && isFlowEnabled(SITE, "login")) {
+    flows.push({
+      name: isFlowEnabled(SITE, "accountDashboard") ? "login+dashboard" : "login",
+      run: async (page, label, ctx) => {
+        const loginResult = await login(page, username, password, SITE);
+        ctx.trackNavigation(loginResult.finalUrl);
+        ctx.addInteraction(2);
+
+        if (!loginResult.success) {
+          const warning = `Login failed: ${loginResult.errorMessage ?? "Unknown auth error"}`;
+          ctx.addWarning(warning);
+          console.error(`  [${label}] ${warning}`);
+          return;
+        }
+
+        console.log(`  [${label}] Logged in: ${loginResult.finalUrl}`);
+
+        if (!isFlowEnabled(SITE, "accountDashboard")) {
+          return;
+        }
+
+        const accountResult = await accountDashboard(page, SITE);
+        ctx.trackNavigation(page.url());
+        ctx.addInteraction(2);
+
+        console.log(
+          `  [${label}] balance: ${accountResult.creditBalance}  orders: ${accountResult.orders.length}`,
+        );
+      },
+    });
+  }
+
+  if (flows.length === 0) {
+    throw new Error(
+      `No enabled flows for site profile \"${SITE.id}\". Check src/sites/profiles/${SITE.id}.json`,
     );
-  },
-};
+  }
 
-function pickFlows(): Array<{ name: string; run: FlowRunner }> {
-  const shuffled = [...PUBLIC_FLOWS].sort(() => Math.random() - 0.5);
-  const count = Math.floor(Math.random() * PUBLIC_FLOWS.length) + 1;
-  const picked = shuffled.slice(0, count);
-  if (USERNAME && PASSWORD && Math.random() > 0.5) picked.push(AUTH_FLOW);
-  return picked;
+  return flows;
 }
 
 // -------------------------------------------------------------------
@@ -105,12 +144,50 @@ async function runProfileSession(
   const browser = await connectMostLoginProfile(profileId);
   try {
     const page = await browser.newPage();
-    const flows = pickFlows();
+    const flows = buildFlowSequence(USERNAME, PASSWORD);
     console.log(`[${label}] flows: ${flows.map((f) => f.name).join(" → ")}`);
-    for (const flow of flows) {
-      console.log(`\n[${label}] ${flow.name}...`);
-      await flow.run(page, label);
+
+    const telemetry = await runComplexSession({
+      page,
+      label,
+      flows,
+      policy: SESSION_POLICY,
+      baseUrl: SITE.baseUrl,
+      seedCandidates: SITE.session.seedCandidates,
+    });
+
+    console.log(
+      `[${label}] telemetry: ${Math.round(telemetry.elapsedMs / 1000)}s, ${telemetry.uniquePages.length} unique page(s), warnings=${telemetry.warnings.length}`,
+    );
+    console.log(
+      `  [${label}] traffic: ${(telemetry.trafficBytesTotal / (1024 * 1024)).toFixed(2)} MB total, ${(telemetry.trafficBytesSameOrigin / (1024 * 1024)).toFixed(2)} MB same-origin, ${telemetry.trafficRequestCount} request(s)`,
+    );
+    console.log(
+      `  [${label}] top origins: ${
+        telemetry.trafficTopOrigins
+          .slice(0, 3)
+          .map(
+            (item) =>
+              `${item.key} ${(item.bytes / (1024 * 1024)).toFixed(2)}MB/${item.requests}req`,
+          )
+          .join(" | ") || "(none)"
+      }`,
+    );
+
+    for (const warning of telemetry.warnings) {
+      console.warn(`  [${label}] warning: ${warning}`);
     }
+
+    await TELEMETRY.persistSession({
+      label,
+      profileId,
+      telemetry,
+      policy: SESSION_POLICY,
+    }).catch((err) => {
+      console.warn(
+        `  [${label}] warning: failed to persist telemetry: ${(err as Error).message}`,
+      );
+    });
   } finally {
     activeProfiles.delete(profileId);
     await closeProfiles([profileId]).catch(() => {});
@@ -154,9 +231,11 @@ function fireRound(roundNum: number, pool: string[]): void {
 // -------------------------------------------------------------------
 (async () => {
   console.log("=".repeat(60));
-  console.log("MostLogin scheduled bot — eurocookflow.com");
+  console.log(`MostLogin scheduled bot — ${SITE.baseUrl} (${SITE.id})`);
+  console.log(`[telemetry] JSONL: ${TELEMETRY.jsonPath}`);
+  console.log(`[telemetry] CSV:   ${TELEMETRY.csvPath}`);
   console.log(
-    `${ROUNDS} rounds × ${PROFILES_PER_ROUND} profiles, every ${ROUND_INTERVAL_MS / 1000}s`,
+    `${ROUNDS} rounds × ${PROFILES_PER_ROUND} profiles, every ${ROUND_INTERVAL_MS / 1000 / 60}min  (${(ROUNDS * ROUND_INTERVAL_MS) / 60_000}min total window)`,
   );
   console.log("=".repeat(60) + "\n");
 

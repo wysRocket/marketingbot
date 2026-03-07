@@ -1,13 +1,14 @@
 import { Page } from "playwright";
 import { navigate, blockHeavyAssets } from "../actions/navigate";
-import { randomBrowse } from "../actions/interact";
+import { randomBrowse, randomDelay } from "../actions/interact";
 import { pickReferrer } from "../actions/referrer";
 import { getText } from "../actions/scrape";
-
-const BASE = "https://eurocookflow.com";
-
-/** Paths that must be reachable from the footer. */
-const FOOTER_PATHS = ["/legal/privacy", "/legal/terms", "/legal/vat"];
+import {
+  assertFlowEnabled,
+  getActiveSiteProfile,
+  resolveSiteUrl,
+  type SiteProfile,
+} from "../sites";
 
 export interface FooterPageVisit {
   path: string;
@@ -22,54 +23,61 @@ export interface BrowseFooterLinksResult {
 /**
  * Flow — Browse Footer Links
  *
- * For each expected footer link (/legal/privacy, /legal/terms, /legal/vat):
- *   1. Navigate to the homepage.
- *   2. Scroll to the footer so the link enters the viewport.
- *   3. Click the footer anchor and wait for the page to load.
- *   4. Read the page <h1>, then stay for a randomised duration (8–25 s)
- *      executing organic actions: scroll down/up, hover over elements, pause.
+ * 1. Navigate to the homepage once.
+ * 2. Open the first legal page via the footer link click.
+ * 3. Navigate directly between the remaining legal pages.
+ * 4. On each page, read <h1> and stay for a randomised duration (10–32 s)
+ *    executing organic actions: scroll down/up, hover over elements, pause.
  *
  * Returns the URL and heading collected from each visited page.
  */
 export async function browseFooterLinks(
   page: Page,
+  site: SiteProfile = getActiveSiteProfile(),
 ): Promise<BrowseFooterLinksResult> {
+  assertFlowEnabled(site, "browseFooterLinks");
+
+  const cfg = site.browseFooterLinks;
   await blockHeavyAssets(page);
 
   const visited: FooterPageVisit[] = [];
-  // First entry uses a random external referrer (simulates arriving from search/social).
-  // Subsequent returns to the homepage carry the previously visited page as referrer,
-  // matching natural in-site navigation behaviour.
-  let previousPageUrl: string | undefined = undefined;
+  // Start from the homepage once, then move directly between legal pages to
+  // avoid repeated full homepage reloads.
+  await navigate(page, resolveSiteUrl(site, cfg.homePath), pickReferrer());
+  await page.waitForTimeout(800);
 
-  for (const path of FOOTER_PATHS) {
-    // ----- 1. Return to homepage -----
-    const referer = previousPageUrl ?? pickReferrer();
-    await navigate(page, BASE + "/", referer);
-    await page.waitForTimeout(800);
+  for (let i = 0; i < cfg.footerPaths.length; i++) {
+    const path = cfg.footerPaths[i];
 
-    // ----- 2. Scroll footer into view -----
-    await page.evaluate(() =>
-      document.querySelector("footer")?.scrollIntoView({ behavior: "smooth" }),
-    );
-    await page.waitForTimeout(800);
+    if (i === 0) {
+      // ----- 1. First legal page via footer click -----
+      await page.evaluate((selector) => {
+        document.querySelector(selector)?.scrollIntoView({ behavior: "smooth" });
+      }, cfg.footerContainerSelector);
+      await page.waitForTimeout(800);
 
-    // ----- 3. Click the footer link -----
-    const linkSelector = `footer a[href*="${path}"], .footer a[href*="${path}"]`;
-    await page.waitForSelector(linkSelector, {
-      state: "visible",
-      timeout: 8_000,
-    });
-    await page.click(linkSelector);
-    await page.waitForLoadState("domcontentloaded", { timeout: 20_000 });
+      const linkSelector = cfg.footerLinkSelectorTemplate
+        .split("{{path}}")
+        .join(path);
+      await page.waitForSelector(linkSelector, {
+        state: "visible",
+        timeout: 8_000,
+      });
+      await page.click(linkSelector);
+      await page.waitForLoadState("domcontentloaded", { timeout: 20_000 });
+    } else {
+      // ----- 2. Next legal pages via direct in-site navigation -----
+      await navigate(page, resolveSiteUrl(site, path), page.url());
+      await page.waitForLoadState("domcontentloaded", { timeout: 20_000 });
+    }
 
-    // ----- 4. Read page content and simulate organic browsing -----
-    const heading = await getText(page, "h1").catch(() => "");
-    await randomBrowse(page); // stays 8–25 s, mixed scroll/hover/pause actions
+    // ----- 3. Read page content and simulate organic browsing -----
+    const heading = await getText(page, cfg.headingSelector).catch(() => "");
+    await randomBrowse(page, 10_000, 32_000);
+    await randomDelay(page, 500, 1_300);
 
     const currentUrl = page.url();
     visited.push({ path, url: currentUrl, heading });
-    previousPageUrl = currentUrl; // becomes the Referer for the next homepage visit
   }
 
   return { visited };

@@ -1,0 +1,114 @@
+{
+  "id": "eurocookflow",
+  "label": "EuroCookFlow",
+  "baseUrl": "https://eurocookflow.com",
+  "enabledFlows": {
+    "browseHomepage": true,
+    "explorePricing": true,
+    "browseFooterLinks": true,
+    "login": true,
+    "accountDashboard": true
+  },
+  "session": {
+    "seedCandidates": [
+      "/",
+      "/legal/privacy",
+      "/legal/terms",
+      "/legal/vat",
+      "/auth/sign-in"
+    ]
+  },
+  "browseHomepage": {
+    "homePath": "/",
+    "heroHeadingSelector": "h1",
+    "heroHeadingIncludes": [
+      "master the art"
+    ],
+    "navLinksSelector": "a[href^=\"/#\"]",
+    "expectedAnchors": [
+      "/#journeys",
+      "/#academy",
+      "/#rituals",
+      "/#members"
+    ],
+    "academySectionSelector": "#academy",
+    "academyFeatureSelectors": [
+      "#academy h3, #academy h4",
+      "#academy h2",
+      "#academy p strong, #academy [class*=\"title\"], #academy [class*=\"name\"]"
+    ],
+    "ritualsSectionSelector": "#rituals",
+    "membersSectionSelector": "#members",
+    "pricingLinksSelector": "a[href*=\"/auth/sign-up?plan=\"]",
+    "pricingPlanRegex": "plan=([a-z0-9-]+)",
+    "footerLinksSelector": "footer a, .footer a",
+    "requiredFooterPaths": [
+      "/legal/privacy",
+      "/legal/terms",
+      "/legal/vat"
+    ]
+  },
+  "browseFooterLinks": {
+    "homePath": "/",
+    "footerPaths": [
+      "/legal/privacy",
+      "/legal/terms",
+      "/legal/vat"
+    ],
+    "footerContainerSelector": "footer",
+    "footerLinkSelectorTemplate": "footer a[href*=\"{{path}}\"], .footer a[href*=\"{{path}}\"]",
+    "headingSelector": "h1"
+  },
+  "login": {
+    "loginPath": "/auth/sign-in",
+    "loginFormSelector": "form:has(input[type=\"email\"]):has(input[type=\"password\"])",
+    "openLoginSelector": null,
+    "submitResponseUrlIncludes": null,
+    "emailSelector": "input[type=\"email\"]",
+    "passwordSelector": "input[type=\"password\"]",
+    "submitSelector": "button:has-text(\"Sign In\"), button[type=\"submit\"]",
+    "errorSelector": "[role=\"alert\"], [class*=\"error\"], [class*=\"invalid\"]",
+    "failureUrlIncludes": [
+      "/auth/sign-in"
+    ],
+    "successUrlIncludes": [
+      "/app/"
+    ]
+  },
+  "explorePricing": {
+    "pricingPath": "/#members",
+    "pricingSectionSelector": "#members",
+    "tierNameSelectors": [
+      "#members h3, #members h4",
+      "#members h2"
+    ],
+    "ctaSelector": "a[href*=\"/auth/sign-up?plan=\"]",
+    "ctaMustContain": "/auth/sign-up?plan=",
+    "signupExpectedPathIncludes": "/auth/sign-up",
+    "emailSelector": "input[type=\"email\"]",
+    "nameSelector": "input[name*=\"name\" i], input[placeholder*=\"name\" i], input[type=\"text\"]",
+    "passwordSelector": "input[type=\"password\"]",
+    "syntheticNamePrefix": "Euro Visitor",
+    "syntheticPassword": "NotSubmitted123!"
+  },
+  "accountDashboard": {
+    "dashboardPath": "/app/courses",
+    "mustNotIncludePaths": [
+      "/auth/sign-in"
+    ],
+    "mustIncludePathFragment": "/app/",
+    "mainSelector": "main, [role=\"main\"]",
+    "balanceSelectors": [
+      "aside a[href*=\"/app/\"]",
+      "a[href*=\"/app/courses\"]",
+      "input[placeholder*=\"Search\"]",
+      "main h2, main h3"
+    ],
+    "paymentPresenceSelector": "[class*=\"pricing\"], [class*=\"membership\"], a[href*=\"/auth/sign-up\"], button:has-text(\"Get started\")",
+    "appLinkSelector": "a[href]",
+    "appLinkIncludes": "/app/",
+    "appLinkExcludes": [
+      "/auth/sign-"
+    ]
+  }
+}

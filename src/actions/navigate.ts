@@ -1,19 +1,39 @@
 import { Page } from "playwright";
 
+const BLOCKED_PATTERNS = [
+  // Images and fonts
+  "*.png",
+  "*.jpg",
+  "*.jpeg",
+  "*.webp",
+  "*.avif",
+  "*.gif",
+  "*.svg",
+  "*.ico",
+  "*.woff",
+  "*.woff2",
+  "*.ttf",
+  "*.otf",
+  // Media and tracking endpoints
+  "*.mp4",
+  "*.webm",
+  "*.mp3",
+];
+
+const pagesWithBlocking = new WeakSet<Page>();
+
 /**
- * Register a route handler that aborts font and image requests for the
- * lifetime of this page. Call once before the first navigation in a flow
- * to reduce proxy bandwidth.
+ * Block heavy/tracking URLs via CDP (without Playwright routing),
+ * preserving browser HTTP cache behavior across navigations.
  */
 export async function blockHeavyAssets(page: Page): Promise<void> {
-  await page.route("**/*", (route) => {
-    const type = route.request().resourceType();
-    if (type === "font" || type === "image") {
-      route.abort();
-    } else {
-      route.continue();
-    }
-  });
+  if (pagesWithBlocking.has(page)) return;
+
+  const session = await page.context().newCDPSession(page);
+  await session.send("Network.enable");
+  await session.send("Network.setBlockedURLs", { urls: BLOCKED_PATTERNS });
+
+  pagesWithBlocking.add(page);
 }
 
 /**
@@ -26,7 +46,11 @@ export async function navigate(
   url: string,
   referer?: string,
 ): Promise<void> {
-  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60_000, referer });
+  await page.goto(url, {
+    waitUntil: "domcontentloaded",
+    timeout: 60_000,
+    referer,
+  });
 }
 
 /**

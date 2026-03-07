@@ -1,5 +1,4 @@
 import "dotenv/config";
-import { Page } from "playwright";
 import { connectProfile } from "./browser";
 import { browseHomepage } from "./flows/browseHomepage";
 import { browseFooterLinks } from "./flows/browseFooterLinks";
@@ -7,6 +6,13 @@ import { login } from "./flows/login";
 import { explorePricing } from "./flows/explorePricing";
 import { accountDashboard } from "./flows/accountDashboard";
 import { listProfiles } from "./mcp/tools/profiles";
+import {
+  getSessionPolicyFromEnv,
+  runComplexSession,
+  type NamedFlow,
+} from "./session/complexSession";
+import { createTelemetryPersistence } from "./session/telemetryPersistence";
+import { getActiveSiteProfile, isFlowEnabled } from "./sites";
 
 // -------------------------------------------------------------------
 // CREDENTIALS
@@ -15,6 +21,9 @@ import { listProfiles } from "./mcp/tools/profiles";
 // -------------------------------------------------------------------
 const USERNAME = process.env.BOT_USERNAME ?? "";
 const PASSWORD = process.env.BOT_PASSWORD ?? "";
+const SESSION_POLICY = getSessionPolicyFromEnv();
+const TELEMETRY = createTelemetryPersistence("nstbrowser");
+const SITE = getActiveSiteProfile();
 
 // -------------------------------------------------------------------
 // PROFILE DISCOVERY
@@ -59,81 +68,101 @@ async function getProfileIds(): Promise<string[]> {
   }
 }
 
-// -------------------------------------------------------------------
-// FLOW DEFINITIONS
-// Each entry is a named, self-contained unit that runs on an open page.
-// -------------------------------------------------------------------
-type FlowRunner = (page: Page, label: string) => Promise<void>;
+function buildFlowSequence(username: string, password: string): NamedFlow[] {
+  const flows: NamedFlow[] = [];
 
-const PUBLIC_FLOWS: Array<{ name: string; run: FlowRunner }> = [
-  {
-    name: "browseHomepage",
-    run: async (page, label) => {
-      const result = await browseHomepage(page);
-      console.log(`  [${label}] hero: ${result.heroHeading}`);
-      console.log(`  [${label}] features found: ${result.featureNames.length}`);
-      console.log(`  [${label}] pricing tiers: ${result.pricingTiers.length}`);
-      console.log(`  [${label}] footer links: ${result.footerLinks.length}`);
-    },
-  },
-  {
-    name: "browseFooterLinks",
-    run: async (page, label) => {
-      const result = await browseFooterLinks(page);
-      for (const visit of result.visited) {
-        console.log(
-          `  [${label}] ${visit.path} → "${visit.heading}" (${visit.url})`,
-        );
-      }
-    },
-  },
-  {
-    name: "explorePricing",
-    run: async (page, label) => {
-      const result = await explorePricing(page);
-      console.log(
-        `  [${label}] tiers: ${result.tiers.map((t) => t.name).join(", ") || "(none named)"}`,
-      );
-      console.log(`  [${label}] CTA links valid: ${result.ctaLinksValid}`);
-    },
-  },
-];
+  if (isFlowEnabled(SITE, "browseHomepage")) {
+    flows.push({
+      name: "browseHomepage",
+      run: async (page, label, ctx) => {
+        const result = await browseHomepage(page, SITE);
+        ctx.trackNavigation(page.url());
+        ctx.addInteraction(3);
 
-const AUTH_FLOW: { name: string; run: FlowRunner } = {
-  name: "login+dashboard",
-  run: async (page, label) => {
-    const loginResult = await login(page, USERNAME, PASSWORD);
-    if (!loginResult.success) {
-      console.error(`  [${label}] Login failed: ${loginResult.errorMessage}`);
-      return;
-    }
-    console.log(`  [${label}] Logged in. Landed: ${loginResult.finalUrl}`);
-    const accountResult = await accountDashboard(page);
-    console.log(`  [${label}] Credit balance: ${accountResult.creditBalance}`);
-    console.log(
-      `  [${label}] Orders on record: ${accountResult.orders.length}`,
-    );
-    console.log(
-      `  [${label}] Payment methods present: ${accountResult.hasPaymentMethods}`,
-    );
-  },
-};
-
-/**
- * Pick a random subset of flows for one profile session.
- * Always runs 1–3 public flows in a shuffled order.
- * Appends the authenticated flow ~50% of the time when credentials are set.
- */
-function pickFlows(): Array<{ name: string; run: FlowRunner }> {
-  const shuffled = [...PUBLIC_FLOWS].sort(() => Math.random() - 0.5);
-  const count = Math.floor(Math.random() * PUBLIC_FLOWS.length) + 1;
-  const picked = shuffled.slice(0, count);
-
-  if (USERNAME && PASSWORD && Math.random() > 0.5) {
-    picked.push(AUTH_FLOW);
+        console.log(`  [${label}] hero: ${result.heroHeading}`);
+        console.log(`  [${label}] features found: ${result.featureNames.length}`);
+        console.log(`  [${label}] pricing tiers: ${result.pricingTiers.length}`);
+        console.log(`  [${label}] footer links: ${result.footerLinks.length}`);
+      },
+    });
   }
 
-  return picked;
+  if (isFlowEnabled(SITE, "explorePricing")) {
+    flows.push({
+      name: "explorePricing",
+      run: async (page, label, ctx) => {
+        const result = await explorePricing(page, SITE);
+        ctx.trackNavigation(page.url());
+        ctx.addInteraction(3);
+
+        console.log(
+          `  [${label}] tiers: ${result.tiers.map((t) => t.name).join(", ") || "(none named)"}`,
+        );
+        console.log(`  [${label}] CTA links valid: ${result.ctaLinksValid}`);
+      },
+    });
+  }
+
+  if (isFlowEnabled(SITE, "browseFooterLinks")) {
+    flows.push({
+      name: "browseFooterLinks",
+      run: async (page, label, ctx) => {
+        const result = await browseFooterLinks(page, SITE);
+        ctx.trackNavigation(page.url());
+        ctx.addInteraction(result.visited.length + 1);
+
+        for (const visit of result.visited) {
+          console.log(
+            `  [${label}] ${visit.path} → "${visit.heading}" (${visit.url})`,
+          );
+        }
+      },
+    });
+  }
+
+  if (username && password && isFlowEnabled(SITE, "login")) {
+    flows.push({
+      name: isFlowEnabled(SITE, "accountDashboard") ? "login+dashboard" : "login",
+      run: async (page, label, ctx) => {
+        const loginResult = await login(page, username, password, SITE);
+        ctx.trackNavigation(loginResult.finalUrl);
+        ctx.addInteraction(2);
+
+        if (!loginResult.success) {
+          const warning = `Login failed: ${loginResult.errorMessage ?? "Unknown auth error"}`;
+          ctx.addWarning(warning);
+          console.error(`  [${label}] ${warning}`);
+          return;
+        }
+
+        console.log(`  [${label}] Logged in. Landed: ${loginResult.finalUrl}`);
+
+        if (!isFlowEnabled(SITE, "accountDashboard")) {
+          return;
+        }
+
+        const accountResult = await accountDashboard(page, SITE);
+        ctx.trackNavigation(page.url());
+        ctx.addInteraction(2);
+
+        console.log(`  [${label}] Credit balance: ${accountResult.creditBalance}`);
+        console.log(
+          `  [${label}] Orders on record: ${accountResult.orders.length}`,
+        );
+        console.log(
+          `  [${label}] Payment methods present: ${accountResult.hasPaymentMethods}`,
+        );
+      },
+    });
+  }
+
+  if (flows.length === 0) {
+    throw new Error(
+      `No enabled flows for site profile \"${SITE.id}\". Check src/sites/profiles/${SITE.id}.json`,
+    );
+  }
+
+  return flows;
 }
 
 // -------------------------------------------------------------------
@@ -147,16 +176,54 @@ async function runProfileSession(
 
   try {
     const page = await browser.newPage();
-    const flows = pickFlows();
+    const flows = buildFlowSequence(USERNAME, PASSWORD);
 
     console.log(
       `[${label}] Flows selected: ${flows.map((f) => f.name).join(" → ")}`,
     );
 
-    for (const flow of flows) {
-      console.log(`\n[${label}] Running: ${flow.name}...`);
-      await flow.run(page, label);
+    const telemetry = await runComplexSession({
+      page,
+      label,
+      flows,
+      policy: SESSION_POLICY,
+      baseUrl: SITE.baseUrl,
+      seedCandidates: SITE.session.seedCandidates,
+    });
+
+    console.log(
+      `[${label}] Session telemetry: ${Math.round(telemetry.elapsedMs / 1000)}s, ${telemetry.uniquePages.length} unique page(s), ${telemetry.interactions} interaction unit(s)`,
+    );
+    console.log(
+      `  [${label}] traffic: ${(telemetry.trafficBytesTotal / (1024 * 1024)).toFixed(2)} MB total, ${(telemetry.trafficBytesSameOrigin / (1024 * 1024)).toFixed(2)} MB same-origin, ${telemetry.trafficRequestCount} request(s)`,
+    );
+    console.log(
+      `  [${label}] top origins: ${
+        telemetry.trafficTopOrigins
+          .slice(0, 3)
+          .map(
+            (item) =>
+              `${item.key} ${(item.bytes / (1024 * 1024)).toFixed(2)}MB/${item.requests}req`,
+          )
+          .join(" | ") || "(none)"
+      }`,
+    );
+    console.log(`  [${label}] URLs: ${telemetry.uniquePages.join(" | ")}`);
+
+    for (const warning of telemetry.warnings) {
+      console.warn(`  [${label}] warning: ${warning}`);
     }
+
+    await TELEMETRY.persistSession({
+      label,
+      profileId,
+      telemetry,
+      policy: SESSION_POLICY,
+    }).catch((err) => {
+      console.warn(
+        `  [${label}] warning: failed to persist telemetry: ${(err as Error).message}`,
+      );
+    });
   } finally {
     await browser.close();
   }
@@ -166,7 +233,9 @@ async function runProfileSession(
 // ENTRY POINT
 // -------------------------------------------------------------------
 (async () => {
-  console.log("Starting bot session for https://eurocookflow.com/\n");
+  console.log(`Starting bot session for ${SITE.baseUrl}/ (${SITE.id})\n`);
+  console.log(`[telemetry] JSONL: ${TELEMETRY.jsonPath}`);
+  console.log(`[telemetry] CSV:   ${TELEMETRY.csvPath}\n`);
   const profileIds = await getProfileIds();
   console.log(`Running ${profileIds.length} profile(s) in parallel...\n`);
 

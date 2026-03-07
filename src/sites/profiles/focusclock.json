@@ -1,0 +1,118 @@
+{
+  "id": "focusclock",
+  "label": "FocusClock",
+  "baseUrl": "https://focusclock.ai",
+  "enabledFlows": {
+    "browseHomepage": true,
+    "explorePricing": true,
+    "browseFooterLinks": true,
+    "login": true,
+    "accountDashboard": false
+  },
+  "session": {
+    "seedCandidates": [
+      "/",
+      "/#features",
+      "/#services",
+      "/en/privacy-policy",
+      "/en/terms-conditions",
+      "/en/token-policy",
+      "/en/contact"
+    ]
+  },
+  "browseHomepage": {
+    "homePath": "/",
+    "heroHeadingSelector": "h1",
+    "heroHeadingIncludes": [
+      "achieve more in less time"
+    ],
+    "navLinksSelector": "header a[href^=\"#\"], .menu a[href^=\"#\"]",
+    "expectedAnchors": [
+      "#faq",
+      "#how-it-works",
+      "#features",
+      "#services",
+      "#reviews"
+    ],
+    "academySectionSelector": "#features",
+    "academyFeatureSelectors": [
+      "#features .features__title",
+      "#features h2, #features h3, #features h4",
+      "section h2, section h3"
+    ],
+    "ritualsSectionSelector": "#how-it-works",
+    "membersSectionSelector": "#services",
+    "pricingLinksSelector": "#services a[href*=\"#tab-\"]",
+    "pricingPlanRegex": "#tab-([a-z0-9-]+)",
+    "footerLinksSelector": "footer a",
+    "requiredFooterPaths": [
+      "/en/privacy-policy",
+      "/en/terms-conditions",
+      "/en/token-policy"
+    ]
+  },
+  "browseFooterLinks": {
+    "homePath": "/",
+    "footerPaths": [
+      "/en/privacy-policy",
+      "/en/terms-conditions",
+      "/en/token-policy"
+    ],
+    "footerContainerSelector": "footer",
+    "footerLinkSelectorTemplate": "footer a[href*=\"{{path}}\"], .footer a[href*=\"{{path}}\"]",
+    "headingSelector": "title, h1, h2"
+  },
+  "login": {
+    "loginPath": "/",
+    "loginFormSelector": ".js-login-form",
+    "openLoginSelector": "a.js-modal-caller[data-action=\"auth/login\"]",
+    "submitResponseUrlIncludes": "/modules/auth/login/handler.php",
+    "emailSelector": ".js-login-form input[name=\"mail\"], .js-login-form input[type=\"email\"]",
+    "passwordSelector": ".js-login-form input[name=\"password\"], .js-login-form input[type=\"password\"]",
+    "submitSelector": ".js-login-form button[type=\"submit\"]",
+    "errorSelector": "[role=\"alert\"], [class*=\"error\"], [class*=\"invalid\"]",
+    "failureUrlIncludes": [
+      "/404",
+      "/error"
+    ],
+    "successUrlIncludes": []
+  },
+  "explorePricing": {
+    "pricingPath": "/#services",
+    "pricingSectionSelector": "#services",
+    "tierNameSelectors": [
+      "#services .tabs__nav-item",
+      "#services h2, #services h3",
+      "#features .features__title"
+    ],
+    "ctaSelector": "#services a[href*=\"#tab-\"]",
+    "ctaMustContain": "#tab-",
+    "signupExpectedPathIncludes": "#tab-",
+    "emailSelector": "input[type=\"email\"]",
+    "nameSelector": "input[name*=\"name\" i], input[placeholder*=\"name\" i], input[type=\"text\"]",
+    "passwordSelector": "input[type=\"password\"]",
+    "syntheticNamePrefix": "Focus Visitor",
+    "syntheticPassword": "NotSubmitted123!"
+  },
+  "accountDashboard": {
+    "dashboardPath": "/app",
+    "mustNotIncludePaths": [
+      "/login",
+      "/sign-in"
+    ],
+    "mustIncludePathFragment": "/app",
+    "mainSelector": "main, [role=\"main\"]",
+    "balanceSelectors": [
+      "main h1",
+      "main h2",
+      "main [class*=\"stat\"]"
+    ],
+    "paymentPresenceSelector": "a[href*=\"billing\"], [class*=\"plan\"], [class*=\"subscription\"]",
+    "appLinkSelector": "a[href]",
+    "appLinkIncludes": "/app",
+    "appLinkExcludes": [
+      "/login",
+      "/sign-in"
+    ]
+  }
+}

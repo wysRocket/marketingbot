@@ -1,8 +1,17 @@
 import { Page } from "playwright";
 import { navigate, blockHeavyAssets } from "../actions/navigate";
+import { randomBrowse } from "../actions/interact";
 import { getText, scrapeTable } from "../actions/scrape";
-
-const BASE = "https://eurocookflow.com";
+import {
+  assertFlowEnabled,
+  getActiveSiteProfile,
+  resolveSiteUrl,
+  type SiteProfile,
+} from "../sites";
+const MAX_DASHBOARD_EXTRA_PAGES = Number.parseInt(
+  process.env.FLOW_MAX_DASHBOARD_EXTRA_PAGES ?? "1",
+  10,
+);
 
 export interface AccountResult {
   creditBalance: string;
@@ -22,34 +31,33 @@ export interface AccountResult {
  *   - Course cards or any data table is present (may be empty)
  *   - Membership/pricing/action CTA exists in the DOM
  */
-export async function accountDashboard(page: Page): Promise<AccountResult> {
+export async function accountDashboard(
+  page: Page,
+  site: SiteProfile = getActiveSiteProfile(),
+): Promise<AccountResult> {
+  assertFlowEnabled(site, "accountDashboard");
+
+  const cfg = site.accountDashboard;
   await blockHeavyAssets(page);
 
   // ----- 1. Navigate to the account page -----
-  await navigate(page, BASE + "/app/courses");
+  await navigate(page, resolveSiteUrl(site, cfg.dashboardPath));
 
   // ----- 2. Guard: must not have been kicked back to sign-in -----
-  if (page.url().includes("/auth/sign-in")) {
+  if (cfg.mustNotIncludePaths.some((path) => page.url().includes(path))) {
     throw new Error(
-      "Session lost -> redirected to /auth/sign-in on /app/courses request",
+      `Session lost -> redirected to blocked route on ${cfg.dashboardPath} request`,
     );
   }
-  if (!page.url().includes("/app/")) {
+  if (!page.url().includes(cfg.mustIncludePathFragment)) {
     throw new Error(`Expected an app route, got: ${page.url()}`);
   }
 
-  await page.waitForSelector('main, [role="main"]', { timeout: 15_000 });
+  await page.waitForSelector(cfg.mainSelector, { timeout: 15_000 });
 
   // ----- 3. Read a dashboard/app status metric -----
-  // Try several reasonable selectors in priority order.
-  const balanceSelectors = [
-    'aside a[href*="/app/"]',
-    'a[href*="/app/courses"]',
-    'input[placeholder*="Search"]',
-    "main h2, main h3",
-  ];
   let creditBalance = "";
-  for (const sel of balanceSelectors) {
+  for (const sel of cfg.balanceSelectors) {
     creditBalance = await getText(page, sel).catch(() => "");
     if (creditBalance) break;
   }
@@ -62,11 +70,55 @@ export async function accountDashboard(page: Page): Promise<AccountResult> {
 
   // ----- 5. Check membership/payment-like section -----
   const hasPaymentMethods =
-    (await page
-      .locator(
-        '[class*="pricing"], [class*="membership"], a[href*="/auth/sign-up"], button:has-text("Get started")',
-      )
-      .count()) > 0;
+    (await page.locator(cfg.paymentPresenceSelector).count()) > 0;
+
+  // ----- 6. Visit up to 2 extra app pages discovered from the app navigation -----
+  const appLinks = await page
+    .$$eval(
+      cfg.appLinkSelector,
+      (anchors, includeFragment) =>
+        anchors
+          .map((a) => a.getAttribute("href") ?? "")
+          .filter(Boolean)
+          .map((href) => {
+            try {
+              return new URL(href, window.location.href).toString();
+            } catch {
+              return "";
+            }
+          })
+          .filter(Boolean)
+          .filter((href) => href.includes(includeFragment)),
+      cfg.appLinkIncludes,
+    )
+    .catch((): string[] => []);
+
+  const uniqueTargets = [...new Set(appLinks)]
+    .filter((href) =>
+      cfg.appLinkExcludes.every((fragment) => !href.includes(fragment)),
+    )
+    .filter((href) => href !== page.url())
+    .slice(
+      0,
+      Number.isFinite(MAX_DASHBOARD_EXTRA_PAGES) &&
+        MAX_DASHBOARD_EXTRA_PAGES > 0
+        ? MAX_DASHBOARD_EXTRA_PAGES
+        : 1,
+    );
+
+  for (const target of uniqueTargets) {
+    await navigate(page, target, page.url()).catch(() => {
+      /* non-critical */
+    });
+    await page.waitForSelector(cfg.mainSelector, { timeout: 12_000 }).catch(
+      () => {
+        /* non-critical */
+      },
+    );
+    await randomBrowse(page, 2_500, 6_000).catch(() => {
+      /* non-critical */
+    });
+  }
 
   return { creditBalance, orders, hasPaymentMethods };
 }

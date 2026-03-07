@@ -572,7 +572,7 @@ server.tool(
 
 server.tool(
   "run_browse_homepage",
-  "Open eurocookflow.com in a browser, scroll through Hero -> Journeys -> Academy -> CookFlows -> Members -> Footer, " +
+  "Open the active BOT_SITE_PROFILE site in a browser, scroll through primary sections, " +
     "and return the hero heading, nav links, feature names, pricing tiers, and footer links. " +
     "Pass a profileId to use a saved Nstbrowser profile; omit for a plain Playwright session.",
   RunBrowseHomepageSchema,
@@ -587,7 +587,7 @@ server.tool(
 
 server.tool(
   "run_browse_footer_links",
-  "Navigate to eurocookflow.com, then click each footer link (/legal/privacy, /legal/terms, /legal/vat) in sequence. " +
+  "Navigate to the active BOT_SITE_PROFILE site, then click each configured footer path in sequence. " +
     "On each page the bot scrolls to simulate reading. " +
     "Returns the URL and <h1> heading collected from each visited page. " +
     "Pass a profileId to use a saved Nstbrowser profile; omit for a plain Playwright session.",
@@ -603,7 +603,7 @@ server.tool(
 
 server.tool(
   "run_login",
-  "Navigate to /auth/sign-in on eurocookflow.com, fill the sign-in form, and validate the outcome. " +
+  "Navigate to the configured sign-in route for the active BOT_SITE_PROFILE site, fill the login form, and validate the outcome. " +
     "Returns { success, finalUrl, errorMessage? }.",
   RunLoginSchema,
   async ({ username, password, profileId }) => {
@@ -617,8 +617,8 @@ server.tool(
 
 server.tool(
   "run_explore_pricing",
-  "Navigate to the #members section on eurocookflow.com, read all tier names and CTA links, " +
-    "hover over each CTA, click the first one, and validate the redirect to /auth/sign-up. " +
+  "Navigate to the configured pricing section, read all tier names and CTA links, " +
+    "hover over each CTA, click selected signup links, and validate the redirect target. " +
     "Returns { tiers, ctaLinksValid }.",
   RunExplorePricingSchema,
   async ({ profileId }) => {
@@ -632,7 +632,7 @@ server.tool(
 
 server.tool(
   "run_account_dashboard",
-  "Login to eurocookflow.com with the provided credentials and then read the /app/courses dashboard context. " +
+  "Login to the active BOT_SITE_PROFILE site with the provided credentials and then read the configured dashboard context. " +
     "Returns { login: LoginResult, account: { creditBalance, orders, hasPaymentMethods } }.",
   RunAccountDashboardSchema,
   async ({ username, password, profileId }) => {
