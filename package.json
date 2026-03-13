@@ -12,13 +12,15 @@
     "build": "tsc",
     "start:js": "node dist/index.js",
     "mcp": "ts-node src/mcp/server.ts",
-    "mcp:mostlogin": "ts-node src/mcp/mostlogin/server.ts"
+    "mcp:mostlogin": "ts-node src/mcp/mostlogin/server.ts",
+    "start:patchright": "ts-node src/index.patchright.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.36.3",
     "@modelcontextprotocol/sdk": "^1.27.1",
     "axios": "^1.13.5",
     "dotenv": "^17.3.1",
