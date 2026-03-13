@@ -24,11 +24,22 @@ const SESSION_POLICY = getSessionPolicyFromEnv();
 const TELEMETRY = createTelemetryPersistence("patchright");
 const SITE = getActiveSiteProfile();
 
-function buildProxyUrl(): string | undefined {
+// Playwright proxy config: credentials must be separate fields.
+// Chromium does NOT support SOCKS5 proxy auth — use http:// protocol
+// so Playwright can negotiate auth via HTTP CONNECT tunnel instead.
+// DI_PROXY_PROTOCOL env override lets you switch to socks5 for no-auth cases.
+function buildProxy():
+  | { server: string; username: string; password: string }
+  | undefined {
   const user = process.env.DI_USER;
   const pass = process.env.DI_PASS;
   if (!user || !pass) return undefined;
-  return `socks5://${user}:${pass}@gw.dataimpulse.com:10000`;
+  const protocol = process.env.DI_PROXY_PROTOCOL ?? "http";
+  return {
+    server: `${protocol}://gw.dataimpulse.com:10000`,
+    username: user,
+    password: pass,
+  };
 }
 
 function pickRandom<T>(items: T[], limit: number): T[] {
@@ -138,7 +149,7 @@ async function runProfileSession(profileId: string, label: string): Promise<void
   const profile = getProfile(profileId);
   if (!profile) throw new Error(`Patchright profile not found: ${profileId}`);
 
-  const proxyUrl = buildProxyUrl();
+  const proxy = buildProxy();
 
   const browser = await chromium.launch({
     headless: true,
@@ -155,9 +166,10 @@ async function runProfileSession(profileId: string, label: string): Promise<void
   try {
     const contextOptions: Record<string, unknown> = { ...profile.config };
 
-    // Override proxy if DataImpulse credentials are present
-    if (proxyUrl) {
-      contextOptions.proxy = { server: proxyUrl };
+    // Override proxy if DataImpulse credentials are present.
+    // Uses http:// so Playwright can pass credentials via HTTP CONNECT.
+    if (proxy) {
+      contextOptions.proxy = proxy;
     }
 
     const context = await browser.newContext(contextOptions);
