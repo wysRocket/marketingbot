@@ -12,21 +12,25 @@
     "build": "tsc",
     "start:js": "node dist/index.js",
     "mcp": "ts-node src/mcp/server.ts",
-    "mcp:mostlogin": "ts-node src/mcp/mostlogin/server.ts"
+    "mcp:mostlogin": "ts-node src/mcp/mostlogin/server.ts",
+    "mcp:patchright": "ts-node src/mcp/patchright/server.ts",
+    "start:patchright": "BOT_SITE_PROFILE=focusclock ts-node src/index.patchright.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.27.1",
     "axios": "^1.13.5",
     "dotenv": "^17.3.1",
     "playwright": "^1.58.2",
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
     "@types/node": "^25.3.0",
+    "patchright": "^1.58.2",
+    "patchright-mcp": "^0.0.68",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }

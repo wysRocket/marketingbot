@@ -1,0 +1,11 @@
+{
+	"servers": {
+		"patchright": {
+			"command": "npm",
+			"args": ["run", "mcp:patchright"],
+			"cwd": "/Users/wysmyfree/Projects/marketingbot",
+			"type": "stdio"
+		}
+	},
+	"inputs": []
+}
