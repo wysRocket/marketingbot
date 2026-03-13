@@ -173,6 +173,14 @@ async function runProfileSession(profileId: string, label: string): Promise<void
     }
 
     const context = await browser.newContext(contextOptions);
+
+    // Block Unsplash image requests to reduce outbound traffic.
+    // Abort at the context level so every page (including top-up cycles) is covered.
+    const BLOCKED_ORIGINS = ["**://*.unsplash.com/**", "**://unsplash.com/**"];
+    for (const pattern of BLOCKED_ORIGINS) {
+      await context.route(pattern, (route) => route.abort());
+    }
+
     // patchright is a drop-in fork of playwright; the Page types are
     // structurally identical at runtime but nominally different to TS.
     const page = (await context.newPage()) as unknown as Page;
