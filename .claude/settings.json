@@ -1,12 +1,5 @@
 {
-  "mcpServers": {
-    "mostlogin": {
-      "command": "npx",
-      "args": [
-        "ts-node",
-        "src/mcp/mostlogin/server.ts"
-      ],
-      "cwd": "/Users/wysmyfree/Projects/marketingbot"
-    }
+  "env": {
+    //    "ANTHROPIC_MODEL": "nvidia/nemotron-3-super-120b-a12b:free"
   }
 }

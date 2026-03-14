@@ -18,10 +18,43 @@ import { getActiveSiteProfile, isFlowEnabled } from "./sites";
 // -------------------------------------------------------------------
 // CONFIG
 // -------------------------------------------------------------------
-const ROUNDS = 180; // 30 min / 10 s per launch
-const PROFILES_PER_ROUND = 1;
-const ROUND_INTERVAL_MS = 10_000; // 10 seconds between each profile launch
-const LAUNCH_STAGGER_MS = 0; // no stagger needed for 1 profile per round
+function parsePositiveIntEnv(name: string, fallback: number): number {
+  const raw = process.env[name];
+  if (!raw) return fallback;
+
+  const parsed = Number.parseInt(raw, 10);
+  if (!Number.isFinite(parsed) || parsed <= 0) {
+    return fallback;
+  }
+
+  return parsed;
+}
+
+function parseNonNegativeIntEnv(name: string, fallback: number): number {
+  const raw = process.env[name];
+  if (!raw) return fallback;
+
+  const parsed = Number.parseInt(raw, 10);
+  if (!Number.isFinite(parsed) || parsed < 0) {
+    return fallback;
+  }
+
+  return parsed;
+}
+
+const ROUNDS = parsePositiveIntEnv("ML_SCHEDULE_ROUNDS", 180);
+const PROFILES_PER_ROUND = parsePositiveIntEnv(
+  "ML_SCHEDULE_PROFILES_PER_ROUND",
+  1,
+);
+const ROUND_INTERVAL_MS = Math.max(
+  1_000,
+  parsePositiveIntEnv("ML_SCHEDULE_ROUND_INTERVAL_MS", 10_000),
+);
+const LAUNCH_STAGGER_MS = parseNonNegativeIntEnv(
+  "ML_SCHEDULE_LAUNCH_STAGGER_MS",
+  0,
+);
 
 const USERNAME = process.env.BOT_USERNAME ?? "";
 const PASSWORD = process.env.BOT_PASSWORD ?? "";

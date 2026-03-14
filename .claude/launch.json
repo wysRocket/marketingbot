@@ -1,0 +1,35 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nstbrowser-bot",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["start"],
+      "port": 0
+    },
+    {
+      "name": "mostlogin-bot",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start:mostlogin"],
+      "port": 0
+    },
+    {
+      "name": "mostlogin-scheduled",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start:mostlogin:schedule"],
+      "port": 0
+    },
+    {
+      "name": "nstbrowser-mcp",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "mcp"],
+      "port": 0
+    },
+    {
+      "name": "mostlogin-mcp",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "mcp:mostlogin"],
+      "port": 0
+    }
+  ]
+}
