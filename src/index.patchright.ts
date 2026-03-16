@@ -274,19 +274,24 @@ async function runProfileSession(profileId: string, label: string): Promise<void
   console.log(`[telemetry] CSV:   ${TELEMETRY.csvPath}\n`);
 
   const allProfileIds = listProfileIds();
-  console.log(`Available patchright profiles: ${allProfileIds.join(", ")}\n`);
+
+  // Pick the active profile set ONCE and hold it for all rounds.
+  // Re-picking randomly every round means most profiles only run once,
+  // so their HTTP disk cache is always cold. Fixed profiles accumulate
+  // a warm cache after round 1 and cost far less proxy traffic from round 2+.
+  const activeProfileIds = pickRandom(allProfileIds, maxConcurrent);
+  console.log(`Active profiles (fixed for all rounds): ${activeProfileIds.join(", ")}\n`);
 
   let round = 0;
 
   while (round < totalRounds) {
-    const profileIds = pickRandom(allProfileIds, maxConcurrent);
-    console.log(`--- Round ${round + 1}/${totalRounds} | Profiles: ${profileIds.join(", ")} ---`);
+    console.log(`--- Round ${round + 1}/${totalRounds} | Profiles: ${activeProfileIds.join(", ")} ---`);
 
-    const sessions = profileIds.map((profileId, index) => {
+    const sessions = activeProfileIds.map((profileId, index) => {
       const label = `P${index + 1}`;
       return new Promise<void>((resolve) => setTimeout(resolve, index * 3_000))
         .then(() => runProfileSession(profileId, label))
-        .catch((err) => ({ label, error: err as Error }));
+        .catch((err: unknown) => ({ label, error: err as Error }));
     });
 
     const results = await Promise.all(sessions);
