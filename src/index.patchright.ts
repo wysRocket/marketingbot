@@ -189,7 +189,7 @@ async function runProfileSession(profileId: string, label: string): Promise<void
     // bypasses the HTTP disk cache. Targeted patterns leave all other
     // requests (JS, CSS, HTML, XHR) on Chrome's normal cached path.
     const BLOCK_PATTERNS = [
-      // Images
+      // Images (extension-based)
       "**/*.{png,jpg,jpeg,gif,webp,avif,svg,ico,cur,bmp,tiff}",
       // Fonts
       "**/*.{woff,woff2,ttf,eot,otf}",
@@ -197,6 +197,9 @@ async function runProfileSession(profileId: string, label: string): Promise<void
       "**/*.{mp4,webm,ogv,avi,mov,flv,mkv}",
       // Audio
       "**/*.{mp3,ogg,wav,flac,aac}",
+      // Unsplash images — served without file extensions, must block by origin
+      "**://images.unsplash.com/**",
+      "**://unsplash.com/**",
     ];
     for (const pattern of BLOCK_PATTERNS) {
       await context.route(pattern, (route) => route.abort());
