@@ -151,20 +151,31 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
 }
 
 // -------------------------------------------------------------------
-// SESSION RUNNER
+// PERSISTENT BROWSER CONTEXTS
+//
+// MostLogin achieves low traffic because its Chromium process stays
+// running between sessions — the in-memory HTTP cache accumulates.
+// Patchright was launching a fresh browser per session, so the cache
+// always started cold even though we wrote to userDataDir.
+//
+// Fix: keep one BrowserContext per profile alive for the entire run.
+// Each session opens a new page, runs flows, then closes only the tab.
+// The context (and its in-memory cache) remains for the next round.
 // -------------------------------------------------------------------
-async function runProfileSession(profileId: string, label: string): Promise<void> {
+type PContext = Awaited<ReturnType<typeof chromium.launchPersistentContext>>;
+const liveContexts = new Map<string, PContext>();
+
+async function getOrLaunchContext(profileId: string): Promise<PContext> {
+  const existing = liveContexts.get(profileId);
+  if (existing) return existing;
+
   const profile = getProfile(profileId);
   if (!profile) throw new Error(`Patchright profile not found: ${profileId}`);
 
   const proxy = buildProxy();
-
-  // Persist the Chromium profile (HTTP disk cache, cookies, storage) so
-  // repeated rounds reuse cached assets instead of re-fetching via proxy.
   const userDataDir = path.join(CACHE_DIR, profileId);
   fs.mkdirSync(userDataDir, { recursive: true });
 
-  // launchPersistentContext merges launch + context options in one call.
   const context = await chromium.launchPersistentContext(userDataDir, {
     headless: true,
     args: [
@@ -174,41 +185,53 @@ async function runProfileSession(profileId: string, label: string): Promise<void
       "--disable-setuid-sandbox",
       "--disable-accelerated-2d-canvas",
       "--disable-gpu",
-      // Headless Chromium sometimes limits the disk cache to a few MB.
-      // Enforce 200 MB so HTTP assets are actually retained between rounds.
       "--disk-cache-size=209715200",
     ],
     ...profile.config,
     ...(proxy ? { proxy } : {}),
   });
 
+  // Register route blocks once per context lifetime.
+  const BLOCK_PATTERNS = [
+    "**/*.{png,jpg,jpeg,gif,webp,avif,svg,ico,cur,bmp,tiff}",
+    "**/*.{woff,woff2,ttf,eot,otf}",
+    "**/*.{mp4,webm,ogv,avi,mov,flv,mkv}",
+    "**/*.{mp3,ogg,wav,flac,aac}",
+    "**://images.unsplash.com/**",
+    "**://unsplash.com/**",
+  ];
+  for (const pattern of BLOCK_PATTERNS) {
+    await context.route(pattern, (route) => route.abort());
+  }
+
+  liveContexts.set(profileId, context);
+  return context;
+}
+
+async function closeAllContexts(): Promise<void> {
+  for (const [profileId, ctx] of liveContexts) {
+    await ctx.close().catch((err: unknown) =>
+      console.warn(`[cleanup] Failed to close context ${profileId}: ${(err as Error).message}`),
+    );
+  }
+  liveContexts.clear();
+}
+
+// -------------------------------------------------------------------
+// SESSION RUNNER
+// -------------------------------------------------------------------
+async function runProfileSession(profileId: string, label: string): Promise<void> {
+  const profile = getProfile(profileId);
+  if (!profile) throw new Error(`Patchright profile not found: ${profileId}`);
+
+  const context = await getOrLaunchContext(profileId);
+
+  // Open a new tab. The context (and its in-memory cache) stays alive.
+  // patchright is a drop-in fork of playwright; the Page types are
+  // structurally identical at runtime but nominally different to TS.
+  const page = (await context.newPage()) as unknown as Page;
+
   try {
-    // Block images, media, and fonts using targeted URL patterns.
-    // A catch-all "**/*" route with route.continue() forces Chrome to
-    // re-issue every request through the CDP Fetch interceptor, which
-    // bypasses the HTTP disk cache. Targeted patterns leave all other
-    // requests (JS, CSS, HTML, XHR) on Chrome's normal cached path.
-    const BLOCK_PATTERNS = [
-      // Images (extension-based)
-      "**/*.{png,jpg,jpeg,gif,webp,avif,svg,ico,cur,bmp,tiff}",
-      // Fonts
-      "**/*.{woff,woff2,ttf,eot,otf}",
-      // Video
-      "**/*.{mp4,webm,ogv,avi,mov,flv,mkv}",
-      // Audio
-      "**/*.{mp3,ogg,wav,flac,aac}",
-      // Unsplash images — served without file extensions, must block by origin
-      "**://images.unsplash.com/**",
-      "**://unsplash.com/**",
-    ];
-    for (const pattern of BLOCK_PATTERNS) {
-      await context.route(pattern, (route) => route.abort());
-    }
-
-    // patchright is a drop-in fork of playwright; the Page types are
-    // structurally identical at runtime but nominally different to TS.
-    const page = (await context.newPage()) as unknown as Page;
-
     const flows = buildFlowSequence(USERNAME, PASSWORD);
 
     console.log(
@@ -258,7 +281,7 @@ async function runProfileSession(profileId: string, label: string): Promise<void
       );
     });
   } finally {
-    await context.close();
+    await page.close(); // close only the tab — context stays alive for next round
   }
 }
 
@@ -308,4 +331,15 @@ async function runProfileSession(profileId: string, label: string): Promise<void
   }
 
   console.log("\nAll rounds complete.");
+  await closeAllContexts();
 })();
+
+// Close all browser contexts on Ctrl+C so Chrome processes don't linger.
+process.once("SIGINT", async () => {
+  await closeAllContexts();
+  process.exit(0);
+});
+process.once("SIGTERM", async () => {
+  await closeAllContexts();
+  process.exit(0);
+});
