@@ -183,50 +183,18 @@ async function runProfileSession(profileId: string, label: string): Promise<void
   });
 
   try {
-    // Block resources that waste proxy bandwidth but are irrelevant to the
-    // bot's navigation behaviour.
-    //
-    // 1. Resource types: images, media, fonts — largest individual payloads.
-    // 2. Analytics / tag-manager origins — GTM alone costs ~1 MB per session
-    //    (JS bundles + beacon calls).  Blocking these is safe because the bot
-    //    never inspects analytics data.
-    const BLOCKED_ANALYTICS_HOSTS = new Set([
-      "www.googletagmanager.com",
-      "googletagmanager.com",
-      "www.google-analytics.com",
-      "google-analytics.com",
-      "analytics.google.com",
-      "www.googleadservices.com",
-      "googleadservices.com",
-      "doubleclick.net",
-      "www.doubleclick.net",
-      "connect.facebook.net",
-      "www.facebook.com",
-      "snap.licdn.com",
-      "static.hotjar.com",
-      "script.hotjar.com",
-      "cdn.segment.com",
-      "api.segment.io",
-      "static.cloudflareinsights.com",
-    ]);
-
+    // Block images, media, and fonts to reduce proxy traffic.
+    // Analytics/GTM origins are intentionally NOT blocked — those requests
+    // must fire for page visits to appear in Google Analytics.
+    // After the HTTP cache warms up (round 2+), GTM scripts are served from
+    // the local disk cache and cost ~0 proxy bytes, same as MostLogin.
     await context.route("**/*", (route) => {
-      const req = route.request();
-      const type = req.resourceType();
+      const type = route.request().resourceType();
       if (type === "image" || type === "media" || type === "font") {
         route.abort();
-        return;
+      } else {
+        route.continue();
       }
-      try {
-        const { hostname } = new URL(req.url());
-        if (BLOCKED_ANALYTICS_HOSTS.has(hostname)) {
-          route.abort();
-          return;
-        }
-      } catch {
-        // malformed URL — let it through
-      }
-      route.continue();
     });
 
     // patchright is a drop-in fork of playwright; the Page types are
