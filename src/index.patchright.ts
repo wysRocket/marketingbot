@@ -1,4 +1,7 @@
 import "dotenv/config";
+import * as fs from "fs";
+import * as os from "os";
+import * as path from "path";
 import { chromium } from "patchright";
 import type { Page } from "playwright";
 import { browseHomepage } from "./flows/browseHomepage";
@@ -23,6 +26,11 @@ const PASSWORD = process.env.BOT_PASSWORD ?? "";
 const SESSION_POLICY = getSessionPolicyFromEnv();
 const TELEMETRY = createTelemetryPersistence("patchright");
 const SITE = getActiveSiteProfile();
+
+// Each profile gets its own user-data dir so Chromium's HTTP disk cache
+// persists between bot rounds — static assets (JS/CSS/fonts/images) cached
+// on the first visit won't consume proxy bandwidth on subsequent sessions.
+const CACHE_DIR = path.join(os.homedir(), ".cache", "marketingbot-patchright");
 
 // Playwright proxy config: credentials must be separate fields.
 // Chromium does NOT support SOCKS5 proxy auth — use http:// protocol
@@ -151,7 +159,13 @@ async function runProfileSession(profileId: string, label: string): Promise<void
 
   const proxy = buildProxy();
 
-  const browser = await chromium.launch({
+  // Persist the Chromium profile (HTTP disk cache, cookies, storage) so
+  // repeated rounds reuse cached assets instead of re-fetching via proxy.
+  const userDataDir = path.join(CACHE_DIR, profileId);
+  fs.mkdirSync(userDataDir, { recursive: true });
+
+  // launchPersistentContext merges launch + context options in one call.
+  const context = await chromium.launchPersistentContext(userDataDir, {
     headless: true,
     args: [
       "--disable-blink-features=AutomationControlled",
@@ -161,19 +175,11 @@ async function runProfileSession(profileId: string, label: string): Promise<void
       "--disable-accelerated-2d-canvas",
       "--disable-gpu",
     ],
+    ...profile.config,
+    ...(proxy ? { proxy } : {}),
   });
 
   try {
-    const contextOptions: Record<string, unknown> = { ...profile.config };
-
-    // Override proxy if DataImpulse credentials are present.
-    // Uses http:// so Playwright can pass credentials via HTTP CONNECT.
-    if (proxy) {
-      contextOptions.proxy = proxy;
-    }
-
-    const context = await browser.newContext(contextOptions);
-
     // Block Unsplash image requests to reduce outbound traffic.
     // Abort at the context level so every page (including top-up cycles) is covered.
     const BLOCKED_ORIGINS = ["**://*.unsplash.com/**", "**://unsplash.com/**"];
@@ -234,7 +240,7 @@ async function runProfileSession(profileId: string, label: string): Promise<void
       );
     });
   } finally {
-    await browser.close();
+    await context.close();
   }
 }
 
