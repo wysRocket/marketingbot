@@ -35,17 +35,23 @@ const CACHE_DIR = path.join(os.homedir(), ".cache", "marketingbot-patchright");
 // Playwright proxy config: credentials must be separate fields.
 // Chromium does NOT support SOCKS5 proxy auth — use http:// protocol
 // so Playwright can negotiate auth via HTTP CONNECT tunnel instead.
-// DI_PROXY_PROTOCOL env override lets you switch to socks5 for no-auth cases.
-function buildProxy():
-  | { server: string; username: string; password: string }
-  | undefined {
+//
+// Each profile gets its own DataImpulse sticky session so all requests
+// from one profile exit through the same IP (consistent identity), while
+// different profiles use different IPs (looks like different users).
+// Session ID = sanitised profile ID (alphanumeric, max 32 chars).
+function buildProxy(
+  profileId: string,
+): { server: string; username: string; password: string } | undefined {
   const user = process.env.DI_USER;
   const pass = process.env.DI_PASS;
   if (!user || !pass) return undefined;
   const protocol = process.env.DI_PROXY_PROTOCOL ?? "http";
+  // DataImpulse sticky-session format: {user}_session-{sessid}
+  const sessId = profileId.replace(/[^a-zA-Z0-9]/g, "").slice(0, 32);
   return {
     server: `${protocol}://gw.dataimpulse.com:10000`,
-    username: user,
+    username: `${user}_session-${sessId}`,
     password: pass,
   };
 }
@@ -172,7 +178,7 @@ async function getOrLaunchContext(profileId: string): Promise<PContext> {
   const profile = getProfile(profileId);
   if (!profile) throw new Error(`Patchright profile not found: ${profileId}`);
 
-  const proxy = buildProxy();
+  const proxy = buildProxy(profileId);
   const userDataDir = path.join(CACHE_DIR, profileId);
   fs.mkdirSync(userDataDir, { recursive: true });
 
