@@ -183,19 +183,24 @@ async function runProfileSession(profileId: string, label: string): Promise<void
   });
 
   try {
-    // Block images, media, and fonts to reduce proxy traffic.
-    // Analytics/GTM origins are intentionally NOT blocked — those requests
-    // must fire for page visits to appear in Google Analytics.
-    // After the HTTP cache warms up (round 2+), GTM scripts are served from
-    // the local disk cache and cost ~0 proxy bytes, same as MostLogin.
-    await context.route("**/*", (route) => {
-      const type = route.request().resourceType();
-      if (type === "image" || type === "media" || type === "font") {
-        route.abort();
-      } else {
-        route.continue();
-      }
-    });
+    // Block images, media, and fonts using targeted URL patterns.
+    // A catch-all "**/*" route with route.continue() forces Chrome to
+    // re-issue every request through the CDP Fetch interceptor, which
+    // bypasses the HTTP disk cache. Targeted patterns leave all other
+    // requests (JS, CSS, HTML, XHR) on Chrome's normal cached path.
+    const BLOCK_PATTERNS = [
+      // Images
+      "**/*.{png,jpg,jpeg,gif,webp,avif,svg,ico,cur,bmp,tiff}",
+      // Fonts
+      "**/*.{woff,woff2,ttf,eot,otf}",
+      // Video
+      "**/*.{mp4,webm,ogv,avi,mov,flv,mkv}",
+      // Audio
+      "**/*.{mp3,ogg,wav,flac,aac}",
+    ];
+    for (const pattern of BLOCK_PATTERNS) {
+      await context.route(pattern, (route) => route.abort());
+    }
 
     // patchright is a drop-in fork of playwright; the Page types are
     // structurally identical at runtime but nominally different to TS.
