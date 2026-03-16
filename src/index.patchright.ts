@@ -180,12 +180,20 @@ async function runProfileSession(profileId: string, label: string): Promise<void
   });
 
   try {
-    // Block Unsplash image requests to reduce outbound traffic.
-    // Abort at the context level so every page (including top-up cycles) is covered.
-    const BLOCKED_ORIGINS = ["**://*.unsplash.com/**", "**://unsplash.com/**"];
-    for (const pattern of BLOCKED_ORIGINS) {
-      await context.route(pattern, (route) => route.abort());
-    }
+    // Block images and media by resource type to minimise proxy traffic.
+    // This covers all origins (including Unsplash) and is the main reason
+    // patchright traffic exceeds MostLogin — MostLogin blocks these at the
+    // profile level; here we replicate that behaviour explicitly.
+    // Fonts are also blocked: they are large, decorative, and irrelevant to
+    // the bot's navigation behaviour.
+    await context.route("**/*", (route) => {
+      const type = route.request().resourceType();
+      if (type === "image" || type === "media" || type === "font") {
+        route.abort();
+      } else {
+        route.continue();
+      }
+    });
 
     // patchright is a drop-in fork of playwright; the Page types are
     // structurally identical at runtime but nominally different to TS.
