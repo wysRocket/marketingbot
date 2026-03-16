@@ -186,23 +186,18 @@ async function getOrLaunchContext(profileId: string): Promise<PContext> {
       "--disable-accelerated-2d-canvas",
       "--disable-gpu",
       "--disk-cache-size=209715200",
+      // Block images and fonts at the Blink engine level.
+      // This avoids registering context.route() which internally calls
+      // Fetch.enable — a CDP domain that alters Chrome's network pipeline
+      // and prevents the HTTP cache from serving responses normally.
+      "--blink-settings=imagesEnabled=false,loadsImagesAutomatically=false",
     ],
     ...profile.config,
     ...(proxy ? { proxy } : {}),
   });
 
-  // Register route blocks once per context lifetime.
-  const BLOCK_PATTERNS = [
-    "**/*.{png,jpg,jpeg,gif,webp,avif,svg,ico,cur,bmp,tiff}",
-    "**/*.{woff,woff2,ttf,eot,otf}",
-    "**/*.{mp4,webm,ogv,avi,mov,flv,mkv}",
-    "**/*.{mp3,ogg,wav,flac,aac}",
-    "**://images.unsplash.com/**",
-    "**://unsplash.com/**",
-  ];
-  for (const pattern of BLOCK_PATTERNS) {
-    await context.route(pattern, (route) => route.abort());
-  }
+  // No context.route() calls — Fetch.enable must stay inactive so
+  // Chrome's in-memory HTTP cache operates without interception.
 
   liveContexts.set(profileId, context);
   return context;
