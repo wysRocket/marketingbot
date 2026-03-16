@@ -284,7 +284,9 @@ async function runProfileSession(profileId: string, label: string): Promise<void
 // ENTRY POINT
 // -------------------------------------------------------------------
 (async () => {
-  const maxConcurrent = parseInt(process.env.CONCURRENCY ?? "3", 10);
+  // Each concurrent context is a live Chromium process (~300 MB RAM each).
+  // 20 profiles × ~300 MB ≈ 6 GB — ensure the host has enough memory.
+  const maxConcurrent = parseInt(process.env.CONCURRENCY ?? "20", 10);
   const totalRounds = parseInt(process.env.TOTAL_ROUNDS ?? "1000", 10);
 
   console.log(`Starting Patchright bot for ${SITE.baseUrl}/ (${SITE.id})\n`);

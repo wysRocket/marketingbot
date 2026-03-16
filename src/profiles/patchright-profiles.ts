@@ -187,7 +187,152 @@ export const profiles: PatchrightProfile[] = [
         'Sec-CH-UA-Platform-Version': '"10.0.0"'
       }
     }
-  }
+  },
+
+  // Windows 11 + Chrome 121 (German)
+  {
+    id: 'win11-chrome-121-de',
+    name: 'Windows 11 Chrome 121 (DE)',
+    config: {
+      ...baseConfig,
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+      viewport: { width: 2560, height: 1440 },
+      locale: 'de-DE',
+      timezoneId: 'Europe/Berlin',
+      colorScheme: 'light',
+    }
+  },
+
+  // Windows 10 + Chrome 122 (Australian)
+  {
+    id: 'win10-chrome-122-au',
+    name: 'Windows 10 Chrome 122 (AU)',
+    config: {
+      ...baseConfig,
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+      viewport: { width: 1920, height: 1080 },
+      locale: 'en-AU',
+      timezoneId: 'Australia/Sydney',
+      colorScheme: 'light',
+    }
+  },
+
+  // macOS Monterey + Chrome 120 (French)
+  {
+    id: 'macos-monterey-fr',
+    name: 'macOS Monterey Chrome (FR)',
+    config: {
+      ...baseConfig,
+      userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      viewport: { width: 1440, height: 900 },
+      locale: 'fr-FR',
+      timezoneId: 'Europe/Paris',
+      colorScheme: 'light',
+    }
+  },
+
+  // macOS Big Sur + Chrome 119 (Japanese)
+  {
+    id: 'macos-big-sur-jp',
+    name: 'macOS Big Sur Chrome (JP)',
+    config: {
+      ...baseConfig,
+      userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_7_10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
+      viewport: { width: 1680, height: 1050 },
+      locale: 'ja-JP',
+      timezoneId: 'Asia/Tokyo',
+      colorScheme: 'light',
+    }
+  },
+
+  // Linux Ubuntu + Chrome 121
+  {
+    id: 'linux-ubuntu-chrome-121',
+    name: 'Linux Ubuntu Chrome 121',
+    config: {
+      ...baseConfig,
+      userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+      viewport: { width: 1920, height: 1080 },
+      locale: 'en-US',
+      timezoneId: 'America/Phoenix',
+      colorScheme: 'no-preference',
+    }
+  },
+
+  // Android Samsung Galaxy S23
+  {
+    id: 'android-samsung-s23',
+    name: 'Android Samsung Galaxy S23',
+    config: {
+      ...baseConfig,
+      userAgent: 'Mozilla/5.0 (Linux; Android 13; SM-S911B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+      viewport: { width: 393, height: 851 },
+      locale: 'en-GB',
+      timezoneId: 'Europe/London',
+      colorScheme: 'light',
+      isMobile: true,
+      hasTouch: true,
+    }
+  },
+
+  // iPad Pro 13"
+  {
+    id: 'ipad-pro-13',
+    name: 'iPad Pro 13"',
+    config: {
+      ...baseConfig,
+      userAgent: 'Mozilla/5.0 (iPad; CPU OS 17_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Mobile/15E148 Safari/604.1',
+      viewport: { width: 1024, height: 1366 },
+      locale: 'en-US',
+      timezoneId: 'America/Chicago',
+      colorScheme: 'light',
+      isMobile: true,
+      hasTouch: true,
+    }
+  },
+
+  // Windows 10 + Chrome 118 (older, German)
+  {
+    id: 'win10-chrome-118-de',
+    name: 'Windows 10 Chrome 118 (DE)',
+    config: {
+      ...baseConfig,
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
+      viewport: { width: 1366, height: 768 },
+      locale: 'de-DE',
+      timezoneId: 'Europe/Berlin',
+      colorScheme: 'light',
+    }
+  },
+
+  // Windows 11 + Chrome 120 (Japanese)
+  {
+    id: 'win11-chrome-120-jp',
+    name: 'Windows 11 Chrome 120 (JP)',
+    config: {
+      ...baseConfig,
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      viewport: { width: 1920, height: 1080 },
+      locale: 'ja-JP',
+      timezoneId: 'Asia/Tokyo',
+      colorScheme: 'light',
+    }
+  },
+
+  // MacBook Air M2 (Retina)
+  {
+    id: 'macbook-air-m2',
+    name: 'MacBook Air M2',
+    config: {
+      ...baseConfig,
+      userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      viewport: { width: 1504, height: 960 },
+      locale: 'en-US',
+      timezoneId: 'America/Los_Angeles',
+      colorScheme: 'light',
+      deviceScaleFactor: 2,
+    }
+  },
 ];
 
 /**
