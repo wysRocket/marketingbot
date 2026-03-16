@@ -174,6 +174,9 @@ async function runProfileSession(profileId: string, label: string): Promise<void
       "--disable-setuid-sandbox",
       "--disable-accelerated-2d-canvas",
       "--disable-gpu",
+      // Headless Chromium sometimes limits the disk cache to a few MB.
+      // Enforce 200 MB so HTTP assets are actually retained between rounds.
+      "--disk-cache-size=209715200",
     ],
     ...profile.config,
     ...(proxy ? { proxy } : {}),
@@ -204,6 +207,7 @@ async function runProfileSession(profileId: string, label: string): Promise<void
       "script.hotjar.com",
       "cdn.segment.com",
       "api.segment.io",
+      "static.cloudflareinsights.com",
     ]);
 
     await context.route("**/*", (route) => {
