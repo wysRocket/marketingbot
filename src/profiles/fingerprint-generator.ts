@@ -10,7 +10,13 @@ import type { PatchrightProfile } from "./patchright-profiles";
 
 const CHROME_VERSIONS = [118, 119, 120, 121, 122, 123, 124, 125];
 
-type ProfileClass = "win-desktop" | "mac-desktop" | "linux-desktop" | "iphone" | "android" | "ipad";
+type ProfileClass =
+  | "win-desktop"
+  | "mac-desktop"
+  | "linux-desktop"
+  | "iphone"
+  | "android"
+  | "ipad";
 
 interface FingerprintPool {
   classes: ProfileClass[];
@@ -74,26 +80,26 @@ const LINUX_VIEWPORTS = [
 
 // iPhone models (logical pixels at 2× DPR)
 const IPHONE_VIEWPORTS = [
-  { width: 390, height: 844 },  // iPhone 14
-  { width: 393, height: 852 },  // iPhone 15
-  { width: 375, height: 812 },  // iPhone X/11 Pro
-  { width: 414, height: 896 },  // iPhone 11
-  { width: 430, height: 932 },  // iPhone 15 Pro Max
+  { width: 390, height: 844 }, // iPhone 14
+  { width: 393, height: 852 }, // iPhone 15
+  { width: 375, height: 812 }, // iPhone X/11 Pro
+  { width: 414, height: 896 }, // iPhone 11
+  { width: 430, height: 932 }, // iPhone 15 Pro Max
 ];
 
 // Android phones
 const ANDROID_VIEWPORTS = [
-  { width: 412, height: 915 },  // Pixel 7
-  { width: 393, height: 851 },  // Galaxy S23
-  { width: 360, height: 800 },  // generic mid-range
-  { width: 384, height: 854 },  // Pixel 6a
+  { width: 412, height: 915 }, // Pixel 7
+  { width: 393, height: 851 }, // Galaxy S23
+  { width: 360, height: 800 }, // generic mid-range
+  { width: 384, height: 854 }, // Pixel 6a
 ];
 
 // iPad Pro / Air
 const IPAD_VIEWPORTS = [
   { width: 1024, height: 1366 }, // iPad Pro 13"
-  { width: 834, height: 1194 },  // iPad Pro 11"
-  { width: 820, height: 1180 },  // iPad Air
+  { width: 834, height: 1194 }, // iPad Pro 11"
+  { width: 820, height: 1180 }, // iPad Air
 ];
 
 function pick<T>(arr: T[]): T {
@@ -140,7 +146,10 @@ function buildDesktopProfile(
     const viewport = pick(MAC_VIEWPORTS);
     const isRetina = viewport.width <= 1728;
     const ua = useSafari
-      ? safariUA(pick(["17.1", "16.6", "17.2", "17.3"]), "Macintosh; Intel Mac OS X 10_15_7")
+      ? safariUA(
+          pick(["17.1", "16.6", "17.2", "17.3"]),
+          "Macintosh; Intel Mac OS X 10_15_7",
+        )
       : chromeUA(chromeVersion, "Macintosh; Intel Mac OS X 10_15_7");
     return {
       userAgent: ua,
@@ -173,7 +182,9 @@ function buildMobileProfile(
 
   if (cls === "iphone") {
     const iosVersion = pick(["17_1", "17_2", "17_3", "16_6", "17_4"]);
-    const safariVersion = iosVersion.startsWith("17") ? pick(["17.1", "17.2", "17.3"]) : "16.6";
+    const safariVersion = iosVersion.startsWith("17")
+      ? pick(["17.1", "17.2", "17.3"])
+      : "16.6";
     const ua = `Mozilla/5.0 (iPhone; CPU iPhone OS ${iosVersion} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${safariVersion} Mobile/15E148 Safari/604.1`;
     return {
       userAgent: ua,
@@ -247,7 +258,10 @@ export function generateFingerprints(count: number): PatchrightProfile[] {
     const config =
       cls === "iphone" || cls === "android" || cls === "ipad"
         ? buildMobileProfile(cls)
-        : buildDesktopProfile(cls as "win-desktop" | "mac-desktop" | "linux-desktop", i);
+        : buildDesktopProfile(
+            cls as "win-desktop" | "mac-desktop" | "linux-desktop",
+            i,
+          );
 
     return {
       id: `fp-${i.toString().padStart(2, "0")}`,

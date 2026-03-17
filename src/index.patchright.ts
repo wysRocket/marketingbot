@@ -10,7 +10,10 @@ import { login } from "./flows/login";
 import { explorePricing } from "./flows/explorePricing";
 import { accountDashboard } from "./flows/accountDashboard";
 import type { PatchrightProfile } from "./profiles/patchright-profiles";
-import { generateFingerprints, generateRunToken } from "./profiles/fingerprint-generator";
+import {
+  generateFingerprints,
+  generateRunToken,
+} from "./profiles/fingerprint-generator";
 import {
   getSessionPolicyFromEnv,
   runComplexSession,
@@ -87,8 +90,12 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
         ctx.addInteraction(3);
 
         console.log(`  [${label}] hero: ${result.heroHeading}`);
-        console.log(`  [${label}] features found: ${result.featureNames.length}`);
-        console.log(`  [${label}] pricing tiers: ${result.pricingTiers.length}`);
+        console.log(
+          `  [${label}] features found: ${result.featureNames.length}`,
+        );
+        console.log(
+          `  [${label}] pricing tiers: ${result.pricingTiers.length}`,
+        );
         console.log(`  [${label}] footer links: ${result.footerLinks.length}`);
       },
     });
@@ -129,7 +136,9 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
 
   if (username && password && isFlowEnabled(SITE, "login")) {
     flows.push({
-      name: isFlowEnabled(SITE, "accountDashboard") ? "login+dashboard" : "login",
+      name: isFlowEnabled(SITE, "accountDashboard")
+        ? "login+dashboard"
+        : "login",
       run: async (page, label, ctx) => {
         const loginResult = await login(page, username, password, SITE);
         ctx.trackNavigation(loginResult.finalUrl);
@@ -150,9 +159,15 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
         ctx.trackNavigation(page.url());
         ctx.addInteraction(2);
 
-        console.log(`  [${label}] Credit balance: ${accountResult.creditBalance}`);
-        console.log(`  [${label}] Orders on record: ${accountResult.orders.length}`);
-        console.log(`  [${label}] Payment methods present: ${accountResult.hasPaymentMethods}`);
+        console.log(
+          `  [${label}] Credit balance: ${accountResult.creditBalance}`,
+        );
+        console.log(
+          `  [${label}] Orders on record: ${accountResult.orders.length}`,
+        );
+        console.log(
+          `  [${label}] Payment methods present: ${accountResult.hasPaymentMethods}`,
+        );
       },
     });
   }
@@ -273,7 +288,9 @@ async function runProfileSession(
   console.log(`Starting Patchright bot for ${SITE.baseUrl}/ (${SITE.id})`);
   console.log(`[telemetry] JSONL: ${TELEMETRY.jsonPath}`);
   console.log(`[telemetry] CSV:   ${TELEMETRY.csvPath}`);
-  console.log(`[config] pool: ${POOL_SIZE} | concurrency: ${MAX_CONCURRENT} | rounds: ${TOTAL_ROUNDS}\n`);
+  console.log(
+    `[config] pool: ${POOL_SIZE} | concurrency: ${MAX_CONCURRENT} | rounds: ${TOTAL_ROUNDS}\n`,
+  );
 
   let round = 0;
 
@@ -301,7 +318,9 @@ async function runProfileSession(
     );
 
     for (const failure of failures) {
-      console.error(`[${failure.label}] Session failed: ${failure.error.message}`);
+      console.error(
+        `[${failure.label}] Session failed: ${failure.error.message}`,
+      );
     }
 
     round++;
