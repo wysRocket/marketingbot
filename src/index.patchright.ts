@@ -9,7 +9,8 @@ import { browseFooterLinks } from "./flows/browseFooterLinks";
 import { login } from "./flows/login";
 import { explorePricing } from "./flows/explorePricing";
 import { accountDashboard } from "./flows/accountDashboard";
-import { listProfileIds, getProfile } from "./profiles/patchright-profiles";
+import type { PatchrightProfile } from "./profiles/patchright-profiles";
+import { generateFingerprints, generateRunToken } from "./profiles/fingerprint-generator";
 import {
   getSessionPolicyFromEnv,
   runComplexSession,
@@ -27,34 +28,16 @@ const SESSION_POLICY = getSessionPolicyFromEnv();
 const TELEMETRY = createTelemetryPersistence("patchright");
 const SITE = getActiveSiteProfile();
 
-// Each profile gets its own user-data dir so Chromium's HTTP disk cache
-// persists between bot rounds — static assets (JS/CSS/fonts/images) cached
-// on the first visit won't consume proxy bandwidth on subsequent sessions.
-const CACHE_DIR = path.join(os.homedir(), ".cache", "marketingbot-patchright");
+const MAX_CONCURRENT = parseInt(process.env.CONCURRENCY ?? "20", 10);
+const POOL_SIZE = parseInt(process.env.POOL_SIZE ?? "60", 10);
+const TOTAL_ROUNDS = parseInt(process.env.TOTAL_ROUNDS ?? "1000", 10);
 
-// Playwright proxy config: credentials must be separate fields.
-// Chromium does NOT support SOCKS5 proxy auth — use http:// protocol
-// so Playwright can negotiate auth via HTTP CONNECT tunnel instead.
-//
-// Each profile gets its own DataImpulse sticky session so all requests
-// from one profile exit through the same IP (consistent identity), while
-// different profiles use different IPs (looks like different users).
-// Session ID = sanitised profile ID (alphanumeric, max 32 chars).
-function buildProxy(
-  profileId: string,
-): { server: string; username: string; password: string } | undefined {
-  const user = process.env.DI_USER;
-  const pass = process.env.DI_PASS;
-  if (!user || !pass) return undefined;
-  const protocol = process.env.DI_PROXY_PROTOCOL ?? "http";
-  // DataImpulse sticky-session format: {user}_session-{sessid}
-  const sessId = profileId.replace(/[^a-zA-Z0-9]/g, "").slice(0, 32);
-  return {
-    server: `${protocol}://gw.dataimpulse.com:10000`,
-    username: `${user}_session-${sessId}`,
-    password: pass,
-  };
-}
+// 60 fingerprints generated once at startup — the pool stays fixed for the
+// whole run. Each round randomly selects MAX_CONCURRENT from it.
+// userDataDir is keyed by pool profile ID so when the same profile ID is
+// selected again in a later round its HTTP disk cache is still warm.
+const CACHE_DIR = path.join(os.homedir(), ".cache", "marketingbot-patchright");
+const POOL: PatchrightProfile[] = generateFingerprints(POOL_SIZE);
 
 function pickRandom<T>(items: T[], limit: number): T[] {
   const shuffled = [...items];
@@ -62,7 +45,34 @@ function pickRandom<T>(items: T[], limit: number): T[] {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
-  return shuffled.slice(0, limit);
+  return shuffled.slice(0, Math.min(limit, shuffled.length));
+}
+
+// -------------------------------------------------------------------
+// PROXY
+//
+// buildProxy is called with a per-round runToken so every round gets a
+// fresh DataImpulse sticky session → fresh exit IP for every slot.
+//
+// Chromium does NOT support SOCKS5 proxy auth via the URI scheme.
+// Use http:// with separate username/password fields instead.
+// -------------------------------------------------------------------
+function buildProxy(
+  slotIndex: number,
+  runToken: string,
+): { server: string; username: string; password: string } | undefined {
+  const user = process.env.DI_USER;
+  const pass = process.env.DI_PASS;
+  if (!user || !pass) return undefined;
+  const protocol = process.env.DI_PROXY_PROTOCOL ?? "http";
+  // DataImpulse sticky-session format: {user}_session-{sessid} (sessid max 32 chars)
+  // runToken = 8 hex chars, slotIndex = 2 digits → 10 chars total.
+  const sessId = `${runToken}${slotIndex.toString().padStart(2, "0")}`;
+  return {
+    server: `${protocol}://gw.dataimpulse.com:10000`,
+    username: `${user}_session-${sessId}`,
+    password: pass,
+  };
 }
 
 function buildFlowSequence(username: string, password: string): NamedFlow[] {
@@ -157,29 +167,26 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
 }
 
 // -------------------------------------------------------------------
-// PERSISTENT BROWSER CONTEXTS
+// SESSION RUNNER
 //
-// MostLogin achieves low traffic because its Chromium process stays
-// running between sessions — the in-memory HTTP cache accumulates.
-// Patchright was launching a fresh browser per session, so the cache
-// always started cold even though we wrote to userDataDir.
+// Every call creates a brand-new browser context with a fresh random
+// fingerprint and fresh proxy session. The context is closed at the end
+// of the session so the next round starts clean.
 //
-// Fix: keep one BrowserContext per profile alive for the entire run.
-// Each session opens a new page, runs flows, then closes only the tab.
-// The context (and its in-memory cache) remains for the next round.
+// The userDataDir is stable (slot-based) so Chromium's HTTP disk cache
+// survives across rounds — cache hits reduce proxy traffic even though
+// the fingerprint and IP change every visit.
 // -------------------------------------------------------------------
-type PContext = Awaited<ReturnType<typeof chromium.launchPersistentContext>>;
-const liveContexts = new Map<string, PContext>();
-
-async function getOrLaunchContext(profileId: string): Promise<PContext> {
-  const existing = liveContexts.get(profileId);
-  if (existing) return existing;
-
-  const profile = getProfile(profileId);
-  if (!profile) throw new Error(`Patchright profile not found: ${profileId}`);
-
-  const proxy = buildProxy(profileId);
-  const userDataDir = path.join(CACHE_DIR, profileId);
+async function runProfileSession(
+  profile: PatchrightProfile,
+  slotIndex: number,
+  runToken: string,
+  label: string,
+): Promise<void> {
+  const proxy = buildProxy(slotIndex, runToken);
+  // Key userDataDir by pool profile ID — if the same profile is selected
+  // again in a future round it reuses its warm HTTP disk cache.
+  const userDataDir = path.join(CACHE_DIR, profile.id);
   fs.mkdirSync(userDataDir, { recursive: true });
 
   const context = await chromium.launchPersistentContext(userDataDir, {
@@ -192,51 +199,23 @@ async function getOrLaunchContext(profileId: string): Promise<PContext> {
       "--disable-accelerated-2d-canvas",
       "--disable-gpu",
       "--disk-cache-size=209715200",
-      // Block images and fonts at the Blink engine level.
-      // This avoids registering context.route() which internally calls
-      // Fetch.enable — a CDP domain that alters Chrome's network pipeline
-      // and prevents the HTTP cache from serving responses normally.
+      // Block images at the Blink engine level — avoids context.route() which
+      // internally calls Fetch.enable and disrupts Chrome's HTTP cache pipeline.
       "--blink-settings=imagesEnabled=false,loadsImagesAutomatically=false",
     ],
     ...profile.config,
     ...(proxy ? { proxy } : {}),
   });
 
-  // No context.route() calls — Fetch.enable must stay inactive so
-  // Chrome's in-memory HTTP cache operates without interception.
+  // No context.route() calls — Fetch.enable must stay inactive for cache to work.
 
-  liveContexts.set(profileId, context);
-  return context;
-}
-
-async function closeAllContexts(): Promise<void> {
-  for (const [profileId, ctx] of liveContexts) {
-    await ctx.close().catch((err: unknown) =>
-      console.warn(`[cleanup] Failed to close context ${profileId}: ${(err as Error).message}`),
-    );
-  }
-  liveContexts.clear();
-}
-
-// -------------------------------------------------------------------
-// SESSION RUNNER
-// -------------------------------------------------------------------
-async function runProfileSession(profileId: string, label: string): Promise<void> {
-  const profile = getProfile(profileId);
-  if (!profile) throw new Error(`Patchright profile not found: ${profileId}`);
-
-  const context = await getOrLaunchContext(profileId);
-
-  // Open a new tab. The context (and its in-memory cache) stays alive.
-  // patchright is a drop-in fork of playwright; the Page types are
-  // structurally identical at runtime but nominally different to TS.
   const page = (await context.newPage()) as unknown as Page;
 
   try {
     const flows = buildFlowSequence(USERNAME, PASSWORD);
 
     console.log(
-      `[${label}] Profile: ${profile.name} | Flows: ${flows.map((f) => f.name).join(" → ")}`,
+      `[${label}] ${profile.name} | ${profile.config.locale ?? "en-US"} ${profile.config.timezoneId ?? ""} | proxy: ${proxy?.username ?? "none"} | flows: ${flows.map((f) => f.name).join(" → ")}`,
     );
 
     const telemetry = await runComplexSession({
@@ -249,10 +228,10 @@ async function runProfileSession(profileId: string, label: string): Promise<void
     });
 
     console.log(
-      `[${label}] Session telemetry: ${Math.round(telemetry.elapsedMs / 1000)}s, ${telemetry.uniquePages.length} unique page(s), ${telemetry.interactions} interaction unit(s)`,
+      `[${label}] ${Math.round(telemetry.elapsedMs / 1000)}s | ${telemetry.uniquePages.length} page(s) | ${telemetry.interactions} interaction(s)`,
     );
     console.log(
-      `  [${label}] traffic: ${(telemetry.trafficBytesTotal / (1024 * 1024)).toFixed(2)} MB total, ${(telemetry.trafficBytesSameOrigin / (1024 * 1024)).toFixed(2)} MB same-origin, ${telemetry.trafficRequestCount} request(s)`,
+      `  [${label}] traffic: ${(telemetry.trafficBytesTotal / (1024 * 1024)).toFixed(2)} MB total, ${(telemetry.trafficBytesSameOrigin / (1024 * 1024)).toFixed(2)} MB same-origin, ${telemetry.trafficRequestCount} req`,
     );
     console.log(
       `  [${label}] top origins: ${
@@ -273,7 +252,7 @@ async function runProfileSession(profileId: string, label: string): Promise<void
 
     await TELEMETRY.persistSession({
       label,
-      profileId,
+      profileId: profile.id,
       telemetry,
       policy: SESSION_POLICY,
     }).catch((err) => {
@@ -282,7 +261,8 @@ async function runProfileSession(profileId: string, label: string): Promise<void
       );
     });
   } finally {
-    await page.close(); // close only the tab — context stays alive for next round
+    await page.close();
+    await context.close(); // close context — next round gets a fresh fingerprint + IP
   }
 }
 
@@ -290,33 +270,27 @@ async function runProfileSession(profileId: string, label: string): Promise<void
 // ENTRY POINT
 // -------------------------------------------------------------------
 (async () => {
-  // Each concurrent context is a live Chromium process (~300 MB RAM each).
-  // 20 profiles × ~300 MB ≈ 6 GB — ensure the host has enough memory.
-  const maxConcurrent = parseInt(process.env.CONCURRENCY ?? "20", 10);
-  const totalRounds = parseInt(process.env.TOTAL_ROUNDS ?? "1000", 10);
-
-  console.log(`Starting Patchright bot for ${SITE.baseUrl}/ (${SITE.id})\n`);
+  console.log(`Starting Patchright bot for ${SITE.baseUrl}/ (${SITE.id})`);
   console.log(`[telemetry] JSONL: ${TELEMETRY.jsonPath}`);
-  console.log(`[telemetry] CSV:   ${TELEMETRY.csvPath}\n`);
-
-  const allProfileIds = listProfileIds();
-
-  // Pick the active profile set ONCE and hold it for all rounds.
-  // Re-picking randomly every round means most profiles only run once,
-  // so their HTTP disk cache is always cold. Fixed profiles accumulate
-  // a warm cache after round 1 and cost far less proxy traffic from round 2+.
-  const activeProfileIds = pickRandom(allProfileIds, maxConcurrent);
-  console.log(`Active profiles (fixed for all rounds): ${activeProfileIds.join(", ")}\n`);
+  console.log(`[telemetry] CSV:   ${TELEMETRY.csvPath}`);
+  console.log(`[config] pool: ${POOL_SIZE} | concurrency: ${MAX_CONCURRENT} | rounds: ${TOTAL_ROUNDS}\n`);
 
   let round = 0;
 
-  while (round < totalRounds) {
-    console.log(`--- Round ${round + 1}/${totalRounds} | Profiles: ${activeProfileIds.join(", ")} ---`);
+  while (round < TOTAL_ROUNDS) {
+    // Randomly pick MAX_CONCURRENT profiles from the pool each round —
+    // same pattern as MostLogin. runToken gives every slot a fresh proxy IP.
+    const selected = pickRandom(POOL, MAX_CONCURRENT);
+    const runToken = generateRunToken();
 
-    const sessions = activeProfileIds.map((profileId, index) => {
+    console.log(
+      `--- Round ${round + 1}/${TOTAL_ROUNDS} | token: ${runToken} | profiles: ${selected.map((p) => p.id).join(", ")} ---`,
+    );
+
+    const sessions = selected.map((profile, index) => {
       const label = `P${index + 1}`;
       return new Promise<void>((resolve) => setTimeout(resolve, index * 3_000))
-        .then(() => runProfileSession(profileId, label))
+        .then(() => runProfileSession(profile, index, runToken, label))
         .catch((err: unknown) => ({ label, error: err as Error }));
     });
 
@@ -334,15 +308,9 @@ async function runProfileSession(profileId: string, label: string): Promise<void
   }
 
   console.log("\nAll rounds complete.");
-  await closeAllContexts();
 })();
 
-// Close all browser contexts on Ctrl+C so Chrome processes don't linger.
-process.once("SIGINT", async () => {
-  await closeAllContexts();
-  process.exit(0);
-});
-process.once("SIGTERM", async () => {
-  await closeAllContexts();
-  process.exit(0);
-});
+// Chrome processes are closed by context.close() in runProfileSession.
+// These handlers cover the case where Ctrl+C interrupts mid-round.
+process.once("SIGINT", () => process.exit(0));
+process.once("SIGTERM", () => process.exit(0));
