@@ -1,0 +1,10 @@
+node_modules
+dist
+telemetry
+.env
+.env.*
+.git
+.claude
+*.md
+Dockerfile
+.dockerignore

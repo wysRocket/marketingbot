@@ -14,7 +14,8 @@
     "mcp": "ts-node src/mcp/server.ts",
     "mcp:mostlogin": "ts-node src/mcp/mostlogin/server.ts",
     "mcp:patchright": "ts-node src/mcp/patchright/server.ts",
-    "start:patchright": "BOT_SITE_PROFILE=eurocookflow ts-node src/index.patchright.ts"
+    "start:patchright": "BOT_SITE_PROFILE=eurocookflow ts-node src/index.patchright.ts",
+    "ga:report": "ts-node src/scripts/checkGaReport.ts"
   },
   "keywords": [],
   "author": "",
