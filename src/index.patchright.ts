@@ -40,6 +40,14 @@ startRailwayHeartbeatServer();
 const MAX_CONCURRENT = parseInt(process.env.CONCURRENCY ?? "20", 10);
 const POOL_SIZE = parseInt(process.env.POOL_SIZE ?? "60", 10);
 const TOTAL_ROUNDS = parseInt(process.env.TOTAL_ROUNDS ?? "1000", 10);
+const ROUND_ERROR_BACKOFF_MS = parseInt(
+  process.env.ROUND_ERROR_BACKOFF_MS ?? "5000",
+  10,
+);
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 function pickRandom<T>(items: T[], limit: number): T[] {
   const shuffled = [...items];
@@ -381,7 +389,7 @@ async function runProfileSession(
 // -------------------------------------------------------------------
 // ENTRY POINT
 // -------------------------------------------------------------------
-(async () => {
+async function main(): Promise<void> {
   console.log(`Starting Patchright bot for ${SITE.baseUrl}/ (${SITE.id})`);
   console.log(`[telemetry] JSONL: ${TELEMETRY.jsonPath}`);
   console.log(`[telemetry] CSV:   ${TELEMETRY.csvPath}`);
@@ -392,57 +400,83 @@ async function runProfileSession(
   let round = 0;
 
   while (round < TOTAL_ROUNDS) {
-    // Fresh fingerprints every round — each profile gets a new UA/viewport/
-    // locale/timezone on every open. userDataDir is still keyed by profile ID
-    // (fp-00…fp-59) so the HTTP disk cache accumulates across rounds.
-    const pool = generateFingerprints(POOL_SIZE);
-    const selected = pickRandom(pool, MAX_CONCURRENT);
-
-    // Fetch one distinct sticky proxy per session from DataImpulse's pool.
-    // Each entry is a real unique IP — unlike the _session- username trick
-    // which DataImpulse ignores and routes everything through one exit node.
-    let proxyList: Array<ProxyCfg | undefined>;
     try {
-      proxyList = await fetchProxyList(selected.length);
+      // Fresh fingerprints every round — each profile gets a new UA/viewport/
+      // locale/timezone on every open. userDataDir is still keyed by profile ID
+      // (fp-00…fp-59) so the HTTP disk cache accumulates across rounds.
+      const pool = generateFingerprints(POOL_SIZE);
+      const selected = pickRandom(pool, MAX_CONCURRENT);
+
+      // Fetch one distinct sticky proxy per session from DataImpulse's pool.
+      // Each entry is a real unique IP — unlike the _session- username trick
+      // which DataImpulse ignores and routes everything through one exit node.
+      let proxyList: Array<ProxyCfg | undefined>;
+      try {
+        proxyList = await fetchProxyList(selected.length);
+        console.log(
+          `[proxy] fetched ${proxyList.filter(Boolean).length}/${selected.length} proxies`,
+        );
+      } catch (err) {
+        console.warn(
+          `[proxy] /api/list failed: ${(err as Error).message} — running without proxy`,
+        );
+        proxyList = Array(selected.length).fill(undefined);
+      }
+
       console.log(
-        `[proxy] fetched ${proxyList.filter(Boolean).length}/${selected.length} proxies`,
+        `--- Round ${round + 1}/${TOTAL_ROUNDS} | profiles: ${selected.map((p) => p.id).join(", ")} ---`,
       );
+
+      const sessions = selected.map((profile, index) => {
+        const label = `P${index + 1}`;
+        const proxy = proxyList[index];
+        return new Promise<void>((resolve) =>
+          setTimeout(resolve, index * 3_000),
+        )
+          .then(() => runProfileSession(profile, label, proxy))
+          .catch((err: unknown) => ({ label, error: err as Error }));
+      });
+
+      const results = await Promise.all(sessions);
+      const failures = results.filter(
+        (result): result is { label: string; error: Error } =>
+          typeof result === "object" && result !== null && "error" in result,
+      );
+
+      for (const failure of failures) {
+        console.error(
+          `[${failure.label}] Session failed: ${failure.error.message}`,
+        );
+      }
+
+      round++;
     } catch (err) {
-      console.warn(
-        `[proxy] /api/list failed: ${(err as Error).message} — running without proxy`,
-      );
-      proxyList = Array(selected.length).fill(undefined);
-    }
-
-    console.log(
-      `--- Round ${round + 1}/${TOTAL_ROUNDS} | profiles: ${selected.map((p) => p.id).join(", ")} ---`,
-    );
-
-    const sessions = selected.map((profile, index) => {
-      const label = `P${index + 1}`;
-      const proxy = proxyList[index];
-      return new Promise<void>((resolve) => setTimeout(resolve, index * 3_000))
-        .then(() => runProfileSession(profile, label, proxy))
-        .catch((err: unknown) => ({ label, error: err as Error }));
-    });
-
-    const results = await Promise.all(sessions);
-    const failures = results.filter(
-      (result): result is { label: string; error: Error } =>
-        typeof result === "object" && result !== null && "error" in result,
-    );
-
-    for (const failure of failures) {
+      // Keep the worker alive if any unexpected error escapes the round.
       console.error(
-        `[${failure.label}] Session failed: ${failure.error.message}`,
+        `[fatal] Round ${round + 1} crashed: ${(err as Error).stack ?? (err as Error).message}`,
       );
+      await sleep(Math.max(0, ROUND_ERROR_BACKOFF_MS));
     }
-
-    round++;
   }
 
   console.log("\nAll rounds complete.");
-})();
+}
+
+void main().catch((err) => {
+  console.error(
+    `[fatal] Main loop crashed: ${(err as Error).stack ?? (err as Error).message}`,
+  );
+});
+
+process.on("unhandledRejection", (reason) => {
+  const message =
+    reason instanceof Error ? (reason.stack ?? reason.message) : String(reason);
+  console.error(`[fatal] Unhandled rejection: ${message}`);
+});
+
+process.on("uncaughtException", (err) => {
+  console.error(`[fatal] Uncaught exception: ${err.stack ?? err.message}`);
+});
 
 // Chrome processes are closed by context.close() in runProfileSession.
 // These handlers cover the case where Ctrl+C interrupts mid-round.
