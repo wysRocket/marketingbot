@@ -70,7 +70,7 @@ function pickRandom<T>(items: T[], limit: number): T[] {
 // to get pre-assigned sticky-proxy credentials.  Each entry in the list
 // is a distinct IP from their pool.  The credentials are passed directly
 // to launchPersistentContext so Playwright injects them on every
-// proxyAuthRequired challenge (HTTP CONNECT tunnel — MUST be http://).
+// proxyAuthRequired challenge (HTTP CONNECT tunnel).
 // -------------------------------------------------------------------
 type ProxyCfg = { server: string; username: string; password: string };
 
@@ -236,7 +236,7 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
 // shared cache partition.
 //
 // --use-mock-keychain prevents Chrome from persisting proxy credentials
-// into the macOS Keychain, which would otherwise survive a wipe of
+// into the host credential store, which would otherwise survive a wipe of
 // the userDataDir's credential files.
 // -------------------------------------------------------------------
 const SESSION_STATE_DIRS = [
@@ -270,7 +270,7 @@ function resetSessionState(userDataDir: string): void {
 // (fp-00 … fp-59 under CACHE_DIR) so the HTTP disk cache accumulates
 // across rounds. Before launch, only proxy/identity state is wiped via
 // resetSessionState() so Chrome has no stale credentials to replay.
-// --use-mock-keychain also prevents macOS Keychain persistence.
+// --use-mock-keychain also prevents host credential-store persistence.
 // -------------------------------------------------------------------
 async function runProfileSession(
   profile: PatchrightProfile,
@@ -296,7 +296,7 @@ async function runProfileSession(
       // Block images at the Blink engine level — avoids context.route() which
       // internally calls Fetch.enable and disrupts Chrome's HTTP cache pipeline.
       "--blink-settings=imagesEnabled=false,loadsImagesAutomatically=false",
-      // Prevent proxy credentials from being persisted to the macOS Keychain
+      // Prevent proxy credentials from being persisted to the host credential store
       // so that resetSessionState() fully clears all credential state.
       "--use-mock-keychain",
     ],

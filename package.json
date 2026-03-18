@@ -24,15 +24,15 @@
   "dependencies": {
     "axios": "^1.13.5",
     "dotenv": "^17.3.1",
+    "patchright": "^1.58.2",
+    "patchright-mcp": "^0.0.68",
     "playwright": "^1.58.2",
+    "ts-node": "^10.9.2",
     "zod": "^4.3.6"
   },
   "devDependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",
     "@types/node": "^25.3.0",
-    "patchright": "^1.58.2",
-    "patchright-mcp": "^0.0.68",
-    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
 }
