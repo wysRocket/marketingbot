@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "fdf50e53d9a8218c883ebdf842d677285d44515b5b2877ebd210df591632216f"
     },
+    "flyio-cli-public": {
+      "source": "thinkfleetai/thinkfleet-engine",
+      "sourceType": "github",
+      "computedHash": "2b3150581d46ff8b1ae3c918324a7c465090dccfd882e3cb1cf06b9eac940c24"
+    },
     "use-railway": {
       "source": "railwayapp/railway-skills",
       "sourceType": "github",

@@ -65,9 +65,7 @@ const DEFAULT_POLICY: SessionPolicy = {
   maxTopUpCycles: 8,
 };
 
-const DEFAULT_PATH_CANDIDATES = [
-  "/",
-];
+const DEFAULT_PATH_CANDIDATES = ["/"];
 
 interface TrafficSnapshot {
   trafficBytesTotal: number;
@@ -100,6 +98,18 @@ function parsePositiveIntEnv(name: string, fallback: number): number {
   }
 
   return parsed;
+}
+
+function isClosedTargetError(err: unknown): boolean {
+  const message = (err as Error)?.message ?? String(err);
+  return /Target page, context or browser has been closed/i.test(message);
+}
+
+function isFatalNetworkError(err: unknown): boolean {
+  const message = (err as Error)?.message ?? String(err);
+  return /ERR_TUNNEL_CONNECTION_FAILED|ERR_PROXY_CONNECTION_FAILED|ERR_CONNECTION_CLOSED|ERR_CONNECTION_RESET/i.test(
+    message,
+  );
 }
 
 export function getSessionPolicyFromEnv(
@@ -141,7 +151,10 @@ function normalizeTrackedUrl(url: string, baseOrigin: string): string | null {
   }
 }
 
-function toAbsoluteCandidate(candidate: string, baseUrl: string): string | null {
+function toAbsoluteCandidate(
+  candidate: string,
+  baseUrl: string,
+): string | null {
   try {
     const parsed = new URL(candidate, baseUrl);
     if (parsed.protocol !== "https:" && parsed.protocol !== "http:") {
@@ -254,7 +267,10 @@ async function startTrafficMonitor(
   let uploadBytesApprox = 0;
   let requestCount = 0;
   let enabled = false;
-  const breakdownLimit = parsePositiveIntEnv("FLOW_TRAFFIC_BREAKDOWN_LIMIT", 20);
+  const breakdownLimit = parsePositiveIntEnv(
+    "FLOW_TRAFFIC_BREAKDOWN_LIMIT",
+    20,
+  );
 
   const requestIdMeta = new Map<
     string,
@@ -385,6 +401,8 @@ export async function runComplexSession(
   const warnings: string[] = [];
   const flowsRun: string[] = [];
   let interactions = 0;
+  let pageClosed = false;
+  let abortSession = false;
 
   const candidateTargets = new Set<string>();
 
@@ -430,15 +448,33 @@ export async function runComplexSession(
         await flow.run(page, label, ctx);
       } catch (err) {
         const message = (err as Error)?.message ?? String(err);
-        const warning = `Flow \"${flow.name}\" failed: ${message}`;
+        const warning = `Flow "${flow.name}" failed: ${message}`;
         ctx.addWarning(warning);
         log(`  [${label}] Warning: ${warning}`);
+        if (isClosedTargetError(err)) {
+          pageClosed = true;
+          break;
+        }
+        if (isFatalNetworkError(err)) {
+          abortSession = true;
+          const abortWarning =
+            "Aborting session early due to fatal proxy/network connectivity error.";
+          ctx.addWarning(abortWarning);
+          log(`  [${label}] Warning: ${abortWarning}`);
+          break;
+        }
       }
+
+      if (pageClosed || abortSession) break;
 
       ctx.trackNavigation(page.url());
       ctx.addInteraction();
 
-      const discovered = await collectSameOriginLinks(page, baseOrigin, baseUrl);
+      const discovered = await collectSameOriginLinks(
+        page,
+        baseOrigin,
+        baseUrl,
+      );
       for (const link of discovered) {
         addCandidate(link);
       }
@@ -447,6 +483,8 @@ export async function runComplexSession(
     let topUpCycle = 0;
 
     while (
+      !pageClosed &&
+      !abortSession &&
       (Date.now() - startedAt < policy.minDurationMs ||
         uniquePageSet.size < policy.minUniquePages) &&
       topUpCycle < policy.maxTopUpCycles
@@ -471,12 +509,20 @@ export async function runComplexSession(
         continue;
       }
 
-      const discovered = await collectSameOriginLinks(page, baseOrigin, baseUrl);
+      const discovered = await collectSameOriginLinks(
+        page,
+        baseOrigin,
+        baseUrl,
+      );
       for (const link of discovered) {
         addCandidate(link);
       }
 
-      const target = chooseCandidate(candidateTargets, uniquePageSet, baseOrigin);
+      const target = chooseCandidate(
+        candidateTargets,
+        uniquePageSet,
+        baseOrigin,
+      );
       if (!target) {
         const warning = "No same-origin candidate page available for top-up.";
         ctx.addWarning(warning);
@@ -509,26 +555,44 @@ export async function runComplexSession(
         const warning = `Top-up cycle ${topUpCycle} failed on ${target}: ${message}`;
         ctx.addWarning(warning);
         log(`  [${label}] Warning: ${warning}`);
+        if (isClosedTargetError(err)) {
+          pageClosed = true;
+          break;
+        }
+        if (isFatalNetworkError(err)) {
+          abortSession = true;
+          const abortWarning =
+            "Stopping top-up early due to fatal proxy/network connectivity error.";
+          ctx.addWarning(abortWarning);
+          log(`  [${label}] Warning: ${abortWarning}`);
+          break;
+        }
       }
     }
 
     const elapsedMs = Date.now() - startedAt;
-    if (elapsedMs < policy.minDurationMs) {
+    if (!pageClosed && !abortSession && elapsedMs < policy.minDurationMs) {
       const remainingMs = policy.minDurationMs - elapsedMs;
       log(
         `  [${label}] Final dwell top-up: ~${Math.ceil(remainingMs / 1000)}s to satisfy min duration`,
       );
-      await randomBrowse(page, remainingMs, remainingMs + 1_500).catch((err) => {
-        const message = (err as Error)?.message ?? String(err);
-        const warning = `Final dwell top-up failed: ${message}`;
-        ctx.addWarning(warning);
-        log(`  [${label}] Warning: ${warning}`);
-      });
+      await randomBrowse(page, remainingMs, remainingMs + 1_500).catch(
+        (err) => {
+          const message = (err as Error)?.message ?? String(err);
+          const warning = `Final dwell top-up failed: ${message}`;
+          ctx.addWarning(warning);
+          log(`  [${label}] Warning: ${warning}`);
+        },
+      );
       ctx.addInteraction();
       ctx.trackNavigation(page.url());
     }
 
-    if (uniquePageSet.size < policy.minUniquePages) {
+    if (
+      !pageClosed &&
+      !abortSession &&
+      uniquePageSet.size < policy.minUniquePages
+    ) {
       const warning =
         `Unique page target missed (${uniquePageSet.size}/${policy.minUniquePages}) ` +
         `after ${policy.maxTopUpCycles} top-up cycle(s).`;

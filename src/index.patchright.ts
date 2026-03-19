@@ -20,6 +20,26 @@ import { createTelemetryPersistence } from "./session/telemetryPersistence";
 import { startRailwayHeartbeatServer } from "./railwayHeartbeat";
 import { getActiveSiteProfile, isFlowEnabled } from "./sites";
 
+// Force unbuffered output when Node exposes a blocking-capable stream handle.
+type BlockingHandle = { setBlocking?: (enabled: boolean) => void };
+const stdoutHandle = (
+  process.stdout as NodeJS.WriteStream & {
+    _handle?: BlockingHandle;
+  }
+)._handle;
+const stderrHandle = (
+  process.stderr as NodeJS.WriteStream & {
+    _handle?: BlockingHandle;
+  }
+)._handle;
+
+if (typeof stdoutHandle?.setBlocking === "function") {
+  stdoutHandle.setBlocking(true);
+}
+if (typeof stderrHandle?.setBlocking === "function") {
+  stderrHandle.setBlocking(true);
+}
+
 // Persistent cache dir — one sub-dir per pool profile, shared across rounds.
 // Only proxy/identity state is wiped before each launch; HTTP disk cache stays.
 const CACHE_DIR = path.join(os.homedir(), ".cache", "marketingbot-patchright");
@@ -38,15 +58,268 @@ const SITE = getActiveSiteProfile();
 startRailwayHeartbeatServer();
 
 const MAX_CONCURRENT = parseInt(process.env.CONCURRENCY ?? "20", 10);
+const MIN_CONCURRENT = parseInt(process.env.MIN_CONCURRENCY ?? "4", 10);
+const CONCURRENCY_BACKOFF_STEP = parseInt(
+  process.env.CONCURRENCY_BACKOFF_STEP ?? "2",
+  10,
+);
+const CONCURRENCY_RECOVERY_STEP = parseInt(
+  process.env.CONCURRENCY_RECOVERY_STEP ?? "1",
+  10,
+);
+const CONCURRENCY_RECOVERY_ROUNDS = parseInt(
+  process.env.CONCURRENCY_RECOVERY_ROUNDS ?? "3",
+  10,
+);
 const POOL_SIZE = parseInt(process.env.POOL_SIZE ?? "60", 10);
 const TOTAL_ROUNDS = parseInt(process.env.TOTAL_ROUNDS ?? "1000", 10);
 const ROUND_ERROR_BACKOFF_MS = parseInt(
   process.env.ROUND_ERROR_BACKOFF_MS ?? "5000",
   10,
 );
+const ROUND_TIMEOUT_MS = parseInt(process.env.ROUND_TIMEOUT_MS ?? "600000", 10);
+const SESSION_TIMEOUT_MS = parseInt(
+  process.env.SESSION_TIMEOUT_MS ?? "300000",
+  10,
+);
+const SESSION_LAUNCH_STAGGER_MS = parseInt(
+  process.env.SESSION_LAUNCH_STAGGER_MS ?? "3000",
+  10,
+);
+const ALIVE_LOG_INTERVAL_MS = parseInt(
+  process.env.ALIVE_LOG_INTERVAL_MS ?? "30000",
+  10,
+);
+const SHARED_BROWSER_MODE = process.env.SHARED_BROWSER_MODE === "1";
+const RAILWAY_REPLICA_ID = process.env.RAILWAY_REPLICA_ID ?? "local";
+const REPLICA_SHARD_COUNT = parseInt(
+  process.env.REPLICA_SHARD_COUNT ?? "1",
+  10,
+);
+const REPLICA_SHARD_INDEX_RAW = process.env.REPLICA_SHARD_INDEX;
+
+let sharedBrowser: import("patchright").Browser | undefined;
+let sharedBrowserLaunchPromise:
+  | Promise<import("patchright").Browser>
+  | undefined;
+
+function isBrowserConnected(browser: import("patchright").Browser): boolean {
+  return browser.isConnected();
+}
+
+function isClosedTargetError(err: unknown): boolean {
+  const message = (err as Error)?.message ?? String(err);
+  return /Target page, context or browser has been closed/i.test(message);
+}
+
+function stableStringHash(input: string): number {
+  let hash = 0;
+  for (let i = 0; i < input.length; i++) {
+    hash = (hash * 31 + input.charCodeAt(i)) >>> 0;
+  }
+  return hash;
+}
+
+function getReplicaShardConfig(): { shardCount: number; shardIndex: number } {
+  const shardCount = Math.max(1, REPLICA_SHARD_COUNT);
+  const explicitShardIndex = Number.parseInt(REPLICA_SHARD_INDEX_RAW ?? "", 10);
+  const shardIndex = Number.isFinite(explicitShardIndex)
+    ? Math.max(0, explicitShardIndex) % shardCount
+    : stableStringHash(RAILWAY_REPLICA_ID) % shardCount;
+  return { shardCount, shardIndex };
+}
+
+function shardPool<T>(items: T[], shardCount: number, shardIndex: number): T[] {
+  if (shardCount <= 1) return items;
+  return items.filter((_, index) => index % shardCount === shardIndex);
+}
+
+function buildChromiumArgs(): string[] {
+  return [
+    "--disable-blink-features=AutomationControlled",
+    "--disable-dev-shm-usage",
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--disable-accelerated-2d-canvas",
+    "--disable-gpu",
+    "--disable-extensions",
+    "--disable-background-networking",
+    "--disable-component-update",
+    "--disable-default-apps",
+    "--disable-sync",
+    "--metrics-recording-only",
+    "--mute-audio",
+    "--no-first-run",
+    "--no-default-browser-check",
+    // Block images at the Blink engine level — avoids context.route() which
+    // internally calls Fetch.enable and disrupts Chrome's HTTP cache pipeline.
+    "--blink-settings=imagesEnabled=false,loadsImagesAutomatically=false",
+    // Prevent proxy credentials from being persisted to the host credential store
+    // so that resetSessionState() fully clears all credential state.
+    "--use-mock-keychain",
+  ];
+}
+
+async function getSharedBrowser(): Promise<import("patchright").Browser> {
+  if (sharedBrowser && isBrowserConnected(sharedBrowser)) {
+    return sharedBrowser;
+  }
+
+  if (sharedBrowser && !isBrowserConnected(sharedBrowser)) {
+    sharedBrowser = undefined;
+  }
+
+  if (!sharedBrowserLaunchPromise) {
+    sharedBrowserLaunchPromise = chromium
+      .launch({
+        headless: true,
+        args: buildChromiumArgs(),
+      })
+      .then((browser) => {
+        browser.once("disconnected", () => {
+          if (sharedBrowser === browser) {
+            sharedBrowser = undefined;
+          }
+          console.warn(
+            "[browser] Shared browser disconnected; next session will relaunch it.",
+          );
+        });
+        sharedBrowser = browser;
+        return browser;
+      })
+      .finally(() => {
+        sharedBrowserLaunchPromise = undefined;
+      });
+  }
+
+  return sharedBrowserLaunchPromise;
+}
+
+async function createSharedContext(
+  profile: PatchrightProfile,
+  label: string,
+  proxy: ProxyCfg | undefined,
+): Promise<import("patchright").BrowserContext> {
+  const contextOptions = {
+    ...profile.config,
+    ...(proxy ? { proxy } : {}),
+  };
+
+  try {
+    const browser = await getSharedBrowser();
+    return await browser.newContext(contextOptions);
+  } catch (err) {
+    if (!isClosedTargetError(err)) {
+      throw err;
+    }
+
+    console.warn(
+      `[${label}] shared browser was closed during context creation, retrying once`,
+    );
+    await closeSharedBrowser();
+    const browser = await getSharedBrowser();
+    return await browser.newContext(contextOptions);
+  }
+}
+
+async function closeSharedBrowser(): Promise<void> {
+  if (sharedBrowserLaunchPromise) {
+    await sharedBrowserLaunchPromise.catch(() => undefined);
+  }
+
+  if (!sharedBrowser) return;
+
+  const browser = sharedBrowser;
+  sharedBrowser = undefined;
+  await browser.close().catch(() => undefined);
+}
+
+function formatMb(bytes: number): string {
+  return `${(bytes / (1024 * 1024)).toFixed(0)}MB`;
+}
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function withTimeout<T>(
+  promise: Promise<T>,
+  timeoutMs: number,
+  label: string,
+): Promise<T> {
+  if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) return promise;
+
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(
+        new Error(`${label} timed out after ${(timeoutMs / 1000).toFixed(0)}s`),
+      );
+    }, timeoutMs);
+
+    promise
+      .then((value) => {
+        clearTimeout(timer);
+        resolve(value);
+      })
+      .catch((err) => {
+        clearTimeout(timer);
+        reject(err);
+      });
+  });
+}
+
+async function runSessionWithTimeout(
+  sessionPromise: Promise<void>,
+  getContext: () => import("patchright").BrowserContext | undefined,
+  timeoutMs: number,
+  label: string,
+): Promise<void> {
+  if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) return sessionPromise;
+
+  let timeoutTriggered = false;
+
+  return new Promise<void>((resolve, reject) => {
+    const timer = setTimeout(() => {
+      timeoutTriggered = true;
+
+      void (async () => {
+        const err = new Error(
+          `${label} session timed out after ${(timeoutMs / 1000).toFixed(0)}s`,
+        );
+
+        const capturedContext = getContext();
+        if (capturedContext) {
+          await withTimeout(
+            capturedContext.close().catch(() => undefined),
+            10_000,
+            `${label} context-close`,
+          ).catch(() => undefined);
+        }
+
+        // Wait briefly for the original session promise to settle so a timed-out
+        // session can't keep running into the next round.
+        await withTimeout(
+          sessionPromise.catch(() => undefined),
+          15_000,
+          `${label} post-timeout-drain`,
+        ).catch(() => undefined);
+
+        reject(err);
+      })();
+    }, timeoutMs);
+
+    sessionPromise
+      .then(() => {
+        if (timeoutTriggered) return;
+        clearTimeout(timer);
+        resolve();
+      })
+      .catch((err) => {
+        if (timeoutTriggered) return;
+        clearTimeout(timer);
+        reject(err);
+      });
+  });
 }
 
 function pickRandom<T>(items: T[], limit: number): T[] {
@@ -276,35 +549,32 @@ async function runProfileSession(
   profile: PatchrightProfile,
   label: string,
   proxy: ProxyCfg | undefined,
+  onContext?: (ctx: import("patchright").BrowserContext) => void,
 ): Promise<void> {
-  // Persistent dir per pool profile — cache survives across rounds.
-  const userDataDir = path.join(CACHE_DIR, profile.id);
-  fs.mkdirSync(userDataDir, { recursive: true });
+  let context: import("patchright").BrowserContext;
 
-  // Wipe only proxy/identity state; HTTP disk cache is preserved.
-  resetSessionState(userDataDir);
+  if (SHARED_BROWSER_MODE) {
+    context = await createSharedContext(profile, label, proxy);
+  } else {
+    // Persistent dir per pool profile — cache survives across rounds.
+    const userDataDir = path.join(CACHE_DIR, profile.id);
+    fs.mkdirSync(userDataDir, { recursive: true });
 
-  const context = await chromium.launchPersistentContext(userDataDir, {
-    headless: true,
-    args: [
-      "--disable-blink-features=AutomationControlled",
-      "--disable-dev-shm-usage",
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-accelerated-2d-canvas",
-      "--disable-gpu",
-      // Block images at the Blink engine level — avoids context.route() which
-      // internally calls Fetch.enable and disrupts Chrome's HTTP cache pipeline.
-      "--blink-settings=imagesEnabled=false,loadsImagesAutomatically=false",
-      // Prevent proxy credentials from being persisted to the host credential store
-      // so that resetSessionState() fully clears all credential state.
-      "--use-mock-keychain",
-    ],
-    ...profile.config,
-    ...(proxy ? { proxy } : {}),
-  });
+    // Wipe only proxy/identity state; HTTP disk cache is preserved.
+    resetSessionState(userDataDir);
+
+    context = await chromium.launchPersistentContext(userDataDir, {
+      headless: true,
+      args: buildChromiumArgs(),
+      ...profile.config,
+      ...(proxy ? { proxy } : {}),
+    });
+  }
 
   // No context.route() calls — Fetch.enable must stay inactive for cache to work.
+
+  // Notify caller of the context handle so it can force-close on timeout.
+  onContext?.(context);
 
   const page = (await context.newPage()) as unknown as Page;
 
@@ -333,7 +603,7 @@ async function runProfileSession(
     // ────────────────────────────────────────────────────────────────────────
 
     console.log(
-      `[${label}] ${profile.name} | ${profile.config.locale ?? "en-US"} ${profile.config.timezoneId ?? ""} | proxy: ${proxy?.username ?? "none"} | exit-ip: ${exitIp} | flows: ${flows.map((f) => f.name).join(" → ")}`,
+      `[${label}] ${profile.name} | ${profile.config.locale ?? "en-US"} ${profile.config.timezoneId ?? ""} | proxy: ${proxy ? proxy.server.replace(/^https?:\/\//, "") : "none"} | exit-ip: ${exitIp} | flows: ${flows.map((f) => f.name).join(" → ")}`,
     );
 
     const telemetry = await runComplexSession({
@@ -381,7 +651,7 @@ async function runProfileSession(
   } finally {
     await page.close();
     await context.close();
-    // userDataDir is kept — HTTP cache accumulates across rounds.
+    // In non-shared mode, userDataDir is kept and HTTP cache accumulates.
     // resetSessionState() will wipe only proxy/identity state next launch.
   }
 }
@@ -390,73 +660,194 @@ async function runProfileSession(
 // ENTRY POINT
 // -------------------------------------------------------------------
 async function main(): Promise<void> {
+  const minConcurrent = Math.max(1, Math.min(MIN_CONCURRENT, MAX_CONCURRENT));
+  const backoffStep = Math.max(1, CONCURRENCY_BACKOFF_STEP);
+  const recoveryStep = Math.max(1, CONCURRENCY_RECOVERY_STEP);
+  const recoveryRounds = Math.max(1, CONCURRENCY_RECOVERY_ROUNDS);
+  const { shardCount, shardIndex } = getReplicaShardConfig();
+
   console.log(`Starting Patchright bot for ${SITE.baseUrl}/ (${SITE.id})`);
   console.log(`[telemetry] JSONL: ${TELEMETRY.jsonPath}`);
   console.log(`[telemetry] CSV:   ${TELEMETRY.csvPath}`);
   console.log(
-    `[config] pool: ${POOL_SIZE} | concurrency: ${MAX_CONCURRENT} | rounds: ${TOTAL_ROUNDS}\n`,
+    `[replica] id=${RAILWAY_REPLICA_ID} shard=${shardIndex + 1}/${shardCount}`,
+  );
+  if (
+    shardCount > 1 &&
+    !Number.isFinite(Number.parseInt(REPLICA_SHARD_INDEX_RAW ?? "", 10))
+  ) {
+    console.warn(
+      "[replica] REPLICA_SHARD_COUNT > 1 without REPLICA_SHARD_INDEX; shard assignment is best-effort only and may collide across same-service replicas.",
+    );
+  }
+  console.log(
+    `[config] pool: ${POOL_SIZE} | concurrency: ${MAX_CONCURRENT} (min=${minConcurrent}) | rounds: ${TOTAL_ROUNDS} | mode: ${SHARED_BROWSER_MODE ? "shared-browser" : "persistent-context"} | round-timeout-ms: ${ROUND_TIMEOUT_MS} | session-timeout-ms: ${SESSION_TIMEOUT_MS} | launch-stagger-ms: ${SESSION_LAUNCH_STAGGER_MS} | alive-log-ms: ${ALIVE_LOG_INTERVAL_MS} | backoff-step: ${backoffStep} | recovery-step: ${recoveryStep}/${recoveryRounds} round(s)\n`,
   );
 
   let round = 0;
-
-  while (round < TOTAL_ROUNDS) {
-    try {
-      // Fresh fingerprints every round — each profile gets a new UA/viewport/
-      // locale/timezone on every open. userDataDir is still keyed by profile ID
-      // (fp-00…fp-59) so the HTTP disk cache accumulates across rounds.
-      const pool = generateFingerprints(POOL_SIZE);
-      const selected = pickRandom(pool, MAX_CONCURRENT);
-
-      // Fetch one distinct sticky proxy per session from DataImpulse's pool.
-      // Each entry is a real unique IP — unlike the _session- username trick
-      // which DataImpulse ignores and routes everything through one exit node.
-      let proxyList: Array<ProxyCfg | undefined>;
-      try {
-        proxyList = await fetchProxyList(selected.length);
-        console.log(
-          `[proxy] fetched ${proxyList.filter(Boolean).length}/${selected.length} proxies`,
-        );
-      } catch (err) {
-        console.warn(
-          `[proxy] /api/list failed: ${(err as Error).message} — running without proxy`,
-        );
-        proxyList = Array(selected.length).fill(undefined);
-      }
-
+  let dynamicConcurrent = MAX_CONCURRENT;
+  let healthyRounds = 0;
+  const startedAt = Date.now();
+  const aliveTimer = setInterval(
+    () => {
+      const uptimeSec = Math.round((Date.now() - startedAt) / 1000);
+      const mem = process.memoryUsage();
       console.log(
-        `--- Round ${round + 1}/${TOTAL_ROUNDS} | profiles: ${selected.map((p) => p.id).join(", ")} ---`,
+        `[alive] uptime=${uptimeSec}s current-round=${round + 1}/${TOTAL_ROUNDS} rss=${formatMb(mem.rss)} heap=${formatMb(mem.heapUsed)}`,
       );
+    },
+    Math.max(5_000, ALIVE_LOG_INTERVAL_MS),
+  );
 
-      const sessions = selected.map((profile, index) => {
-        const label = `P${index + 1}`;
-        const proxy = proxyList[index];
-        return new Promise<void>((resolve) =>
-          setTimeout(resolve, index * 3_000),
-        )
-          .then(() => runProfileSession(profile, label, proxy))
-          .catch((err: unknown) => ({ label, error: err as Error }));
-      });
+  aliveTimer.unref();
 
-      const results = await Promise.all(sessions);
-      const failures = results.filter(
-        (result): result is { label: string; error: Error } =>
-          typeof result === "object" && result !== null && "error" in result,
-      );
+  try {
+    while (round < TOTAL_ROUNDS) {
+      try {
+        // Fresh fingerprints every round — each profile gets a new UA/viewport/
+        // locale/timezone on every open. userDataDir is still keyed by profile ID
+        // (fp-00…fp-59) so the HTTP disk cache accumulates across rounds.
+        const fullPool = generateFingerprints(POOL_SIZE);
+        const shardPoolProfiles = shardPool(fullPool, shardCount, shardIndex);
 
-      for (const failure of failures) {
-        console.error(
-          `[${failure.label}] Session failed: ${failure.error.message}`,
+        if (shardPoolProfiles.length === 0) {
+          throw new Error(
+            `[replica] shard ${shardIndex + 1}/${shardCount} has no profiles; increase POOL_SIZE or reduce REPLICA_SHARD_COUNT`,
+          );
+        }
+
+        const selected = pickRandom(shardPoolProfiles, dynamicConcurrent);
+
+        // Fetch one distinct sticky proxy per session from DataImpulse's pool.
+        // Each entry is a real unique IP — unlike the _session- username trick
+        // which DataImpulse ignores and routes everything through one exit node.
+        let proxyList: Array<ProxyCfg | undefined>;
+        try {
+          proxyList = await fetchProxyList(selected.length);
+          console.log(
+            `[proxy] fetched ${proxyList.filter(Boolean).length}/${selected.length} proxies`,
+          );
+        } catch (err) {
+          console.warn(
+            `[proxy] /api/list failed: ${(err as Error).message} — running without proxy`,
+          );
+          proxyList = Array(selected.length).fill(undefined);
+        }
+
+        console.log(
+          `--- Round ${round + 1}/${TOTAL_ROUNDS} | shard ${shardIndex + 1}/${shardCount} | shard-pool: ${shardPoolProfiles.length}/${fullPool.length} | concurrency: ${selected.length} | profiles: ${selected.map((p) => p.id).join(", ")} ---`,
         );
-      }
 
-      round++;
-    } catch (err) {
-      // Keep the worker alive if any unexpected error escapes the round.
-      console.error(
-        `[fatal] Round ${round + 1} crashed: ${(err as Error).stack ?? (err as Error).message}`,
-      );
-      await sleep(Math.max(0, ROUND_ERROR_BACKOFF_MS));
+        const sessions = selected.map((profile, index) => {
+          const label = `P${index + 1}`;
+          const proxy = proxyList[index];
+          return new Promise<void>((resolve) =>
+            setTimeout(resolve, index * Math.max(0, SESSION_LAUNCH_STAGGER_MS)),
+          )
+            .then(() => {
+              // Capture the Chrome context reference as soon as it's created so
+              // we can force-close it if the session timeout fires.  Without
+              // this, withTimeout() rejects the outer promise but the underlying
+              // Chrome process keeps running → PID leak → EAGAIN after a few rounds.
+              let capturedContext:
+                | import("patchright").BrowserContext
+                | undefined;
+
+              const sessionPromise = runProfileSession(
+                profile,
+                label,
+                proxy,
+                (ctx) => {
+                  capturedContext = ctx;
+                },
+              );
+
+              return runSessionWithTimeout(
+                sessionPromise,
+                () => capturedContext,
+                SESSION_TIMEOUT_MS,
+                label,
+              );
+            })
+            .catch((err: unknown) => ({ label, error: err as Error }));
+        });
+
+        const results = await Promise.all(sessions);
+        const failures = results.filter(
+          (result): result is { label: string; error: Error } =>
+            typeof result === "object" && result !== null && "error" in result,
+        );
+
+        for (const failure of failures) {
+          console.error(
+            `[${failure.label}] Session failed: ${failure.error.message}`,
+          );
+        }
+
+        const eagainFailures = failures.filter((failure) =>
+          /EAGAIN/i.test(failure.error.message),
+        ).length;
+        const timeoutFailures = failures.filter((failure) =>
+          /timed out/i.test(failure.error.message),
+        ).length;
+
+        if (eagainFailures > 0) {
+          const next = Math.max(minConcurrent, dynamicConcurrent - backoffStep);
+          if (next < dynamicConcurrent) {
+            console.warn(
+              `[concurrency] EAGAIN detected (${eagainFailures} launch failure(s)). Reducing concurrency ${dynamicConcurrent} -> ${next}`,
+            );
+          }
+          dynamicConcurrent = next;
+          healthyRounds = 0;
+        } else if (
+          timeoutFailures >= Math.max(2, Math.floor(selected.length / 2))
+        ) {
+          const next = Math.max(minConcurrent, dynamicConcurrent - 1);
+          if (next < dynamicConcurrent) {
+            console.warn(
+              `[concurrency] High timeout pressure (${timeoutFailures}/${selected.length}). Reducing concurrency ${dynamicConcurrent} -> ${next}`,
+            );
+          }
+          dynamicConcurrent = next;
+          healthyRounds = 0;
+        } else {
+          if (failures.length === 0) {
+            healthyRounds += 1;
+          } else {
+            healthyRounds = 0;
+          }
+
+          if (
+            healthyRounds >= recoveryRounds &&
+            dynamicConcurrent < MAX_CONCURRENT
+          ) {
+            const next = Math.min(
+              MAX_CONCURRENT,
+              dynamicConcurrent + recoveryStep,
+            );
+            if (next > dynamicConcurrent) {
+              console.log(
+                `[concurrency] Stable for ${healthyRounds} round(s). Increasing concurrency ${dynamicConcurrent} -> ${next}`,
+              );
+              dynamicConcurrent = next;
+            }
+            healthyRounds = 0;
+          }
+        }
+
+        round++;
+      } catch (err) {
+        // Keep the worker alive if any unexpected error escapes the round.
+        console.error(
+          `[fatal] Round ${round + 1} crashed: ${(err as Error).stack ?? (err as Error).message}`,
+        );
+        await sleep(Math.max(0, ROUND_ERROR_BACKOFF_MS));
+      }
     }
+  } finally {
+    clearInterval(aliveTimer);
+    await closeSharedBrowser();
   }
 
   console.log("\nAll rounds complete.");
@@ -480,5 +871,11 @@ process.on("uncaughtException", (err) => {
 
 // Chrome processes are closed by context.close() in runProfileSession.
 // These handlers cover the case where Ctrl+C interrupts mid-round.
-process.once("SIGINT", () => process.exit(0));
-process.once("SIGTERM", () => process.exit(0));
+process.once("SIGINT", () => {
+  console.warn("[signal] SIGINT received, shutting down worker");
+  void closeSharedBrowser().finally(() => process.exit(0));
+});
+process.once("SIGTERM", () => {
+  console.warn("[signal] SIGTERM received from platform, shutting down worker");
+  void closeSharedBrowser().finally(() => process.exit(0));
+});
