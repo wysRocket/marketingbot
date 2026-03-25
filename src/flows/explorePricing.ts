@@ -1,7 +1,8 @@
 import { Page } from "playwright";
 import { navigate, blockHeavyAssets } from "../actions/navigate";
 import { randomBrowse, randomDelay } from "../actions/interact";
-import { pickReferrer } from "../actions/referrer";
+import { pickReferrerEntry } from "../actions/referrer";
+import { searchAndNavigate } from "../actions/searchEngine";
 import { getAll, getLinks } from "../actions/scrape";
 import {
   assertFlowEnabled,
@@ -47,7 +48,14 @@ export async function explorePricing(
   await blockHeavyAssets(page);
 
   // ----- 1. Load homepage and jump straight to members/pricing -----
-  await navigate(page, resolveSiteUrl(site, cfg.pricingPath), pickReferrer());
+  // Use a real search-engine flow when the sampled referrer is organic search.
+  const referrer = pickReferrerEntry();
+  const pricingUrl = resolveSiteUrl(site, cfg.pricingPath);
+  if (referrer.type === "search") {
+    await searchAndNavigate(page, referrer, pricingUrl);
+  } else {
+    await navigate(page, pricingUrl, referrer.url || undefined);
+  }
   await page.waitForTimeout(800);
 
   await page.evaluate((selector) => {
@@ -132,7 +140,9 @@ export async function explorePricing(
     }
 
     await randomDelay(page, 300, 900);
-    await randomBrowse(page, 4_000, 8_000);
+    // Minimum 12 s to guarantee GA4's 10-second engagement timer fires and
+    // session_engaged=1 is included in the next event sent from this page.
+    await randomBrowse(page, 12_000, 22_000);
   }
 
   return { tiers, ctaLinksValid };
