@@ -8,7 +8,7 @@ import type { PatchrightProfile } from "./patchright-profiles";
 // presents N completely new visitors to the target site.
 // -------------------------------------------------------------------
 
-const CHROME_VERSIONS = [118, 119, 120, 121, 122, 123, 124, 125];
+const CHROME_VERSIONS = [124, 125, 126, 127, 128, 129, 130, 131];
 
 type ProfileClass =
   | "win-desktop"
@@ -37,16 +37,23 @@ const POOL: FingerprintPool = {
     "ipad",
   ],
   localeTimezone: [
+    // North America
     { locale: "en-US", timezoneId: "America/New_York" },
     { locale: "en-US", timezoneId: "America/Chicago" },
-    { locale: "en-US", timezoneId: "America/Denver" },
     { locale: "en-US", timezoneId: "America/Los_Angeles" },
-    { locale: "en-US", timezoneId: "America/Phoenix" },
-    { locale: "en-GB", timezoneId: "Europe/London" },
-    { locale: "en-AU", timezoneId: "Australia/Sydney" },
     { locale: "en-CA", timezoneId: "America/Toronto" },
+    // Core European markets (eurocookflow audience)
+    { locale: "en-GB", timezoneId: "Europe/London" },
     { locale: "de-DE", timezoneId: "Europe/Berlin" },
     { locale: "fr-FR", timezoneId: "Europe/Paris" },
+    { locale: "it-IT", timezoneId: "Europe/Rome" },
+    { locale: "es-ES", timezoneId: "Europe/Madrid" },
+    { locale: "nl-NL", timezoneId: "Europe/Amsterdam" },
+    { locale: "pl-PL", timezoneId: "Europe/Warsaw" },
+    { locale: "pt-PT", timezoneId: "Europe/Lisbon" },
+    { locale: "sv-SE", timezoneId: "Europe/Stockholm" },
+    // Asia-Pacific
+    { locale: "en-AU", timezoneId: "Australia/Sydney" },
     { locale: "ja-JP", timezoneId: "Asia/Tokyo" },
   ],
   colorSchemes: ["light", "light", "light", "dark", "no-preference"],
@@ -147,7 +154,7 @@ function buildDesktopProfile(
     const isRetina = viewport.width <= 1728;
     const ua = useSafari
       ? safariUA(
-          pick(["17.1", "16.6", "17.2", "17.3"]),
+          pick(["17.4", "17.5", "17.6", "18.0", "18.1"]),
           "Macintosh; Intel Mac OS X 10_15_7",
         )
       : chromeUA(chromeVersion, "Macintosh; Intel Mac OS X 10_15_7");
@@ -181,10 +188,10 @@ function buildMobileProfile(
   const chromeVersion = pick(CHROME_VERSIONS);
 
   if (cls === "iphone") {
-    const iosVersion = pick(["17_1", "17_2", "17_3", "16_6", "17_4"]);
-    const safariVersion = iosVersion.startsWith("17")
-      ? pick(["17.1", "17.2", "17.3"])
-      : "16.6";
+    const iosVersion = pick(["17_4", "17_5", "17_6", "18_0", "18_1", "18_2"]);
+    const safariVersion = iosVersion.startsWith("18")
+      ? pick(["18.0", "18.1", "18.2"])
+      : pick(["17.4", "17.5", "17.6"]);
     const ua = `Mozilla/5.0 (iPhone; CPU iPhone OS ${iosVersion} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${safariVersion} Mobile/15E148 Safari/604.1`;
     return {
       userAgent: ua,
@@ -200,8 +207,8 @@ function buildMobileProfile(
   }
 
   if (cls === "ipad") {
-    const iosVersion = pick(["17_1", "17_2", "16_6"]);
-    const safariVersion = iosVersion.startsWith("17") ? "17.1" : "16.6";
+    const iosVersion = pick(["17_4", "17_5", "18_0", "18_1"]);
+    const safariVersion = iosVersion.startsWith("18") ? pick(["18.0", "18.1"]) : pick(["17.4", "17.5"]);
     const ua = `Mozilla/5.0 (iPad; CPU OS ${iosVersion} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/${safariVersion} Mobile/15E148 Safari/604.1`;
     return {
       userAgent: ua,
@@ -243,12 +250,15 @@ function buildMobileProfile(
  * Call once at startup — each run sees a brand-new set of identities.
  */
 export function generateFingerprints(count: number): PatchrightProfile[] {
-  // Spread device classes evenly: weight toward desktop (most real traffic)
+  // Device class weights calibrated to real GA4 traffic for eurocookflow:
+  //   Win ~35%, Mac ~21%, iOS ~19%, Android ~13%, iPad ~7%
+  //   Linux removed — it signals bot traffic to fingerprint detectors.
+  //   Total slots: 14  →  Win 5/14=36%, Mac 3/14=21%, iPhone 3/14=21%,
+  //                        Android 2/14=14%, iPad 1/14=7%
   const weightedClasses: ProfileClass[] = [
     ...Array(5).fill("win-desktop"),
     ...Array(3).fill("mac-desktop"),
-    ...Array(2).fill("linux-desktop"),
-    ...Array(2).fill("iphone"),
+    ...Array(3).fill("iphone"),
     ...Array(2).fill("android"),
     ...Array(1).fill("ipad"),
   ];
