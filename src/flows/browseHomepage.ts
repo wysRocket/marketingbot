@@ -2,7 +2,6 @@ import { Page } from "playwright";
 import { navigate, blockHeavyAssets } from "../actions/navigate";
 import { scrollDown, randomBrowse, randomDelay } from "../actions/interact";
 import { pickReferrerEntry, applyUtmParams } from "../actions/referrer";
-import { searchAndNavigate } from "../actions/searchEngine";
 import { getText, getAll, getLinks } from "../actions/scrape";
 import {
   assertFlowEnabled,
@@ -38,16 +37,12 @@ export async function browseHomepage(
   await blockHeavyAssets(page);
 
   // ----- 1. Land on homepage -----
-  // When the sampled referrer is a search engine, perform a real browser-level
-  // search (navigate to the engine, type the query, click the result) so that
-  // GA4 records a genuine Organic Search session rather than an Unassigned one.
   const referrer = pickReferrerEntry();
-  const targetUrl = applyUtmParams(resolveSiteUrl(site, cfg.homePath), referrer);
-  if (referrer.type === "search") {
-    await searchAndNavigate(page, referrer, targetUrl);
-  } else {
-    await navigate(page, targetUrl, referrer.url || undefined);
-  }
+  const targetUrl = applyUtmParams(
+    resolveSiteUrl(site, cfg.homePath),
+    referrer,
+  );
+  await navigate(page, targetUrl, referrer.url || undefined);
   await page.waitForSelector(cfg.heroHeadingSelector, { timeout: 15_000 });
 
   const heroHeading = await getText(page, cfg.heroHeadingSelector);

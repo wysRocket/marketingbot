@@ -2,7 +2,6 @@ import { Page } from "playwright";
 import { navigate, blockHeavyAssets } from "../actions/navigate";
 import { randomBrowse, randomDelay } from "../actions/interact";
 import { pickReferrerEntry, applyUtmParams } from "../actions/referrer";
-import { searchAndNavigate } from "../actions/searchEngine";
 import { getAll, getLinks } from "../actions/scrape";
 import {
   assertFlowEnabled,
@@ -48,14 +47,12 @@ export async function explorePricing(
   await blockHeavyAssets(page);
 
   // ----- 1. Load homepage and jump straight to members/pricing -----
-  // Use a real search-engine flow when the sampled referrer is organic search.
   const referrer = pickReferrerEntry();
-  const pricingUrl = applyUtmParams(resolveSiteUrl(site, cfg.pricingPath), referrer);
-  if (referrer.type === "search") {
-    await searchAndNavigate(page, referrer, pricingUrl);
-  } else {
-    await navigate(page, pricingUrl, referrer.url || undefined);
-  }
+  const pricingUrl = applyUtmParams(
+    resolveSiteUrl(site, cfg.pricingPath),
+    referrer,
+  );
+  await navigate(page, pricingUrl, referrer.url || undefined);
   await page.waitForTimeout(800);
 
   await page.evaluate((selector) => {
@@ -93,7 +90,9 @@ export async function explorePricing(
   }
 
   // ----- 5. Validate: all CTAs must link to sign-up with a selected plan -----
-  const ctaLinksValid = ctaLinks.every((href) => href.includes(cfg.ctaMustContain));
+  const ctaLinksValid = ctaLinks.every((href) =>
+    href.includes(cfg.ctaMustContain),
+  );
 
   // ----- 6. Visit up to N distinct plan sign-up pages and interact safely -----
   const signupVisitsLimit =

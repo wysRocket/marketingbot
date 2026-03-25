@@ -8,6 +8,10 @@
         "GOOGLE_PROJECT_ID": "aicontentstudio-491019",
         "GA4_PROPERTY_ID": "526543621"
       }
+    },
+    "search-console": {
+      "command": "npx",
+      "args": ["-y", "search-console-mcp"]
     }
   }
 }

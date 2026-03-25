@@ -2,7 +2,6 @@ import { Page } from "playwright";
 import { navigate, blockHeavyAssets } from "../actions/navigate";
 import { randomBrowse, randomDelay } from "../actions/interact";
 import { pickReferrerEntry, applyUtmParams } from "../actions/referrer";
-import { searchAndNavigate } from "../actions/searchEngine";
 import { getText } from "../actions/scrape";
 import {
   assertFlowEnabled,
@@ -46,11 +45,7 @@ export async function browseFooterLinks(
   // avoid repeated full homepage reloads.
   const referrer = pickReferrerEntry();
   const homeUrl = applyUtmParams(resolveSiteUrl(site, cfg.homePath), referrer);
-  if (referrer.type === "search") {
-    await searchAndNavigate(page, referrer, homeUrl);
-  } else {
-    await navigate(page, homeUrl, referrer.url || undefined);
-  }
+  await navigate(page, homeUrl, referrer.url || undefined);
   await page.waitForTimeout(800);
 
   for (let i = 0; i < cfg.footerPaths.length; i++) {
@@ -59,7 +54,9 @@ export async function browseFooterLinks(
     if (i === 0) {
       // ----- 1. First legal page via footer click -----
       await page.evaluate((selector) => {
-        document.querySelector(selector)?.scrollIntoView({ behavior: "smooth" });
+        document
+          .querySelector(selector)
+          ?.scrollIntoView({ behavior: "smooth" });
       }, cfg.footerContainerSelector);
       await page.waitForTimeout(800);
 
