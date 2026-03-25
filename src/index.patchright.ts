@@ -4,6 +4,8 @@ import * as os from "os";
 import * as path from "path";
 import { chromium } from "patchright";
 import type { Page } from "playwright";
+import type { BrowserContext } from "patchright";
+import { dismissSimilarWebConsents } from "./extensions/dismissConsents";
 import { browseHomepage } from "./flows/browseHomepage";
 import { browseFooterLinks } from "./flows/browseFooterLinks";
 import { login } from "./flows/login";
@@ -606,6 +608,10 @@ async function runProfileSession(
   }
 
   // No context.route() calls — Fetch.enable must stay inactive for cache to work.
+
+  // Dismiss SimilarWeb consent tabs / pre-seed storage so the extension never
+  // blocks session startup with welcome or options dialogs.
+  await dismissSimilarWebConsents(context as unknown as BrowserContext);
 
   // Notify caller of the context handle so it can force-close on timeout.
   onContext?.(context);
