@@ -1,7 +1,8 @@
 import { Page } from "playwright";
 import { navigate, blockHeavyAssets } from "../actions/navigate";
 import { randomBrowse, randomDelay } from "../actions/interact";
-import { pickReferrer } from "../actions/referrer";
+import { pickReferrerEntry, applyUtmParams } from "../actions/referrer";
+import { searchAndNavigate } from "../actions/searchEngine";
 import { getText } from "../actions/scrape";
 import {
   assertFlowEnabled,
@@ -43,7 +44,13 @@ export async function browseFooterLinks(
   const visited: FooterPageVisit[] = [];
   // Start from the homepage once, then move directly between legal pages to
   // avoid repeated full homepage reloads.
-  await navigate(page, resolveSiteUrl(site, cfg.homePath), pickReferrer());
+  const referrer = pickReferrerEntry();
+  const homeUrl = applyUtmParams(resolveSiteUrl(site, cfg.homePath), referrer);
+  if (referrer.type === "search") {
+    await searchAndNavigate(page, referrer, homeUrl);
+  } else {
+    await navigate(page, homeUrl, referrer.url || undefined);
+  }
   await page.waitForTimeout(800);
 
   for (let i = 0; i < cfg.footerPaths.length; i++) {

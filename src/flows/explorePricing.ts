@@ -1,7 +1,7 @@
 import { Page } from "playwright";
 import { navigate, blockHeavyAssets } from "../actions/navigate";
 import { randomBrowse, randomDelay } from "../actions/interact";
-import { pickReferrerEntry } from "../actions/referrer";
+import { pickReferrerEntry, applyUtmParams } from "../actions/referrer";
 import { searchAndNavigate } from "../actions/searchEngine";
 import { getAll, getLinks } from "../actions/scrape";
 import {
@@ -50,7 +50,7 @@ export async function explorePricing(
   // ----- 1. Load homepage and jump straight to members/pricing -----
   // Use a real search-engine flow when the sampled referrer is organic search.
   const referrer = pickReferrerEntry();
-  const pricingUrl = resolveSiteUrl(site, cfg.pricingPath);
+  const pricingUrl = applyUtmParams(resolveSiteUrl(site, cfg.pricingPath), referrer);
   if (referrer.type === "search") {
     await searchAndNavigate(page, referrer, pricingUrl);
   } else {
