@@ -134,7 +134,41 @@ function shardPool<T>(items: T[], shardCount: number, shardIndex: number): T[] {
   return items.filter((_, index) => index % shardCount === shardIndex);
 }
 
+// ---------------------------------------------------------------------------
+// Extension loader
+//
+// Looks for unpacked extensions under <project-root>/.extensions/.
+// Each sub-directory is treated as one extension and loaded via
+// --load-extension.  If no extensions are present the flag is omitted and
+// --disable-extensions is kept so Chrome starts slightly faster.
+//
+// Extensions require Chrome's newer headless mode (--headless=new).  We
+// achieve this by passing headless: false to Playwright (so it does NOT add
+// the legacy --headless flag) and then injecting --headless=new ourselves.
+// ---------------------------------------------------------------------------
+const EXTENSIONS_DIR = path.join(process.cwd(), ".extensions");
+
+function getExtensionPaths(): string[] {
+  try {
+    return fs
+      .readdirSync(EXTENSIONS_DIR)
+      .map((name) => path.join(EXTENSIONS_DIR, name))
+      .filter((p) => fs.statSync(p).isDirectory());
+  } catch {
+    return [];
+  }
+}
+
 function buildChromiumArgs(): string[] {
+  const extensionPaths = getExtensionPaths();
+  const extensionArgs =
+    extensionPaths.length > 0
+      ? [
+          `--load-extension=${extensionPaths.join(",")}`,
+          `--disable-extensions-except=${extensionPaths.join(",")}`,
+        ]
+      : ["--disable-extensions"];
+
   return [
     "--disable-blink-features=AutomationControlled",
     "--disable-dev-shm-usage",
@@ -142,7 +176,10 @@ function buildChromiumArgs(): string[] {
     "--disable-setuid-sandbox",
     "--disable-accelerated-2d-canvas",
     "--disable-gpu",
-    "--disable-extensions",
+    // Use Chrome's new headless mode so extensions are supported.
+    // We pass headless: false to Playwright to prevent it from injecting
+    // the legacy --headless flag, then add --headless=new here instead.
+    "--headless=new",
     "--disable-background-networking",
     "--disable-component-update",
     "--disable-default-apps",
@@ -151,12 +188,9 @@ function buildChromiumArgs(): string[] {
     "--mute-audio",
     "--no-first-run",
     "--no-default-browser-check",
-    // Block images at the Blink engine level — avoids context.route() which
-    // internally calls Fetch.enable and disrupts Chrome's HTTP cache pipeline.
     "--blink-settings=imagesEnabled=false,loadsImagesAutomatically=false",
-    // Prevent proxy credentials from being persisted to the host credential store
-    // so that resetSessionState() fully clears all credential state.
     "--use-mock-keychain",
+    ...extensionArgs,
   ];
 }
 
@@ -172,7 +206,7 @@ async function getSharedBrowser(): Promise<import("patchright").Browser> {
   if (!sharedBrowserLaunchPromise) {
     sharedBrowserLaunchPromise = chromium
       .launch({
-        headless: true,
+        headless: false, // --headless=new is passed via buildChromiumArgs() for extension support
         args: buildChromiumArgs(),
       })
       .then((browser) => {
