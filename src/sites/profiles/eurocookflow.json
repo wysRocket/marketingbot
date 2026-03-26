@@ -22,7 +22,7 @@
     "homePath": "/",
     "heroHeadingSelector": "h1",
     "heroHeadingIncludes": [
-      "master the art"
+      "learn advanced cooking"
     ],
     "navLinksSelector": "a[href^=\"/#\"]",
     "expectedAnchors": [
