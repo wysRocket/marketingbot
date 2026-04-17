@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "similarweb",
+    "chromeStoreId": "hoklmmgfnpapgjgcpechhaamimifchmp",
+    "expectedName": "Similarweb - Traffic Rank & Website Analysis",
+    "pinnedVersion": "PENDING",
+    "sha256": "PENDING"
+  },
+  {
+    "slug": "honey",
+    "chromeStoreId": "bmnlcjabgnpnenekpadlanbbkooimhnj",
+    "expectedName": "Honey: Automatic Coupons & Rewards",
+    "pinnedVersion": "PENDING",
+    "sha256": "PENDING"
+  },
+  {
+    "slug": "hola",
+    "chromeStoreId": "gkojfkhlekighikafcpjkiklfbnlmeio",
+    "expectedName": "Hola VPN - The Website Unblocker",
+    "pinnedVersion": "PENDING",
+    "sha256": "PENDING"
+  },
+  {
+    "slug": "keywords-everywhere",
+    "chromeStoreId": "hbapdpeemoojbophdfndmlgdhppljgmp",
+    "expectedName": "Keywords Everywhere - Keyword Tool",
+    "pinnedVersion": "PENDING",
+    "sha256": "PENDING"
+  }
+]

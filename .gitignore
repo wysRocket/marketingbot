@@ -6,3 +6,6 @@ dist/
 telemetry/
 .DS_Store
 .keys/
+.profile-cache/
+.extensions/
+coverage/
