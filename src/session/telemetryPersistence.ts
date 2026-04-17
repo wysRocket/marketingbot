@@ -13,6 +13,11 @@ const CSV_HEADER = [
   "runner",
   "label",
   "profileId",
+  "mostloginProfileId",
+  "railwayReplicaId",
+  "profileSource",
+  "extensionBundleHash",
+  "sessionStatePolicy",
   "startedAt",
   "endedAt",
   "elapsedMs",
@@ -42,6 +47,11 @@ const CSV_HEADER = [
 export interface PersistSessionTelemetryInput {
   label: string;
   profileId: string;
+  mostloginProfileId?: string;
+  railwayReplicaId?: string;
+  profileSource?: string;
+  extensionBundleHash?: string;
+  sessionStatePolicy?: string;
   telemetry: SessionTelemetry;
   policy: SessionPolicy;
 }
@@ -52,6 +62,11 @@ interface TelemetryRecord {
   runner: string;
   label: string;
   profileId: string;
+  mostloginProfileId?: string;
+  railwayReplicaId?: string;
+  profileSource?: string;
+  extensionBundleHash?: string;
+  sessionStatePolicy?: string;
   startedAt: string;
   endedAt: string;
   elapsedMs: number;
@@ -94,6 +109,11 @@ function toCsvRow(record: TelemetryRecord): string {
     record.runner,
     record.label,
     record.profileId,
+    record.mostloginProfileId ?? "",
+    record.railwayReplicaId ?? "",
+    record.profileSource ?? "",
+    record.extensionBundleHash ?? "",
+    record.sessionStatePolicy ?? "",
     record.startedAt,
     record.endedAt,
     record.elapsedMs,
@@ -121,6 +141,26 @@ function toCsvRow(record: TelemetryRecord): string {
   ];
 
   return row.map((value) => csvEscape(value)).join(",") + "\n";
+}
+
+export function createTelemetryRecord(
+  input: PersistSessionTelemetryInput & { runner: string; runId?: string }
+) {
+  return {
+    recordedAt: new Date().toISOString(),
+    runId: input.runId ?? "test-run",
+    runner: input.runner,
+    label: input.label,
+    profileId: input.profileId,
+    mostloginProfileId: input.mostloginProfileId ?? "",
+    railwayReplicaId: input.railwayReplicaId ?? "",
+    profileSource: input.profileSource ?? "",
+    extensionBundleHash: input.extensionBundleHash ?? "",
+    sessionStatePolicy: input.sessionStatePolicy ?? "",
+    startedAt: new Date(input.telemetry.startedAt).toISOString(),
+    endedAt: new Date(input.telemetry.endedAt).toISOString(),
+    elapsedMs: input.telemetry.elapsedMs,
+  };
 }
 
 export function createTelemetryPersistence(runner: string): TelemetryPersistence {
@@ -160,6 +200,11 @@ export function createTelemetryPersistence(runner: string): TelemetryPersistence
       runner,
       label,
       profileId,
+      mostloginProfileId: input.mostloginProfileId ?? "",
+      railwayReplicaId: input.railwayReplicaId ?? "",
+      profileSource: input.profileSource ?? "",
+      extensionBundleHash: input.extensionBundleHash ?? "",
+      sessionStatePolicy: input.sessionStatePolicy ?? "",
       startedAt: new Date(telemetry.startedAt).toISOString(),
       endedAt: new Date(telemetry.endedAt).toISOString(),
       elapsedMs: telemetry.elapsedMs,
