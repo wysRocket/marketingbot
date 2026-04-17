@@ -11,8 +11,11 @@ import { browseFooterLinks } from "./flows/browseFooterLinks";
 import { login } from "./flows/login";
 import { explorePricing } from "./flows/explorePricing";
 import { accountDashboard } from "./flows/accountDashboard";
-import type { PatchrightProfile } from "./profiles/patchright-profiles";
-import { generateFingerprints } from "./profiles/fingerprint-generator";
+import { loadCatalog, type LoadedCatalog } from "./profiles/catalog";
+import { validateShardConfig, shardCatalogProfiles } from "./profiles/shard-assignment";
+import { resolveCacheDir, CACHE_ONLY_RESET_PATHS, IDENTITY_STICKY_RESET_PATHS } from "./profiles/persistence-policy";
+import { resolveProxyForSession, type RunnerProxyConfig } from "./proxy";
+import { attachNetworkDebugger } from "./observability/networkDebug";
 import {
   getSessionPolicyFromEnv,
   runComplexSession,
@@ -44,7 +47,7 @@ if (typeof stderrHandle?.setBlocking === "function") {
 
 // Persistent cache dir — one sub-dir per pool profile, shared across rounds.
 // Only proxy/identity state is wiped before each launch; HTTP disk cache stays.
-const CACHE_DIR = path.join(os.homedir(), ".cache", "marketingbot-patchright");
+const CACHE_DIR = resolveCacheDir();
 fs.mkdirSync(CACHE_DIR, { recursive: true });
 
 // -------------------------------------------------------------------
@@ -122,19 +125,6 @@ function stableStringHash(input: string): number {
   return hash;
 }
 
-function getReplicaShardConfig(): { shardCount: number; shardIndex: number } {
-  const shardCount = Math.max(1, REPLICA_SHARD_COUNT);
-  const explicitShardIndex = Number.parseInt(REPLICA_SHARD_INDEX_RAW ?? "", 10);
-  const shardIndex = Number.isFinite(explicitShardIndex)
-    ? Math.max(0, explicitShardIndex) % shardCount
-    : stableStringHash(RAILWAY_REPLICA_ID) % shardCount;
-  return { shardCount, shardIndex };
-}
-
-function shardPool<T>(items: T[], shardCount: number, shardIndex: number): T[] {
-  if (shardCount <= 1) return items;
-  return items.filter((_, index) => index % shardCount === shardIndex);
-}
 
 // ---------------------------------------------------------------------------
 // Extension loader
@@ -232,12 +222,12 @@ async function getSharedBrowser(): Promise<import("patchright").Browser> {
 }
 
 async function createSharedContext(
-  profile: PatchrightProfile,
+  profile: LoadedCatalog["profiles"][number],
   label: string,
-  proxy: ProxyCfg | undefined,
+  proxy: RunnerProxyConfig | undefined,
 ): Promise<import("patchright").BrowserContext> {
   const contextOptions = {
-    ...profile.config,
+    ...profile.patchrightProfile.config,
     ...(proxy ? { proxy } : {}),
   };
 
@@ -381,7 +371,7 @@ function pickRandom<T>(items: T[], limit: number): T[] {
 // to launchPersistentContext so Playwright injects them on every
 // proxyAuthRequired challenge (HTTP CONNECT tunnel).
 // -------------------------------------------------------------------
-type ProxyCfg = { server: string; username: string; password: string };
+type ProxyCfg = RunnerProxyConfig;
 
 async function fetchProxyList(
   count: number,
@@ -548,43 +538,23 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
 // into the host credential store, which would otherwise survive a wipe of
 // the userDataDir's credential files.
 // -------------------------------------------------------------------
-const SESSION_STATE_DIRS = [
-  "Default/Network",
-  "Default/Login Data",
-  "Default/Login Data For Account",
-  "Default/Cookies",
-  "Default/Local Storage",
-  "Default/Session Storage",
-  "Default/IndexedDB",
-  "Default/Extension Cookies",
-  // Preferences stores last-used proxy config on some Chrome builds.
-  // Delete it so Chrome cannot replay a previous round's proxy identity.
-  "Default/Preferences",
-  "Default/Secure Preferences",
-];
 
-function resetSessionState(userDataDir: string): void {
-  for (const rel of SESSION_STATE_DIRS) {
-    const full = path.join(userDataDir, rel);
-    if (fs.existsSync(full)) {
-      fs.rmSync(full, { recursive: true, force: true });
-    }
-  }
-}
+
+
 
 // -------------------------------------------------------------------
 // SESSION RUNNER
 //
 // Each call reuses a persistent userDataDir keyed to the pool profile
-// (fp-00 … fp-59 under CACHE_DIR) so the HTTP disk cache accumulates
-// across rounds. Before launch, only proxy/identity state is wiped via
-// resetSessionState() so Chrome has no stale credentials to replay.
+// so the HTTP disk cache accumulates across rounds. Before launch, only
+// proxy/identity state is wiped (per sessionStatePolicy) so Chrome has
+// no stale credentials to replay.
 // --use-mock-keychain also prevents host credential-store persistence.
 // -------------------------------------------------------------------
 async function runProfileSession(
-  profile: PatchrightProfile,
+  profile: LoadedCatalog["profiles"][number],
   label: string,
-  proxy: ProxyCfg | undefined,
+  proxy: RunnerProxyConfig | undefined,
   onContext?: (ctx: import("patchright").BrowserContext) => void,
 ): Promise<void> {
   let context: import("patchright").BrowserContext;
@@ -596,13 +566,21 @@ async function runProfileSession(
     const userDataDir = path.join(CACHE_DIR, profile.id);
     fs.mkdirSync(userDataDir, { recursive: true });
 
-    // Wipe only proxy/identity state; HTTP disk cache is preserved.
-    resetSessionState(userDataDir);
+    // Wipe only proxy/identity state per policy; HTTP disk cache is preserved.
+    const resetPaths = profile.sessionStatePolicy === "identity-sticky"
+      ? IDENTITY_STICKY_RESET_PATHS
+      : CACHE_ONLY_RESET_PATHS;
+    for (const rel of resetPaths) {
+      const full = path.join(userDataDir, rel);
+      if (fs.existsSync(full)) {
+        fs.rmSync(full, { recursive: true, force: true });
+      }
+    }
 
     context = await chromium.launchPersistentContext(userDataDir, {
       headless: true,
       args: buildChromiumArgs(),
-      ...profile.config,
+      ...profile.patchrightProfile.config,
       ...(proxy ? { proxy } : {}),
     });
   }
@@ -612,6 +590,10 @@ async function runProfileSession(
   // Dismiss SimilarWeb consent tabs / pre-seed storage so the extension never
   // blocks session startup with welcome or options dialogs.
   await dismissSimilarWebConsents(context as unknown as BrowserContext);
+
+  if (process.env.NETWORK_DEBUG === "1") {
+    await attachNetworkDebugger(context as unknown as BrowserContext).catch(() => {});
+  }
 
   // Notify caller of the context handle so it can force-close on timeout.
   onContext?.(context);
@@ -643,7 +625,7 @@ async function runProfileSession(
     // ────────────────────────────────────────────────────────────────────────
 
     console.log(
-      `[${label}] ${profile.name} | ${profile.config.locale ?? "en-US"} ${profile.config.timezoneId ?? ""} | proxy: ${proxy ? proxy.server.replace(/^https?:\/\//, "") : "none"} | exit-ip: ${exitIp} | flows: ${flows.map((f) => f.name).join(" → ")}`,
+      `[${label}] ${profile.name} | ${profile.patchrightProfile.config.locale ?? "en-US"} ${profile.patchrightProfile.config.timezoneId ?? ""} | proxy: ${proxy ? proxy.server.replace(/^https?:\/\//, "") : "none"} | exit-ip: ${exitIp} | flows: ${flows.map((f) => f.name).join(" → ")}`,
     );
 
     const telemetry = await runComplexSession({
@@ -681,6 +663,9 @@ async function runProfileSession(
     await TELEMETRY.persistSession({
       label,
       profileId: profile.id,
+      mostloginProfileId: profile.source === "mostlogin" ? profile.id : undefined,
+      profileSource: profile.source,
+      sessionStatePolicy: profile.sessionStatePolicy,
       telemetry,
       policy: SESSION_POLICY,
     }).catch((err) => {
@@ -704,22 +689,31 @@ async function main(): Promise<void> {
   const backoffStep = Math.max(1, CONCURRENCY_BACKOFF_STEP);
   const recoveryStep = Math.max(1, CONCURRENCY_RECOVERY_STEP);
   const recoveryRounds = Math.max(1, CONCURRENCY_RECOVERY_ROUNDS);
-  const { shardCount, shardIndex } = getReplicaShardConfig();
 
   console.log(`Starting Patchright bot for ${SITE.baseUrl}/ (${SITE.id})`);
   console.log(`[telemetry] JSONL: ${TELEMETRY.jsonPath}`);
   console.log(`[telemetry] CSV:   ${TELEMETRY.csvPath}`);
+
+  // Load catalog once before the main loop (snapshot is refreshed periodically via the source)
+  const catalog = await loadCatalog({
+    requestedSource: (process.env.PROFILE_SOURCE as "mostlogin" | "snapshot" | "generator") ?? "generator",
+    poolSize: POOL_SIZE,
+    snapshotPath: path.join(process.cwd(), ".profile-cache", "mostlogin-catalog.json"),
+    allowGeneratorFallback: process.env.ALLOW_GENERATOR_FALLBACK === "1",
+    environment: process.env.NODE_ENV === "production" ? "production" : "development",
+  });
+
+  const { shardCount, shardIndex } = validateShardConfig({
+    shardCount: REPLICA_SHARD_COUNT,
+    shardIndexRaw: REPLICA_SHARD_INDEX_RAW,
+    replicaId: RAILWAY_REPLICA_ID,
+  });
+
+  const shardPoolProfiles = shardCatalogProfiles(catalog.profiles, shardCount, shardIndex);
+
   console.log(
     `[replica] id=${RAILWAY_REPLICA_ID} shard=${shardIndex + 1}/${shardCount}`,
   );
-  if (
-    shardCount > 1 &&
-    !Number.isFinite(Number.parseInt(REPLICA_SHARD_INDEX_RAW ?? "", 10))
-  ) {
-    console.warn(
-      "[replica] REPLICA_SHARD_COUNT > 1 without REPLICA_SHARD_INDEX; shard assignment is best-effort only and may collide across same-service replicas.",
-    );
-  }
   console.log(
     `[config] pool: ${POOL_SIZE} | concurrency: ${MAX_CONCURRENT} (min=${minConcurrent}) | rounds: ${TOTAL_ROUNDS} | mode: ${SHARED_BROWSER_MODE ? "shared-browser" : "persistent-context"} | round-timeout-ms: ${ROUND_TIMEOUT_MS} | session-timeout-ms: ${SESSION_TIMEOUT_MS} | launch-stagger-ms: ${SESSION_LAUNCH_STAGGER_MS} | alive-log-ms: ${ALIVE_LOG_INTERVAL_MS} | backoff-step: ${backoffStep} | recovery-step: ${recoveryStep}/${recoveryRounds} round(s)\n`,
   );
@@ -744,19 +738,13 @@ async function main(): Promise<void> {
   try {
     while (round < TOTAL_ROUNDS) {
       try {
-        // Fresh fingerprints every round — each profile gets a new UA/viewport/
-        // locale/timezone on every open. userDataDir is still keyed by profile ID
-        // (fp-00…fp-59) so the HTTP disk cache accumulates across rounds.
-        const fullPool = generateFingerprints(POOL_SIZE);
-        const shardPoolProfiles = shardPool(fullPool, shardCount, shardIndex);
-
         if (shardPoolProfiles.length === 0) {
           throw new Error(
             `[replica] shard ${shardIndex + 1}/${shardCount} has no profiles; increase POOL_SIZE or reduce REPLICA_SHARD_COUNT`,
           );
         }
 
-        const selected = pickRandom(shardPoolProfiles, dynamicConcurrent);
+        const selected = pickRandom(shardPoolProfiles, Math.min(dynamicConcurrent, shardPoolProfiles.length));
 
         // Fetch one distinct sticky proxy per session from DataImpulse's pool.
         // Each entry is a real unique IP — unlike the _session- username trick
@@ -775,12 +763,23 @@ async function main(): Promise<void> {
         }
 
         console.log(
-          `--- Round ${round + 1}/${TOTAL_ROUNDS} | shard ${shardIndex + 1}/${shardCount} | shard-pool: ${shardPoolProfiles.length}/${fullPool.length} | concurrency: ${selected.length} | profiles: ${selected.map((p) => p.id).join(", ")} ---`,
+          `--- Round ${round + 1}/${TOTAL_ROUNDS} | shard ${shardIndex + 1}/${shardCount} | shard-pool: ${shardPoolProfiles.length} | concurrency: ${selected.length} | profiles: ${selected.map((p) => p.id).join(", ")} ---`,
         );
 
         const sessions = selected.map((profile, index) => {
           const label = `P${index + 1}`;
-          const proxy = proxyList[index];
+          const rawProxy = proxyList[index];
+          const proxy = (() => {
+            try {
+              return resolveProxyForSession({
+                runner: process.env.RAILWAY_ENVIRONMENT ? "railway" : "local",
+                mostloginProxy: profile.mostloginProxy as Parameters<typeof resolveProxyForSession>[0]["mostloginProxy"],
+                fallbackProxy: rawProxy,
+              });
+            } catch {
+              return rawProxy;
+            }
+          })();
           return new Promise<void>((resolve) =>
             setTimeout(resolve, index * Math.max(0, SESSION_LAUNCH_STAGGER_MS)),
           )
