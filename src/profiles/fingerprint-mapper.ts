@@ -1,4 +1,5 @@
 import type { PatchrightProfile } from "./patchright-profiles";
+import { buildInitScript, type InitScriptFlags } from "./init-scripts/index";
 
 function parseResolution(
   value?: string,
@@ -12,10 +13,24 @@ function parseResolution(
 export function mapMostLoginProfile(detail: any): {
   patchrightProfile: PatchrightProfile;
   launchArgs: string[];
-  initScriptFlags: Record<string, boolean | number>;
+  initScriptFlags: InitScriptFlags;
+  initScript: string;
 } {
   const viewport = parseResolution(detail.fingerprint?.resolution);
   const locale = detail.fingerprint?.languages?.split(",")[0];
+
+  const hwConcurrency =
+    typeof detail.hardware_concurrency === "number" ? detail.hardware_concurrency : 4;
+  const isResidential =
+    detail.proxy?.type === "residential" || Boolean(detail.real_ip);
+  const initScriptFlags: InitScriptFlags = {
+    canvasNoise: true,
+    webglNoise: true,
+    audioNoise: true,
+    hardwareConcurrency: hwConcurrency,
+    webrtcGuard: isResidential,
+  };
+  const initScript = buildInitScript(initScriptFlags);
 
   return {
     patchrightProfile: {
@@ -44,11 +59,7 @@ export function mapMostLoginProfile(detail: any): {
       detail.fingerprint?.webRTC === "disable"
         ? ["--force-webrtc-ip-handling-policy=disable_non_proxied_udp"]
         : [],
-    initScriptFlags: {
-      canvasNoise: Boolean(detail.fingerprint?.canvasNoise),
-      webglNoise: Boolean(detail.fingerprint?.webglNoise),
-      audioContextNoise: Boolean(detail.fingerprint?.audioContextNoise),
-      hardwareConcurrency: detail.fingerprint?.hardwareConcurrency ?? 0,
-    },
+    initScriptFlags,
+    initScript,
   };
 }
