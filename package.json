@@ -15,7 +15,11 @@
     "mcp:mostlogin": "ts-node src/mcp/mostlogin/server.ts",
     "mcp:patchright": "ts-node src/mcp/patchright/server.ts",
     "start:patchright": "BOT_SITE_PROFILE=eurocookflow ts-node src/index.patchright.ts",
-    "ga:report": "ts-node src/scripts/checkGaReport.ts"
+    "ga:report": "ts-node src/scripts/checkGaReport.ts",
+    "test:unit": "vitest run",
+    "test:watch": "vitest",
+    "pull:extensions": "ts-node src/scripts/pullExtensions.ts",
+    "pull:catalog": "ts-node src/scripts/pullMostloginCatalog.ts"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +37,7 @@
   "devDependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",
     "@types/node": "^25.3.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.4"
   }
 }
