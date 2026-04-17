@@ -1,10 +1,27 @@
-import { ml, withMostLoginRetry } from "../../mcp/mostlogin/client";
+import {
+  getProfileDetail,
+  listProfiles,
+} from "../../mcp/mostlogin/tools/profiles";
+import { mapMostLoginProfile } from "../fingerprint-mapper";
 
 export interface MostLoginProfile {
   id: string;
   title?: string;
   name?: string;
-  fingerprint?: Record<string, unknown>;
+  fingerprint?: {
+    userAgent?: string;
+    resolution?: string;
+    languages?: string;
+    timeZone?: string;
+    geolocation?: number;
+    latitude?: number;
+    longitude?: number;
+    webRTC?: string;
+    canvasNoise?: boolean;
+    webglNoise?: boolean;
+    audioContextNoise?: boolean;
+    hardwareConcurrency?: number;
+  };
   proxy?: {
     protocol?: string;
     host?: string;
@@ -14,52 +31,81 @@ export interface MostLoginProfile {
   };
 }
 
+function extractProfileList(payload: unknown): MostLoginProfile[] {
+  if (Array.isArray(payload)) {
+    return payload as MostLoginProfile[];
+  }
+
+  if (
+    payload &&
+    typeof payload === "object" &&
+    "list" in payload &&
+    Array.isArray((payload as { list?: unknown[] }).list)
+  ) {
+    return (payload as { list: MostLoginProfile[] }).list;
+  }
+
+  return [];
+}
+
 export async function listAllMostLoginProfiles(): Promise<MostLoginProfile[]> {
-  return withMostLoginRetry(async () => {
-    const response = await ml.get<MostLoginProfile[]>("/api/v1/profile/list");
-    return response.data ?? [];
-  });
+  const response = await listProfiles(1, 100);
+  return extractProfileList(response);
 }
 
 export async function getMostLoginProfileDetail(
   id: string,
 ): Promise<MostLoginProfile> {
-  return withMostLoginRetry(async () => {
-    const response = await ml.get<MostLoginProfile>(`/api/v1/profile/detail/${id}`);
-    return response.data;
-  });
+  return (await getProfileDetail(id)) as MostLoginProfile;
 }
 
 export async function loadFromMostLogin(): Promise<{
-  catalog: { source: "mostlogin"; profiles: Array<{
-    id: string;
-    name: string;
+  catalog: {
     source: "mostlogin";
-    sessionStatePolicy: "identity-sticky";
-    mostloginProxy?: MostLoginProfile["proxy"];
-    patchrightProfile: { id: string; name: string; config: Record<string, unknown> };
-  }> };
+    profiles: Array<{
+      id: string;
+      name: string;
+      source: "mostlogin";
+      sessionStatePolicy: "identity-sticky";
+      mostloginProxy?: MostLoginProfile["proxy"];
+      launchArgs: string[];
+      initScriptFlags: Record<string, boolean | number>;
+      initScript: string;
+      patchrightProfile: {
+        id: string;
+        name: string;
+        config: Record<string, unknown>;
+      };
+    }>;
+  };
   snapshot: { generatedAt: string; catalog: unknown };
 }> {
   const profiles = await listAllMostLoginProfiles();
 
-  const catalogProfiles = profiles.map((p) => ({
-    id: p.id,
-    name: p.title ?? p.name ?? p.id,
-    source: "mostlogin" as const,
-    sessionStatePolicy: "identity-sticky" as const,
-    mostloginProxy: p.proxy,
-    patchrightProfile: {
-      id: p.id,
-      name: p.title ?? p.name ?? p.id,
-      config: {
-        ignoreHTTPSErrors: true,
-        userAgent: p.fingerprint?.userAgent as string | undefined,
-      },
-    },
-  }));
+  const details = await Promise.all(
+    profiles.map((profile) => getMostLoginProfileDetail(profile.id)),
+  );
 
-  const catalogResult = { source: "mostlogin" as const, profiles: catalogProfiles };
+  const catalogProfiles = details.map((detail) => {
+    const mapped = mapMostLoginProfile(detail);
+
+    return {
+      id: detail.id,
+      name: detail.title ?? detail.name ?? detail.id,
+      source: "mostlogin" as const,
+      sessionStatePolicy: "identity-sticky" as const,
+      mostloginProxy: detail.proxy,
+      patchrightProfile: mapped.patchrightProfile,
+      launchArgs: mapped.launchArgs,
+      initScriptFlags: mapped.initScriptFlags as Record<string, boolean | number>,
+      initScript: mapped.initScript,
+    };
+  });
+
+  const catalogResult = {
+    source: "mostlogin" as const,
+    profiles: catalogProfiles,
+  };
 
   return {
     catalog: catalogResult,

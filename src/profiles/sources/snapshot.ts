@@ -21,7 +21,10 @@ export async function writeCatalogSnapshot(
 
 export async function readCatalogSnapshot(
   filePath: string,
-): Promise<{ catalog: { source: string; profiles: unknown[] }; generatedAt: string } | null> {
+): Promise<{
+  catalog: { source: string; profiles: unknown[] };
+  generatedAt: string;
+} | null> {
   try {
     const raw = await fs.readFile(filePath, "utf8");
     return JSON.parse(raw);

@@ -7,6 +7,7 @@
     "start": "ts-node src/index.ts",
     "start:mostlogin": "ts-node src/index.mostlogin.ts",
     "start:mostlogin:schedule": "ts-node src/index.mostlogin.scheduled.ts",
+    "start:mostlogin:tunnel-proxy": "ts-node src/scripts/mostloginTunnelProxy.ts",
     "create:profiles": "ts-node src/scripts/createProfiles.ts",
     "audit:cache": "ts-node src/scripts/auditCacheHeaders.ts",
     "build": "tsc",

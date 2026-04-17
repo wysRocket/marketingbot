@@ -17,6 +17,7 @@ const CSV_HEADER = [
   "railwayReplicaId",
   "profileSource",
   "extensionBundleHash",
+  "extensionSlugs",
   "sessionStatePolicy",
   "startedAt",
   "endedAt",
@@ -51,6 +52,7 @@ export interface PersistSessionTelemetryInput {
   railwayReplicaId?: string;
   profileSource?: string;
   extensionBundleHash?: string;
+  extensionSlugs?: string[];
   sessionStatePolicy?: string;
   telemetry: SessionTelemetry;
   policy: SessionPolicy;
@@ -66,6 +68,7 @@ interface TelemetryRecord {
   railwayReplicaId?: string;
   profileSource?: string;
   extensionBundleHash?: string;
+  extensionSlugs: string[];
   sessionStatePolicy?: string;
   startedAt: string;
   endedAt: string;
@@ -113,6 +116,7 @@ function toCsvRow(record: TelemetryRecord): string {
     record.railwayReplicaId ?? "",
     record.profileSource ?? "",
     record.extensionBundleHash ?? "",
+    JSON.stringify(record.extensionSlugs),
     record.sessionStatePolicy ?? "",
     record.startedAt,
     record.endedAt,
@@ -144,7 +148,7 @@ function toCsvRow(record: TelemetryRecord): string {
 }
 
 export function createTelemetryRecord(
-  input: PersistSessionTelemetryInput & { runner: string; runId?: string }
+  input: PersistSessionTelemetryInput & { runner: string; runId?: string },
 ) {
   return {
     recordedAt: new Date().toISOString(),
@@ -156,6 +160,7 @@ export function createTelemetryRecord(
     railwayReplicaId: input.railwayReplicaId ?? "",
     profileSource: input.profileSource ?? "",
     extensionBundleHash: input.extensionBundleHash ?? "",
+    extensionSlugs: input.extensionSlugs ?? [],
     sessionStatePolicy: input.sessionStatePolicy ?? "",
     startedAt: new Date(input.telemetry.startedAt).toISOString(),
     endedAt: new Date(input.telemetry.endedAt).toISOString(),
@@ -163,7 +168,9 @@ export function createTelemetryRecord(
   };
 }
 
-export function createTelemetryPersistence(runner: string): TelemetryPersistence {
+export function createTelemetryPersistence(
+  runner: string,
+): TelemetryPersistence {
   const outputDir = path.resolve(
     process.cwd(),
     process.env.FLOW_TELEMETRY_DIR ?? DEFAULT_TELEMETRY_DIR,
@@ -204,6 +211,7 @@ export function createTelemetryPersistence(runner: string): TelemetryPersistence
       railwayReplicaId: input.railwayReplicaId ?? "",
       profileSource: input.profileSource ?? "",
       extensionBundleHash: input.extensionBundleHash ?? "",
+      extensionSlugs: input.extensionSlugs ?? [],
       sessionStatePolicy: input.sessionStatePolicy ?? "",
       startedAt: new Date(telemetry.startedAt).toISOString(),
       endedAt: new Date(telemetry.endedAt).toISOString(),

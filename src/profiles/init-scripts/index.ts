@@ -32,7 +32,10 @@ export function buildInitScript(flags: InitScriptFlags): string {
   if (flags.audioNoise) {
     parts.push(buildAudioNoise({ noiseLevel: 0.002 }));
   }
-  if (typeof flags.hardwareConcurrency === "number" && flags.hardwareConcurrency > 0) {
+  if (
+    typeof flags.hardwareConcurrency === "number" &&
+    flags.hardwareConcurrency > 0
+  ) {
     parts.push(buildHardwareConcurrency({ value: flags.hardwareConcurrency }));
   }
   if (flags.webrtcGuard) {

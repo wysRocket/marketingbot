@@ -37,6 +37,24 @@ describe("resolveProxyForSession", () => {
     expect(proxy?.server).toBe("http://gw.dataimpulse.com:10000");
   });
 
+  it("normalizes DataImpulse MostLogin socks5 proxies to http for Patchright", () => {
+    const proxy = resolveProxyForSession({
+      runner: "local",
+      mostloginProxy: {
+        protocol: "socks5",
+        host: "gw.dataimpulse.com",
+        port: 10000,
+        proxyUsername: "u",
+        proxyPassword: "p",
+      },
+      fallbackProxy: undefined,
+    });
+
+    expect(proxy?.server).toBe("http://gw.dataimpulse.com:10000");
+    expect(proxy?.username).toBe("u");
+    expect(proxy?.password).toBe("p");
+  });
+
   it("throws on railway when no proxy available", () => {
     expect(() =>
       resolveProxyForSession({

@@ -20,7 +20,14 @@ export interface LoadedCatalog {
     source: ProfileSource;
     sessionStatePolicy: "cache-only" | "identity-sticky";
     mostloginProxy?: unknown;
-    patchrightProfile: { id: string; name: string; config: Record<string, unknown> };
+    launchArgs?: string[];
+    initScriptFlags?: Record<string, boolean | number>;
+    initScript?: string;
+    patchrightProfile: {
+      id: string;
+      name: string;
+      config: Record<string, unknown>;
+    };
   }>;
 }
 
@@ -34,9 +41,13 @@ async function loadMostLoginSafely(
   }
 }
 
-export async function loadCatalog(input: LoadCatalogInput): Promise<LoadedCatalog> {
+export async function loadCatalog(
+  input: LoadCatalogInput,
+): Promise<LoadedCatalog> {
   const mostloginResult =
-    input.requestedSource === "generator" ? null : await loadMostLoginSafely(input);
+    input.requestedSource === "generator"
+      ? null
+      : await loadMostLoginSafely(input);
 
   const snapshot = await readCatalogSnapshot(input.snapshotPath);
 

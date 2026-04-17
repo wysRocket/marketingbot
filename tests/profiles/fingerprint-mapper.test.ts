@@ -17,10 +17,16 @@ describe("mapMostLoginProfile", () => {
       },
     } as any);
 
-    expect(mapped.patchrightProfile.config.viewport).toEqual({ width: 1920, height: 1080 });
+    expect(mapped.patchrightProfile.config.viewport).toEqual({
+      width: 1920,
+      height: 1080,
+    });
     expect(mapped.patchrightProfile.config.locale).toBe("en-US");
     expect(mapped.patchrightProfile.config.timezoneId).toBe("America/New_York");
-    expect(mapped.patchrightProfile.config.geolocation).toEqual({ latitude: 40.71, longitude: -74.0 });
+    expect(mapped.patchrightProfile.config.geolocation).toEqual({
+      latitude: 40.71,
+      longitude: -74.0,
+    });
   });
 
   it("omits geolocation when not enabled", () => {

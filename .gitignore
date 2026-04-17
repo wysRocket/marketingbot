@@ -9,3 +9,4 @@ telemetry/
 .profile-cache/
 .extensions/
 coverage/
+.tmp-mostlogin-cloudflared.yml

@@ -6,6 +6,31 @@ export interface RunnerProxyConfig {
   password?: string;
 }
 
+function normalizeMostLoginProxyProtocol(input: {
+  protocol?: string;
+  host?: string;
+  port?: number;
+  proxyUsername?: string;
+  proxyPassword?: string;
+}): string {
+  const protocol = input.protocol ?? "http";
+  const isAuthenticatedSocks5 =
+    protocol === "socks5" &&
+    Boolean(input.proxyUsername) &&
+    Boolean(input.proxyPassword);
+  const isDataImpulseGateway =
+    input.host === config.proxy.host && input.port === config.proxy.port;
+
+  // Patchright rejects authenticated socks5 proxies at launch, but the
+  // DataImpulse gateway we already use for fallback proxies is available over
+  // HTTP with the same credentials.
+  if (isAuthenticatedSocks5 && isDataImpulseGateway) {
+    return "http";
+  }
+
+  return protocol;
+}
+
 /**
  * @deprecated Use resolveProxyForSession instead.
  */
@@ -27,8 +52,9 @@ export function resolveProxyForSession(input: {
   fallbackProxy?: RunnerProxyConfig;
 }): RunnerProxyConfig | undefined {
   if (input.mostloginProxy?.host && input.mostloginProxy?.port) {
+    const protocol = normalizeMostLoginProxyProtocol(input.mostloginProxy);
     return {
-      server: `${input.mostloginProxy.protocol ?? "http"}://${input.mostloginProxy.host}:${input.mostloginProxy.port}`,
+      server: `${protocol}://${input.mostloginProxy.host}:${input.mostloginProxy.port}`,
       username: input.mostloginProxy.proxyUsername,
       password: input.mostloginProxy.proxyPassword,
     };

@@ -39,7 +39,11 @@
     ],
     "ritualsSectionSelector": "#rituals",
     "membersSectionSelector": "#members",
-    "pricingLinksSelector": "a[href*=\"/auth/sign-up?plan=\"]",
+    "pricingTierSelectors": [
+      "#members h3, #members h4",
+      "#members h2"
+    ],
+    "pricingLinksSelector": "a[href*=\"/app/settings\"]",
     "pricingPlanRegex": "plan=([a-z0-9-]+)",
     "footerLinksSelector": "footer a, .footer a",
     "requiredFooterPaths": [
@@ -57,7 +61,7 @@
     ],
     "footerContainerSelector": "footer",
     "footerLinkSelectorTemplate": "footer a[href*=\"{{path}}\"], .footer a[href*=\"{{path}}\"]",
-    "headingSelector": "h1"
+    "headingSelector": "h1, title"
   },
   "login": {
     "loginPath": "/auth/sign-in",
@@ -82,9 +86,12 @@
       "#members h3, #members h4",
       "#members h2"
     ],
-    "ctaSelector": "a[href*=\"/auth/sign-up?plan=\"]",
-    "ctaMustContain": "/auth/sign-up?plan=",
-    "signupExpectedPathIncludes": "/auth/sign-up",
+    "ctaSelector": "#members a[href*=\"/app/settings\"]",
+    "ctaMustContain": "/app/settings",
+    "ctaLandingPathIncludes": [
+      "/auth/sign-in",
+      "/app/settings"
+    ],
     "emailSelector": "input[type=\"email\"]",
     "nameSelector": "input[name*=\"name\" i], input[placeholder*=\"name\" i], input[type=\"text\"]",
     "passwordSelector": "input[type=\"password\"]",

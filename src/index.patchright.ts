@@ -6,14 +6,22 @@ import { chromium } from "patchright";
 import type { Page } from "playwright";
 import type { BrowserContext } from "patchright";
 import { dismissSimilarWebConsents } from "./extensions/dismissConsents";
+import { resolveExtensionBundle } from "./extensions/runtime";
 import { browseHomepage } from "./flows/browseHomepage";
 import { browseFooterLinks } from "./flows/browseFooterLinks";
 import { login } from "./flows/login";
 import { explorePricing } from "./flows/explorePricing";
 import { accountDashboard } from "./flows/accountDashboard";
 import { loadCatalog, type LoadedCatalog } from "./profiles/catalog";
-import { validateShardConfig, shardCatalogProfiles } from "./profiles/shard-assignment";
-import { resolveCacheDir, CACHE_ONLY_RESET_PATHS, IDENTITY_STICKY_RESET_PATHS } from "./profiles/persistence-policy";
+import {
+  validateShardConfig,
+  shardCatalogProfiles,
+} from "./profiles/shard-assignment";
+import {
+  resolveCacheDir,
+  CACHE_ONLY_RESET_PATHS,
+  IDENTITY_STICKY_RESET_PATHS,
+} from "./profiles/persistence-policy";
 import { resolveProxyForSession, type RunnerProxyConfig } from "./proxy";
 import { attachNetworkDebugger } from "./observability/networkDebug";
 import {
@@ -125,7 +133,6 @@ function stableStringHash(input: string): number {
   return hash;
 }
 
-
 // ---------------------------------------------------------------------------
 // Extension loader
 //
@@ -139,19 +146,24 @@ function stableStringHash(input: string): number {
 // the legacy --headless flag) and then injecting --headless=new ourselves.
 // ---------------------------------------------------------------------------
 const EXTENSIONS_DIR = path.join(process.cwd(), ".extensions");
+const EXTENSION_BUNDLE = resolveExtensionBundle({
+  extensionsDir: EXTENSIONS_DIR,
+  manifestPath: path.join(process.cwd(), "src", "extensions", "manifest.json"),
+  railwayEnvironment: Boolean(process.env.RAILWAY_ENVIRONMENT),
+  extensionSlugsEnv: process.env.PATCHRIGHT_EXTENSION_SLUGS,
+});
 
 function getExtensionPaths(): string[] {
-  try {
-    return fs
-      .readdirSync(EXTENSIONS_DIR)
-      .map((name) => path.join(EXTENSIONS_DIR, name))
-      .filter((p) => fs.statSync(p).isDirectory());
-  } catch {
-    return [];
-  }
+  return EXTENSION_BUNDLE.selectedPaths;
 }
 
 function buildChromiumArgs(): string[] {
+  return buildChromiumArgsForProfile();
+}
+
+let sharedBrowserExtraArgs: string[] = [];
+
+function buildChromiumArgsForProfile(extraArgs: string[] = []): string[] {
   const extensionPaths = getExtensionPaths();
   const extensionArgs =
     extensionPaths.length > 0
@@ -182,6 +194,7 @@ function buildChromiumArgs(): string[] {
     "--no-default-browser-check",
     "--blink-settings=imagesEnabled=false,loadsImagesAutomatically=false",
     "--use-mock-keychain",
+    ...extraArgs,
     ...extensionArgs,
   ];
 }
@@ -199,7 +212,7 @@ async function getSharedBrowser(): Promise<import("patchright").Browser> {
     sharedBrowserLaunchPromise = chromium
       .launch({
         headless: false, // --headless=new is passed via buildChromiumArgs() for extension support
-        args: buildChromiumArgs(),
+        args: buildChromiumArgsForProfile(sharedBrowserExtraArgs),
       })
       .then((browser) => {
         browser.once("disconnected", () => {
@@ -428,7 +441,7 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
     flows.push({
       name: "browseHomepage",
       run: async (page, label, ctx) => {
-        const result = await browseHomepage(page, SITE);
+        const result = await browseHomepage(page, SITE, ctx.policy);
         ctx.trackNavigation(page.url());
         ctx.addInteraction(3);
 
@@ -448,7 +461,7 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
     flows.push({
       name: "explorePricing",
       run: async (page, label, ctx) => {
-        const result = await explorePricing(page, SITE);
+        const result = await explorePricing(page, SITE, ctx.policy);
         ctx.trackNavigation(page.url());
         ctx.addInteraction(3);
 
@@ -464,7 +477,7 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
     flows.push({
       name: "browseFooterLinks",
       run: async (page, label, ctx) => {
-        const result = await browseFooterLinks(page, SITE);
+        const result = await browseFooterLinks(page, SITE, ctx.policy);
         ctx.trackNavigation(page.url());
         ctx.addInteraction(result.visited.length + 1);
 
@@ -539,9 +552,6 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
 // the userDataDir's credential files.
 // -------------------------------------------------------------------
 
-
-
-
 // -------------------------------------------------------------------
 // SESSION RUNNER
 //
@@ -567,9 +577,10 @@ async function runProfileSession(
     fs.mkdirSync(userDataDir, { recursive: true });
 
     // Wipe only proxy/identity state per policy; HTTP disk cache is preserved.
-    const resetPaths = profile.sessionStatePolicy === "identity-sticky"
-      ? IDENTITY_STICKY_RESET_PATHS
-      : CACHE_ONLY_RESET_PATHS;
+    const resetPaths =
+      profile.sessionStatePolicy === "identity-sticky"
+        ? IDENTITY_STICKY_RESET_PATHS
+        : CACHE_ONLY_RESET_PATHS;
     for (const rel of resetPaths) {
       const full = path.join(userDataDir, rel);
       if (fs.existsSync(full)) {
@@ -579,7 +590,7 @@ async function runProfileSession(
 
     context = await chromium.launchPersistentContext(userDataDir, {
       headless: true,
-      args: buildChromiumArgs(),
+      args: buildChromiumArgsForProfile(profile.launchArgs ?? []),
       ...profile.patchrightProfile.config,
       ...(proxy ? { proxy } : {}),
     });
@@ -587,12 +598,18 @@ async function runProfileSession(
 
   // No context.route() calls — Fetch.enable must stay inactive for cache to work.
 
+  if (profile.initScript) {
+    await context.addInitScript(profile.initScript);
+  }
+
   // Dismiss SimilarWeb consent tabs / pre-seed storage so the extension never
   // blocks session startup with welcome or options dialogs.
   await dismissSimilarWebConsents(context as unknown as BrowserContext);
 
   if (process.env.NETWORK_DEBUG === "1") {
-    await attachNetworkDebugger(context as unknown as BrowserContext).catch(() => {});
+    await attachNetworkDebugger(context as unknown as BrowserContext).catch(
+      () => {},
+    );
   }
 
   // Notify caller of the context handle so it can force-close on timeout.
@@ -663,8 +680,11 @@ async function runProfileSession(
     await TELEMETRY.persistSession({
       label,
       profileId: profile.id,
-      mostloginProfileId: profile.source === "mostlogin" ? profile.id : undefined,
+      mostloginProfileId:
+        profile.source === "mostlogin" ? profile.id : undefined,
       profileSource: profile.source,
+      extensionBundleHash: EXTENSION_BUNDLE.bundleHash,
+      extensionSlugs: EXTENSION_BUNDLE.selectedSlugs,
       sessionStatePolicy: profile.sessionStatePolicy,
       telemetry,
       policy: SESSION_POLICY,
@@ -693,14 +713,24 @@ async function main(): Promise<void> {
   console.log(`Starting Patchright bot for ${SITE.baseUrl}/ (${SITE.id})`);
   console.log(`[telemetry] JSONL: ${TELEMETRY.jsonPath}`);
   console.log(`[telemetry] CSV:   ${TELEMETRY.csvPath}`);
+  console.log(
+    `[extensions] selected=${EXTENSION_BUNDLE.selectedSlugs.join(", ") || "(none)"} hash=${EXTENSION_BUNDLE.bundleHash}`,
+  );
 
   // Load catalog once before the main loop (snapshot is refreshed periodically via the source)
   const catalog = await loadCatalog({
-    requestedSource: (process.env.PROFILE_SOURCE as "mostlogin" | "snapshot" | "generator") ?? "generator",
+    requestedSource:
+      (process.env.PROFILE_SOURCE as "mostlogin" | "snapshot" | "generator") ??
+      "generator",
     poolSize: POOL_SIZE,
-    snapshotPath: path.join(process.cwd(), ".profile-cache", "mostlogin-catalog.json"),
+    snapshotPath: path.join(
+      process.cwd(),
+      ".profile-cache",
+      "mostlogin-catalog.json",
+    ),
     allowGeneratorFallback: process.env.ALLOW_GENERATOR_FALLBACK === "1",
-    environment: process.env.NODE_ENV === "production" ? "production" : "development",
+    environment:
+      process.env.NODE_ENV === "production" ? "production" : "development",
   });
 
   const { shardCount, shardIndex } = validateShardConfig({
@@ -709,10 +739,22 @@ async function main(): Promise<void> {
     replicaId: RAILWAY_REPLICA_ID,
   });
 
-  const shardPoolProfiles = shardCatalogProfiles(catalog.profiles, shardCount, shardIndex);
+  const shardPoolProfiles = shardCatalogProfiles(
+    catalog.profiles,
+    shardCount,
+    shardIndex,
+  );
+  sharedBrowserExtraArgs = Array.from(
+    new Set(
+      shardPoolProfiles.flatMap((profile) => profile.launchArgs ?? []),
+    ),
+  );
 
   console.log(
     `[replica] id=${RAILWAY_REPLICA_ID} shard=${shardIndex + 1}/${shardCount}`,
+  );
+  console.log(
+    `[startup] site-profile=${SITE.id} profile-source=${catalog.source} shard-profiles=${shardPoolProfiles.map((profile) => profile.id).join(", ") || "(none)"}`,
   );
   console.log(
     `[config] pool: ${POOL_SIZE} | concurrency: ${MAX_CONCURRENT} (min=${minConcurrent}) | rounds: ${TOTAL_ROUNDS} | mode: ${SHARED_BROWSER_MODE ? "shared-browser" : "persistent-context"} | round-timeout-ms: ${ROUND_TIMEOUT_MS} | session-timeout-ms: ${SESSION_TIMEOUT_MS} | launch-stagger-ms: ${SESSION_LAUNCH_STAGGER_MS} | alive-log-ms: ${ALIVE_LOG_INTERVAL_MS} | backoff-step: ${backoffStep} | recovery-step: ${recoveryStep}/${recoveryRounds} round(s)\n`,
@@ -744,7 +786,10 @@ async function main(): Promise<void> {
           );
         }
 
-        const selected = pickRandom(shardPoolProfiles, Math.min(dynamicConcurrent, shardPoolProfiles.length));
+        const selected = pickRandom(
+          shardPoolProfiles,
+          Math.min(dynamicConcurrent, shardPoolProfiles.length),
+        );
 
         // Fetch one distinct sticky proxy per session from DataImpulse's pool.
         // Each entry is a real unique IP — unlike the _session- username trick
@@ -763,23 +808,19 @@ async function main(): Promise<void> {
         }
 
         console.log(
-          `--- Round ${round + 1}/${TOTAL_ROUNDS} | shard ${shardIndex + 1}/${shardCount} | shard-pool: ${shardPoolProfiles.length} | concurrency: ${selected.length} | profiles: ${selected.map((p) => p.id).join(", ")} ---`,
+          `--- Round ${round + 1}/${TOTAL_ROUNDS} | shard ${shardIndex + 1}/${shardCount} | shard-pool: ${shardPoolProfiles.length} | concurrency: ${selected.length} | profiles: ${selected.map((p) => p.id).join(", ")} | extensions: ${EXTENSION_BUNDLE.selectedSlugs.join(", ") || "(none)"} | bundle: ${EXTENSION_BUNDLE.bundleHash} ---`,
         );
 
         const sessions = selected.map((profile, index) => {
           const label = `P${index + 1}`;
           const rawProxy = proxyList[index];
-          const proxy = (() => {
-            try {
-              return resolveProxyForSession({
-                runner: process.env.RAILWAY_ENVIRONMENT ? "railway" : "local",
-                mostloginProxy: profile.mostloginProxy as Parameters<typeof resolveProxyForSession>[0]["mostloginProxy"],
-                fallbackProxy: rawProxy,
-              });
-            } catch {
-              return rawProxy;
-            }
-          })();
+          const proxy = resolveProxyForSession({
+            runner: process.env.RAILWAY_ENVIRONMENT ? "railway" : "local",
+            mostloginProxy: profile.mostloginProxy as Parameters<
+              typeof resolveProxyForSession
+            >[0]["mostloginProxy"],
+            fallbackProxy: rawProxy,
+          });
           return new Promise<void>((resolve) =>
             setTimeout(resolve, index * Math.max(0, SESSION_LAUNCH_STAGGER_MS)),
           )

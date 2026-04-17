@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       libdbus-1-3 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 \
       libxrandr2 libgbm1 libasound2 libpango-1.0-0 libcairo2 \
       libx11-6 libx11-xcb1 libxcb1 libxext6 libxi6 libxrender1 libxtst6 \
+      unzip \
       fonts-liberation ca-certificates wget curl \
     && rm -rf /var/lib/apt/lists/*
 

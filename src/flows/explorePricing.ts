@@ -4,11 +4,17 @@ import { randomBrowse, randomDelay } from "../actions/interact";
 import { pickReferrerEntry, applyUtmParams } from "../actions/referrer";
 import { getAll, getLinks } from "../actions/scrape";
 import {
+  matchesPathIncludes,
+  resolveBrowseWindow,
+  waitForHydratedContent,
+} from "./utils";
+import {
   assertFlowEnabled,
   getActiveSiteProfile,
   resolveSiteUrl,
   type SiteProfile,
 } from "../sites";
+import type { SessionPolicy } from "../session/complexSession";
 const MAX_SIGNUP_VISITS = Number.parseInt(
   process.env.FLOW_MAX_SIGNUP_VISITS ?? "1",
   10,
@@ -34,12 +40,13 @@ export interface PricingResult {
  *
  * Validation:
  *   - At least 1 pricing tier is present
- *   - Every CTA href contains /auth/sign-up?plan=
- *   - Visits multiple /auth/sign-up?plan=... pages without submitting
+ *   - Every CTA href matches the configured landing intent
+ *   - Visits multiple CTA destinations without submitting a real form
  */
 export async function explorePricing(
   page: Page,
   site: SiteProfile = getActiveSiteProfile(),
+  policy?: Pick<SessionPolicy, "minDurationMs" | "maxTopUpCycles">,
 ): Promise<PricingResult> {
   assertFlowEnabled(site, "explorePricing");
 
@@ -59,6 +66,10 @@ export async function explorePricing(
     document.querySelector(selector)?.scrollIntoView({ behavior: "smooth" });
   }, cfg.pricingSectionSelector);
   await page.waitForTimeout(1_000);
+  await waitForHydratedContent(page, {
+    selectors: [cfg.pricingSectionSelector, cfg.ctaSelector, ...cfg.tierNameSelectors],
+    timeoutMs: 30_000,
+  });
 
   // ----- 2. Read pricing tier headings -----
   let tierNames: string[] = [];
@@ -90,11 +101,13 @@ export async function explorePricing(
   }
 
   // ----- 5. Validate: all CTAs must link to sign-up with a selected plan -----
-  const ctaLinksValid = ctaLinks.every((href) =>
-    href.includes(cfg.ctaMustContain),
-  );
+  const ctaLinksValid =
+    ctaLinks.length > 0 &&
+    ctaLinks.every((href) =>
+      href.includes(cfg.ctaMustContain),
+    );
 
-  // ----- 6. Visit up to N distinct plan sign-up pages and interact safely -----
+  // ----- 6. Visit up to N distinct CTA pages and interact safely -----
   const signupVisitsLimit =
     Number.isFinite(MAX_SIGNUP_VISITS) && MAX_SIGNUP_VISITS > 0
       ? MAX_SIGNUP_VISITS
@@ -103,14 +116,24 @@ export async function explorePricing(
     .filter((href) => href.includes(cfg.ctaMustContain))
     .slice(0, signupVisitsLimit);
 
+  if (uniquePlanLinks.length === 0) {
+    throw new Error(`No pricing CTA links found for selector: ${cfg.ctaSelector}`);
+  }
+
+  const browseWindow = resolveBrowseWindow(
+    policy,
+    { minMs: 12_000, maxMs: 22_000 },
+    { minMs: 2_500, maxMs: 5_000 },
+  );
+
   for (let i = 0; i < uniquePlanLinks.length; i++) {
     const target = uniquePlanLinks[i];
     await navigate(page, target, resolveSiteUrl(site, cfg.pricingPath));
 
     const landingUrl = page.url();
-    if (!landingUrl.includes(cfg.signupExpectedPathIncludes)) {
+    if (!matchesPathIncludes(landingUrl, cfg.ctaLandingPathIncludes)) {
       throw new Error(
-        `Expected ${cfg.signupExpectedPathIncludes} landing for plan link ${target}, got: ${landingUrl}`,
+        `Expected one of ${cfg.ctaLandingPathIncludes.join(", ")} for pricing CTA ${target}, got: ${landingUrl}`,
       );
     }
 
@@ -141,7 +164,7 @@ export async function explorePricing(
     await randomDelay(page, 300, 900);
     // Minimum 12 s to guarantee GA4's 10-second engagement timer fires and
     // session_engaged=1 is included in the next event sent from this page.
-    await randomBrowse(page, 12_000, 22_000);
+    await randomBrowse(page, browseWindow.minMs, browseWindow.maxMs);
   }
 
   return { tiers, ctaLinksValid };

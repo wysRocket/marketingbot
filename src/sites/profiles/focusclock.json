@@ -87,7 +87,9 @@
     ],
     "ctaSelector": "#services a[href*=\"#tab-\"]",
     "ctaMustContain": "#tab-",
-    "signupExpectedPathIncludes": "#tab-",
+    "ctaLandingPathIncludes": [
+      "#tab-"
+    ],
     "emailSelector": "input[type=\"email\"]",
     "nameSelector": "input[name*=\"name\" i], input[placeholder*=\"name\" i], input[type=\"text\"]",
     "passwordSelector": "input[type=\"password\"]",

@@ -31,9 +31,7 @@ export async function dismissAllConsents(context: AnyContext): Promise<void> {
   // Pre-seed SimilarWeb storage via service worker
   try {
     let worker =
-      context.serviceWorkers().length > 0
-        ? context.serviceWorkers()[0]
-        : null;
+      context.serviceWorkers().length > 0 ? context.serviceWorkers()[0] : null;
 
     if (!worker) {
       worker = await Promise.race([

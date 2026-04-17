@@ -7,7 +7,10 @@ export async function dismissHoneyConsents(context: AnyContext): Promise<void> {
       .waitForLoadState("domcontentloaded", { timeout: 5_000 })
       .then(() => {
         const url = page.url();
-        if (url.includes("joinhoney.com") && (url.includes("welcome") || url.includes("signup"))) {
+        if (
+          url.includes("joinhoney.com") &&
+          (url.includes("welcome") || url.includes("signup"))
+        ) {
           void page.close();
         }
       })

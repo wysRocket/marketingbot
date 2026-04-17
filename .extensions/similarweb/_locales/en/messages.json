@@ -1,9 +1,9 @@
 {
   "name": {
-    "message": "Similarweb - Website Traffic & SEO Checker"
+    "message": "Similarweb - Website Traffic, AI Traffic & SEO Checker"
   },
   "description": {
-    "message": "Instant website analysis and SEO metrics at your fingertips."
+    "message": "Instant website analysis, AI traffic insights, and SEO metrics at your fingertips."
   },
   "data_view_desktop_only": {
     "message": "Desktop Only"

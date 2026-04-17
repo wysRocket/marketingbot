@@ -3,12 +3,14 @@ import { navigate, blockHeavyAssets } from "../actions/navigate";
 import { randomBrowse, randomDelay } from "../actions/interact";
 import { pickReferrerEntry, applyUtmParams } from "../actions/referrer";
 import { getText } from "../actions/scrape";
+import { resolveBrowseWindow, waitForHydratedContent } from "./utils";
 import {
   assertFlowEnabled,
   getActiveSiteProfile,
   resolveSiteUrl,
   type SiteProfile,
 } from "../sites";
+import type { SessionPolicy } from "../session/complexSession";
 
 export interface FooterPageVisit {
   path: string;
@@ -34,11 +36,17 @@ export interface BrowseFooterLinksResult {
 export async function browseFooterLinks(
   page: Page,
   site: SiteProfile = getActiveSiteProfile(),
+  policy?: Pick<SessionPolicy, "minDurationMs" | "maxTopUpCycles">,
 ): Promise<BrowseFooterLinksResult> {
   assertFlowEnabled(site, "browseFooterLinks");
 
   const cfg = site.browseFooterLinks;
   await blockHeavyAssets(page);
+  const browseWindow = resolveBrowseWindow(
+    policy,
+    { minMs: 10_000, maxMs: 32_000 },
+    { minMs: 2_000, maxMs: 5_000 },
+  );
 
   const visited: FooterPageVisit[] = [];
   // Start from the homepage once, then move directly between legal pages to
@@ -46,6 +54,10 @@ export async function browseFooterLinks(
   const referrer = pickReferrerEntry();
   const homeUrl = applyUtmParams(resolveSiteUrl(site, cfg.homePath), referrer);
   await navigate(page, homeUrl, referrer.url || undefined);
+  await waitForHydratedContent(page, {
+    selectors: [cfg.footerContainerSelector],
+    timeoutMs: 30_000,
+  });
   await page.waitForTimeout(800);
 
   for (let i = 0; i < cfg.footerPaths.length; i++) {
@@ -63,12 +75,21 @@ export async function browseFooterLinks(
       const linkSelector = cfg.footerLinkSelectorTemplate
         .split("{{path}}")
         .join(path);
-      await page.waitForSelector(linkSelector, {
-        state: "visible",
-        timeout: 8_000,
-      });
-      await page.click(linkSelector);
-      await page.waitForLoadState("domcontentloaded", { timeout: 20_000 });
+      const link = page.locator(linkSelector).first();
+      const clickedFromFooter = await link
+        .waitFor({
+          state: "visible",
+          timeout: 20_000,
+        })
+        .then(() => true)
+        .catch(() => false);
+      if (clickedFromFooter) {
+        await link.click();
+        await page.waitForLoadState("domcontentloaded", { timeout: 20_000 });
+      } else {
+        await navigate(page, resolveSiteUrl(site, path), page.url());
+        await page.waitForLoadState("domcontentloaded", { timeout: 20_000 });
+      }
     } else {
       // ----- 2. Next legal pages via direct in-site navigation -----
       await navigate(page, resolveSiteUrl(site, path), page.url());
@@ -76,8 +97,10 @@ export async function browseFooterLinks(
     }
 
     // ----- 3. Read page content and simulate organic browsing -----
-    const heading = await getText(page, cfg.headingSelector).catch(() => "");
-    await randomBrowse(page, 10_000, 32_000);
+    const heading =
+      (await getText(page, cfg.headingSelector).catch(() => "")) ||
+      (await page.title().catch(() => ""));
+    await randomBrowse(page, browseWindow.minMs, browseWindow.maxMs);
     await randomDelay(page, 500, 1_300);
 
     const currentUrl = page.url();

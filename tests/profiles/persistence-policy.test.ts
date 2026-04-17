@@ -19,4 +19,28 @@ describe("persistence-policy", () => {
     expect(resolveCacheDir()).toBe("/custom/cache");
     delete process.env.PATCHRIGHT_CACHE_DIR;
   });
+
+  it("resolveCacheDir uses Railway volume path in Railway environments", () => {
+    expect(
+      resolveCacheDir({
+        PATCHRIGHT_CACHE_DIR: undefined,
+        RAILWAY_ENVIRONMENT: "production",
+      }),
+    ).toBe("/data/marketingbot-patchright");
+  });
+
+  it("resolveCacheDir uses a workspace-local cache path outside Railway", () => {
+    expect(
+      resolveCacheDir({
+        PATCHRIGHT_CACHE_DIR: undefined,
+        RAILWAY_ENVIRONMENT: undefined,
+      }),
+    ).toBe(
+      require("node:path").join(
+        process.cwd(),
+        ".profile-cache",
+        "patchright",
+      ),
+    );
+  });
 });

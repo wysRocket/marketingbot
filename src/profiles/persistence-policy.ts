@@ -22,5 +22,13 @@ export const IDENTITY_STICKY_RESET_PATHS = [
 export function resolveCacheDir(
   env: Record<string, string | undefined> = process.env,
 ): string {
-  return env.PATCHRIGHT_CACHE_DIR ?? path.join("/data", "marketingbot-patchright");
+  if (env.PATCHRIGHT_CACHE_DIR) {
+    return env.PATCHRIGHT_CACHE_DIR;
+  }
+
+  if (env.RAILWAY_ENVIRONMENT) {
+    return path.join("/data", "marketingbot-patchright");
+  }
+
+  return path.join(process.cwd(), ".profile-cache", "patchright");
 }

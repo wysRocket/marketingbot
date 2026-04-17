@@ -14,7 +14,11 @@ export function validateShardConfig(input: {
   const shardIndex =
     shardCount === 1 ? 0 : Number.parseInt(input.shardIndexRaw ?? "0", 10);
 
-  if (!Number.isFinite(shardIndex) || shardIndex < 0 || shardIndex >= shardCount) {
+  if (
+    !Number.isFinite(shardIndex) ||
+    shardIndex < 0 ||
+    shardIndex >= shardCount
+  ) {
     throw new Error(
       `Invalid shard index ${input.shardIndexRaw} for shard count ${shardCount}`,
     );

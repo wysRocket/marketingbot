@@ -10,8 +10,12 @@ describe("buildMostLoginClientConfig", () => {
     });
 
     expect(config.baseURL).toBe("https://mostlogin.example.com");
-    expect((config.headers as Record<string, string>)["X-Tunnel-Bearer"]).toBe("worker-secret");
-    expect((config.headers as Record<string, string>)["Authorization"]).toBeUndefined();
+    expect((config.headers as Record<string, string>)["X-Tunnel-Bearer"]).toBe(
+      "worker-secret",
+    );
+    expect(
+      (config.headers as Record<string, string>)["Authorization"],
+    ).toBeUndefined();
   });
 
   it("uses local host with Authorization header when no tunnel url", () => {
@@ -21,6 +25,8 @@ describe("buildMostLoginClientConfig", () => {
     });
 
     expect(config.baseURL).toBe("http://192.168.1.1:30898");
-    expect((config.headers as Record<string, string>)["Authorization"]).toBe("local-api-key");
+    expect((config.headers as Record<string, string>)["Authorization"]).toBe(
+      "local-api-key",
+    );
   });
 });

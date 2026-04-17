@@ -2,29 +2,29 @@
   {
     "slug": "similarweb",
     "chromeStoreId": "hoklmmgfnpapgjgcpechhaamimifchmp",
-    "expectedName": "Similarweb - Traffic Rank & Website Analysis",
-    "pinnedVersion": "PENDING",
-    "sha256": "PENDING"
+    "expectedName": "Similarweb - Website Traffic, AI Traffic & SEO Checker",
+    "pinnedVersion": "6.12.19",
+    "sha256": "7ad6b86f8abc37f3bc948349d27956d9ddfb2a2e699a35c1e1d61368e433755d"
   },
   {
     "slug": "honey",
     "chromeStoreId": "bmnlcjabgnpnenekpadlanbbkooimhnj",
-    "expectedName": "Honey: Automatic Coupons & Rewards",
-    "pinnedVersion": "PENDING",
-    "sha256": "PENDING"
+    "expectedName": "Honey: Automated Coupons & Rewards",
+    "pinnedVersion": "19.0.3",
+    "sha256": "f344914d589116639a00925feb9073eed63a1cb2b04320ea0751c5005148b0a5"
   },
   {
     "slug": "hola",
     "chromeStoreId": "gkojfkhlekighikafcpjkiklfbnlmeio",
-    "expectedName": "Hola VPN - The Website Unblocker",
-    "pinnedVersion": "PENDING",
-    "sha256": "PENDING"
+    "expectedName": "Hola VPN - Your Website Unblocker",
+    "pinnedVersion": "1.251.527",
+    "sha256": "311e9f31f653c7fe3313817c6b60fb65ebea78a63d5f1fec0ccf917c200e097e"
   },
   {
     "slug": "keywords-everywhere",
     "chromeStoreId": "hbapdpeemoojbophdfndmlgdhppljgmp",
     "expectedName": "Keywords Everywhere - Keyword Tool",
-    "pinnedVersion": "PENDING",
-    "sha256": "PENDING"
+    "pinnedVersion": "11.51",
+    "sha256": "70c327574add412efe14390746cac27965132d9d181a6be5a31275df75ea3c36"
   }
 ]

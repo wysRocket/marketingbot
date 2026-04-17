@@ -20,13 +20,14 @@ export function mapMostLoginProfile(detail: any): {
   const locale = detail.fingerprint?.languages?.split(",")[0];
 
   const hwConcurrency =
-    typeof detail.hardware_concurrency === "number" ? detail.hardware_concurrency : 4;
-  const isResidential =
-    detail.proxy?.type === "residential" || Boolean(detail.real_ip);
+    typeof detail.fingerprint?.hardwareConcurrency === "number"
+      ? detail.fingerprint.hardwareConcurrency
+      : 4;
+  const isResidential = detail.proxy?.type === "residential";
   const initScriptFlags: InitScriptFlags = {
-    canvasNoise: true,
-    webglNoise: true,
-    audioNoise: true,
+    canvasNoise: Boolean(detail.fingerprint?.canvasNoise),
+    webglNoise: Boolean(detail.fingerprint?.webglNoise),
+    audioNoise: Boolean(detail.fingerprint?.audioContextNoise),
     hardwareConcurrency: hwConcurrency,
     webrtcGuard: isResidential,
   };
