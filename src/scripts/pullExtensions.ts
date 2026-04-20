@@ -168,9 +168,40 @@ export async function materializeExtensions(input: {
   }
 }
 
+export async function hasMaterializedExtensions(input: {
+  manifestPath: string;
+  outputDir: string;
+}): Promise<boolean> {
+  const manifest: ManifestEntry[] = JSON.parse(
+    await fs.readFile(input.manifestPath, "utf8"),
+  );
+
+  for (const entry of manifest) {
+    const extensionDir = path.join(input.outputDir, entry.slug);
+    const manifestFile = path.join(extensionDir, "manifest.json");
+
+    try {
+      const stats = await fs.stat(extensionDir);
+      if (!stats.isDirectory()) {
+        return false;
+      }
+      await fs.access(manifestFile);
+    } catch {
+      return false;
+    }
+  }
+
+  return manifest.length > 0;
+}
+
 async function main(): Promise<void> {
   const manifestPath = path.join(__dirname, "../extensions/manifest.json");
   const outputDir = path.join(process.cwd(), ".extensions");
+
+  if (await hasMaterializedExtensions({ manifestPath, outputDir })) {
+    console.log(`Using preloaded extensions from ${outputDir}`);
+    return;
+  }
 
   await materializeExtensions({
     manifestPath,

@@ -1,9 +1,10 @@
-import { mkdtemp, readFile, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   downloadCrx,
+  hasMaterializedExtensions,
   materializeExtensions,
   resolveLocalizedManifestValue,
   validateManifestEntry,
@@ -172,5 +173,35 @@ describe("validateManifestEntry", () => {
       name: "Correct Name",
       version: "1.0.0",
     });
+  });
+
+  it("recognizes a complete preloaded extension bundle", async () => {
+    const tempDir = await mkdtemp(path.join(os.tmpdir(), "extensions-test-"));
+    const manifestPath = path.join(tempDir, "manifest.json");
+    const outputDir = path.join(tempDir, ".extensions");
+
+    await writeFile(
+      manifestPath,
+      JSON.stringify([
+        {
+          slug: "similarweb",
+          chromeStoreId: "hoklmmgfnpapgjgcpechhaamimifchmp",
+          expectedName: "Correct Name",
+          pinnedVersion: "1.0.0",
+          sha256: "same-hash",
+        },
+      ]),
+      "utf8",
+    );
+    await mkdir(path.join(outputDir, "similarweb"), { recursive: true });
+    await writeFile(
+      path.join(outputDir, "similarweb", "manifest.json"),
+      JSON.stringify({ name: "Correct Name", version: "1.0.0" }),
+      "utf8",
+    );
+
+    await expect(
+      hasMaterializedExtensions({ manifestPath, outputDir }),
+    ).resolves.toBe(true);
   });
 });

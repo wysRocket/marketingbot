@@ -65,6 +65,8 @@ You need the service already linked, or you need to pass `--service <service-nam
 
 Railway cannot reach the desktop MostLogin API directly. The smoke lane therefore depends on a local bridge that stays online while Railway is running:
 
+For a durable macOS setup, use the `launchd` runbook in [docs/mostlogin-bridge-launchd.md](/Users/wysmyfree/Projects/marketingbot/docs/mostlogin-bridge-launchd.md).
+
 1. Start the authenticated local proxy against the desktop MostLogin API:
 
 ```bash
@@ -96,10 +98,12 @@ railway variable set \
 curl -sS -X POST https://mostlogin.example.com/api/profile/getProfiles \
   -H 'Content-Type: application/json' \
   -H 'X-Tunnel-Bearer: replace_me' \
-  --data '{"pageNo":1,"pageSize":1}'
+  --data '{"page":1,"pageSize":1}'
 ```
 
-The response should be HTTP 200 with a non-empty `data.list` payload. If the local proxy or `cloudflared` process dies, `PROFILE_SOURCE=mostlogin` on Railway will stop resolving profiles.
+The response should be HTTP 200 with a non-empty `list` payload. If the local proxy or `cloudflared` process dies, `PROFILE_SOURCE=mostlogin` on Railway will stop resolving profiles.
+
+The upstream desktop app must also stay open and logged in. If MostLogin is not running locally, the bridge will stay up but return upstream connection failures.
 
 ### Required existing secrets
 
@@ -184,6 +188,46 @@ Reference signals from the validated deployment on 2026-04-17:
 - telemetry-equivalent runtime summary logged `3 page(s)`, `13 interaction(s)`, and no warning indicators
 
 Treat this as the baseline acceptance signal before widening concurrency or adding heavier browse policies.
+
+## Controlled medium lane
+
+Once the smoke lane is stable, the next safe step is a slightly heavier but still controlled Railway profile:
+
+```bash
+railway variable set \
+  PROFILE_SOURCE=mostlogin \
+  PATCHRIGHT_EXTENSION_SLUGS=similarweb \
+  BOT_SITE_PROFILE=eurocookflow \
+  CONCURRENCY=1 \
+  MIN_CONCURRENCY=1 \
+  POOL_SIZE=2 \
+  TOTAL_ROUNDS=2 \
+  SESSION_TIMEOUT_MS=420000 \
+  ROUND_TIMEOUT_MS=540000 \
+  SESSION_LAUNCH_STAGGER_MS=0 \
+  ALIVE_LOG_INTERVAL_MS=10000 \
+  SKIP_IP_CHECK=1 \
+  FLOW_MIN_DURATION_MS=60000 \
+  FLOW_MIN_UNIQUE_PAGES=4 \
+  FLOW_TOPUP_MAX_CYCLES=3
+```
+
+Why this lane is still controlled:
+
+- concurrency stays at `1`
+- the extension bundle stays fixed at `similarweb`
+- the identity source stays fixed at `mostlogin`
+- only session depth and sequential session count increase
+
+Reference activation from 2026-04-19:
+
+- startup logged `pool: 2`
+- startup logged `rounds: 2`
+- startup kept `profile-source=mostlogin`
+- startup kept `selected=similarweb`
+- fallback proxy pool still logged `[proxy] fetched 1/1 proxies`
+
+Use this lane before any concurrency increase. If warnings appear here, fix them before widening traffic volume.
 
 If `FLOW_TELEMETRY_DIR=/data/telemetry` is configured on a persistent volume, confirm the JSONL/CSV output includes:
 

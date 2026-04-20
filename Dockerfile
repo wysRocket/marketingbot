@@ -19,6 +19,7 @@ RUN npm install
 RUN npx patchright install chromium --with-deps
 
 COPY src/ ./src/
+COPY mostlogin-extensions/ ./.extensions/
 RUN npx ts-node src/scripts/pullExtensions.ts
 
 ENV NODE_ENV=production

@@ -37,6 +37,46 @@ async function writeManifest(tempDir: string): Promise<string> {
   return manifestPath;
 }
 
+async function writeFullManifest(tempDir: string): Promise<string> {
+  const manifestPath = path.join(tempDir, "manifest.json");
+  await writeFile(
+    manifestPath,
+    JSON.stringify([
+      {
+        slug: "similarweb",
+        chromeStoreId: "sw",
+        expectedName: "Similarweb",
+        pinnedVersion: "6.12.19",
+        sha256: "hash-sw",
+      },
+      {
+        slug: "honey",
+        chromeStoreId: "hn",
+        expectedName: "Honey",
+        pinnedVersion: "19.0.3",
+        sha256: "hash-hn",
+      },
+      {
+        slug: "hola",
+        chromeStoreId: "hl",
+        expectedName: "Hola",
+        pinnedVersion: "1.251.527",
+        sha256: "hash-hl",
+      },
+      {
+        slug: "keywords-everywhere",
+        chromeStoreId: "ke",
+        expectedName: "Keywords Everywhere",
+        pinnedVersion: "11.51",
+        sha256: "hash-ke",
+      },
+    ]),
+    "utf8",
+  );
+
+  return manifestPath;
+}
+
 async function writeExtensions(
   tempDir: string,
   slugs: string[],
@@ -93,6 +133,38 @@ describe("resolveExtensionBundle", () => {
 
     expect(bundle.selectedSlugs).toEqual(["similarweb"]);
     expect(bundle.selectedPaths).toEqual([
+      path.join(extensionsDir, "similarweb"),
+    ]);
+  });
+
+  it("loads a full imported bundle on Railway when PATCHRIGHT_EXTENSION_SLUGS is explicit", async () => {
+    const tempDir = await mkdtemp(path.join(os.tmpdir(), "extension-bundle-"));
+    const manifestPath = await writeFullManifest(tempDir);
+    const extensionsDir = await writeExtensions(tempDir, [
+      "honey",
+      "similarweb",
+      "hola",
+      "keywords-everywhere",
+    ]);
+
+    const bundle = resolveExtensionBundle({
+      extensionsDir,
+      manifestPath,
+      railwayEnvironment: true,
+      extensionSlugsEnv:
+        "similarweb,honey,hola,keywords-everywhere",
+    });
+
+    expect(bundle.selectedSlugs).toEqual([
+      "hola",
+      "honey",
+      "keywords-everywhere",
+      "similarweb",
+    ]);
+    expect(bundle.selectedPaths).toEqual([
+      path.join(extensionsDir, "hola"),
+      path.join(extensionsDir, "honey"),
+      path.join(extensionsDir, "keywords-everywhere"),
       path.join(extensionsDir, "similarweb"),
     ]);
   });
