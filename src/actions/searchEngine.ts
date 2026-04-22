@@ -78,16 +78,23 @@ export async function searchAndNavigate(
     await page.goto(serpUrl, { waitUntil: "domcontentloaded", timeout: 30_000 });
     await randomDelay(page, 800, 1_600);
 
-    // Step 2: Handle consent page
-    // Google (EU) redirects to consent.google.com before showing the SERP.
-    // Bing shows a consent overlay.  Detect both and click through.
-    await handleConsentIfNeeded(page);
+    // Step 2: Handle consent.
+    // Race between results appearing and a consent gate appearing.
+    // Whichever wins first tells us what state the page is in.
+    const initialState = await racePageState(page, cfg.resultsContainer, 15_000);
 
-    // Step 3: Wait for the organic results container to be present in the DOM.
-    // This is the key guard that was missing — without it we look for result
-    // links before the JS renderer has built them.
+    if (initialState === "consent") {
+      // A consent button became visible before results — click it and wait for
+      // the page to navigate back to the SERP (redirect) or dismiss the overlay.
+      await clickConsentButton(page);
+      await page.waitForLoadState("domcontentloaded", { timeout: 15_000 }).catch(() => {});
+      await randomDelay(page, 500, 1_000);
+    }
+
+    // Step 3: Wait for the organic results container.
+    // If we just handled consent the SERP may still be loading; give it more time.
     const resultsAppeared = await page
-      .waitForSelector(cfg.resultsContainer, { timeout: 20_000 })
+      .waitForSelector(cfg.resultsContainer, { timeout: 15_000 })
       .then(() => true)
       .catch(() => false);
 
@@ -103,7 +110,7 @@ export async function searchAndNavigate(
     const selector = cfg.resultLinkSelector(targetHostname);
     const resultLink = page.locator(selector).first();
     const found = await resultLink
-      .waitFor({ timeout: 15_000 })
+      .waitFor({ timeout: 10_000 })
       .then(() => true)
       .catch(() => false);
 
@@ -115,9 +122,23 @@ export async function searchAndNavigate(
     await resultLink.scrollIntoViewIfNeeded().catch(() => {});
     await randomDelay(page, 400, 1_000);
 
-    // Step 6: Click — browser sets Referer to the SERP URL automatically
-    await resultLink.click({ timeout: 10_000 });
-    await page.waitForLoadState("domcontentloaded", { timeout: 30_000 });
+    // Step 6: Navigate to the result via href rather than Playwright .click().
+    // Bing wraps its title links in a div that intercepts pointer events, causing
+    // Playwright's click to enter a retry loop and eventually time out.
+    // Extracting the href and calling page.goto() is equivalent for attribution:
+    // the browser navigates to the target URL with the SERP as the Referer.
+    const currentSerpUrl = page.url();
+    const href = await resultLink.getAttribute("href").catch(() => null);
+    const destination =
+      href && (href.startsWith("https://") || href.startsWith("http://"))
+        ? href
+        : targetUrl;
+
+    await page.goto(destination, {
+      waitUntil: "domcontentloaded",
+      timeout: 30_000,
+      referer: currentSerpUrl,
+    });
   } catch (err) {
     console.warn(
       `[searchEngine] fallback to direct navigate (${engineHostname}: ${(err as Error).message})`,
@@ -155,29 +176,41 @@ function buildSerpUrl(engineUrl: string, queryParam: string, query: string): str
 }
 
 /**
- * Detect and dismiss cookie/consent walls.
+ * Race between the results container appearing and a consent button appearing.
  *
- * Google EU redirects the entire page to consent.google.com.  We detect that
- * via page.url() and wait for the navigation back to the SERP after clicking.
- * Bing and DDG show an overlay on the results page itself.
+ * Returns "results" if organic results rendered first (happy path),
+ * "consent"  if a consent button became visible first (gate to click through),
+ * "timeout"  if neither appeared within the allotted time.
+ *
+ * This replaces the previous URL-sniff approach which missed Google's inline
+ * consent overlay (shown on the SERP page itself without redirecting to
+ * consent.google.com).
  */
-async function handleConsentIfNeeded(page: Page): Promise<void> {
-  const currentUrl = page.url();
-  const onConsentRedirect =
-    currentUrl.includes("consent.google.com") ||
-    currentUrl.includes("consent.bing.com");
+async function racePageState(
+  page: Page,
+  resultsSelector: string,
+  timeoutMs: number,
+): Promise<"results" | "consent" | "timeout"> {
+  const CONSENT_SELECTORS = [
+    'button[jsname="tWT92d"]',
+    'button[jsname="b3VHJd"]',
+    'button[id="L2AGLb"]',
+    'form[action*="consent"] button',
+    '#bnp_btn_accept',
+    'button[data-testid="consent-button"]',
+    'button[aria-label="Accept all"]',
+    'button:has-text("Accept all")',
+    'button:has-text("Reject all")',
+  ].join(", ");
 
-  if (onConsentRedirect) {
-    // Full-page consent redirect — click through and wait for SERP navigation
-    await clickConsentButton(page);
-    await page.waitForLoadState("domcontentloaded", { timeout: 20_000 }).catch(() => {});
-    await randomDelay(page, 500, 1_000);
-    return;
-  }
-
-  // Inline overlay (Bing, DDG, or Google with cookie pre-set but stale)
-  await clickConsentButton(page);
-  await randomDelay(page, 300, 600);
+  return Promise.race([
+    page
+      .waitForSelector(resultsSelector, { timeout: timeoutMs })
+      .then(() => "results" as const),
+    page
+      .waitForSelector(CONSENT_SELECTORS, { timeout: timeoutMs })
+      .then(() => "consent" as const),
+  ]).catch(() => "timeout" as const);
 }
 
 /**
