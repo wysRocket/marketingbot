@@ -1,0 +1,2077 @@
+{
+  "appName" : {
+    "message" : "BlockSite: блокируйте веб-сайты и не отвлекайтесь",
+    "description" : "The title of the application, displayed in the web store."
+  },
+  "appShortName" : {
+    "message" : "BlockSite",
+    "description" : "The short title of the application"
+  },
+  "appDesc" : {
+    "message" : "Увеличьте продуктивность: настройте черный список, плановую блокировку сайтов и защиту паролем.",
+    "description" : "The description of the application, displayed in the web store."
+  },
+  "blockSitesTab" : {
+    "message" : "Блокировать сайты"
+  },
+  "focusModeTab" : {
+    "message" : "Режим фокусировки"
+  },
+  "InsightsTab" : {
+    "message" : "Insights"
+  },
+  "optionsMenuBlockSites" : {
+    "message" : "Блокировать сайты"
+  },
+  "optionsMenuFocusMode" : {
+    "message" : "Режим фокусировки"
+  },
+  "optionsMenuPasswordProtection" : {
+    "message" : "Защита паролем"
+  },
+  "optionsMenuBlockByWords" : {
+    "message" : "Блокировка по словам"
+  },
+  "optionsMenuCustomizeBlockPage" : {
+    "message" : "Пользовательская страница блокировки"
+  },
+  "optionsMenuCategories" : {
+    "message" : "категории"
+  },
+  "optionsMenuSettings" : {
+    "message" : "Настройки"
+  },
+  "optionsMenuAbout" : {
+    "message" : "О приложении"
+  },
+  "optionsMenuBlocking" : {
+    "message" : "Блокировка"
+  },
+  "optionsMenuSyncWithOtherDevices" : {
+    "message" : "Синхронизация с другими устройствами"
+  },
+  "optionsMenuSyncedOn" : {
+    "message" : "вкл."
+  },
+  "optionsMenuSyncedOff" : {
+    "message" : "откл."
+  },
+  "optionsMenuBannerTitleCategory" : {
+    "message" : "Блокировать по категории"
+  },
+  "optionsMenuBannerSubtitleCategory" : {
+    "message" : "Экономьте больше времени, блокируя тысячи сайтов одним щелчком мыши."
+  },
+  "optionsMenuBannerTitleGoUnlimited" : {
+    "message" : "Получите больше. Без ограничений"
+  },
+  "optionsMenuBannerSubtitleGoUnlimited" : {
+    "message" : "Будьте первым, кто насладится нашими новейшими функциями"
+  },
+  "optionsMenuBannerTitleCustomizeBlockPage" : {
+    "message" : "Настроить блочную страницу"
+  },
+  "optionsMenuBannerSubtitleCustomizeBlockPage" : {
+    "message" : "Выберите изображения и тексты, чтобы сделать их своими"
+  },
+  "optionsMenuBannerTitleUnlimitedBlockList" : {
+    "message" : "Неограниченный список блокировки"
+  },
+  "optionsMenuBannerSubtitleUnlimitedBlockList" : {
+    "message" : "Добавьте столько сайтов, сколько хотите, в свой черный список"
+  },
+  "optionsMenuBannerTitlePasswordProtection" : {
+    "message" : "Защита паролем"
+  },
+  "optionsMenuBannerSubtitlePasswordProtection" : {
+    "message" : "Затруднить удаление сайтов из черного списка"
+  },
+  "optionsMenuBannerTitleSlack" : {
+    "message" : "Slack-приложение BlockSite"
+  },
+  "optionsMenuBannerSubtitleSlack" : {
+    "message" : "Автоматически включать режим «Не беспокоить» в режиме фокусировки"
+  },
+  "optionsMenuBannerTitleInsights" : {
+    "message" : "Insights"
+  },
+  "optionsMenuBannerSubtitleInsights" : {
+    "message" : "Узнайте о своих тенденциях в Интернете и о том, как вы проводите время в Интернете. "
+  },
+  "optionsMenuBannerTitleMobile" : {
+    "message" : "Приложение BlockSite на вашем смартфоне"
+  },
+  "optionsMenuBannerSubtitleMobile" : {
+    "message" : "Отсканируйте QR-код и оставайтесь продуктивными в пути"
+  },
+  "optionsMenuBannerTitleDesktop" : {
+    "message" : "BlockSite для Windows БЕТА"
+  },
+  "optionsMenuBannerSubtitleDesktop" : {
+    "message" : "Блокируйте трату времени на сайты в Edge, Firefox и Chrome с помощью одного приложения!"
+  },
+  "optionsMenuBannerCTAGoUnlimited" : {
+    "message" : "GO UNLIMITED"
+  },
+  "optionsMenuBannerCTATryNow" : {
+    "message" : "Попробуй"
+  },
+  "optionsMenuBannerTitleSignup" : {
+    "message" : "Зарегистрируйтесь для большей продуктивности"
+  },
+  "optionsMenuBannerSubtitleSignup" : {
+    "message" : "Получайте вознаграждения и синхронизируйте свой черный список на всех устройствах."
+  },
+  "optionMenuBannerCTASignupNow" : {
+    "message" : "Зарегистрироваться сейчас"
+  },
+  "tagTextPremium": {
+    "message": "PREMIUM"
+  },
+  "tagTextQuickTip" : {
+    "message" : "БЫСТРАЯ ПОДСКАЗКА"
+  },
+  "tagTextLatestNews" : {
+    "message" : "ПОСЛЕДНИЕ НОВОСТИ"
+  },
+  "mandatoryConsentTitle1" : {
+    "message" : "Пожалуйста, сделайте выбор в"
+  },
+  "mandatoryConsentTitle2" : {
+    "message" : "чтобы перейти на BlockSite."
+  },
+  "mandatoryConsentSubtitle" : {
+    "message" : "Чтобы BlockSite мог обнаруживать и блокировать страницы с контентом для взрослых, нам необходимо ваше разрешение на доступ к информации на сайтах, которые вы посещаете. Пожалуйста, нажмите «Согласен», чтобы разрешить этот доступ и использование этой информации, как описано в нашем"
+  },
+  "mandatoryConsentPrivacyPolicy" : {
+    "message" : "Политика конфиденциальности"
+  },
+  "mandatoryConsentAgree" : {
+    "message" : "Принимаю"
+  },
+  "mandatoryConsentDisagree" : {
+    "message" : "Не принимаю"
+  },
+  "mandatoryConsentDisclaimer" : {
+    "message" : "Если выбрать «Не принимаю», BlockSite работает, но функция блокировки содержимого для взрослых недоступна."
+  },
+  "blockSitesOptionsTitle" : {
+    "message" : "Блокировать сайты"
+  },
+  "blockSitesOptionsSubtitle" : {
+    "message" : "Блокировать сайты постоянно или по графику"
+  },
+  "blockSitesOptionsSearchBarPlaceholder" : {
+    "message" : "Введите адрес (например, facebook.com)"
+  },
+  "blockSitesOptionsTableTitle" : {
+    "message" : "ЗАБЛОКИРОВАННЫЕ САЙТЫ"
+  },
+  "blockSitesOptionsOnboardingText" : {
+    "message" : "Добавьте в список сайты, которые необходимо блокировать."
+  },
+  "optionsNotificationIncorrectURL" : {
+    "message" : "Неправильный URL-адрес"
+  },
+  "optionsNotificationSiteAdded" : {
+    "message" : "Сайт добавлен"
+  },
+  "optionsNotificationURLAlreadyExist" : {
+    "message" : "URL уже существует"
+  },
+  "optionsNotificationEmptyList" : {
+    "message" : "Список пуст! Нечего экспортировать."
+  },
+  "optionsNotificationListExported" : {
+    "message" : "Ваш список был успешно экспортирован."
+  },
+  "optionsNotificationListImported" : {
+    "message" : "Ваш список был успешно импортирован."
+  },
+  "optionsNotificationIncorrectFileStructure" : {
+    "message" : "Неправильная файловая структура. Пожалуйста, попробуйте экспортировать текущий список, чтобы увидеть требуемый формат csv."
+  },
+  "blockSitesBlockedTitle" : {
+    "message" : "Сайт сейчас заблокирован"
+  },
+  "blockSitesBlockSite" : {
+    "message" : "Блокировать этот сайт"
+  },
+  "blockSitesNotAvailable" : {
+    "message" : "Недоступно на этой странице"
+  },
+  "blockSitesEditBlockList" : {
+    "message" : "Изменить черный список"
+  },
+  "blockSitesRefreshPage" : {
+    "message" : "Обновить страницу"
+  },
+  "blockSitesBlockedTitleNow" : {
+    "message" : "Сайт добавлен в ваш черный список"
+  },
+  "goPremium" : {
+    "message" : "Перейти Премиум"
+  },
+  "blockWordsOptionsTitle" : {
+    "message" : "Блокировка по словам"
+  },
+  "blockWordsOptionsSubtitle" : {
+    "message" : "Блокировать URL-адреса, содержащие определенные слова"
+  },
+  "blockWordsOptionsTableTitle" : {
+    "message" : "Заблокированные слова"
+  },
+  "blockWordsOptionsSearchBarPlaceholder" : {
+    "message" : "Введите слово или фразу"
+  },
+  "optionsNotificationWordAlreadyExist" : {
+    "message" : "Слово уже существует"
+  },
+  "contextMenusBlockThisLink" : {
+    "message" : "Блокировать эту ссылку"
+  },
+  "contextMenusAllowThisLink" : {
+    "message" : "Разрешить эту ссылку"
+  },
+  "contextMenusBlockThisSite" : {
+    "message" : "Блокировать этот сайт"
+  },
+  "contextMenusAllowThisSite" : {
+    "message" : "Разрешить этот сайт"
+  },
+  "contextMenusBlockThisLinkWorkMode" : {
+    "message" : "Добавить адрес ссылки в список режима фокусировки"
+  },
+  "contextMenusAllowThisLinkWorkMode" : {
+    "message" : "Разрешить эту ссылку для списка режима фокусировки"
+  },
+  "contextMenusBlockThisSiteWorkMode" : {
+    "message" : "Добавить сайт в список режима фокусировки"
+  },
+  "contextMenusAllowThisSiteWorkMode" : {
+    "message" : "Разрешить этому сайту список режима фокусировки"
+  },
+  "tooltipExportList" : {
+    "message" : "Экспортировать список"
+  },
+  "tooltipImportList" : {
+    "message" : "Импортировать список"
+  },
+  "importPopupTitle" : {
+    "message" : "Объединить или переопределить текущий список?"
+  },
+  "importPopupOverride" : {
+    "message" : "Переопределить"
+  },
+  "importPopupMerge" : {
+    "message" : "Объединить"
+  },
+  "whitelistModeTitle" : {
+    "message" : "Режим «Белый список»"
+  },
+  "whitelistInfoToolTip" : {
+    "message" : "Блокировать все сайты, кроме тех, которые находятся в вашем белом списке"
+  },
+  "whitelistPopUpTitle" : {
+    "message" : "Продолжить?"
+  },
+  "whitelistPopUpDescription" : {
+    "message" : "Будут заблокированы все сайты, кроме указанных в списке"
+  },
+  "popupQuestionApprove" : {
+    "message" : "Да"
+  },
+  "popupQuestionCancel" : {
+    "message" : "Нет"
+  },
+  "blockedTabMessage1" : {
+    "message" : "Вы добавили %domain% в список заблокированных сайтов. Наверно, это неспроста."
+  },
+  "blockedTabMessage2" : {
+    "message" : "Вы заблокировали %domain%, чтобы не отвлекаться. Возвращайтесь к работе."
+  },
+  "blockedTabMessage3" : {
+    "message" : "Фух! Так гораздо лучше. Возвращайтесь к своему занятию."
+  },
+  "blockedTabMessage4" : {
+    "message" : "%domain% заблокирован. Добавьте другие отвлекающие вас сайты, чтобы успеть сделать еще больше."
+  },
+  "blockedTabMessage5" : {
+    "message" : "Вы заблокировали слово «%domain%». Давайте оставим все, как есть."
+  },
+  "blockedTabMessage6" : {
+    "message" : "Этого сайта нет в белом списке. Наверно, на это есть веские причины."
+  },
+  "motivationalText1" : {
+    "message" : "Даже и не думайте!"
+  },
+  "motivationalText2" : {
+    "message" : "Никаких шансов!"
+  },
+  "motivationalText3" : {
+    "message" : "Зря стараетесь…"
+  },
+  "motivationalText4" : {
+    "message" : "Вы шутите?"
+  },
+  "motivationalText5" : {
+    "message" : "Чем это вы занимаетесь?"
+  },
+  "motivationalText6" : {
+    "message" : "Хватит проказничать!"
+  },
+  "motivationalText7" : {
+    "message" : "Щенки. Странные коричневые родинки. Джастин Бибер."
+  },
+  "motivationalText8" : {
+    "message" : "Тараканы. Отрезанные конечности. Джон Гудман."
+  },
+  "motivationalText9" : {
+    "message" : "Бабушка. Коби Брайант. Хирургические процедуры."
+  },
+  "motivationalText10" : {
+    "message" : "Перехвачено!"
+  },
+  "motivationalText11" : {
+    "message" : "Заблокировано!"
+  },
+  "motivationalText12" : {
+    "message" : "Зря стараешься, дружище."
+  },
+  "focusModeOptionsTitle" : {
+    "message" : "Режим фокусировки"
+  },
+  "focusModeOptionsSubtitle" : {
+    "message" : "Чтобы сосредоточиться на задаче и работать более продуктивно, используйте режим фокусировки, чтобы установить время работы и интервалы перерывов. Добавьте сайты в свой черный список, чтобы не отвлекаться во время фокус-сессии"
+  },
+  "aboutTitle" : {
+    "message" : "О BlockSite"
+  },
+  "aboutSubtitle" : {
+    "message" : "BlockSite позволяет сосредоточиться и повысить свою производительность. Легко блокируйте отвлекающие или вредоносные сайты. Не требует усилий воли."
+  },
+  "aboutCreateBlockListsTitle" : {
+    "message" : "Создание списков блокировок"
+  },
+  "aboutCreateBlockListsSubtitle" : {
+    "message" : "Добавляйте в список сайты и страницы для блокирования простым и удобным способом. Предлагается автоматическое перенаправление на безопасные и полезные сайты. Можно также создавать списки полезных сайтов и переключаться с блокировки отдельных сайтов на доступ только к разрешенным сайтам."
+  },
+  "aboutBlockCategoriesTitle" : {
+    "message" : "Блокировать Категории"
+  },
+  "aboutBlockCategoriesSubtitle" : {
+    "message" : "Быстро заблокируйте целую категорию с помощью переключателя кнопки."
+  },
+  "aboutRightClickMenuTitle" : {
+    "message" : "Контекстуальное меню"
+  },
+  "aboutRightClickMenuSubtitle" : {
+    "message" : "При нажатии правой кнопки мыши на любом сайте открывается меню быстрого доступа. Блокируйте сайты за несколько секунд, чтобы вовремя начать работу и сосредоточиться на цели."
+  },
+  "aboutIncognitoTitle" : {
+    "message" : "Режим инкогнито (доступен только в Chrome)"
+  },
+  "aboutIncognitoSubtitle" : {
+    "message" : "Все функции BlockSite также работают в режиме инкогнито – нужно только разрешить их применение. Для того чтобы это сделать, выполните следующие указания: "
+  },
+  "aboutIncognitoCTA" : {
+    "message" : "Режим инкогнито"
+  },
+  "aboutKeepInternetSafeTitle" : {
+    "message" : "Держите свой интернет в безопасности"
+  },
+  "aboutKeepInternetSafeSubtitle" : {
+    "message" : "Включите блокировку всех сайтов для взрослых одним нажатием мыши в расширенном меню. "
+  },
+  "aboutScheduleTitle" : {
+    "message" : "Блокировка в определенное время"
+  },
+  "aboutScheduleSubtitle" : {
+    "message" : "Выбор дней и промежутков времени для включения Block Site. Настраивайте определенные промежутки времени, в зависимости от рабочего графика (например с 09:00 по 17:00), чтобы не затягивать с работой или учебой."
+  },
+  "aboutPasswordTitle" : {
+    "message" : "Установка пароля"
+  },
+  "aboutPasswordSubtitle" : {
+    "message" : "Для ограничения доступа к параметрам BlockSite задайте пароль на странице настроек или включите параметр доступа к заблокированным сайтам при помощи пароля."
+  },
+  "aboutRateUsTitle" : {
+    "message" : "Понравилось? Расскажите всем!"
+  },
+  "aboutRateUsSubtitle" : {
+    "message" : "Если Block Site оказался вам полезным, поставьте нам оценку в интернет-магазине Chrome. Будем вам за это очень благодарны.\n\n"
+  },
+  "aboutTermsOfUse" : {
+    "message" : "Условия использования"
+  },
+  "aboutPrivacyPolicy" : {
+    "message" : "Политика конфиденциальности"
+  },
+  "aboutContactSupport" : {
+    "message" : "КОНТАКТНАЯ ПОДДЕРЖКА"
+  },
+  "aboutHowToEnableInIncognitoTitle" : {
+    "message" : "Включение в режиме инкогнито"
+  },
+  "aboutHowToEnableInIncognitoSubtitle" : {
+    "message" : "Чтобы включить блокировку сайта в режиме инкогнито Chrome, выполните следующие действия:"
+  },
+  "aboutHowToEnableInIncognitoStep1" : {
+    "message" : "Перейдите по адресу chrome://extensions"
+  },
+  "aboutHowToEnableInIncognitoStep2" : {
+    "message" : "Найдите BlockSite"
+  },
+  "aboutHowToEnableInIncognitoStep3" : {
+    "message" : "Отметьте «Разрешить в инкогнито»"
+  },
+  "optionsPageRedirectButton" : {
+    "message" : "Перенаправлять"
+  },
+  "optionsPageRedirectTitle" : {
+    "message" : " Перенаправить заблокированные страницы"
+  },
+  "optionsPageRedirectPlaceHolder" : {
+    "message" : "Адрес (например, google.com)"
+  },
+  "optionsPageRedirectOK" : {
+    "message" : "OK"
+  },
+  "optionsPageRedirectRemove" : {
+    "message" : "Удалить"
+  },
+  "optionsPageRedirectTooltipNotSet" : {
+    "message" : "Нажмите, чтобы задать сайт для перенаправления"
+  },
+  "optionsPageRedirectTooltipSet" : {
+    "message" : "Перенаправлять на $URL$",
+    "placeholders" : {
+      "url" : {
+        "content" : "1 $",
+        "example" : "https://example.com"
+      }
+    }
+  },
+  "cantRedirectToWorkModeBlockedSite" : {
+    "message" : "Ой! Этот сайт перенаправления заблокирован вашим списком режима фокусировки"
+  },
+  "cantRedirectToBlockedSite" : {
+    "message" : "К сожалению! Этот сайт перенаправления заблокирован вашим списком заблокированных сайтов"
+  },
+  "cantRedirectToBlockedWord" : {
+    "message" : "К сожалению! Этот сайт перенаправления заблокирован вашим списком заблокированных слов"
+  },
+  "optionsPageScheduleButton" : {
+    "message" : "График"
+  },
+  "optionsPageScheduleEveryDay" : {
+    "message" : "Ежедневно"
+  },
+  "optionsPageScheduleSetSchedule" : {
+    "message" : "Задать график"
+  },
+  "optionsPageScheduleRemoveSchedule" : {
+    "message" : "Удалить"
+  },
+  "optionsPageScheduleSetTimes" : {
+    "message" : "ЗАДАТЬ ВРЕМЯ"
+  },
+  "optionsPageScheduleSetBlocking" : {
+    "message" : "Настройте график блокировки"
+  },
+  "optionsPageScheduleAddInterval" : {
+    "message" : "Добавить интервал"
+  },
+  "optionsPageScheduleTo" : {
+    "message" : "к"
+  },
+  "optionsPageScheduleSelectDays" : {
+    "message" : "ВЫБРАННЫЕ ДНИ"
+  },
+  "optionsPageScheduleClickDay" : {
+    "message" : "(Нажмите на день для отключения)"
+  },
+  "blockByCategoryTitleGambling" : {
+    "message" : "Не позволяйте дому всегда побеждать."
+  },
+  "blockByCategoryTextGambling" : {
+    "message" : "К сожалению! %domain%  недоступен , как это связано с азартными играми , который является категория вы ' ве заблокирован. Оставайся сосредоточенным, у тебя есть это."
+  },
+  "blockByCategoryTitleAdult" : {
+    "message" : "Тараканы. Отрезанные конечности. Джон Гудман."
+  },
+  "blockByCategoryTextAdult" : {
+    "message" : "К сожалению! %domain%  недоступен , как это связано с взрослым , который является категорией вы ' ве заблокирован. Оставайся сосредоточенным, у тебя есть это."
+  },
+  "blockByCategoryTitleSports" : {
+    "message" : "Сохраняйте спокойствие и отключайтесь."
+  },
+  "blockByCategoryTextSports" : {
+    "message" : "К сожалению! %domain%  недоступен , как это связано со спортом , который является категорией вы ' ве заблокирован. Оставайся сосредоточенным, у тебя есть это."
+  },
+  "blockByCategoryTitleSocialNetworksAndOnlineCommunities" : {
+    "message" : "Никаких постов, никаких симпатий, просто жизнь."
+  },
+  "blockByCategoryTextSocialNetworksAndOnlineCommunities" : {
+    "message" : "К сожалению! %domain%  недоступен , как это связано с социальной , которая является категорией вы ' ве заблокирован. Оставайся сосредоточенным, у тебя есть это."
+  },
+  "blockByCategoryTitleNewsAndMedia" : {
+    "message" : "Отсутствие новостей - хорошая новость."
+  },
+  "blockByCategoryTextNewsAndMedia" : {
+    "message" : "К сожалению! %domain%  недоступен , как это связано с новостями , который является категория вы ' ве заблокирован. Оставайся сосредоточенным, у тебя есть это."
+  },
+  "blockByCategoryTitleShopping" : {
+    "message" : "Не потраченный доллар - заработанный доллар!"
+  },
+  "blockByCategoryTextShopping" : {
+    "message" : "Ой! %domain% недоступен, так как он связан с покупками, которые вы заблокировали. Сосредоточьтесь, у вас есть это."
+  },
+  "categoriesOptionsTitle" : {
+    "message" : "категории"
+  },
+  "categoriesOptionsSubtitle" : {
+    "message" : "Пожалуйста, выберите, какие категории блокировать"
+  },
+  "settingsOptionTitle" : {
+    "message" : "Настройки"
+  },
+  "settingsOptionSubtitle" : {
+    "message" : ""
+  },
+  "categoriesAdult" : {
+    "message" : "Взрослый"
+  },
+  "categoriesSocialNetworksAndOnlineCommunities" : {
+    "message" : "Социальное"
+  },
+  "categoriesNewsAndMedia" : {
+    "message" : "Новости"
+  },
+  "categoriesSports" : {
+    "message" : "виды спорта"
+  },
+  "categoriesGambling" : {
+    "message" : "Азартные игры"
+  },
+  "categoriesShopping" : {
+    "message" : "Покупки"
+  },
+  "privacySettingsTitle" : {
+    "message" : "Включить блокировку \"Блокировать по категории\""
+  },
+  "privacySettingsSubtitle" : {
+    "message" : "Позволяет BlockSite получать доступ к вашим посещаемым URL-адресам, IP-адресу, операционной системе и информации браузера для использования в соответствии с нашими "
+  },
+  "privacySettingsPrivacyPolicy" : {
+    "message" : "Политика конфиденциальности."
+  },
+  "settingsEnableBlockSiteShortcutTitle" : {
+    "message" : "Включите опцию быстрого доступа BlockSite, используя правую кнопку мыши"
+  },
+  "settingsEnableBlockSiteShortcutSubtitle" : {
+    "message" : "Добавьте сайты в свой черный список или список режима фокусировки, щелкнув правой кнопкой мыши и выбрав меню BlockSite на веб-сайте."
+  },
+  "settingsShowMotivationalTitle" : {
+    "message" : "Показать заблокированные страницы мотивационные изображения"
+  },
+  "settingsShowMotivationalSubtitle" : {
+    "message" : "Включение этого покажет изображения на заблокированном сайте. Отключение покажет белый фон."
+  },
+  "settingsSyncTitle" : {
+    "message" : "Синхронизация с другими устройствами"
+  },
+  "settingsSyncSubtitle" : {
+    "message" : "Сделайте резервную копию настроек и заблокированного списка вашего текущего расширения в облаке или синхронизируйте до 4 других устройств с наших платформ Android и / или расширений при входе в систему под той же учетной записью."
+  },
+  "settingsGeneralHeader" : {
+    "message" : "ГЕНЕРАЛЬНЫЙ"
+  },
+  "settingsViewHeader" : {
+    "message" : "Посмотреть"
+  },
+  "settingsSyncHeader" : {
+    "message" : "Синхронизация"
+  },
+  "settingEnableFocusModeFaviconTitle" : {
+    "message" : "Показывать оставшееся время на значке"
+  },
+  "settingEnableFocusModeFaviconSubtitle" : {
+    "message" : "Включите это, чтобы показывать время, оставшееся в текущем интервале, на значке расширения."
+  },
+  "settingEnableSyncStatusTitle" : {
+    "message" : "Показать контекстное меню страницы параметров синхронизации"
+  },
+  "settingEnableSyncStatusSubtitle" : {
+    "message" : "Включите, чтобы отображать ярлык для простого включения / отключения синхронизации с мобильными и / или другими расширениями."
+  },
+  "customizedBlockPageNonPremiumTry" : {
+    "message" : "Попробуйте BlockSite Unlimited БЕСПЛАТНО"
+  },
+  "customizeBlockPageTitle" : {
+    "message" : "Пользовательская страница блокировки"
+  },
+  "customizeBlockPageSubtitle" : {
+    "message" : "Настройте свои страницы блоков с собственными изображениями и текстом. Перед сохранением проверьте изменения на экране ниже в реальном времени!"
+  },
+  "customizeBlockPageSetBackground" : {
+    "message" : "УСТАНОВИТЬ ФОН ИЗОБРАЖЕНИЯ"
+  },
+  "customizeBlockPageSetPageText" : {
+    "message" : "НАСТРОЙКА СТРАНИЦЫ ТЕКСТА"
+  },
+  "customizeBlockPageBlocksiteText" : {
+    "message" : "Текст BlockSite"
+  },
+  "customizeBlockPageCustomizeText" : {
+    "message" : "Настроить текст"
+  },
+  "customizeBlockPageSetTitleText" : {
+    "message" : "Введите текст заголовка"
+  },
+  "customizeBlockPageSetSubTitleText" : {
+    "message" : "Введите текст субтитров"
+  },
+  "customizeBlockPageTextColor" : {
+    "message" : "Цвет текста"
+  },
+  "customizeBlockPageWhite" : {
+    "message" : "белый"
+  },
+  "customizeBlockPageBlack" : {
+    "message" : "черный"
+  },
+  "customizeBlockPageUploadImage" : {
+    "message" : "ЗАГРУЗИТЬ ПОЛЬЗОВАТЕЛЬСКОЕ ИЗОБРАЖЕНИЕ"
+  },
+  "customizeBlockPageResetImage" : {
+    "message" : "Вернуться к BlockSite Смешные изображения"
+  },
+  "customizeBlockPageCurrentBackground" : {
+    "message" : "Текущий фон"
+  },
+  "customizeBlockPageUserCustomImage" : {
+    "message" : "Пользовательский фон"
+  },
+  "customizeBlockPageBlockSiteFunnyImage" : {
+    "message" : "Забавные изображения BlockSite"
+  },
+  "customizeBlockPagePreviewYourChanges" : {
+    "message" : "Предварительный просмотр изменений перед сохранением"
+  },
+  "customizeBlockPageResetToDefault" : {
+    "message" : "ВОССТАНОВЛЕНИЕ ЗНАЧЕНИЙ ПО УМОЛЧАНИЮ"
+  },
+  "customizeBlockPageApplyChanges" : {
+    "message" : "ПРИМЕНЯТЬ ИЗМЕНЕНИЯ"
+  },
+  "customizeBlockPageChangesApplied" : {
+    "message" : "Ваши изменения были применены."
+  },
+  "customizeBlockPageChangesFailed" : {
+    "message" : "Что-то пошло не так. Пожалуйста, попробуйте еще раз."
+  },
+  "customizeBlockPageApplyChangeTitle" : {
+    "message" : "Применять изменения?"
+  },
+  "customizeBlockPageApplyChangeSubTitle" : {
+    "message" : "Примените изменения, сделанные на заблокированной странице, нажав «Да»."
+  },
+  "customizeBlockPageApplyChangeNo" : {
+    "message" : "Нет"
+  },
+  "customizeBlockPageApplyChangeYes" : {
+    "message" : "Да"
+  },
+  "insightsCategory_social" : {
+    "message" : "Социальное"
+  },
+  "insightsCategory_news" : {
+    "message" : "Новости"
+  },
+  "insightsCategory_sports" : {
+    "message" : "виды спорта"
+  },
+  "insightsCategory_other" : {
+    "message" : "Другие"
+  },
+  "insightsCategory_entertainment" : {
+    "message" : "Развлечение"
+  },
+  "insightsCategory_shopping" : {
+    "message" : "Покупки"
+  },
+  "insightsCategory_games" : {
+    "message" : "Игры"
+  },
+  "insightsTitle" : {
+    "message" : "Insights"
+  },
+  "insightsDescription" : {
+    "message" : "Посмотрите, как вы проводите время в Интернете, чтобы быть более продуктивным"
+  },
+  "insightsTopVisit" : {
+    "message" : "Самые посещаемые категории"
+  },
+  "insightsTimeSaved" : {
+    "message" : "Сколько времени я сэкономил?"
+  },
+  "insightsErrorTitle" : {
+    "message" : "Ой! Что-то пошло не так!"
+  },
+  "insightsErrorDescription" : {
+    "message" : "Не волнуйся! Мы прилагаем все усилия, чтобы решить эту проблему, поэтому повторите попытку позже."
+  },
+  "insightsEmptyTitle" : {
+    "message" : "Пока нет идей. Повторите попытку через 24 часа."
+  },
+  "insightsEmptyDescription" : {
+    "message" : "Мы все еще рассчитываем вашу статистику, пожалуйста, зайдите в ближайшее время, чтобы узнать обновления!"
+  },
+  "optionsLockedTitle" : {
+    "message" : "Параметры BlockSite заблокированы"
+  },
+  "optionsLockedSubtitle" : {
+    "message" : "Для доступа к странице параметров BlockSite введите пароль"
+  },
+  "enterYourPassword" : {
+    "message" : "Введите пароль"
+  },
+  "forgotPassword" : {
+    "message" : "Забыли пароль?"
+  },
+  "wrongPassword" : {
+    "message" : "Неправильно! Повторите попытку."
+  },
+  "goBackToWork" : {
+    "message" : "Вернуться к работе"
+  },
+  "goBack" : {
+    "message" : "Вернуться"
+  },
+  "customizePage" : {
+    "message" : "Настроить страницу"
+  },
+  "enterPasswordToGainAccess" : {
+    "message" : "Введите пароль для доступа"
+  },
+  "popupLockedTitle" : {
+    "message" : "BlockSite заблокирован"
+  },
+  "popupLockedSubtitle" : {
+    "message" : "Для доступа к настройкам расширения введите пароль"
+  },
+  "protectionSettingsSaved" : {
+    "message" : "Настройки защиты сохранены"
+  },
+  "setUpEmailAndPass" : {
+    "message" : "Для активации настройте адрес эл. почты и пароль"
+  },
+  "enterYourEmail" : {
+    "message" : "Введите адрес эл. почты"
+  },
+  "saveEmailSettings" : {
+    "message" : "Сохранить"
+  },
+  "emailVerificationTitle1" : {
+    "message" : "BlockSite отправит вам электронное письмо со ссылкой для подтверждения вашего адреса электронной почты."
+  },
+  "emailVerificationTitle2" : {
+    "message" : "Ваш адрес электронной почты будет использоваться только в целях защиты паролем."
+  },
+  "updateEmailAndPassword" : {
+    "message" : "Обновить адрес эл. почты и пароль"
+  },
+  "settingsNotSaved" : {
+    "message" : "Настройки не сохранены"
+  },
+  "settingsChangedTitle1" : {
+    "message" : "Для активации функций дополнительной защиты сохраните адрес эл. почты и пароль."
+  },
+  "leaveWithoutSaving" : {
+    "message" : "Выйти без сохранения"
+  },
+  "addEmailAndPassword" : {
+    "message" : "Добавить адрес эл. почты и пароль"
+  },
+  "passwordVerificationWarning" : {
+    "message" : "Защита паролем не включена. Чтобы включить, откройте ссылку в электронном письме в том же окне браузера, которое вы изначально использовали для настройки своей учетной записи."
+  },
+  "verificationCheckYourEmail" : {
+    "message" : "Для включения воспользуйтесь ссылкой подтверждения в отправленном вам сообщении."
+  },
+  "verificationDidntReceiveEmail" : {
+    "message" : "Если вы не получили письмо,"
+  },
+  "verificationClickToResend" : {
+    "message" : "пожалуйста, нажмите здесь, чтобы отправить повторно."
+  },
+  "passwordProtectionPreferences" : {
+    "message" : "Параметры защиты паролем"
+  },
+  "passwordProtectionOptionBlockSettings" : {
+    "message" : "Защитите предпочтительные параметры BlockSite и страницу расширения $ BROWSER $ паролем",
+    "placeholders" : {
+      "browser" : {
+        "content" : "1 $"
+      }
+    }
+  },
+  "passwordProtectionOptionBlockBlockedPage" : {
+    "message" : "Требовать пароль для доступа к заблокированным сайтам"
+  },
+  "passwordProtectionOptionAddChallenge" : {
+    "message" : "Заблокированный вызов страницы - добавьте дополнительный шаг, чтобы разблокировать страницу"
+  },
+  "passwordProtectionOptionNotifyUninstalled" : {
+    "message" : "Уведомлять по эл. почте в случае удаления BlockSite"
+  },
+  "forgotPassSentTitle" : {
+    "message" : "Пароль отправлен"
+  },
+  "forgotPassSentText" : {
+    "message" : "Пароль отправлен на"
+  },
+  "forgotPassSentOkBtn" : {
+    "message" : "OK"
+  },
+  "blockExtensionsPageTitle" : {
+    "message" : "Страница расширений $ BROWSER $ - Защищено",
+    "placeholders" : {
+      "browser" : {
+        "content" : "1 $"
+      }
+    }
+  },
+  "blockExtensionsPageSubtitle" : {
+    "message" : "Введите пароль для доступа"
+  },
+  "passwordQuestionReallyToDo" : {
+    "message" : "Вы действительно хотите это сделать?"
+  },
+  "passwordQuestionClickBack" : {
+    "message" : "Пользователи, которые нажимают «НАЗАД» ниже"
+  },
+  "passwordQuestionSaveMinutes" : {
+    "message" : "экономите в среднем 15 минут в день."
+  },
+  "passwordQuestionToUnlock" : {
+    "message" : "Для разблокировки введите"
+  },
+  "passwordQuestionDontShowAgain" : {
+    "message" : "НЕ ПОКАЗАТЬ ЕЩЕ РАЗ"
+  },
+  "passwordQuestionBack" : {
+    "message" : "НАЗАД"
+  },
+  "passwordQuestionPleaseTryAgain" : {
+    "message" : "Неправильно. Пожалуйста, попробуйте еще раз."
+  },
+  "limitListBannerCounter" : {
+    "message" : "сайты, оставшиеся для добавления в ваш черный список."
+  },
+  "limitListBannerCounterReached" : {
+    "message" : "Вы достигли предела своего заблокированного списка."
+  },
+  "limitListBannerUpgradeTip" : {
+    "message" : "Нажмите здесь, чтобы обновить и получить неограниченный черный список."
+  },
+  "limitListBannerUpgradeTipPopup" : {
+    "message" : "Нажмите, чтобы обновить и насладиться неограниченным списком блокировки."
+  },
+  "limitListBannerUpgradeTipReachedPopup" : {
+    "message" : "В вашем черном списке достигнуто максимальное количество сайтов."
+  },
+  "limitListBannerUpgrade" : {
+    "message" : "GO UNLIMITED"
+  },
+  "limitListOverlayTitle" : {
+    "message" : "Достигнуто ограничение на количество сайтов в списке заблокированных сайтов"
+  },
+  "limitListOverlaySubtitle" : {
+    "message" : "Получите больше. Без ограничений"
+  },
+  "limitListOverlayImportTitle" : {
+    "message" : "Достигнут предел импорта"
+  },
+  "limitListOverlaySpecialOfferTitle" : {
+    "message" : "Эксклюзивное предложение!"
+  },
+  "limitPopupDiscountSpecialOfferSubTitle" : {
+    "message" : "Наша самая низкая цена подписки КОГДА-ЛИБО"
+  },
+  "limitListOverlayContentTitle" : {
+    "message" : "Наши премиум-пользователи экономят час драгоценного времени в день. Получите все премиум-функции и начните работать более продуктивно уже сегодня!"
+  },
+  "limitListOverlayFeatureFirstTitle" : {
+    "message" : "Неограниченный список блокировки"
+  },
+  "limitListOverlayFeatureFirstSubtitle" : {
+    "message" : "Заблокируйте сколько угодно сайтов"
+  },
+  "limitListOverlayFeatureSecondTitle" : {
+    "message" : "Массовая блокировка по категориям"
+  },
+  "limitListOverlayFeatureSecondSubtitle" : {
+    "message" : "Самый быстрый способ заблокировать"
+  },
+  "limitListOverlayFeatureThirdTitle" : {
+    "message" : "Настройте страницу блокировки"
+  },
+  "limitListOverlayFeatureThirdSubtitle" : {
+    "message" : "Выбирайте изображения и текст, уникальные для вас"
+  },
+  "limitListOverlayFeatureFourthTitle" : {
+    "message" : "Синхронизация между расширениями"
+  },
+  "limitListOverlayFeatureFourthSubtitle" : {
+    "message" : "Хранится в облаке"
+  },
+  "limitListOverlayMaybeLater" : {
+    "message" : "Может быть позже"
+  },
+  "limitListOverlayUpgradeNow" : {
+    "message" : "GO UNLIMITED"
+  },
+  "limitListOverlayTitlePopup" : {
+    "message" : "Вы достигли предела своего заблокированного списка!"
+  },
+  "limitListOverlaySubtitlePopup" : {
+    "message" : "Обновите сейчас, чтобы получить неограниченное количество сайтов на всех устройствах."
+  },
+  "limitListOverlayUpgradePopup" : {
+    "message" : "GO UNLIMITED"
+  },
+  "limitListOverlayEditBlockListPopup" : {
+    "message" : "Изменить черный список"
+  },
+  "loginSyncPleaseLogin" : {
+    "message" : "Пожалуйста, войдите для синхронизации"
+  },
+  "loginSyncGotIt" : {
+    "message" : "Ясно"
+  },
+  "loginSyncLoginToSite" : {
+    "message" : "Чтобы синхронизировать расширение, пожалуйста, зарегистрируйтесь / войдите"
+  },
+  "focusModeHourUnit" : {
+    "message" : "час"
+  },
+  "focusModeMinutesUnit" : {
+    "message" : "мин"
+  },
+  "focusModesSecondsUnit" : {
+    "message" : "сек"
+  },
+  "firstTimeFocusModeTitle" : {
+    "message" : "Сосредоточьтесь. Оставайся сфокусированным."
+  },
+  "firstTimeFocusModeSubtitle" : {
+    "message" : "Блокируйте отвлекающие сайты и оставайтесь в зоне, пока активирован режим фокусировки."
+  },
+  "firstTimeFocusModeCTA" : {
+    "message" : "Начать"
+  },
+  "focusModeSettingsTitle" : {
+    "message" : "Таймер режима фокусировки"
+  },
+  "focusModeSettingsSubtitle" : {
+    "message" : "Сосредоточьтесь на задаче и станьте более продуктивным"
+  },
+  "focusModeSettingsFocusTime" : {
+    "message" : "Время фокусировки"
+  },
+  "focusModeSettingsBreakTime" : {
+    "message" : "Перерыв"
+  },
+  "focusModeSettingsNumberOfCycles" : {
+    "message" : "Количество циклов"
+  },
+  "focusModeSettingsMinutes" : {
+    "message" : "Минуты"
+  },
+  "focusModeSettingsCycles" : {
+    "message" : "Циклы"
+  },
+  "focusModeSettingsStartSession" : {
+    "message" : "Начать сеанс"
+  },
+  "focusModeSettingsGoToOptions" : {
+    "message" : "Перейти к опциям"
+  },
+  "focusModeSettingsTooltipFirst" : {
+    "message" : "Установите желаемое время для фокусировки. Сайты в вашем списке режима фокусировки будут заблокированы."
+  },
+  "focusModeSettingsTooltipSecond" : {
+    "message" : "Установите желаемое время перерыва и свободно посещайте те сайты из вашего списка."
+  },
+  "focusModeSettingsTooltipThird" : {
+    "message" : "Количество циклов времени фокусировки и перерывов, которые вы хотите запустить автоматически."
+  },
+  "focusModeOptionsStartFocusSession" : {
+    "message" : "Начать фокус-сессию"
+  },
+  "focusModeOptionsTimerSetup" : {
+    "message" : "НАСТРОЙКА ТАЙМЕРА"
+  },
+  "focusModeBreakInterval" : {
+    "message" : "Перерыв на %MINUTES% мин."
+  },
+  "focusModeFocusInterval" : {
+    "message" : "Сосредоточьтесь на %MINUTES% минут"
+  },
+  "focusModeFocusText" : {
+    "message" : "Сайты фокус-сессии заблокированы"
+  },
+  "focusModeBreakText" : {
+    "message" : "Доступ к заблокированным сайтам во время перерыва"
+  },
+  "focusModeNoSitesText" : {
+    "message" : "Ни один сайт в черном списке не заблокирован"
+  },
+  "focusModeAreYouSureTitle" : {
+    "message" : "Продолжить?"
+  },
+  "focusModeAreYouSureSubtitle" : {
+    "message" : "Вы уверены, что пора остановить часы?"
+  },
+  "focusModeAreYouSureBackToSession" : {
+    "message" : "Вернуться к сеансу"
+  },
+  "focusModeActionsPause" : {
+    "message" : "Пауза"
+  },
+  "focusModeActionsReset" : {
+    "message" : "Сброс"
+  },
+  "focusModeActionsResume" : {
+    "message" : "Резюме"
+  },
+  "focusModeEnterPassToPauseOrReset" : {
+    "message" : "Чтобы %TIMER_ACTION% ввести свой пароль"
+  },
+  "focusModeToPauseOrResetEnterPassword" : {
+    "message" : "Введите пароль для %TIMER_ACTION%"
+  },
+  "focusModeWrongPassword" : {
+    "message" : "Неправильный пароль"
+  },
+  "focusModeCyclesTooltip" : {
+    "message" : "Текущие, завершенные и будущие статусы циклов"
+  },
+  "focusModeCircleBarTooltip" : {
+    "message" : "Текущее время, оставшееся в интервале"
+  },
+  "focusModeBreakTimeLeftText" : {
+    "message" : "$ BREAK_TIME_LEFT $ минут до перерыва",
+    "placeholders" : {
+      "break_time_left" : {
+        "content" : "1 $",
+        "example" : "25"
+      }
+    }
+  },
+  "focusModeNotificationEndOfCycleTitle" : {
+    "message" : "Перерыв закончился."
+  },
+  "focusModeNotificationEndOfCycleMessage" : {
+    "message" : "Завершено $ CYCLES_COMPLETED $ из $ CYCLES $ циклов. Пора сосредоточиться!",
+    "placeholders" : {
+      "cycles_completed" : {
+        "content" : "1 $",
+        "example" : "1"
+      },
+      "cycles" : {
+        "content" : "2 доллара",
+        "example" : "2"
+      }
+    }
+  },
+  "focusModeNotificationEndOfFocusIntervalTitle" : {
+    "message" : "Интервал фокусировки закончился."
+  },
+  "focusModeNotificationEndOfFocusIntervalMessage" : {
+    "message" : "Пора сделать перерыв!"
+  },
+  "focusModeNotificationEndOfCyclesTitleWithStars" : {
+    "message" : "Перерыв окончен. Вы заработали звезд: $ STARS $.",
+    "placeholders" : {
+      "stars" : {
+        "content" : "1 $",
+        "example" : "25"
+      }
+    }
+  },
+  "focusModeNotificationEndOfCyclesTitle" : {
+    "message" : "Перерыв закончился."
+  },
+  "focusModeNotificationEndOfCyclesMessage" : {
+    "message" : "Начать еще один сеанс режима фокусировки?"
+  },
+  "focusModeNotificationEndOfCyclesButton" : {
+    "message" : "Начать сеанс"
+  },
+  "premiumOverlayTitle" : {
+    "message" : "BlockSite Unlimited"
+  },
+  "premiumOverlaySubtitle" : {
+    "message" : "Попробуйте 3 дня БЕСПЛАТНО"
+  },
+  "premiumOverlayCategoryTitle" : {
+    "message" : "Блокировать по категории"
+  },
+  "premiumOverlayCategorySubtitle" : {
+    "message" : "Самый быстрый способ заблокировать"
+  },
+  "premiumOverlayCustomizationTitle" : {
+    "message" : "Настроить блочную страницу"
+  },
+  "premiumOverlayCustomizationSubtitle" : {
+    "message" : "Установить изображения и текст"
+  },
+  "premiumOverlayUnlimitedTitle" : {
+    "message" : "Неограниченный список блокировки"
+  },
+  "premiumOverlayUnlimitedSubtitle" : {
+    "message" : "В любом месте. Любое время."
+  },
+  "premiumOverlayInsightsTitle" : {
+    "message" : "Полезные советы"
+  },
+  "premiumOverlayInsightsSubtitle" : {
+    "message" : "Изучите тенденции просмотра"
+  },
+  "premiumOverlayGoUnlimited" : {
+    "message" : "GO UNLIMITED"
+  },
+  "premiumOverlayMaybeLater" : {
+    "message" : "Может быть позже"
+  },
+  "premiumBannerNew" : {
+    "message" : "Новинка!"
+  },
+  "premiumBannerTitleA" : {
+    "message" : "Сделайте свою собственную страницу блокировки!"
+  },
+  "premiumBannerSubtitleA" : {
+    "message" : "Выберите собственное изображение и текст, чтобы создать уникальную заблокированную страницу."
+  },
+  "premiumBannerTitleB" : {
+    "message" : "Получите неограниченный черный список!"
+  },
+  "premiumBannerSubtitleB" : {
+    "message" : "Не отвлекайтесь на составление коротких списков. Добавляйте столько сайтов, сколько хотите."
+  },
+  "premiumBannerCTA" : {
+    "message" : "GO UNLIMITED"
+  },
+  "categoriesPrivacyText" : {
+    "message" : "Чтобы BlockSite мог предоставить вам блокировку категорий, нам необходимо ваше разрешение на доступ к информации на сайтах, которые вы посещаете. Пожалуйста, нажмите «Я принимаю», чтобы разрешить этот доступ и использование этой информации, как описано в нашем "
+  },
+  "categoriesPrivacyTitle" : {
+    "message" : "Блокировать по категории"
+  },
+  "privacyIAccept" : {
+    "message" : "Я согласен"
+  },
+  "insightsPrivacyTitle" : {
+    "message" : "Просим прощения!"
+  },
+  "insightsPrivacyText" : {
+    "message" : "Чтобы BlockSite мог обнаруживать и блокировать страницы с контентом для взрослых, нам необходимо ваше разрешение на доступ к информации на сайтах, которые вы посещаете. Пожалуйста, нажмите «Согласен», чтобы разрешить этот доступ и использование этой информации, как описано в нашем "
+  },
+  "workModeToPauseOrResetEnterPassword" : {
+    "message" : "Введите пароль для %TIMER_ACTION%",
+    "placeholders" : {
+      "timer_action" : {
+        "content" : "1 $",
+        "example" : "25"
+      }
+    }
+  },
+  "workModeEnterPassToPauseOrReset" : {
+    "message" : "Чтобы %TIMER_ACTION% ввести свой пароль",
+    "placeholders" : {
+      "timer_action" : {
+        "content" : "1 $",
+        "example" : "25"
+      }
+    }
+  },
+  "workModeWrongPassword" : {
+    "message" : "Неправильный пароль"
+  },
+  "popupHeaderUpgradeNow" : {
+    "message" : "GO UNLIMITED"
+  },
+  "dailyBonusTitle" : {
+    "message" : "Поздравления"
+  },
+  "userActionStars" : {
+    "message" : "Вы заработали +$STARS$ звезд",
+    "placeholders" : {
+      "stars" : {
+        "content" : "1 $",
+        "example" : "25"
+      }
+    }
+  },
+  "dailyBonusSubTitle" : {
+    "message" : "BlockSite подарил вам ежедневный бонус!"
+  },
+  "dailyBonusCollect" : {
+    "message" : "Собирать"
+  },
+  "offTitle" : {
+    "message" : "BlockSite выключен"
+  },
+  "emailVerificationTitle" : {
+    "message" : "Почти готово"
+  },
+  "emailVerificationSubTitle" : {
+    "message" : "Мы отправили на вашу почту ссылку для подтверждения, действительную в течение 24 часов. Для подтверждения проверьте свой почтовый ящик на"
+  },
+  "emailVerificationInstructions" : {
+    "message" : "Щелкните ссылку в том же окне браузера, в котором установлен BlockSite."
+  },
+  "emailVerificationCTA" : {
+    "message" : "Ясно"
+  },
+  "firstSiteAddedUserActionTitle" : {
+    "message" : "Качественный товар!"
+  },
+  "firstSiteAddedUserActionSubTitle" : {
+    "message" : "Поздравляем с добавлением вашего первого сайта!"
+  },
+  "firstSiteAddedUserActionCTA" : {
+    "message" : "Круто"
+  },
+  "5thSiteAddedUserActionTitle" : {
+    "message" : "Ого!"
+  },
+  "5thSiteAddedUserActionSubTitle" : {
+    "message" : "Молодцы, добавили 5 сайтов в черный список"
+  },
+  "5thSiteAddedUserActionCTA" : {
+    "message" : "потрясающе"
+  },
+  "100thSiteAddedUserActionTitle" : {
+    "message" : "Вот Это Да!"
+  },
+  "100thSiteAddedUserActionSubTitle" : {
+    "message" : "100 сайтов добавлены в ваш черный список"
+  },
+  "100thSiteAddedUserActionCTA" : {
+    "message" : "большой"
+  },
+  "firstTimeSyncUserActionTitle" : {
+    "message" : "Отлично сработано!"
+  },
+  "firstTimeSyncUserActionSubTitle" : {
+    "message" : "Теперь синхронизируйте все устройства для максимальной производительности 😉"
+  },
+  "firstTimeSyncUserActionCTA" : {
+    "message" : "Ясно"
+  },
+  "setFirstPassProtectUserActionTitle" : {
+    "message" : "Хорошая работа!"
+  },
+  "setFirstPassProtectUserActionSubTitle" : {
+    "message" : "Теперь будет намного проще избегать отвлекающих факторов"
+  },
+  "setFirstPassProtectUserActionCTA" : {
+    "message" : "Фантастика"
+  },
+  "addFirstRedirectUserActionTitle" : {
+    "message" : "Потрясающе!"
+  },
+  "addFirstRedirectUserActionSubTitle" : {
+    "message" : "Заблокированные сайты теперь будут перенаправлены, чтобы вы могли сосредоточиться"
+  },
+  "addFirstRedirectUserActionCTA" : {
+    "message" : "Превосходно"
+  },
+  "firstTimeScheduleUserActionTitle" : {
+    "message" : "Браво!"
+  },
+  "firstTimeScheduleUserActionSubTitle" : {
+    "message" : "Теперь вы сможете не сбиться с пути!"
+  },
+  "firstTimeScheduleUserActionCTA" : {
+    "message" : "Замечательный"
+  },
+  "addFirstKeywordUserActionTitle" : {
+    "message" : "Раскланиваться!"
+  },
+  "addFirstKeywordUserActionSubTitle" : {
+    "message" : "Блокируя ключевые слова, вы станете более продуктивным"
+  },
+  "addFirstKeywordUserActionCTA" : {
+    "message" : "Ура"
+  },
+  "firstTimeGamblingCategoryUserActionTitle" : {
+    "message" : "Ура!"
+  },
+  "firstTimeGamblingCategoryUserActionSubTitle" : {
+    "message" : "Азартные игры заблокированы. Намного меньше отвлекающих факторов."
+  },
+  "firstTimeGamblingCategoryUserActionCTA" : {
+    "message" : "Сказочный"
+  },
+  "firstTimeSportsCategoryUserActionTitle" : {
+    "message" : "Ура!"
+  },
+  "firstTimeSportsCategoryUserActionSubTitle" : {
+    "message" : "Спорт заблокирован. Намного меньше отвлекающих факторов."
+  },
+  "firstTimeSportsCategoryUserActionCTA" : {
+    "message" : "Сказочный"
+  },
+  "firstTimeNewsCategoryUserActionTitle" : {
+    "message" : "Ура!"
+  },
+  "firstTimeNewsCategoryUserActionSubTitle" : {
+    "message" : "Новости заблокированы. Намного меньше отвлекающих факторов."
+  },
+  "firstTimeNewsCategoryUserActionCTA" : {
+    "message" : "Сказочный"
+  },
+  "firstTimeSocialCategoryUserActionTitle" : {
+    "message" : "Ура!"
+  },
+  "firstTimeSocialCategoryUserActionSubTitle" : {
+    "message" : "Соцсеть заблокирована. Намного меньше отвлекающих факторов."
+  },
+  "firstTimeSocialCategoryUserActionCTA" : {
+    "message" : "Сказочный"
+  },
+  "firstTimeShoppingCategoryUserActionTitle" : {
+    "message" : "Ура!"
+  },
+  "firstTimeShoppingCategoryUserActionSubTitle" : {
+    "message" : "Покупки заблокированы. Теперь гораздо меньше отвлекающих факторов."
+  },
+  "firstTimeShoppingCategoryUserActionCTA" : {
+    "message" : "Сказочный"
+  },
+  "syncOverrideConfirmationTitle" : {
+    "message" : "Продолжить?"
+  },
+  "syncOverrideConfirmationSubTitle" : {
+    "message" : "Все изменения, сделанные в автономном режиме, НЕ будут обновлены на других устройствах и будут потеряны."
+  },
+  "syncOverrideConfirmationApprove" : {
+    "message" : "Да"
+  },
+  "syncOverrideConfirmationCancel" : {
+    "message" : "Нет"
+  },
+  "premiumHookTitle" : {
+    "message" : "GO UNLIMITED"
+  },
+  "premiumHookCTA" : {
+    "message" : "ПОПРОБУЙТЕ БЕСПЛАТНО"
+  },
+  "enableInIncognitoMode" : {
+    "message" : "Включать в режиме инкогнито"
+  },
+  "editYourList" : {
+    "message" : "Редактировать список"
+  },
+  "passwordProtectionVerificationEmail" : {
+    "message" : "ЭЛ. ПОЧТА"
+  },
+  "passwordProtectionVerificationRequired" : {
+    "message" : "Требуется подтверждение"
+  },
+  "passwordProtectionVerificationPassword" : {
+    "message" : "ПАРОЛЬ"
+  },
+  "passwordProtectionVerificationMinimumPass" : {
+    "message" : "Минимум 5 знаков"
+  },
+  "pushToMobileOverlayTitle" : {
+    "message" : "Получите BlockSite на мобильном устройстве"
+  },
+  "pushToMobileOverlaySubtitle" : {
+    "message" : "Сохраняйте продуктивность в пути, сканируя штрих-код, чтобы получить BlockSite для мобильных устройств"
+  },
+  "pushToMobileOverlayCTA" : {
+    "message" : "Может быть позже"
+  },
+  "whatsNewTitle" : {
+    "message" : "Добро пожаловать"
+  },
+  "whatsNewSubtitle" : {
+    "message" : "Вот что нового на BlockSite:"
+  },
+  "whatsNewFeature1" : {
+    "message" : "Мы изменили ваш опыт блокировки, чтобы вы могли лучше сосредоточиться, и теперь вы можете добавлять категории и ключевые слова в расписание блокировки."
+  },
+  "clickHereToCheckOut" : {
+    "message" : "Нажмите здесь, чтобы проверить"
+  },
+  "clickingHereLink" : {
+    "message" : "нажав здесь"
+  },
+  "updateThemHereLink" : {
+    "message" : "Обновите их здесь"
+  },
+  "whatsNewGotIt" : {
+    "message" : "Ясно"
+  },
+  "invalidPassBlockedPage" : {
+    "message" : "Неправильный пароль. Повторите попытку."
+  },
+  "blockMoreDistractingSite" : {
+    "message" : "Заблокировать другие отвлекающие сайты"
+  },
+  "settingsIntegrationsHeader" : {
+    "message" : "Интеграции"
+  },
+  "settingsSlackSubtitlePremium" : {
+    "message" : "Расширьте свои возможности с помощью автоматизации BlockSites для Slack."
+  },
+  "settingsSlackSubtitleNonPremium" : {
+    "message" : "Обновите до BlockSite Unlimited, чтобы расширить свои возможности с помощью автоматизации BlockSites для Slack."
+  },
+  "settingsSlackDNDTitle" : {
+    "message" : "Slack DND во время фокус-сессии"
+  },
+  "settingsSlackDNDUpgradeButton" : {
+    "message" : "GO UNLIMITED"
+  },
+  "settingsSlackDNDSubtitle" : {
+    "message" : "Автоматически устанавливать Slack в режим \"Не беспокоить\" во время сеанса фокусировки"
+  },
+  "settingsSlackDNDTurnOffOverlayTitle" : {
+    "message" : "Продолжить?"
+  },
+  "settingsSlackDNDTurnOffOverlaySubtitle" : {
+    "message" : "Если вы отключите Slack для BlockSite, вас будет гораздо легче отвлечь. Вы все еще хотите отключить Slack?"
+  },
+  "settingsSlackDNDTurnOffOverlayNoThanks" : {
+    "message" : "Спасибо, не надо"
+  },
+  "settingsSlackDNDTurnOffOverlayYesPlease" : {
+    "message" : "Да, пожалуйста"
+  },
+  "settingsSlackDNDTurnOnOverlayTitle" : {
+    "message" : "Избегайте еще большего количества отвлекающих факторов, интегрировав Slack с BlockSite"
+  },
+  "settingsSlackDNDTurnOnOverlayNotifications" : {
+    "message" : "Поместите уведомления в беззвучный режим в режиме фокусировки, автоматически установив режим \"Не беспокоить\""
+  },
+  "settingsSlackDNDTurnOnOverlayPrivacy" : {
+    "message" : "Обратите внимание: BlockSite сохраняет конфиденциальность ваших сообщений. Мы не храним и не видим ни отправленных, ни полученных сообщений или чатов."
+  },
+  "settingsSlackDNDTurnOnOverlayMaybeLater" : {
+    "message" : "Может быть позже"
+  },
+  "settingsSlackDNDTurnOnOverlayLinkSlackAccount" : {
+    "message" : "Связать аккаунт Slack"
+  },
+  "settingsSlackDNDTurnOnUpgradeOverlayTitle" : {
+    "message" : "Обновите до Unlimited, чтобы интегрировать Slack с BlockSite"
+  },
+  "settingsSlackDNDTurnOnOverlayGoUnlimitedSlackAccount" : {
+    "message" : "GO UNLIMITED"
+  },
+  "levelUpUnlocked" : {
+    "message" : "Разблокировано!"
+  },
+  "levelUpGotIt" : {
+    "message" : "Ясно"
+  },
+  "levelUpViewProgress" : {
+    "message" : "Посмотреть прогресс"
+  },
+  "levelUpCongrats" : {
+    "message" : "Поздравляю! Вы набрали $POINTS$ звезд",
+    "placeholders" : {
+      "points" : {
+        "content" : "1 $",
+        "example" : "25"
+      }
+    }
+  },
+  "levelUpStayProductive" : {
+    "message" : "Оставайтесь продуктивными и сосредоточенными, чтобы продолжать развиваться и набирать звезды."
+  },
+  "levelUpWellDone" : {
+    "message" : "Молодцы, вы перешли на новый уровень!"
+  },
+  "levelUpGainStars" : {
+    "message" : "Оставайтесь продуктивными, чтобы набрать больше звезд."
+  },
+  "pushToDesktopTitle" : {
+    "message" : "Приложение BlockSite для Windows BETA \n доступно!"
+  },
+  "pushToDesktopSubTitle" : {
+    "message" : "Теперь вы можете заблокировать все отвлекающие факторы в Edge, Firefox и Chrome с помощью одного приложения! Загрузите новое приложение сегодня"
+  },
+  "pushToDesktopCTA" : {
+    "message" : "Попробуй"
+  },
+  "pushToGoUnlimitedTitle" : {
+    "message" : "Получите больше. Без ограничений"
+  },
+  "pushToGoUnlimitedSubTitle" : {
+    "message" : "Премиум-пользователи экономят больше времени каждый день. Вы тоже можете, перейдя на BlockSite Unlimited."
+  },
+  "pushToGoUnlimitedCTA" : {
+    "message" : "GO UNLIMITED"
+  },
+  "pushToCustomizedPageTitle" : {
+    "message" : "Создайте и настройте свои собственные \n заблокированных страниц"
+  },
+  "pushToCustomizedPageSubTitle" : {
+    "message" : "Выбирайте изображения и тексты и создайте свою заблокированную страницу"
+  },
+  "pushToCustomizedPagedCTA" : {
+    "message" : "GO UNLIMITED"
+  },
+  "pushToInsightsTitle" : {
+    "message" : "Изучите свои тенденции просмотра \n с помощью Insights!"
+  },
+  "pushToInsightsSubTitle" : {
+    "message" : "Изучите тенденции просмотра веб-страниц с течением времени и узнайте, как повысить свою продуктивность"
+  },
+  "pushToInsightsCTA" : {
+    "message" : "GO UNLIMITED"
+  },
+  "pushToBlockListTitle" : {
+    "message" : "Получите неограниченный черный список, обновившись сегодня"
+  },
+  "pushToBlockListSubTitle" : {
+    "message" : "Обновитесь сегодня, чтобы добавить в черный список столько сайтов, сколько хотите"
+  },
+  "pushToBlockListCTA" : {
+    "message" : "GO UNLIMITED"
+  },
+  "pushToCategoriesTitle" : {
+    "message" : "Заблокируйте тысячи сайтов в один клик!"
+  },
+  "pushToCategoriesSubTitle" : {
+    "message" : "Экономьте время и сосредоточьтесь, блокируя тысячи веб-сайтов одним щелчком мыши."
+  },
+  "pushToCategoriesCTA" : {
+    "message" : "GO UNLIMITED"
+  },
+  "pushToAccountTitle" : {
+    "message" : "Зарегистрированные пользователи быстрее достигают своих целей"
+  },
+  "pushToAccountSubTitle" : {
+    "message" : "Создайте бесплатную учетную запись BlockSite, чтобы получать вознаграждение за продуктивную работу и синхронизировать BlockSite между устройствами."
+  },
+  "pushToAccountCTA" : {
+    "message" : "Зарегистрироваться сейчас"
+  },
+  "passwordProtectionNonPremiumTitle" : {
+    "message" : "Оставайтесь продуктивными с защитой паролем"
+  },
+  "passwordProtectionNonPremiumSubtitle" : {
+    "message" : "Сделайте еще более сложным изменение настроек и удаление сайтов из вашего черного списка."
+  },
+  "passwordProtectionLoseAccessTitleFirst" : {
+    "message" : "Вы собираетесь потерять доступ."
+  },
+  "passwordProtectionLoseAccessTitleSecond" : {
+    "message" : "Продолжить?"
+  },
+  "passwordProtectionLoseAccessSubtitle" : {
+    "message" : "Защита паролем теперь является премиальной функцией. Как лояльный пользователь, это бесплатно для вас. Чтобы сохранить это таким образом, он должен быть включен."
+  },
+  "passwordProtectionLoseAccessCancel" : {
+    "message" : "Нет, отменить"
+  },
+  "passwordProtectionLoseAccessApprove" : {
+    "message" : "Да, сделай это"
+  },
+  "rewardUnlockTitle" : {
+    "message" : "Награда разблокирована!"
+  },
+  "rewardUnlockDescription" : {
+    "message" : "Отличная работа! Ваш тяжелый труд окупился, и вы получили за это награду! Вы можете использовать его сейчас или сохранить на потом."
+  },
+  "rewardUnlockCta" : {
+    "message" : "Просмотреть все награды"
+  },
+  "addSiteAddModeTitle1" : {
+    "message" : "Хватит отвлекаться!"
+  },
+  "addSiteAddModeSubTitle1" : {
+    "message" : "Заблокируйте этот сайт, чтобы оставаться в зоне!"
+  },
+  "addSiteAddModePrimaryButton1" : {
+    "message" : "Добавить в черный список"
+  },
+  "addSiteAddModeSecondaryButton1" : {
+    "message" : "Может быть позже"
+  },
+  "addSiteAddModeTitle2" : {
+    "message" : "Оставайся в зоне!"
+  },
+  "addSiteAddModeSubTitle2" : {
+    "message" : "Повысьте свою продуктивность, добавив этот сайт в черный список"
+  },
+  "addSiteAddModePrimaryButton2" : {
+    "message" : "Добавить в черный список"
+  },
+  "addSiteAddModeSecondaryButton2" : {
+    "message" : "Может быть позже"
+  },
+  "addSiteAddModeTitle3" : {
+    "message" : "Добавьте (website.com), чтобы сэкономить время!"
+  },
+  "addSiteAddModeSubTitle3" : {
+    "message" : "Увеличьте свою продуктивность на 10 %, добавив этот сайт в черный список."
+  },
+  "addSiteAddModePrimaryButton3" : {
+    "message" : "Добавить в черный список"
+  },
+  "addSiteAddModeSecondaryButton3" : {
+    "message" : "Может быть позже"
+  },
+  "addSiteAddModeTitle4" : {
+    "message" : "Заблокируйте (website.com), чтобы сэкономить лишний час в день!"
+  },
+  "addSiteAddModeSubTitle4" : {
+    "message" : "Обнаружен сайт, отнимающий время! Заблокируйте сейчас, чтобы оставаться сосредоточенным."
+  },
+  "addSiteAddModePrimaryButton4" : {
+    "message" : "Добавить в черный список"
+  },
+  "addSiteAddModeSecondaryButton4" : {
+    "message" : "Может быть позже"
+  },
+  "addSiteReachedLimitTitle" : {
+    "message" : "Вы достигли предела черного списка"
+  },
+  "addSiteReachedLimitSubTitle" : {
+    "message" : "Обновите сейчас, чтобы получить НЕОГРАНИЧЕННЫЙ черный список и множество других функций, которые повысят вашу производительность и сэкономят ваше время!"
+  },
+  "addSiteReachedLimitPrimaryButton" : {
+    "message" : "GO UNLIMITED"
+  },
+  "addSiteReachedLimitSecondaryButton" : {
+    "message" : "Может быть позже"
+  },
+  "addSiteSuccessTitle" : {
+    "message" : "Сайт добавлен в черный список"
+  },
+  "addSiteSuccessSubTitle" : {
+    "message" : "(website.com) был добавлен в ваш черный список. Вы можете изменить это на странице параметров вашего расширения."
+  },
+  "addSiteSuccessPrimaryButton" : {
+    "message" : "Заблокировать сейчас"
+  },
+  "addSiteSuccessSecondaryButton" : {
+    "message" : "Перейти к черному списку"
+  },
+  "addSiteAreYouSureTitle" : {
+    "message" : "Продолжить?"
+  },
+  "addSiteAreYouSureSubTitle" : {
+    "message" : "BlockSite перестанет предлагать блокировать отвлекающие сайты."
+  },
+  "addSiteAreYouSurePrimaryButton" : {
+    "message" : "Да, сделай это"
+  },
+  "addSiteAreYouSureSecondaryButton" : {
+    "message" : "Нет, отменить"
+  },
+  "whiteListRedirectRemovePopupDescription" : {
+    "message" : "При переключении между режимами белого и черного списка мы должны очистить ваш сайт перенаправления"
+  },
+  "cantBlockRedirectWordMsg" : {
+    "message" : "Не удается заблокировать слово, которое является частью URL перенаправления"
+  },
+  "optionsNotificationEmptyWord" : {
+    "message" : "Невозможно добавить пустое слово"
+  },
+  "blockSitesOnBoardingTitle" : {
+    "message" : "Добавляйте сайты в черный список"
+  },
+  "blockSitesOnBoardingDescription" : {
+    "message" : "Веб-сайты, добавленные в ваш черный список, будут заблокированы навсегда, пока вы не удалите их из своего списка или не установите расписание."
+  },
+  "blocklistOnBoardingTitle" : {
+    "message" : "Эти сайты теперь заблокированы"
+  },
+  "blocklistOnBoardingDescriptionPrefix" : {
+    "message" : "Визит"
+  },
+  "blocklistOnBoardingDescriptionSuffix" : {
+    "message" : "увидеть блокировку в действии"
+  },
+  "redirectOnBoardingTitle" : {
+    "message" : "Установить сайт перенаправления"
+  },
+  "redirectOnBoardingDescription" : {
+    "message" : "Добавьте веб-сайт, на который вы хотите быть перенаправлены при попытке доступа к заблокированному сайту, ключевому слову или при использовании режима фокусировки"
+  },
+  "scheduleOnBoardingTitle" : {
+    "message" : "Создайте график блокировки"
+  },
+  "scheduleOnBoardingDescription" : {
+    "message" : "Блокировать сайты в определенные дни и периоды времени. Сайты не будут заблокированы вне этих временных рамок."
+  },
+  "focusModeAddSiteOnBoardingTitle" : {
+    "message" : "Добавьте сайты в список режимов фокусировки"
+  },
+  "focusModeAddSiteOnBoardingDescription" : {
+    "message" : "Черный список режимов фокусировки работает одновременно с вашим основным черным списком."
+  },
+  "focusModeTimerOnBoardingTitle" : {
+    "message" : "Настройка сеанса в режиме фокусировки"
+  },
+  "focusModeTimerOnBoardingDescription" : {
+    "message" : "Установите определенный черный список, чтобы заблокировать сайты и вознаградить себя перерывом в конце любого цикла, получив доступ к этим сайтам."
+  },
+  "focusModeSessionOnBoardingTitle" : {
+    "message" : "Запустите свой таймер"
+  },
+  "focusModeSessionOnBoardingDescription" : {
+    "message" : "Начните выполнять эти задачи, нажав здесь, чтобы начать сеанс в режиме фокусировки."
+  },
+  "blockWordsOnBoardingTitle" : {
+    "message" : "Добавьте ключевые слова для блокировки"
+  },
+  "blockWordsOnBoardingDescription" : {
+    "message" : "Все URL-адреса и заголовки веб-сайтов, содержащие это ключевое слово, будут заблокированы (ключевое слово может заблокировать сотни сайтов)."
+  },
+  "categoriesOnBoardingTitle" : {
+    "message" : "Блокировать сайты по категориям"
+  },
+  "categoriesOnBoardingDescription" : {
+    "message" : "Выберите категории, чтобы заблокировать тысячи веб-сайтов одним щелчком мыши."
+  },
+  "onBoardingNextStep" : {
+    "message" : "следующий"
+  },
+  "onBoardingDismiss" : {
+    "message" : "Увольнять"
+  },
+  "categoriesGoUnlimitedButton" : {
+    "message" : "GO UNLIMITED"
+  },
+  "cannotAddBlockSiteWhichPartOfRedirect" : {
+    "message" : "Невозможно заблокировать сайт, заданный для перенаправления"
+  },
+  "passwordProtectionHookTitleToggleOff" : {
+    "message" : "Не обманывай себя! Получите защиту паролем."
+  },
+  "passwordProtectionHookTitleRemoveSite" : {
+    "message" : "Не пытайтесь удалять сайты! Получить защиту паролем"
+  },
+  "passwordProtectionHookSubtitle" : {
+    "message" : "Затрудните прокрастинацию, заблокировав настройки паролем"
+  },
+  "passwordProtectionMaybeLaterButton" : {
+    "message" : "Может быть позже"
+  },
+  "passwordProtectionGoUnlimitedButton" : {
+    "message" : "GO UNLIMITED"
+  },
+  "passwordProtectionSetupNowButton" : {
+    "message" : "Настроить сейчас"
+  },
+  "blockedHeaderFocusModeMinutes" : {
+    "message" : "$BREAK_TIME_LEFT$ минут",
+    "placeholders" : {
+      "break_time_left" : {
+        "content" : "1 $",
+        "example" : "25"
+      }
+    }
+  },
+  "blockedHeaderFocusModeUntilBreak" : {
+    "message" : "до перерыва"
+  },
+  "blockedHeaderTitle" : {
+    "message" : "Этот сайт заблокирован BlockSite"
+  },
+  "blockedHeaderMenuEdit" : {
+    "message" : "Изменить черный список"
+  },
+  "blockedHeaderMenuRedirect" : {
+    "message" : "Перенаправлять"
+  },
+  "blockedHeaderMenuCustomizeBlockPage" : {
+    "message" : "Настроить блочную страницу"
+  },
+  "blockedHeaderMenuPasswordProtection" : {
+    "message" : "Защита паролем"
+  },
+  "blockedHeaderMenuUpgradeButton" : {
+    "message" : "ОБНОВИТЬ"
+  },
+  "categoriesTableTitle" : {
+    "message" : "Список заблокированных категорий"
+  },
+  "blockedTableApplyButton" : {
+    "message" : "Применить"
+  },
+  "blockedTableCancelButton" : {
+    "message" : "Отменить"
+  },
+  "addBlockInputAddButton" : {
+    "message" : "Добавить элемент"
+  },
+  "enableInInPrivateMode" : {
+    "message" : "Включить в режиме InPrivate"
+  },
+  "aboutHowToEnableInInPrivateTitle" : {
+    "message" : "Как включить режим InPrivate"
+  },
+  "aboutHowToEnableInInPrivateSubtitle" : {
+    "message" : "Чтобы включить BlockSite в режиме InPrivate Edge, выполните следующие действия:"
+  },
+  "aboutHowToEnableInInPrivateStep1" : {
+    "message" : "Перейдите к краю: // расширения"
+  },
+  "aboutHowToEnableInInPrivateStep2" : {
+    "message" : "Найдите и нажмите на BlockSite"
+  },
+  "aboutHowToEnableInInPrivateStep3" : {
+    "message" : "Установите флажок «Разрешить в InPrivate»."
+  },
+  "emptyResultsBlockedSitesTitle" : {
+    "message" : "Заблокированных сайтов пока нет"
+  },
+  "emptyResultsBlockedSitesSubtitle" : {
+    "message" : "Когда вы добавите сайты для блокировки, вы увидите это здесь."
+  },
+  "emptyResultsBlockedKeywordsTitle" : {
+    "message" : "Заблокированных ключевых слов пока нет"
+  },
+  "emptyResultsBlockedKeywordsSubtitle" : {
+    "message" : "Когда вы добавите ключевые слова для блокировки, вы увидите это здесь."
+  },
+  "passwordProtectionNonPremiumCTA" : {
+    "message" : "Получить защиту паролем"
+  },
+  "customizeBlockPageNoPremiumMacbookTitle" : {
+    "message" : "Никаких постов, никаких симпатий, просто жизнь."
+  },
+  "customizeBlockPageNoPremiumMacbookSubtitle" : {
+    "message" : "Ой! site.com недоступен, так как он связан с социальной категорией, которую вы заблокировали. Сосредоточьтесь, у вас есть это."
+  },
+  "customizeBlockPageNoPremiumTitle" : {
+    "message" : "Создайте свою заблокированную страницу"
+  },
+  "customizeBlockPageNoPremiumSubtitle" : {
+    "message" : "Сделайте его вдохновляющим или забавным, чтобы не отвлекаться."
+  },
+  "customizeBlockPageNoPremiumCTA" : {
+    "message" : "Получить пользовательскую страницу блокировки"
+  },
+  "pushToDesktopOverlayTitleA" : {
+    "message" : "Блокировать в нескольких браузерах"
+  },
+  "pushToDesktopOverlayTitleB" : {
+    "message" : "Новое приложение для Windows теперь ЖИВОЕ!"
+  },
+  "pushToDesktopOverlaySubtitleA" : {
+    "message" : "Теперь вы можете заблокировать все отвлекающие факторы в Edge, Firefox и Chrome с помощью одного приложения! Загрузите новое приложение сегодня"
+  },
+  "pushToDesktopOverlaySubtitleB" : {
+    "message" : "Теперь вы можете заблокировать все отвлекающие факторы в Chrome, Firefox и Edge с помощью нашего нового настольного приложения для Windows."
+  },
+  "pushToDesktopOverlayCTAUpgrade" : {
+    "message" : "Узнайте больше"
+  },
+  "pushToDesktopOverlayCTAMaybeLater" : {
+    "message" : "Может быть позже"
+  },
+  "specialOfferPopupTitle" : {
+    "message" : "Получите неограниченную блокировку за $"
+  },
+  "specialOfferPopupSubtitle" : {
+    "message" : " Вы также получите такие функции, как массовая блокировка, защита паролем и многое другое. Только ограниченное время!"
+  },
+  "specialOfferPopupSave" : {
+    "message" : "Сохранить"
+  },
+  "specialOfferPopupYear" : {
+    "message" : "Год"
+  },
+  "specialOfferPopupGoUnlimited" : {
+    "message" : "GO UNLIMITED"
+  },
+  "specialOfferPopupGoMaybeLater" : {
+    "message" : "Может быть позже"
+  },
+  "specialOfferPopupFinePrint" : {
+    "message" : "Счет ежегодно. Периодическое выставление счетов. Отменить в любое время по любой причине"
+  },
+  "logoutPopupQuestionTitle" : {
+    "message" : "Продолжить?"
+  },
+  "logoutPopupQuestionDescription" : {
+    "message" : "Любые изменения, сделанные при выходе из системы, не будут синхронизированы с облаком."
+  },
+  "logoutPopupQuestionApproveText" : {
+    "message" : "Да, сделай это"
+  },
+  "logoutPopupQuestionCancelText" : {
+    "message" : "Нет, отменить"
+  },
+  "headerLogin" : {
+    "message" : "Войти"
+  },
+  "headerLogout" : {
+    "message" : "Выйти"
+  },
+  "headerGoUnlimited" : {
+    "message" : "GO UNLIMITED"
+  },
+  "viewAccount" : {
+    "message" : "Посмотреть аккаунт"
+  },
+  "PinToToolBarMessageTitle" : {
+    "message" : "Закрепите BlockSite, чтобы он работал на 100% продуктивно"
+  },
+  "PinToToolBarMessageText" : {
+    "message" : "Проверьте список расширений, чтобы сделать его видимым"
+  },
+  "PinToToolBarMessageBtnText" : {
+    "message" : "Ясно"
+  },
+  "bundleListPopupTitle" : {
+    "message" : "Настроить эту страницу"
+  },
+  "bundleListPopupSubTitle" : {
+    "message" : "Выберите пакет изображений, который будет отображаться случайным образом при попытке открыть заблокированную страницу."
+  },
+  "backgroundMultiPacksTitle" : {
+    "message" : "Визуальная и текстовая блокировка"
+  },
+  "bundleListPopupTooltip" : {
+    "message" : "Изображения из выбранного мультипакета будут появляться случайным образом каждый раз при отображении страницы блока."
+  },
+  "bundleListPopupCancelButton" : {
+    "message" : "Отменить"
+  },
+  "bundleListPopupDoneButton" : {
+    "message" : "Готово"
+  },
+  "sharePopupTitle" : {
+    "message" : "Поделитесь своей любовью к производительности и концентрации"
+  },
+  "sharePopupSubTitle" : {
+    "message" : "Помогите другим, сообщив им о BlockSite"
+  },
+  "shareFacebookIconTitle" : {
+    "message" : "Facebook"
+  },
+  "shareTwitterIconTitle" : {
+    "message" : "Twitter"
+  },
+  "copyIconTitle" : {
+    "message" : "Копировать"
+  },
+  "copiedIconTitle" : {
+    "message" : "Скопировано"
+  },
+  "shareLinkedinIconTitle": {
+    "message": "Linkedin"
+  },
+  "passwordProtectionUnlockPageTitle" : {
+    "message" : "Эта страница заблокирована!"
+  },
+  "passwordProtectionUnlockPageSubtitle" : {
+    "message" : "Пожалуйста, введите пароль, чтобы разблокировать страницу"
+  },
+  "passwordProtectionUnlockButton" : {
+    "message" : "Открой сейчас"
+  },
+  "verifyResetPasswordTitle" : {
+    "message" : "Продолжить?"
+  },
+  "verifyResetPasswordText" : {
+    "message" : "Мы сбросим ваш пароль и вышлем новый на вашу электронную почту"
+  },
+  "verifyResetPasswordAcceptBtn" : {
+    "message" : "Да, сбросить пароль"
+  },
+  "verifyResetPasswordCancelBtn" : {
+    "message" : "Нет, отменить"
+  },
+  "resetPasswordSuccessTitle" : {
+    "message" : "Пароль отправлен"
+  },
+  "resetPasswordSuccessSubTitle" : {
+    "message" : "Ваш пароль отправлен $MAIL$",
+    "placeholders" : {
+      "mail" : {
+        "content" : "$1",
+        "example" : "пример@mail.com"
+      }
+    }
+  },
+  "resetPasswordSuccessBtnText" : {
+    "message" : "OK"
+  },
+  "PasswordProtectSecondStepTitle" : {
+    "message" : "Вы уверены, что хотите разблокировать эту страницу?"
+  },
+  "PasswordProtectSecondStepSubtitle" : {
+    "message" : "«Пользователи, которые нажимают «Отмена» ниже, экономят в среднем дополнительно 15 минут в день."
+  },
+  "doNotShowAgainMessage" : {
+    "message" : "Не показывай снова"
+  },
+  "bundleImagesDownloadInProgressTitle" : {
+    "message" : "Загрузка изображений"
+  },
+  "bundleImagesDownloadInProgressText" : {
+    "message" : "Пожалуйста, не закрывайте браузер до завершения"
+  },
+  "bundleImagesDownloadSuccessTitle" : {
+    "message" : "Изображения успешно загружены"
+  },
+  "bundleImagesDownloadFailedTitle" : {
+    "message" : "Не удалось загрузить изображения"
+  },
+  "bundleImagesDownloadFailedText" : {
+    "message" : "Пожалуйста, попробуйте еще раз"
+  },
+  "rateUsSubmittingStepTitle" : {
+    "message" : "Как бы вы оценили BlockSite?"
+  },
+  "rateUsSubmittingStepSubTitle" : {
+    "message" : "Нажмите на звезды, чтобы рассказать нам, что вы думаете"
+  },
+  "rateUsSubmittingStepBtn" : {
+    "message" : "ОТПРАВИТЬ"
+  },
+  "rateUsBlessingStepTitle" : {
+    "message" : "УРА! Мы рады, что вам понравилось!"
+  },
+  "rateUsBlessingStepSubTitle" : {
+    "message" : "Ваш отзыв имеет значение! Помогите другим узнать о преимуществах нашего приложения, оставив отзыв в интернет-магазине."
+  },
+  "rateUsBlessingStepBtn" : {
+    "message" : "Оцените нас в интернет-магазине"
+  },
+  "rateUsSReviewStepTitle" : {
+    "message" : "Спасибо, нам важно ваше мнение!"
+  },
+  "rateUsReviewStepSubTitle" : {
+    "message" : "Наша команда поддержки и продукта работает над этим, ожидайте удовлетворения в ближайшее время."
+  },
+  "rateUsReviewStepBtn" : {
+    "message" : "Отправить отзыв"
+  },
+  "rateUsReviewStepMsgError" : {
+    "message" : "Введены недопустимые символы."
+  },
+  "rateUsReviewStepTitleContent" : {
+    "message" : "Как мы можем улучшить?"
+  },
+  "rateUsReviewStepTextContent" : {
+    "message" : "Твоя поддержка"
+  }
+}

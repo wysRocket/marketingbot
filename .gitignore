@@ -11,4 +11,3 @@ telemetry/
 coverage/
 .tmp-mostlogin-cloudflared.yml
 .mostlogin-bridge.env
-mostlogin-extensions/

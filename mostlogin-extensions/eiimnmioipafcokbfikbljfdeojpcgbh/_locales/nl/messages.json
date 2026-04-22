@@ -1,0 +1,2077 @@
+{
+  "appName" : {
+    "message" : "BlockSite: Blokkeerapps en focus",
+    "description" : "De titel van de toepassing, weergegeven in de webwinkel."
+  },
+  "appShortName" : {
+    "message" : "Block Site",
+    "description" : "De korte titel van de toepassing"
+  },
+  "appDesc" : {
+    "message" : "Blijf gefocust met de beste blokkering. Laat afleiding niet in de weg staan.",
+    "description" : "De beschrijving van de toepassing, weergegeven in de webwinkel."
+  },
+  "blockSitesTab" : {
+    "message" : "Websites blokkeren"
+  },
+  "focusModeTab" : {
+    "message" : "Focus modus"
+  },
+  "InsightsTab" : {
+    "message" : "Inzichten"
+  },
+  "optionsMenuBlockSites" : {
+    "message" : "Websites blokkeren"
+  },
+  "optionsMenuFocusMode" : {
+    "message" : "Focus modus"
+  },
+  "optionsMenuPasswordProtection" : {
+    "message" : "Wachtwoordbeveiliging"
+  },
+  "optionsMenuBlockByWords" : {
+    "message" : "Blokkeren op woorden"
+  },
+  "optionsMenuCustomizeBlockPage" : {
+    "message" : "Aangepaste blokkeringspagina"
+  },
+  "optionsMenuCategories" : {
+    "message" : "Categorieën"
+  },
+  "optionsMenuSettings" : {
+    "message" : "Instellingen"
+  },
+  "optionsMenuAbout" : {
+    "message" : "Over"
+  },
+  "optionsMenuBlocking" : {
+    "message" : "Blokkeren"
+  },
+  "optionsMenuSyncWithOtherDevices" : {
+    "message" : "Synchroniseer met andere apparaten"
+  },
+  "optionsMenuSyncedOn" : {
+    "message" : "Ingeschakeld"
+  },
+  "optionsMenuSyncedOff" : {
+    "message" : "Gehandicapt"
+  },
+  "optionsMenuBannerTitleCategory" : {
+    "message" : "Blokkeren op categorie"
+  },
+  "optionsMenuBannerSubtitleCategory" : {
+    "message" : "Bespaar meer tijd door duizenden sites met één klik te blokkeren"
+  },
+  "optionsMenuBannerTitleGoUnlimited" : {
+    "message" : "Haal meer. Ga onbeperkt"
+  },
+  "optionsMenuBannerSubtitleGoUnlimited" : {
+    "message" : "Geniet als eerste van onze nieuwste functies"
+  },
+  "optionsMenuBannerTitleCustomizeBlockPage" : {
+    "message" : "Pas Block Page aan"
+  },
+  "optionsMenuBannerSubtitleCustomizeBlockPage" : {
+    "message" : "Kies afbeeldingen en teksten om het je eigen te maken"
+  },
+  "optionsMenuBannerTitleUnlimitedBlockList" : {
+    "message" : "Onbeperkte blokkeerlijst"
+  },
+  "optionsMenuBannerSubtitleUnlimitedBlockList" : {
+    "message" : "Voeg zoveel sites toe als je wilt aan je blokkeerlijst"
+  },
+  "optionsMenuBannerTitlePasswordProtection" : {
+    "message" : "Wachtwoordbeveiliging"
+  },
+  "optionsMenuBannerSubtitlePasswordProtection" : {
+    "message" : "Het moeilijker maken om sites van uw blokkeerlijst te verwijderen"
+  },
+  "optionsMenuBannerTitleSlack" : {
+    "message" : "De Slack-app van BlockSite"
+  },
+  "optionsMenuBannerSubtitleSlack" : {
+    "message" : "Schakel de modus Niet storen automatisch in focusmodus in"
+  },
+  "optionsMenuBannerTitleInsights" : {
+    "message" : "Inzichten"
+  },
+  "optionsMenuBannerSubtitleInsights" : {
+    "message" : "Ontdek uw browsetrends en hoe u uw tijd online doorbrengt "
+  },
+  "optionsMenuBannerTitleMobile" : {
+    "message" : "BlockSite-app op uw smartphone"
+  },
+  "optionsMenuBannerSubtitleMobile" : {
+    "message" : "Scan de QR-code en blijf onderweg productief"
+  },
+  "optionsMenuBannerTitleDesktop" : {
+    "message" : "BlockSite voor Windows BTA"
+  },
+  "optionsMenuBannerSubtitleDesktop" : {
+    "message" : "Blokkeer tijdverspillende sites in Edge, Firefox en Chrome met één app!"
+  },
+  "optionsMenuBannerCTAGoUnlimited" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "optionsMenuBannerCTATryNow" : {
+    "message" : "Probeer nu"
+  },
+  "tagTextPremium" : {
+    "message" : "Premie"
+  },
+  "optionsMenuBannerTitleSignup" : {
+    "message" : "Meld u aan voor meer productiviteit"
+  },
+  "optionsMenuBannerSubtitleSignup" : {
+    "message" : "Verdien beloningen en synchroniseer uw blokkeerlijst op verschillende apparaten"
+  },
+  "optionMenuBannerCTASignupNow" : {
+    "message" : "Meld u nu aan"
+  },
+    "tagTextQuickTip" : {
+    "message" : "SNELLE TIP"
+  },
+  "tagTextLatestNews" : {
+    "message" : "LAATSTE NIEUWS"
+  },
+  "mandatoryConsentTitle1" : {
+    "message" : "Maak een keuze in"
+  },
+  "mandatoryConsentTitle2" : {
+    "message" : "om door te gaan naar BlockSite."
+  },
+  "mandatoryConsentSubtitle" : {
+    "message" : "Opdat BlockSite pagina's met inhoud voor volwassenen kan detecteren en blokkeren, hebben we uw toestemming nodig om toegang te krijgen tot informatie op de sites die u bezoekt. Klik op 'Akkoord' om deze toegang en het gebruik van deze informatie mogelijk te maken zoals beschreven in ons"
+  },
+  "mandatoryConsentPrivacyPolicy" : {
+    "message" : "Privacybeleid"
+  },
+  "mandatoryConsentAgree" : {
+    "message" : "Akkoord"
+  },
+  "mandatoryConsentDisagree" : {
+    "message" : "Niet akkoord"
+  },
+  "mandatoryConsentDisclaimer" : {
+    "message" : "Als je op 'Niet akkoord' klikt, kun je BlockSite wel blijven gebruiken, maar is de functie content voor volwassenen blokkeren niet beschikbaar."
+  },
+  "blockSitesOptionsTitle" : {
+    "message" : "Websites blokkeren"
+  },
+  "blockSitesOptionsSubtitle" : {
+    "message" : "Blokkeer websites permanent of volgens planning"
+  },
+  "blockSitesOptionsSearchBarPlaceholder" : {
+    "message" : "Voer een webadres in (bijv. facebook.com)"
+  },
+  "blockSitesOptionsTableTitle" : {
+    "message" : "GEBLOKKEERDE WEBSITES"
+  },
+  "blockSitesOptionsOnboardingText" : {
+    "message" : "Begin met het toevoegen van websites aan je lijst die je wilt blokkeren."
+  },
+  "optionsNotificationIncorrectURL" : {
+    "message" : "Onjuiste URL"
+  },
+  "optionsNotificationSiteAdded" : {
+    "message" : "Website toegevoegd"
+  },
+  "optionsNotificationURLAlreadyExist" : {
+    "message" : "URL bestaat al"
+  },
+  "optionsNotificationEmptyList" : {
+    "message" : "Je lijst is leeg! Er kan niets worden geëxporteerd."
+  },
+  "optionsNotificationListExported" : {
+    "message" : "Uw lijst is succesvol geëxporteerd."
+  },
+  "optionsNotificationListImported" : {
+    "message" : "Uw lijst is succesvol geïmporteerd."
+  },
+  "optionsNotificationIncorrectFileStructure" : {
+    "message" : "Onjuiste bestandsstructuur. Probeer uw huidige lijst te exporteren om het vereiste csv-formaat te zien."
+  },
+  "blockSitesBlockedTitle" : {
+    "message" : "Deze website is momenteel geblokkeerd"
+  },
+  "blockSitesBlockSite" : {
+    "message" : "Deze website blokkeren"
+  },
+  "blockSitesNotAvailable" : {
+    "message" : "Niet beschikbaar op deze pagina"
+  },
+  "blockSitesEditBlockList" : {
+    "message" : "Blokkeerlijst bewerken"
+  },
+  "blockSitesRefreshPage" : {
+    "message" : "Pagina vernieuwen"
+  },
+  "blockSitesBlockedTitleNow" : {
+    "message" : "Site toegevoegd aan uw blokkeerlijst"
+  },
+  "goPremium" : {
+    "message" : "GA PREMIUM"
+  },
+  "blockWordsOptionsTitle" : {
+    "message" : "Blokkeren op woorden"
+  },
+  "blockWordsOptionsSubtitle" : {
+    "message" : "Blokkeer URL's die specifieke woorden bevatten"
+  },
+  "blockWordsOptionsTableTitle" : {
+    "message" : "Geblokkeerde woorden"
+  },
+  "blockWordsOptionsSearchBarPlaceholder" : {
+    "message" : "Voer een woord of zin in"
+  },
+  "optionsNotificationWordAlreadyExist" : {
+    "message" : "Woord bestaat al"
+  },
+  "contextMenusBlockThisLink" : {
+    "message" : "Deze link blokkeren"
+  },
+  "contextMenusAllowThisLink" : {
+    "message" : "Deze link toestaan"
+  },
+  "contextMenusBlockThisSite" : {
+    "message" : "Deze website blokkeren"
+  },
+  "contextMenusAllowThisSite" : {
+    "message" : "Deze website toestaan"
+  },
+  "contextMenusBlockThisLinkWorkMode" : {
+    "message" : "Linkadres toevoegen aan focusmoduslijst"
+  },
+  "contextMenusAllowThisLinkWorkMode" : {
+    "message" : "Sta deze link toe voor de lijst met focusmodi"
+  },
+  "contextMenusBlockThisSiteWorkMode" : {
+    "message" : "Site toevoegen aan focusmoduslijst"
+  },
+  "contextMenusAllowThisSiteWorkMode" : {
+    "message" : "Sta deze site toe voor de lijst met focusmodi"
+  },
+  "tooltipExportList" : {
+    "message" : "Lijst exporteren"
+  },
+  "tooltipImportList" : {
+    "message" : "Lijst importeren"
+  },
+  "importPopupTitle" : {
+    "message" : "Wil je jouw huidige lijst samenvoegen of overschrijven?"
+  },
+  "importPopupOverride" : {
+    "message" : "Overschrijven"
+  },
+  "importPopupMerge" : {
+    "message" : "Samenvoegen"
+  },
+  "whitelistModeTitle" : {
+    "message" : "Whitelist-modus"
+  },
+  "whitelistInfoToolTip" : {
+    "message" : "Blokkeer alle websites behalve die op uw witte lijst"
+  },
+  "whitelistPopUpTitle" : {
+    "message" : "Weet u het zeker?"
+  },
+  "whitelistPopUpDescription" : {
+    "message" : "Alle websites worden geblokkeerd, behalve die in de lijst staan"
+  },
+  "popupQuestionApprove" : {
+    "message" : "Ja"
+  },
+  "popupQuestionCancel" : {
+    "message" : "Nee"
+  },
+  "blockedTabMessage1" : {
+    "message" : "Je hebt %domain% in je Block Sites lijst gezet. Die staat er waarschijnlijk met een reden."
+  },
+  "blockedTabMessage2" : {
+    "message" : "Je hebt %domain% geblokkeerd zodat je door kunt werken. Nu aan de slag."
+  },
+  "blockedTabMessage3" : {
+    "message" : "Poeh, da's veel beter. Ga verder met wat je aan het doen was."
+  },
+  "blockedTabMessage4" : {
+    "message" : "%domain% is geblokkeerd. Voeg meer websites toe die je afleiden om nog productiever te worden."
+  },
+  "blockedTabMessage5" : {
+    "message" : "Het lijkt erop dat u het woord \"%domain%\" hebt geblokkeerd. Laten we dat zo houden."
+  },
+  "blockedTabMessage6" : {
+    "message" : "Deze website staat niet op de whitelist. Daar is waarschijnlijk een goede reden voor."
+  },
+  "motivationalText1" : {
+    "message" : "Vergeet het maar."
+  },
+  "motivationalText2" : {
+    "message" : "Absoluut niet."
+  },
+  "motivationalText3" : {
+    "message" : "Leuk geprobeerd..."
+  },
+  "motivationalText4" : {
+    "message" : "Meen je dit nou?"
+  },
+  "motivationalText5" : {
+    "message" : "Wat ben je nou aan het doen?"
+  },
+  "motivationalText6" : {
+    "message" : "Stop met lanterfanten!"
+  },
+  "motivationalText7" : {
+    "message" : "Puppy's. Gekke bruine moedervlekken. Justin Bieber."
+  },
+  "motivationalText8" : {
+    "message" : "Kakkerlakken. Afgerukte ledematen. John Goodman."
+  },
+  "motivationalText9" : {
+    "message" : "Oma. Kobe Bryant. Chirurgische procedures."
+  },
+  "motivationalText10" : {
+    "message" : "Betrapt!"
+  },
+  "motivationalText11" : {
+    "message" : "Oh oh!"
+  },
+  "motivationalText12" : {
+    "message" : "Leuk geprobeerd."
+  },
+  "focusModeOptionsTitle" : {
+    "message" : "Focus modus"
+  },
+  "focusModeOptionsSubtitle" : {
+    "message" : "Om u op een taak te concentreren en productiever te zijn, gebruikt u de focusmodus om uw werktijd en pauze-intervallen in te stellen. Voeg sites toe aan uw blokkeerlijst om afleiding tijdens een focussessie te voorkomen"
+  },
+  "aboutTitle" : {
+    "message" : "Over Block Site"
+  },
+  "aboutSubtitle" : {
+    "message" : "Met Block Site verbeter je je concentratie en je productiviteit. Je blokkeert eenvoudig websites die je afleiden of kwaadwillend zijn. Er is geen wilskracht voor nodig."
+  },
+  "aboutCreateBlockListsTitle" : {
+    "message" : "Maak blokkeerlijsten aan"
+  },
+  "aboutCreateBlockListsSubtitle" : {
+    "message" : "Voeg snel en gemakkelijk de websites of pagina's die je wilt blokkeren toe aan je Websitelijst en word automatisch herleid naar websites die veiliger en positiever zijn. Je kunt ook een lijst met vriendelijke websites aanmaken en wisselen van het blokkeren van specifieke websites tot het alleen toestaan van bepaalde websites."
+  },
+  "aboutBlockCategoriesTitle" : {
+    "message" : "Categorieën blokkeren"
+  },
+  "aboutBlockCategoriesSubtitle" : {
+    "message" : "Blokkeer snel een hele categorie met een druk op de knop."
+  },
+  "aboutRightClickMenuTitle" : {
+    "message" : "Rechterklikmenu"
+  },
+  "aboutRightClickMenuSubtitle" : {
+    "message" : "Klik met de rechter muisknop op een website om het snelmenu te openen. Blokkeer binnen enkele seconden websites om uitstel te voorkomen en geconentreerd te blijven."
+  },
+  "aboutIncognitoTitle" : {
+    "message" : "Incognitomodus (alleen beschikbaar in Chrome)"
+  },
+  "aboutIncognitoSubtitle" : {
+    "message" : "Alle functies van Block Site werken ook in de anonieme modus, je hoeft het alleen maar toe te staan. Volg deze instructies om te zien hoe: "
+  },
+  "aboutIncognitoCTA" : {
+    "message" : "Anonieme modus"
+  },
+  "aboutKeepInternetSafeTitle" : {
+    "message" : "Houd uw internet veilig"
+  },
+  "aboutKeepInternetSafeSubtitle" : {
+    "message" : "Activeer Content voor volwassenen blokkeren via het extensiemenu om alle websites met content voor volwassenen met één klik te blokkeren. "
+  },
+  "aboutScheduleTitle" : {
+    "message" : "Blokkeren voor bepaalde tijd"
+  },
+  "aboutScheduleSubtitle" : {
+    "message" : "Kies de dagen en intervallen waarop je wilt dat Block Site actief is. Stel aangepaste blokkeringen in op basis van je werkplanning (bijvoorbeeld: 09.00 uur - 17.00 uur) zodat je niet wordt afgeleid als je aan het werk of op school bent."
+  },
+  "aboutPasswordTitle" : {
+    "message" : "Wachtwoord instellen"
+  },
+  "aboutPasswordSubtitle" : {
+    "message" : "Stel een wachtwoord in op de pagina Instellingen om de toegang tot Block Site Opties te beperken of om de optie in te schakelen om geblokkeerde websites te beveiligen met een wachtwoord."
+  },
+  "aboutRateUsTitle" : {
+    "message" : "Vind je ons leuk? Laat het de wereld weten."
+  },
+  "aboutRateUsSubtitle" : {
+    "message" : "Als je Block Site handig vindt, beoordeel het dan in de Chrome Webstore. Ontzettend bedankt."
+  },
+  "aboutTermsOfUse" : {
+    "message" : "Gebruiksvoorwaarden"
+  },
+  "aboutPrivacyPolicy" : {
+    "message" : "Privacybeleid"
+  },
+  "aboutContactSupport" : {
+    "message" : "CONTACT OPNEMEN MET ONDERSTEUNING"
+  },
+  "aboutHowToEnableInIncognitoTitle" : {
+    "message" : "Inschakelen in anonieme modus"
+  },
+  "aboutHowToEnableInIncognitoSubtitle" : {
+    "message" : "Volg deze stappen om Site blokkeren in de incognitomodus van Chrome in te schakelen:"
+  },
+  "aboutHowToEnableInIncognitoStep1" : {
+    "message" : "Ga naar chrome://extensies"
+  },
+  "aboutHowToEnableInIncognitoStep2" : {
+    "message" : "Vind Block Site"
+  },
+  "aboutHowToEnableInIncognitoStep3" : {
+    "message" : "Selecteer 'Toestaan in anonieme modus'"
+  },
+  "optionsPageRedirectButton" : {
+    "message" : "Herleiden"
+  },
+  "optionsPageRedirectTitle" : {
+    "message" : " Stuur uw geblokkeerde pagina's om"
+  },
+  "optionsPageRedirectPlaceHolder" : {
+    "message" : "Webadres (bijv. google.com)"
+  },
+  "optionsPageRedirectOK" : {
+    "message" : "OK"
+  },
+  "optionsPageRedirectRemove" : {
+    "message" : "Verwijderen"
+  },
+  "optionsPageRedirectTooltipNotSet" : {
+    "message" : "Klik om de herleidingswebsite in te stellen"
+  },
+  "optionsPageRedirectTooltipSet" : {
+    "message" : "Herleiden naar $URL$",
+    "placeholders" : {
+      "url" : {
+        "content" : "$1",
+        "example" : "https://example.com"
+      }
+    }
+  },
+  "cantRedirectToWorkModeBlockedSite" : {
+    "message" : "Oeps! Deze omleidingssite wordt geblokkeerd door uw lijst met focusmodi"
+  },
+  "cantRedirectToBlockedSite" : {
+    "message" : "Oops! Deze omleidingsite wordt geblokkeerd door uw lijst met blokkeersites"
+  },
+  "cantRedirectToBlockedWord" : {
+    "message" : "Oops! Deze omleidingsite wordt geblokkeerd door uw lijst Blokkeren op woorden"
+  },
+  "optionsPageScheduleButton" : {
+    "message" : "Plannen"
+  },
+  "optionsPageScheduleEveryDay" : {
+    "message" : "Elke dag"
+  },
+  "optionsPageScheduleSetSchedule" : {
+    "message" : "Planning instellen"
+  },
+  "optionsPageScheduleRemoveSchedule" : {
+    "message" : "Verwijderen"
+  },
+  "optionsPageScheduleSetTimes" : {
+    "message" : "TIJDEN INSTELLEN"
+  },
+  "optionsPageScheduleSetBlocking" : {
+    "message" : "Een blokkeerplanning instellen"
+  },
+  "optionsPageScheduleAddInterval" : {
+    "message" : "Interval toevoegen"
+  },
+  "optionsPageScheduleTo" : {
+    "message" : "naar"
+  },
+  "optionsPageScheduleSelectDays" : {
+    "message" : "GESELECTEERDE DAGEN"
+  },
+  "optionsPageScheduleClickDay" : {
+    "message" : "(Klik op een dag om uit te schakelen)"
+  },
+  "blockByCategoryTitleGambling" : {
+    "message" : "Laat het huis niet altijd winnen."
+  },
+  "blockByCategoryTextGambling" : {
+    "message" : "Oops! %domain%  is niet beschikbaar omdat het gerelateerd is aan het gokken dat is een categorie die u ' hebt geblokkeerd. Blijf gefocust, je hebt dit."
+  },
+  "blockByCategoryTitleAdult" : {
+    "message" : "Kakkerlakken. Afgerukte ledematen. John Goodman."
+  },
+  "blockByCategoryTextAdult" : {
+    "message" : "Oops! %domain%  is niet beschikbaar omdat het gerelateerd is aan volwassen dat is een categorie die u ' hebt geblokkeerd. Blijf gefocust, je hebt dit."
+  },
+  "blockByCategoryTitleSports" : {
+    "message" : "Blijf kalm en verbreek de verbinding."
+  },
+  "blockByCategoryTextSports" : {
+    "message" : "Oops! %domain%  is niet beschikbaar omdat het gerelateerd is aan sport dat is een categorie die u ' hebt geblokkeerd. Blijf gefocust, je hebt dit."
+  },
+  "blockByCategoryTitleSocialNetworksAndOnlineCommunities" : {
+    "message" : "Niet posten, niet leuk vinden, gewoon leven."
+  },
+  "blockByCategoryTextSocialNetworksAndOnlineCommunities" : {
+    "message" : "Oops! %domain%  is niet beschikbaar omdat het gerelateerd is aan sociale dat is een categorie die u ' hebt geblokkeerd. Blijf gefocust, je hebt dit."
+  },
+  "blockByCategoryTitleNewsAndMedia" : {
+    "message" : "Geen nieuws is goed nieuws."
+  },
+  "blockByCategoryTextNewsAndMedia" : {
+    "message" : "Oops! %domain%  is niet beschikbaar omdat het gerelateerd is aan nieuws dat is een categorie die u ' hebt geblokkeerd. Blijf gefocust, je hebt dit."
+  },
+  "blockByCategoryTitleShopping" : {
+    "message" : "Een niet uitgegeven dollar is een verdiende dollar!"
+  },
+  "blockByCategoryTextShopping" : {
+    "message" : "Oeps! %domain% is niet beschikbaar omdat het gerelateerd is aan winkelen, een categorie die u heeft geblokkeerd. Blijf gefocust, je hebt dit."
+  },
+  "categoriesOptionsTitle" : {
+    "message" : "Categorieën"
+  },
+  "categoriesOptionsSubtitle" : {
+    "message" : "Selecteer welke categorieën u wilt blokkeren"
+  },
+  "settingsOptionTitle" : {
+    "message" : "Instellingen"
+  },
+  "settingsOptionSubtitle" : {
+    "message" : ""
+  },
+  "categoriesAdult" : {
+    "message" : "Volwassen"
+  },
+  "categoriesSocialNetworksAndOnlineCommunities" : {
+    "message" : "Sociaal"
+  },
+  "categoriesNewsAndMedia" : {
+    "message" : "Nieuws"
+  },
+  "categoriesSports" : {
+    "message" : "Sport"
+  },
+  "categoriesGambling" : {
+    "message" : "Gokken"
+  },
+  "categoriesShopping" : {
+    "message" : "Boodschappen doen"
+  },
+  "privacySettingsTitle" : {
+    "message" : "Schakel \"Blokkeren op categorie\" in"
+  },
+  "privacySettingsSubtitle" : {
+    "message" : "Geeft BlockSite toegang tot uw bezochte URL's, IP-adres, besturingssysteem en browserinformatie, voor gebruik zoals aangegeven in onze "
+  },
+  "privacySettingsPrivacyPolicy" : {
+    "message" : "Privacybeleid."
+  },
+  "settingsEnableBlockSiteShortcutTitle" : {
+    "message" : "Schakel BlockSite-snelkoppelingsoptie in met de rechtermuisknop"
+  },
+  "settingsEnableBlockSiteShortcutSubtitle" : {
+    "message" : "Voeg sites toe aan uw blokkeerlijst of uw focusmoduslijst door met de rechtermuisknop te klikken en het BlockSite-menu op een website te selecteren."
+  },
+  "settingsShowMotivationalTitle" : {
+    "message" : "Toon motiverende afbeeldingen met geblokkeerde pagina's"
+  },
+  "settingsShowMotivationalSubtitle" : {
+    "message" : "Als u dit inschakelt, worden afbeeldingen op een geblokkeerde site weergegeven. Uitschakelen zal een witte achtergrond tonen."
+  },
+  "settingsSyncTitle" : {
+    "message" : "Synchroniseer met andere apparaten"
+  },
+  "settingsSyncSubtitle" : {
+    "message" : "Maak een back-up van de voorkeuren en blokkeerlijst van uw huidige extensie naar de cloud of synchroniseer met maximaal 4 andere apparaten van onze Android- en / of extensieplatforms wanneer u bent aangemeld onder hetzelfde gebruikersaccount."
+  },
+  "settingsGeneralHeader" : {
+    "message" : "ALGEMEEN"
+  },
+  "settingsViewHeader" : {
+    "message" : "VISIE"
+  },
+  "settingsSyncHeader" : {
+    "message" : "Synchroniseren"
+  },
+  "settingEnableFocusModeFaviconTitle" : {
+    "message" : "Toon resterende tijd op favicon"
+  },
+  "settingEnableFocusModeFaviconSubtitle" : {
+    "message" : "Schakel dit in om de resterende tijd in het huidige interval weer te geven op het favicon van de extensie."
+  },
+  "settingEnableSyncStatusTitle" : {
+    "message" : "Toon het snelmenu van de pagina met synchronisatie-opties"
+  },
+  "settingEnableSyncStatusSubtitle" : {
+    "message" : "Schakel in om een snelkoppeling weer te geven om eenvoudig synchroniseren met mobiele en / of andere extensies in / uit te schakelen."
+  },
+  "customizedBlockPageNonPremiumTry" : {
+    "message" : "Probeer BlockSite Unlimited GRATIS uit"
+  },
+  "customizeBlockPageTitle" : {
+    "message" : "Aangepaste blokkeringspagina"
+  },
+  "customizeBlockPageSubtitle" : {
+    "message" : "Pas uw blokpagina's aan met uw eigen afbeeldingen en tekst. Bekijk de wijzigingen in realtime op het onderstaande scherm voordat u opslaat!"
+  },
+  "customizeBlockPageSetBackground" : {
+    "message" : "STEL ACHTERGRONDBEELD IN"
+  },
+  "customizeBlockPageSetPageText" : {
+    "message" : "PAGINATEKST INSTELLEN"
+  },
+  "customizeBlockPageBlocksiteText" : {
+    "message" : "BlockSite's tekst"
+  },
+  "customizeBlockPageCustomizeText" : {
+    "message" : "Pas tekst aan"
+  },
+  "customizeBlockPageSetTitleText" : {
+    "message" : "Voer titeltekst in"
+  },
+  "customizeBlockPageSetSubTitleText" : {
+    "message" : "Voer ondertiteltekst in"
+  },
+  "customizeBlockPageTextColor" : {
+    "message" : "Tekst kleur"
+  },
+  "customizeBlockPageWhite" : {
+    "message" : "Wit"
+  },
+  "customizeBlockPageBlack" : {
+    "message" : "Zwart"
+  },
+  "customizeBlockPageUploadImage" : {
+    "message" : "UPLOAD AANGEPASTE AFBEELDING"
+  },
+  "customizeBlockPageResetImage" : {
+    "message" : "Reset terug naar BlockSite Funny Images"
+  },
+  "customizeBlockPageCurrentBackground" : {
+    "message" : "Huidige achtergrond"
+  },
+  "customizeBlockPageUserCustomImage" : {
+    "message" : "Gebruiker aangepaste achtergrond"
+  },
+  "customizeBlockPageBlockSiteFunnyImage" : {
+    "message" : "BlockSite grappige afbeeldingen"
+  },
+  "customizeBlockPagePreviewYourChanges" : {
+    "message" : "Bekijk een voorbeeld van uw wijzigingen voordat u opslaat"
+  },
+  "customizeBlockPageResetToDefault" : {
+    "message" : "RESET NAAR STANDAARD"
+  },
+  "customizeBlockPageApplyChanges" : {
+    "message" : "Wijzigingen toepassen"
+  },
+  "customizeBlockPageChangesApplied" : {
+    "message" : "Uw wijzigingen zijn toegepast."
+  },
+  "customizeBlockPageChangesFailed" : {
+    "message" : "Er is iets fout gegaan. Probeer het a.u.b. opnieuw."
+  },
+  "customizeBlockPageApplyChangeTitle" : {
+    "message" : "Wijzigingen toepassen?"
+  },
+  "customizeBlockPageApplyChangeSubTitle" : {
+    "message" : "Pas de wijzigingen die u hebt aangebracht toe op uw geblokkeerde pagina door op Ja te klikken."
+  },
+  "customizeBlockPageApplyChangeNo" : {
+    "message" : "Nee"
+  },
+  "customizeBlockPageApplyChangeYes" : {
+    "message" : "Ja"
+  },
+  "insightsCategory_social" : {
+    "message" : "Sociaal"
+  },
+  "insightsCategory_news" : {
+    "message" : "Nieuws"
+  },
+  "insightsCategory_sports" : {
+    "message" : "Sport"
+  },
+  "insightsCategory_other" : {
+    "message" : "Anders"
+  },
+  "insightsCategory_entertainment" : {
+    "message" : "Amusement"
+  },
+  "insightsCategory_shopping" : {
+    "message" : "Boodschappen doen"
+  },
+  "insightsCategory_games" : {
+    "message" : "Spellen"
+  },
+  "insightsTitle" : {
+    "message" : "Inzichten"
+  },
+  "insightsDescription" : {
+    "message" : "Kijk hoe u uw tijd online besteedt om productiever te zijn"
+  },
+  "insightsTopVisit" : {
+    "message" : "Topbezochte categorieën"
+  },
+  "insightsTimeSaved" : {
+    "message" : "Hoeveel tijd heb ik bespaard?"
+  },
+  "insightsErrorTitle" : {
+    "message" : "Oeps! Er is iets fout gegaan!"
+  },
+  "insightsErrorDescription" : {
+    "message" : "Maak je geen zorgen! we werken er hard aan om dit probleem op te lossen, dus probeer het later opnieuw."
+  },
+  "insightsEmptyTitle" : {
+    "message" : "Nog geen inzichten. Probeer het over 24 uur opnieuw."
+  },
+  "insightsEmptyDescription" : {
+    "message" : "We zijn uw inzichten nog aan het berekenen, kom snel terug voor updates!"
+  },
+  "optionsLockedTitle" : {
+    "message" : "BlockSite Opties vergrendeld"
+  },
+  "optionsLockedSubtitle" : {
+    "message" : "Voer je wachtwoord in om toegang te krijgen tot de pagina met opties voor BlockSite"
+  },
+  "enterYourPassword" : {
+    "message" : "Voer je wachtwoord in"
+  },
+  "forgotPassword" : {
+    "message" : "Wachtwoord vergeten?"
+  },
+  "wrongPassword" : {
+    "message" : "Oeps! Dat was hem niet. Probeer het opnieuw."
+  },
+  "goBackToWork" : {
+    "message" : "Ga weer aan het werk"
+  },
+  "goBack" : {
+    "message" : "Ga terug"
+  },
+  "customizePage" : {
+    "message" : "Pagina aanpassen"
+  },
+  "enterPasswordToGainAccess" : {
+    "message" : "Voer een wachtwoord in om toegang te krijgen"
+  },
+  "popupLockedTitle" : {
+    "message" : "BlockSite is vergrendeld"
+  },
+  "popupLockedSubtitle" : {
+    "message" : "Voer je wachtwoord in voor toegang tot de extensie-instellingen"
+  },
+  "protectionSettingsSaved" : {
+    "message" : "Beschermingsinstellingen opgeslagen"
+  },
+  "setUpEmailAndPass" : {
+    "message" : "Stel uw e-mailadres en wachtwoord in om te activeren"
+  },
+  "enterYourEmail" : {
+    "message" : "Voer uw e-mailadres in"
+  },
+  "saveEmailSettings" : {
+    "message" : "Opslaan"
+  },
+  "emailVerificationTitle1" : {
+    "message" : "BlockSite stuurt je een e-mail met een link om je e-mailadres te verifiëren."
+  },
+  "emailVerificationTitle2" : {
+    "message" : "Uw e-mailadres wordt alleen gebruikt voor de doeleinden van wachtwoordbeveiliging."
+  },
+  "updateEmailAndPassword" : {
+    "message" : "E-mailadres en wachtwoord bijwerken"
+  },
+  "settingsNotSaved" : {
+    "message" : "Instellingen niet opgeslagen"
+  },
+  "settingsChangedTitle1" : {
+    "message" : "Sla uw e-mailadres en wachtwoord op om de extra beschermingsfuncties te activeren."
+  },
+  "leaveWithoutSaving" : {
+    "message" : "Verlaten zonder op te slaan"
+  },
+  "addEmailAndPassword" : {
+    "message" : "E-mailadres en wachtwoord toevoegen"
+  },
+  "passwordVerificationWarning" : {
+    "message" : "Wachtwoordbeveiliging is niet ingeschakeld. Als u dit wilt inschakelen, opent u de link in de e-mail in hetzelfde browservenster dat u oorspronkelijk hebt gebruikt om uw account in te stellen."
+  },
+  "verificationCheckYourEmail" : {
+    "message" : "Controleer uw e-mail voor de verificatielink om deze in te schakelen."
+  },
+  "verificationDidntReceiveEmail" : {
+    "message" : "Als je de e-mail niet hebt ontvangen,"
+  },
+  "verificationClickToResend" : {
+    "message" : "klik hier om opnieuw te verzenden."
+  },
+  "passwordProtectionPreferences" : {
+    "message" : "Voorkeuren wachtwoordbescherming"
+  },
+  "passwordProtectionOptionBlockSettings" : {
+    "message" : "Bescherm uw favoriete BlockSite-opties en de $ BROWSER $ extensiepagina met een wachtwoord",
+    "placeholders" : {
+      "browser" : {
+        "content" : "$1"
+      }
+    }
+  },
+  "passwordProtectionOptionBlockBlockedPage" : {
+    "message" : "Wachtwoord vragen voor toegang tot geblokkeerde websites"
+  },
+  "passwordProtectionOptionAddChallenge" : {
+    "message" : "Geblokkeerde pagina-uitdaging - voeg een extra stap toe om de pagina te deblokkeren"
+  },
+  "passwordProtectionOptionNotifyUninstalled" : {
+    "message" : "E-mailbericht ontvangen als de installatie van BlockSite ongedaan wordt gemaakt"
+  },
+  "forgotPassSentTitle" : {
+    "message" : "Wachtwoord verzonden"
+  },
+  "forgotPassSentText" : {
+    "message" : "Uw wachtwoord is verzonden naar"
+  },
+  "forgotPassSentOkBtn" : {
+    "message" : "OK"
+  },
+  "blockExtensionsPageTitle" : {
+    "message" : "$ BROWSER $ Extensiepagina - Beveiligd",
+    "placeholders" : {
+      "browser" : {
+        "content" : "$1"
+      }
+    }
+  },
+  "blockExtensionsPageSubtitle" : {
+    "message" : "Voer uw wachtwoord in voor toegang"
+  },
+  "passwordQuestionReallyToDo" : {
+    "message" : "Wil je dat echt doen?"
+  },
+  "passwordQuestionClickBack" : {
+    "message" : "Gebruikers die hieronder op `TERUG` klikken"
+  },
+  "passwordQuestionSaveMinutes" : {
+    "message" : "bespaar gemiddeld 15 minuten per dag."
+  },
+  "passwordQuestionToUnlock" : {
+    "message" : "Typ om te ontgrendelen"
+  },
+  "passwordQuestionDontShowAgain" : {
+    "message" : "TOON HET NIET MEER"
+  },
+  "passwordQuestionBack" : {
+    "message" : "Terug"
+  },
+  "passwordQuestionPleaseTryAgain" : {
+    "message" : "Niet correct. Probeer het a.u.b. opnieuw."
+  },
+  "limitListBannerCounter" : {
+    "message" : "sites over om toe te voegen aan uw blokkeerlijst."
+  },
+  "limitListBannerCounterReached" : {
+    "message" : "U heeft uw blokkeerlijstlimiet bereikt."
+  },
+  "limitListBannerUpgradeTip" : {
+    "message" : "Klik hier om te upgraden en te genieten van een onbeperkte blokkeerlijst."
+  },
+  "limitListBannerUpgradeTipPopup" : {
+    "message" : "Klik om te upgraden en geniet van een onbeperkte blokkeerlijst."
+  },
+  "limitListBannerUpgradeTipReachedPopup" : {
+    "message" : "Uw blokkeerlijst heeft het maximale aantal sites bereikt."
+  },
+  "limitListBannerUpgrade" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "limitListOverlayTitle" : {
+    "message" : "Blokkeerlijst sitelimiet bereikt"
+  },
+  "limitListOverlaySubtitle" : {
+    "message" : "Haal meer. Ga onbeperkt"
+  },
+  "limitListOverlayImportTitle" : {
+    "message" : "Importlimiet bereikt"
+  },
+  "limitListOverlaySpecialOfferTitle" : {
+    "message" : "Exclusieve aanbieding!"
+  },
+  "limitPopupDiscountSpecialOfferSubTitle" : {
+    "message" : "Onze laagste abonnementsprijs OOIT"
+  },
+  "limitListOverlayContentTitle" : {
+    "message" : "Onze premium gebruikers besparen per dag een uur kostbare tijd. Krijg alle premiumfuncties en begin vandaag nog productiever te worden!"
+  },
+  "limitListOverlayFeatureFirstTitle" : {
+    "message" : "Onbeperkte blokkeerlijst"
+  },
+  "limitListOverlayFeatureFirstSubtitle" : {
+    "message" : "Blokkeer zoveel sites die u maar wilt"
+  },
+  "limitListOverlayFeatureSecondTitle" : {
+    "message" : "Blokkeer in bulk met categorieën"
+  },
+  "limitListOverlayFeatureSecondSubtitle" : {
+    "message" : "De snelste manier om te blokkeren"
+  },
+  "limitListOverlayFeatureThirdTitle" : {
+    "message" : "Pas uw blokpagina aan"
+  },
+  "limitListOverlayFeatureThirdSubtitle" : {
+    "message" : "Kies afbeeldingen en tekst die uniek zijn voor jou"
+  },
+  "limitListOverlayFeatureFourthTitle" : {
+    "message" : "Synchroniseren tussen extensies"
+  },
+  "limitListOverlayFeatureFourthSubtitle" : {
+    "message" : "Opgeslagen in de cloud"
+  },
+  "limitListOverlayMaybeLater" : {
+    "message" : "Misschien later"
+  },
+  "limitListOverlayUpgradeNow" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "limitListOverlayTitlePopup" : {
+    "message" : "U heeft uw blokkeerlijstlimiet bereikt!"
+  },
+  "limitListOverlaySubtitlePopup" : {
+    "message" : "Upgrade nu om onbeperkte sites op alle apparaten te krijgen."
+  },
+  "limitListOverlayUpgradePopup" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "limitListOverlayEditBlockListPopup" : {
+    "message" : "Blokkeerlijst bewerken"
+  },
+  "loginSyncPleaseLogin" : {
+    "message" : "Log in om te synchroniseren"
+  },
+  "loginSyncGotIt" : {
+    "message" : "IK SNAP HET"
+  },
+  "loginSyncLoginToSite" : {
+    "message" : "Om de extensie te synchroniseren, moet u zich aanmelden / inloggen"
+  },
+  "focusModeHourUnit" : {
+    "message" : "u"
+  },
+  "focusModeMinutesUnit" : {
+    "message" : "min"
+  },
+  "focusModesSecondsUnit" : {
+    "message" : "sec"
+  },
+  "firstTimeFocusModeTitle" : {
+    "message" : "Krijg gefocust. Blijf gefocust."
+  },
+  "firstTimeFocusModeSubtitle" : {
+    "message" : "Blokkeer afleidende sites en blijf in de zone terwijl de focusmodus is geactiveerd."
+  },
+  "firstTimeFocusModeCTA" : {
+    "message" : "Aan de slag"
+  },
+  "focusModeSettingsTitle" : {
+    "message" : "Timer scherpstelmodus"
+  },
+  "focusModeSettingsSubtitle" : {
+    "message" : "Focus op een taak en wees productiever"
+  },
+  "focusModeSettingsFocusTime" : {
+    "message" : "Focus tijd"
+  },
+  "focusModeSettingsBreakTime" : {
+    "message" : "Pauzetijd"
+  },
+  "focusModeSettingsNumberOfCycles" : {
+    "message" : "Aantal cycli"
+  },
+  "focusModeSettingsMinutes" : {
+    "message" : "Minuten"
+  },
+  "focusModeSettingsCycles" : {
+    "message" : "Cycli"
+  },
+  "focusModeSettingsStartSession" : {
+    "message" : "Start sessie"
+  },
+  "focusModeSettingsGoToOptions" : {
+    "message" : "Ga naar opties"
+  },
+  "focusModeSettingsTooltipFirst" : {
+    "message" : "Stel de gewenste tijd in om scherp te stellen. Sites in uw lijst met focusmodi worden geblokkeerd."
+  },
+  "focusModeSettingsTooltipSecond" : {
+    "message" : "Stel de gewenste pauzetijd in en bezoek die websites vrijelijk vanuit uw lijst."
+  },
+  "focusModeSettingsTooltipThird" : {
+    "message" : "Het aantal cycli van focustijd en pauzes dat u automatisch wilt laten lopen."
+  },
+  "focusModeOptionsStartFocusSession" : {
+    "message" : "Start de focussessie"
+  },
+  "focusModeOptionsTimerSetup" : {
+    "message" : "TIMER INSTELLEN"
+  },
+  "focusModeBreakInterval" : {
+    "message" : "Pauzeer %MINUTES% minuten"
+  },
+  "focusModeFocusInterval" : {
+    "message" : "Focus gedurende %MINUTES% minuten"
+  },
+  "focusModeFocusText" : {
+    "message" : "Focus-sessiesites zijn geblokkeerd"
+  },
+  "focusModeBreakText" : {
+    "message" : "Toegang tot uw geblokkeerde sites tijdens een pauze"
+  },
+  "focusModeNoSitesText" : {
+    "message" : "Geen sites in blokkeerlijst geblokkeerd"
+  },
+  "focusModeAreYouSureTitle" : {
+    "message" : "Weet u het zeker?"
+  },
+  "focusModeAreYouSureSubtitle" : {
+    "message" : "Weet je zeker dat het tijd is om de klok stil te zetten?"
+  },
+  "focusModeAreYouSureBackToSession" : {
+    "message" : "Terug naar sessie"
+  },
+  "focusModeActionsPause" : {
+    "message" : "Pause"
+  },
+  "focusModeActionsReset" : {
+    "message" : "Resetten"
+  },
+  "focusModeActionsResume" : {
+    "message" : "Hervat"
+  },
+  "focusModeEnterPassToPauseOrReset" : {
+    "message" : "Om %TIMER_ACTION% uw wachtwoord in te voeren"
+  },
+  "focusModeToPauseOrResetEnterPassword" : {
+    "message" : "Voer wachtwoord in voor %TIMER_ACTION%"
+  },
+  "focusModeWrongPassword" : {
+    "message" : "Verkeerd wachtwoord"
+  },
+  "focusModeCyclesTooltip" : {
+    "message" : "Huidige, volledige en toekomstige cyclustoestanden"
+  },
+  "focusModeCircleBarTooltip" : {
+    "message" : "Huidige resterende tijd in interval"
+  },
+  "focusModeBreakTimeLeftText" : {
+    "message" : "$ BREAK_TIME_LEFT $ minuten tot pauze",
+    "placeholders" : {
+      "break_time_left" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "focusModeNotificationEndOfCycleTitle" : {
+    "message" : "Het pauze-interval is voorbij."
+  },
+  "focusModeNotificationEndOfCycleMessage" : {
+    "message" : "$ CYCLES_COMPLETED $ van $ CYCLES $ cycli voltooid. Het is tijd om te focussen!",
+    "placeholders" : {
+      "cycles_completed" : {
+        "content" : "$1",
+        "example" : "1"
+      },
+      "cycles" : {
+        "content" : "$ 2",
+        "example" : "2"
+      }
+    }
+  },
+  "focusModeNotificationEndOfFocusIntervalTitle" : {
+    "message" : "Focusinterval is voorbij."
+  },
+  "focusModeNotificationEndOfFocusIntervalMessage" : {
+    "message" : "Het is tijd voor een pauze!"
+  },
+  "focusModeNotificationEndOfCyclesTitleWithStars" : {
+    "message" : "De pauze is voorbij. U heeft $ STARS $ stars verdiend.",
+    "placeholders" : {
+      "stars" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "focusModeNotificationEndOfCyclesTitle" : {
+    "message" : "Het pauze-interval is voorbij."
+  },
+  "focusModeNotificationEndOfCyclesMessage" : {
+    "message" : "Een andere Focus Mode-sessie starten?"
+  },
+  "focusModeNotificationEndOfCyclesButton" : {
+    "message" : "Start sessie"
+  },
+  "premiumOverlayTitle" : {
+    "message" : "BlockSite Onbeperkt"
+  },
+  "premiumOverlaySubtitle" : {
+    "message" : "Probeer 3 dagen GRATIS"
+  },
+  "premiumOverlayCategoryTitle" : {
+    "message" : "Blokkeren op categorie"
+  },
+  "premiumOverlayCategorySubtitle" : {
+    "message" : "De snelste manier om te blokkeren"
+  },
+  "premiumOverlayCustomizationTitle" : {
+    "message" : "Pas Block Page aan"
+  },
+  "premiumOverlayCustomizationSubtitle" : {
+    "message" : "Stel afbeeldingen en tekst in"
+  },
+  "premiumOverlayUnlimitedTitle" : {
+    "message" : "Onbeperkte blokkeerlijst"
+  },
+  "premiumOverlayUnlimitedSubtitle" : {
+    "message" : "Overal. Altijd."
+  },
+  "premiumOverlayInsightsTitle" : {
+    "message" : "Handige inzichten"
+  },
+  "premiumOverlayInsightsSubtitle" : {
+    "message" : "Ontdek browsertrends"
+  },
+  "premiumOverlayGoUnlimited" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "premiumOverlayMaybeLater" : {
+    "message" : "Misschien later"
+  },
+  "premiumBannerNew" : {
+    "message" : "Nieuw!"
+  },
+  "premiumBannerTitleA" : {
+    "message" : "Maak je eigen blokpagina!"
+  },
+  "premiumBannerSubtitleA" : {
+    "message" : "Kies uw eigen afbeelding en tekst om een unieke geblokkeerde pagina te maken."
+  },
+  "premiumBannerTitleB" : {
+    "message" : "Krijg een onbeperkte blokkeerlijst!"
+  },
+  "premiumBannerSubtitleB" : {
+    "message" : "Laat u niet afleiden door een shortlist. Voeg zoveel sites toe als u wilt."
+  },
+  "premiumBannerCTA" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "categoriesPrivacyText" : {
+    "message" : "Opdat BlockSite u categorieblokkering kan bieden, hebben we uw toestemming nodig voor toegang tot informatie op de sites die u bezoekt. Klik op 'Ik ga akkoord' om deze toegang en het gebruik van deze informatie in te schakelen zoals beschreven in ons "
+  },
+  "categoriesPrivacyTitle" : {
+    "message" : "Blokkeren op categorie"
+  },
+  "privacyIAccept" : {
+    "message" : "Ik accepteer"
+  },
+  "insightsPrivacyTitle" : {
+    "message" : "Oeps!"
+  },
+  "insightsPrivacyText" : {
+    "message" : "Opdat BlockSite pagina's met inhoud voor volwassenen kan detecteren en blokkeren, hebben we uw toestemming nodig om toegang te krijgen tot informatie op de sites die u bezoekt. Klik op 'Akkoord' om deze toegang en het gebruik van deze informatie mogelijk te maken zoals beschreven in ons "
+  },
+  "workModeToPauseOrResetEnterPassword" : {
+    "message" : "Voer wachtwoord in voor %TIMER_ACTION%",
+    "placeholders" : {
+      "timer_action" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "workModeEnterPassToPauseOrReset" : {
+    "message" : "Om %TIMER_ACTION% uw wachtwoord in te voeren",
+    "placeholders" : {
+      "timer_action" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "workModeWrongPassword" : {
+    "message" : "Verkeerd wachtwoord"
+  },
+  "popupHeaderUpgradeNow" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "dailyBonusTitle" : {
+    "message" : "Gefeliciteerd"
+  },
+  "userActionStars" : {
+    "message" : "Je hebt +$STARS$ sterren verdiend",
+    "placeholders" : {
+      "stars" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "dailyBonusSubTitle" : {
+    "message" : "BlockSite heeft je een dagelijkse bonus geschonken!"
+  },
+  "dailyBonusCollect" : {
+    "message" : "Verzamelen"
+  },
+  "offTitle" : {
+    "message" : "Block Site is uitgeschakeld"
+  },
+  "emailVerificationTitle" : {
+    "message" : "Bijna klaar"
+  },
+  "emailVerificationSubTitle" : {
+    "message" : "We hebben een verificatielink naar uw e-mail gestuurd, die 24 uur geldig is. Controleer uw inbox op om dit te verifiëren"
+  },
+  "emailVerificationInstructions" : {
+    "message" : "Klik op de link in hetzelfde browservenster waarop BlockSite is geïnstalleerd."
+  },
+  "emailVerificationCTA" : {
+    "message" : "IK SNAP HET"
+  },
+  "firstSiteAddedUserActionTitle" : {
+    "message" : "Goed spul!"
+  },
+  "firstSiteAddedUserActionSubTitle" : {
+    "message" : "Gefeliciteerd met het toevoegen van uw eerste site!"
+  },
+  "firstSiteAddedUserActionCTA" : {
+    "message" : "Stoer"
+  },
+  "5thSiteAddedUserActionTitle" : {
+    "message" : "Whoo!"
+  },
+  "5thSiteAddedUserActionSubTitle" : {
+    "message" : "Goed gedaan met het toevoegen van 5 sites aan uw blokkeerlijst"
+  },
+  "5thSiteAddedUserActionCTA" : {
+    "message" : "Geweldig"
+  },
+  "100thSiteAddedUserActionTitle" : {
+    "message" : "Wauw!"
+  },
+  "100thSiteAddedUserActionSubTitle" : {
+    "message" : "100 sites zijn toegevoegd aan uw blokkeerlijst"
+  },
+  "100thSiteAddedUserActionCTA" : {
+    "message" : "Super goed"
+  },
+  "firstTimeSyncUserActionTitle" : {
+    "message" : "Goed gedaan!"
+  },
+  "firstTimeSyncUserActionSubTitle" : {
+    "message" : "Synchroniseer nu alle apparaten voor maximale productiviteit 😉"
+  },
+  "firstTimeSyncUserActionCTA" : {
+    "message" : "IK SNAP HET"
+  },
+  "setFirstPassProtectUserActionTitle" : {
+    "message" : "Goed werk!"
+  },
+  "setFirstPassProtectUserActionSubTitle" : {
+    "message" : "Het wordt nu veel gemakkelijker om afleiding te vermijden"
+  },
+  "setFirstPassProtectUserActionCTA" : {
+    "message" : "Fantastisch"
+  },
+  "addFirstRedirectUserActionTitle" : {
+    "message" : "Geweldig!"
+  },
+  "addFirstRedirectUserActionSubTitle" : {
+    "message" : "Geblokkeerde sites worden nu omgeleid, zodat u meer gefocust bent"
+  },
+  "addFirstRedirectUserActionCTA" : {
+    "message" : "Uitstekend"
+  },
+  "firstTimeScheduleUserActionTitle" : {
+    "message" : "Bravo!"
+  },
+  "firstTimeScheduleUserActionSubTitle" : {
+    "message" : "U kunt nu op koers blijven!"
+  },
+  "firstTimeScheduleUserActionCTA" : {
+    "message" : "Geweldig"
+  },
+  "addFirstKeywordUserActionTitle" : {
+    "message" : "Een buiging maken!"
+  },
+  "addFirstKeywordUserActionSubTitle" : {
+    "message" : "Door zoekwoorden te blokkeren, wordt u veel productiever"
+  },
+  "addFirstKeywordUserActionCTA" : {
+    "message" : "Hoera"
+  },
+  "firstTimeGamblingCategoryUserActionTitle" : {
+    "message" : "Hoera!"
+  },
+  "firstTimeGamblingCategoryUserActionSubTitle" : {
+    "message" : "Gokken is geblokkeerd. Nu veel minder afleiding."
+  },
+  "firstTimeGamblingCategoryUserActionCTA" : {
+    "message" : "Fantastisch"
+  },
+  "firstTimeSportsCategoryUserActionTitle" : {
+    "message" : "Hoera!"
+  },
+  "firstTimeSportsCategoryUserActionSubTitle" : {
+    "message" : "Sport is geblokkeerd. Nu veel minder afleiding."
+  },
+  "firstTimeSportsCategoryUserActionCTA" : {
+    "message" : "Fantastisch"
+  },
+  "firstTimeNewsCategoryUserActionTitle" : {
+    "message" : "Hoera!"
+  },
+  "firstTimeNewsCategoryUserActionSubTitle" : {
+    "message" : "Nieuws is geblokkeerd. Nu veel minder afleiding."
+  },
+  "firstTimeNewsCategoryUserActionCTA" : {
+    "message" : "Fantastisch"
+  },
+  "firstTimeSocialCategoryUserActionTitle" : {
+    "message" : "Hoera!"
+  },
+  "firstTimeSocialCategoryUserActionSubTitle" : {
+    "message" : "Social is geblokkeerd. Nu veel minder afleiding."
+  },
+  "firstTimeSocialCategoryUserActionCTA" : {
+    "message" : "Fantastisch"
+  },
+  "firstTimeShoppingCategoryUserActionTitle" : {
+    "message" : "Hoera!"
+  },
+  "firstTimeShoppingCategoryUserActionSubTitle" : {
+    "message" : "Winkelen is geblokkeerd. Nu veel minder afleiding."
+  },
+  "firstTimeShoppingCategoryUserActionCTA" : {
+    "message" : "Fantastisch"
+  },
+  "syncOverrideConfirmationTitle" : {
+    "message" : "Weet u het zeker?"
+  },
+  "syncOverrideConfirmationSubTitle" : {
+    "message" : "Alle wijzigingen die in de offline modus zijn aangebracht, worden NIET bijgewerkt op andere apparaten en gaan verloren."
+  },
+  "syncOverrideConfirmationApprove" : {
+    "message" : "Ja"
+  },
+  "syncOverrideConfirmationCancel" : {
+    "message" : "Nee"
+  },
+  "premiumHookTitle" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "premiumHookCTA" : {
+    "message" : "Probeer gratis"
+  },
+  "enableInIncognitoMode" : {
+    "message" : "Inschakelen in anonieme modus"
+  },
+  "editYourList" : {
+    "message" : "Bewerk je lijst"
+  },
+  "passwordProtectionVerificationEmail" : {
+    "message" : "E-MAILADRES"
+  },
+  "passwordProtectionVerificationRequired" : {
+    "message" : "Verificatie nodig"
+  },
+  "passwordProtectionVerificationPassword" : {
+    "message" : "WACHTWOORD"
+  },
+  "passwordProtectionVerificationMinimumPass" : {
+    "message" : "Minimaal 5 tekens"
+  },
+  "pushToMobileOverlayTitle" : {
+    "message" : "Download BlockSite op mobiel"
+  },
+  "pushToMobileOverlaySubtitle" : {
+    "message" : "Blijf onderweg productief door de streepjescode te scannen om de BlockSite voor mobiel te krijgen"
+  },
+  "pushToMobileOverlayCTA" : {
+    "message" : "Misschien later"
+  },
+  "whatsNewTitle" : {
+    "message" : "Welkom terug"
+  },
+  "whatsNewSubtitle" : {
+    "message" : "Dit is wat er nieuw is op BlockSite:"
+  },
+  "whatsNewFeature1" : {
+    "message" : "We hebben uw blokkeringservaring vernieuwd voor een betere focus en u kunt nu categorieën en trefwoorden aan uw blokkeringsschema toevoegen."
+  },
+  "clickHereToCheckOut" : {
+    "message" : "Klik hier om uit te checken"
+  },
+  "clickingHereLink" : {
+    "message" : "hier klikken"
+  },
+  "updateThemHereLink" : {
+    "message" : "Werk ze hier bij"
+  },
+  "whatsNewGotIt" : {
+    "message" : "IK SNAP HET"
+  },
+  "invalidPassBlockedPage" : {
+    "message" : "Ongeldig wachtwoord. Probeer het opnieuw."
+  },
+  "blockMoreDistractingSite" : {
+    "message" : "Blokkeer meer websites die afleiden"
+  },
+  "settingsIntegrationsHeader" : {
+    "message" : "Integraties"
+  },
+  "settingsSlackSubtitlePremium" : {
+    "message" : "Versterk uw focus met BlockSites-automatiseringen voor Slack."
+  },
+  "settingsSlackSubtitleNonPremium" : {
+    "message" : "Upgrade naar BlockSite Unlimited om uw focus te versterken met BlockSites-automatiseringen voor Slack."
+  },
+  "settingsSlackDNDTitle" : {
+    "message" : "Slack DND tijdens focussessie"
+  },
+  "settingsSlackDNDUpgradeButton" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "settingsSlackDNDSubtitle" : {
+    "message" : "Stel Slack automatisch in op de modus Niet storen tijdens een focussessie"
+  },
+  "settingsSlackDNDTurnOffOverlayTitle" : {
+    "message" : "Weet u het zeker?"
+  },
+  "settingsSlackDNDTurnOffOverlaySubtitle" : {
+    "message" : "Als u Slack voor BlockSite uitschakelt, wordt u veel gemakkelijker afgeleid. Wil je Slack nog steeds uitschakelen?"
+  },
+  "settingsSlackDNDTurnOffOverlayNoThanks" : {
+    "message" : "Nee, dank u wel"
+  },
+  "settingsSlackDNDTurnOffOverlayYesPlease" : {
+    "message" : "Ja graag"
+  },
+  "settingsSlackDNDTurnOnOverlayTitle" : {
+    "message" : "Voorkom nog meer afleiding door Slack te integreren met BlockSite"
+  },
+  "settingsSlackDNDTurnOnOverlayNotifications" : {
+    "message" : "Zet meldingen op stil tijdens de focusmodus door de modus Niet storen automatisch in te stellen"
+  },
+  "settingsSlackDNDTurnOnOverlayPrivacy" : {
+    "message" : "Let op: BlockSite houdt je berichten privé. We slaan geen berichten of chats op die worden verzonden of ontvangen."
+  },
+  "settingsSlackDNDTurnOnOverlayMaybeLater" : {
+    "message" : "Misschien later"
+  },
+  "settingsSlackDNDTurnOnOverlayLinkSlackAccount" : {
+    "message" : "Koppel Slack-account"
+  },
+  "settingsSlackDNDTurnOnUpgradeOverlayTitle" : {
+    "message" : "Upgrade naar Unlimited om Slack te integreren met BlockSite"
+  },
+  "settingsSlackDNDTurnOnOverlayGoUnlimitedSlackAccount" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "levelUpUnlocked" : {
+    "message" : "ontgrendeld!"
+  },
+  "levelUpGotIt" : {
+    "message" : "IK SNAP HET"
+  },
+  "levelUpViewProgress" : {
+    "message" : "Bekijk de voortgang"
+  },
+  "levelUpCongrats" : {
+    "message" : "Proficiat! Je hebt $POINTS$ sterren bereikt",
+    "placeholders" : {
+      "points" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "levelUpStayProductive" : {
+    "message" : "Blijf productief en gefocust om door te gaan en sterren te behalen."
+  },
+  "levelUpWellDone" : {
+    "message" : "Goed gedaan om naar een nieuw niveau te gaan!"
+  },
+  "levelUpGainStars" : {
+    "message" : "Blijf productief om meer sterren te krijgen."
+  },
+  "pushToDesktopTitle" : {
+    "message" : "BlockSite Windows-app BETA \n nu beschikbaar!"
+  },
+  "pushToDesktopSubTitle" : {
+    "message" : "Je kunt nu alle afleidingen op Edge, Firefox en Chrome blokkeren met één app! Download vandaag nog de gloednieuwe app"
+  },
+  "pushToDesktopCTA" : {
+    "message" : "Probeer nu"
+  },
+  "pushToGoUnlimitedTitle" : {
+    "message" : "Haal meer. Ga onbeperkt"
+  },
+  "pushToGoUnlimitedSubTitle" : {
+    "message" : "Premium-gebruikers besparen elke dag meer tijd. U kunt ook upgraden naar BlockSite Unlimited."
+  },
+  "pushToGoUnlimitedCTA" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "pushToCustomizedPageTitle" : {
+    "message" : "Maak en pas uw eigen \n geblokkeerde pagina's aan"
+  },
+  "pushToCustomizedPageSubTitle" : {
+    "message" : "Kies afbeeldingen en teksten en maak uw eigen geblokkeerde pagina"
+  },
+  "pushToCustomizedPagedCTA" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "pushToInsightsTitle" : {
+    "message" : "Ontdek uw browsertrends \n met Insights!"
+  },
+  "pushToInsightsSubTitle" : {
+    "message" : "Verken uw online browsertrends in de loop van de tijd en leer hoe u uw productiviteit kunt verbeteren"
+  },
+  "pushToInsightsCTA" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "pushToBlockListTitle" : {
+    "message" : "Krijg een onbeperkte blokkeerlijst door vandaag te upgraden"
+  },
+  "pushToBlockListSubTitle" : {
+    "message" : "Upgrade vandaag nog om zoveel sites als u wilt aan uw blokkeerlijst toe te voegen"
+  },
+  "pushToBlockListCTA" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "pushToCategoriesTitle" : {
+    "message" : "Blokkeer duizenden websites met één klik!"
+  },
+  "pushToCategoriesSubTitle" : {
+    "message" : "Bespaar tijd en blijf gefocust door duizenden websites met één klik te blokkeren."
+  },
+  "pushToCategoriesCTA" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "pushToAccountTitle" : {
+    "message" : "Geregistreerde gebruikers bereiken hun doelen sneller"
+  },
+  "pushToAccountSubTitle" : {
+    "message" : "Maak een gratis BlockSite-account om beloningen te verdienen voor productief zijn en om BlockSite op verschillende apparaten te synchroniseren"
+  },
+  "pushToAccountCTA" : {
+    "message" : "Meld u nu aan"
+  },
+  "passwordProtectionNonPremiumTitle" : {
+    "message" : "Blijf productief met wachtwoordbeveiliging"
+  },
+  "passwordProtectionNonPremiumSubtitle" : {
+    "message" : "Maak het nog moeilijker om uw instellingen te wijzigen en sites uit uw blokkeerlijst te verwijderen"
+  },
+  "passwordProtectionLoseAccessTitleFirst" : {
+    "message" : "U staat op het punt de toegang te verliezen."
+  },
+  "passwordProtectionLoseAccessTitleSecond" : {
+    "message" : "Weet u het zeker?"
+  },
+  "passwordProtectionLoseAccessSubtitle" : {
+    "message" : "Wachtwoordbeveiliging is nu een premiumfunctie. Als trouwe gebruiker is het gratis voor jou. Om het zo te houden, moet het zijn ingeschakeld."
+  },
+  "passwordProtectionLoseAccessCancel" : {
+    "message" : "Nee, annuleren"
+  },
+  "passwordProtectionLoseAccessApprove" : {
+    "message" : "Ja doe het"
+  },
+  "rewardUnlockTitle" : {
+    "message" : "Beloning ontgrendeld!"
+  },
+  "rewardUnlockDescription" : {
+    "message" : "Goed gedaan! Je harde werk heeft zijn vruchten afgeworpen en je hebt er een beloning voor gewonnen! Je kunt het nu gebruiken of bewaren voor later."
+  },
+  "rewardUnlockCta" : {
+    "message" : "Blader door alle beloningen"
+  },
+  "addSiteAddModeTitle1" : {
+    "message" : "Laat je niet afleiden!"
+  },
+  "addSiteAddModeSubTitle1" : {
+    "message" : "Blokkeer deze website om ervoor te zorgen dat je in de zone blijft!"
+  },
+  "addSiteAddModePrimaryButton1" : {
+    "message" : "Toevoegen aan blokkeerlijst"
+  },
+  "addSiteAddModeSecondaryButton1" : {
+    "message" : "Misschien later"
+  },
+  "addSiteAddModeTitle2" : {
+    "message" : "Blijf in de zone!"
+  },
+  "addSiteAddModeSubTitle2" : {
+    "message" : "Verbeter uw productiviteit door deze site toe te voegen aan uw blokkeerlijst"
+  },
+  "addSiteAddModePrimaryButton2" : {
+    "message" : "Toevoegen aan blokkeerlijst"
+  },
+  "addSiteAddModeSecondaryButton2" : {
+    "message" : "Misschien later"
+  },
+  "addSiteAddModeTitle3" : {
+    "message" : "Voeg (website.com) toe om tijd te besparen!"
+  },
+  "addSiteAddModeSubTitle3" : {
+    "message" : "Verhoog uw productiviteit met 10% door deze site toe te voegen aan uw blokkeerlijst"
+  },
+  "addSiteAddModePrimaryButton3" : {
+    "message" : "Toevoegen aan blokkeerlijst"
+  },
+  "addSiteAddModeSecondaryButton3" : {
+    "message" : "Misschien later"
+  },
+  "addSiteAddModeTitle4" : {
+    "message" : "Blokkeer (website.com) om een extra uur per dag te besparen!"
+  },
+  "addSiteAddModeSubTitle4" : {
+    "message" : "Tijdverspillende site gedetecteerd! Blokkeer nu om gefocust te blijven."
+  },
+  "addSiteAddModePrimaryButton4" : {
+    "message" : "Toevoegen aan blokkeerlijst"
+  },
+  "addSiteAddModeSecondaryButton4" : {
+    "message" : "Misschien later"
+  },
+  "addSiteReachedLimitTitle" : {
+    "message" : "Je hebt de limiet van je blokkeerlijst bereikt"
+  },
+  "addSiteReachedLimitSubTitle" : {
+    "message" : "Upgrade nu om een ONBEPERKTE blokkeerlijst en nog veel meer functies te krijgen die uw productiviteit zullen verbeteren en u tijd zullen besparen!"
+  },
+  "addSiteReachedLimitPrimaryButton" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "addSiteReachedLimitSecondaryButton" : {
+    "message" : "Misschien later"
+  },
+  "addSiteSuccessTitle" : {
+    "message" : "Site toegevoegd aan blokkeerlijst"
+  },
+  "addSiteSuccessSubTitle" : {
+    "message" : "(website.com) is toegevoegd aan uw blokkeerlijst. U kunt dit wijzigen op de pagina met opties van uw extensie"
+  },
+  "addSiteSuccessPrimaryButton" : {
+    "message" : "Nu blokkeren"
+  },
+  "addSiteSuccessSecondaryButton" : {
+    "message" : "Ga naar blokkeerlijst"
+  },
+  "addSiteAreYouSureTitle" : {
+    "message" : "Weet u het zeker?"
+  },
+  "addSiteAreYouSureSubTitle" : {
+    "message" : "BlockSite stopt met voorstellen om afleidende sites te blokkeren."
+  },
+  "addSiteAreYouSurePrimaryButton" : {
+    "message" : "Ja doe het"
+  },
+  "addSiteAreYouSureSecondaryButton" : {
+    "message" : "Nee, annuleren"
+  },
+  "whiteListRedirectRemovePopupDescription" : {
+    "message" : "Bij het schakelen tussen de witte en zwarte lijst-modi moeten we uw omleidingssite wissen"
+  },
+  "cantBlockRedirectWordMsg" : {
+    "message" : "Kan geen woord blokkeren dat deel uitmaakt van de omleidings-URL"
+  },
+  "optionsNotificationEmptyWord" : {
+    "message" : "Kan geen leeg woord toevoegen"
+  },
+  "blockSitesOnBoardingTitle" : {
+    "message" : "Sites toevoegen aan uw blokkeerlijst"
+  },
+  "blockSitesOnBoardingDescription" : {
+    "message" : "Websites die aan uw blokkeerlijst zijn toegevoegd, worden permanent geblokkeerd totdat u ze van uw lijst verwijdert of een planning instelt."
+  },
+  "blocklistOnBoardingTitle" : {
+    "message" : "Deze sites zijn nu geblokkeerd"
+  },
+  "blocklistOnBoardingDescriptionPrefix" : {
+    "message" : "Op bezoek komen"
+  },
+  "blocklistOnBoardingDescriptionSuffix" : {
+    "message" : "om blokkering in actie te zien"
+  },
+  "redirectOnBoardingTitle" : {
+    "message" : "Omleidingssite instellen"
+  },
+  "redirectOnBoardingDescription" : {
+    "message" : "Voeg een website toe waarnaar u wilt worden omgeleid wanneer u probeert toegang te krijgen tot een geblokkeerde site, trefwoord of wanneer u de focusmodus gebruikt"
+  },
+  "scheduleOnBoardingTitle" : {
+    "message" : "Een blokkeerschema maken"
+  },
+  "scheduleOnBoardingDescription" : {
+    "message" : "Blokkeer sites op specifieke dagen en tijdframes. Buiten deze tijdframes worden sites niet geblokkeerd."
+  },
+  "focusModeAddSiteOnBoardingTitle" : {
+    "message" : "Sites toevoegen aan uw lijst met focusmodi"
+  },
+  "focusModeAddSiteOnBoardingDescription" : {
+    "message" : "De blokkeerlijst van de focusmodus werkt toevallig met uw hoofdblokkeringslijst."
+  },
+  "focusModeTimerOnBoardingTitle" : {
+    "message" : "Een focusmodussessie instellen"
+  },
+  "focusModeTimerOnBoardingDescription" : {
+    "message" : "Stel een specifieke blokkeerlijst in om sites te blokkeren en beloon jezelf met een pauze aan het einde van elke cyclus door toegang te krijgen tot die sites."
+  },
+  "focusModeSessionOnBoardingTitle" : {
+    "message" : "Start je timer"
+  },
+  "focusModeSessionOnBoardingDescription" : {
+    "message" : "Begin met het uitvoeren van deze taken door hier te klikken om uw focusmodussessie te starten"
+  },
+  "blockWordsOnBoardingTitle" : {
+    "message" : "Trefwoorden toevoegen om te blokkeren"
+  },
+  "blockWordsOnBoardingDescription" : {
+    "message" : "Alle website-URL's en titels die dit specifieke zoekwoord bevatten, worden geblokkeerd (een zoekwoord kan honderden sites blokkeren)"
+  },
+  "categoriesOnBoardingTitle" : {
+    "message" : "Blokkeer websites per categorie"
+  },
+  "categoriesOnBoardingDescription" : {
+    "message" : "Selecteer categorieën om duizenden websites met één klik te blokkeren"
+  },
+  "onBoardingNextStep" : {
+    "message" : "Volgende"
+  },
+  "onBoardingDismiss" : {
+    "message" : "Afwijzen"
+  },
+  "categoriesGoUnlimitedButton" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "cannotAddBlockSiteWhichPartOfRedirect" : {
+    "message" : "Kan geen website blokkeren die is ingesteld om te herleiden"
+  },
+  "passwordProtectionHookTitleToggleOff" : {
+    "message" : "Bedrieg jezelf niet! Krijg wachtwoordbeveiliging."
+  },
+  "passwordProtectionHookTitleRemoveSite" : {
+    "message" : "Stop met het verwijderen van sites! Wachtwoordbeveiliging verkrijgen"
+  },
+  "passwordProtectionHookSubtitle" : {
+    "message" : "Maak het moeilijker om uitstelgedrag te vertonen door je instellingen te vergrendelen met een toegangscode"
+  },
+  "passwordProtectionMaybeLaterButton" : {
+    "message" : "Misschien later"
+  },
+  "passwordProtectionGoUnlimitedButton" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "passwordProtectionSetupNowButton" : {
+    "message" : "Nu instellen"
+  },
+  "blockedHeaderFocusModeMinutes" : {
+    "message" : "$BREAK_TIME_LEFT$ minuten",
+    "placeholders" : {
+      "break_time_left" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "blockedHeaderFocusModeUntilBreak" : {
+    "message" : "tot de pauze"
+  },
+  "blockedHeaderTitle" : {
+    "message" : "Deze website wordt geblokkeerd door BlockSite"
+  },
+  "blockedHeaderMenuEdit" : {
+    "message" : "Blokkeerlijst bewerken"
+  },
+  "blockedHeaderMenuRedirect" : {
+    "message" : "Herleiden"
+  },
+  "blockedHeaderMenuCustomizeBlockPage" : {
+    "message" : "Pas Block Page aan"
+  },
+  "blockedHeaderMenuPasswordProtection" : {
+    "message" : "Wachtwoordbeveiliging"
+  },
+  "blockedHeaderMenuUpgradeButton" : {
+    "message" : "UPGRADE"
+  },
+  "categoriesTableTitle" : {
+    "message" : "Lijst met geblokkeerde categorieën"
+  },
+  "blockedTableApplyButton" : {
+    "message" : "Van toepassing zijn"
+  },
+  "blockedTableCancelButton" : {
+    "message" : "Annuleren"
+  },
+  "addBlockInputAddButton" : {
+    "message" : "Voeg item toe"
+  },
+  "enableInInPrivateMode" : {
+    "message" : "Inschakelen in InPrivate-modus"
+  },
+  "aboutHowToEnableInInPrivateTitle" : {
+    "message" : "InPrivate-modus inschakelen"
+  },
+  "aboutHowToEnableInInPrivateSubtitle" : {
+    "message" : "Volg deze stappen om BlockSite in de InPrivate-modus van Edge in te schakelen:"
+  },
+  "aboutHowToEnableInInPrivateStep1" : {
+    "message" : "Navigeer naar edge://extensies"
+  },
+  "aboutHowToEnableInInPrivateStep2" : {
+    "message" : "Zoek en klik op BlockSite"
+  },
+  "aboutHowToEnableInInPrivateStep3" : {
+    "message" : "Vink het vakje \"Toestaan in InPrivate\" aan"
+  },
+  "emptyResultsBlockedSitesTitle" : {
+    "message" : "Nog geen geblokkeerde sites"
+  },
+  "emptyResultsBlockedSitesSubtitle" : {
+    "message" : "Wanneer u sites toevoegt om te blokkeren, ziet u deze hier."
+  },
+  "emptyResultsBlockedKeywordsTitle" : {
+    "message" : "Nog geen geblokkeerde zoekwoorden"
+  },
+  "emptyResultsBlockedKeywordsSubtitle" : {
+    "message" : "Wanneer u zoekwoorden toevoegt om te blokkeren, ziet u deze hier."
+  },
+  "passwordProtectionNonPremiumCTA" : {
+    "message" : "Wachtwoordbeveiliging verkrijgen"
+  },
+  "customizeBlockPageNoPremiumMacbookTitle" : {
+    "message" : "Niet posten, niet leuk vinden, gewoon leven."
+  },
+  "customizeBlockPageNoPremiumMacbookSubtitle" : {
+    "message" : "Oeps! site.com is niet beschikbaar omdat het gerelateerd is aan sociaal, een categorie die je hebt geblokkeerd. Blijf gefocust, je hebt dit."
+  },
+  "customizeBlockPageNoPremiumTitle" : {
+    "message" : "Maak je eigen geblokkeerde pagina"
+  },
+  "customizeBlockPageNoPremiumSubtitle" : {
+    "message" : "Maak het inspirerend of grappig om je focus te houden."
+  },
+  "customizeBlockPageNoPremiumCTA" : {
+    "message" : "Aangepaste blokkeringspagina ophalen"
+  },
+  "pushToDesktopOverlayTitleA" : {
+    "message" : "Blokkeren over meerdere browsers"
+  },
+  "pushToDesktopOverlayTitleB" : {
+    "message" : "Nieuwe Windows-app is nu LIVE!"
+  },
+  "pushToDesktopOverlaySubtitleA" : {
+    "message" : "Je kunt nu alle afleidingen op Edge, Firefox en Chrome blokkeren met één app! Download vandaag nog de gloednieuwe app"
+  },
+  "pushToDesktopOverlaySubtitleB" : {
+    "message" : "Je kunt nu alle afleiding in Chrome, Firefox en Edge blokkeren met onze nieuwe Windows desktop-app"
+  },
+  "pushToDesktopOverlayCTAUpgrade" : {
+    "message" : "MEER INFORMATIE"
+  },
+  "pushToDesktopOverlayCTAMaybeLater" : {
+    "message" : "Misschien later"
+  },
+  "specialOfferPopupTitle" : {
+    "message" : "Krijg onbeperkt blokkeren voor $"
+  },
+  "specialOfferPopupSubtitle" : {
+    "message" : " U krijgt ook functies zoals bulkblokkering, wachtwoordbeveiliging en meer. Slechts voor beperkte tijd!"
+  },
+  "specialOfferPopupSave" : {
+    "message" : "Opslaan"
+  },
+  "specialOfferPopupYear" : {
+    "message" : "jaar"
+  },
+  "specialOfferPopupGoUnlimited" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "specialOfferPopupGoMaybeLater" : {
+    "message" : "Misschien later"
+  },
+  "specialOfferPopupFinePrint" : {
+    "message" : "Jaarlijks gefactureerd. Terugkerende facturering. Annuleer op elk moment om welke reden dan ook"
+  },
+  "logoutPopupQuestionTitle" : {
+    "message" : "Weet u het zeker?"
+  },
+  "logoutPopupQuestionDescription" : {
+    "message" : "Alle wijzigingen die worden aangebracht terwijl u bent uitgelogd, worden niet gesynchroniseerd met de cloud."
+  },
+  "logoutPopupQuestionApproveText" : {
+    "message" : "Ja doe het"
+  },
+  "logoutPopupQuestionCancelText" : {
+    "message" : "Nee, annuleren"
+  },
+  "headerLogin" : {
+    "message" : "Log in"
+  },
+  "headerLogout" : {
+    "message" : "Uitloggen"
+  },
+  "headerGoUnlimited" : {
+    "message" : "GA ONBEPERKT"
+  },
+  "viewAccount" : {
+    "message" : "Bekijk account"
+  },
+  "PinToToolBarMessageTitle" : {
+    "message" : "Pin BlockSite om 100% productief te zijn"
+  },
+  "PinToToolBarMessageText" : {
+    "message" : "Controleer Extensielijst om deze zichtbaar te maken"
+  },
+  "PinToToolBarMessageBtnText" : {
+    "message" : "IK SNAP HET"
+  },
+  "bundleListPopupTitle" : {
+    "message" : "Pas deze pagina aan"
+  },
+  "bundleListPopupSubTitle" : {
+    "message" : "Selecteer Afbeelding multipack om willekeurig te laten zien wanneer u een geblokkeerde pagina probeert te bereiken."
+  },
+  "backgroundMultiPacksTitle" : {
+    "message" : "Blokkade visueel en tekst"
+  },
+  "bundleListPopupTooltip" : {
+    "message" : "Afbeeldingen van het geselecteerde multipack verschijnen willekeurig elke keer dat een blokpagina wordt weergegeven."
+  },
+  "bundleListPopupCancelButton" : {
+    "message" : "Annuleren"
+  },
+  "bundleListPopupDoneButton" : {
+    "message" : "GEDAAN"
+  },
+  "sharePopupTitle" : {
+    "message" : "Deel uw liefde voor productiviteit en focus"
+  },
+  "sharePopupSubTitle" : {
+    "message" : "Help anderen door hen op de hoogte te stellen van BlockSite"
+  },
+  "shareFacebookIconTitle" : {
+    "message" : "Facebook"
+  },
+  "shareTwitterIconTitle" : {
+    "message" : "Twitter"
+  },
+  "copyIconTitle" : {
+    "message" : "Kopiëren"
+  },
+  "copiedIconTitle" : {
+    "message" : "gekopieerd"
+  },
+  "shareLinkedinIconTitle": {
+    "message": "Linkedin"
+  },
+  "passwordProtectionUnlockPageTitle" : {
+    "message" : "Deze pagina is vergrendeld!"
+  },
+  "passwordProtectionUnlockPageSubtitle" : {
+    "message" : "Voer uw wachtwoord in om de pagina te ontgrendelen"
+  },
+  "passwordProtectionUnlockButton" : {
+    "message" : "Ontgrendel nu"
+  },
+  "verifyResetPasswordTitle" : {
+    "message" : "Weet u het zeker?"
+  },
+  "verifyResetPasswordText" : {
+    "message" : "We zullen je wachtwoord opnieuw instellen en een nieuwe naar je e-mailadres sturen"
+  },
+  "verifyResetPasswordAcceptBtn" : {
+    "message" : "Ja, wachtwoord opnieuw instellen"
+  },
+  "verifyResetPasswordCancelBtn" : {
+    "message" : "Nee, annuleren"
+  },
+  "resetPasswordSuccessTitle" : {
+    "message" : "Wachtwoord verzonden"
+  },
+  "resetPasswordSuccessSubTitle" : {
+    "message" : "Uw wachtwoord is verzonden naar $MAIL$",
+    "placeholders" : {
+      "mail" : {
+        "content" : "$1",
+        "example" : "voorbeeld@mail.com"
+      }
+    }
+  },
+  "resetPasswordSuccessBtnText" : {
+    "message" : "OK"
+  },
+  "PasswordProtectSecondStepTitle" : {
+  "message" : "Weet je zeker dat je deze pagina wilt ontgrendelen?"
+},
+  "PasswordProtectSecondStepSubtitle" : {
+    "message" : "'Gebruikers die hieronder op 'Annuleren' klikken, besparen gemiddeld 15 minuten per dag extra."
+  },
+  "doNotShowAgainMessage" : {
+    "message" : "Niet meer weergeven"
+  },
+  "bundleImagesDownloadInProgressTitle" : {
+    "message" : "Afbeeldingen downloaden"
+  },
+  "bundleImagesDownloadInProgressText" : {
+    "message" : "Sluit de browser niet af voordat deze is voltooid"
+  },
+  "bundleImagesDownloadSuccessTitle" : {
+    "message" : "Afbeeldingen succesvol gedownload"
+  },
+  "bundleImagesDownloadFailedTitle" : {
+    "message" : "Afbeeldingen kunnen niet worden gedownload"
+  },
+  "bundleImagesDownloadFailedText" : {
+    "message" : "Probeer het opnieuw"
+  },
+  "rateUsSubmittingStepTitle" : {
+  "message" : "Hoe zou u BlockSite beoordelen?"
+  },
+  "rateUsSubmittingStepSubTitle" : {
+    "message" : "Tik op de sterren om ons te vertellen wat je ervan vindt"
+  },
+  "rateUsSubmittingStepBtn" : {
+    "message" : "VERZENDEN"
+  },
+  "rateUsBlessingStepTitle" : {
+    "message" : "JAAA! We zijn blij dat je het leuk vond!"
+  },
+  "rateUsBlessingStepSubTitle" : {
+    "message" : "Uw feedback is belangrijk! Help anderen de voordelen van onze app te ontdekken door een review achter te laten op de webwinkel."
+  },
+  "rateUsBlessingStepBtn" : {
+    "message" : "Beoordeel ons op Webstore"
+  },
+  "rateUsSReviewStepTitle" : {
+    "message" : "Bedankt, uw mening is belangrijk voor ons!"
+  },
+  "rateUsReviewStepSubTitle" : {
+    "message" : "Onze ondersteunings- en productteams zijn ermee bezig, we verwachten binnenkort tevredenheid."
+  },
+  "rateUsReviewStepBtn" : {
+    "message" : "Stuur feedback"
+  },
+  "rateUsReviewStepMsgError" : {
+    "message" : "Ongeldige tekens ingevoerd."
+  },
+  "rateUsReviewStepTitleContent" : {
+    "message" : "Hoe kunnen we verbeteren?"
+  },
+  "rateUsReviewStepTextContent" : {
+    "message" : "Uw feedback"
+  }
+}

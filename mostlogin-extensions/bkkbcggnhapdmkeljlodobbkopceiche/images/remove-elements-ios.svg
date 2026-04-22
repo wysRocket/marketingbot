@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="81" height="80" viewBox="0 0 81 80" fill="none">
+<rect x="10.5" y="68" width="44" height="58" rx="4" transform="rotate(-90 10.5 68)" fill="#F3F5FF"/>
+<path d="M14.5001 44H38.5" stroke="#DDE8F9" stroke-width="2" stroke-linecap="round"/>
+<path d="M14.5001 48H38.5" stroke="#DDE8F9" stroke-width="2" stroke-linecap="round"/>
+<path d="M15.5001 58H27.5" stroke="#5B96EE" stroke-width="4" stroke-linecap="round"/>
+<path d="M14.5001 52H30.5" stroke="#DDE8F9" stroke-width="2" stroke-linecap="round"/>
+<circle cx="15.5" cy="29" r="1" fill="#3C454D"/>
+<circle cx="19.5" cy="29" r="1" fill="#3C454D"/>
+<circle cx="23.5" cy="29" r="1" fill="#3C454D"/>
+<path d="M45.5 24H14.5C12.2909 24 10.5 25.7909 10.5 28V62C10.5 64.2091 12.2909 66 14.5 66L64.5 66C66.7091 66 68.5 64.2091 68.5 62V48" stroke="#DDE8F9" stroke-width="2" stroke-linecap="round"/>
+<path d="M68.5 60V48M68.5 57V64C68.5 66.2091 66.7091 68 64.5 68H14.5C12.2909 68 10.5 66.2091 10.5 64V28C10.5 25.7909 12.2909 24 14.5 24H47.5" stroke="#3C454D" stroke-width="2" stroke-linecap="round"/>
+<path d="M14.5 35L43.5 35" stroke="#DDE8F9" stroke-width="2" stroke-linecap="round"/>
+<path d="M14.5 34L43.5 34" stroke="#3C454D" stroke-width="2" stroke-linecap="round"/>
+<path d="M2.5 68L70.5 68" stroke="#3C454D" stroke-width="2" stroke-linecap="round"/>
+<path d="M74.5 68H78.5" stroke="#3C454D" stroke-width="2" stroke-linecap="round"/>
+<path d="M60.7773 35.766L76.8051 19.7383" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53.9016 29.4424L56.73 32.2708M51.168 36.042L55.168 36.042M53.9016 42.6417L56.73 39.8133M60.5013 45.3754L60.5013 41.3754M67.101 42.6417L64.2726 39.8133M67.101 29.4424L64.2726 32.2708" stroke="#5B96EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="62.7578" y="29.541" width="6" height="8.75" rx="2" transform="rotate(45 62.7578 29.541)" fill="white"/>
+<rect x="75.1328" y="17.167" width="6" height="19.25" rx="2" transform="rotate(45 75.1328 17.167)" fill="#5B96EE"/>
+<rect x="76.2969" y="17.4142" width="4" height="26" rx="1" transform="rotate(45 76.2969 17.4142)" stroke="#3C454D" stroke-width="2"/>
+</svg>

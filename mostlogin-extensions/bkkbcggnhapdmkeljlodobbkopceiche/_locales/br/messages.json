@@ -1,0 +1,12 @@
+{
+  "extDescription": {
+    "message": "bloqueie pop-ups, anúncios, rastreadores e notificações. Navegue de forma limpa."
+  },
+  "extName": {
+    "message": "Bloqueador de pop-ups para Chrome™ - Poper Blocker"
+  },
+  "extName_Edge": { "message": "Bloqueador de pop-ups para Edge™ - Poper Blocker" },
+  "extName_FF": {
+    "message": "Bloqueador de pop-ups para FF™ - Poper Blocker"
+  }
+}

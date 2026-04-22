@@ -2,6 +2,7 @@ import { Page } from "playwright";
 import { navigate, blockHeavyAssets } from "../actions/navigate";
 import { scrollDown, randomBrowse, randomDelay } from "../actions/interact";
 import { pickReferrerEntry, applyUtmParams } from "../actions/referrer";
+import { searchAndNavigate } from "../actions/searchEngine";
 import { getText, getAll, getLinks } from "../actions/scrape";
 import {
   findExpectedText,
@@ -51,7 +52,12 @@ export async function browseHomepage(
     resolveSiteUrl(site, cfg.homePath),
     referrer,
   );
-  await navigate(page, targetUrl, referrer.url || undefined);
+
+  if (referrer.type === "search") {
+    await searchAndNavigate(page, referrer, targetUrl, site.id);
+  } else {
+    await navigate(page, targetUrl, referrer.url || undefined);
+  }
   await waitForHydratedContent(page, {
     selectors: [cfg.heroHeadingSelector, cfg.membersSectionSelector],
     expectedText: cfg.heroHeadingIncludes,

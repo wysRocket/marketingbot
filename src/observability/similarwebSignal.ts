@@ -90,6 +90,56 @@ function stableSort(values: Iterable<string>): string[] {
   return [...new Set(values)].filter(Boolean).sort((a, b) => a.localeCompare(b));
 }
 
+function extractJsonAssignment(html: string, marker: string): string | null {
+  const markerIndex = html.indexOf(marker);
+  if (markerIndex === -1) return null;
+
+  let index = markerIndex + marker.length;
+  while (index < html.length && /\s/.test(html[index] ?? "")) {
+    index += 1;
+  }
+
+  if (html[index] !== "{") return null;
+
+  let depth = 0;
+  let inString = false;
+  let isEscaped = false;
+
+  for (let cursor = index; cursor < html.length; cursor += 1) {
+    const char = html[cursor] ?? "";
+
+    if (inString) {
+      if (isEscaped) {
+        isEscaped = false;
+      } else if (char === "\\") {
+        isEscaped = true;
+      } else if (char === '"') {
+        inString = false;
+      }
+      continue;
+    }
+
+    if (char === '"') {
+      inString = true;
+      continue;
+    }
+
+    if (char === "{") {
+      depth += 1;
+      continue;
+    }
+
+    if (char === "}") {
+      depth -= 1;
+      if (depth === 0) {
+        return html.slice(index, cursor + 1);
+      }
+    }
+  }
+
+  return null;
+}
+
 export function summarizeTelemetryWindow(
   records: PersistedTelemetryRecord[],
   input: { now?: number; windowHours: number },
@@ -149,11 +199,13 @@ export function parseSimilarwebAppDataFromHtml(html: string): unknown {
     /window\.__APP_DATA__\s*=\s*(\{.*?\})\s*;\s*window\.__APP_META__/s,
   );
 
-  if (!match) {
+  const payload = match?.[1] ?? extractJsonAssignment(html, "window.__APP_DATA__ =");
+
+  if (!payload) {
     throw new Error("Could not find Similarweb window.__APP_DATA__ payload");
   }
 
-  return JSON.parse(match[1]);
+  return JSON.parse(payload);
 }
 
 export function extractSimilarwebSnapshot(

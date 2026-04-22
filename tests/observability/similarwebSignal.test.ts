@@ -118,6 +118,34 @@ describe("parseSimilarwebAppDataFromHtml", () => {
       },
     });
   });
+
+  it("extracts app data even when the page omits window.__APP_META__", () => {
+    const html = `
+      <html>
+        <body>
+          <script>
+            window.__APP_DATA__ = {"layout":{"data":{"overview":{"globalRank":0,"visitsTotalCount":0},"traffic":{"history":[]}}}};
+          </script>
+        </body>
+      </html>
+    `;
+
+    const parsed = parseSimilarwebAppDataFromHtml(html);
+
+    expect(parsed).toEqual({
+      layout: {
+        data: {
+          overview: {
+            globalRank: 0,
+            visitsTotalCount: 0,
+          },
+          traffic: {
+            history: [],
+          },
+        },
+      },
+    });
+  });
 });
 
 describe("extractSimilarwebSnapshot", () => {

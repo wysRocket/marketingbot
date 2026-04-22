@@ -1,6 +1,7 @@
 # Chrome Extensions - Store Links
 
 ## SEO & Market Research
+
 1. **Similarweb Traffic Checker**
    - https://chromewebstore.google.com/detail/oimgbhbjcjmaccdkcamjhfnfdbcflmjg
 
@@ -20,6 +21,7 @@
    - https://chromewebstore.google.com/detail/dapjbgnjinumgiihehijbmbnfcinllne
 
 ## Content & Productivity
+
 7. **Grammarly**
    - https://chromewebstore.google.com/detail/kbfnbcainnuiloeiecmcnshbnoofjbfa
 
@@ -42,6 +44,7 @@
     - https://chromewebstore.google.com/detail/ailcmbgekjpnmbcakbntafpeelliimdj
 
 ## Developer Tools
+
 14. **ColorPick Eyedropper**
     - https://chromewebstore.google.com/detail/ohcpnigalekghikboiapkdeomknaphok
 
@@ -55,6 +58,7 @@
     - https://chromewebstore.google.com/detail/kkelicaakdanhinjdeammmilcgefonfh
 
 ## Sales & CRM
+
 18. **Hunter.io**
     - https://chromewebstore.google.com/detail/hgmhmanijnjhaffoampdlllchpolkdbl
 
@@ -65,6 +69,7 @@
     - https://chromewebstore.google.com/detail/geofbblcmmfbkjhfkfcamffchlpnbjef
 
 ## VPN & Security
+
 21. **Hola VPN**
     - https://chromewebstore.google.com/detail/gkojfkhlekhtmcefapccjgajcjkjgle
 
@@ -75,6 +80,7 @@
     - https://chromewebstore.google.com/detail/mlomiejdfkolichcargpeoopbgfekmg
 
 ## Shopping & Coupons
+
 24. **AdBlock Plus**
     - https://chromewebstore.google.com/detail/cfhdojbkjhnklbpkdaibdccddilifddb
 
@@ -89,6 +95,7 @@
 ## Quick Links Reference
 
 To quickly search for any extension on the Chrome Web Store:
+
 - Direct search: `https://chromewebstore.google.com/search/[extension-name]`
 - Example: `https://chromewebstore.google.com/search/grammarly`
 

@@ -1,0 +1,2077 @@
+{
+  "appName" : {
+    "message" : "BlockSite: Blockera webbplatser och håll dig fokuserad",
+    "description" : "Applikationens titel som visas i webbutiken."
+  },
+  "appShortName" : {
+    "message" : "BlockSite",
+    "description" : "Applikationens korta titel"
+  },
+  "appDesc" : {
+    "message" : "Fokusera och öka produktiviteten med nyckelfunktioner: anpassad blocklista, schemalagd blockering och lösenordsskydd",
+    "description" : "Applikationens beskrivning som visas i webbutiken."
+  },
+  "blockSitesTab" : {
+    "message" : "Blockera webbplatser"
+  },
+  "focusModeTab" : {
+    "message" : "Fokuserat läge"
+  },
+  "InsightsTab" : {
+    "message" : "Insights"
+  },
+  "optionsMenuBlockSites" : {
+    "message" : "Blockera webbplatser"
+  },
+  "optionsMenuFocusMode" : {
+    "message" : "Fokuserat läge"
+  },
+  "optionsMenuPasswordProtection" : {
+    "message" : "Lösenordsskydd"
+  },
+  "optionsMenuBlockByWords" : {
+    "message" : "Blockera baserat på ord"
+  },
+  "optionsMenuCustomizeBlockPage" : {
+    "message" : "Anpassad blockeringssida"
+  },
+  "optionsMenuCategories" : {
+    "message" : "kategorier"
+  },
+  "optionsMenuSettings" : {
+    "message" : "Inställningar"
+  },
+  "optionsMenuAbout" : {
+    "message" : "Om"
+  },
+  "optionsMenuBlocking" : {
+    "message" : "Blockering"
+  },
+  "optionsMenuSyncWithOtherDevices" : {
+    "message" : "Synkronisera med andra enheter"
+  },
+  "optionsMenuSyncedOn" : {
+    "message" : "Aktiverad"
+  },
+  "optionsMenuSyncedOff" : {
+    "message" : "Inaktiverad"
+  },
+  "optionsMenuBannerTitleCategory" : {
+    "message" : "Blockera efter kategori"
+  },
+  "optionsMenuBannerSubtitleCategory" : {
+    "message" : "Spara mer tid genom att blockera tusentals webbplatser med ett enda klick"
+  },
+  "optionsMenuBannerTitleGoUnlimited" : {
+    "message" : "Få mer. Gå obegränsat"
+  },
+  "optionsMenuBannerSubtitleGoUnlimited" : {
+    "message" : "Bli först med att ta del av våra senaste funktioner"
+  },
+  "optionsMenuBannerTitleCustomizeBlockPage" : {
+    "message" : "Anpassa blocksida"
+  },
+  "optionsMenuBannerSubtitleCustomizeBlockPage" : {
+    "message" : "Välj bilder och texter för att göra det till ditt eget"
+  },
+  "optionsMenuBannerTitleUnlimitedBlockList" : {
+    "message" : "Obegränsad blocklista"
+  },
+  "optionsMenuBannerSubtitleUnlimitedBlockList" : {
+    "message" : "Lägg till så många webbplatser du vill till din blockeringslista"
+  },
+  "optionsMenuBannerTitlePasswordProtection" : {
+    "message" : "Lösenordsskydd"
+  },
+  "optionsMenuBannerSubtitlePasswordProtection" : {
+    "message" : "Gör det svårare att ta bort webbplatser från din blockeringslista"
+  },
+  "optionsMenuBannerTitleSlack" : {
+    "message" : "BlockSites Slack-app"
+  },
+  "optionsMenuBannerSubtitleSlack" : {
+    "message" : "Slå på Stör ej-läget automatiskt i fokusläge"
+  },
+  "optionsMenuBannerTitleInsights" : {
+    "message" : "Insights"
+  },
+  "optionsMenuBannerSubtitleInsights" : {
+    "message" : "Utforska dina surftrender och hur du spenderar din tid online "
+  },
+  "optionsMenuBannerTitleMobile" : {
+    "message" : "BlockSite-appen på din smartphone"
+  },
+  "optionsMenuBannerSubtitleMobile" : {
+    "message" : "Skanna QR-koden och håll dig produktiv när du är på språng"
+  },
+  "optionsMenuBannerTitleDesktop" : {
+    "message" : "BlockSite för Windows BETA"
+  },
+  "optionsMenuBannerSubtitleDesktop" : {
+    "message" : "Blockera tidsslösande webbplatser på Edge, Firefox och Chrome med en app!"
+  },
+  "optionsMenuBannerCTAGoUnlimited" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "optionsMenuBannerCTATryNow" : {
+    "message" : "Försök nu"
+  },
+  "optionsMenuBannerTitleSignup" : {
+    "message" : "Registrera dig för mer produktivitet"
+  },
+  "optionsMenuBannerSubtitleSignup" : {
+    "message" : "Tjäna belöningar och synkronisera din blockeringslista över enheter"
+  },
+  "optionMenuBannerCTASignupNow" : {
+    "message" : "Anmäl dig nu"
+  },
+  "tagTextPremium": {
+    "message": "PREMIE"
+  },
+  "tagTextQuickTip" : {
+    "message" : "SNABBTIPS"
+  },
+  "tagTextLatestNews" : {
+    "message" : "SENASTE NYTT"
+  },
+  "mandatoryConsentTitle1" : {
+    "message" : "Vänligen gör ett val i"
+  },
+  "mandatoryConsentTitle2" : {
+    "message" : "för att fortsätta till BlockSite."
+  },
+  "mandatoryConsentSubtitle" : {
+    "message" : "För att BlockSite ska kunna upptäcka och blockera sidor med vuxeninnehåll behöver vi ditt tillstånd för att få tillgång till information på de webbplatser du besöker. Klicka på \"Godkänn\" för att möjliggöra denna åtkomst och användning av denna information som beskrivs i vår"
+  },
+  "mandatoryConsentPrivacyPolicy" : {
+    "message" : "Sekretesspolicy"
+  },
+  "mandatoryConsentAgree" : {
+    "message" : "Godkänn"
+  },
+  "mandatoryConsentDisagree" : {
+    "message" : "Neka"
+  },
+  "mandatoryConsentDisclaimer" : {
+    "message" : "Om du klickar på \"Neka\" kan du fortfarande använda BlockSite, men funktionen för blockering av porrsidor kommer inte att vara aktiv."
+  },
+  "blockSitesOptionsTitle" : {
+    "message" : "Blockera webbplatser"
+  },
+  "blockSitesOptionsSubtitle" : {
+    "message" : "Blockera webbplatser permanent eller enligt schema"
+  },
+  "blockSitesOptionsSearchBarPlaceholder" : {
+    "message" : "Ange en webbadress (t.ex. facebook.com)"
+  },
+  "blockSitesOptionsTableTitle" : {
+    "message" : "BLOCKERADE WEBBPLATSER"
+  },
+  "blockSitesOptionsOnboardingText" : {
+    "message" : "Börja lägga till webbplatser du vill blockera i din lista."
+  },
+  "optionsNotificationIncorrectURL" : {
+    "message" : "Felaktig webbadress"
+  },
+  "optionsNotificationSiteAdded" : {
+    "message" : "En webbplats har lagts till"
+  },
+  "optionsNotificationURLAlreadyExist" : {
+    "message" : "URL finns redan"
+  },
+  "optionsNotificationEmptyList" : {
+    "message" : "Din lista är tom. Det finns inget att exportera."
+  },
+  "optionsNotificationListExported" : {
+    "message" : "Din lista exporterades."
+  },
+  "optionsNotificationListImported" : {
+    "message" : "Din lista har importerats."
+  },
+  "optionsNotificationIncorrectFileStructure" : {
+    "message" : "Felaktig filstruktur. Försök att exportera din nuvarande lista för att se önskat csv-format."
+  },
+  "blockSitesBlockedTitle" : {
+    "message" : "Den här webbplatsen är för närvarande blockerad"
+  },
+  "blockSitesBlockSite" : {
+    "message" : "Blockera den här webbplatsen"
+  },
+  "blockSitesNotAvailable" : {
+    "message" : "Ej tillgängligt på denna sida"
+  },
+  "blockSitesEditBlockList" : {
+    "message" : "Redigera blocklista"
+  },
+  "blockSitesRefreshPage" : {
+    "message" : "Uppdatera sida"
+  },
+  "blockSitesBlockedTitleNow" : {
+    "message" : "Webbplatsen har lagts till i din blockeringslista"
+  },
+  "goPremium" : {
+    "message" : "GO PREMIUM"
+  },
+  "blockWordsOptionsTitle" : {
+    "message" : "Blockera baserat på ord"
+  },
+  "blockWordsOptionsSubtitle" : {
+    "message" : "Blockera URL: er som innehåller specifika ord"
+  },
+  "blockWordsOptionsTableTitle" : {
+    "message" : "Blockerade ord"
+  },
+  "blockWordsOptionsSearchBarPlaceholder" : {
+    "message" : "Ange ett ord eller en fras"
+  },
+  "optionsNotificationWordAlreadyExist" : {
+    "message" : "Ordet finns redan"
+  },
+  "contextMenusBlockThisLink" : {
+    "message" : "Blockera den här länken"
+  },
+  "contextMenusAllowThisLink" : {
+    "message" : "Tillåt den här länken"
+  },
+  "contextMenusBlockThisSite" : {
+    "message" : "Blockera den här webbplatsen"
+  },
+  "contextMenusAllowThisSite" : {
+    "message" : "Tillåt den här webbplatsen"
+  },
+  "contextMenusBlockThisLinkWorkMode" : {
+    "message" : "Lägg till länkadress i fokuslägeslistan"
+  },
+  "contextMenusAllowThisLinkWorkMode" : {
+    "message" : "Tillåt den här länken för fokuslägeslista"
+  },
+  "contextMenusBlockThisSiteWorkMode" : {
+    "message" : "Lägg till webbplats i fokuslägeslistan"
+  },
+  "contextMenusAllowThisSiteWorkMode" : {
+    "message" : "Tillåt denna webbplats för fokuslägeslista"
+  },
+  "tooltipExportList" : {
+    "message" : "Exportera lista"
+  },
+  "tooltipImportList" : {
+    "message" : "Importera lista"
+  },
+  "importPopupTitle" : {
+    "message" : "Vill du slå samman listorna eller ersätta din aktuella lista?"
+  },
+  "importPopupOverride" : {
+    "message" : "Ersätt"
+  },
+  "importPopupMerge" : {
+    "message" : "Slå samman"
+  },
+  "whitelistModeTitle" : {
+    "message" : "Vitlisteläge"
+  },
+  "whitelistInfoToolTip" : {
+    "message" : "Blockera alla webbplatser förutom de i din vitlista"
+  },
+  "whitelistPopUpTitle" : {
+    "message" : "Är du säker?"
+  },
+  "whitelistPopUpDescription" : {
+    "message" : "Alla webbplatser blockeras utom dem som finns i listan"
+  },
+  "popupQuestionApprove" : {
+    "message" : "Ja"
+  },
+  "popupQuestionCancel" : {
+    "message" : "Nej"
+  },
+  "blockedTabMessage1" : {
+    "message" : "Du satte %domain% på din Block Sites-lista. Det finns förmodligen ett gott skäl för det."
+  },
+  "blockedTabMessage2" : {
+    "message" : "Du har blockerat %domain% så att du kan arbeta. Koncentrera dig på ditt arbete."
+  },
+  "blockedTabMessage3" : {
+    "message" : "Så, nu känns det bättre. Återgå till det du sysslade med."
+  },
+  "blockedTabMessage4" : {
+    "message" : "%domain% har blockerats. Lägg till fler störande webbplatser och bli ännu mer produktiv."
+  },
+  "blockedTabMessage5" : {
+    "message" : "Det ser ut som att du har blockerat ordet ”%domain%”. Låt det vara blockerat."
+  },
+  "blockedTabMessage6" : {
+    "message" : "Den här webbplatsen finns inte i din vitlista. Det finns det säkert goda skäl till."
+  },
+  "motivationalText1" : {
+    "message" : "Glöm det."
+  },
+  "motivationalText2" : {
+    "message" : "Inte en chans, hörru."
+  },
+  "motivationalText3" : {
+    "message" : "Bra försök..."
+  },
+  "motivationalText4" : {
+    "message" : "Menar du allvar?"
+  },
+  "motivationalText5" : {
+    "message" : "Vad tror du att du gör?"
+  },
+  "motivationalText6" : {
+    "message" : "Sluta skämta!"
+  },
+  "motivationalText7" : {
+    "message" : "Valpar. Konstiga bruna mullvadar. Justin Bieber."
+  },
+  "motivationalText8" : {
+    "message" : "Kackerlackor. Avhuggna lemmar. John Goodman."
+  },
+  "motivationalText9" : {
+    "message" : "Mormor. Kobe Bryant. Kirurgiska ingrepp."
+  },
+  "motivationalText10" : {
+    "message" : "Uppfattat!"
+  },
+  "motivationalText11" : {
+    "message" : "Oj då!"
+  },
+  "motivationalText12" : {
+    "message" : "Bra försök!"
+  },
+  "focusModeOptionsTitle" : {
+    "message" : "Fokuserat läge"
+  },
+  "focusModeOptionsSubtitle" : {
+    "message" : "För att fokusera på en uppgift och vara mer produktiv, använd fokusläget för att ställa in din arbetstid och pausintervall. Lägg till webbplatser i din blocklista för att undvika distraktioner under en fokus session"
+  },
+  "aboutTitle" : {
+    "message" : "Om BlockSite"
+  },
+  "aboutSubtitle" : {
+    "message" : "BlockSite hjälper dig att fokusera och förbättra din produktivitet. Blockera enkelt störande eller skadliga webbplatser. Ingen viljestyrka krävs."
+  },
+  "aboutCreateBlockListsTitle" : {
+    "message" : "Skapa blocklistor"
+  },
+  "aboutCreateBlockListsSubtitle" : {
+    "message" : "Lägg till de webbplatser du vill blockera i din lista och bli omdirigerad till säkrare och positivare sidor automatiskt. Du kan även skapa en lista över godkända webbplatser och växla mellan att blockera sidorna i listan med förbjudna webbplatser och att endast tillåta de sidor som finns i listan med godkända webbplatser."
+  },
+  "aboutBlockCategoriesTitle" : {
+    "message" : "Blockera kategorier"
+  },
+  "aboutBlockCategoriesSubtitle" : {
+    "message" : "Blockera snabbt en hel kategori med ett knapptryck."
+  },
+  "aboutRightClickMenuTitle" : {
+    "message" : "Högerklicksmenyn"
+  },
+  "aboutRightClickMenuSubtitle" : {
+    "message" : "Högerklicka var som helst på en webbplats för att öppna snabbmenyn. Blockera webbplatser på ett par sekunder och håll dig fokuserad."
+  },
+  "aboutIncognitoTitle" : {
+    "message" : "Inkognitoläge (endast tillgängligt i Chrome)"
+  },
+  "aboutIncognitoSubtitle" : {
+    "message" : "Alla BlockSites funktioner kan även användas i inkognitoläget. Du behöver bara tillåta det. Följ dessa instruktioner för att se hur det går till: "
+  },
+  "aboutIncognitoCTA" : {
+    "message" : "Inkognitoläge"
+  },
+  "aboutKeepInternetSafeTitle" : {
+    "message" : "Håll ditt internet säkert"
+  },
+  "aboutKeepInternetSafeSubtitle" : {
+    "message" : "Aktivera blockering av barnförbjudet innehåll via tilläggsmenyn för att blockera alla barnförbjudna sidor med ett enda klick. "
+  },
+  "aboutScheduleTitle" : {
+    "message" : "Blockera under specifika tider"
+  },
+  "aboutScheduleSubtitle" : {
+    "message" : "Välj dagar och intervall som du vill att Block Site ska vara aktivt. Välj tidsperioder baserat på dina arbetstider (t.ex.: kl. 9.00–17.00) så att du inte slösar bort tid medan du är på jobbet eller i skolan."
+  },
+  "aboutPasswordTitle" : {
+    "message" : "Ange lösenord"
+  },
+  "aboutPasswordSubtitle" : {
+    "message" : "Ange ett lösenord på inställningssidan för att begränsa åtkomsten till BlockSite-alternativ eller för att aktivera möjligheten att komma åt blockerade webbplatser med hjälp av ett lösenord."
+  },
+  "aboutRateUsTitle" : {
+    "message" : "Gillar du oss? Låt hela världen veta."
+  },
+  "aboutRateUsSubtitle" : {
+    "message" : "Om du tycker att Block Site är användbart, ge oss ett omdöme i Chrome Webstore. Det skulle göra oss väldigt glada."
+  },
+  "aboutTermsOfUse" : {
+    "message" : "Villkor"
+  },
+  "aboutPrivacyPolicy" : {
+    "message" : "Sekretesspolicy"
+  },
+  "aboutContactSupport" : {
+    "message" : "KONTAKTA SUPPORTEN"
+  },
+  "aboutHowToEnableInIncognitoTitle" : {
+    "message" : "Så aktiverar du i inkognitoläge"
+  },
+  "aboutHowToEnableInIncognitoSubtitle" : {
+    "message" : "Följ dessa steg för att aktivera Blockera webbplats i Chrome: s inkognitoläge:"
+  },
+  "aboutHowToEnableInIncognitoStep1" : {
+    "message" : "Öppna chrome://extensions"
+  },
+  "aboutHowToEnableInIncognitoStep2" : {
+    "message" : "Hitta BlockSite"
+  },
+  "aboutHowToEnableInIncognitoStep3" : {
+    "message" : "Markera 'Tillåt i inkognitoläge'"
+  },
+  "optionsPageRedirectButton" : {
+    "message" : "Omdirigera"
+  },
+  "optionsPageRedirectTitle" : {
+    "message" : " Omdirigera dina blockerade sidor"
+  },
+  "optionsPageRedirectPlaceHolder" : {
+    "message" : "Webbadress (t.ex. google.com)"
+  },
+  "optionsPageRedirectOK" : {
+    "message" : "OK"
+  },
+  "optionsPageRedirectRemove" : {
+    "message" : "Ta bort"
+  },
+  "optionsPageRedirectTooltipNotSet" : {
+    "message" : "Klicka för att ange webbplats att omdirigera till"
+  },
+  "optionsPageRedirectTooltipSet" : {
+    "message" : "Omdirigera till $URL$",
+    "placeholders" : {
+      "url" : {
+        "content" : "$1",
+        "example" : "https://example.com"
+      }
+    }
+  },
+  "cantRedirectToWorkModeBlockedSite" : {
+    "message" : "hoppsan! Den här omdirigeringssidan är blockerad av din fokuslägeslista"
+  },
+  "cantRedirectToBlockedSite" : {
+    "message" : "hoppsan! Den här omdirigeringssidan är blockerad av din Block Sites-lista"
+  },
+  "cantRedirectToBlockedWord" : {
+    "message" : "hoppsan! Den här omdirigeringssidan är blockerad av din Block By Words-lista"
+  },
+  "optionsPageScheduleButton" : {
+    "message" : "Schema"
+  },
+  "optionsPageScheduleEveryDay" : {
+    "message" : "Alla dagar"
+  },
+  "optionsPageScheduleSetSchedule" : {
+    "message" : "Ange schema"
+  },
+  "optionsPageScheduleRemoveSchedule" : {
+    "message" : "Ta bort"
+  },
+  "optionsPageScheduleSetTimes" : {
+    "message" : "ANGE TIDER"
+  },
+  "optionsPageScheduleSetBlocking" : {
+    "message" : "Ange blockeringsschema"
+  },
+  "optionsPageScheduleAddInterval" : {
+    "message" : "Lägg till intervall"
+  },
+  "optionsPageScheduleTo" : {
+    "message" : "till"
+  },
+  "optionsPageScheduleSelectDays" : {
+    "message" : "VALDA DAGAR"
+  },
+  "optionsPageScheduleClickDay" : {
+    "message" : "(Klicka på en dag för att inaktivera)"
+  },
+  "blockByCategoryTitleGambling" : {
+    "message" : "Låt inte huset alltid vinna."
+  },
+  "blockByCategoryTextGambling" : {
+    "message" : "hoppsan! %domain%  är tillgänglig eftersom det är relaterat till hasardspel som är en kategori som du ' har blockerat. Håll dig fokuserad, du har det här."
+  },
+  "blockByCategoryTitleAdult" : {
+    "message" : "Kackerlackor. Avhuggna lemmar. John Goodman."
+  },
+  "blockByCategoryTextAdult" : {
+    "message" : "hoppsan! %domain%  är tillgänglig eftersom det är relaterat till vuxna som är en kategori som du ' har blockerat. Håll dig fokuserad, du har det här."
+  },
+  "blockByCategoryTitleSports" : {
+    "message" : "Håll lugn och koppla loss."
+  },
+  "blockByCategoryTextSports" : {
+    "message" : "hoppsan! %domain%  är tillgänglig eftersom det är relaterat till sport som är en kategori som du ' har blockerat. Håll dig fokuserad, du har det här."
+  },
+  "blockByCategoryTitleSocialNetworksAndOnlineCommunities" : {
+    "message" : "Ingen post, ingen smak, bara bo."
+  },
+  "blockByCategoryTextSocialNetworksAndOnlineCommunities" : {
+    "message" : "hoppsan! %domain%  är tillgänglig eftersom det är relaterat till social som är en kategori som du ' har blockerat. Håll dig fokuserad, du har det här."
+  },
+  "blockByCategoryTitleNewsAndMedia" : {
+    "message" : "Inga nyheter är bra nyheter."
+  },
+  "blockByCategoryTextNewsAndMedia" : {
+    "message" : "hoppsan! %domain%  är tillgänglig eftersom det är relaterat till nyheter som är en kategori som du ' har blockerat. Håll dig fokuserad, du har det här."
+  },
+  "blockByCategoryTitleShopping" : {
+    "message" : "En dollar som inte spenderas är en dollar intjänad!"
+  },
+  "blockByCategoryTextShopping" : {
+    "message" : "hoppsan! %domain% är inte tillgänglig eftersom den är relaterad till shopping, vilket är en kategori som du har blockerat. Håll fokus, du har det här."
+  },
+  "categoriesOptionsTitle" : {
+    "message" : "kategorier"
+  },
+  "categoriesOptionsSubtitle" : {
+    "message" : "Välj vilka kategorier du vill blockera"
+  },
+  "settingsOptionTitle" : {
+    "message" : "Inställningar"
+  },
+  "settingsOptionSubtitle" : {
+    "message" : ""
+  },
+  "categoriesAdult" : {
+    "message" : "Vuxen"
+  },
+  "categoriesSocialNetworksAndOnlineCommunities" : {
+    "message" : "Social"
+  },
+  "categoriesNewsAndMedia" : {
+    "message" : "Nyheter"
+  },
+  "categoriesSports" : {
+    "message" : "sporter"
+  },
+  "categoriesGambling" : {
+    "message" : "Spelande"
+  },
+  "categoriesShopping" : {
+    "message" : "Handla"
+  },
+  "privacySettingsTitle" : {
+    "message" : "Aktivera blockering av \"Blockera efter kategori\""
+  },
+  "privacySettingsSubtitle" : {
+    "message" : "Tillåter BlockSite att komma åt dina besökta URL: er, IP-adress, operativsystem och webbläsarinformation för användning enligt anvisningarna i vår "
+  },
+  "privacySettingsPrivacyPolicy" : {
+    "message" : "Integritetspolicy."
+  },
+  "settingsEnableBlockSiteShortcutTitle" : {
+    "message" : "Aktivera BlockSite-genvägsalternativ med högerklicka"
+  },
+  "settingsEnableBlockSiteShortcutSubtitle" : {
+    "message" : "Lägg till webbplatser i din blocklista eller din fokuslägeslista genom att högerklicka och välja BlockSite-menyn på en webbplats."
+  },
+  "settingsShowMotivationalTitle" : {
+    "message" : "Visa motiverade bilder med blockerade sidor"
+  },
+  "settingsShowMotivationalSubtitle" : {
+    "message" : "Om du aktiverar detta visas bilder på en blockerad webbplats. Inaktivering visar en vit bakgrund."
+  },
+  "settingsSyncTitle" : {
+    "message" : "Synkronisera med andra enheter"
+  },
+  "settingsSyncSubtitle" : {
+    "message" : "Säkerhetskopiera ditt nuvarande tilläggs preferenser och blockera listan till molnet eller synkronisera med upp till fyra andra enheter från våra Android- och / eller tilläggsplattformar när du är inloggad under samma användarkonto."
+  },
+  "settingsGeneralHeader" : {
+    "message" : "ALLMÄN"
+  },
+  "settingsViewHeader" : {
+    "message" : "SE"
+  },
+  "settingsSyncHeader" : {
+    "message" : "Synkronisera"
+  },
+  "settingEnableFocusModeFaviconTitle" : {
+    "message" : "Visa återstående tid på favicon"
+  },
+  "settingEnableFocusModeFaviconSubtitle" : {
+    "message" : "Aktivera detta för att visa tiden som återstår i det aktuella intervallet på tilläggets favicon."
+  },
+  "settingEnableSyncStatusTitle" : {
+    "message" : "Visa snabbmenyn för synkroniseringsalternativ"
+  },
+  "settingEnableSyncStatusSubtitle" : {
+    "message" : "Aktivera för att visa en genväg för att enkelt aktivera / inaktivera synkronisering med mobila och / eller andra tillägg."
+  },
+  "customizedBlockPageNonPremiumTry" : {
+    "message" : "Prova BlockSite Unlimited GRATIS"
+  },
+  "customizeBlockPageTitle" : {
+    "message" : "Anpassad blockeringssida"
+  },
+  "customizeBlockPageSubtitle" : {
+    "message" : "Anpassa dina blocksidor med egna bilder och text. Kolla in ändringarna på skärmen nedan i realtid innan du sparar!"
+  },
+  "customizeBlockPageSetBackground" : {
+    "message" : "Ställ in BAKGRUNDBILD"
+  },
+  "customizeBlockPageSetPageText" : {
+    "message" : "SETTA SIDATEKST"
+  },
+  "customizeBlockPageBlocksiteText" : {
+    "message" : "BlockSites text"
+  },
+  "customizeBlockPageCustomizeText" : {
+    "message" : "Anpassa text"
+  },
+  "customizeBlockPageSetTitleText" : {
+    "message" : "Ange titeltext"
+  },
+  "customizeBlockPageSetSubTitleText" : {
+    "message" : "Ange undertext"
+  },
+  "customizeBlockPageTextColor" : {
+    "message" : "Text färg"
+  },
+  "customizeBlockPageWhite" : {
+    "message" : "Vit"
+  },
+  "customizeBlockPageBlack" : {
+    "message" : "Svart"
+  },
+  "customizeBlockPageUploadImage" : {
+    "message" : "LADDA UPP ANPASSAD BILD"
+  },
+  "customizeBlockPageResetImage" : {
+    "message" : "Återställ tillbaka till BlockSite Funny Images"
+  },
+  "customizeBlockPageCurrentBackground" : {
+    "message" : "Nuvarande bakgrund"
+  },
+  "customizeBlockPageUserCustomImage" : {
+    "message" : "Användaranpassad bakgrund"
+  },
+  "customizeBlockPageBlockSiteFunnyImage" : {
+    "message" : "BlockSite roliga bilder"
+  },
+  "customizeBlockPagePreviewYourChanges" : {
+    "message" : "Förhandsgranska dina ändringar innan du sparar"
+  },
+  "customizeBlockPageResetToDefault" : {
+    "message" : "ÅTERSTÄLL TILL STANDARD"
+  },
+  "customizeBlockPageApplyChanges" : {
+    "message" : "Tillämpa ändringarna"
+  },
+  "customizeBlockPageChangesApplied" : {
+    "message" : "Dina ändringar har tillämpats."
+  },
+  "customizeBlockPageChangesFailed" : {
+    "message" : "Något gick fel. Var god försök igen."
+  },
+  "customizeBlockPageApplyChangeTitle" : {
+    "message" : "Applicera förändringar?"
+  },
+  "customizeBlockPageApplyChangeSubTitle" : {
+    "message" : "Använd de ändringar du gjort på din blockerade sida genom att klicka på Ja."
+  },
+  "customizeBlockPageApplyChangeNo" : {
+    "message" : "Nej"
+  },
+  "customizeBlockPageApplyChangeYes" : {
+    "message" : "Ja"
+  },
+  "insightsCategory_social" : {
+    "message" : "Social"
+  },
+  "insightsCategory_news" : {
+    "message" : "Nyheter"
+  },
+  "insightsCategory_sports" : {
+    "message" : "sporter"
+  },
+  "insightsCategory_other" : {
+    "message" : "Annan"
+  },
+  "insightsCategory_entertainment" : {
+    "message" : "Underhållning"
+  },
+  "insightsCategory_shopping" : {
+    "message" : "Handla"
+  },
+  "insightsCategory_games" : {
+    "message" : "Spel"
+  },
+  "insightsTitle" : {
+    "message" : "Insights"
+  },
+  "insightsDescription" : {
+    "message" : "Se hur du tillbringar din tid online för att bli mer produktiv"
+  },
+  "insightsTopVisit" : {
+    "message" : "Toppbesökta kategorier"
+  },
+  "insightsTimeSaved" : {
+    "message" : "Hur mycket tid har jag sparat?"
+  },
+  "insightsErrorTitle" : {
+    "message" : "hoppsan! Något gick fel!"
+  },
+  "insightsErrorDescription" : {
+    "message" : "Oroa dig inte! vi arbetar hårt för att lösa det här problemet så försök igen senare."
+  },
+  "insightsEmptyTitle" : {
+    "message" : "Inga insikter än. Försök igen om 24 timmar."
+  },
+  "insightsEmptyDescription" : {
+    "message" : "Vi beräknar fortfarande dina insikter, kom tillbaka snart för uppdateringar!"
+  },
+  "optionsLockedTitle" : {
+    "message" : "Åtkomsten till BlockSite-alternativen är låst"
+  },
+  "optionsLockedSubtitle" : {
+    "message" : "Ange ditt lösenord för att få tillgång till BlockSites sida för alternativ."
+  },
+  "enterYourPassword" : {
+    "message" : "Ange ditt lösenord"
+  },
+  "forgotPassword" : {
+    "message" : "Har du glömt lösenordet?"
+  },
+  "wrongPassword" : {
+    "message" : "Hoppsan! Det var inte rätt. Försök igen."
+  },
+  "goBackToWork" : {
+    "message" : "Gå tillbaka till dina arbetsuppgifter"
+  },
+  "goBack" : {
+    "message" : "Gå tillbaka"
+  },
+  "customizePage" : {
+    "message" : "Anpassa sidan"
+  },
+  "enterPasswordToGainAccess" : {
+    "message" : "Ange lösenord för att få tillgång"
+  },
+  "popupLockedTitle" : {
+    "message" : "BlockSite är avstängt"
+  },
+  "popupLockedSubtitle" : {
+    "message" : "Ange ditt lösenord för att få tillgång till tilläggsinställningar"
+  },
+  "protectionSettingsSaved" : {
+    "message" : "Säkerhetsinställningarna sparades"
+  },
+  "setUpEmailAndPass" : {
+    "message" : "Aktivera genom att ange e-postadress och lösenord"
+  },
+  "enterYourEmail" : {
+    "message" : "Ange din e-postadress"
+  },
+  "saveEmailSettings" : {
+    "message" : "Spara"
+  },
+  "emailVerificationTitle1" : {
+    "message" : "BlockSite skickar ett e-postmeddelande med en länk för att verifiera din e-postadress."
+  },
+  "emailVerificationTitle2" : {
+    "message" : "Din e-postadress kommer endast att användas i syfte med lösenordsskyddet."
+  },
+  "updateEmailAndPassword" : {
+    "message" : "Uppdatera e-postadress och lösenord"
+  },
+  "settingsNotSaved" : {
+    "message" : "Inställningarna sparades inte"
+  },
+  "settingsChangedTitle1" : {
+    "message" : "Spara din e-postadress och ditt lösenord för att aktivera funktioner som ger extra säkerhet."
+  },
+  "leaveWithoutSaving" : {
+    "message" : "Lämna utan att spara"
+  },
+  "addEmailAndPassword" : {
+    "message" : "Lägg till e-postadress och lösenord"
+  },
+  "passwordVerificationWarning" : {
+    "message" : "Lösenordsskydd är inte aktiverat. För att aktivera, öppna länken i e-postmeddelandet i samma webbläsarfönster som du ursprungligen använde för att konfigurera ditt konto."
+  },
+  "verificationCheckYourEmail" : {
+    "message" : "Aktivera genom att klicka på verifieringslänken som har skickats via e-post."
+  },
+  "verificationDidntReceiveEmail" : {
+    "message" : "Om du inte fick e-postmeddelandet,"
+  },
+  "verificationClickToResend" : {
+    "message" : "vänligen klicka här för att skicka om."
+  },
+  "passwordProtectionPreferences" : {
+    "message" : "Konfiguration för lösenordsskydd"
+  },
+  "passwordProtectionOptionBlockSettings" : {
+    "message" : "Skydda dina BlockSite-alternativ och $ BROWSER $ tilläggssidan med ett lösenord",
+    "placeholders" : {
+      "browser" : {
+        "content" : "$1"
+      }
+    }
+  },
+  "passwordProtectionOptionBlockBlockedPage" : {
+    "message" : "Kräv lösenord för<br /> åtkomst till blockerade webbplatser"
+  },
+  "passwordProtectionOptionAddChallenge" : {
+    "message" : "Blockerad sidutmaning - lägg till extra steg för att avblockera sidan"
+  },
+  "passwordProtectionOptionNotifyUninstalled" : {
+    "message" : "Få en avisering via e-post när<br> BlockSite avinstalleras"
+  },
+  "forgotPassSentTitle" : {
+    "message" : "Lösenordet har skickats"
+  },
+  "forgotPassSentText" : {
+    "message" : "Ditt lösenord har skickats till"
+  },
+  "forgotPassSentOkBtn" : {
+    "message" : "OK"
+  },
+  "blockExtensionsPageTitle" : {
+    "message" : "$ BROWSER $ Extensions-sida - Skyddad",
+    "placeholders" : {
+      "browser" : {
+        "content" : "$1"
+      }
+    }
+  },
+  "blockExtensionsPageSubtitle" : {
+    "message" : "Ange ditt lösenord för åtkomst"
+  },
+  "passwordQuestionReallyToDo" : {
+    "message" : "Vill du verkligen göra det?"
+  },
+  "passwordQuestionClickBack" : {
+    "message" : "Användare som klickar på 'TILLBAKA' nedan"
+  },
+  "passwordQuestionSaveMinutes" : {
+    "message" : "spara i genomsnitt 15 minuter om dagen."
+  },
+  "passwordQuestionToUnlock" : {
+    "message" : "För att låsa upp, skriv"
+  },
+  "passwordQuestionDontShowAgain" : {
+    "message" : "VISA DET INTE IGEN"
+  },
+  "passwordQuestionBack" : {
+    "message" : "Tillbaka"
+  },
+  "passwordQuestionPleaseTryAgain" : {
+    "message" : "Felaktig. Var god försök igen."
+  },
+  "limitListBannerCounter" : {
+    "message" : "webbplatser kvar att lägga till i din blocklista."
+  },
+  "limitListBannerCounterReached" : {
+    "message" : "Du har nått gränsen för blocklistan."
+  },
+  "limitListBannerUpgradeTip" : {
+    "message" : "Klicka här för att uppgradera och njuta av en obegränsad blocklista."
+  },
+  "limitListBannerUpgradeTipPopup" : {
+    "message" : "Klicka för att uppgradera och njuta av en obegränsad blocklista."
+  },
+  "limitListBannerUpgradeTipReachedPopup" : {
+    "message" : "Din blocklista har nått sitt maximala antal webbplatser."
+  },
+  "limitListBannerUpgrade" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "limitListOverlayTitle" : {
+    "message" : "Blocklista Sidgräns uppnådd"
+  },
+  "limitListOverlaySubtitle" : {
+    "message" : "Få mer. Gå obegränsat"
+  },
+  "limitListOverlayImportTitle" : {
+    "message" : "Importgräns uppnådd"
+  },
+  "limitListOverlaySpecialOfferTitle" : {
+    "message" : "Exklusivt erbjudande!"
+  },
+  "limitPopupDiscountSpecialOfferSubTitle" : {
+    "message" : "Vårt lägsta EVER-prenumerationspris"
+  },
+  "limitListOverlayContentTitle" : {
+    "message" : "Våra premiumanvändare sparar en timme om dagen med värdefull tid. Få alla premiumfunktioner och börja bli mer produktiv idag!"
+  },
+  "limitListOverlayFeatureFirstTitle" : {
+    "message" : "Obegränsad blocklista"
+  },
+  "limitListOverlayFeatureFirstSubtitle" : {
+    "message" : "Blockera dock många webbplatser du gillar"
+  },
+  "limitListOverlayFeatureSecondTitle" : {
+    "message" : "Blockera i bulk med kategorier"
+  },
+  "limitListOverlayFeatureSecondSubtitle" : {
+    "message" : "Det snabbaste sättet att blockera"
+  },
+  "limitListOverlayFeatureThirdTitle" : {
+    "message" : "Anpassa din blocksida"
+  },
+  "limitListOverlayFeatureThirdSubtitle" : {
+    "message" : "Välj bilder och text som är unik för dig"
+  },
+  "limitListOverlayFeatureFourthTitle" : {
+    "message" : "Synkronisera mellan tillägg"
+  },
+  "limitListOverlayFeatureFourthSubtitle" : {
+    "message" : "Lagras i molnet"
+  },
+  "limitListOverlayMaybeLater" : {
+    "message" : "Kanske senare"
+  },
+  "limitListOverlayUpgradeNow" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "limitListOverlayTitlePopup" : {
+    "message" : "Du har nått din blocklista-gräns!"
+  },
+  "limitListOverlaySubtitlePopup" : {
+    "message" : "Uppgradera nu för att få obegränsade webbplatser på alla enheter."
+  },
+  "limitListOverlayUpgradePopup" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "limitListOverlayEditBlockListPopup" : {
+    "message" : "Redigera blocklista"
+  },
+  "loginSyncPleaseLogin" : {
+    "message" : "Logga in för att synkronisera"
+  },
+  "loginSyncGotIt" : {
+    "message" : "JAG FATTAR"
+  },
+  "loginSyncLoginToSite" : {
+    "message" : "Registrera / logga in för att synkronisera tillägget"
+  },
+  "focusModeHourUnit" : {
+    "message" : "tim"
+  },
+  "focusModeMinutesUnit" : {
+    "message" : "min"
+  },
+  "focusModesSecondsUnit" : {
+    "message" : "sek"
+  },
+  "firstTimeFocusModeTitle" : {
+    "message" : "Bli fokuserad. Vara fokuserad."
+  },
+  "firstTimeFocusModeSubtitle" : {
+    "message" : "Blockera distraherande platser och stanna i zonen medan fokusläget är aktiverat."
+  },
+  "firstTimeFocusModeCTA" : {
+    "message" : "Kom igång"
+  },
+  "focusModeSettingsTitle" : {
+    "message" : "Fokusläge timer"
+  },
+  "focusModeSettingsSubtitle" : {
+    "message" : "Fokusera på en uppgift och bli mer produktiv"
+  },
+  "focusModeSettingsFocusTime" : {
+    "message" : "Fokus tid"
+  },
+  "focusModeSettingsBreakTime" : {
+    "message" : "Rasttid"
+  },
+  "focusModeSettingsNumberOfCycles" : {
+    "message" : "Antal cykler"
+  },
+  "focusModeSettingsMinutes" : {
+    "message" : "Minuter"
+  },
+  "focusModeSettingsCycles" : {
+    "message" : "Cyklar"
+  },
+  "focusModeSettingsStartSession" : {
+    "message" : "Starta session"
+  },
+  "focusModeSettingsGoToOptions" : {
+    "message" : "Gå till alternativ"
+  },
+  "focusModeSettingsTooltipFirst" : {
+    "message" : "Ställ in önskad tid att fokusera. Webbplatser i din fokuslägeslista blockeras."
+  },
+  "focusModeSettingsTooltipSecond" : {
+    "message" : "Ställ in önskad paustid och besök fritt dessa webbplatser från din lista."
+  },
+  "focusModeSettingsTooltipThird" : {
+    "message" : "Antalet cykler av fokustid och raster som du vill köra automatiskt."
+  },
+  "focusModeOptionsStartFocusSession" : {
+    "message" : "Starta Focus Session"
+  },
+  "focusModeOptionsTimerSetup" : {
+    "message" : "TIMERINSTÄLLNING"
+  },
+  "focusModeBreakInterval" : {
+    "message" : "Paus i %MINUTES% minuter"
+  },
+  "focusModeFocusInterval" : {
+    "message" : "Fokusera i %MINUTES% minuter"
+  },
+  "focusModeFocusText" : {
+    "message" : "Fokus session webbplatser är blockerade"
+  },
+  "focusModeBreakText" : {
+    "message" : "Få åtkomst till dina blockerade webbplatser medan du är på paus"
+  },
+  "focusModeNoSitesText" : {
+    "message" : "Inga platser i blocklistan blockerade"
+  },
+  "focusModeAreYouSureTitle" : {
+    "message" : "Är du säker?"
+  },
+  "focusModeAreYouSureSubtitle" : {
+    "message" : "Är du säker på att det är dags att stoppa klockan?"
+  },
+  "focusModeAreYouSureBackToSession" : {
+    "message" : "Tillbaka till sessionen"
+  },
+  "focusModeActionsPause" : {
+    "message" : "Pause"
+  },
+  "focusModeActionsReset" : {
+    "message" : "Återställ"
+  },
+  "focusModeActionsResume" : {
+    "message" : "Återuppta"
+  },
+  "focusModeEnterPassToPauseOrReset" : {
+    "message" : "För att %TIMER_ACTION% ange ditt lösenord"
+  },
+  "focusModeToPauseOrResetEnterPassword" : {
+    "message" : "Ange lösenord till %TIMER_ACTION%"
+  },
+  "focusModeWrongPassword" : {
+    "message" : "Fel lösenord"
+  },
+  "focusModeCyclesTooltip" : {
+    "message" : "Aktuella, kompletta och framtida cykler"
+  },
+  "focusModeCircleBarTooltip" : {
+    "message" : "Aktuell tid kvar i intervall"
+  },
+  "focusModeBreakTimeLeftText" : {
+    "message" : "$ BREAK_TIME_LEFT $ minuter till pausetid",
+    "placeholders" : {
+      "break_time_left" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "focusModeNotificationEndOfCycleTitle" : {
+    "message" : "Pausintervallet är över."
+  },
+  "focusModeNotificationEndOfCycleMessage" : {
+    "message" : "$ CYCLES_COMPLETED $ av $ CYCLES $ cykler slutförda. Det är dags att fokusera!",
+    "placeholders" : {
+      "cycles_completed" : {
+        "content" : "$1",
+        "example" : "1"
+      },
+      "cycles" : {
+        "content" : "$ 2",
+        "example" : "2"
+      }
+    }
+  },
+  "focusModeNotificationEndOfFocusIntervalTitle" : {
+    "message" : "Fokusintervallet är över."
+  },
+  "focusModeNotificationEndOfFocusIntervalMessage" : {
+    "message" : "Det är dags för en rast!"
+  },
+  "focusModeNotificationEndOfCyclesTitleWithStars" : {
+    "message" : "Pausen är över. Du har tjänat $ STARS $ stjärnor.",
+    "placeholders" : {
+      "stars" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "focusModeNotificationEndOfCyclesTitle" : {
+    "message" : "Pausintervallet är över."
+  },
+  "focusModeNotificationEndOfCyclesMessage" : {
+    "message" : "Starta ytterligare en fokuslägesession?"
+  },
+  "focusModeNotificationEndOfCyclesButton" : {
+    "message" : "Starta session"
+  },
+  "premiumOverlayTitle" : {
+    "message" : "BlockSite Unlimited"
+  },
+  "premiumOverlaySubtitle" : {
+    "message" : "Prova 3 dagar GRATIS"
+  },
+  "premiumOverlayCategoryTitle" : {
+    "message" : "Blockera efter kategori"
+  },
+  "premiumOverlayCategorySubtitle" : {
+    "message" : "Snabbaste sättet att blockera"
+  },
+  "premiumOverlayCustomizationTitle" : {
+    "message" : "Anpassa blocksida"
+  },
+  "premiumOverlayCustomizationSubtitle" : {
+    "message" : "Ställ in bilder och text"
+  },
+  "premiumOverlayUnlimitedTitle" : {
+    "message" : "Obegränsad blockeringslista"
+  },
+  "premiumOverlayUnlimitedSubtitle" : {
+    "message" : "Var som helst. När som helst."
+  },
+  "premiumOverlayInsightsTitle" : {
+    "message" : "Användbara insikter"
+  },
+  "premiumOverlayInsightsSubtitle" : {
+    "message" : "Utforska surftrender"
+  },
+  "premiumOverlayGoUnlimited" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "premiumOverlayMaybeLater" : {
+    "message" : "Kanske senare"
+  },
+  "premiumBannerNew" : {
+    "message" : "Ny!"
+  },
+  "premiumBannerTitleA" : {
+    "message" : "Gör din egen block sida!"
+  },
+  "premiumBannerSubtitleA" : {
+    "message" : "Välj din egen bild och text för att skapa en unik blockerad sida."
+  },
+  "premiumBannerTitleB" : {
+    "message" : "Få obegränsad blocklista!"
+  },
+  "premiumBannerSubtitleB" : {
+    "message" : "Bli inte distraherad av kortlistan. Lägg till så många webbplatser du vill."
+  },
+  "premiumBannerCTA" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "categoriesPrivacyText" : {
+    "message" : "För att BlockSite ska kunna förse dig med kategoriblockning behöver vi ditt tillstånd för att få tillgång till information på de webbplatser du besöker. Klicka på \"Jag accepterar\" för att aktivera denna åtkomst och användning av denna information som beskrivs i vår "
+  },
+  "categoriesPrivacyTitle" : {
+    "message" : "Blockera efter kategori"
+  },
+  "privacyIAccept" : {
+    "message" : "Jag accepterar"
+  },
+  "insightsPrivacyTitle" : {
+    "message" : "Aj då!"
+  },
+  "insightsPrivacyText" : {
+    "message" : "För att BlockSite ska kunna upptäcka och blockera sidor med vuxeninnehåll behöver vi ditt tillstånd för att få tillgång till information på de webbplatser du besöker. Klicka på \"Godkänn\" för att möjliggöra denna åtkomst och användning av denna information som beskrivs i vår "
+  },
+  "workModeToPauseOrResetEnterPassword" : {
+    "message" : "Ange lösenord till %TIMER_ACTION%",
+    "placeholders" : {
+      "timer_action" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "workModeEnterPassToPauseOrReset" : {
+    "message" : "För att %TIMER_ACTION% ange ditt lösenord",
+    "placeholders" : {
+      "timer_action" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "workModeWrongPassword" : {
+    "message" : "Fel lösenord"
+  },
+  "popupHeaderUpgradeNow" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "dailyBonusTitle" : {
+    "message" : "Grattis"
+  },
+  "userActionStars" : {
+    "message" : "Du har fått +$STARS$ stjärnor",
+    "placeholders" : {
+      "stars" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "dailyBonusSubTitle" : {
+    "message" : "BlockSite har gett dig en daglig bonus!"
+  },
+  "dailyBonusCollect" : {
+    "message" : "Samla"
+  },
+  "offTitle" : {
+    "message" : "BlockSite är för närvarande avstängt"
+  },
+  "emailVerificationTitle" : {
+    "message" : "Nästan klar"
+  },
+  "emailVerificationSubTitle" : {
+    "message" : "Vi har skickat en verifieringslänk till din e-post, giltig i 24 timmar. Kontrollera din inkorg på"
+  },
+  "emailVerificationInstructions" : {
+    "message" : "Klicka på länken från samma webbläsarfönster BlockSite är installerat på."
+  },
+  "emailVerificationCTA" : {
+    "message" : "Jag fattar"
+  },
+  "firstSiteAddedUserActionTitle" : {
+    "message" : "Bra saker!"
+  },
+  "firstSiteAddedUserActionSubTitle" : {
+    "message" : "Grattis till att du har lagt till din första webbplats!"
+  },
+  "firstSiteAddedUserActionCTA" : {
+    "message" : "Häftigt"
+  },
+  "5thSiteAddedUserActionTitle" : {
+    "message" : "Whoo!"
+  },
+  "5thSiteAddedUserActionSubTitle" : {
+    "message" : "Bra gjort med att lägga till 5 platser i din blocklista"
+  },
+  "5thSiteAddedUserActionCTA" : {
+    "message" : "Grymt bra"
+  },
+  "100thSiteAddedUserActionTitle" : {
+    "message" : "Wow!"
+  },
+  "100thSiteAddedUserActionSubTitle" : {
+    "message" : "100 webbplatser har lagts till i din blocklista"
+  },
+  "100thSiteAddedUserActionCTA" : {
+    "message" : "Bra"
+  },
+  "firstTimeSyncUserActionTitle" : {
+    "message" : "Bra gjort!"
+  },
+  "firstTimeSyncUserActionSubTitle" : {
+    "message" : "Synkronisera nu alla enheter för maximal produktivitet 😉"
+  },
+  "firstTimeSyncUserActionCTA" : {
+    "message" : "JAG FATTAR"
+  },
+  "setFirstPassProtectUserActionTitle" : {
+    "message" : "Bra jobb!"
+  },
+  "setFirstPassProtectUserActionSubTitle" : {
+    "message" : "Det blir nu mycket lättare att undvika distraktioner"
+  },
+  "setFirstPassProtectUserActionCTA" : {
+    "message" : "Fantastisk"
+  },
+  "addFirstRedirectUserActionTitle" : {
+    "message" : "Grymt bra!"
+  },
+  "addFirstRedirectUserActionSubTitle" : {
+    "message" : "Blockerade webbplatser kommer nu att omdirigeras så att du är mer fokuserad"
+  },
+  "addFirstRedirectUserActionCTA" : {
+    "message" : "Excellent"
+  },
+  "firstTimeScheduleUserActionTitle" : {
+    "message" : "bravo!"
+  },
+  "firstTimeScheduleUserActionSubTitle" : {
+    "message" : "Nu kan du hålla dig på rätt spår!"
+  },
+  "firstTimeScheduleUserActionCTA" : {
+    "message" : "Underbar"
+  },
+  "addFirstKeywordUserActionTitle" : {
+    "message" : "Buga!"
+  },
+  "addFirstKeywordUserActionSubTitle" : {
+    "message" : "Genom att blockera nyckelord blir du mycket mer produktiv"
+  },
+  "addFirstKeywordUserActionCTA" : {
+    "message" : "Hurra"
+  },
+  "firstTimeGamblingCategoryUserActionTitle" : {
+    "message" : "Hurra!"
+  },
+  "firstTimeGamblingCategoryUserActionSubTitle" : {
+    "message" : "Spel har blockerats. Mycket mindre distraktioner nu."
+  },
+  "firstTimeGamblingCategoryUserActionCTA" : {
+    "message" : "Fantastisk"
+  },
+  "firstTimeSportsCategoryUserActionTitle" : {
+    "message" : "Hurra!"
+  },
+  "firstTimeSportsCategoryUserActionSubTitle" : {
+    "message" : "Sport har blockerats. Mycket mindre distraktioner nu."
+  },
+  "firstTimeSportsCategoryUserActionCTA" : {
+    "message" : "Fantastisk"
+  },
+  "firstTimeNewsCategoryUserActionTitle" : {
+    "message" : "Hurra!"
+  },
+  "firstTimeNewsCategoryUserActionSubTitle" : {
+    "message" : "Nyheter har blockerats. Mycket mindre distraktioner nu."
+  },
+  "firstTimeNewsCategoryUserActionCTA" : {
+    "message" : "Fantastisk"
+  },
+  "firstTimeSocialCategoryUserActionTitle" : {
+    "message" : "Hurra!"
+  },
+  "firstTimeSocialCategoryUserActionSubTitle" : {
+    "message" : "Socialt har blockerats. Mycket mindre distraktioner nu."
+  },
+  "firstTimeSocialCategoryUserActionCTA" : {
+    "message" : "Fantastisk"
+  },
+  "firstTimeShoppingCategoryUserActionTitle" : {
+    "message" : "Hurra!"
+  },
+  "firstTimeShoppingCategoryUserActionSubTitle" : {
+    "message" : "Shopping har blockerats. Mycket mindre distraktioner nu."
+  },
+  "firstTimeShoppingCategoryUserActionCTA" : {
+    "message" : "Fantastisk"
+  },
+  "syncOverrideConfirmationTitle" : {
+    "message" : "Är du säker?"
+  },
+  "syncOverrideConfirmationSubTitle" : {
+    "message" : "Alla ändringar som gjordes i offline-läge kommer INTE att uppdateras på andra enheter och kommer att gå förlorade."
+  },
+  "syncOverrideConfirmationApprove" : {
+    "message" : "Ja"
+  },
+  "syncOverrideConfirmationCancel" : {
+    "message" : "Nej"
+  },
+  "premiumHookTitle" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "premiumHookCTA" : {
+    "message" : "Prova gratis"
+  },
+  "enableInIncognitoMode" : {
+    "message" : "Aktivera i inkognitoläge"
+  },
+  "editYourList" : {
+    "message" : "Redigera din lista"
+  },
+  "passwordProtectionVerificationEmail" : {
+    "message" : "E-POST"
+  },
+  "passwordProtectionVerificationRequired" : {
+    "message" : "Verifiering krävs"
+  },
+  "passwordProtectionVerificationPassword" : {
+    "message" : "LÖSENORD"
+  },
+  "passwordProtectionVerificationMinimumPass" : {
+    "message" : "Minst 5 tecken"
+  },
+  "pushToMobileOverlayTitle" : {
+    "message" : "Skaffa BlockSite på mobil"
+  },
+  "pushToMobileOverlaySubtitle" : {
+    "message" : "Håll dig produktiv när du är på språng genom att skanna streckkoden för att få BlockSite för mobil"
+  },
+  "pushToMobileOverlayCTA" : {
+    "message" : "Kanske senare"
+  },
+  "whatsNewTitle" : {
+    "message" : "Välkommen tillbaka"
+  },
+  "whatsNewSubtitle" : {
+    "message" : "Här är vad som är nytt på BlockSite:"
+  },
+  "whatsNewFeature1" : {
+    "message" : "Vi har förnyat din blockeringsupplevelse för bättre fokus och nu kan du lägga till kategorier och nyckelord i ditt blockeringsschema."
+  },
+  "clickHereToCheckOut" : {
+    "message" : "Klicka här för att kolla in"
+  },
+  "clickingHereLink" : {
+    "message" : "klicka här"
+  },
+  "updateThemHereLink" : {
+    "message" : "Uppdatera dem här"
+  },
+  "whatsNewGotIt" : {
+    "message" : "JAG FATTAR"
+  },
+  "invalidPassBlockedPage" : {
+    "message" : "Ogiltigt lösenord. Försök igen."
+  },
+  "blockMoreDistractingSite" : {
+    "message" : "Blockera fler störande webbplatser"
+  },
+  "settingsIntegrationsHeader" : {
+    "message" : "Integrationer"
+  },
+  "settingsSlackSubtitlePremium" : {
+    "message" : "Stärka ditt fokus med BlockSites-automatiseringar för Slack."
+  },
+  "settingsSlackSubtitleNonPremium" : {
+    "message" : "Uppgradera till BlockSite Unlimited för att ge ditt fokus med BlockSites-automatiseringar för Slack."
+  },
+  "settingsSlackDNDTitle" : {
+    "message" : "Slack DND under fokus session"
+  },
+  "settingsSlackDNDUpgradeButton" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "settingsSlackDNDSubtitle" : {
+    "message" : "Ställ automatiskt in Slack till Stör ej-läge när du är i fokus"
+  },
+  "settingsSlackDNDTurnOffOverlayTitle" : {
+    "message" : "Är du säker?"
+  },
+  "settingsSlackDNDTurnOffOverlaySubtitle" : {
+    "message" : "Om du stänger av Slack för BlockSite blir du mycket lättare distraherad. Vill du fortfarande stänga av Slack?"
+  },
+  "settingsSlackDNDTurnOffOverlayNoThanks" : {
+    "message" : "Nej tack"
+  },
+  "settingsSlackDNDTurnOffOverlayYesPlease" : {
+    "message" : "Ja tack"
+  },
+  "settingsSlackDNDTurnOnOverlayTitle" : {
+    "message" : "Undvik ännu fler distraktioner genom att integrera Slack med BlockSite"
+  },
+  "settingsSlackDNDTurnOnOverlayNotifications" : {
+    "message" : "Sätt meddelandena tyst under fokusläget genom att automatiskt ställa in Stör ej-läge automatiskt"
+  },
+  "settingsSlackDNDTurnOnOverlayPrivacy" : {
+    "message" : "Observera: BlockSite håller dina meddelanden privata. Vi lagrar eller ser inga meddelanden eller chattar som skickas eller tas emot."
+  },
+  "settingsSlackDNDTurnOnOverlayMaybeLater" : {
+    "message" : "Kanske senare"
+  },
+  "settingsSlackDNDTurnOnOverlayLinkSlackAccount" : {
+    "message" : "Länk Slack-konto"
+  },
+  "settingsSlackDNDTurnOnUpgradeOverlayTitle" : {
+    "message" : "Uppgradera till Unlimited för att integrera Slack med BlockSite"
+  },
+  "settingsSlackDNDTurnOnOverlayGoUnlimitedSlackAccount" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "levelUpUnlocked" : {
+    "message" : "Olåst!"
+  },
+  "levelUpGotIt" : {
+    "message" : "JAG FATTAR"
+  },
+  "levelUpViewProgress" : {
+    "message" : "Visa framsteg"
+  },
+  "levelUpCongrats" : {
+    "message" : "grattis! Du har nått $POINTS$ stjärnor",
+    "placeholders" : {
+      "points" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "levelUpStayProductive" : {
+    "message" : "Håll dig produktiv och fokuserad för att fortsätta utveckla och få stjärnor."
+  },
+  "levelUpWellDone" : {
+    "message" : "Bra gjort med att gå vidare till en ny nivå!"
+  },
+  "levelUpGainStars" : {
+    "message" : "Håll dig produktiv för att få fler stjärnor."
+  },
+  "pushToDesktopTitle" : {
+    "message" : "BlockSite Windows App BETA \n nu tillgänglig!"
+  },
+  "pushToDesktopSubTitle" : {
+    "message" : "Du kan nu blockera alla distraktioner på Edge, Firefox och Chrome med en app! Ladda ner den helt nya appen idag"
+  },
+  "pushToDesktopCTA" : {
+    "message" : "Försök nu"
+  },
+  "pushToGoUnlimitedTitle" : {
+    "message" : "Få mer. Gå obegränsat"
+  },
+  "pushToGoUnlimitedSubTitle" : {
+    "message" : "Premiumanvändare sparar mer tid varje dag. Du kan också genom att uppgradera till BlockSite Unlimited."
+  },
+  "pushToGoUnlimitedCTA" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "pushToCustomizedPageTitle" : {
+    "message" : "Skapa och anpassa dina egna \n blockerade sidor"
+  },
+  "pushToCustomizedPageSubTitle" : {
+    "message" : "Välj bilder och texter och skapa din egen blockerade sida"
+  },
+  "pushToCustomizedPagedCTA" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "pushToInsightsTitle" : {
+    "message" : "Utforska dina surftrender \n med Insights!"
+  },
+  "pushToInsightsSubTitle" : {
+    "message" : "Utforska dina surfningstrender online över tid och lär dig hur du kan förbättra din produktivitet"
+  },
+  "pushToInsightsCTA" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "pushToBlockListTitle" : {
+    "message" : "Få en obegränsad blocklista genom att uppgradera idag"
+  },
+  "pushToBlockListSubTitle" : {
+    "message" : "Uppgradera idag för att lägga till så många webbplatser du vill i din blocklista"
+  },
+  "pushToBlockListCTA" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "pushToCategoriesTitle" : {
+    "message" : "Blockera tusentals webbplatser med ett enda klick!"
+  },
+  "pushToCategoriesSubTitle" : {
+    "message" : "Spara tid och håll fokus genom att blockera tusentals webbplatser med ett enda klick."
+  },
+  "pushToCategoriesCTA" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "pushToAccountTitle" : {
+    "message" : "Registrerade användare når sina mål snabbare"
+  },
+  "pushToAccountSubTitle" : {
+    "message" : "Skapa ett gratis BlockSite-konto för att tjäna belöningar för att vara produktiv och för att synkronisera BlockSite mellan enheter"
+  },
+  "pushToAccountCTA" : {
+    "message" : "Anmäl dig nu"
+  },
+  "passwordProtectionNonPremiumTitle" : {
+    "message" : "Håll dig produktiv med lösenordsskydd"
+  },
+  "passwordProtectionNonPremiumSubtitle" : {
+    "message" : "Gör det ännu svårare att ändra dina inställningar och ta bort webbplatser från din blocklista"
+  },
+  "passwordProtectionLoseAccessTitleFirst" : {
+    "message" : "Du håller på att tappa åtkomst."
+  },
+  "passwordProtectionLoseAccessTitleSecond" : {
+    "message" : "Är du säker?"
+  },
+  "passwordProtectionLoseAccessSubtitle" : {
+    "message" : "Lösenordsskydd är nu en premiumfunktion. Som en lojal användare är det gratis för dig. För att hålla det så måste det vara aktiverat."
+  },
+  "passwordProtectionLoseAccessCancel" : {
+    "message" : "Nej, avbryt"
+  },
+  "passwordProtectionLoseAccessApprove" : {
+    "message" : "Ja gör det"
+  },
+  "rewardUnlockTitle" : {
+    "message" : "Belöning olåst!"
+  },
+  "rewardUnlockDescription" : {
+    "message" : "Bra gjort! Ditt hårda arbete har gett resultat och du har vunnit en belöning för det! Du kan använda den nu eller spara den för senare."
+  },
+  "rewardUnlockCta" : {
+    "message" : "Bläddra bland alla belöningar"
+  },
+  "addSiteAddModeTitle1" : {
+    "message" : "Sluta bli distraherad!"
+  },
+  "addSiteAddModeSubTitle1" : {
+    "message" : "Blockera denna webbplats för att se till att du stannar i zonen!"
+  },
+  "addSiteAddModePrimaryButton1" : {
+    "message" : "Lägg till i blockeringslistan"
+  },
+  "addSiteAddModeSecondaryButton1" : {
+    "message" : "Kanske senare"
+  },
+  "addSiteAddModeTitle2" : {
+    "message" : "Håll dig i zonen!"
+  },
+  "addSiteAddModeSubTitle2" : {
+    "message" : "Förbättra din produktivitet genom att lägga till den här webbplatsen i din blockeringslista"
+  },
+  "addSiteAddModePrimaryButton2" : {
+    "message" : "Lägg till i blockeringslistan"
+  },
+  "addSiteAddModeSecondaryButton2" : {
+    "message" : "Kanske senare"
+  },
+  "addSiteAddModeTitle3" : {
+    "message" : "Lägg till (website.com) för att spara tid!"
+  },
+  "addSiteAddModeSubTitle3" : {
+    "message" : "Öka din produktivitet med 10 % genom att lägga till den här webbplatsen i din blockeringslista"
+  },
+  "addSiteAddModePrimaryButton3" : {
+    "message" : "Lägg till i blockeringslistan"
+  },
+  "addSiteAddModeSecondaryButton3" : {
+    "message" : "Kanske senare"
+  },
+  "addSiteAddModeTitle4" : {
+    "message" : "Blockera (website.com) för att spara en extra timme om dagen!"
+  },
+  "addSiteAddModeSubTitle4" : {
+    "message" : "Tidsslösande webbplats upptäckt! Blockera nu för att hålla fokus."
+  },
+  "addSiteAddModePrimaryButton4" : {
+    "message" : "Lägg till i blockeringslistan"
+  },
+  "addSiteAddModeSecondaryButton4" : {
+    "message" : "Kanske senare"
+  },
+  "addSiteReachedLimitTitle" : {
+    "message" : "Du har nått gränsen för blockeringslistan"
+  },
+  "addSiteReachedLimitSubTitle" : {
+    "message" : "Uppgradera nu för att få en obegränsad blockeringslista och många fler funktioner som förbättrar din produktivitet och sparar tid!"
+  },
+  "addSiteReachedLimitPrimaryButton" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "addSiteReachedLimitSecondaryButton" : {
+    "message" : "Kanske senare"
+  },
+  "addSiteSuccessTitle" : {
+    "message" : "Webbplatsen har lagts till i blockeringslistan"
+  },
+  "addSiteSuccessSubTitle" : {
+    "message" : "(website.com) har lagts till i din blockeringslista. Du kan ändra detta på din tilläggsalternativsida"
+  },
+  "addSiteSuccessPrimaryButton" : {
+    "message" : "Blockera nu"
+  },
+  "addSiteSuccessSecondaryButton" : {
+    "message" : "Gå till blockeringslistan"
+  },
+  "addSiteAreYouSureTitle" : {
+    "message" : "Är du säker?"
+  },
+  "addSiteAreYouSureSubTitle" : {
+    "message" : "BlockSite kommer att sluta föreslå blockering av distraherande webbplatser."
+  },
+  "addSiteAreYouSurePrimaryButton" : {
+    "message" : "Ja gör det"
+  },
+  "addSiteAreYouSureSecondaryButton" : {
+    "message" : "Nej, avbryt"
+  },
+  "whiteListRedirectRemovePopupDescription" : {
+    "message" : "När vi växlar mellan vit- och svartlistaslägen måste vi rensa din omdirigeringssida"
+  },
+  "cantBlockRedirectWordMsg" : {
+    "message" : "Det går inte att blockera ett ord som är en del av omdirigeringsadressen"
+  },
+  "optionsNotificationEmptyWord" : {
+    "message" : "Kan inte lägga till tomma ord"
+  },
+  "blockSitesOnBoardingTitle" : {
+    "message" : "Lägg till webbplatser till din blockeringslista"
+  },
+  "blockSitesOnBoardingDescription" : {
+    "message" : "Webbplatser som läggs till i din blockeringslista kommer att blockeras permanent tills du tar bort dem från din lista eller ställer in ett schema."
+  },
+  "blocklistOnBoardingTitle" : {
+    "message" : "Dessa webbplatser är nu blockerade"
+  },
+  "blocklistOnBoardingDescriptionPrefix" : {
+    "message" : "Besök"
+  },
+  "blocklistOnBoardingDescriptionSuffix" : {
+    "message" : "för att se blockering i aktion"
+  },
+  "redirectOnBoardingTitle" : {
+    "message" : "Ställ in omdirigeringswebbplats"
+  },
+  "redirectOnBoardingDescription" : {
+    "message" : "Lägg till en webbplats som du vill bli omdirigerad till när du försöker komma åt en blockerad webbplats, ett sökord eller när du använder fokusläge"
+  },
+  "scheduleOnBoardingTitle" : {
+    "message" : "Skapa ett blockeringsschema"
+  },
+  "scheduleOnBoardingDescription" : {
+    "message" : "Blockera webbplatser på specifika dagar och tidsramar. Webbplatser kommer inte att blockeras utanför dessa tidsramar."
+  },
+  "focusModeAddSiteOnBoardingTitle" : {
+    "message" : "Lägg till webbplatser i din fokuslägeslista"
+  },
+  "focusModeAddSiteOnBoardingDescription" : {
+    "message" : "Fokuslägesblocklistan fungerar tillsammans med din huvudblocklista."
+  },
+  "focusModeTimerOnBoardingTitle" : {
+    "message" : "Ställ in en fokuslägessession"
+  },
+  "focusModeTimerOnBoardingDescription" : {
+    "message" : "Ställ in en specifik blockeringslista för att blockera webbplatser och belöna dig själv med en paus i slutet av varje cykel genom att kunna komma åt dessa webbplatser."
+  },
+  "focusModeSessionOnBoardingTitle" : {
+    "message" : "Starta din timer"
+  },
+  "focusModeSessionOnBoardingDescription" : {
+    "message" : "Börja få dessa uppgifter gjorda genom att klicka här för att starta din fokuslägessession"
+  },
+  "blockWordsOnBoardingTitle" : {
+    "message" : "Lägg till nyckelord för att blockera"
+  },
+  "blockWordsOnBoardingDescription" : {
+    "message" : "Alla webbadresser och titlar som innehåller detta specifika sökord kommer att blockeras (ett sökord kan blockera hundratals webbplatser)"
+  },
+  "categoriesOnBoardingTitle" : {
+    "message" : "Blockera webbplatser efter kategori"
+  },
+  "categoriesOnBoardingDescription" : {
+    "message" : "Välj kategorier för att blockera tusentals webbplatser med ett klick"
+  },
+  "onBoardingNextStep" : {
+    "message" : "Nästa"
+  },
+  "onBoardingDismiss" : {
+    "message" : "Avfärda"
+  },
+  "categoriesGoUnlimitedButton" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "cannotAddBlockSiteWhichPartOfRedirect" : {
+    "message" : "Det går inte att blockera en webbplats som har angetts för omdirigering"
+  },
+  "passwordProtectionHookTitleToggleOff" : {
+    "message" : "Fuska inte dig själv! Få lösenordsskydd."
+  },
+  "passwordProtectionHookTitleRemoveSite" : {
+    "message" : "Sluta försöka ta bort webbplatser! Skaffa lösenordsskydd"
+  },
+  "passwordProtectionHookSubtitle" : {
+    "message" : "Gör det svårare att skjuta upp genom att låsa dina inställningar med ett lösenord"
+  },
+  "passwordProtectionMaybeLaterButton" : {
+    "message" : "Kanske senare"
+  },
+  "passwordProtectionGoUnlimitedButton" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "passwordProtectionSetupNowButton" : {
+    "message" : "Konfigurera nu"
+  },
+  "blockedHeaderFocusModeMinutes" : {
+    "message" : "$BREAK_TIME_LEFT$ minuter",
+    "placeholders" : {
+      "break_time_left" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "blockedHeaderFocusModeUntilBreak" : {
+    "message" : "fram till rasten"
+  },
+  "blockedHeaderTitle" : {
+    "message" : "Den här webbplatsen blockeras av BlockSite"
+  },
+  "blockedHeaderMenuEdit" : {
+    "message" : "Redigera blocklista"
+  },
+  "blockedHeaderMenuRedirect" : {
+    "message" : "Omdirigera"
+  },
+  "blockedHeaderMenuCustomizeBlockPage" : {
+    "message" : "Anpassa blocksida"
+  },
+  "blockedHeaderMenuPasswordProtection" : {
+    "message" : "Lösenordsskydd"
+  },
+  "blockedHeaderMenuUpgradeButton" : {
+    "message" : "UPGRADE"
+  },
+  "categoriesTableTitle" : {
+    "message" : "Lista över blockerade kategorier"
+  },
+  "blockedTableApplyButton" : {
+    "message" : "Tillämpa"
+  },
+  "blockedTableCancelButton" : {
+    "message" : "Avbryt"
+  },
+  "addBlockInputAddButton" : {
+    "message" : "Lägg till vara"
+  },
+  "enableInInPrivateMode" : {
+    "message" : "Aktivera i InPrivate-läge"
+  },
+  "aboutHowToEnableInInPrivateTitle" : {
+    "message" : "Hur man aktiverar InPrivate-läge"
+  },
+  "aboutHowToEnableInInPrivateSubtitle" : {
+    "message" : "För att aktivera BlockSite i Edges InPrivate-läge, följ dessa steg:"
+  },
+  "aboutHowToEnableInInPrivateStep1" : {
+    "message" : "Navigera till edge://extensions"
+  },
+  "aboutHowToEnableInInPrivateStep2" : {
+    "message" : "Hitta och klicka på BlockSite"
+  },
+  "aboutHowToEnableInInPrivateStep3" : {
+    "message" : "Markera rutan \"Tillåt i InPrivate\""
+  },
+  "emptyResultsBlockedSitesTitle" : {
+    "message" : "Inga blockerade webbplatser ännu"
+  },
+  "emptyResultsBlockedSitesSubtitle" : {
+    "message" : "När du lägger till webbplatser att blockera ser du det här."
+  },
+  "emptyResultsBlockedKeywordsTitle" : {
+    "message" : "Inga blockerade sökord än"
+  },
+  "emptyResultsBlockedKeywordsSubtitle" : {
+    "message" : "När du lägger till sökord för att blockera ser du det här."
+  },
+  "passwordProtectionNonPremiumCTA" : {
+    "message" : "Skaffa lösenordsskydd"
+  },
+  "customizeBlockPageNoPremiumMacbookTitle" : {
+    "message" : "Ingen post, ingen smak, bara bo."
+  },
+  "customizeBlockPageNoPremiumMacbookSubtitle" : {
+    "message" : "hoppsan! site.com är inte tillgänglig eftersom det är relaterat till socialt, vilket är en kategori du blockerat. Håll fokus, du har det här."
+  },
+  "customizeBlockPageNoPremiumTitle" : {
+    "message" : "Skapa din egen blockerade sida"
+  },
+  "customizeBlockPageNoPremiumSubtitle" : {
+    "message" : "Gör det inspirerande eller roligt för att hålla fokus."
+  },
+  "customizeBlockPageNoPremiumCTA" : {
+    "message" : "Skaffa anpassad blockeringssida"
+  },
+  "pushToDesktopOverlayTitleA" : {
+    "message" : "Blockera över flera webbläsare"
+  },
+  "pushToDesktopOverlayTitleB" : {
+    "message" : "Ny Windows-app är nu LIVE!"
+  },
+  "pushToDesktopOverlaySubtitleA" : {
+    "message" : "Du kan nu blockera alla distraktioner på Edge, Firefox och Chrome med en app! Ladda ner den helt nya appen idag"
+  },
+  "pushToDesktopOverlaySubtitleB" : {
+    "message" : "Du kan nu blockera all distraktion på Chrome, Firefox och Edge med vår nya Windows-skrivbordsapp"
+  },
+  "pushToDesktopOverlayCTAUpgrade" : {
+    "message" : "LÄS MER"
+  },
+  "pushToDesktopOverlayCTAMaybeLater" : {
+    "message" : "Kanske senare"
+  },
+  "specialOfferPopupTitle" : {
+    "message" : "Få obegränsad blockering för $"
+  },
+  "specialOfferPopupSubtitle" : {
+    "message" : " Du får även funktioner som massblockering, lösenordsskydd och mer. Endast begränsad tid!"
+  },
+  "specialOfferPopupSave" : {
+    "message" : "Spara"
+  },
+  "specialOfferPopupYear" : {
+    "message" : "år"
+  },
+  "specialOfferPopupGoUnlimited" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "specialOfferPopupGoMaybeLater" : {
+    "message" : "Kanske senare"
+  },
+  "specialOfferPopupFinePrint" : {
+    "message" : "Faktureras årligen. Återkommande fakturering. Avbryt när som helst av någon anledning"
+  },
+  "logoutPopupQuestionTitle" : {
+    "message" : "Är du säker?"
+  },
+  "logoutPopupQuestionDescription" : {
+    "message" : "Eventuella ändringar som görs när du är utloggad kommer inte att synkroniseras med molnet."
+  },
+  "logoutPopupQuestionApproveText" : {
+    "message" : "Ja gör det"
+  },
+  "logoutPopupQuestionCancelText" : {
+    "message" : "Nej, avbryt"
+  },
+  "headerLogin" : {
+    "message" : "Logga in"
+  },
+  "headerLogout" : {
+    "message" : "Logga ut"
+  },
+  "headerGoUnlimited" : {
+    "message" : "GÅ OBegränsad"
+  },
+  "viewAccount" : {
+    "message" : "Visa konto"
+  },
+  "PinToToolBarMessageTitle" : {
+    "message" : "Stift BlockSite för att vara 100 % produktiv"
+  },
+  "PinToToolBarMessageText" : {
+    "message" : "Kontrollera tilläggslistan för att göra den synlig"
+  },
+  "PinToToolBarMessageBtnText" : {
+    "message" : "JAG FATTAR"
+  },
+  "bundleListPopupTitle" : {
+    "message" : "Anpassa den här sidan"
+  },
+  "bundleListPopupSubTitle" : {
+    "message" : "Välj Bildmultipack för att visas slumpmässigt när du försöker nå en blockerad sida."
+  },
+  "backgroundMultiPacksTitle" : {
+    "message" : "Blockpage visuellt och text"
+  },
+  "bundleListPopupTooltip" : {
+    "message" : "Bilder från det valda multipacket kommer att dyka upp slumpmässigt varje gång en blocksida visas."
+  },
+  "bundleListPopupCancelButton" : {
+    "message" : "Avbryt"
+  },
+  "bundleListPopupDoneButton" : {
+    "message" : "GJORT"
+  },
+  "sharePopupTitle" : {
+    "message" : "Dela din kärlek till produktivitet och fokus"
+  },
+  "sharePopupSubTitle" : {
+    "message" : "Hjälp andra genom att informera dem om BlockSite"
+  },
+  "shareFacebookIconTitle" : {
+    "message" : "Facebook"
+  },
+  "shareTwitterIconTitle" : {
+    "message" : "Twitter"
+  },
+  "copyIconTitle" : {
+    "message" : "Kopiera"
+  },
+  "copiedIconTitle" : {
+    "message" : "Kopierade"
+  },
+  "shareLinkedinIconTitle": {
+    "message": "Linkedin"
+  },
+  "passwordProtectionUnlockPageTitle" : {
+    "message" : "Denna sida är låst!"
+  },
+  "passwordProtectionUnlockPageSubtitle" : {
+    "message" : "Vänligen ange ditt lösenord för att låsa upp sidan"
+  },
+  "passwordProtectionUnlockButton" : {
+    "message" : "Lås upp nu"
+  },
+  "verifyResetPasswordTitle" : {
+    "message" : "Är du säker?"
+  },
+  "verifyResetPasswordText" : {
+    "message" : "Vi återställer ditt lösenord och skickar ett nytt till din e-post"
+  },
+  "verifyResetPasswordAcceptBtn" : {
+    "message" : "Ja, återställ lösenordet"
+  },
+  "verifyResetPasswordCancelBtn" : {
+    "message" : "Nej, avbryt"
+  },
+  "resetPasswordSuccessTitle" : {
+    "message" : "Lösenordet har skickats"
+  },
+  "resetPasswordSuccessSubTitle" : {
+    "message" : "Ditt lösenord har skickats till $MAIL$",
+    "placeholders" : {
+      "mail" : {
+        "content" : "$1",
+        "example" : "exempel@mail.com"
+      }
+    }
+  },
+  "resetPasswordSuccessBtnText" : {
+    "message" : "OK"
+  },
+  "PasswordProtectSecondStepTitle" : {
+    "message" : "Är du säker på att du vill låsa upp den här sidan?"
+  },
+  "PasswordProtectSecondStepSubtitle" : {
+    "message" : "\"Användare som klickar på \"Avbryt\" nedan sparar i genomsnitt 15 minuter extra per dag."
+  },
+  "doNotShowAgainMessage" : {
+    "message" : "Visa inte igen"
+  },
+  "bundleImagesDownloadInProgressTitle" : {
+    "message" : "Laddar ner bilder"
+  },
+  "bundleImagesDownloadInProgressText" : {
+    "message" : "Stäng inte av webbläsaren förrän du är klar"
+  },
+  "bundleImagesDownloadSuccessTitle" : {
+    "message" : "Bilder har laddats ned"
+  },
+  "bundleImagesDownloadFailedTitle" : {
+    "message" : "Det gick inte att ladda ner bilder"
+  },
+  "bundleImagesDownloadFailedText" : {
+    "message" : "Var god försök igen"
+  },
+  "rateUsSubmittingStepTitle" : {
+    "message" : "Hur skulle du betygsätta BlockSite?"
+  },
+  "rateUsSubmittingStepSubTitle" : {
+    "message" : "Tryck på stjärnorna för att berätta vad du tycker"
+  },
+  "rateUsSubmittingStepBtn" : {
+    "message" : "SKICKA IN"
+  },
+  "rateUsBlessingStepTitle" : {
+    "message" : "JIPPIE! Vi är glada att du gillade det!"
+  },
+  "rateUsBlessingStepSubTitle" : {
+    "message" : "Din feedback är viktig! Hjälp andra att upptäcka fördelarna med vår app genom att lämna en recension i webbutiken."
+  },
+  "rateUsBlessingStepBtn" : {
+    "message" : "Betygsätt oss på Webstore"
+  },
+  "rateUsSReviewStepTitle" : {
+    "message" : "Tack, din åsikt är viktig för oss!"
+  },
+  "rateUsReviewStepSubTitle" : {
+    "message" : "Vår support och produktteam är på gång, förvänta dig tillfredsställelse snart."
+  },
+  "rateUsReviewStepBtn" : {
+    "message" : "Skicka synpunkter"
+  },
+  "rateUsReviewStepMsgError" : {
+    "message" : "Ogiltiga tecken har angetts."
+  },
+  "rateUsReviewStepTitleContent" : {
+    "message" : "Hur kan vi förbättra oss?"
+  },
+  "rateUsReviewStepTextContent" : {
+    "message" : "Din återkoppling"
+  }
+}

@@ -1,0 +1,2077 @@
+{
+  "appName" : {
+    "message" : "BlockSite：阻止網站並保持專注",
+    "description" : "應用程式標題，顯示於 Web 商店中。"
+  },
+  "appShortName" : {
+    "message" : "BlockSite",
+    "description" : "應用程式的簡短標題"
+  },
+  "appDesc" : {
+    "message" : "使用我們的主要功能保持專注並提高生產力：自定義阻止列表、計劃的站點阻止和密碼保護",
+    "description" : "應用程式的說明，顯示於 Web 商店中。"
+  },
+  "blockSitesTab" : {
+    "message" : "Block Site"
+  },
+  "focusModeTab" : {
+    "message" : "對焦模式"
+  },
+  "InsightsTab" : {
+    "message" : "見解"
+  },
+  "optionsMenuBlockSites" : {
+    "message" : "Block Site"
+  },
+  "optionsMenuFocusMode" : {
+    "message" : "對焦模式"
+  },
+  "optionsMenuPasswordProtection" : {
+    "message" : "密碼保護"
+  },
+  "optionsMenuBlockByWords" : {
+    "message" : "依字封鎖"
+  },
+  "optionsMenuCustomizeBlockPage" : {
+    "message" : "自定義塊頁面"
+  },
+  "optionsMenuCategories" : {
+    "message" : "分類目錄"
+  },
+  "optionsMenuSettings" : {
+    "message" : "設定"
+  },
+  "optionsMenuAbout" : {
+    "message" : "關於"
+  },
+  "optionsMenuBlocking" : {
+    "message" : "封鎖"
+  },
+  "optionsMenuSyncWithOtherDevices" : {
+    "message" : "與其他設備同步"
+  },
+  "optionsMenuSyncedOn" : {
+    "message" : "啟用"
+  },
+  "optionsMenuSyncedOff" : {
+    "message" : "已禁用"
+  },
+  "optionsMenuBannerTitleCategory" : {
+    "message" : "按類別阻止"
+  },
+  "optionsMenuBannerSubtitleCategory" : {
+    "message" : "通過單擊阻止數千個站點來節省更多時間"
+  },
+  "optionsMenuBannerTitleGoUnlimited" : {
+    "message" : "獲得更多。無限前進"
+  },
+  "optionsMenuBannerSubtitleGoUnlimited" : {
+    "message" : "成為第一個享受我們最新功能的人"
+  },
+  "optionsMenuBannerTitleCustomizeBlockPage" : {
+    "message" : "自定義阻止頁面"
+  },
+  "optionsMenuBannerSubtitleCustomizeBlockPage" : {
+    "message" : "選擇圖像和文字，讓它成為你自己的"
+  },
+  "optionsMenuBannerTitleUnlimitedBlockList" : {
+    "message" : "無限阻止列表"
+  },
+  "optionsMenuBannerSubtitleUnlimitedBlockList" : {
+    "message" : "將任意數量的網站添加到您的阻止列表中"
+  },
+  "optionsMenuBannerTitlePasswordProtection" : {
+    "message" : "密碼保護"
+  },
+  "optionsMenuBannerSubtitlePasswordProtection" : {
+    "message" : "更難從阻止列表中刪除網站"
+  },
+  "optionsMenuBannerTitleSlack" : {
+    "message" : "BlockSite 的 Slack 應用程序"
+  },
+  "optionsMenuBannerSubtitleSlack" : {
+    "message" : "對焦模式下自動開啟勿擾模式"
+  },
+  "optionsMenuBannerTitleInsights" : {
+    "message" : "見解"
+  },
+  "optionsMenuBannerSubtitleInsights" : {
+    "message" : "探索您的瀏覽趨勢以及您如何在網上度過時光 "
+  },
+  "optionsMenuBannerTitleMobile" : {
+    "message" : "智能手機上的 BlockSite 應用程序"
+  },
+  "optionsMenuBannerSubtitleMobile" : {
+    "message" : "掃描二維碼，隨時隨地保持高效"
+  },
+  "optionsMenuBannerTitleDesktop" : {
+    "message" : "BlockSite for Windows 測試版"
+  },
+  "optionsMenuBannerSubtitleDesktop" : {
+    "message" : "使用一款應用阻止在 Edge、Firefox 和 Chrome 上浪費時間的網站！"
+  },
+  "optionsMenuBannerCTAGoUnlimited" : {
+    "message" : "無限前進"
+  },
+  "optionsMenuBannerCTATryNow" : {
+    "message" : "現在試試"
+  },
+  "optionsMenuBannerTitleSignup" : {
+    "message" : "註冊以提高生產力"
+  },
+  "optionsMenuBannerSubtitleSignup" : {
+    "message" : "賺取獎勵並跨設備同步您的黑名單"
+  },
+  "optionMenuBannerCTASignupNow" : {
+    "message" : "立即註冊"
+  },
+  "tagTextPremium": {
+    "message": "額外費用"
+  },
+  "tagTextQuickTip" : {
+    "message" : "小建議"
+  },
+  "tagTextLatestNews" : {
+    "message" : "最新消息"
+  },
+  "mandatoryConsentTitle1" : {
+    "message" : "請選擇"
+  },
+  "mandatoryConsentTitle2" : {
+    "message" : "為了繼續進入BlockSite。"
+  },
+  "mandatoryConsentSubtitle" : {
+    "message" : "為了使BlockSite能夠檢測和阻止包含成人內容的頁面，我們需要您的許可才能訪問您訪問的網站上的信息。請點擊“同意”以啟用訪問權限，並按照我們的說明使用此信息"
+  },
+  "mandatoryConsentPrivacyPolicy" : {
+    "message" : "隐私政策"
+  },
+  "mandatoryConsentAgree" : {
+    "message" : "同意"
+  },
+  "mandatoryConsentDisagree" : {
+    "message" : "不同意"
+  },
+  "mandatoryConsentDisclaimer" : {
+    "message" : "如果按下「不同意」，您仍然可以使用 BlockSite，但是將無法使用成人網站封鎖功能。"
+  },
+  "blockSitesOptionsTitle" : {
+    "message" : "Block Site"
+  },
+  "blockSitesOptionsSubtitle" : {
+    "message" : "暫時或依照排程封鎖網站"
+  },
+  "blockSitesOptionsSearchBarPlaceholder" : {
+    "message" : "輸入網址（例如：facebook.com）"
+  },
+  "blockSitesOptionsTableTitle" : {
+    "message" : "封鎖的網站"
+  },
+  "blockSitesOptionsOnboardingText" : {
+    "message" : "開始將您要封鎖的網站新增到清單中。"
+  },
+  "optionsNotificationIncorrectURL" : {
+    "message" : "URL 不正確"
+  },
+  "optionsNotificationSiteAdded" : {
+    "message" : "已新增網站"
+  },
+  "optionsNotificationURLAlreadyExist" : {
+    "message" : "網址已存在"
+  },
+  "optionsNotificationEmptyList" : {
+    "message" : "您的清單為空白！沒有可匯出的項目。"
+  },
+  "optionsNotificationListExported" : {
+    "message" : "您的列表已成功導出。"
+  },
+  "optionsNotificationListImported" : {
+    "message" : "您的列表已成功導入。"
+  },
+  "optionsNotificationIncorrectFileStructure" : {
+    "message" : "文件結構不正確。請嘗試導出當前列表以查看所需的csv格式。"
+  },
+  "blockSitesBlockedTitle" : {
+    "message" : "此網站目前已被封鎖"
+  },
+  "blockSitesBlockSite" : {
+    "message" : "封鎖此網站"
+  },
+  "blockSitesNotAvailable" : {
+    "message" : "在此頁面上無法使用"
+  },
+  "blockSitesEditBlockList" : {
+    "message" : "編輯阻止列表"
+  },
+  "blockSitesRefreshPage" : {
+    "message" : "刷新頁面"
+  },
+  "blockSitesBlockedTitleNow" : {
+    "message" : "網站已添加到您的阻止列表"
+  },
+  "goPremium" : {
+    "message" : "去高級"
+  },
+  "blockWordsOptionsTitle" : {
+    "message" : "依字封鎖"
+  },
+  "blockWordsOptionsSubtitle" : {
+    "message" : "阻止包含特定字詞的網址"
+  },
+  "blockWordsOptionsTableTitle" : {
+    "message" : "封鎖的字"
+  },
+  "blockWordsOptionsSearchBarPlaceholder" : {
+    "message" : "輸入字或詞"
+  },
+  "optionsNotificationWordAlreadyExist" : {
+    "message" : "單詞已經存在"
+  },
+  "contextMenusBlockThisLink" : {
+    "message" : "封鎖此連結"
+  },
+  "contextMenusAllowThisLink" : {
+    "message" : "允許此連結"
+  },
+  "contextMenusBlockThisSite" : {
+    "message" : "封鎖此網站"
+  },
+  "contextMenusAllowThisSite" : {
+    "message" : "允許此網站"
+  },
+  "contextMenusBlockThisLinkWorkMode" : {
+    "message" : "將鏈接地址添加到焦點模式列表"
+  },
+  "contextMenusAllowThisLinkWorkMode" : {
+    "message" : "允許此鏈接顯示對焦模式列表"
+  },
+  "contextMenusBlockThisSiteWorkMode" : {
+    "message" : "將站點添加到焦點模式列表"
+  },
+  "contextMenusAllowThisSiteWorkMode" : {
+    "message" : "允許此網站顯示焦點模式列表"
+  },
+  "tooltipExportList" : {
+    "message" : "匯出清單"
+  },
+  "tooltipImportList" : {
+    "message" : "匯入清單"
+  },
+  "importPopupTitle" : {
+    "message" : "您想合併或覆寫當前清單嗎？"
+  },
+  "importPopupOverride" : {
+    "message" : "覆寫"
+  },
+  "importPopupMerge" : {
+    "message" : "合併"
+  },
+  "whitelistModeTitle" : {
+    "message" : "白名單模式"
+  },
+  "whitelistInfoToolTip" : {
+    "message" : "阻止除白名單中的所有網站之外的所有網站"
+  },
+  "whitelistPopUpTitle" : {
+    "message" : "是否確定？"
+  },
+  "whitelistPopUpDescription" : {
+    "message" : "除了清單內的網站以外，將封鎖所有網站"
+  },
+  "popupQuestionApprove" : {
+    "message" : "是"
+  },
+  "popupQuestionCancel" : {
+    "message" : "否"
+  },
+  "blockedTabMessage1" : {
+    "message" : "您已將 %domain% 列入「封鎖的網站」清單。事出必有因。"
+  },
+  "blockedTabMessage2" : {
+    "message" : "您已封鎖 %domain%，可以專心工作了。現在繼續工作吧。"
+  },
+  "blockedTabMessage3" : {
+    "message" : "呼，現在比較好了。回到正事。"
+  },
+  "blockedTabMessage4" : {
+    "message" : "已封鎖 %domain%。新增的擾人網站越多，您的效率就會越高。"
+  },
+  "blockedTabMessage5" : {
+    "message" : "看起來您已封鎖了字詞“%domain%”。就保持這樣吧。"
+  },
+  "blockedTabMessage6" : {
+    "message" : "此網站未列入您的白名單。也許有充分理由。"
+  },
+  "motivationalText1" : {
+    "message" : "算了。"
+  },
+  "motivationalText2" : {
+    "message" : "Jose，不會吧。"
+  },
+  "motivationalText3" : {
+    "message" : "做的好..."
+  },
+  "motivationalText4" : {
+    "message" : "你是認真的嗎？"
+  },
+  "motivationalText5" : {
+    "message" : "你到底在做什麼？"
+  },
+  "motivationalText6" : {
+    "message" : "別鬧了！"
+  },
+  "motivationalText7" : {
+    "message" : "小狗。奇怪的痣。小賈斯汀。"
+  },
+  "motivationalText8" : {
+    "message" : "蟑螂。Severed Limbs。約翰古德曼。"
+  },
+  "motivationalText9" : {
+    "message" : "奶奶。柯比布萊恩。外科手術。"
+  },
+  "motivationalText10" : {
+    "message" : "已攔截！"
+  },
+  "motivationalText11" : {
+    "message" : "啊哦！"
+  },
+  "motivationalText12" : {
+    "message" : "做得好。"
+  },
+  "focusModeOptionsTitle" : {
+    "message" : "對焦模式"
+  },
+  "focusModeOptionsSubtitle" : {
+    "message" : "要專注於一項任務並提高工作效率，請使用聚焦模式來設置您的工作時間和休息時間間隔。將站點添加到阻止列表中，以避免在焦點會議期間分散注意力"
+  },
+  "aboutTitle" : {
+    "message" : "關於 Block Site"
+  },
+  "aboutSubtitle" : {
+    "message" : "Block Site 能讓您集中精神，提高工作效率。您可以輕鬆封鎖任何擾人或有害網站。不用再靠意志力。"
+  },
+  "aboutCreateBlockListsTitle" : {
+    "message" : "建立封鎖清單"
+  },
+  "aboutCreateBlockListsSubtitle" : {
+    "message" : "將您要封鎖的網站或網頁新增到「網站清單」，並自動重新導向到更安全、更正面的網站。您也可以建立友善網站清單，並從封鎖特定網站切換到僅允許特定網站運作。"
+  },
+  "aboutBlockCategoriesTitle" : {
+    "message" : "塊類別"
+  },
+  "aboutBlockCategoriesSubtitle" : {
+    "message" : "按下按鈕即可快速阻止整個類別。"
+  },
+  "aboutRightClickMenuTitle" : {
+    "message" : "右鍵功能表"
+  },
+  "aboutRightClickMenuSubtitle" : {
+    "message" : "在任何網站上的任意處按一下滑鼠右鍵，即可開啟快速存取功能表。幾秒內即可封鎖網站，保持專注，避免拖延。"
+  },
+  "aboutIncognitoTitle" : {
+    "message" : "隱身模式（僅在Chrome上可用）"
+  },
+  "aboutIncognitoSubtitle" : {
+    "message" : "只要允許無痕模式，Block Site 的所有功能即可以無痕模式運作。遵照以下指示來瞭解其運作方式： "
+  },
+  "aboutIncognitoCTA" : {
+    "message" : "無痕模式"
+  },
+  "aboutKeepInternetSafeTitle" : {
+    "message" : "保持互聯網安全"
+  },
+  "aboutKeepInternetSafeSubtitle" : {
+    "message" : "透過擴充功能表啟用成人網站封鎖，輕輕一點就可以封鎖所有成人網站。 "
+  },
+  "aboutScheduleTitle" : {
+    "message" : "特定時間封鎖"
+  },
+  "aboutScheduleSubtitle" : {
+    "message" : "選擇您希望 Block Site 生效的日期和時間間隔。根據您的工作時間表（例如：09:00 - 17:00），設定自訂封鎖，讓您無論在辦公室或學校，都不會拖延工作。"
+  },
+  "aboutPasswordTitle" : {
+    "message" : "設定密碼"
+  },
+  "aboutPasswordSubtitle" : {
+    "message" : "在「設定」頁面中設定密碼來限制 Block Site 選項的存取，或者啟用選項以密碼存取封鎖的網站。"
+  },
+  "aboutRateUsTitle" : {
+    "message" : "喜歡我們？讓全世界都知道。"
+  },
+  "aboutRateUsSubtitle" : {
+    "message" : "若您認為 Block Site 很有幫助，請至 Chrome 網路商店評分。在此向您表達謝意。"
+  },
+  "aboutTermsOfUse" : {
+    "message" : "使用條款"
+  },
+  "aboutPrivacyPolicy" : {
+    "message" : "隐私政策"
+  },
+  "aboutContactSupport" : {
+    "message" : "聯繫支持"
+  },
+  "aboutHowToEnableInIncognitoTitle" : {
+    "message" : "如何在無痕模式下啟用"
+  },
+  "aboutHowToEnableInIncognitoSubtitle" : {
+    "message" : "要在Chrome的隱身模式下啟用阻止網站，請按照以下步驟操作："
+  },
+  "aboutHowToEnableInIncognitoStep1" : {
+    "message" : "前往 chrome://extensions"
+  },
+  "aboutHowToEnableInIncognitoStep2" : {
+    "message" : "尋找 Block Site"
+  },
+  "aboutHowToEnableInIncognitoStep3" : {
+    "message" : "核取「允許無痕模式」"
+  },
+  "optionsPageRedirectButton" : {
+    "message" : "重新導向"
+  },
+  "optionsPageRedirectTitle" : {
+    "message" : " 重定向被阻止的頁面"
+  },
+  "optionsPageRedirectPlaceHolder" : {
+    "message" : "網址（例如：google.com）"
+  },
+  "optionsPageRedirectOK" : {
+    "message" : "好的"
+  },
+  "optionsPageRedirectRemove" : {
+    "message" : "移除"
+  },
+  "optionsPageRedirectTooltipNotSet" : {
+    "message" : "按一下設定重新導向網站"
+  },
+  "optionsPageRedirectTooltipSet" : {
+    "message" : "重新導向至 $URL$",
+    "placeholders" : {
+      "url" : {
+        "content" : "$1",
+        "example" : "https://example.com"
+      }
+    }
+  },
+  "cantRedirectToWorkModeBlockedSite" : {
+    "message" : "糟糕！您的“焦點模式”列表阻止了此重定向網站"
+  },
+  "cantRedirectToBlockedSite" : {
+    "message" : "哎呀！阻止站點列表會阻止此重定向站點"
+  },
+  "cantRedirectToBlockedWord" : {
+    "message" : "哎呀！您的重定向站點被Block By Words列表阻止"
+  },
+  "optionsPageScheduleButton" : {
+    "message" : "排程"
+  },
+  "optionsPageScheduleEveryDay" : {
+    "message" : "每天"
+  },
+  "optionsPageScheduleSetSchedule" : {
+    "message" : "設定排程"
+  },
+  "optionsPageScheduleRemoveSchedule" : {
+    "message" : "移除"
+  },
+  "optionsPageScheduleSetTimes" : {
+    "message" : "設定時間"
+  },
+  "optionsPageScheduleSetBlocking" : {
+    "message" : "設定封鎖排程"
+  },
+  "optionsPageScheduleAddInterval" : {
+    "message" : "新增間隔"
+  },
+  "optionsPageScheduleTo" : {
+    "message" : "至"
+  },
+  "optionsPageScheduleSelectDays" : {
+    "message" : "選取的天數"
+  },
+  "optionsPageScheduleClickDay" : {
+    "message" : "（按一下某天即可停用）"
+  },
+  "blockByCategoryTitleGambling" : {
+    "message" : "不要讓房子總是贏。"
+  },
+  "blockByCategoryTextGambling" : {
+    "message" : "糟糕！ %domain% 是不可用的，因為它與賭博有關，這是您'阻止的類別。保持專注，你已經明白了。"
+  },
+  "blockByCategoryTitleAdult" : {
+    "message" : "蟑螂。Severed Limbs。約翰古德曼。"
+  },
+  "blockByCategoryTextAdult" : {
+    "message" : "糟糕！ %domain% 不可用，因為它與成人有關，這是您'年前阻止的類別。保持專注，你已經明白了。"
+  },
+  "blockByCategoryTitleSports" : {
+    "message" : "保持冷靜並斷開連接。"
+  },
+  "blockByCategoryTextSports" : {
+    "message" : "糟糕！ %domain% 是不可用的，因為它關係到體育這是你的類別'已經封鎖。保持專注，你已經明白了。"
+  },
+  "blockByCategoryTitleSocialNetworksAndOnlineCommunities" : {
+    "message" : "沒有張貼，沒有喜歡，只是生活。"
+  },
+  "blockByCategoryTextSocialNetworksAndOnlineCommunities" : {
+    "message" : "糟糕！ %domain% 是不可用的，因為它涉及到社會這是你的類別'已經封鎖。保持專注，你已經明白了。"
+  },
+  "blockByCategoryTitleNewsAndMedia" : {
+    "message" : "沒有消息就是好消息。"
+  },
+  "blockByCategoryTextNewsAndMedia" : {
+    "message" : "糟糕！ %domain% 是不可用的，因為它關係到的新聞是你的類別'已經封鎖。保持專注，你已經明白了。"
+  },
+  "blockByCategoryTitleShopping" : {
+    "message" : "不花一元就是賺一元！"
+  },
+  "blockByCategoryTextShopping" : {
+    "message" : "哎呀！ %domain%不可用，因為它與您已屏蔽的類別購物有關。保持專注，你有這個。"
+  },
+  "categoriesOptionsTitle" : {
+    "message" : "分類目錄"
+  },
+  "categoriesOptionsSubtitle" : {
+    "message" : "請選擇要阻止的類別"
+  },
+  "settingsOptionTitle" : {
+    "message" : "設定"
+  },
+  "settingsOptionSubtitle" : {
+    "message" : ""
+  },
+  "categoriesAdult" : {
+    "message" : "成人"
+  },
+  "categoriesSocialNetworksAndOnlineCommunities" : {
+    "message" : "社會的"
+  },
+  "categoriesNewsAndMedia" : {
+    "message" : "新聞"
+  },
+  "categoriesSports" : {
+    "message" : "體育"
+  },
+  "categoriesGambling" : {
+    "message" : "賭博"
+  },
+  "categoriesShopping" : {
+    "message" : "購物"
+  },
+  "privacySettingsTitle" : {
+    "message" : "啟用“按類別阻止”阻止"
+  },
+  "privacySettingsSubtitle" : {
+    "message" : "允許BlockSite訪問您訪問的URL，IP地址，操作系統和瀏覽器信息，以按照我們的指示使用 "
+  },
+  "privacySettingsPrivacyPolicy" : {
+    "message" : "隱私政策。"
+  },
+  "settingsEnableBlockSiteShortcutTitle" : {
+    "message" : "右鍵單擊啟用BlockSite快捷方式選項"
+  },
+  "settingsEnableBlockSiteShortcutSubtitle" : {
+    "message" : "通過右鍵單擊並選擇網站上的BlockSite菜單，將站點添加到阻止列表或焦點模式列表中。"
+  },
+  "settingsShowMotivationalTitle" : {
+    "message" : "顯示被阻止的頁面勵誌圖片"
+  },
+  "settingsShowMotivationalSubtitle" : {
+    "message" : "啟用此選項將在被阻止的站點上顯示圖像。禁用將顯示白色背景。"
+  },
+  "settingsSyncTitle" : {
+    "message" : "與其他設備同步"
+  },
+  "settingsSyncSubtitle" : {
+    "message" : "使用同一用戶帳戶登錄時，將當前擴展程序的首選項和阻止列表備份到雲中，或與我們的Android和/或擴展程序平台上的多達4個其他設備同步。"
+  },
+  "settingsGeneralHeader" : {
+    "message" : "一般"
+  },
+  "settingsViewHeader" : {
+    "message" : "檢視"
+  },
+  "settingsSyncHeader" : {
+    "message" : "同步"
+  },
+  "settingEnableFocusModeFaviconTitle" : {
+    "message" : "在網站圖示上顯示剩餘時間"
+  },
+  "settingEnableFocusModeFaviconSubtitle" : {
+    "message" : "啟用此選項可顯示擴展程序圖標上當前間隔中剩餘的時間。"
+  },
+  "settingEnableSyncStatusTitle" : {
+    "message" : "顯示同步選項頁面快捷菜單"
+  },
+  "settingEnableSyncStatusSubtitle" : {
+    "message" : "啟用顯示快捷方式，以輕鬆啟用/禁用與手機和/或其他擴展程序的同步。"
+  },
+  "customizedBlockPageNonPremiumTry" : {
+    "message" : "免費試用BlockSite Unlimited"
+  },
+  "customizeBlockPageTitle" : {
+    "message" : "自定義塊頁面"
+  },
+  "customizeBlockPageSubtitle" : {
+    "message" : "使用您自己的圖像和文本來自定義阻止頁面。保存之前，請實時查看以下屏幕上的更改！"
+  },
+  "customizeBlockPageSetBackground" : {
+    "message" : "設置背景圖像"
+  },
+  "customizeBlockPageSetPageText" : {
+    "message" : "設定頁面文字"
+  },
+  "customizeBlockPageBlocksiteText" : {
+    "message" : "BlockSite的文字"
+  },
+  "customizeBlockPageCustomizeText" : {
+    "message" : "自訂文字"
+  },
+  "customizeBlockPageSetTitleText" : {
+    "message" : "輸入標題文本"
+  },
+  "customizeBlockPageSetSubTitleText" : {
+    "message" : "輸入字幕文本"
+  },
+  "customizeBlockPageTextColor" : {
+    "message" : "文字顏色"
+  },
+  "customizeBlockPageWhite" : {
+    "message" : "白色"
+  },
+  "customizeBlockPageBlack" : {
+    "message" : "黑色"
+  },
+  "customizeBlockPageUploadImage" : {
+    "message" : "上傳自定義圖像"
+  },
+  "customizeBlockPageResetImage" : {
+    "message" : "重設回BlockSite搞笑圖片"
+  },
+  "customizeBlockPageCurrentBackground" : {
+    "message" : "當前背景"
+  },
+  "customizeBlockPageUserCustomImage" : {
+    "message" : "用戶自定義背景"
+  },
+  "customizeBlockPageBlockSiteFunnyImage" : {
+    "message" : "BlockSite搞笑圖片"
+  },
+  "customizeBlockPagePreviewYourChanges" : {
+    "message" : "保存之前預覽更改"
+  },
+  "customizeBlockPageResetToDefault" : {
+    "message" : "重置為默認"
+  },
+  "customizeBlockPageApplyChanges" : {
+    "message" : "套用變更"
+  },
+  "customizeBlockPageChangesApplied" : {
+    "message" : "您的更改已應用。"
+  },
+  "customizeBlockPageChangesFailed" : {
+    "message" : "出了些問題。請再試一次。"
+  },
+  "customizeBlockPageApplyChangeTitle" : {
+    "message" : "應用更改？"
+  },
+  "customizeBlockPageApplyChangeSubTitle" : {
+    "message" : "通過單擊“是”將對所做的更改應用到被阻止的頁面。"
+  },
+  "customizeBlockPageApplyChangeNo" : {
+    "message" : "否"
+  },
+  "customizeBlockPageApplyChangeYes" : {
+    "message" : "是"
+  },
+  "insightsCategory_social" : {
+    "message" : "社會的"
+  },
+  "insightsCategory_news" : {
+    "message" : "新聞"
+  },
+  "insightsCategory_sports" : {
+    "message" : "體育"
+  },
+  "insightsCategory_other" : {
+    "message" : "其他"
+  },
+  "insightsCategory_entertainment" : {
+    "message" : "娛樂"
+  },
+  "insightsCategory_shopping" : {
+    "message" : "購物"
+  },
+  "insightsCategory_games" : {
+    "message" : "遊戲"
+  },
+  "insightsTitle" : {
+    "message" : "見解"
+  },
+  "insightsDescription" : {
+    "message" : "看看您如何花時間上網以提高工作效率"
+  },
+  "insightsTopVisit" : {
+    "message" : "熱門訪問類別"
+  },
+  "insightsTimeSaved" : {
+    "message" : "我節省了多少時間？"
+  },
+  "insightsErrorTitle" : {
+    "message" : "糟糕！出了些問題！"
+  },
+  "insightsErrorDescription" : {
+    "message" : "不用擔心我們正在努力解決此問題，因此請稍後重試。"
+  },
+  "insightsEmptyTitle" : {
+    "message" : "尚無見解。請在24小時後再試一次。"
+  },
+  "insightsEmptyDescription" : {
+    "message" : "我們仍在計算您的見解，請稍後再回來查看更新！"
+  },
+  "optionsLockedTitle" : {
+    "message" : "BlockSite 選項已被封鎖"
+  },
+  "optionsLockedSubtitle" : {
+    "message" : "請輸入密碼，以利存取 BlockSite 選項頁面"
+  },
+  "enterYourPassword" : {
+    "message" : "輸入密碼"
+  },
+  "forgotPassword" : {
+    "message" : "忘記密碼？"
+  },
+  "wrongPassword" : {
+    "message" : "糟糕！出錯了。請再試一次。"
+  },
+  "goBackToWork" : {
+    "message" : "繼續工作"
+  },
+  "goBack" : {
+    "message" : "返回"
+  },
+  "customizePage" : {
+    "message" : "自定義頁面"
+  },
+  "enterPasswordToGainAccess" : {
+    "message" : "輸入密碼以存取"
+  },
+  "popupLockedTitle" : {
+    "message" : "BlockSite 已封鎖"
+  },
+  "popupLockedSubtitle" : {
+    "message" : "輸入密碼即可存取擴充功能設定"
+  },
+  "protectionSettingsSaved" : {
+    "message" : "已儲存保護設定"
+  },
+  "setUpEmailAndPass" : {
+    "message" : "設定電子郵件和密碼以啟用"
+  },
+  "enterYourEmail" : {
+    "message" : "輸入您的電子郵件"
+  },
+  "saveEmailSettings" : {
+    "message" : "保存"
+  },
+  "emailVerificationTitle1" : {
+    "message" : "BlockSite將向您發送一封包含鏈接的電子郵件，以驗證您的電子郵件地址。"
+  },
+  "emailVerificationTitle2" : {
+    "message" : "您的電子郵件地址僅用於密碼保護目的。"
+  },
+  "updateEmailAndPassword" : {
+    "message" : "更新電子郵件和密碼"
+  },
+  "settingsNotSaved" : {
+    "message" : "未儲存設定"
+  },
+  "settingsChangedTitle1" : {
+    "message" : "請儲存您的電子郵件和密碼以啟用額外保護功能。"
+  },
+  "leaveWithoutSaving" : {
+    "message" : "離開，不儲存"
+  },
+  "addEmailAndPassword" : {
+    "message" : "新增電子郵件和密碼"
+  },
+  "passwordVerificationWarning" : {
+    "message" : "密碼保護未啟用。 要啟用此功能，請在最初用於設置帳戶的同一瀏覽器窗口中打開電子郵件中的鏈接。"
+  },
+  "verificationCheckYourEmail" : {
+    "message" : "若要啟用，請檢查您電子郵件中的驗證連結。"
+  },
+  "verificationDidntReceiveEmail" : {
+    "message" : "如果您沒有收到電子郵件，"
+  },
+  "verificationClickToResend" : {
+    "message" : "請單擊此處重新發送。"
+  },
+  "passwordProtectionPreferences" : {
+    "message" : "密碼保護偏好"
+  },
+  "passwordProtectionOptionBlockSettings" : {
+    "message" : "使用密碼保護您首選的BlockSite選項和$ BROWSER $擴展頁面",
+    "placeholders" : {
+      "browser" : {
+        "content" : "$1"
+      }
+    }
+  },
+  "passwordProtectionOptionBlockBlockedPage" : {
+    "message" : "須輸入密碼才能存取封鎖的網站"
+  },
+  "passwordProtectionOptionAddChallenge" : {
+    "message" : "阻止頁面挑戰-添加額外的步驟來取消阻止頁面"
+  },
+  "passwordProtectionOptionNotifyUninstalled" : {
+    "message" : "解除安裝 BlockSite 後會收到電子郵件通知"
+  },
+  "forgotPassSentTitle" : {
+    "message" : "已傳送密碼"
+  },
+  "forgotPassSentText" : {
+    "message" : "已將您的密碼傳送至"
+  },
+  "forgotPassSentOkBtn" : {
+    "message" : "好的"
+  },
+  "blockExtensionsPageTitle" : {
+    "message" : "$ BROWSER $擴展頁面-受保護",
+    "placeholders" : {
+      "browser" : {
+        "content" : "$1"
+      }
+    }
+  },
+  "blockExtensionsPageSubtitle" : {
+    "message" : "請輸入密碼以存取"
+  },
+  "passwordQuestionReallyToDo" : {
+    "message" : "您真的要這麼做嗎？"
+  },
+  "passwordQuestionClickBack" : {
+    "message" : "在下方點擊“返回”的用戶"
+  },
+  "passwordQuestionSaveMinutes" : {
+    "message" : "平均每天節省15分鐘。"
+  },
+  "passwordQuestionToUnlock" : {
+    "message" : "要解鎖，請輸入"
+  },
+  "passwordQuestionDontShowAgain" : {
+    "message" : "不要再顯示"
+  },
+  "passwordQuestionBack" : {
+    "message" : "上一章"
+  },
+  "passwordQuestionPleaseTryAgain" : {
+    "message" : "不正確請再試一次。"
+  },
+  "limitListBannerCounter" : {
+    "message" : "剩下的網站要添加到您的阻止列表中。"
+  },
+  "limitListBannerCounterReached" : {
+    "message" : "您已達到屏蔽列表的限制。"
+  },
+  "limitListBannerUpgradeTip" : {
+    "message" : "單擊此處升級並享受無限的黑名單。"
+  },
+  "limitListBannerUpgradeTipPopup" : {
+    "message" : "單擊升級並享受無限的阻止列表。"
+  },
+  "limitListBannerUpgradeTipReachedPopup" : {
+    "message" : "您的阻止列表已達到其最大站點數。"
+  },
+  "limitListBannerUpgrade" : {
+    "message" : "無限前進"
+  },
+  "limitListOverlayTitle" : {
+    "message" : "達到阻止列表站點限制"
+  },
+  "limitListOverlaySubtitle" : {
+    "message" : "獲得更多。無限前進"
+  },
+  "limitListOverlayImportTitle" : {
+    "message" : "達到進口限制"
+  },
+  "limitListOverlaySpecialOfferTitle" : {
+    "message" : "獨家提供！"
+  },
+  "limitPopupDiscountSpecialOfferSubTitle" : {
+    "message" : "我們最低的訂閱價格"
+  },
+  "limitListOverlayContentTitle" : {
+    "message" : "我們的高級用戶每天可節省一個小時的寶貴時間。獲取所有高級功能，立即開始提高生產力！"
+  },
+  "limitListOverlayFeatureFirstTitle" : {
+    "message" : "無限阻止列表"
+  },
+  "limitListOverlayFeatureFirstSubtitle" : {
+    "message" : "封鎖任何您喜歡的網站"
+  },
+  "limitListOverlayFeatureSecondTitle" : {
+    "message" : "按類別批量屏蔽"
+  },
+  "limitListOverlayFeatureSecondSubtitle" : {
+    "message" : "最快的封鎖方式"
+  },
+  "limitListOverlayFeatureThirdTitle" : {
+    "message" : "自定義您的阻止頁面"
+  },
+  "limitListOverlayFeatureThirdSubtitle" : {
+    "message" : "選擇您獨有的圖像和文字"
+  },
+  "limitListOverlayFeatureFourthTitle" : {
+    "message" : "擴展之間的同步"
+  },
+  "limitListOverlayFeatureFourthSubtitle" : {
+    "message" : "儲存在雲端"
+  },
+  "limitListOverlayMaybeLater" : {
+    "message" : "也許以後"
+  },
+  "limitListOverlayUpgradeNow" : {
+    "message" : "無限前進"
+  },
+  "limitListOverlayTitlePopup" : {
+    "message" : "您已達到屏蔽列表的限制！"
+  },
+  "limitListOverlaySubtitlePopup" : {
+    "message" : "立即升級以在所有設備上獲得無限的站點。"
+  },
+  "limitListOverlayUpgradePopup" : {
+    "message" : "無限前進"
+  },
+  "limitListOverlayEditBlockListPopup" : {
+    "message" : "編輯阻止列表"
+  },
+  "loginSyncPleaseLogin" : {
+    "message" : "請登錄以同步"
+  },
+  "loginSyncGotIt" : {
+    "message" : "瞭解"
+  },
+  "loginSyncLoginToSite" : {
+    "message" : "為了同步擴展，請註冊/登錄"
+  },
+  "focusModeHourUnit" : {
+    "message" : "小時"
+  },
+  "focusModeMinutesUnit" : {
+    "message" : "分"
+  },
+  "focusModesSecondsUnit" : {
+    "message" : "秒"
+  },
+  "firstTimeFocusModeTitle" : {
+    "message" : "集中註意力。保持專注。"
+  },
+  "firstTimeFocusModeSubtitle" : {
+    "message" : "激活聚焦模式時，阻止分散注意力的站點並留在該區域內。"
+  },
+  "firstTimeFocusModeCTA" : {
+    "message" : "立即開始"
+  },
+  "focusModeSettingsTitle" : {
+    "message" : "對焦模式計時器"
+  },
+  "focusModeSettingsSubtitle" : {
+    "message" : "專注於一項任務並提高工作效率"
+  },
+  "focusModeSettingsFocusTime" : {
+    "message" : "聚焦時間"
+  },
+  "focusModeSettingsBreakTime" : {
+    "message" : "休息時間"
+  },
+  "focusModeSettingsNumberOfCycles" : {
+    "message" : "循環數"
+  },
+  "focusModeSettingsMinutes" : {
+    "message" : "分鐘"
+  },
+  "focusModeSettingsCycles" : {
+    "message" : "週期數"
+  },
+  "focusModeSettingsStartSession" : {
+    "message" : "開始會議"
+  },
+  "focusModeSettingsGoToOptions" : {
+    "message" : "轉到選項"
+  },
+  "focusModeSettingsTooltipFirst" : {
+    "message" : "設置所需的聚焦時間。焦點模式列表中的網站將被阻止。"
+  },
+  "focusModeSettingsTooltipSecond" : {
+    "message" : "設置所需的休息時間，然後從列表中自由訪問那些網站。"
+  },
+  "focusModeSettingsTooltipThird" : {
+    "message" : "您希望自動運行的聚焦時間和休息時間的循環數。"
+  },
+  "focusModeOptionsStartFocusSession" : {
+    "message" : "開始焦點會議"
+  },
+  "focusModeOptionsTimerSetup" : {
+    "message" : "計時器設定"
+  },
+  "focusModeBreakInterval" : {
+    "message" : "休息%MINUTES%分鐘"
+  },
+  "focusModeFocusInterval" : {
+    "message" : "專注%MINUTES%分鐘"
+  },
+  "focusModeFocusText" : {
+    "message" : "焦點會議站點被阻止"
+  },
+  "focusModeBreakText" : {
+    "message" : "休息時訪問被阻止的站點"
+  },
+  "focusModeNoSitesText" : {
+    "message" : "阻止列表中沒有站點被阻止"
+  },
+  "focusModeAreYouSureTitle" : {
+    "message" : "是否確定？"
+  },
+  "focusModeAreYouSureSubtitle" : {
+    "message" : "您確定是時候停止時鐘了嗎？"
+  },
+  "focusModeAreYouSureBackToSession" : {
+    "message" : "返回會議"
+  },
+  "focusModeActionsPause" : {
+    "message" : "暫停"
+  },
+  "focusModeActionsReset" : {
+    "message" : "重置配置"
+  },
+  "focusModeActionsResume" : {
+    "message" : "恢復"
+  },
+  "focusModeEnterPassToPauseOrReset" : {
+    "message" : "要%TIMER_ACTION%輸入密碼"
+  },
+  "focusModeToPauseOrResetEnterPassword" : {
+    "message" : "輸入密碼至%TIMER_ACTION%"
+  },
+  "focusModeWrongPassword" : {
+    "message" : "密碼錯誤"
+  },
+  "focusModeCyclesTooltip" : {
+    "message" : "當前，完整和將來的周期狀態"
+  },
+  "focusModeCircleBarTooltip" : {
+    "message" : "間隔當前剩餘時間"
+  },
+  "focusModeBreakTimeLeftText" : {
+    "message" : "休息時間前$ BREAK_TIME_LEFT $分鐘",
+    "placeholders" : {
+      "break_time_left" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "focusModeNotificationEndOfCycleTitle" : {
+    "message" : "休息時間結束。"
+  },
+  "focusModeNotificationEndOfCycleMessage" : {
+    "message" : "已完成$ CYCLES $個週期中的$ CYCLES_COMPLETED $個。現在該集中精力了！",
+    "placeholders" : {
+      "cycles_completed" : {
+        "content" : "$1",
+        "example" : "1"
+      },
+      "cycles" : {
+        "content" : "2美元",
+        "example" : "2"
+      }
+    }
+  },
+  "focusModeNotificationEndOfFocusIntervalTitle" : {
+    "message" : "聚焦間隔結束。"
+  },
+  "focusModeNotificationEndOfFocusIntervalMessage" : {
+    "message" : "該休息了！"
+  },
+  "focusModeNotificationEndOfCyclesTitleWithStars" : {
+    "message" : "休息結束了。您已贏得$ STARS $顆星。",
+    "placeholders" : {
+      "stars" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "focusModeNotificationEndOfCyclesTitle" : {
+    "message" : "休息時間結束。"
+  },
+  "focusModeNotificationEndOfCyclesMessage" : {
+    "message" : "開始另一個聚焦模式會話？"
+  },
+  "focusModeNotificationEndOfCyclesButton" : {
+    "message" : "開始會議"
+  },
+  "premiumOverlayTitle" : {
+    "message" : "BlockSite Unlimited"
+  },
+  "premiumOverlaySubtitle" : {
+    "message" : "免費試用3天"
+  },
+  "premiumOverlayCategoryTitle" : {
+    "message" : "按類別阻止"
+  },
+  "premiumOverlayCategorySubtitle" : {
+    "message" : "最快的封鎖方式"
+  },
+  "premiumOverlayCustomizationTitle" : {
+    "message" : "自定義阻止頁面"
+  },
+  "premiumOverlayCustomizationSubtitle" : {
+    "message" : "設置圖像和文字"
+  },
+  "premiumOverlayUnlimitedTitle" : {
+    "message" : "無限阻止列表"
+  },
+  "premiumOverlayUnlimitedSubtitle" : {
+    "message" : "任何地方。任何時候。"
+  },
+  "premiumOverlayInsightsTitle" : {
+    "message" : "有用的見解"
+  },
+  "premiumOverlayInsightsSubtitle" : {
+    "message" : "探索瀏覽趨勢"
+  },
+  "premiumOverlayGoUnlimited" : {
+    "message" : "無限前進"
+  },
+  "premiumOverlayMaybeLater" : {
+    "message" : "也許以後"
+  },
+  "premiumBannerNew" : {
+    "message" : "新功能！"
+  },
+  "premiumBannerTitleA" : {
+    "message" : "製作自己的阻止頁面！"
+  },
+  "premiumBannerSubtitleA" : {
+    "message" : "選擇您自己的圖像和文本以創建唯一的阻止頁面。"
+  },
+  "premiumBannerTitleB" : {
+    "message" : "獲取無限的阻止列表！"
+  },
+  "premiumBannerSubtitleB" : {
+    "message" : "不要因為入圍而分心。添加任意數量的網站。"
+  },
+  "premiumBannerCTA" : {
+    "message" : "無限前進"
+  },
+  "categoriesPrivacyText" : {
+    "message" : "為了使BlockSite能夠為您提供類別屏蔽，我們需要您的許可才能訪問您訪問的網站上的信息。請點擊“我接受”以啟用訪問權限，並按照我們的說明使用此信息 "
+  },
+  "categoriesPrivacyTitle" : {
+    "message" : "按類別阻止"
+  },
+  "privacyIAccept" : {
+    "message" : "我接受"
+  },
+  "insightsPrivacyTitle" : {
+    "message" : "糟糕！"
+  },
+  "insightsPrivacyText" : {
+    "message" : "為了使BlockSite能夠檢測和阻止包含成人內容的頁面，我們需要您的許可才能訪問您訪問的網站上的信息。請點擊“同意”以啟用訪問權限，並按照我們的說明使用此信息 "
+  },
+  "workModeToPauseOrResetEnterPassword" : {
+    "message" : "輸入密碼至%TIMER_ACTION%",
+    "placeholders" : {
+      "timer_action" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "workModeEnterPassToPauseOrReset" : {
+    "message" : "要%TIMER_ACTION%輸入密碼",
+    "placeholders" : {
+      "timer_action" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "workModeWrongPassword" : {
+    "message" : "密碼錯誤"
+  },
+  "popupHeaderUpgradeNow" : {
+    "message" : "無限前進"
+  },
+  "dailyBonusTitle" : {
+    "message" : "恭喜啦"
+  },
+  "userActionStars" : {
+    "message" : "您已獲得 +$STARS$ 顆星",
+    "placeholders" : {
+      "stars" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "dailyBonusSubTitle" : {
+    "message" : "BlockSite給了您每日獎勵！"
+  },
+  "dailyBonusCollect" : {
+    "message" : "收藏"
+  },
+  "offTitle" : {
+    "message" : "Block Site 目前已關閉"
+  },
+  "emailVerificationTitle" : {
+    "message" : "快完成了"
+  },
+  "emailVerificationSubTitle" : {
+    "message" : "我們已將驗證鏈接發送到您的郵件，有效期為24小時。要進行驗證，請在以下位置檢查您的收件箱"
+  },
+  "emailVerificationInstructions" : {
+    "message" : "請從安裝了BlockSite的瀏覽器窗口中單擊鏈接。"
+  },
+  "emailVerificationCTA" : {
+    "message" : "瞭解"
+  },
+  "firstSiteAddedUserActionTitle" : {
+    "message" : "好東西！"
+  },
+  "firstSiteAddedUserActionSubTitle" : {
+    "message" : "恭喜您添加了第一個網站！"
+  },
+  "firstSiteAddedUserActionCTA" : {
+    "message" : "涼"
+  },
+  "5thSiteAddedUserActionTitle" : {
+    "message" : "Who！"
+  },
+  "5thSiteAddedUserActionSubTitle" : {
+    "message" : "將5個網站添加到您的阻止列表中做得很好"
+  },
+  "5thSiteAddedUserActionCTA" : {
+    "message" : "太棒了"
+  },
+  "100thSiteAddedUserActionTitle" : {
+    "message" : "哇！"
+  },
+  "100thSiteAddedUserActionSubTitle" : {
+    "message" : "100個站點已添加到您的阻止列表"
+  },
+  "100thSiteAddedUserActionCTA" : {
+    "message" : "大"
+  },
+  "firstTimeSyncUserActionTitle" : {
+    "message" : "做得好！"
+  },
+  "firstTimeSyncUserActionSubTitle" : {
+    "message" : "現在同步所有設備以提高工作效率😉"
+  },
+  "firstTimeSyncUserActionCTA" : {
+    "message" : "瞭解"
+  },
+  "setFirstPassProtectUserActionTitle" : {
+    "message" : "不錯的工作！"
+  },
+  "setFirstPassProtectUserActionSubTitle" : {
+    "message" : "現在，避免分心會更容易"
+  },
+  "setFirstPassProtectUserActionCTA" : {
+    "message" : "太棒了"
+  },
+  "addFirstRedirectUserActionTitle" : {
+    "message" : "太棒了！"
+  },
+  "addFirstRedirectUserActionSubTitle" : {
+    "message" : "現在將重定向被阻止的網站，以便您更加專注"
+  },
+  "addFirstRedirectUserActionCTA" : {
+    "message" : "優秀的"
+  },
+  "firstTimeScheduleUserActionTitle" : {
+    "message" : "太棒了！"
+  },
+  "firstTimeScheduleUserActionSubTitle" : {
+    "message" : "現在，您將可以繼續前進！"
+  },
+  "firstTimeScheduleUserActionCTA" : {
+    "message" : "精彩"
+  },
+  "addFirstKeywordUserActionTitle" : {
+    "message" : "謝幕！"
+  },
+  "addFirstKeywordUserActionSubTitle" : {
+    "message" : "通過屏蔽關鍵字，您將提高工作效率"
+  },
+  "addFirstKeywordUserActionCTA" : {
+    "message" : "歡呼"
+  },
+  "firstTimeGamblingCategoryUserActionTitle" : {
+    "message" : "萬歲！"
+  },
+  "firstTimeGamblingCategoryUserActionSubTitle" : {
+    "message" : "賭博已被阻止。現在分心的事情要少得多了。"
+  },
+  "firstTimeGamblingCategoryUserActionCTA" : {
+    "message" : "極好"
+  },
+  "firstTimeSportsCategoryUserActionTitle" : {
+    "message" : "萬歲！"
+  },
+  "firstTimeSportsCategoryUserActionSubTitle" : {
+    "message" : "體育已被封鎖。現在分心的事情要少得多了。"
+  },
+  "firstTimeSportsCategoryUserActionCTA" : {
+    "message" : "極好"
+  },
+  "firstTimeNewsCategoryUserActionTitle" : {
+    "message" : "萬歲！"
+  },
+  "firstTimeNewsCategoryUserActionSubTitle" : {
+    "message" : "新聞已被屏蔽。現在分心的事情要少得多了。"
+  },
+  "firstTimeNewsCategoryUserActionCTA" : {
+    "message" : "極好"
+  },
+  "firstTimeSocialCategoryUserActionTitle" : {
+    "message" : "萬歲！"
+  },
+  "firstTimeSocialCategoryUserActionSubTitle" : {
+    "message" : "社交已被屏蔽。現在分心的事情要少得多了。"
+  },
+  "firstTimeSocialCategoryUserActionCTA" : {
+    "message" : "極好"
+  },
+  "firstTimeShoppingCategoryUserActionTitle" : {
+    "message" : "萬歲！"
+  },
+  "firstTimeShoppingCategoryUserActionSubTitle" : {
+    "message" : "購物已被封鎖。現在干擾少了很多。"
+  },
+  "firstTimeShoppingCategoryUserActionCTA" : {
+    "message" : "極好"
+  },
+  "syncOverrideConfirmationTitle" : {
+    "message" : "是否確定？"
+  },
+  "syncOverrideConfirmationSubTitle" : {
+    "message" : "在離線模式下完成的所有更改都不會在其他設備上更新，並且將丟失。"
+  },
+  "syncOverrideConfirmationApprove" : {
+    "message" : "是"
+  },
+  "syncOverrideConfirmationCancel" : {
+    "message" : "否"
+  },
+  "premiumHookTitle" : {
+    "message" : "無限前進"
+  },
+  "premiumHookCTA" : {
+    "message" : "免費試用"
+  },
+  "enableInIncognitoMode" : {
+    "message" : "在無痕模式下啟用"
+  },
+  "editYourList" : {
+    "message" : "編輯您的清單"
+  },
+  "passwordProtectionVerificationEmail" : {
+    "message" : "電子郵件"
+  },
+  "passwordProtectionVerificationRequired" : {
+    "message" : "需要驗證"
+  },
+  "passwordProtectionVerificationPassword" : {
+    "message" : "密碼"
+  },
+  "passwordProtectionVerificationMinimumPass" : {
+    "message" : "最少 5 個字元"
+  },
+  "pushToMobileOverlayTitle" : {
+    "message" : "在手機上獲取BlockSite"
+  },
+  "pushToMobileOverlaySubtitle" : {
+    "message" : "通過掃描條形碼以獲取移動版BlockSite來保持生產效率"
+  },
+  "pushToMobileOverlayCTA" : {
+    "message" : "也許以後"
+  },
+  "whatsNewTitle" : {
+    "message" : "歡迎回來"
+  },
+  "whatsNewSubtitle" : {
+    "message" : "以下是 BlockSite 的新功能::"
+  },
+  "whatsNewFeature1" : {
+    "message" : "我們改進了您的屏蔽體驗以更好地集中註意力，現在您可以將類別和關鍵字添加到您的屏蔽計劃中。"
+  },
+  "clickHereToCheckOut" : {
+    "message" : "點擊這裡查看"
+  },
+  "clickingHereLink" : {
+    "message" : "點擊這裡"
+  },
+  "updateThemHereLink" : {
+    "message" : "在這裡更新它們"
+  },
+  "whatsNewGotIt" : {
+    "message" : "瞭解"
+  },
+  "invalidPassBlockedPage" : {
+    "message" : "密碼無效。再試一次。"
+  },
+  "blockMoreDistractingSite" : {
+    "message" : "封鎖更多擾人網站"
+  },
+  "settingsIntegrationsHeader" : {
+    "message" : "整合方式"
+  },
+  "settingsSlackSubtitlePremium" : {
+    "message" : "利用針對Slack的BlockSites自動化功能增強您的注意力。"
+  },
+  "settingsSlackSubtitleNonPremium" : {
+    "message" : "升級到BlockSite Unlimited，利用針對Slack的BlockSites自動化功能，將精力集中在您身上。"
+  },
+  "settingsSlackDNDTitle" : {
+    "message" : "焦點會議期間DND鬆弛"
+  },
+  "settingsSlackDNDUpgradeButton" : {
+    "message" : "無限前進"
+  },
+  "settingsSlackDNDSubtitle" : {
+    "message" : "在焦點會議中自動將“鬆弛”設置為“請勿打擾”模式"
+  },
+  "settingsSlackDNDTurnOffOverlayTitle" : {
+    "message" : "是否確定？"
+  },
+  "settingsSlackDNDTurnOffOverlaySubtitle" : {
+    "message" : "如果您為 BlockSite 關閉 Slack，您將更容易分心。是否仍要關閉 Slack？"
+  },
+  "settingsSlackDNDTurnOffOverlayNoThanks" : {
+    "message" : "不用了，謝謝"
+  },
+  "settingsSlackDNDTurnOffOverlayYesPlease" : {
+    "message" : "是的，請"
+  },
+  "settingsSlackDNDTurnOnOverlayTitle" : {
+    "message" : "通過將Slack與BlockSite集成來避免更多的干擾"
+  },
+  "settingsSlackDNDTurnOnOverlayNotifications" : {
+    "message" : "通過自動設置“請勿打擾”模式，在對焦模式下將通知置於靜音狀態"
+  },
+  "settingsSlackDNDTurnOnOverlayPrivacy" : {
+    "message" : "請注意：BlockSite 將您的消息保密。我們不會存儲或查看任何發送或接收的消息或聊天。"
+  },
+  "settingsSlackDNDTurnOnOverlayMaybeLater" : {
+    "message" : "也許以後"
+  },
+  "settingsSlackDNDTurnOnOverlayLinkSlackAccount" : {
+    "message" : "連結Slack帳戶"
+  },
+  "settingsSlackDNDTurnOnUpgradeOverlayTitle" : {
+    "message" : "升級到無限版以將Slack與BlockSite集成"
+  },
+  "settingsSlackDNDTurnOnOverlayGoUnlimitedSlackAccount" : {
+    "message" : "無限前進"
+  },
+  "levelUpUnlocked" : {
+    "message" : "解鎖！"
+  },
+  "levelUpGotIt" : {
+    "message" : "瞭解"
+  },
+  "levelUpViewProgress" : {
+    "message" : "查看進度"
+  },
+  "levelUpCongrats" : {
+    "message" : "恭喜！您已達到 $POINTS$ 顆星",
+    "placeholders" : {
+      "points" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "levelUpStayProductive" : {
+    "message" : "保持生產力，專注於繼續進步並贏得新星。"
+  },
+  "levelUpWellDone" : {
+    "message" : "在邁上新台階方面做得很好！"
+  },
+  "levelUpGainStars" : {
+    "message" : "保持生產力以獲得更多的星星。"
+  },
+  "pushToDesktopTitle" : {
+    "message" : "BlockSite Windows應用測試版\n現已可用！"
+  },
+  "pushToDesktopSubTitle" : {
+    "message" : "現在，您可以使用一個應用程序阻止Edge，Firefox和Chrome上的所有乾擾！立即下載全新的應用程序"
+  },
+  "pushToDesktopCTA" : {
+    "message" : "現在試試"
+  },
+  "pushToGoUnlimitedTitle" : {
+    "message" : "獲得更多。無限前進"
+  },
+  "pushToGoUnlimitedSubTitle" : {
+    "message" : "高級用戶每天節省更多時間。您也可以通過升級到BlockSite Unlimited。"
+  },
+  "pushToGoUnlimitedCTA" : {
+    "message" : "無限前進"
+  },
+  "pushToCustomizedPageTitle" : {
+    "message" : "創建和自定義您自己的\n被阻止的頁面"
+  },
+  "pushToCustomizedPageSubTitle" : {
+    "message" : "選擇圖像和文字並創建自己的阻止頁面"
+  },
+  "pushToCustomizedPagedCTA" : {
+    "message" : "無限前進"
+  },
+  "pushToInsightsTitle" : {
+    "message" : "借助Insights探索您的瀏覽趨勢"
+  },
+  "pushToInsightsSubTitle" : {
+    "message" : "隨時間探索您的在線瀏覽趨勢，並學習如何提高工作效率"
+  },
+  "pushToInsightsCTA" : {
+    "message" : "無限前進"
+  },
+  "pushToBlockListTitle" : {
+    "message" : "立即升級即可獲得無限阻止列表"
+  },
+  "pushToBlockListSubTitle" : {
+    "message" : "立即升級以將任意數量的網站添加到阻止列表中"
+  },
+  "pushToBlockListCTA" : {
+    "message" : "無限前進"
+  },
+  "pushToCategoriesTitle" : {
+    "message" : "一鍵阻止數千個網站！"
+  },
+  "pushToCategoriesSubTitle" : {
+    "message" : "一次單擊即可阻止數千個網站，從而節省時間並保持專注。"
+  },
+  "pushToCategoriesCTA" : {
+    "message" : "無限前進"
+  },
+  "pushToAccountTitle" : {
+    "message" : "註冊用戶更快地實現目標"
+  },
+  "pushToAccountSubTitle" : {
+    "message" : "創建一個免費的 BlockSite 帳戶，以獲得高效的獎勵並跨設備同步 BlockSite"
+  },
+  "pushToAccountCTA" : {
+    "message" : "立即註冊"
+  },
+  "passwordProtectionNonPremiumTitle" : {
+    "message" : "通過密碼保護保持高效"
+  },
+  "passwordProtectionNonPremiumSubtitle" : {
+    "message" : "使其更難更改設置並將站點從阻止列表中刪除"
+  },
+  "passwordProtectionLoseAccessTitleFirst" : {
+    "message" : "您將失去訪問權限。"
+  },
+  "passwordProtectionLoseAccessTitleSecond" : {
+    "message" : "是否確定？"
+  },
+  "passwordProtectionLoseAccessSubtitle" : {
+    "message" : "密碼保護現在是一項高級功能。作為忠實的用戶，它對您免費。為了保持這種方式，必須將其啟用。"
+  },
+  "passwordProtectionLoseAccessCancel" : {
+    "message" : "不，取消"
+  },
+  "passwordProtectionLoseAccessApprove" : {
+    "message" : "做吧"
+  },
+  "rewardUnlockTitle" : {
+    "message" : "獎勵解鎖！"
+  },
+  "rewardUnlockDescription" : {
+    "message" : "做得好！您的辛勤工作得到了回報，您也因此獲得了回報！您可以立即使用它或保存以備後用。"
+  },
+  "rewardUnlockCta" : {
+    "message" : "瀏覽所有獎勵"
+  },
+  "addSiteAddModeTitle1" : {
+    "message" : "別再分心了！"
+  },
+  "addSiteAddModeSubTitle1" : {
+    "message" : "阻止此網站以確保您留在該區域！"
+  },
+  "addSiteAddModePrimaryButton1" : {
+    "message" : "添加到阻止列表"
+  },
+  "addSiteAddModeSecondaryButton1" : {
+    "message" : "也許以後"
+  },
+  "addSiteAddModeTitle2" : {
+    "message" : "留在區域內！"
+  },
+  "addSiteAddModeSubTitle2" : {
+    "message" : "通過將此站點添加到您的阻止列表來提高您的工作效率"
+  },
+  "addSiteAddModePrimaryButton2" : {
+    "message" : "添加到阻止列表"
+  },
+  "addSiteAddModeSecondaryButton2" : {
+    "message" : "也許以後"
+  },
+  "addSiteAddModeTitle3" : {
+    "message" : "添加（website.com）以節省時間！"
+  },
+  "addSiteAddModeSubTitle3" : {
+    "message" : "通過將此站點添加到您的阻止列表，將您的工作效率提高 10%"
+  },
+  "addSiteAddModePrimaryButton3" : {
+    "message" : "添加到阻止列表"
+  },
+  "addSiteAddModeSecondaryButton3" : {
+    "message" : "也許以後"
+  },
+  "addSiteAddModeTitle4" : {
+    "message" : "阻止（website.com）每天節省一個額外的小時！"
+  },
+  "addSiteAddModeSubTitle4" : {
+    "message" : "檢測到浪費時間的網站！立即阻止以保持專注。"
+  },
+  "addSiteAddModePrimaryButton4" : {
+    "message" : "添加到阻止列表"
+  },
+  "addSiteAddModeSecondaryButton4" : {
+    "message" : "也許以後"
+  },
+  "addSiteReachedLimitTitle" : {
+    "message" : "您已達到阻止列表限制"
+  },
+  "addSiteReachedLimitSubTitle" : {
+    "message" : "立即升級以獲得無限的阻止列表和更多功能，這些功能將提高您的工作效率並節省您的時間！"
+  },
+  "addSiteReachedLimitPrimaryButton" : {
+    "message" : "無限前進"
+  },
+  "addSiteReachedLimitSecondaryButton" : {
+    "message" : "也許以後"
+  },
+  "addSiteSuccessTitle" : {
+    "message" : "站點添加到阻止列表"
+  },
+  "addSiteSuccessSubTitle" : {
+    "message" : "(website.com) 已添加到您的阻止列表中。您可以在擴展程序的選項頁面中更改此設置"
+  },
+  "addSiteSuccessPrimaryButton" : {
+    "message" : "立即阻止"
+  },
+  "addSiteSuccessSecondaryButton" : {
+    "message" : "轉到阻止列表"
+  },
+  "addSiteAreYouSureTitle" : {
+    "message" : "是否確定？"
+  },
+  "addSiteAreYouSureSubTitle" : {
+    "message" : "BlockSite 將停止建議阻止分散注意力的網站。"
+  },
+  "addSiteAreYouSurePrimaryButton" : {
+    "message" : "做吧"
+  },
+  "addSiteAreYouSureSecondaryButton" : {
+    "message" : "不，取消"
+  },
+  "whiteListRedirectRemovePopupDescription" : {
+    "message" : "在白名單和黑名單模式之間切換時，我們必須清除您的重定向站點"
+  },
+  "cantBlockRedirectWordMsg" : {
+    "message" : "無法阻止屬於重定向網址的單詞"
+  },
+  "optionsNotificationEmptyWord" : {
+    "message" : "不能添加空字"
+  },
+  "blockSitesOnBoardingTitle" : {
+    "message" : "將網站添加到您的阻止列表"
+  },
+  "blockSitesOnBoardingDescription" : {
+    "message" : "添加到您的阻止列表的網站將被永久阻止，直到您將它們從列表中刪除或設置時間表。"
+  },
+  "blocklistOnBoardingTitle" : {
+    "message" : "這些網站現已被屏蔽"
+  },
+  "blocklistOnBoardingDescriptionPrefix" : {
+    "message" : "訪問"
+  },
+  "blocklistOnBoardingDescriptionSuffix" : {
+    "message" : "看到阻塞在行動"
+  },
+  "redirectOnBoardingTitle" : {
+    "message" : "設置重定向站點"
+  },
+  "redirectOnBoardingDescription" : {
+    "message" : "添加您希望在嘗試訪問被阻止的網站、關鍵字或使用焦點模式時重定向到的網站"
+  },
+  "scheduleOnBoardingTitle" : {
+    "message" : "創建阻止計劃"
+  },
+  "scheduleOnBoardingDescription" : {
+    "message" : "在特定日期和時間範圍內阻止網站。在這些時間範圍之外，網站不會被阻止。"
+  },
+  "focusModeAddSiteOnBoardingTitle" : {
+    "message" : "將網站添加到您的焦點模式列表"
+  },
+  "focusModeAddSiteOnBoardingDescription" : {
+    "message" : "焦點模式阻止列表與您的主阻止列表同時工作。"
+  },
+  "focusModeTimerOnBoardingTitle" : {
+    "message" : "設置焦點模式會話"
+  },
+  "focusModeTimerOnBoardingDescription" : {
+    "message" : "設置一個特定的阻止列表來阻止站點並通過能夠訪問這些站點來獎勵自己在任何週期結束時休息。"
+  },
+  "focusModeSessionOnBoardingTitle" : {
+    "message" : "啟動你的計時器"
+  },
+  "focusModeSessionOnBoardingDescription" : {
+    "message" : "單擊此處開始您的專注模式會話，開始完成這些任務"
+  },
+  "blockWordsOnBoardingTitle" : {
+    "message" : "添加關鍵字以阻止"
+  },
+  "blockWordsOnBoardingDescription" : {
+    "message" : "包含此特定關鍵字的所有網站 URL 和標題都將被阻止（一個關鍵字可能會阻止數百個網站）"
+  },
+  "categoriesOnBoardingTitle" : {
+    "message" : "按類別阻止網站"
+  },
+  "categoriesOnBoardingDescription" : {
+    "message" : "選擇類別，一鍵屏蔽數千個網站"
+  },
+  "onBoardingNextStep" : {
+    "message" : "下一步"
+  },
+  "onBoardingDismiss" : {
+    "message" : "解僱"
+  },
+  "categoriesGoUnlimitedButton" : {
+    "message" : "無限前進"
+  },
+  "cannotAddBlockSiteWhichPartOfRedirect" : {
+    "message" : "無法封鎖設定為重新導向的網站"
+  },
+  "passwordProtectionHookTitleToggleOff" : {
+    "message" : "不要欺騙自己！獲得密碼保護。"
+  },
+  "passwordProtectionHookTitleRemoveSite" : {
+    "message" : "停止嘗試刪除網站！獲得密碼保護"
+  },
+  "passwordProtectionHookSubtitle" : {
+    "message" : "使用密碼鎖定您的設置，讓拖延變得更加困難"
+  },
+  "passwordProtectionMaybeLaterButton" : {
+    "message" : "也許以後"
+  },
+  "passwordProtectionGoUnlimitedButton" : {
+    "message" : "無限前進"
+  },
+  "passwordProtectionSetupNowButton" : {
+    "message" : "立即設置"
+  },
+  "blockedHeaderFocusModeMinutes" : {
+    "message" : "$BREAK_TIME_LEFT$ 分鐘",
+    "placeholders" : {
+      "break_time_left" : {
+        "content" : "$1",
+        "example" : "25"
+      }
+    }
+  },
+  "blockedHeaderFocusModeUntilBreak" : {
+    "message" : "直到休息時間"
+  },
+  "blockedHeaderTitle" : {
+    "message" : "此網站已被 BlockSite 封鎖"
+  },
+  "blockedHeaderMenuEdit" : {
+    "message" : "編輯阻止列表"
+  },
+  "blockedHeaderMenuRedirect" : {
+    "message" : "重新導向"
+  },
+  "blockedHeaderMenuCustomizeBlockPage" : {
+    "message" : "自定義阻止頁面"
+  },
+  "blockedHeaderMenuPasswordProtection" : {
+    "message" : "密碼保護"
+  },
+  "blockedHeaderMenuUpgradeButton" : {
+    "message" : "升級"
+  },
+  "categoriesTableTitle" : {
+    "message" : "阻止的類別列表"
+  },
+  "blockedTableApplyButton" : {
+    "message" : "申請"
+  },
+  "blockedTableCancelButton" : {
+    "message" : "取消"
+  },
+  "addBlockInputAddButton" : {
+    "message" : "添加項目"
+  },
+  "enableInInPrivateMode" : {
+    "message" : "在 InPrivate 模式下啟用"
+  },
+  "aboutHowToEnableInInPrivateTitle" : {
+    "message" : "如何啟用 InPrivate 模式"
+  },
+  "aboutHowToEnableInInPrivateSubtitle" : {
+    "message" : "要在 Edge 的 InPrivate 模式下啟用 BlockSite，請執行以下步驟："
+  },
+  "aboutHowToEnableInInPrivateStep1" : {
+    "message" : "導航到 edge://extensions"
+  },
+  "aboutHowToEnableInInPrivateStep2" : {
+    "message" : "找到並點擊 BlockSite"
+  },
+  "aboutHowToEnableInInPrivateStep3" : {
+    "message" : "選中“允許 InPrivate”框"
+  },
+  "emptyResultsBlockedSitesTitle" : {
+    "message" : "還沒有被屏蔽的網站"
+  },
+  "emptyResultsBlockedSitesSubtitle" : {
+    "message" : "當您添加要阻止的網站時，您會在此處看到它。"
+  },
+  "emptyResultsBlockedKeywordsTitle" : {
+    "message" : "還沒有被屏蔽的關鍵字"
+  },
+  "emptyResultsBlockedKeywordsSubtitle" : {
+    "message" : "當您添加要阻止的關鍵字時，您會在此處看到它。"
+  },
+  "passwordProtectionNonPremiumCTA" : {
+    "message" : "獲得密碼保護"
+  },
+  "customizeBlockPageNoPremiumMacbookTitle" : {
+    "message" : "沒有張貼，沒有喜歡，只是生活。"
+  },
+  "customizeBlockPageNoPremiumMacbookSubtitle" : {
+    "message" : "哎呀！ site.com 不可用，因為它與您阻止的類別社交有關。保持專注，你有這個。"
+  },
+  "customizeBlockPageNoPremiumTitle" : {
+    "message" : "創建您自己的屏蔽頁面"
+  },
+  "customizeBlockPageNoPremiumSubtitle" : {
+    "message" : "讓它鼓舞人心或有趣，以幫助您保持專注。"
+  },
+  "customizeBlockPageNoPremiumCTA" : {
+    "message" : "獲取自定義塊頁面"
+  },
+  "pushToDesktopOverlayTitleA" : {
+    "message" : "跨多個瀏覽器阻止"
+  },
+  "pushToDesktopOverlayTitleB" : {
+    "message" : "新的 Windows 應用程序現已上線！"
+  },
+  "pushToDesktopOverlaySubtitleA" : {
+    "message" : "現在，您可以使用一個應用程序阻止Edge，Firefox和Chrome上的所有乾擾！立即下載全新的應用程序"
+  },
+  "pushToDesktopOverlaySubtitleB" : {
+    "message" : "您現在可以使用我們新的 Windows 桌面應用程序阻止 Chrome、Firefox 和 Edge 上的所有乾擾"
+  },
+  "pushToDesktopOverlayCTAUpgrade" : {
+    "message" : "了解更多"
+  },
+  "pushToDesktopOverlayCTAMaybeLater" : {
+    "message" : "也許以後"
+  },
+  "specialOfferPopupTitle" : {
+    "message" : "以 $ 獲得無限阻止"
+  },
+  "specialOfferPopupSubtitle" : {
+    "message" : " 您還將獲得批量阻止、密碼保護等功能。時間不多了！"
+  },
+  "specialOfferPopupSave" : {
+    "message" : "保存"
+  },
+  "specialOfferPopupYear" : {
+    "message" : "年"
+  },
+  "specialOfferPopupGoUnlimited" : {
+    "message" : "無限前進"
+  },
+  "specialOfferPopupGoMaybeLater" : {
+    "message" : "也許以後"
+  },
+  "specialOfferPopupFinePrint" : {
+    "message" : "每年計費。定期計費。以任何理由隨時取消"
+  },
+  "logoutPopupQuestionTitle" : {
+    "message" : "是否確定？"
+  },
+  "logoutPopupQuestionDescription" : {
+    "message" : "註銷時所做的任何更改都不會與云同步。"
+  },
+  "logoutPopupQuestionApproveText" : {
+    "message" : "做吧"
+  },
+  "logoutPopupQuestionCancelText" : {
+    "message" : "不，取消"
+  },
+  "headerLogin" : {
+    "message" : "登錄"
+  },
+  "headerLogout" : {
+    "message" : "登出"
+  },
+  "headerGoUnlimited" : {
+    "message" : "無限前進"
+  },
+  "viewAccount" : {
+    "message" : "瀏覽賬戶"
+  },
+  "PinToToolBarMessageTitle" : {
+    "message" : "將 BlockSite 固定為 100% 的生產力"
+  },
+  "PinToToolBarMessageText" : {
+    "message" : "檢查擴展列表以使其可見"
+  },
+  "PinToToolBarMessageBtnText" : {
+    "message" : "瞭解"
+  },
+  "bundleListPopupTitle" : {
+    "message" : "自定義此頁面"
+  },
+  "bundleListPopupSubTitle" : {
+    "message" : "當您嘗試訪問被阻止的頁面時，選擇要隨機顯示的圖像多包。"
+  },
+  "backgroundMultiPacksTitle" : {
+    "message" : "塊頁面視覺和文本"
+  },
+  "bundleListPopupTooltip" : {
+    "message" : "每次顯示塊頁面時，都會隨機顯示所選多包中的圖像。"
+  },
+  "bundleListPopupCancelButton" : {
+    "message" : "取消"
+  },
+  "bundleListPopupDoneButton" : {
+    "message" : "完成"
+  },
+  "sharePopupTitle" : {
+    "message" : "分享您對生產力和專注的熱愛"
+  },
+  "sharePopupSubTitle" : {
+    "message" : "通過讓他人了解 BlockSite 來幫助他人"
+  },
+  "shareFacebookIconTitle" : {
+    "message" : "Facebook"
+  },
+  "shareTwitterIconTitle" : {
+    "message" : "Twitter"
+  },
+  "copyIconTitle" : {
+    "message" : "複製"
+  },
+  "copiedIconTitle" : {
+    "message" : "已拷貝"
+  },
+  "shareLinkedinIconTitle": {
+    "message": "Linkedin"
+  },
+  "passwordProtectionUnlockPageTitle" : {
+    "message" : "此頁面已鎖定！"
+  },
+  "passwordProtectionUnlockPageSubtitle" : {
+    "message" : "請輸入您的密碼以解鎖頁面"
+  },
+  "passwordProtectionUnlockButton" : {
+    "message" : "現在解鎖"
+  },
+  "verifyResetPasswordTitle" : {
+    "message" : "是否確定？"
+  },
+  "verifyResetPasswordText" : {
+    "message" : "我們將重置您的密碼並將新密碼發送到您的電子郵箱"
+  },
+  "verifyResetPasswordAcceptBtn" : {
+    "message" : "是的，重置密碼"
+  },
+  "verifyResetPasswordCancelBtn" : {
+    "message" : "不，取消"
+  },
+  "resetPasswordSuccessTitle" : {
+    "message" : "已傳送密碼"
+  },
+  "resetPasswordSuccessSubTitle" : {
+    "message" : "您的密碼已發送至 $MAIL$",
+    "placeholders" : {
+      "mail" : {
+        "content" : "$1",
+        "example" : "example@mail.com"
+      }
+    }
+  },
+  "resetPasswordSuccessBtnText" : {
+    "message" : "好的"
+  },
+  "PasswordProtectSecondStepTitle" : {
+    "message" : "您確定要解鎖此頁面嗎？"
+  },
+  "PasswordProtectSecondStepSubtitle" : {
+    "message" : "'點擊下方'取消'的用戶平均每天可額外節省 15 分鐘。"
+  },
+  "doNotShowAgainMessage" : {
+    "message" : "不再顯示"
+  },
+  "bundleImagesDownloadInProgressTitle" : {
+    "message" : "下載圖像"
+  },
+  "bundleImagesDownloadInProgressText" : {
+    "message" : "完成前請勿關閉瀏覽器"
+  },
+  "bundleImagesDownloadSuccessTitle" : {
+    "message" : "圖片下載成功"
+  },
+  "bundleImagesDownloadFailedTitle" : {
+    "message" : "圖片下載失敗"
+  },
+  "bundleImagesDownloadFailedText" : {
+    "message" : "請再試一次"
+  },
+  "rateUsSubmittingStepTitle" : {
+    "message" : "您如何評價 BlockSite？"
+  },
+  "rateUsSubmittingStepSubTitle" : {
+    "message" : "點擊星星告訴我們你的想法"
+  },
+  "rateUsSubmittingStepBtn" : {
+    "message" : "提交"
+  },
+  "rateUsBlessingStepTitle" : {
+    "message" : "耶！我們很高興你喜歡它！"
+  },
+  "rateUsBlessingStepSubTitle" : {
+    "message" : "您的反饋很重要！通過在網上商店留下評論來幫助其他人發現我們應用程序的好處。"
+  },
+  "rateUsBlessingStepBtn" : {
+    "message" : "在網上商店給我們評分"
+  },
+  "rateUsSReviewStepTitle" : {
+    "message" : "謝謝，您的意見對我們很重要！"
+  },
+  "rateUsReviewStepSubTitle" : {
+    "message" : "我們的支持和產品團隊正在努力，希望盡快滿意。"
+  },
+  "rateUsReviewStepBtn" : {
+    "message" : "傳送意見回饋"
+  },
+  "rateUsReviewStepMsgError" : {
+    "message" : "輸入的字符無效。"
+  },
+  "rateUsReviewStepTitleContent" : {
+    "message" : "我們如何改進？"
+  },
+  "rateUsReviewStepTextContent" : {
+    "message" : "您的反饋"
+  }
+}

@@ -1,0 +1,1 @@
+import{i as t,j as e,R as r,k as s,P as i,h as o}from"./SettingsPage.js";import"./index.js";t.createRoot(document.getElementById("options")).render(e.jsx(r.StrictMode,{children:e.jsx(s,{children:e.jsx(i,{large:!0,children:e.jsx(o,{})})})}));

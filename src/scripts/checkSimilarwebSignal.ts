@@ -75,6 +75,9 @@ function buildObservationNote(input: {
   }
 
   if (!input.snapshot && input.challengeHeader) {
+    if (input.fetchSource === "scrapfly") {
+      return `Similarweb fetch succeeded via Scrapfly, but the page payload could not be parsed (${input.challengeHeader})`;
+    }
     return `Similarweb direct fetch hit a challenge (${input.challengeHeader}); use SCRAPFLY_KEY for a bypassed fetch`;
   }
 

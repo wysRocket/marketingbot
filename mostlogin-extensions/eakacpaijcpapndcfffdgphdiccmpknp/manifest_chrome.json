@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "MozBar",
+  "version": "4.1.1",
+  "description": "MozBar extension",
+  "icons": {
+    "16": "/images/mozicon_38x38.png",
+    "48": "/images/mozicon_38x38.png",
+    "128": "/images/mozicon_38x38.png"
+  },
+  "background": {
+    "service_worker": "./static/js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./static/js/content.js"],
+      "css": ["mozbar.css", "toolbar.css"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "/images/mozicon_38x38.png",
+      "24": "/images/mozicon_38x38.png",
+      "32": "/images/mozicon_38x38.png"
+    },
+    "default_title": "MozBar",
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "cookies",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}

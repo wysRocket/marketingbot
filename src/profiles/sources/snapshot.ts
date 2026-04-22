@@ -19,9 +19,7 @@ export async function writeCatalogSnapshot(
   await fs.writeFile(filePath, JSON.stringify(snapshot, null, 2), "utf8");
 }
 
-export async function readCatalogSnapshot(
-  filePath: string,
-): Promise<{
+export async function readCatalogSnapshot(filePath: string): Promise<{
   catalog: { source: string; profiles: unknown[] };
   generatedAt: string;
 } | null> {
