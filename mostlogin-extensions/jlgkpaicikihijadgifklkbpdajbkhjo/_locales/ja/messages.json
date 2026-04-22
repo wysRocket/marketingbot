@@ -1,0 +1,1496 @@
+{
+  "appName": {
+    "message": "crxMouse Chrome™ Gestures",
+    "Description": "Name of extension. Do not translate name."
+  },
+  "appName_Edge": {
+    "message": "CrxMouse Edge™ Gestures",
+    "Description": "Name of extension. Do not translate name."
+  },
+  "G_BmManager": {
+    "message": "ブックマークマネージャーを開く",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_ZoomIn": {
+    "message": "ズームイン",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_ZoomOut": {
+    "message": "ズームアウト",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_back": {
+    "message": "戻る",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_bookmark": {
+    "message": "ブックマークを追加する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_bookmarks": {
+    "message": "ブックマークマネージャー",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_bottom": {
+    "message": "一番下までスクロールする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_capture": {
+    "message": "スクリーンショット",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_chromepage": {
+    "message": "Chrome 内部のアドレスを開く",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_close": {
+    "message": "タブを閉じる",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closelefttabs": {
+    "message": "左側のタブをすべて閉じる",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closeothers": {
+    "message": "その他のタブを閉じる",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closerighttabs": {
+    "message": "右側のタブをすべて閉じる",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closewindow": {
+    "message": "ウィンドウを閉じる",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closewindows": {
+    "message": "すべてのウィンドウを閉じる",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copyaslink": {
+    "message": "リンクとしてタイトルと URL をコピーする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copytab": {
+    "message": "現在のタブをコピーする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copytitle": {
+    "message": "現在のタブのタイトルをコピーする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copyurl": {
+    "message": "現在のタブの URL をコピーする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copyuser": {
+    "message": "カスタム形式でタイトルと URL をコピーする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_crxsettings": {
+    "message": "CrxMouse の設定",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_down": {
+    "message": "下方へスクロールする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_downloads": {
+    "message": "ダウンロード",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_firsttab": {
+    "message": "最初のタブ",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_fullscreen": {
+    "message": "フルスクリーン",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_go": {
+    "message": "転送する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_goparent": {
+    "message": "親 URL へ進む",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_history": {
+    "message": "履歴",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_incognito": {
+    "message": "新しいシークレットウィンドウ",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_lasttab": {
+    "message": "最後のタブ",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_left": {
+    "message": "左へスクロールする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_lefttab": {
+    "message": "左タブ",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_mergeTab": {
+    "message": "タブを統合する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_movetowindow": {
+    "message": "タブを分離する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_newtab": {
+    "message": "新規タブ",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_newusertab": {
+    "message": "カスタムタブ...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_newwindow": {
+    "message": "新規ウィンドウ",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_none": {
+    "message": "なし",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_openclipurl": {
+    "message": "クリップボードから URL を開く",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_pin": {
+    "message": "タブを固定する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reclosedtab": {
+    "message": "閉じたタブを再び開く",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reload": {
+    "message": "再読み込み",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reloadall": {
+    "message": "すべてのタブを再読み込みする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reloadclear": {
+    "message": "キャッシュなしで再読み込みする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reloadframe": {
+    "message": "フレームを再読み込みする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_right": {
+    "message": "右にスクロールする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_righttab": {
+    "message": "右タブ",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_settings": {
+    "message": "Chrome の設定",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_splitTab": {
+    "message": "タブを分割する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_stop": {
+    "message": "停止",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_stopall": {
+    "message": "すべてのタブの読み込みを中止する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_top": {
+    "message": "一番上までスクロールする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_tostop": {
+    "message": "このページの拡張機能を一時的に無効にする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_trynext": {
+    "message": "次のチャプターへ進む",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_tryprev": {
+    "message": "前のチャプターに戻る",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_up": {
+    "message": "上方向へスクロールする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_userscript": {
+    "message": "スクリプトを実行する...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_viewsource": {
+    "message": "ページのソースを確認する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_windowmax": {
+    "message": "ウィンドウを最大化する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_windowmin": {
+    "message": "ウィンドウを最小化する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_copyurl": {
+    "message": "画像の URL をコピーする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_open": {
+    "message": "新しいタブで画像を開く",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_save": {
+    "message": "画像を保存する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_saveback": {
+    "message": "画像を保存する（開発のみ）...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_search": {
+    "message": "画像を検索する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_searchuser": {
+    "message": "カスタムサービスエンジンを使って画像を検索する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_bookmark": {
+    "message": "ブックマークを追加する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copyaslink": {
+    "message": "リンクとしてテキストと URL をコピーする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copytext": {
+    "message": "リンクのテキストをコピーする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copyurl": {
+    "message": "URL をコピーする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copyuser": {
+    "message": "カスタム形式でタイトルとウェブサイトをコピーする",
+    "description": "Advanced actions"
+  },
+  "L_open": {
+    "message": "新しいタブでリンクを開く",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "T_copytext": {
+    "message": "テキストをコピーする",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "T_search": {
+    "message": "テキストを検索する",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "T_searchuser": {
+    "message": "カスタム検索…",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "about": {
+    "message": "情報",
+    "description": "Title of About page in Settings area"
+  },
+  "bug": {
+    "message": "バグを報告する",
+    "description": "Link to report a bug"
+  },
+  "addtipgesture": {
+    "message": "右マウスボタンを押したまま動かして、トラックを作成し、右ボタンを解除して、アクションを選択します。",
+    "description": "Instructions for how to add a new gesture thourh the Settings area - appears when clicking on the 'Add New' button in the 'New section on the 'Mouse Gestures' page."
+  },
+  "addtipimage": {
+    "message": "左マウスボタンを使って、下記の画像をドラッグし、トラックを作成した後、マウスを解除して、アクションを選択します。",
+    "description": "Instructions for how to add a new Super Drag Gesture for an Image - appears when clicking on the 'Image' button in the 'New' section on the 'Super Drag' page."
+  },
+  "addtiplink": {
+    "message": "左マウスボタンを押したまま、下記のリンクを選択し、トラックを作成してから、マウスを解除してアクションを選択します。",
+    "description": "Instructions for how to add a new Super Drag Gesture for a link - appears when clicking on the 'Link' button in the 'New' section on the 'Super Drag' page."
+  },
+  "addtiptext": {
+    "message": "左マウスボタンを押したまま、次のテキストを選択し、トラックを作成してから、マウスを解除してアクションを選択します。",
+    "description": "Instructions for how to add a new Super Drag Gesture for a text - appears when clicking on the 'Text' button in the 'New' section on the 'Super Drag' page"
+  },
+  "advanced": {
+    "message": "高度な設定",
+    "description": "Side navigation and Title of page in 'Settings' area"
+  },
+  "alertaction": {
+    "message": "アクションを一つ選択してください。",
+    "description": "Alert window - promopted of user tries to save new gesture before selecting an action."
+  },
+  "alertconfigerror": {
+    "message": "インポートされた設定のエラー",
+    "description": "Error message - prompted when there is an issue with an imported file."
+  },
+  "alertname": {
+    "message": "保存できません。不足しているフィールドを確認してください。",
+    "description": "Error message when trying to edit gesture with text field empty."
+  },
+  "alertrepeat": {
+    "message": "そのジェスチャーは重複していました、別のジェスチャーをお試しください。",
+    "description": "Error message when trying to create gesture with an already used gesture."
+  },
+  "alerttooltip": {
+    "message": "アクション名を入力してください。",
+    "description": "Error message when creating new gesture of new action without giving it a name. "
+  },
+  "alerturl": {
+    "message": "URL が存在しないか、無効な URL です。",
+    "description": "Error message when creating new gesture for opening a specific url without specifying the url."
+  },
+  "author": {
+    "message": "著作者",
+    "description": "Author"
+  },
+  "blackList": {
+    "message": "サイトのブラックリスト",
+    "description": "List for sites that should exclude mouse gestures. Located on General Settings page."
+  },
+  "blacklistTip": {
+    "message": "注：１：crxMouse はこれらのサイトでは起動しません。2：1行につき１ドメイン、ユーザーの新規行への入力では http:// または https:// を追加しないでください。",
+    "description": "Note listed below message box of site blacklist. Located on General Settings page."
+  },
+  "bookmarkfailnotifi": {
+    "message": "そのブックマークはすでに存在します！",
+    "description": "Error message when trying to create gesture for bookmark that already exists."
+  },
+  "bookmarknotifi": {
+    "message": "ブックマークが正常に追加されました！",
+    "description": "Notification for bookmark saved."
+  },
+  "cancel": {
+    "message": "キャンセル",
+    "description": "Cancel adding new gesture."
+  },
+  "cancelcontextmenu": {
+    "message": "Linux/Mac のコンテキストメニューの問題を解決してください（<span style='color:red'>右マウスボタンをダブルクリックするとコンテキストメニューがポップアップします</span>）。",
+    "description": "Text of Linux/Mac options check box located on General Settings page. Note! Do not translate html tags."
+  },
+  "cancelcontextmenudes": {
+    "message": "Windows 以外のプラットフォームで解決するためのオプション、および、メニューの右クリックは、特定の機能の通常な使用に影響を及ぼすため、inux/Macのユーザーは、これを確認してください。",
+    "description": "Tooltip about Linux/Mac options located on General Settings page"
+  },
+  "changelog": {
+    "message": "ログの変更",
+    "description": "Super Drag Action."
+  },
+  "chrome": {
+    "message": "Chromeの初期設定",
+    "description": "Referrs to the default tab opening (left or right) settings in Chrome."
+  },
+  "clearsyncdata": {
+    "message": "同期データを消去する",
+    "description": "For logged in users, they can clear any data that was synced between machines."
+  },
+  "close": {
+    "message": "閉じる",
+    "description": "Action list - close tab"
+  },
+  "color": {
+    "message": "カラー：",
+    "description": "A design option for how mouse gestures appear, under the 'Appearance' section on the Settings area."
+  },
+  "crbookmarks": {
+    "message": "ブックマークマネージャー",
+    "description": "Action list - open bookmarks manager"
+  },
+  "crdownloads": {
+    "message": "ダウンロード",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crextensions": {
+    "message": "拡張機能",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crflags": {
+    "message": "Chrom ラボ",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crhistory": {
+    "message": "履歴",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crsettings": {
+    "message": "Chrome の設定",
+    "description": "Actions list - referrs to "
+  },
+  "curfront": {
+    "message": "現在のタブ",
+    "description": "Actions list - referrs to the current tab opened and visited."
+  },
+  "dbclicktime": {
+    "message": "ダブルクリックの最長持続時間（ms）：",
+    "description": "milliseconds between 2 clicks for accessing the right-click menu on Mac and Linux."
+  },
+  "delete": {
+    "message": "削除する",
+    "description": "Delete a gesture."
+  },
+  "description": {
+    "message": "ワンタッチ操作でブラウジングの生産性を促進します",
+    "description": "Long Store title"
+  },
+  "descriptionjson": {
+    "message": "簡単なマウスジェスチャー、スーパードラッグ、ホイールジェスチャー、ロッカージェスチャーなど、マウスナビゲーションショートカットでブラウジングの生産性を向上させます。",
+    "description": "Short Store description"
+  },
+  "dholdkey": {
+    "message": "キーを割り当てて、スーパードラッグを無効にする：",
+    "description": "Users can choose a keyboard key that will disable the super drag feature on specific ocassions."
+  },
+  "direct": {
+    "message": "ディレクションを表示する",
+    "description": "Appearance option that let's user choose whether or not to see the path of a mouse gesture, when performing it."
+  },
+  "downimgtooltip": {
+    "message": "画像を保存しています...",
+    "description": "Tooltip for when saving image using super drag gesture."
+  },
+  "drag": {
+    "message": "スーパードラッグ",
+    "description": "Side navigation and title of page in Settings area."
+  },
+  "draginput": {
+    "message": "テキストボックスのドラッグテキストを有効にします。",
+    "description": "Option in More section on Super Drag page"
+  },
+  "dragui": {
+    "message": "外観",
+    "description": "Section name in the Settings area."
+  },
+  "editgesture": {
+    "message": "ジェスチャーを編集する",
+    "description": "Section name"
+  },
+  "editimage": {
+    "message": "ドラッグイメージ",
+    "description": "Section name on Super Drag page"
+  },
+  "editlink": {
+    "message": "ドラッグリンク",
+    "description": "Section name on Super Drag page"
+  },
+  "editsgsleft": {
+    "message": "ホイールジェスチャー左<br /><span class='opttitledes'>（左ボタンをホールドして、スクロールする）</span>",
+    "description": "Section name on Wheel Gestures page. Note! do not translate html tags (the br and span open and close tags)."
+  },
+  "editsgsright": {
+    "message": "ホイールジェスチャー右<br /><span class='opttitledes'>（右ボタンをホールドして、スクロールする）</span>",
+    "description": "Section name on Super Drag page. Note! do not translate html tag (the span open and close tags)."
+  },
+  "edittext": {
+    "message": "ドラッグテキスト",
+    "description": "Section name on Super Drag page"
+  },
+  "enabledragimage": {
+    "message": "ドラッグイメージを有効にする",
+    "description": "Option in More section on Super Drag page"
+  },
+  "enabledraglink": {
+    "message": "ドラッグリンクを有効にする",
+    "description": "Option in More section on Super Drag page"
+  },
+  "enabledragtext": {
+    "message": "ドラッグテキストを有効にする",
+    "description": "Option in More section on Super Drag page"
+  },
+  "export": {
+    "message": "エクスポート",
+    "description": "Buttom in Advanced Settings page"
+  },
+  "extauthor": {
+    "message": "WeKnowNet",
+    "description": "Author name inside options.html"
+  },
+  "extnamejson": {
+    "message": "CrxMouse",
+    "description": "Extension name"
+  },
+  "extthanks": {
+    "message": "\r\n\t\t&gt; os0x</a></a><br />\r\n\t\t&gt; ArcCosine</a></a><br />\r\n\t\t&gt; Jan Odvarko</a></a><br />\r\n\t\t&gt;この拡張機能をご利用いただいた方々、この拡張機能の改善のためにフィードバックを寄せてくれた方々に感謝いたします。",
+    "description": "Thanks section in About page. Note! do not translate html tag."
+  },
+  "fastSwitch": {
+    "message": "スクロールアップするとタブを左に切り替え、スクロールダウンすると、右に切り替える",
+    "description": "Switch tab to the left when Scrolling up, to the right when scrolling down"
+  },
+  "fastreset": {
+    "message": "何か問題があり、拡張機能が動作しません。こちらをクリックして、デフォルトの設定にリセットしてください。それでも動作しない場合は、Chrome を最新バージョン（V23+）に更新して、再試行してください。",
+    "description": "Error message when extension is down"
+  },
+  "fndrag": {
+    "message": "スーパードラッグを有効にする",
+    "description": "Enable options on General Settings page"
+  },
+  "fngesture": {
+    "message": "マウスジェスチャーを有効にする",
+    "description": "Enable options on General Settings page"
+  },
+  "fnscroll": {
+    "message": "スクローリングを有効にする ",
+    "description": "Enable options on General Settings page"
+  },
+  "fnscrollgesture": {
+    "message": "ホイールジェスチャーを有効にする",
+    "description": "Enable options on General Settings page"
+  },
+  "fnsmooth": {
+    "message": "スムーススクロールを有効にする",
+    "description": "Enable options on General Settings page"
+  },
+  "fnstrokegesture": {
+    "message": "ロッカージェスチャーを有効にする",
+    "description": "Enable options on General Settings page"
+  },
+  "fnswitch": {
+    "message": "CrxMouse を有効にする",
+    "description": "Enable options on General Settings page"
+  },
+  "gesPos": {
+    "message": "マウスジェスチャーの位置",
+    "description": "Option in Appearance section on Mouse Gestures page"
+  },
+  "gesPosBC": {
+    "message": "下部中央",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosBL": {
+    "message": "下部左",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosBR": {
+    "message": "下部右",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosCC": {
+    "message": "中央",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosCL": {
+    "message": "中央左",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosCR": {
+    "message": "中央右",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosTC": {
+    "message": "上部中央",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosTL": {
+    "message": "上部左",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosTR": {
+    "message": "上部右",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "geskey": {
+    "message": "マウスジェスチャー用キー：",
+    "description": "Option in More section on Mouse Gestures page"
+  },
+  "geskeydes": {
+    "message": "注：1. これは、右ボタンを使用できない Linux/Mac のユーザーのための単なる代替手段にすぎません、Windows のユーザーがこれを変更することは推奨されていません。<br />2. 多くの問題が発生しています。例えば、画像やリンクで、テキストの選択やスーパードラッグテキストの使用、または、マウスジェスチャーの使用ができません。その場合、下記の設定が必要となることがあります。",
+    "description": "Description text in More section on Mouse Gestures page"
+  },
+  "geskeyleft": {
+    "message": "左マウスボタン",
+    "description": "Key associated to mouse gesture on Mouse Gestures page"
+  },
+  "geskeymiddle": {
+    "message": "中央マウスボタン",
+    "description": "Key associated to mouse gesture on Mouse Gestures page"
+  },
+  "geskeyright": {
+    "message": "右マウスボタン",
+    "description": "Key associated to mouse gesture on Mouse Gestures page"
+  },
+  "gesture": {
+    "message": "マウスジェスチャー",
+    "description": "Page name"
+  },
+  "gestureui": {
+    "message": "外観",
+    "description": "Section name"
+  },
+  "gholdkey": {
+    "message": "キーを割り当てて、マウスジェスチャーを無効にする：",
+    "description": "Option in More section on Mouse Gestures page"
+  },
+  "head": {
+    "message": "ヘッダー",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "howtablist": {
+    "message": "タブリストの使い方：",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "image": {
+    "message": "画像",
+    "description": "Buttons in New section on Super Drag page"
+  },
+  "imgfirst": {
+    "message": "スーパードラッグイメージを使うためのキーを割り当て、ドラッグリンクの代わりに使用する：",
+    "description": "Option in More section on Super Drag page"
+  },
+  "imgfirstcheck": {
+    "message": "リンクに画像が含まれている場合は、ドラッグリンクの代わりにスーパードラッグイメージを使用する",
+    "description": "Option in More section on Super Drag page"
+  },
+  "import": {
+    "message": "インポート",
+    "description": "Option on Advanced Setttings page"
+  },
+  "incog": {
+    "message": "シークレットウィンドウ",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "last": {
+    "message": "最後",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "left": {
+    "message": "残り",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "link": {
+    "message": "リンク",
+    "description": "Buttons in New section on Super Drag page"
+  },
+  "linuxsettings": {
+    "message": "Linux/Mac のオプション",
+    "description": "Section name on General Settings page"
+  },
+  "listaction": {
+    "message": "アクション：",
+    "description": "Section in Edit Gesture section on Mouse Gestures page"
+  },
+  "listgesture": {
+    "message": "ジェスチャー：",
+    "description": "Section in Edit Gesture section on Mouse Gestures page"
+  },
+  "local": {
+    "message": "en",
+    "description": "en"
+  },
+  "localtrans": {
+    "message": "誤",
+    "description": "FALSE"
+  },
+  "minilength": {
+    "message": "トラックの最小長（px）：",
+    "description": "Option in Miscellaneous section on General Settings page"
+  },
+  "moreChromepagetitle": {
+    "message": "「chrome://...」のような Chrome の内部アドレス",
+    "description": "Placeholder in Actions"
+  },
+  "moreCloseoptstitle": {
+    "message": "最後のタブを閉じた後で、ウィンドウを閉じますか？",
+    "description": "Placeholder in Actions"
+  },
+  "moreCloseseltitle": {
+    "message": "現在のタブを閉じた後でどのタブを選択すればよいですか？",
+    "description": "Placeholder in Actions"
+  },
+  "moreCloseurltitle": {
+    "message": "URL、Chrome のウィンドウを閉じていない場合は、この URL を開いてください",
+    "description": "Placeholder in Actions"
+  },
+  "moreCopystyletitle": {
+    "message": "カスタムフォーマットでは、タイトル/単語の代わりに \"％title\" を、サイトの URL の代わりに \"％url\" を、改行に \"\\n\" を使用します。",
+    "description": "Placeholder in Actions. Note! do not translate text inside \"%."
+  },
+  "moreDes": {
+    "message": "プロンプトテキスト機能、キーワードの代わりに\"%name\"を使用する",
+    "description": "Placeholder in Actions. Note! do not translate text inside \"%."
+  },
+  "moreDestitle": {
+    "message": "アクション名",
+    "description": "Option in Appearance section on Super Drag and Mouse Gestures pages"
+  },
+  "moreIsearchtitle": {
+    "message": "画像検索エンジン",
+    "description": "Action"
+  },
+  "moreName": {
+    "message": "名前",
+    "description": "Name"
+  },
+  "morePinnedtitle": {
+    "message": "タブを固定する/固定を解除する",
+    "description": "Action"
+  },
+  "morePositiontitle": {
+    "message": "現在のタブに関連のある新規タブの位置",
+    "description": "Action"
+  },
+  "moreScript": {
+    "message": "スクリプト",
+    "description": "Action"
+  },
+  "moreScripttitle": {
+    "message": "スクリプトのコンテンツ",
+    "description": "Placeholder in Run Script Action"
+  },
+  "moreTarget": {
+    "message": "順位",
+    "description": "Action"
+  },
+  "moreTargettitle": {
+    "message": "新しいタブを開く方法：新規/現在のタブ、フロント/バックグラウンド",
+    "description": "Placeholder in Actions"
+  },
+  "moreTsearchtitle": {
+    "message": "テキスト検索エンジン",
+    "description": "Action"
+  },
+  "moreURL": {
+    "message": "URL",
+    "description": "Action"
+  },
+  "moreURLtitle": {
+    "message": "URL、キーワードの代わりに\"%s\"を使用する",
+    "description": "Placeholder in Actions. Note! do not translate text inside \"%."
+  },
+  "moreaboutdrag": {
+    "message": "その他..",
+    "description": "Section name"
+  },
+  "morecur": {
+    "message": "現在のタブ",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "morenew": {
+    "message": "アクティブな新規タブ",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "morenewback": {
+    "message": "バックグラウンドの新規タブ",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "moresettings": {
+    "message": "その他",
+    "description": "Section name"
+  },
+  "morestrges": {
+    "message": "設定の詳細",
+    "description": "Section name on Rocker Gestures page"
+  },
+  "msgbox": {
+    "message": "設定は保存されました！再読み込み後、いくつかの変更点が適用されます。",
+    "description": "Message when making changes or clicking on save inside Settings "
+  },
+  "newadd": {
+    "message": "新規",
+    "description": "Options in Actions"
+  },
+  "newback": {
+    "message": "バックグラウンドの新規タブ",
+    "description": "Options in Actions"
+  },
+  "newfront": {
+    "message": "アクティブな新規タブ",
+    "description": "Options in Actions"
+  },
+  "newgesture": {
+    "message": "新規追加",
+    "description": "Button on Mouse Gestures page"
+  },
+  "newtabdes": {
+    "message": "%name を開く",
+    "description": "Placeholder in Actions"
+  },
+  "normal": {
+    "message": "基本設定",
+    "description": "Side navigation in Settings"
+  },
+  "opa": {
+    "message": "透明度：",
+    "description": "Option in Appearance section"
+  },
+  "optgrpapp": {
+    "message": "アプリ",
+    "description": "Action"
+  },
+  "optgrpcopy": {
+    "message": "コピー",
+    "description": "Action"
+  },
+  "optgrpload": {
+    "message": "読み込み",
+    "description": "Action"
+  },
+  "optgrpnav": {
+    "message": "ナビゲーション",
+    "description": "Action"
+  },
+  "optgrpnone": {
+    "message": "なし",
+    "description": "Action"
+  },
+  "optgrpother": {
+    "message": "その他",
+    "description": "Action"
+  },
+  "optgrpsave": {
+    "message": "保存する",
+    "description": "Action"
+  },
+  "optgrpscroll": {
+    "message": "スクロール",
+    "description": "Action"
+  },
+  "optgrpsearch": {
+    "message": "検索",
+    "description": "Action"
+  },
+  "optgrptab": {
+    "message": "タブ",
+    "description": "Action"
+  },
+  "optgrptabnav": {
+    "message": "タブのナビゲーション",
+    "description": "Action"
+  },
+  "optgrpwindow": {
+    "message": "ウィンドウ",
+    "description": "Action"
+  },
+  "pinned": {
+    "message": "固定する",
+    "description": "Action"
+  },
+  "placeholderconfig": {
+    "message": "ここに設定を貼り付けてから、インポートをクリックすると、インポートが完了します。設定は、エクスポートをクリックすると表示され、その後も利用できるようになります。",
+    "description": "Text on Advanced Settings page"
+  },
+  "placeholdername": {
+    "message": "名前",
+    "description": "Placeholder in Actions"
+  },
+  "placeholderscript": {
+    "message": "スクリプト",
+    "description": "Placeholder in Actions"
+  },
+  "placeholdersearchurl": {
+    "message": "URL、キーワードの代わりに\"%s\"を使用する",
+    "description": "Placeholder in Actions"
+  },
+  "placeholdertooltip": {
+    "message": "アクション名",
+    "description": "Placeholder in Actions"
+  },
+  "placeholderurl": {
+    "message": "URL",
+    "description": "Placeholder in Actions"
+  },
+  "port": {
+    "message": "設定のインポート/エクスポート",
+    "description": "Section name on Advanced Settings page"
+  },
+  "porttip": {
+    "message": "注1：設定のインポートは、この拡張機能の再起動を招きます、この拡張機能を適用するには、開かれているタブを再読み込みする必要があります。<br />2.ここからエクスポートされた設定をインポートするだけかもしれませんが、自分でそれを編集することは推奨されていません。<br />3.エラーが発生した場合、既定の設定にリセットしてください。 ",
+    "description": "Text on Advanced Settings page. Note! Do not translate html tags"
+  },
+  "poschrome": {
+    "message": "Chromeの初期設定",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "poshead": {
+    "message": "ヘッダー",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "poslast": {
+    "message": "最後",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "posleft": {
+    "message": "残り",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "posright": {
+    "message": "右",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "reset": {
+    "message": "リセット",
+    "description": "Section name on Advanced Settings page"
+  },
+  "resetall": {
+    "message": "すべてをリセットする",
+    "description": "Reset button on Advanced Settings page"
+  },
+  "resetpage": {
+    "message": "このページをリセットする",
+    "description": "Reset button on Gestures pages"
+  },
+  "resettip": {
+    "message": "注：この操作は、すべての設定を削除し、設定をデフォルト値にリセットします。そのうえ、この操作は元に戻すことができませんので、ご注意ください。",
+    "description": "Text on Advanced Settings page"
+  },
+  "reverseFS": {
+    "message": "方向を反転する",
+    "description": "Action"
+  },
+  "right": {
+    "message": "右",
+    "description": "Action"
+  },
+  "s360": {
+    "message": "360",
+    "description": "Action - Website name"
+  },
+  "samazon": {
+    "message": "Amazon",
+    "description": "Action - Website name"
+  },
+  "save": {
+    "message": "保存する",
+    "description": "Save button"
+  },
+  "sbaidu": {
+    "message": "Baidu",
+    "description": "Action - Website name"
+  },
+  "sbaiduimage": {
+    "message": "Baidu 画像検索",
+    "description": "Action - Website name"
+  },
+  "sbing": {
+    "message": "Bing",
+    "description": "Action - Website name"
+  },
+  "scractdown": {
+    "message": "下方向にスクロールする：",
+    "description": "Action"
+  },
+  "scractup": {
+    "message": "上方向にスクロールする：",
+    "description": "Action"
+  },
+  "scriptdes": {
+    "message": "スクリプトの実行：%name",
+    "description": "Placeholder in Actions"
+  },
+  "scroll": {
+    "message": "スクローリング",
+    "description": "Side navigation in Settings"
+  },
+  "scrollaccele": {
+    "message": "スクロールの加速度",
+    "description": "Option on Scrolling page"
+  },
+  "scrolleffects": {
+    "message": "（ページアップ/ダウン/最上部/下部のための）エフェクト付き",
+    "description": "Option in Miscellaneous section on General Settings"
+  },
+  "scrollgesture": {
+    "message": "ホイールジェスチャー",
+    "description": "Side navigation in Settings"
+  },
+  "scrollspeed": {
+    "message": "スクロール速度",
+    "description": "Option on Scrolling page"
+  },
+  "searchdes": {
+    "message": "\"％s\" を検索するには ％name を使用してください",
+    "description": "Placeholder in Actions. Note! do not translate text next to %."
+  },
+  "setdragurl": {
+    "message": "文字列がリンクと認識された場合、ドラッグリンクを有効にします（実験的）。",
+    "description": "Option in More section on Super Drag page"
+  },
+  "settings": {
+    "message": "設定",
+    "description": "Settings"
+  },
+  "sgoogle": {
+    "message": "Google",
+    "description": "Action - Website name"
+  },
+  "sduckduckgo": {
+    "message": "DuckDuckGo",
+    "description": "Action - Website name"
+  },
+  "sgoogleimage": {
+    "message": "Google 画像検索",
+    "description": "Action - Website name"
+  },
+  "sgooglelens": {
+    "message": "Google Lens 検索",
+    "description": "Action - Website name"
+  },
+  "site": {
+    "message": "ウェブサイト",
+    "description": "Action"
+  },
+  "smooth": {
+    "message": "スムーススクロール",
+    "description": "Action"
+  },
+  "ssogou": {
+    "message": "Sogou",
+    "description": "Action - Website name"
+  },
+  "staobao": {
+    "message": "Taoba",
+    "description": "Action - Website name"
+  },
+  "stenable": {
+    "message": "マウスの左をホールドしたまま選択したテキストを有効にする（これによりマウスジェスチャーが無効になる場合があります）",
+    "description": "Enable select text while holding the left mouse(It makes Mouse Gestures invalid sometimes)"
+  },
+  "stineyeimage": {
+    "message": "TinEye",
+    "description": "TinEye"
+  },
+  "stractleft": {
+    "message": "左ボタンをクリックする：",
+    "description": "Options on Rocker Gestures page"
+  },
+  "stractmiddle": {
+    "message": "中央ボタンをクリックする：",
+    "description": "Options on Rocker Gestures page"
+  },
+  "stractright": {
+    "message": "右ボタンをクリックする：",
+    "description": "Options on Rocker Gestures page"
+  },
+  "strleft": {
+    "message": "左ボタンをホールドする",
+    "description": "Section on Rocker Gestures page"
+  },
+  "strmiddle": {
+    "message": "中央ボタンをホールドする",
+    "description": "Section on Rocker Gestures page"
+  },
+  "stroke": {
+    "message": "マウスのトラックを表示する",
+    "description": "Option in Appearance section on Mouse Gestures page"
+  },
+  "strokegesture": {
+    "message": "ロッカージェスチャー",
+    "description": "Side navigation in Settings"
+  },
+  "strpress": {
+    "message": "アクションが引き起こされる時：",
+    "description": "Text on Rocker Gestures page"
+  },
+  "strpressdown": {
+    "message": "マウスダウン",
+    "description": "Option on Rocker Gestures page"
+  },
+  "strpressup": {
+    "message": "マウスアップ",
+    "description": "Option on Rocker Gestures page"
+  },
+  "strright": {
+    "message": "右ボタンをホールドする",
+    "description": "Option on Rocker Gestures page"
+  },
+  "swiki": {
+    "message": "Wikipedia",
+    "description": "Action - Website name"
+  },
+  "syahoo": {
+    "message": "Yahoo",
+    "description": "Action - Website name"
+  },
+  "syandex": {
+    "message": "Yandex",
+    "description": "Action - Website name"
+  },
+  "sync": {
+    "message": "設定の同期",
+    "description": "Section on Advanced Settings page"
+  },
+  "syncdes": {
+    "message": "ユーザーに有効な同期があれば、設定は、<a href=\"https://accounts.google.com/ServiceLogin?service=chromiumsync\" target=\"_blank\">ログインしている</a>ユーザーの Chrome と自動的に同期します。",
+    "description": "Text on Advanced Settings page"
+  },
+  "tablist": {
+    "message": "タブリスト",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "tablistVisual": {
+    "message": "スクロール時にビジュアルタブリストを表示する",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "tablistkeyleft": {
+    "message": "左ボタンをホールドしてスクロールします。",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "tablistkeyright": {
+    "message": "右ボタンをホールドしてスクロールします。",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "testlink": {
+    "message": "リンクをテストする",
+    "description": "Text in new Link Super Drag Gesture window"
+  },
+  "testwords": {
+    "message": "文字列のテスト",
+    "description": "Text in new Text Super Drag Gesture window"
+  },
+  "text": {
+    "message": "テキスト",
+    "description": "Buttons in New section on Super Drag page"
+  },
+  "thanks": {
+    "message": "ありがとうございます",
+    "description": "Section on About page"
+  },
+  "time": {
+    "message": "期間",
+    "description": "Option in Miscellaneous section on General Settings"
+  },
+  "timeout": {
+    "message": "タイムアウト",
+    "description": "Option in Miscellaneous section on General Settings"
+  },
+  "titlechromepage": {
+    "message": "アクション名のツールチップ、Chrome の内部アドレスの代わりに\"%name\"を使用します",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titlecopyuser": {
+    "message": "アクション名のツールチップ、カスタム形式名の代わりに\"%name\"を使用します",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titleisearch": {
+    "message": "アクション名のツールチップ、検索エンジン名の代わりに\"%name\"を使用します",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titlenewusertab": {
+    "message": "アクション名のツールチップ、サイト名の代わりに\"%name\"を使用します",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titlenexpre": {
+    "message": "単語を一致させる、「|」を使って複合的な言葉を区切る、また、拡張機能は rel、rev、id、innerHTML、タイトル、クラスを次々に検知します。",
+    "description": "Placeholder in Actions"
+  },
+  "titlesearchuser": {
+    "message": "URL、キーワードの代わりに\"%s\"を使用します",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titletsearch": {
+    "message": "アクション名のツールヒント、検索エンジンの代わりに \"％name\"、コンテンツの代わりに \"％s\" を使用します",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titleuserscript": {
+    "message": "アクション名のツールチップ、スクリプト名の代わりに\"%name\"を使用します",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "tooltip": {
+    "message": "アクション名を表示する",
+    "description": "Option in Appearance section on Super Drag and Mouse Gestures pages"
+  },
+  "translate": {
+    "message": "翻訳する",
+    "description": "Translate"
+  },
+  "unclose": {
+    "message": "次の URL を閉じたり、開いたりしないでください",
+    "description": "Do not close, and open the following URL"
+  },
+  "unpinned": {
+    "message": "固定を解除する",
+    "description": "Action"
+  },
+  "valuechromepage": {
+    "message": "%name を開く",
+    "description": "Placeholder in Actions"
+  },
+  "valueisearch": {
+    "message": "%name を使って、画像を検索する",
+    "description": "Placeholder in Actions"
+  },
+  "valuenewusertab": {
+    "message": "%name を開く",
+    "description": "Placeholder in Actions"
+  },
+  "valuenone": {
+    "message": "なし",
+    "description": "Action"
+  },
+  "valuetsearch": {
+    "message": "\"％s\" を検索するには ％name を使用してください",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "valueuserscript": {
+    "message": "スクリプトを実行する：\"%name\"",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "version": {
+    "message": "バージョン",
+    "description": "Version"
+  },
+  "width": {
+    "message": "幅：",
+    "description": "Option in Appearance section on Super Drag and Mouse Gestures pages"
+  },
+  "offmodepopup": {
+    "message": "Crx Mouse はオフになっています",
+    "description": "Text on ext. popup when Crx Mouse is off"
+  },
+  "offmodesettings": {
+    "message": "Crx Mouse は無効になっています",
+    "description": "Text in Settings on General Settings page when Crx Mouse is off"
+  },
+  "enabletochange": {
+    "message": "変更を行うために有効にしてください",
+    "description": "Text in Settings on General Settings page when Crx Mouse is off"
+  },
+  "offmodetooltip": {
+    "message": "Crx Mouse のスイッチを切る",
+    "description": "Tooltip next to on/off toggle of Crx Mouse on ext. popup"
+  },
+  "onmodetooltip": {
+    "message": "Crx Mouse のスイッチを入れる",
+    "description": "Tooltip next to on/off toggle of Crx Mouse on ext. popup"
+  },
+  "popuppopular": {
+    "message": "人気のあるジェスチャー",
+    "description": "Headline of popular gestures section on ext. popup"
+  },
+  "mygestures": {
+    "message": "アクティブなジェスチャー",
+    "description": "Headline of default, edited or new gestures section on ext. popup"
+  },
+  "popupaddtooltip": {
+    "message": "新規追加",
+    "description": "Tooltip when hovering on plus icon in Active Gestures section"
+  },
+  "popupfooterhelptooltip": {
+    "message": "ヘルプ",
+    "description": "Tooltip when hovering on question mark icon in footer on ext. popup"
+  },
+  "popupvideotool": {
+    "message": "Crx Mouse の使い方",
+    "description": "Tooltip when hovering on video icon in footer on ext. popup"
+  },
+  "popuponboarding": {
+    "message": "了解しました、ありがとうございます。",
+    "description": "Text on onboarding window to close window"
+  },
+  "popupnewscope": {
+    "message": "スコープを選択する",
+    "description": "Section name in new gesture window on ext. popup"
+  },
+  "popupnewscopeglobal": {
+    "message": "すべてのサイト",
+    "description": "Option in new gesture window on ext. popup"
+  },
+  "popupnewaction": {
+    "message": "アクションを選択する",
+    "description": "Section name in new gesture window on ext. popup"
+  },
+  "popupnewgesture": {
+    "message": "ジェスチャーを選択する",
+    "description": "Section name in new gesture window on ext. popup"
+  },
+  "popuprecordsave": {
+    "message": "ジェスチャーを保存する",
+    "description": "Button to save new gesture in new gesture window on ext. popup"
+  },
+  "popupgesturecancel": {
+    "message": "キャンセル",
+    "description": "Button to cancel new/edit gesture on ext. popup"
+  },
+  "popupsuccess": {
+    "message": "'$GestureName$' のジェスチャーを保存しました。",
+    "description": "Text in notification for gesture saved/edited on ext. popup. Note! Do not translate text next to $",
+    "placeholders": {
+      "GestureName": {
+        "content": "$1"
+      }
+    }
+  },
+  "popupeditgesture": {
+    "message": "変更を適用させる",
+    "description": "Button to apply changes for existing gesture on ext. popup"
+  },
+  "popuptooltipedit": {
+    "message": "編集する",
+    "description": "Tooltip when hovering on edit icon on ext. popup"
+  },
+  "popuptooltipdelete": {
+    "message": "削除する",
+    "description": "Tooltip when hovering on delete icon on ext. popup"
+  },
+  "showwhitelist": {
+    "message": "ホワイトリストを表示する",
+    "description": "Opens a section that sets the scope of the gesture. Appears on all gesture boxes"
+  },
+  "hidewhitelist": {
+    "message": "ホワイトリストを非表示にする",
+    "description": "Hides a section that sets the scope of the gesture. Appears on all gesture boxes"
+  },
+  "headlineforwhitelist": {
+    "message": "1行につき１つの URL またはその一部",
+    "description": "Text in whitelist section on all gesture boxes. Appears on all gesture boxes"
+  },
+  "tipforwhitelist": {
+    "message": "ヒント：完全な URL またはその一部のみを使うことができます。例えば、\"cnn.com\"は、cnn.com を内包するあらゆる URL をサポートします。",
+    "description": "Text in whitelist section on all gesture boxes. Appears on all gesture boxes"
+  },
+  "savewhitelist": {
+    "message": "保存する",
+    "description": "save whitelist changes. Appears on all gesture boxes"
+  },
+  "optmode": {
+    "message": "人気のあるジェスチャーをオンにする（匿名データを送信する）",
+    "description": "Text of opt in/out checkbox"
+  },
+  "optmodealert": {
+    "message": "人気のあるジェスチャーを引き続き表示することはできません。チェック機能のチェックボックスを選択することで、いつでも再開することができます。",
+    "description": "text on opt in/out alert window"
+  },
+  "optoutmodetitle": {
+    "message": "人気のあるジェスチャーは非アクティブです。",
+    "description": "Title of opt out mode on ext. popup"
+  },
+  "optoutmodemessage": {
+    "message": "人気のあるジェスチャーをアクティブにするためには、<a href=\"$link$\" target=\"_blank\">設定</a>に移動してください。",
+    "description": "Description of opt out mode on ext. popup",
+    "placeholders": {
+      "link": {
+        "content": "$1"
+      }
+    }
+  },
+  "moreaffecteddomains": {
+    "message": "複数のドメインが影響を受けます。ドメインを編集してください。",
+    "description": "Shown on hover when gesture is associated to more than one domain on Edit Gesture screen."
+  },
+  "nopopulargestures": {
+    "message": "このページに人気のあるジェスチャーはありません。ジェスチャーを最初に使用し、ハブに貢献してください。",
+    "description": "shown in popup when user visits a site with no popular gestures available for it"
+  },
+  "rateus": {
+    "message": "評価してください！",
+    "description": "located in Settings section inside sidebar. Asking the users to rate the extension. Translation should be max 21 characters"
+  },
+  "gesturedeleted": {
+    "message": "ジェスチャーが削除されました",
+    "description": "Appears in notification window when a gesture is deleted. Indicating that the gesture was deleted successfully."
+  },
+  "set_your_mouse_gestures_on": {
+    "message": "デフォルトでマウスジェスチャーを有効にする",
+    "description": "Option in More section on Mouse Gestures page to have mouse gestures enabled by default"
+  },
+  "keytodisablemousegestures": {
+    "message": "キーを割り当てて、マウスジェスチャーを無効にする：",
+    "description": "Option in More section on Mouse Gestures page to choose key to disable gestures"
+  },
+  "noteforkeytoenable": {
+    "message": "注：選択されたキーをクリックすると、デフォルトでマウスジェスチャーが無効になり、右クリック機能が有効になります。",
+    "description": "Note on Options in More section on Mouse Gestures page for key to enable gestures"
+  },
+  "noteforkeytodisable": {
+    "message": "注：選択されたキーをクリックすると、デフォルトでマウスジェスチャーが有効になり、右クリック機能が無効になります。",
+    "description": "Note on Options in More section on Mouse Gestures page for key to disable gestures"
+  },
+  "set_your_mouse_gestures_off": {
+    "message": "デフォルトでマウスジェスチャーを無効にする",
+    "description": "Option in More section on Mouse Gestures page to have mouse gestures enabled by default"
+  },
+  "keytoenablemousegestures": {
+    "message": "キーを割り当てて、マウスジェスチャーを有効にする：",
+    "description": "Option in More section on Mouse Gestures page to choose key to enable gestures"
+  },
+  "cancelgesture": {
+    "message": "キャンセル",
+    "description": "Message that appears in trash bin area for dragging mouse gestures to cancel them"
+  },
+  "wheelgesturealert": {
+    "message": "この2つの機能は重複しています。",
+    "description": "An alert that jumps up when users choose two options that overlap in the Wheel Gestures section"
+  },
+  "ctatoenableadvanced": {
+    "message": "高度な設定を有効にする",
+    "description": "CTA for enabling advanced features on sidebar inside Settings area. Make sure any translation is limited to 24 characters"
+  },
+  "missedgesture": {
+    "message": "機能しませんか？報告",
+    "description": "Message for when gestures didn't work. Click on 'Report' sends to a form to fill. Should be maximun 30 charachters"
+  },
+  "mousecursor": {
+    "message": "マウスカーソル",
+    "description": "Headline for the Mouse cursor customization section in the Settings page"
+  },
+  "currentcursor": {
+    "message": "あなたのマウスカーソル",
+    "description": "Headline for the Current cursor section in the Settings page"
+  },
+  "mousecursoruploadinstructions": {
+    "message": "自分のマウスカーソルをアップロードしてください。48px × 48px の PNG、最大 20kb。",
+    "description": "Instructions for the image file a user can upload for the mouse cursor"
+  },
+  "mousecursorupload": {
+    "message": "コンピュータからアップロードする",
+    "description": "Uploading an image to be used as a mouse cursor"
+  },
+  "mousecursorreturndefault": {
+    "message": "デフォルトのカーソルに戻す",
+    "description": "Link to switch back to default mouse cursor image"
+  },
+  "mousecursorscale": {
+    "message": "スケール",
+    "description": "Scale of mouse custom cursor image"
+  },
+  "cancelgesturehidetrash": {
+    "message": "ゴミ箱を非表示にする",
+    "description": "An option to hide the icon of the trash bin that appears when performing a gesture. The trashbin enables canceling the performed gestute."
+  },
+  "cancelgesturehidetrashinfo": {
+    "message": "このオプションをオンにすると、ゴミ箱が非表示になります。",
+    "description": "Instructions that appear below the option of hiding the icon of the trash bin."
+  },
+  "rate_us_title": {
+    "message": "CRX Mouse はいかがですか？",
+    "description": "Title crx mouse overlay for rate us"
+  },
+  "rate_us_never_show_again": {
+    "message": "今後は表示しない",
+    "description": "button in crx mouse rate us overlay"
+  },
+  "rate_us_remind_me_later": {
+    "message": "後でリマインド",
+    "description": "button in crx mouse rate us overlay"
+  },
+  "wrongGesture": {
+    "message": "ジェスチャーが間違っています。再度お試しください",
+    "description": "message flashing when user is making the wrong move"
+  },
+  "startGame": {
+    "message": "ゲームを開始する",
+    "description": "Start game option - on screen 1"
+  },
+  "playLater": {
+    "message": "後でプレイする",
+    "description": "Play later option - on screen 1"
+  }
+}

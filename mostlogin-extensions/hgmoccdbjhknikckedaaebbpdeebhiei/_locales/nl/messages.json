@@ -1,0 +1,821 @@
+{
+  "manifest_name": {
+    "message": "Ahrefs SEO Toolbar: On-Page en SERP Hulpmiddelen",
+    "description": "Don't translate: 'Ahrefs SEO Toolbar'"
+  },
+  "manifest_description": {
+    "message": "Bespaar uren met een complete toolkit in één SEO-extensie. Inzichten voor on-page, zoektermenonderzoek en linkanalyse op elke webpagina."
+  },
+  "shared__ok": {
+    "message": "Oké"
+  },
+  "shared__broken": {
+    "message": "Gebroken"
+  },
+  "shared__redirect": {
+    "message": "Omleiden"
+  },
+  "shared__export": {
+    "message": "Exporteren"
+  },
+  "shared__words": {
+    "message": "woorden",
+    "description": "Example: 1500 words"
+  },
+  "shared__default": {
+    "message": "Standaard"
+  },
+  "shared__default_browser": {
+    "message": "Standaard (Uw browser)"
+  },
+  "shared__value": {
+    "message": "Waarde"
+  },
+  "shared__not_available": {
+    "message": "N.v.t."
+  },
+  "shared_of": {
+    "message": "van",
+    "description": "e.g. 3 of 15 links"
+  },
+  "shared_overview": {
+    "message": "Overzicht",
+    "description": "Link to Ahrefs Overview"
+  },
+  "shared_upgrade": {
+    "message": "Upgraden",
+    "description": "Plans and pricing"
+  },
+  "shared__how_to_fix": {
+    "message": "Hoe je dit oplost"
+  },
+  "shared__copy": {
+    "message": "Kopiëren"
+  },
+  "shared__not_now": {
+    "message": "Niet nu"
+  },
+  "shared__load_more": {
+    "message": "Meer laden"
+  },
+  "shared__domain": {
+    "message": "Domein"
+  },
+  "shared__page": {
+    "message": "Pagina"
+  },
+  "shared__edit": {
+    "message": "Bewerken"
+  },
+  "shared__custom": {
+    "message": "Aangepast"
+  },
+  "shared__all": {
+    "message": "Alle"
+  },
+  "shared__mismatch": {
+    "message": "Verkeerde match"
+  },
+  "shared__missing": {
+    "message": "Ontbreekt"
+  },
+  "shared__not_found": {
+    "message": "Niet gevonden"
+  },
+  "shared__empty": {
+    "message": "Leeg"
+  },
+  "shared__not_empty": {
+    "message": "Niet leeg"
+  },
+  "shared__no_results": {
+    "message": "Geen resultaten"
+  },
+  "shared__disallowed_in_robots_txt": {
+    "message": "Niet toegestaan in robots.txt"
+  },
+  "shared__self_canonical": {
+    "message": "Zelf-canoniek"
+  },
+  "shared__non_canonical": {
+    "message": "Niet-canoniek"
+  },
+  "shared__noindex_page": {
+    "message": "NoindexPage"
+  },
+  "shared__clear": {
+    "message": "Wissen"
+  },
+  "shared__default_report": {
+    "message": "Standaardrapportage"
+  },
+  "shared__last_opened": {
+    "message": "Laatst geopend"
+  },
+  "shared__shortcuts": {
+    "message": "Sneltoetsen"
+  },
+  "shared__open_in": {
+    "message": "Openen in",
+    "description": "The button used to open selected item in another app, service, etc"
+  },
+  "shared__in_http_headers": {
+    "message": "In HTTP-headers"
+  },
+  "popup_menu__metrics": {
+    "message": "Statistieken"
+  },
+  "popup_menu__content": {
+    "message": "Content"
+  },
+  "popup_menu__indexability": {
+    "message": "Indexeerbaarheid"
+  },
+  "popup_menu__struct_data": {
+    "message": "Gestructureerde gegevens"
+  },
+  "popup_menu__social": {
+    "message": "Sociale tags"
+  },
+  "popup_menu__social_image_fail": {
+    "message": "Ophalen mislukt"
+  },
+  "popup_menu__images": {
+    "message": "Afbeeldingen"
+  },
+  "popup_menu__http_headers": {
+    "message": "HTTP-headers"
+  },
+  "popup_menu__outgoing_links": {
+    "message": "Uitgaande links"
+  },
+  "popup_menu__outgoing_links_short": {
+    "message": "Links"
+  },
+  "popup_menu__saved_urls": {
+    "message": "Opgeslagen URL's"
+  },
+  "popup_menu__ua": {
+    "message": "User agent"
+  },
+  "popup_menu__ua_texarea_label": {
+    "message": "User-agent string"
+  },
+  "popup_menu__metrics_bar": {
+    "message": "Statistiekenbalk"
+  },
+  "popup_menu__search_tools": {
+    "message": "Zoekhulpmiddelen"
+  },
+  "popup_menu__settings": {
+    "message": "Instellingen"
+  },
+  "sign_up": {
+    "message": "Inschrijven"
+  },
+  "sign_up__content": {
+    "message": "of bekijk onze",
+    "descriptions": "Full sentence: Sign up or check our free SEO tools"
+  },
+  "sign_up__link": {
+    "message": "gratis SEO-tools",
+    "descriptions": "Full sentence: Sign up or check our free SEO tools"
+  },
+  "sign_in": {
+    "message": "Inloggen"
+  },
+  "sign_in__long": {
+    "message": "Inloggen met Ahrefs",
+    "description": "Uses on Serp and Content toolbar"
+  },
+  "sign_out": {
+    "message": "Uitloggen"
+  },
+  "suggest_feature": {
+    "message": "Stel een functionaliteit voor"
+  },
+  "how_to_use": {
+    "message": "Hoe je dit gebruikt"
+  },
+  "web_vitals": {
+    "message": "Web Vitals"
+  },
+  "web_vitals__info_main": {
+    "message": "Core Web Vitals zijn snelheidsstatistieken die deel uitmaken van Google's Page Experience signalen, gebruikt om gebruikerservaring te meten. Deze gegevens zijn gebaseerd op de ervaring van echte Chrome-gebruikers met uw pagina. CWV is een kleine rankingfactor voor Google."
+  },
+  "web_vitals__not_found": {
+    "message": "Core Web Vitals gebruiken data van echte Chrome-gebruikers. Als één of alle statistieken niet beschikbaar zijn voor de pagina, betekent dit dat er niet genoeg gegevens zijn over de gebruikerservaring met deze pagina. In dat geval zullen andere tools, waaronder Google's Pagespeed Insights, CWV-metrics voor de startpagina laten zien."
+  },
+  "web_vitals__lcp": {
+    "message": "Largest Contentful Paint (LCP) is het grootste zichtbare element in de viewport. Meestal een uitgelichte afbeelding of H1. Gemeten in seconden."
+  },
+  "web_vitals__cls": {
+    "message": "Cumulative Layout Shift (CLS) meet hoe elementen bewegen of hoe stabiel de paginalay-out is. Het houdt rekening met de grootte van de content en de afstand die deze beweegt."
+  },
+  "web_vitals__inp": {
+    "message": "Interaction to Next Paint (INP) beoordeelt de responsiviteit van een pagina. Het observeert de latentie van alle gebruikersinteracties met de pagina, en rapporteert een enkele waarde waarbij alle (of vrijwel alle) interacties onder bleven. Een lage INP betekent dat de pagina consistent snel kon reageren op alle of de overgrote meerderheid van gebruikersinteracties."
+  },
+  "try_starter": {
+    "message": "Probeer Starter"
+  },
+  "new": {
+    "message": "Nieuw"
+  },
+  "url": {
+    "message": "URL"
+  },
+  "shared__search": {
+    "message": "Zoeken"
+  },
+  "learn_more": {
+    "message": "Meer weten"
+  },
+  "get_started": {
+    "message": "Ga aan de slag"
+  },
+  "raw_vs_rendered": {
+    "message": "Ruw vs. gerenderd",
+    "description": "Button on popup content. Raw HTML- server-returned source. Rendered HTML- final DOM."
+  },
+  "raw": {
+    "message": "Ruw",
+    "description": "Raw HTML- server-returned source"
+  },
+  "rendered": {
+    "message": "Gerenderd",
+    "description": "Rendered HTML- final DOM."
+  },
+  "content__changes_button": {
+    "message": "Wijzigingen bekijken"
+  },
+  "meta": {
+    "message": "Meta"
+  },
+  "title": {
+    "message": "Titel"
+  },
+  "title__too_short": {
+    "message": "De titel is mogelijk te kort. De paginatitel is een cruciaal element waar Google op vertrouwt om pagina's te begrijpen. Korte titels kunnen tekortschieten in het effectief overbrengen van de hoofdgedachte van een pagina op Google."
+  },
+  "title__too_long": {
+    "message": "De titel is mogelijk te lang. Lange paginatitels lopen het risico te worden afgebroken in de Google-zoekresultaten. De aanbevolen maximale titel lengte is ∼60 karakters."
+  },
+  "description": {
+    "message": "Omschrijving"
+  },
+  "description__too_short": {
+    "message": "De metabeschrijving is mogelijk te kort. Het wordt aanbevolen om langere beschrijvingen te schrijven omdat deze een uitleg geven over de inhoud van de pagina aan Google."
+  },
+  "description__too_long": {
+    "message": "De metabeschrijving is mogelijk te lang. Wij raden aan uw metabeschrijvingen rond 160 karakters te houden. Langere beschrijvingen lopen het risico te worden afgebroken op SERP's als Google besluit ze als snippettekst weer te geven."
+  },
+  "dates": {
+    "message": "Data"
+  },
+  "published": {
+    "message": "Gepubliceerd"
+  },
+  "modified": {
+    "message": "Gewijzigd"
+  },
+  "content": {
+    "message": "Content"
+  },
+  "word_count": {
+    "message": "Aantal woorden"
+  },
+  "headings": {
+    "message": "Kopteksten"
+  },
+  "copy_headings": {
+    "message": "Kopteksten kopiëren"
+  },
+  "canonical_url": {
+    "message": "Canonieke URL"
+  },
+  "in_html_code": {
+    "message": "In Gerenderde HTML",
+    "description": "Means that the information is analyzed directly within the client-side rendered HTML code of the page"
+  },
+  "in_raw_html_code": {
+    "message": "In Ruwe HTML",
+    "description": "Means that the information is analyzed directly within the server-returned source"
+  },
+  "noindex_page": {
+    "message": "Noindex-pagina"
+  },
+  "robots": {
+    "message": "Robots"
+  },
+  "robots__txt": {
+    "message": "Robots.txt"
+  },
+  "robots__meta_tag": {
+    "message": "Robots Meta Tag"
+  },
+  "robots__tag_http": {
+    "message": "X-Robots-Tag HTTP"
+  },
+  "sitemaps": {
+    "message": "Sitemaps"
+  },
+  "hreflangs": {
+    "message": "Hreflangs"
+  },
+  "validate_sd": {
+    "message": "Valideren"
+  },
+  "validate_sd__placegolder": {
+    "message": "Valideer gestructureerde gegevens op deze pagina"
+  },
+  "validate_sd__rich_results_test": {
+    "message": "Test rijke resultaten"
+  },
+  "validate_sd__schema_markup_validator": {
+    "message": "Validator voor schema-opmaak"
+  },
+  "jsonld__not_found": {
+    "message": "Geen JSON-LD gestructureerde gegevens gevonden"
+  },
+  "open_graph_tags": {
+    "message": "Open Graph-tags"
+  },
+  "x_card": {
+    "message": "X (Twitter)-kaart"
+  },
+  "card__missing_or_incomplete": {
+    "message": "Ontbrekend of onvolledig"
+  },
+  "image__not_found": {
+    "message": "Geen afbeeldingen gevonden"
+  },
+  "image__image": {
+    "message": "Afbeelding"
+  },
+  "image__all": {
+    "message": "Alle"
+  },
+  "image__alt": {
+    "message": "Alt"
+  },
+  "image__alt_missing": {
+    "message": "Ontbrekende alt-tekst"
+  },
+  "image__alt_empty": {
+    "message": "Lege alternatieve tekst"
+  },
+  "image__alt_text": {
+    "message": "Alt-tekst"
+  },
+  "image__url": {
+    "message": "URL"
+  },
+  "image__file_too_large": {
+    "message": "Afbeeldingsbestandsgrootte te groot"
+  },
+  "outgoing_links__dropdown_description": {
+    "message": "Verzend maximaal 10 meest recente URL's van de lijst naar Ahrefs"
+  },
+  "outgoing_links__dropdown_item_1": {
+    "message": "Link Intersect"
+  },
+  "outgoing_links__dropdown_item_2": {
+    "message": "Content Gap"
+  },
+  "outgoing_links__check_status": {
+    "message": "Status controleren"
+  },
+  "outgoing_links__status": {
+    "message": "Status"
+  },
+  "outgoing_links__highlight": {
+    "message": "Markeren"
+  },
+  "outgoing_links__dofollow": {
+    "message": "Dofollow"
+  },
+  "outgoing_links__nofollow": {
+    "message": "Nofollow"
+  },
+  "outgoing_links__link_type": {
+    "message": "Linktype"
+  },
+  "outgoing_links__internal": {
+    "message": "Intern"
+  },
+  "outgoing_links__external": {
+    "message": "Extern"
+  },
+  "outgoing_links__target_url": {
+    "message": "Doel-URL"
+  },
+  "saved_urls__current_tab": {
+    "message": "Huidig tabblad"
+  },
+  "saved_urls__all_tabs": {
+    "message": "Alle tabbladen"
+  },
+  "saved_urls__copy_list": {
+    "message": "Lijst kopiëren"
+  },
+  "ua__warning_important": {
+    "message": "Belangrijk!"
+  },
+  "ua__warning_body": {
+    "message": "Schakel de aangepaste user-agent uit wanneer u deze niet langer nodig hebt."
+  },
+  "settings__appearance": {
+    "message": "Weergave"
+  },
+  "settings__light": {
+    "message": "Licht",
+    "description": "Theme color"
+  },
+  "settings__dark": {
+    "message": "Donker",
+    "description": "Theme color"
+  },
+  "settings__system": {
+    "message": "Systeem",
+    "description": "Theme color"
+  },
+  "settings__position": {
+    "message": "Positie"
+  },
+  "settings__top": {
+    "message": "Top",
+    "description": "Location of the toolbar on the screen"
+  },
+  "settings__bottom": {
+    "message": "Onderkant",
+    "description": "Location of the toolbar on the screen"
+  },
+  "settings__exclude_list": {
+    "message": "Uitsluitingslijst"
+  },
+  "settings__exlude_list_warn": {
+    "message": "Voer domeinen, URL's, of URL-paden in waar u niet wilt dat de Toolbar verschijnt."
+  },
+  "settings__exlude_list_warn_2": {
+    "message": "Gebruik * voor URL-paden, bijvoorbeeld https://ahrefs.com/blog/*"
+  },
+  "settings__exlude_list_warn_3": {
+    "message": "Eén item per regel."
+  },
+  "search_tools__menu_title": {
+    "message": "Zoekinstellingen"
+  },
+  "search_tools__kw_title": {
+    "message": "Zoektermdata"
+  },
+  "search_tools__position_numbers_title": {
+    "message": "Positienummers"
+  },
+  "search_tools__results_metrics_title": {
+    "message": "Zoekresultaatdata"
+  },
+  "search_tools__trends_title": {
+    "message": "Zoektermdata in Trends"
+  },
+  "search_tools__ls_menu_title": {
+    "message": "Lokale zoekmachinesimulator"
+  },
+  "search_tools__location": {
+    "message": "Locatie"
+  },
+  "search_tools__language": {
+    "message": "Taal"
+  },
+  "search_tools__device": {
+    "message": "Apparaat"
+  },
+  "search_tools__desktop": {
+    "message": "Desktop"
+  },
+  "search_tools__reset": {
+    "message": "Resetten"
+  },
+  "search_tools__tip_body": {
+    "message": "Gebruik deze knop om lokale zoekopdrachten te simuleren"
+  },
+  "search_tools__highlight_title": {
+    "message": "Markeer resultaten"
+  },
+  "search_tools__highlight_placeholder": {
+    "message": "Voer de domeinen in die u wilt markeren in de zoekresultaten."
+  },
+  "modal__shortcuts_description": {
+    "message": "U kunt de volgende snelkoppelingen gebruiken met Ahrefs SEO Toolbar:\n$SHORTCUT_TOOLBAR$ om de statistiekenbalk in/uit te schakelen\n$SHORTCUT_POPUP$ om on-page rapportages en instellingen te openen.\nU kunt deze sneltoetsen wijzigen in uw browserinstellingen.",
+    "description": "Example of the last sentence 'You can change these key bindings in your browser settings'",
+    "placeholders": {
+      "shortcut_toolbar": {
+        "content": "$1",
+        "example": "Ctrl+Cmd+A"
+      },
+      "shortcut_popup": {
+        "content": "$2",
+        "example": "Ctrl+Cmd+A"
+      }
+    }
+  },
+  "modal__shortcuts_button_settings": {
+    "message": "browserinstellingen",
+    "description": "The button used to open the browser settings e.g. chrome://extensions/shortcuts"
+  },
+  "modal__shortcuts_button_ok": {
+    "message": "Begrepen"
+  },
+  "modal__blocklist_description": {
+    "message": "Wilt u de toolbar met statistieken uitschakelen voor deze website of pagina?\n(U kunt de blocklist aanpassen in de instellingen)"
+  },
+  "modal__blocklist_btn_positive_page": {
+    "message": "Voor deze pagina",
+    "description": "Button label in a modal that asks the user 'Do you want to disable the Toolbar with metrics for this website or page?'"
+  },
+  "modal__blocklist_btn_positive_domain": {
+    "message": "Voor het domein",
+    "description": "Button label in a modal that asks the user 'Do you want to disable the Toolbar with metrics for this website or page?'"
+  },
+  "modal__blocklist_btn_negative": {
+    "message": "Niet uitschakelen",
+    "description": "Button label in a modal that asks the user 'Do you want to disable the Toolbar with metrics for this website or page?'"
+  },
+  "icon_tip__hide_toolbar": {
+    "message": "Verberg de Toolbar permanent op deze website, pagina, of dit pad.\n(U kunt de bloklijst bewerken in de instellingen)"
+  },
+  "icon_tip__add": {
+    "message": "Sla deze URL op in de lijst.\nOm de opgeslagen URL's te bekijken, klik op het pictogram van de extensie en navigeer naar het 'Opgeslagen' tabblad.\nDe tien meest recente URL's van de lijst kunnen snel worden verzonden naar Link Intersect of Content Gap tools in Ahrefs (alleen voor betalende gebruikers)"
+  },
+  "icon_tip__present_in_list": {
+    "message": "De URL staat op de lijst van opgeslagen URL's en kan worden verzonden naar Link Intersect of Content Gap.\nOm de opgeslagen URL's te bekijken, klikt u op het pictogram van de extensie en navigeer naar het 'Opgeslagen' tabblad.\nDe tien meest recente URL's van de lijst kunnen snel worden verzonden naar Link Intersect of Content Gap tools in Ahrefs."
+  },
+  "icon_tip__present": {
+    "message": "De URL staat op de lijst van opgeslagen URL's.\nOm toegang te krijgen tot de opgeslagen URL's, klikt u op het icoon van de extensie en navigeert u naar de 'Opgeslagen' tab.\nDe tien meest recente URL's van de lijst kunnen snel worden verzonden naar Link Intersect of Content Gap tools in Ahrefs."
+  },
+  "metrics__sign_up_free_button": {
+    "message": "Meld je gratis aan"
+  },
+  "metrics__sign_up_free_description": {
+    "message": "Gratis toegang tot DR, AR en UR met een AWT-account."
+  },
+  "metrics__rp_label_lg": {
+    "message": "Verw. pagina’s"
+  },
+  "metrics__rp_title": {
+    "message": "Verwijzende pagina's (RP)"
+  },
+  "metrics__rp_description": {
+    "message": "Het totale aantal unieke webpagina's dat naar het doel linkt."
+  },
+  "metrics__bl_label_lg": {
+    "message": "backlinks"
+  },
+  "metrics__bl_title": {
+    "message": "Backlinks (BL)"
+  },
+  "metrics__bl_description": {
+    "message": "Het totale aantal links van andere websites die verwijzen naar jouw doel."
+  },
+  "metrics__kw_label_lg": {
+    "message": "Zoektermen"
+  },
+  "metrics__kw_title": {
+    "message": "Organische zoektermen (KW)"
+  },
+  "metrics__kw_description": {
+    "message": "Het totale aantal unieke zoektermen waarvoor het doel in de top 100 organische zoekresultaten staat in alle landen in onze database."
+  },
+  "metrics__rd_label_lg": {
+    "message": "Verw. domeinen"
+  },
+  "metrics__rd_title": {
+    "message": "Verwijzende domeinen (RD)"
+  },
+  "metrics__rd_description": {
+    "message": "Het totale aantal unieke domeinen dat linkt naar het doel."
+  },
+  "metrics__st_label_lg": {
+    "message": "Zoekverkeer"
+  },
+  "metrics__st_title": {
+    "message": "Organische zoekverkeer (ST)"
+  },
+  "metrics__st_description": {
+    "message": "Het geschatte aantal maandelijkse bezoeken dat het doel krijgt uit organische zoekresultaten."
+  },
+  "metrics__ur_label_lg": {
+    "message": "URL Rating"
+  },
+  "metrics__ur_title": {
+    "message": "URL Rating (UR)"
+  },
+  "metrics__ur_description": {
+    "message": "URL Rating (UR) geeft de sterkte van het backlinkprofiel van de doelpagina weer op een schaal van 100 punten."
+  },
+  "metrics__tv_title": {
+    "message": "Verkeerswaarde (TV)"
+  },
+  "metrics__tv_description": {
+    "message": "De maandelijkse kostenequivalent van organisch zoekverkeer voor een website of webpagina, berekend op basis van de veronderstelling dat dezelfde hoeveelheid verkeer werd verkregen via pay-per-click (PPC)-advertenties in plaats van organische zoekresultaten."
+  },
+  "metrics__w_label_lg": {
+    "message": "Woorden"
+  },
+  "metrics__w_title": {
+    "message": "Woorden op de pagina"
+  },
+  "metrics__w_description": {
+    "message": "Het aantal woorden op een webpagina zoals gezien door de crawler van Ahrefs in de code van de pagina. Dit aantal kan iets verschillen van wat u ziet in de browser wanneer u de pagina opent."
+  },
+  "metrics__ar_label_lg": {
+    "message": "Ahrefs Rank"
+  },
+  "metrics__ar_title": {
+    "message": "Ahrefs Rank (AR)"
+  },
+  "metrics__ar_description": {
+    "message": "Geeft de sterkte van het backlinkprofiel van de website weer vergeleken met andere websites in onze database, waarbij rang #1 het sterkst is."
+  },
+  "metrics__dr_label_lg": {
+    "message": "Domain Rating"
+  },
+  "metrics__dr_title": {
+    "message": "Domain Rating (DR)"
+  },
+  "metrics__dr_description": {
+    "message": "Geeft de sterkte van het backlinkprofiel van de website weer op een logaritmische 100-puntsschaal."
+  },
+  "metrics__paid_keywords_label_lg": {
+    "message": "Betaalde zoektermen"
+  },
+  "metrics__paid_keywords_title": {
+    "message": "Betaalde zoektermen"
+  },
+  "metrics__paid_keywords_description": {
+    "message": "Het totale aantal zoektermen waarmee je doel rankt in betaalde zoekresultaten."
+  },
+  "metrics__paid_traffic_label_lg": {
+    "message": "Betaald verkeer"
+  },
+  "metrics__paid_traffic_title": {
+    "message": "Betaald verkeer"
+  },
+  "metrics__paid_traffic_description": {
+    "message": "Het geschatte aantal maandelijkse bezoeken dat jouw doel krijgt uit betaalde zoekresultaten."
+  },
+  "metrics__ads_label_lg": {
+    "message": "Advertenties"
+  },
+  "metrics__ads_title": {
+    "message": "Advertenties"
+  },
+  "metrics__ads_description": {
+    "message": "Het totale aantal unieke advertenties van een doelwebsite of URL in betaalde zoekresultaten."
+  },
+  "metrics__cost_label_lg": {
+    "message": "Kosten"
+  },
+  "metrics__cost_title": {
+    "message": "Kosten betaald verkeer"
+  },
+  "metrics__cost_description": {
+    "message": "De geschatte kosten van het maandelijkse betaalde zoekverkeer van jouw doel."
+  },
+  "kw_metrics__kd_title": {
+    "message": "Keyword Difficulty (KD)"
+  },
+  "kw_metrics__kd_description": {
+    "message": "Schatting van hoe moeilijk het zou zijn om in de top 10 organische zoekresultaten te ranken voor een zoekterm op een 100-puntsschaal."
+  },
+  "kw_metrics__sw_title": {
+    "message": "Zoekvolume"
+  },
+  "kw_metrics__sw_description": {
+    "message": "Een schatting van het gemiddelde maandelijks aantal zoekopdrachten voor een zoekterm in een bepaald land."
+  },
+  "kw_metrics__gv_title": {
+    "message": "Wereldwijd zoekvolume (GV)"
+  },
+  "kw_metrics__gv_description": {
+    "message": "Een schatting van het gemiddelde maandelijks aantal zoekopdrachten voor een zoekterm in alle landen in onze database."
+  },
+  "kw_metrics__tp_title": {
+    "message": "Verkeerspotentieel (TP)"
+  },
+  "kw_metrics__tp_description": {
+    "message": "Toont de som van het organische zoekverkeer dat de #1 rankende pagina voor de doelzoekterm ontvangt van alle zoektermen waarvoor het rankt."
+  },
+  "kw_metrics__c_title": {
+    "message": "Kliks"
+  },
+  "kw_metrics__c_description": {
+    "message": "Een schatting van het aantal kliks dat mensen maken op de zoekresultaten voor een bepaalde zoekterm per maand. Sommige zoekopdrachten resulteren in geen kliks, terwijl andere meerdere kliks genereren op SERP's."
+  },
+  "kw_metrics__cpc_title": {
+    "message": "Cost per click (CPC)"
+  },
+  "kw_metrics__cpc_description": {
+    "message": "De geschatte gemiddelde prijs die adverteerders betalen voor elke klik op een advertentie in de betaalde zoekresultaten voor een zoekterm."
+  },
+  "serp__save_urls_button": {
+    "message": "URL's opslaan"
+  },
+  "serp__export_button": {
+    "message": "CSV exporteren"
+  },
+  "serp__kw_ideas": {
+    "message": "Zoekterm-ideeën"
+  },
+  "serp__ppa": {
+    "message": "Mensen vragen ook"
+  },
+  "serp__adv": {
+    "message": "Probeer deze zoekopdracht op Yep"
+  },
+  "serp__local_search": {
+    "message": "Lokale zoekopdracht"
+  },
+  "serp__local_search_active": {
+    "message": "Simuleert weergegeven SERP"
+  },
+  "serp__tip_conf": {
+    "message": "Klik op het extensiepictogram om te configureren"
+  },
+  "feedback__main_q": {
+    "message": "Genieten van Ahrefs SEO Toolbar?"
+  },
+  "feedback__positive_answ": {
+    "message": "Geweldig! Laat ons weten wat u leuk vindt."
+  },
+  "feedback__negative_answ": {
+    "message": "Help ons verbeteren."
+  },
+  "starter__q": {
+    "message": "Krijg toegang tot Ahrefs data met ons Starter-plan voor slechts $PRICE$/maand.",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "feedback__send_answ": {
+    "message": "Feedback verzenden"
+  },
+  "feedback__negative_button_1": {
+    "message": "Niet echt"
+  },
+  "feedback__positive_button_1": {
+    "message": "Ja!"
+  },
+  "feedback__positive_button_2": {
+    "message": "Schrijf een recensie"
+  },
+  "error__fetching_data": {
+    "message": "Fout bij het ophalen van gegevens. Probeer het later opnieuw."
+  },
+  "error__inactive": {
+    "message": "Uw gebruikersstatus in de verbonden werkruimte is momenteel \"Inactief.\""
+  },
+  "error__monthly_limit": {
+    "message": "De maandelijkse limiet voor uw werkruimte is bereikt."
+  },
+  "error__usage_limit_head": {
+    "message": "U hebt uw gebruikslimiet bereikt"
+  },
+  "error__usage_limit_body": {
+    "message": "Om door te gaan, $UPGRADE_BUTTON$ of wacht tot uw limiet wordt gereset.",
+    "placeholders": {
+      "upgrade_button": {
+        "content": "$1"
+      }
+    },
+    "description": "Sentence with an inline error__usage_limit_body_button"
+  },
+  "error__usage_limit_body_button": {
+    "message": "uw abonnement upgraden",
+    "description": "The button used as the placeholder in error__usage_limit_body"
+  },
+  "error__try_again_later": {
+    "message": "Fout. Probeer het later opnieuw."
+  },
+  "error__too_many_sessions_text_body": {
+    "message": "Fout: te veel sessies. Dit account wordt mogelijk op een ander apparaat gebruikt",
+    "description": "Full text of the error: 'Error: too many sessions. This account may be used on another device. Please sign in again.'"
+  },
+  "error__too_many_sessions_sign_in": {
+    "message": "inloggen",
+    "description": "Full text of the error: 'Error: too many sessions. This account may be used on another device. Please sign in again.'"
+  },
+  "error__too_many_sessions_text_end": {
+    "message": "opnieuw.",
+    "description": "Full text of the error: 'Error: too many sessions. This account may be used on another device. Please sign in again.'"
+  },
+  "freeplan_banner__limit_description": {
+    "message": "SEO-data voor de werkbalk zijn beschikbaar met een van de",
+    "description": "Full sentence: SEO metrics for the Toolbar are available with one of the paid plans"
+  },
+  "freeplan_banner__limit_link": {
+    "message": "betaalde abonnementen",
+    "description": "Full sentence: SEO metrics for the Toolbar are available with one of the paid plans"
+  }
+}

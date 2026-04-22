@@ -1,0 +1,1527 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="/img/icon16.png" rel="icon" type="image/png" sizes="16x16" />
+    <link href="/img/icon32.png" rel="icon" type="image/png" sizes="32x32" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings For Keywords Everywhere</title>
+    <link rel="stylesheet" href="/css/options_tw.css" />
+    <link rel="stylesheet" href="/css/options.css" />
+  </head>
+
+  <body>
+    <div class="flex h-screen flex-row">
+      <aside
+        class="fixed left-0 top-0 h-screen w-72 border-r bg-primary shadow-sm"
+      >
+        <div
+          class="mb-4 flex items-center px-4 py-6 shadow-sm shadow-primary-400"
+        >
+          <img
+            class="h-10 w-auto"
+            src="https://keywordseverywhere.com/img/keywords-everywhere-logo.png"
+            alt="Keywords Everywhere"
+          />
+          <p class="ms-4 text-xl font-semibold leading-4 text-white">
+            Keywords Everywhere
+          </p>
+        </div>
+
+        <div class="h-full overflow-y-auto px-6 pb-5">
+          <aside class="grid grid-cols-2 gap-4 text-center">
+            <div id="plan-info" class="col-span-2 rounded-lg text-left hidden">
+              <div class="mb-4 flex items-center">
+                <img class="me-2 h-12 w-12 rounded-full" src="https://keywordseverywhere.com/img/plans/gold.png">
+
+                <div class="text-primary-200">
+                  <p class="text-xl font-bold text-white">
+                    <a href="#" id="plan"></a>
+                  </p>
+                  <p class="text-sm">
+                    <a href="#" class="hover:underline" id="email"></a>
+                  </p>
+                </div>
+              </div>
+
+              <p class="mb-2 text-sm text-primary-200 text-center">
+                <span class="font-semibold text-white" id="credits"></span>
+              </p>
+
+              <div class="mb-4 h-1 w-full rounded-full bg-primary-200">
+                <div class="h-1 rounded-full bg-primary-800 shadow" style="width: 100%"></div>
+              </div>
+            </div>
+
+            <!-- Get Key -->
+            <a
+              href="https://keywordseverywhere.com/first-install-addon.html"
+              class="col-span-2 flex flex-col items-center rounded-md bg-primary-700 p-5 text-sm font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none"
+              id="get-api-key-btn"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="mb-4 h-8 w-8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z"
+                />
+              </svg>
+
+              Get API Key
+            </a>
+
+            <a
+              href="https://keywordseverywhere.com/ctl/subscriptions/"
+              class="col-span-2 flex flex-col items-center rounded-md p-5 text-xl font-bold text-white transition-all hover:opacity-100 focus:outline-none hidden"
+              style="background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.3);"
+              id="purchase-plan-btn"
+              target="_blank"
+            >
+              Purchase a Plan
+            </a>
+
+            <a
+              href="https://keywordseverywhere.com/contact.html"
+              class="flex flex-col items-center rounded-md bg-primary-700 p-5 text-sm font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="mb-4 h-8 w-8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                />
+              </svg>
+
+              Contact us
+            </a>
+
+            <a
+              href="https://keywordseverywhere.com/frequently-asked-questions.html"
+              class="flex flex-col items-center rounded-md bg-primary-700 p-5 text-sm font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="mb-4 h-8 w-8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"
+                />
+              </svg>
+
+              FAQs
+            </a>
+
+            <a
+              href="https://keywordseverywhere.com/news.html"
+              class="flex flex-col items-center rounded-md bg-primary-700 p-5 text-sm font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="mb-4 h-8 w-8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
+                />
+              </svg>
+
+              News
+            </a>
+
+            <a
+              href="https://keywordseverywhere.com/videos.html"
+              class="flex flex-col items-center rounded-md bg-primary-700 px-5 py-2.5 text-sm font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="mb-4 h-8 w-8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"
+                />
+              </svg>
+
+              Videos
+            </a>
+
+            <a
+              href="https://keywordseverywhere.com/conserving-credits.html"
+              class="flex flex-col items-center rounded-md bg-primary-700 px-5 py-2.5 text-sm font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="mb-4 h-8 w-8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3"
+                />
+              </svg>
+
+              Conserve Credits
+            </a>
+
+            <a
+              href="/html/page.html?page=stats"
+              class="flex flex-col items-center rounded-md bg-primary-700 px-5 py-2.5 text-sm font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="mb-4 h-8 w-8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"
+                />
+              </svg>
+
+              Usage Stats
+            </a>
+
+            <a
+              href="/html/page.html?page=invoices"
+              class="flex flex-col items-center rounded-md bg-primary-700 px-5 py-2.5 text-sm font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="mb-4 h-8 w-8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+                />
+              </svg>
+
+              Invoices
+            </a>
+
+            <a
+              href="https://keywordseverywhere.com/changelog.html"
+              class="flex flex-col items-center rounded-md bg-primary-700 px-5 py-2.5 text-sm font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="mb-4 h-8 w-8"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3"
+                />
+              </svg>
+
+              Changelog
+            </a>
+          </aside>
+        </div>
+      </aside>
+
+      <div class="modal" id="export-modal">
+        <div class="modal-content">
+          <h2>Export Options</h2>
+          <p>Do you want to include the API key in the exported file?</p>
+          <div class="modal-buttons">
+            <button class="flex flex-col items-center rounded-md bg-primary-700 p-5 text-lg font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none" id="export-with-api">With API Key</button>
+            <button class="flex flex-col items-center rounded-md bg-primary-700 p-5 text-lg font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none" id="export-without-api">Without API Key</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="reset-modal">
+        <div class="modal-content">
+          <p>Do you want to reset the settings?</p>
+          <div class="modal-buttons">
+            <button class="flex flex-col items-center rounded-md bg-primary-700 p-5 w-32 text-m font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none" id="reset-no">No</button>
+            <button class="flex flex-col items-center rounded-md bg-primary-700 p-5 w-32 text-m font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none" id="reset-confirm">Yes</button>
+          </div>
+        </div>
+      </div>
+
+      <main class="flex flex-1 flex-col pl-72">
+        <div class="mb-0 px-4 py-6">
+          <div class="flex justify-between border-b border-b-gray-300 pb-6">
+            <h1 class="text-4xl font-bold">
+              Settings
+            </h1>
+            <div class="flex space-x-4">
+              <button class="flex flex-col items-center rounded-md bg-primary-700 p-5 text-sm font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none" id="export-btn">Export Settings</button>
+              <button class="ml-2 flex flex-col items-center rounded-md bg-primary-700 p-5 text-sm font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none" id="import-btn">Import Settings</button>
+              <button class="ml-2 flex flex-col items-center rounded-md bg-primary-700 p-5 text-sm font-medium text-white opacity-70 transition-all hover:opacity-100 focus:outline-none" id="reset-btn">Reset Settings</button>
+            </div>
+            <input type="file" id="import-file" accept=".json" class="hidden">
+          </div>
+        </div>
+
+        <div class="flex flex-1">
+          <div class="w-56 px-3 pb-5">
+            <nav class="text-sm font-medium" data-ke-toggle="tabs">
+              <button
+                data-ke-target="#api-settings"
+                class="flex w-full items-center rounded-lg bg-gray-100 p-2 text-primary transition-all hover:bg-gray-100 hover:text-gray-900"
+              >
+                <span class="ms-3">API Settings</span>
+              </button>
+
+              <button
+                data-ke-target="#data-sources"
+                class="flex w-full items-center rounded-lg p-2 text-gray-600 transition-all hover:bg-gray-100 hover:text-gray-900"
+              >
+                <span class="ms-3">Data Sources</span>
+              </button>
+
+              <button
+                data-ke-target="#enable-disable-metrics"
+                class="flex w-full items-center rounded-lg p-2 text-gray-600 transition-all hover:bg-gray-100 hover:text-gray-900"
+              >
+                <span class="ms-3">Enable-Disable Metrics</span>
+              </button>
+
+              <button
+                data-ke-target="#metrics-highlighting"
+                class="flex w-full items-center rounded-lg p-2 text-gray-600 transition-all hover:bg-gray-100 hover:text-gray-900"
+              >
+                <span class="ms-3">Metrics Highlighting</span>
+              </button>
+
+              <button
+                data-ke-target="#supported-websites"
+                class="flex w-full items-center rounded-lg p-2 text-gray-600 transition-all hover:bg-gray-100 hover:text-gray-900"
+              >
+                <span class="ms-3">Supported Websites</span>
+              </button>
+
+              <button
+                data-ke-target="#credit-usage-for-widgets"
+                class="flex w-full items-center rounded-lg p-2 text-gray-600 transition-all hover:bg-gray-100 hover:text-gray-900"
+              >
+                <span class="ms-3">Credit Usage for Widgets</span>
+              </button>
+
+              <button
+                data-ke-target="#miscellaneous-settings"
+                class="flex w-full items-center rounded-lg p-2 text-gray-600 transition-all hover:bg-gray-100 hover:text-gray-900"
+              >
+                <span class="ms-3">Miscellaneous Settings</span>
+              </button>
+            </nav>
+          </div>
+
+          <section class="flex-1 px-6">
+            <div class="flex flex-row flex-nowrap overflow-hidden">
+              <!-- Api Settings -->
+              <div
+                class="nav-item flex-1 transition-transform"
+                id="api-settings"
+              >
+                <!-- Title -->
+                <div class="mb-8">
+                  <h2 class="mb-4 text-xl font-bold">Api Settings</h2>
+                </div>
+
+                <!-- Right Col -->
+                <div class="grid grid-cols-2 gap-8">
+                  <!-- Form -->
+                  <div>
+                    <!-- API Key -->
+                    <div
+                      class="flex items-end justify-between border-b border-b-gray-300 pb-4"
+                    >
+                      <div class="flex-1">
+                        <label
+                          for="apiKey"
+                          class="mb-2 block text-sm font-medium text-gray-900"
+                          >API key</label
+                        >
+                        <input
+                          type="text"
+                          id="apiKey"
+                          placeholder="API key"
+                          class="block w-full rounded-lg border border-gray-200 bg-gray-100 px-5 py-2 text-sm text-gray-800 outline-none transition-all hover:border-gray-300 focus:border-gray-300 focus:bg-white focus:ring-gray-300"
+                        />
+                      </div>
+
+                      <button
+                        class="ml-4 rounded-lg border border-gray-200 bg-white px-5 py-2 text-sm transition-all hover:bg-gray-200 focus:outline-none"
+                        id="validate"
+                      >
+                        Validate
+                      </button>
+                    </div>
+
+                    <!-- Country -->
+                    <div
+                      class="flex items-center justify-between border-b border-b-gray-300 py-4"
+                    >
+                      <div class="flex-1">
+                        <label
+                          for="country"
+                          class="mb-2 block text-sm font-medium text-gray-900"
+                          >Country</label
+                        >
+                      </div>
+
+                      <select
+                        id="country"
+                        class="block w-2/3 rounded-lg border border-gray-200 bg-gray-100 px-5 py-2 text-sm text-gray-800 outline-none focus:border-gray-300 focus:ring-gray-300"
+                      ></select>
+                    </div>
+
+                    <!-- Currency -->
+                    <div class="flex items-center justify-between py-4">
+                      <div class="flex-1">
+                        <label
+                          for="currency"
+                          class="mb-2 block text-sm font-medium text-gray-900"
+                          >Currency</label
+                        >
+                      </div>
+
+                      <select
+                        id="currency"
+                        class="block w-2/3 rounded-lg border border-gray-200 bg-gray-100 px-5 py-2 text-sm text-gray-800 outline-none focus:border-gray-300 focus:ring-gray-300"
+                      >
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Banner + Help -->
+                  <div>
+                    <div id="status"></div>
+
+                    <!-- Help box-->
+                    <div
+                      class="rounded-lg border border-gray-300 bg-gray-50 p-6 shadow-sm"
+                    >
+                      <div class="mb-4 flex items-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="feather feather-help-circle"
+                        >
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <h3 class="ml-2 text-lg font-semibold">Help</h3>
+                      </div>
+
+                      <p class="mb-4 text-gray-500">
+                        <span class="text-black">API Key</span>: Keywords Everywhere authenticates you using an API key. You only need the API key if you plan to purchase a subscription to access the paid features.
+                      </p>
+                      <p class="mb-4 text-gray-500">
+                        <span class="text-black">Country</span>: Changing the country here will change the volume data shown throughout the tool, for example. If you choose the United States here, then all the search volumes shown by the tool will be only for the United States.
+                      </p>
+                      <p class="text-gray-500">
+                        <span class="text-black">Currency</span>: You can change the currency to your local currency. Once done all CPC values will be shown in that currency throughout the tool.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+              <!-- Data Sources -->
+              <div
+                class="nav-item hidden flex-1 translate-x-full transition-transform"
+                id="data-sources"
+              >
+                <div class="mb-8">
+                  <h2 class="mb-4 text-xl font-bold">Data Sources</h2>
+                </div>
+
+                <div class="grid grid-cols-2 gap-8">
+                  <div>
+                    <ul class="grid gap-6">
+                      <li>
+                        <input
+                          type="radio"
+                          id="dataSource-gkp"
+                          name="input-dataSource"
+                          value="gkp"
+                          class="peer hidden"
+                          required
+                        />
+
+                        <label
+                          for="dataSource-gkp"
+                          class="group inline-flex w-full cursor-pointer items-center justify-between rounded-lg border-2 border-gray-200 bg-white p-5 transition-all hover:bg-gray-100 peer-checked:border-primary peer-checked:text-primary"
+                        >
+                          <div class="flex-1">
+                            <div class="text-lg font-bold">
+                              Google Keyword Planner
+                            </div>
+                            <div class="text-gray-500">Only GKP</div>
+                          </div>
+
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            class="hidden h-8 w-8 peer-checked:group-[]:block"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </label>
+                      </li>
+
+                      <li>
+                        <input
+                          type="radio"
+                          id="dataSource-cli"
+                          name="input-dataSource"
+                          value="cli"
+                          class="peer hidden"
+                          checked
+                        />
+
+                        <label
+                          for="dataSource-cli"
+                          class="group inline-flex w-full cursor-pointer items-center justify-between rounded-lg border-2 border-gray-200 bg-white p-5 transition-all hover:bg-gray-100 peer-checked:border-primary peer-checked:text-primary"
+                        >
+                          <div class="flex-1">
+                            <div class="text-lg font-bold">
+                              Google Keyword Planner + Clickstream data
+                            </div>
+                            <div class="text-gray-500">GKP + CLI</div>
+                          </div>
+
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            class="hidden h-8 w-8 peer-checked:group-[]:block"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div
+                    class="rounded-lg border border-gray-300 bg-gray-50 p-6 shadow-sm"
+                  >
+                    <div class="mb-4 flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-help-circle"
+                      >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                      </svg>
+                      <h3 class="ml-2 text-lg font-semibold">Help</h3>
+                    </div>
+
+                    <p class="mb-4 text-gray-500">
+                      Keywords Everywhere primarily shows you data obtained from
+                      the Google Keyword Planner (GKP).
+                    </p>
+                    <p class="mb-4 text-gray-500">
+                      However, for some search queries such as banned terms
+                      (where you cannot run Google Ads on those terms) and
+                      mis-spellings, we use clickstream data.
+                    </p>
+                    <p class="text-gray-500">
+                      If you always want to see only the data from GKP, change
+                      the default setting to only GKP.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Enable disable metrics-->
+              <div
+                class="nav-item hidden flex-1 translate-x-full transition-transform"
+                id="enable-disable-metrics"
+              >
+                <div class="mb-8">
+                  <h2 class="mb-4 text-xl font-bold">Enable/Disable metrics</h2>
+                </div>
+
+                <div class="grid grid-cols-2 gap-8">
+                  <div id="metricsList">
+                    <div class="border-b border-b-gray-300 pb-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                      >
+                        <input
+                          type="checkbox"
+                          data-metric="vol"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium">Volume</span>
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                      >
+                        <input
+                          type="checkbox"
+                          data-metric="cpc"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium">CPC</span>
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                      >
+                        <input
+                          type="checkbox"
+                          data-metric="comp"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Competition</span
+                        >
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+
+                    <div class="py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                      >
+                        <input
+                          type="checkbox"
+                          data-metric="trend"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium">Trend</span>
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div
+                    class="rounded-lg border border-gray-300 bg-gray-50 p-6 shadow-sm"
+                  >
+                    <div class="mb-4 flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-help-circle"
+                      >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                      </svg>
+                      <h3 class="ml-2 text-lg font-semibold">Help</h3>
+                    </div>
+
+                    <p class="mb-4 text-gray-500">
+                      You can choose which metrics you would like to see for the
+                      keywords. Changing this will affect which metrics the tool
+                      shows you everywhere.
+                    </p>
+                    <p class="text-gray-500">
+                      Disabling these settings will not prevent credit usage. If
+                      you want to prevent credits from being used, either remove
+                      the API key from the above textbox or disable the settings
+                      in the 'Credit Usage For Widgets' section.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Metrics highlight -->
+              <div
+                class="nav-item hidden flex-1 translate-x-full transition-transform"
+                id="metrics-highlighting"
+              >
+                <div class="mb-8">
+                  <h2 class="mb-4 text-xl font-bold">Metrics highlighting</h2>
+                </div>
+
+                <div class="grid grid-cols-2 gap-8">
+                  <div>
+                    <div class="border-b border-b-gray-300 pb-4">
+                      <div class="flex items-center justify-between">
+                        <label for="highlightColor" class="text-sm font-medium"
+                          >Highlight Color</label
+                        >
+
+                        <input
+                          type="color"
+                          id="highlightColor"
+                          value="#D3FFCC"
+                          class="h-8 w-32 cursor-pointer rounded-lg border-0 p-0 outline-none focus:border-0 focus:ring-0"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="peer flex cursor-pointer items-center justify-between"
+                      >
+                        <input
+                          type="checkbox"
+                          id="highlightVolume"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Highlight Volume</span
+                        >
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+
+                      <div class="mt-4 hidden peer-has-[:checked]:block">
+                        <div
+                          class="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_32px_minmax(0,1fr)_minmax(0,1fr)] items-center gap-2 rounded-lg border border-gray-300 p-2 shadow-sm"
+                        >
+                          <select
+                            id="highlightVolumeCond"
+                            class="rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm text-gray-800 outline-none transition-all focus:border-gray-300 focus:ring-gray-300"
+                          >
+                            <option value="gt">&gt;</option>
+                            <option value="eq">==</option>
+                            <option value="lt">&lt;</option>
+                          </select>
+
+                          <input
+                            type="number"
+                            id="highlightVolumeValue"
+                            min="0"
+                            value="1000"
+                            class="rounded-lg border border-gray-200 bg-gray-100 p-2 text-sm text-gray-800 outline-none transition-all hover:border-gray-300 focus:border-gray-300 focus:bg-white focus:ring-gray-300"
+                          />
+
+                          <span class="w-5 font-bold">and</span>
+
+                          <select
+                            id="highlightVolumeCondSec"
+                            class="rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm text-gray-800 outline-none transition-all focus:border-gray-300 focus:ring-gray-300"
+                          >
+                            <option value="gt">&gt;</option>
+                            <option value="eq">==</option>
+                            <option value="lt">&lt;</option>
+                          </select>
+
+                          <input
+                            type="number"
+                            id="highlightVolumeValueSec"
+                            min="0"
+                            value=""
+                            class="rounded-lg border border-gray-200 bg-gray-100 p-2 text-sm text-gray-800 outline-none transition-all hover:border-gray-300 focus:border-gray-300 focus:bg-white focus:ring-gray-300"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="peer flex cursor-pointer items-center justify-between"
+                      >
+                        <input
+                          type="checkbox"
+                          id="highlightCPC"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Highlight CPC</span
+                        >
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+
+                      <div class="mt-4 hidden peer-has-[:checked]:block">
+                        <div
+                          class="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_32px_minmax(0,1fr)_minmax(0,1fr)] items-center gap-2 rounded-lg border border-gray-300 p-4 shadow-md"
+                        >
+                          <select
+                            id="highlightCPCCond"
+                            class="rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm text-gray-800 outline-none transition-all focus:border-gray-300 focus:ring-gray-300"
+                          >
+                            <option value="gt">&gt;</option>
+                            <option value="eq">==</option>
+                            <option value="lt">&lt;</option>
+                          </select>
+                          <input
+                            type="number"
+                            id="highlightCPCValue"
+                            min="0"
+                            value="1.5"
+                            class="rounded-lg border border-gray-200 bg-gray-100 p-2 text-sm text-gray-800 outline-none transition-all hover:border-gray-300 focus:border-gray-300 focus:bg-white focus:ring-gray-300"
+                          />
+                          <span class="font-bold">and</span>
+
+                          <select
+                            id="highlightCPCCondSec"
+                            class="rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm text-gray-800 outline-none transition-all focus:border-gray-300 focus:ring-gray-300"
+                          >
+                            <option value="gt">&gt;</option>
+                            <option value="eq">==</option>
+                            <option value="lt">&lt;</option>
+                          </select>
+
+                          <input
+                            type="number"
+                            id="highlightCPCValueSec"
+                            min="0"
+                            value=""
+                            class="rounded-lg border border-gray-200 bg-gray-100 p-2 text-sm text-gray-800 outline-none transition-all hover:border-gray-300 focus:border-gray-300 focus:bg-white focus:ring-gray-300"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="pt-4">
+                      <label
+                        class="peer flex cursor-pointer items-center justify-between"
+                      >
+                        <input
+                          type="checkbox"
+                          id="highlightComp"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Highlight Competition</span
+                        >
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+
+                      <div class="mt-4 hidden peer-has-[:checked]:block">
+                        <div
+                          class="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_32px_minmax(0,1fr)_minmax(0,1fr)] items-center gap-2 rounded-lg border border-gray-300 p-4 shadow-md"
+                        >
+                          <select
+                            id="highlightCompCond"
+                            class="rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm text-gray-800 outline-none transition-all focus:border-gray-300 focus:ring-gray-300"
+                          >
+                            <option value="gt">&gt;</option>
+                            <option value="eq">==</option>
+                            <option value="lt">&lt;</option>
+                          </select>
+                          <input
+                            type="number"
+                            id="highlightCompValue"
+                            min="0"
+                            value="0.5"
+                            class="rounded-lg border border-gray-200 bg-gray-100 p-2 text-sm text-gray-800 outline-none transition-all hover:border-gray-300 focus:border-gray-300 focus:bg-white focus:ring-gray-300"
+                          />
+
+                          <span class="font-bold">and</span>
+
+                          <select
+                            id="highlightCompCondSec"
+                            class="rounded-lg border border-gray-300 bg-gray-50 p-2 text-sm text-gray-800 outline-none transition-all focus:border-gray-300 focus:ring-gray-300"
+                          >
+                            <option value="gt">&gt;</option>
+                            <option value="eq">==</option>
+                            <option value="lt">&lt;</option>
+                          </select>
+                          <input
+                            type="number"
+                            id="highlightCompValueSec"
+                            min="0"
+                            value=""
+                            class="rounded-lg border border-gray-200 bg-gray-100 p-2 text-sm text-gray-800 outline-none transition-all hover:border-gray-300 focus:border-gray-300 focus:bg-white focus:ring-gray-300"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="rounded-lg border border-gray-300 bg-gray-50 p-6 shadow-sm"
+                  >
+                    <div class="mb-4 flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-help-circle"
+                      >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                      </svg>
+                      <h3 class="ml-2 text-lg font-semibold">Help</h3>
+                    </div>
+
+                    <p class="text-gray-500">
+                      You can highlight keywords based on specific values of the
+                      metrics.
+                    </p>
+                    <p class="mb-4 text-gray-500">
+                      For example you can highlight all keywords that have a
+                      search volume of more than 1000 per month.
+                    </p>
+
+                    <p class="mb-4 text-gray-500">
+                      Note that if you set up multiple conditions, then the
+                      keywords will be highlighted only if all the conditions
+                      are met.
+                    </p>
+                    <p class="text-gray-500">
+                      For example if you set up highlights on volume > 1000 and
+                      CPC > $1, then only those keywords that have more than
+                      1000 searches per month and have a CPC greater than $1
+                      will be highlighted.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Supported websites -->
+              <div
+                class="nav-item hidden flex-1 translate-x-full transition-transform"
+                id="supported-websites"
+              >
+                <div class="mb-8">
+                  <div class="flex">
+                    <h2 class="mb-4 text-xl font-bold">Supported websites</h2>
+                    <label class="mb-4 ml-4" style="margin-top: 5px">
+                      <input type="checkbox" data-selector="#sourceList" class="toggler section-toggle peer sr-only" checked="true">
+                      <div
+                        class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                      ></div>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-8">
+
+                  <div id="sourceList">
+                  </div>
+
+                  <div
+                    class="rounded-lg border border-gray-300 bg-gray-50 p-6 shadow-sm"
+                  >
+                    <div class="mb-4 flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-help-circle"
+                      >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                      </svg>
+                      <h3 class="ml-2 text-lg font-semibold">Help</h3>
+                    </div>
+
+                    <p class="text-gray-500">
+                      This is a list of all the websites where Keywords
+                      Everywhere shows you data.
+                    </p>
+                    <p class="text-gray-500">
+                      You can disable those websites where you do not want
+                      Keywords Everywhere to show you data, thereby saving on
+                      credit usage.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Credit usages -->
+              <div
+                class="nav-item hidden flex-1 translate-x-full transition-transform"
+                id="credit-usage-for-widgets"
+              >
+                <div class="mb-8">
+                  <div class="flex">
+                    <h2 class="mb-4 text-xl font-bold">Credit usages</h2>
+                    <label class="mb-4 ml-4" style="margin-top: 5px">
+                      <input type="checkbox" data-selector="#widgetsList" class="toggler section-toggle peer sr-only" checked="true">
+                      <div
+                        class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                      ></div>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-8">
+                  <div id="widgetsList"></div>
+
+                  <div
+                    class="self-start rounded-lg border border-gray-300 bg-gray-50 p-6 shadow-sm"
+                  >
+                    <div class="mb-4 flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-help-circle"
+                      >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                      </svg>
+                      <h3 class="ml-2 text-lg font-semibold">Help</h3>
+                    </div>
+
+                    <p class="mb-4 text-gray-500">
+                      On certain websites such as Google, YouTube & Bing,
+                      Keywords Everywhere places widgets that show you a list of
+                      keywords or trend charts. These widgets use up credits
+                      when they show you metrics.
+                    </p>
+                    <p class="text-gray-500">
+                      These settings let you decide whether to see the
+                      search volume, CPC, competition & trend data in those
+                      widgets. Disabling them will stop the credits from being
+                      used up to show this data. It does not stop the widgets
+                      from being displayed.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Miscellaneous settings -->
+              <div
+                class="nav-item hidden flex-1 translate-x-full transition-transform"
+                id="miscellaneous-settings"
+              >
+                <div class="mb-8">
+                  <div class="flex">
+                    <h2 class="mb-4 text-xl font-bold">Miscellaneos settings</h2>
+                    <label class="mb-4 ml-4" style="margin-top: 5px">
+                      <input type="checkbox" data-selector="#miscList" class="toggler section-toggle peer sr-only" checked="true">
+                      <div
+                        class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                      ></div>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-8">
+                  <div id="miscList">
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                        for="showAutocompleteButton"
+                      >
+                        <input
+                          type="checkbox"
+                          id="showAutocompleteButton"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Show "Find Keywords" Button
+                          <small class="block"
+                            >(Google, YouTube, Bing, Pinterest, Amazon, eBay
+                            &amp; Etsy)</small
+                          ></span
+                        >
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                        for="showDifficultyMetrics"
+                      >
+                        <input
+                          type="checkbox"
+                          id="showDifficultyMetrics"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Show Difficulty Metrics
+                        </span>
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                        for="showGoogleTrendChart"
+                      >
+                        <input
+                          type="checkbox"
+                          id="showGoogleTrendChart"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Show Trend Chart in Google/YouTube/Pinterest
+                        </span>
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                        for="showYoutubeAdvancedMetrics"
+                      >
+                        <input
+                          type="checkbox"
+                          id="showYoutubeAdvancedMetrics"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Show YouTube Advanced Metrics
+                        </span>
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                        for="showAddAllButton"
+                      >
+                        <input
+                          type="checkbox"
+                          id="showAddAllButton"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Show [Add All Keywords] Button</span
+                        >
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                        for="showExportButton"
+                      >
+                        <input
+                          type="checkbox"
+                          id="showExportButton"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Show "Export CSV" Button</span
+                        >
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                        for="showMetricsForSuggestions"
+                      >
+                        <input
+                          type="checkbox"
+                          id="showMetricsForSuggestions"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Show Metrics in Autocomplete Suggestion Drop Downs
+                          <small class="block"
+                            >(Google, YouTube, Amazon, Bing, Pinterest,
+                            DuckDuckGo, eBay &amp; Etsy)</small
+                          ></span
+                        >
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                        for="showChartsForGoogleTrends"
+                      >
+                        <input
+                          type="checkbox"
+                          id="showChartsForGoogleTrends"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Show Chart in Google Trends
+                        </span>
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                        for="showGoogleTraffic"
+                      >
+                        <input
+                          type="checkbox"
+                          id="showGoogleTraffic"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Show Traffic Data in SERPs</span
+                        >
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                        for="showGoogleMetrics"
+                      >
+                        <input
+                          type="checkbox"
+                          id="showGoogleMetrics"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Show Link Metrics in SERPs</span
+                        >
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+                    <div class="border-b border-b-gray-300 py-4">
+                      <label
+                        class="flex cursor-pointer items-center justify-between"
+                        for="showChatGPTactions"
+                      >
+                        <input
+                          type="checkbox"
+                          id="showChatGPTactions"
+                          class="peer sr-only"
+                        />
+                        <span class="flex-1 text-sm font-medium"
+                          >Show [Continue] Button on ChatGPT</span
+                        >
+                        <div
+                          class="relative h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full"
+                        ></div>
+                      </label>
+                    </div>
+
+                    <div class="flex items-center justify-between py-4 hidden">
+                      <label
+                        for="googlePos"
+                        class="text-sm font-medium text-gray-900"
+                        >Location of metrics</label
+                      >
+                      <select
+                        id="googlePos"
+                        class="ms-auto block w-1/2 rounded-lg border border-gray-200 bg-gray-100 px-5 py-2 text-sm text-gray-800 outline-none focus:border-gray-300 focus:ring-gray-300"
+                      >
+                        <option value="default">Under Search Box</option>
+                        <option value="abvres">Above Search Results</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div
+                    class="self-start rounded-lg border border-gray-300 bg-gray-50 p-6 shadow-sm"
+                  >
+                    <div class="mb-4 flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-help-circle"
+                      >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                      </svg>
+                      <h3 class="ml-2 text-lg font-semibold">Help</h3>
+                    </div>
+
+                    <p class="mb-4 text-gray-500">
+                      <b>Show [Find Keywords] button</b>: Adds a button at the
+                      top left of certain websites which provides the
+                      functionality of finding thousands of long-tail keywords
+                      for your search query using the Auto-suggest APIs from
+                      those websites
+                    </p>
+                    <p class="mb-4 text-gray-500">
+                      <b>Show Difficulty Metrics</b>: Adds a widget at the top
+                      right of every Google SERP and shows the following metrics
+                      - SEO Difficulty, On-Page Difficulty & Off-Page Difficulty
+                    </p>
+                    <p class="mb-4 text-gray-500">
+                      <b>Show Trend Chart in Google/YouTube/Pinterest</b>: Adds
+                      a widget at the top right of every Google SERP and shows
+                      the trend chart as well as historical search volume for
+                      the search term
+                    </p>
+                    <p class="mb-4 text-gray-500">
+                      <b>Show YouTube Advanced Metrics</b>: Enables the tool to
+                      automatically show the advanced metrics in YouTube Search
+                      Insights widget. Disabling this will show only basic
+                      metrics, and add a button for user to manually get the
+                      Advanced metrics
+                    </p>
+                    <p class="mb-4 text-gray-500">
+                      <b>Show [Add All Keywords] button</b>: Show button to add
+                      all keywords shown on a webpage to your Favorite Keywords
+                      list
+                    </p>
+                    <p class="mb-4 text-gray-500">
+                      <b>Show [Export CSV] button</b>: Show button to export all
+                      data shown on a webpage to a CSV file.
+                    </p>
+                    <p class="mb-4 text-gray-500">
+                      <b>Show Metrics in Autocomplete Suggestion Drop Downs</b>:
+                      Show volume metrics inside the auto-complete drop down on
+                      websites like Google & YouTube.
+                    </p>
+                    <p class="mb-4 text-gray-500">
+                      <b>Show Chart in Google Trends</b>: Show the chart in
+                      Google Trends with the search volume data enhancement.
+                    </p>
+                    <p class="mb-4 text-gray-500">
+                      <b>Show Traffic Data in SERPs</b>: View the URL & Domain
+                      traffic metrics embedded inside the search result pages.
+                    </p>
+                    <p class="mb-4 text-gray-500">
+                      <b>Show Link Metrics in SERPs</b>: View the Moz link
+                      metrics for the domains embedded inside the search result
+                      pages.
+                    </p>
+                    <p class="mb-4 text-gray-500">
+                      <b>Show [Continue] Button on ChatGPT </b>: You can disable
+                      the Continue floating button shown on ChatGPT.
+                    </p>
+					<!--
+                    <p class="text-gray-500">
+                      <b>Location of metrics</b>: Choose whether you want to see
+                      the metrics for the search query under the search box or
+                      above the search results
+                    </p>
+					-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Current Settings - Full Width -->
+        <div class="nav-item" id="current-settings" data-show-with="api-settings">
+          <h3 class="px-6 py-4 text-lg font-bold">
+            Your current settings
+          </h3>
+
+          <div class="flex border-b border-t">
+            <div
+              class="w-56 amid whitespace-nowrap bg-gray-50 px-6 py-4 font-medium text-gray-900"
+            >
+              Data Sources
+            </div>
+            <div class="flex flex-1 flex-wrap gap-2 px-6 py-4" data-breakdown="dataSource">
+            </div>
+          </div>
+
+          <div class="flex border-b">
+            <div
+              class="w-56 amid whitespace-nowrap bg-gray-50 px-6 py-4 font-medium text-gray-900"
+            >
+              Enable-Disable Metrics
+            </div>
+            <div class="flex flex-1 flex-wrap gap-2 px-6 py-4" data-breakdown="metricsList">
+            </div>
+          </div>
+
+          <div class="flex border-b">
+            <div
+              class="w-56 amid whitespace-nowrap bg-gray-50 px-6 py-4 font-medium text-gray-900"
+            >
+              Metrics Highlighting
+            </div>
+            <div class="flex flex-1 flex-wrap gap-2 px-6 py-4"  data-breakdown="highlight">
+              <span
+                class="rounded-full px-3 py-1 text-xs font-semibold"
+                style="background-color: #d3ffcc"
+                >#d3ffcc</span
+              >
+              <span
+                class="rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-primary-800"
+                >CPC</span
+              >
+              <span
+                class="rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-primary-800"
+                >Competition</span
+              >
+            </div>
+          </div>
+
+          <div class="flex border-b">
+            <div
+              class="w-56 amid whitespace-nowrap bg-gray-50 px-6 py-4 font-medium text-gray-900"
+            >
+              Supported Websites
+            </div>
+            <div class="flex flex-1 flex-wrap gap-2 px-6 py-4" data-breakdown="sourceList-site"></div>
+          </div>
+
+          <div class="flex border-b">
+            <div
+              class="w-56 amid whitespace-nowrap bg-gray-50 px-6 py-4 font-medium text-gray-900"
+            >
+              Credit usage for Widgets
+            </div>
+            <div class="flex flex-1 flex-wrap gap-2 px-6 py-4" data-breakdown="sourceList-widget"></div>
+          </div>
+
+          <div class="flex">
+            <div
+              class="w-56 amid whitespace-nowrap bg-gray-50 px-6 py-4 font-medium text-gray-900"
+            >
+              Miscellaneous
+            </div>
+            <div class="flex flex-1 flex-wrap gap-2 px-6 py-4" data-breakdown="misc"></div>
+          </div>
+        </div>
+
+        <div class="mt-4 border-t px-6 py-4 text-sm">
+          © 2015-2024. Keywords Everywhere
+        </div>
+      </main>
+    </div>
+
+
+    <script type="text/javascript" src="/lib/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="/js/SourceList.js"></script>
+    <script type="text/javascript" src="/js/Status.js"></script>
+    <script type="text/javascript" src="/js/options.js"></script>
+
+  </body>
+</html>

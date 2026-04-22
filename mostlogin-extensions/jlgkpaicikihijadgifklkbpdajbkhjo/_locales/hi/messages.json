@@ -1,0 +1,1484 @@
+{
+  "appName": {
+    "message": "CrxMouse Chrome™ जेस्चर्स",
+    "Description": "Name of extension. Do not translate name."
+  },
+  "appName_Edge": {
+    "message": "CrxMouse Edge™ जेस्चर्स",
+    "Description": "Name of extension. Do not translate name."
+  },
+  "G_BmManager": {
+    "message": "बुकमार्क मैनेजर को खोलें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_ZoomIn": {
+    "message": "ज़ूम-इन करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_ZoomOut": {
+    "message": "ज़ूम-आउट करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_back": {
+    "message": "पीछे जाएं",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_bookmark": {
+    "message": "बुकमार्क जोड़ें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_bookmarks": {
+    "message": "बुकमार्क मैनेजर",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_bottom": {
+    "message": "नीचे तक स्क्रॉल करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_capture": {
+    "message": "स्क्रीनशॉट",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_chromepage": {
+    "message": "Chrome के आतंरिक पते को खोलें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_close": {
+    "message": "टैब को बंद करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closelefttabs": {
+    "message": "बाईं ओर के सभी टैब को बंद करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closeothers": {
+    "message": "अन्य टैब को बंद करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closerighttabs": {
+    "message": "दाईं ओर के सभी टैब को बंद करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closewindow": {
+    "message": "विंडो बंद करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closewindows": {
+    "message": "सभी विंडो बंद करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copyaslink": {
+    "message": "शीर्षक और यूआरएल को लिंक के रूप में कॉपी करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copytab": {
+    "message": "वर्तमान टैब को कॉपी करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copytitle": {
+    "message": "वर्तमान टैब के शीर्षक को कॉपी करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copyurl": {
+    "message": "वर्तमान टैब के यूआरएल को कॉपी करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copyuser": {
+    "message": "कस्टम प्रारूप के साथ शीर्षक और यूआरएल को कॉपी करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_crxsettings": {
+    "message": "CrxMouse सेटिंग",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_down": {
+    "message": "नीचे की तरफ स्क्रॉल करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_downloads": {
+    "message": "डाउनलोड",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_firsttab": {
+    "message": "पहला टैब",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_fullscreen": {
+    "message": "फ़ुल स्क्रीन",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_go": {
+    "message": "आगे बढ़ें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_goparent": {
+    "message": "मूल यूआरएल पर जाएं",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_history": {
+    "message": "इतिहास",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_incognito": {
+    "message": "नई गुप्त विंडो",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_lasttab": {
+    "message": "पिछला टैब",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_left": {
+    "message": "बाईं ओर स्क्रॉल करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_lefttab": {
+    "message": "बायां टैब",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_mergeTab": {
+    "message": "टैब को मिलाएं",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_movetowindow": {
+    "message": "टैब को अलग करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_newtab": {
+    "message": "नया टैब",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_newusertab": {
+    "message": "कस्टम टैब...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_newwindow": {
+    "message": "नई विंडो",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_none": {
+    "message": "कोई नहीं",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_openclipurl": {
+    "message": "यूआरएल को क्लिपबोर्ड से खोलने का प्रयास करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_pin": {
+    "message": "टैब को पिन करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reclosedtab": {
+    "message": "बंद टैब को फिर से खोलें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reload": {
+    "message": "फिर से लोड करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reloadall": {
+    "message": "सभी टैब फिर से लोड करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reloadclear": {
+    "message": "कैश के बिना फिर से लोड करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reloadframe": {
+    "message": "फ्रेम को फिर से लोड करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_right": {
+    "message": "दाईं ओर स्क्रॉल करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_righttab": {
+    "message": "दायां टैब",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_settings": {
+    "message": "Chrome सेटिंग",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_splitTab": {
+    "message": "टैब विभाजित करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_stop": {
+    "message": "बंद करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_stopall": {
+    "message": "सभी टैब को लोड करना रोकें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_top": {
+    "message": "शीर्ष तक स्क्रॉल करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_tostop": {
+    "message": "इस पृष्ठ पर एक्सटेंशन को अस्थाई रूप से अक्षम करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_trynext": {
+    "message": "अगले अध्याय में जाने का प्रयास करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_tryprev": {
+    "message": "पिछले अध्याय में जाने का प्रयास करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_up": {
+    "message": "ऊपर स्क्रॉल करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_userscript": {
+    "message": "स्क्रिप्ट चलाएँ...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_viewsource": {
+    "message": "पृष्ठ का स्रोत देखें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_windowmax": {
+    "message": "विंडो को बड़ा करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_windowmin": {
+    "message": "विंडो को छोटा करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_copyurl": {
+    "message": "छवि के यूआरएल को कॉपी करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_open": {
+    "message": "छवि को नए टैब में खोलें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_save": {
+    "message": "छवि को सहेजें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_saveback": {
+    "message": "छवि को इस प्रकार सहेजें (केवल Dev)...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_search": {
+    "message": "छवि खोजें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_searchuser": {
+    "message": "कस्टम खोज इंजन से छवि को खोजें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_bookmark": {
+    "message": "बुकमार्क जोड़ें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copyaslink": {
+    "message": "टेक्स्ट और यूआरएल को लिंक के रूप में कॉपी करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copytext": {
+    "message": "लिंक टेक्स्ट को कॉपी करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copyurl": {
+    "message": "लिंक यूआरएल को कॉपी करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copyuser": {
+    "message": "कस्टम प्रारूप में शीर्षक और वेबसाइट को कॉपी करें",
+    "description": "Advanced actions"
+  },
+  "L_open": {
+    "message": "लिंक को नए टैब में खोलें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "T_copytext": {
+    "message": "टेक्स्ट कॉपी करें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "T_search": {
+    "message": "टेक्स्ट खोजें",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "T_searchuser": {
+    "message": "कस्टम खोज...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "about": {
+    "message": "के बारे में",
+    "description": "Title of About page in Settings area"
+  },
+  "bug": {
+    "message": "बग की\nरिपोर्ट करें",
+    "description": "Link to report a bug"
+  },
+  "addtipgesture": {
+    "message": "दायाँ माउस बटन दबाए रखें, ट्रैक बनाने के लिए चलाएं, क्रिया का चयन करने के लिए दाँए बटन को छोड़ दें।",
+    "description": "Instructions for how to add a new gesture thourh the Settings area - appears when clicking on the 'Add New' button in the 'New section on the 'Mouse Gestures' page."
+  },
+  "addtipimage": {
+    "message": "छवि को नीचे खींचने के लिए बाएं माउस बटन का प्रयोग करें और ट्रैक बनाएं, उसके बाद क्रिया का चयन करने के लिए माउस बटन को छोड़ें।",
+    "description": "Instructions for how to add a new Super Drag Gesture for an Image - appears when clicking on the 'Image' button in the 'New' section on the 'Super Drag' page."
+  },
+  "addtiplink": {
+    "message": "नीचे दी गई लिंक का चयन करें और बांया माउस बटन दबाते हुए ट्रैक बनाएं, उसके बाद क्रिया का चयन करने के लिए माउस बटन को छोड़ें।",
+    "description": "Instructions for how to add a new Super Drag Gesture for a link - appears when clicking on the 'Link' button in the 'New' section on the 'Super Drag' page."
+  },
+  "addtiptext": {
+    "message": "निम्नलिखित टेक्स्ट का चयन करें और बांया माउस बटन दबाते हुए ट्रैक बनाएं, उसके बाद क्रिया का चयन करने के लिए माउस बटन को छोड़ें।",
+    "description": "Instructions for how to add a new Super Drag Gesture for a text - appears when clicking on the 'Text' button in the 'New' section on the 'Super Drag' page"
+  },
+  "advanced": {
+    "message": "उन्नत सेटिंग",
+    "description": "Side navigation and Title of page in 'Settings' area"
+  },
+  "alertaction": {
+    "message": "कृपया किसी क्रिया का चयन करें।",
+    "description": "Alert window - promopted of user tries to save new gesture before selecting an action."
+  },
+  "alertconfigerror": {
+    "message": "आयात की गई कॉन्फ़िगरेशन त्रुटि।",
+    "description": "Error message - prompted when there is an issue with an imported file."
+  },
+  "alertname": {
+    "message": "सहेज नहीं सकता। कृपया जाँचें कि कौन सी फ़ील्ड गुम है।",
+    "description": "Error message when trying to edit gesture with text field empty."
+  },
+  "alertrepeat": {
+    "message": "जेश्चर दोहराया गया था, कोई अन्य आज़माकर देखें।",
+    "description": "Error message when trying to create gesture with an already used gesture."
+  },
+  "alerttooltip": {
+    "message": "क्रिया के लिए कृपया कोई नाम दर्ज करें।",
+    "description": "Error message when creating new gesture of new action without giving it a name. "
+  },
+  "alerturl": {
+    "message": "कोई यूआरएल नहीं है या यूआरएल अमान्य है।",
+    "description": "Error message when creating new gesture for opening a specific url without specifying the url."
+  },
+  "author": {
+    "message": "लेखक",
+    "description": "Author"
+  },
+  "blackList": {
+    "message": "ब्लैकलिस्ट साइट",
+    "description": "List for sites that should exclude mouse gestures. Located on General Settings page."
+  },
+  "blacklistTip": {
+    "message": "नोट:1: crxMouse इन साइट पर नहीं चलेगा। 2:प्रति पंक्ति एक डोमेन, नई पंक्ति के लिए Enter का उपयोग करें http:// या https:// न जोड़ें",
+    "description": "Note listed below message box of site blacklist. Located on General Settings page."
+  },
+  "bookmarkfailnotifi": {
+    "message": "बुकमार्क पहले से मौजूद है!",
+    "description": "Error message when trying to create gesture for bookmark that already exists."
+  },
+  "bookmarknotifi": {
+    "message": "बुकमार्क जोड़ना सफल रहा!",
+    "description": "Notification for bookmark saved."
+  },
+  "cancel": {
+    "message": "रद्द करें",
+    "description": "Cancel adding new gesture."
+  },
+  "cancelcontextmenu": {
+    "message": "Linux/Mac प्रसंग मेनू समस्याओं को ठीक करें(<span style='color:red'>प्रसंग मेनू को लाने के लिए दाएँ माउस बटन को डबल क्लिक करें</span>)।",
+    "description": "Text of Linux/Mac options check box located on General Settings page. Note! Do not translate html tags."
+  },
+  "cancelcontextmenudes": {
+    "message": "गैर-विंडोज प्लेटफार्मों पर ठीक करने का विकल्प, दांया क्लिक मेन्यू कुछ फ़ंक्शंस के सामान्य उपयोग को प्रभावित करता है, मजबूती सेे Linux / Mac उपयोगकर्ता इसे जांचें।",
+    "description": "Tooltip about Linux/Mac options located on General Settings page"
+  },
+  "changelog": {
+    "message": "लॉग परिवर्तित करें",
+    "description": "Super Drag Action."
+  },
+  "chrome": {
+    "message": "Chrome डिफ़ॉल्ट",
+    "description": "Referrs to the default tab opening (left or right) settings in Chrome."
+  },
+  "clearsyncdata": {
+    "message": "सिंक किए गए डेटा को साफ़ करें",
+    "description": "For logged in users, they can clear any data that was synced between machines."
+  },
+  "close": {
+    "message": "बंद करें",
+    "description": "Action list - close tab"
+  },
+  "color": {
+    "message": "रंग:",
+    "description": "A design option for how mouse gestures appear, under the 'Appearance' section on the Settings area."
+  },
+  "crbookmarks": {
+    "message": "बुकमार्क मैनेजर",
+    "description": "Action list - open bookmarks manager"
+  },
+  "crdownloads": {
+    "message": "डाउनलोड",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crextensions": {
+    "message": "एक्सटेंशन",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crflags": {
+    "message": "Chrome लैब",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crhistory": {
+    "message": "इतिहास",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crsettings": {
+    "message": "Chrome सेटिंग",
+    "description": "Actions list - referrs to "
+  },
+  "curfront": {
+    "message": "वर्तमान टैब",
+    "description": "Actions list - referrs to the current tab opened and visited."
+  },
+  "dbclicktime": {
+    "message": "डबल-क्लिक की अधिकतम अवधि (मिलीसेकंड में):",
+    "description": "milliseconds between 2 clicks for accessing the right-click menu on Mac and Linux."
+  },
+  "delete": {
+    "message": "हटाएँ",
+    "description": "Delete a gesture."
+  },
+  "description": {
+    "message": "अपनी उंगलियों के साथ ब्राउज़िंग उत्पादकता बढ़ाएँ",
+    "description": "Long Store title"
+  },
+  "descriptionjson": {
+    "message": "आसान माउस इशारों, सुपर ड्रैग,व्हील इशारों, घुमाव इशारों जैसे माउस नेविगेशन शॉर्टकट के साथ ब्राउज़िंग उत्पादकता बढ़ाएं।",
+    "description": "Short Store description"
+  },
+  "dholdkey": {
+    "message": "सुपर ड्रैग को अक्षम करने के लिए कुंजी असाइन करें:",
+    "description": "Users can choose a keyboard key that will disable the super drag feature on specific ocassions."
+  },
+  "direct": {
+    "message": "दिशा दिखाएं",
+    "description": "Appearance option that let's user choose whether or not to see the path of a mouse gesture, when performing it."
+  },
+  "downimgtooltip": {
+    "message": "छवि को सहेजा जा रहा है...",
+    "description": "Tooltip for when saving image using super drag gesture."
+  },
+  "drag": {
+    "message": "सुपर ड्रैग",
+    "description": "Side navigation and title of page in Settings area."
+  },
+  "draginput": {
+    "message": "पाठ बॉक्स के लिए ड्रैग-टेक्स्ट सक्षम करें।",
+    "description": "Option in More section on Super Drag page"
+  },
+  "dragui": {
+    "message": "प्रकटन",
+    "description": "Section name in the Settings area."
+  },
+  "editgesture": {
+    "message": "जेस्चर संपादित करें",
+    "description": "Section name"
+  },
+  "editimage": {
+    "message": "छवि को खींचें",
+    "description": "Section name on Super Drag page"
+  },
+  "editlink": {
+    "message": "लिंक को खींचें",
+    "description": "Section name on Super Drag page"
+  },
+  "editsgsleft": {
+    "message": "व्हील जेस्चर बायाँ<br /><span class='opttitledes'>(बायाँ बटन पकड़ें और स्क्रॉल करें)</span>",
+    "description": "Section name on Wheel Gestures page. Note! do not translate html tags (the br and span open and close tags)."
+  },
+  "editsgsright": {
+    "message": "व्हील जेस्चर दायाँ<br /><span class='opttitledes'>(दायाँ बटन पकड़ें और स्क्रॉल करें।)</span>",
+    "description": "Section name on Super Drag page. Note! do not translate html tag (the span open and close tags)."
+  },
+  "edittext": {
+    "message": "पाठ को खींचें",
+    "description": "Section name on Super Drag page"
+  },
+  "enabledragimage": {
+    "message": "ड्रैग-इमेज सक्षम करें",
+    "description": "Option in More section on Super Drag page"
+  },
+  "enabledraglink": {
+    "message": "ड्रैग-लिंक सक्षम करें",
+    "description": "Option in More section on Super Drag page"
+  },
+  "enabledragtext": {
+    "message": "ड्रैग-टेक्स्ट सक्षम करें",
+    "description": "Option in More section on Super Drag page"
+  },
+  "export": {
+    "message": "निर्यात करें",
+    "description": "Buttom in Advanced Settings page"
+  },
+  "extauthor": {
+    "message": "WeKnowNet",
+    "description": "Author name inside options.html"
+  },
+  "extnamejson": {
+    "message": "CrxMouse",
+    "description": "Extension name"
+  },
+  "extthanks": {
+    "message": "\r\n\t\t&gt; os0x</a></a><br />\r\n\t\t&gt; ArcCosine</a></a><br />\r\n\t\t&gt; जैन ओड्वार्को</a></a><br />\r\n\t\t&gt; इस एक्सटेंशन का आनंद लेने के लिए और/या मुझे इस एक्सटेंशन में सुधार करने के लिए फीडबैक भेजने के लिए धन्यवाद",
+    "description": "Thanks section in About page. Note! do not translate html tag."
+  },
+  "fastSwitch": {
+    "message": "ऊपर स्क्रॉल करते समय टैब को बाएँ, नीचे स्क्रॉल करते समय दाएँ स्विच करें",
+    "description": "Switch tab to the left when Scrolling up, to the right when scrolling down"
+  },
+  "fastreset": {
+    "message": "कुछ गलत है, एक्सटेंशन कार्य नहीं कर सकता, डिफ़ॉल्ट कॉन्फ़िगरेशन पर रीसेट करने के लिए यहाँ क्लिक करें। अगर यह अभी भी कार्य नहीं कर पा रहा, तो कृपया chrome को नवीनतम संस्करण (V23+) पर अद्यतन करें और पुनर्प्रयास करें।",
+    "description": "Error message when extension is down"
+  },
+  "fndrag": {
+    "message": "सुपर ड्रैग सक्षम करें",
+    "description": "Enable options on General Settings page"
+  },
+  "fngesture": {
+    "message": "माउस जेस्चर सक्षम करें",
+    "description": "Enable options on General Settings page"
+  },
+  "fnscroll": {
+    "message": "स्क्रॉल करना सक्षम करें ",
+    "description": "Enable options on General Settings page"
+  },
+  "fnscrollgesture": {
+    "message": "व्हील जेस्चर सक्षम करें",
+    "description": "Enable options on General Settings page"
+  },
+  "fnsmooth": {
+    "message": "स्मूथ स्क्रॉल सक्षम करें",
+    "description": "Enable options on General Settings page"
+  },
+  "fnstrokegesture": {
+    "message": "घुमाव जेस्चर सक्षम करें",
+    "description": "Enable options on General Settings page"
+  },
+  "fnswitch": {
+    "message": "CrxMouse सक्षम करें",
+    "description": "Enable options on General Settings page"
+  },
+  "gesPos": {
+    "message": "माउस जेस्चर की स्थिति",
+    "description": "Option in Appearance section on Mouse Gestures page"
+  },
+  "gesPosBC": {
+    "message": "नीचे मध्य",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosBL": {
+    "message": "नीचे बाएँ",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosBR": {
+    "message": "नीचे दाएँ",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosCC": {
+    "message": "सेंटर",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosCL": {
+    "message": "मध्य बाएँ",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosCR": {
+    "message": "मध्य दाएँ",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosTC": {
+    "message": "शीर्ष मध्य",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosTL": {
+    "message": "शीर्ष बाएँ",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosTR": {
+    "message": "शीर्ष दाएँ",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "geskey": {
+    "message": "माउस जेस्चर के लिए कौन सी कुंजी है:",
+    "description": "Option in More section on Mouse Gestures page"
+  },
+  "geskeydes": {
+    "message": "नोट: 1: यह विकल्प Linux/Mac के उपयोगकर्ताओं के लिए है जो दाएँ बटन का उपयोग नहीं कर सकते; windows उपयोगकर्ताओं के लिए यह बदलना अनुशंसित नहीं हैं; <br />2: कई समस्याएं उत्पन्न हो सकती हैं, उदा: पाठ का चयन नहीं कर सकते या छवियों और लिंक्स पर सुपर ड्रैग-टेक्स्ट या माउस जेस्चर का उपयोग नहीं कर पा रहे हैं। तो उसके बाद, आपको नीचे दी गई सेटिंग की आवश्यकता हो सकती है।",
+    "description": "Description text in More section on Mouse Gestures page"
+  },
+  "geskeyleft": {
+    "message": "बायाँ माउस बटन",
+    "description": "Key associated to mouse gesture on Mouse Gestures page"
+  },
+  "geskeymiddle": {
+    "message": "मध्य माउस बटन",
+    "description": "Key associated to mouse gesture on Mouse Gestures page"
+  },
+  "geskeyright": {
+    "message": "दायाँ माउस बटन",
+    "description": "Key associated to mouse gesture on Mouse Gestures page"
+  },
+  "gesture": {
+    "message": "माउस जेस्चर",
+    "description": "Page name"
+  },
+  "gestureui": {
+    "message": "प्रकटन",
+    "description": "Section name"
+  },
+  "gholdkey": {
+    "message": "माउस जेस्चर अक्षम करने के लिए एक कुंजी असाइन करें:",
+    "description": "Option in More section on Mouse Gestures page"
+  },
+  "head": {
+    "message": "शीर्ष",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "howtablist": {
+    "message": "टैब सूची का उपयोग कैसे करें:",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "image": {
+    "message": "छवि",
+    "description": "Buttons in New section on Super Drag page"
+  },
+  "imgfirst": {
+    "message": "ड्रैग-लिंक की बजाय सुपर ड्रैग-इमेज का उपयोग करने के लिए एक कुंजी असाइन करें:",
+    "description": "Option in More section on Super Drag page"
+  },
+  "imgfirstcheck": {
+    "message": "यदि लिंक में छवि है, तो ड्रैग-लिंक की बजाय सुपर ड्रैग-इमेज का उपयोग करें",
+    "description": "Option in More section on Super Drag page"
+  },
+  "import": {
+    "message": "आयात करें",
+    "description": "Option on Advanced Setttings page"
+  },
+  "incog": {
+    "message": "गुप्त विंडो",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "last": {
+    "message": "पिछला",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "left": {
+    "message": "शेष",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "link": {
+    "message": "लिंक",
+    "description": "Buttons in New section on Super Drag page"
+  },
+  "linuxsettings": {
+    "message": "Linux/Mac विकल्प",
+    "description": "Section name on General Settings page"
+  },
+  "listaction": {
+    "message": "क्रिया:",
+    "description": "Section in Edit Gesture section on Mouse Gestures page"
+  },
+  "listgesture": {
+    "message": "जेस्चर:",
+    "description": "Section in Edit Gesture section on Mouse Gestures page"
+  },
+  "local": {
+    "message": "en",
+    "description": "en"
+  },
+  "localtrans": {
+    "message": "FALSE",
+    "description": "FALSE"
+  },
+  "minilength": {
+    "message": "ट्रैक की न्यूनतम लंबाई (पिक्सल में):",
+    "description": "Option in Miscellaneous section on General Settings page"
+  },
+  "moreChromepagetitle": {
+    "message": "Chrome आंतरिक पता, जैसे:\"chrome://...\"",
+    "description": "Placeholder in Actions"
+  },
+  "moreCloseoptstitle": {
+    "message": "अंतिम टैब के बंद होने के बाद विंडो को बंद करें?",
+    "description": "Placeholder in Actions"
+  },
+  "moreCloseseltitle": {
+    "message": "वर्तमान टैब को बंद करने के बाद कौन सा टैब चुनना है?",
+    "description": "Placeholder in Actions"
+  },
+  "moreCloseurltitle": {
+    "message": "URL, यदि आप Chrome विंडो बंद नहीं करते हैं, तो यह URL खोलें",
+    "description": "Placeholder in Actions"
+  },
+  "moreCopystyletitle": {
+    "message": "कस्टम स्वरूप, शीर्षक/शब्दों के बजाए \"%title\" का, साइट url के बजाए \"%url\" का, \"\\n\" के साथ नई लाइन का उपयोग करें",
+    "description": "Placeholder in Actions. Note! do not translate text inside \"%."
+  },
+  "moreDes": {
+    "message": "फ़ंक्शन संकेत पाठ, कीवर्ड के बजाय \"% नाम\" का उपयोग करें",
+    "description": "Placeholder in Actions. Note! do not translate text inside \"%."
+  },
+  "moreDestitle": {
+    "message": "क्रिया नाम",
+    "description": "Option in Appearance section on Super Drag and Mouse Gestures pages"
+  },
+  "moreIsearchtitle": {
+    "message": "छवि खोज इंजन",
+    "description": "Action"
+  },
+  "moreName": {
+    "message": "नाम",
+    "description": "Name"
+  },
+  "morePinnedtitle": {
+    "message": "टैब को पिन करें/पिन हटाएं",
+    "description": "Action"
+  },
+  "morePositiontitle": {
+    "message": "वर्तमान टैब के सापेक्ष नए टैब की स्थिति",
+    "description": "Action"
+  },
+  "moreScript": {
+    "message": "स्क्रिप्ट",
+    "description": "Action"
+  },
+  "moreScripttitle": {
+    "message": "स्क्रिप्ट सामग्री",
+    "description": "Placeholder in Run Script Action"
+  },
+  "moreTarget": {
+    "message": "स्थिति",
+    "description": "Action"
+  },
+  "moreTargettitle": {
+    "message": "नया टैब खोलने का तरीका: नया/वर्तमान टैब, सामना/पृष्ठभूमि",
+    "description": "Placeholder in Actions"
+  },
+  "moreTsearchtitle": {
+    "message": "पाठ खोज इंजन",
+    "description": "Action"
+  },
+  "moreURL": {
+    "message": "URL",
+    "description": "Action"
+  },
+  "moreURLtitle": {
+    "message": "URL,कीवर्ड के बजाए \"%s\" का उपयोग करें",
+    "description": "Placeholder in Actions. Note! do not translate text inside \"%."
+  },
+  "moreaboutdrag": {
+    "message": "अधिक...",
+    "description": "Section name"
+  },
+  "morecur": {
+    "message": "वर्तमान टैब",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "morenew": {
+    "message": "नया टैब और सामने",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "morenewback": {
+    "message": "नया टैब और पृष्ठभूमि",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "moresettings": {
+    "message": "विविध",
+    "description": "Section name"
+  },
+  "morestrges": {
+    "message": "विस्तृत सेटिंग",
+    "description": "Section name on Rocker Gestures page"
+  },
+  "msgbox": {
+    "message": "कॉन्फ़िगरेशन सहेजा गया! कुछ परिवर्तन फिर से लोड करने के बाद लागू होंगे।",
+    "description": "Message when making changes or clicking on save inside Settings "
+  },
+  "newadd": {
+    "message": "नया",
+    "description": "Options in Actions"
+  },
+  "newback": {
+    "message": "नया टैब और पृष्ठभूमि",
+    "description": "Options in Actions"
+  },
+  "newfront": {
+    "message": "नया टैब और सामने",
+    "description": "Options in Actions"
+  },
+  "newgesture": {
+    "message": "नया जोड़ें",
+    "description": "Button on Mouse Gestures page"
+  },
+  "newtabdes": {
+    "message": "%नाम खोलें",
+    "description": "Placeholder in Actions"
+  },
+  "normal": {
+    "message": "कॉन्फिगरेशन (विन्यास)",
+    "description": "Side navigation in Settings"
+  },
+  "opa": {
+    "message": "पारदर्शिता:",
+    "description": "Option in Appearance section"
+  },
+  "optgrpapp": {
+    "message": "एप्लिकेशन",
+    "description": "Action"
+  },
+  "optgrpcopy": {
+    "message": "कॉपी करें",
+    "description": "Action"
+  },
+  "optgrpload": {
+    "message": "लोड करें",
+    "description": "Action"
+  },
+  "optgrpnav": {
+    "message": "नेविगेशन",
+    "description": "Action"
+  },
+  "optgrpnone": {
+    "message": "कोई नहीं",
+    "description": "Action"
+  },
+  "optgrpother": {
+    "message": "अन्य",
+    "description": "Action"
+  },
+  "optgrpsave": {
+    "message": "सहेजें",
+    "description": "Action"
+  },
+  "optgrpscroll": {
+    "message": "स्क्रॉल करें",
+    "description": "Action"
+  },
+  "optgrpsearch": {
+    "message": "खोजें",
+    "description": "Action"
+  },
+  "optgrptab": {
+    "message": "टैब",
+    "description": "Action"
+  },
+  "optgrptabnav": {
+    "message": "टैब नेविगेशन",
+    "description": "Action"
+  },
+  "optgrpwindow": {
+    "message": "Window",
+    "description": "Action"
+  },
+  "pinned": {
+    "message": "पिन करें",
+    "description": "Action"
+  },
+  "placeholderconfig": {
+    "message": "आयात पूर्ण करने के लिए कॉन्फ़िगरेशन को यहाँ चिपकाएँ और फिर आयात पर क्लिक करें; निर्यात पर क्लिक करने के बाद कॉन्फ़िगरेशन दिखाई देगा और आगे उपयोग के लिए उपलब्ध रहेगा",
+    "description": "Text on Advanced Settings page"
+  },
+  "placeholdername": {
+    "message": "नाम",
+    "description": "Placeholder in Actions"
+  },
+  "placeholderscript": {
+    "message": "स्क्रिप्ट",
+    "description": "Placeholder in Actions"
+  },
+  "placeholdersearchurl": {
+    "message": "URL, कीवर्ड के बजाय %s का उपयोग करें",
+    "description": "Placeholder in Actions"
+  },
+  "placeholdertooltip": {
+    "message": "क्रिया नाम",
+    "description": "Placeholder in Actions"
+  },
+  "placeholderurl": {
+    "message": "URL",
+    "description": "Placeholder in Actions"
+  },
+  "port": {
+    "message": "आयात/निर्यात कॉंफ़िगरेशन",
+    "description": "Section name on Advanced Settings page"
+  },
+  "porttip": {
+    "message": "नोट: 1: कॉन्फ़िगरेशन को आयात करने से यह एक्सटेंशन पुनरारंभ जाएगा, इस एक्सटेंशन को लागू करने के लिए खुले हुए टैब को पुनः लोड करना होगा! <br /> 2. आप केवल उसी कॉन्फ़िगरेशन का आयात कर सकते हैं जो यहां से बाहर भेजा जाता है, यह स्वयं संपादित करने के लिए अनुशंसित नहीं है। &lt;br /&gt; 3.यदि कोई त्रुटि होती है, तो कृपया डिफ़ॉल्ट कॉन्फ़िगरेशन पर रीसेट करें। ",
+    "description": "Text on Advanced Settings page. Note! Do not translate html tags"
+  },
+  "poschrome": {
+    "message": "Chrome डिफ़ॉल्ट",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "poshead": {
+    "message": "शीर्ष",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "poslast": {
+    "message": "पिछला",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "posleft": {
+    "message": "शेष",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "posright": {
+    "message": "दायाँ",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "reset": {
+    "message": "रीसेट करें",
+    "description": "Section name on Advanced Settings page"
+  },
+  "resetall": {
+    "message": "सभी रीसेट करें",
+    "description": "Reset button on Advanced Settings page"
+  },
+  "resetpage": {
+    "message": "यह पृष्ठ रीसेट करें",
+    "description": "Reset button on Gestures pages"
+  },
+  "resettip": {
+    "message": "नोट: यह संचालन सभी कॉन्फ़िगरेशन को साफ़ कर देगा और कॉन्फ़िगरेशन को डिफ़ॉल्ट पर रीसेट कर देगा और इस संचालन को पूर्ववत नहीं किया जा सकता, इसलिए, सावधान रहें!",
+    "description": "Text on Advanced Settings page"
+  },
+  "reverseFS": {
+    "message": "दिशा को उल्टा करें",
+    "description": "Action"
+  },
+  "right": {
+    "message": "दायाँ",
+    "description": "Action"
+  },
+  "s360": {
+    "message": "360",
+    "description": "Action - Website name"
+  },
+  "samazon": {
+    "message": "Amazon",
+    "description": "Action - Website name"
+  },
+  "save": {
+    "message": "सहेजें",
+    "description": "Save button"
+  },
+  "sbaidu": {
+    "message": "Baidu",
+    "description": "Action - Website name"
+  },
+  "sbaiduimage": {
+    "message": "छवि के साथ Baidu खोज",
+    "description": "Action - Website name"
+  },
+  "sbing": {
+    "message": "Bing",
+    "description": "Action - Website name"
+  },
+  "scractdown": {
+    "message": "नीचे स्क्रॉल करें",
+    "description": "Action"
+  },
+  "scractup": {
+    "message": "ऊपर स्क्रॉल करें",
+    "description": "Action"
+  },
+  "scriptdes": {
+    "message": "स्क्रिप्ट चलाएँ :%नाम",
+    "description": "Placeholder in Actions"
+  },
+  "scroll": {
+    "message": "स्क्रॉल करना",
+    "description": "Side navigation in Settings"
+  },
+  "scrollaccele": {
+    "message": "स्क्रॉल बढ़ाना",
+    "description": "Option on Scrolling page"
+  },
+  "scrolleffects": {
+    "message": "प्रभावों के साथ( ऊपर/नीचे/शीर्ष/निचले पृष्ठ के लिए)।",
+    "description": "Option in Miscellaneous section on General Settings"
+  },
+  "scrollgesture": {
+    "message": "व्हील जेस्चर",
+    "description": "Side navigation in Settings"
+  },
+  "scrollspeed": {
+    "message": "स्क्रॉल गति",
+    "description": "Option on Scrolling page"
+  },
+  "searchdes": {
+    "message": "इसे खोजने के लिए %नाम का उपयोग करें:\"%s\"",
+    "description": "Placeholder in Actions. Note! do not translate text next to %."
+  },
+  "setdragurl": {
+    "message": "यदि स्ट्रिंग को लिंक के रूप में पहचाना जाता है तो ड्रैग-लिंक सक्षम करें(प्रायोगिक)।",
+    "description": "Option in More section on Super Drag page"
+  },
+  "settings": {
+    "message": "सेटिंग्‍स",
+    "description": "Settings"
+  },
+  "sgoogle": {
+    "message": "Google",
+    "description": "Action - Website name"
+  },
+  "sduckduckgo": {
+    "message": "DuckDuckGo",
+    "description": "Action - Website name"
+  },
+  "sgoogleimage": {
+    "message": "छवि के साथ Google खोज",
+    "description": "Action - Website name"
+  },
+  "sgooglelens": {
+    "message": "Google Lens खोज",
+    "description": "Action - Website name"
+  },
+  "site": {
+    "message": "वेबसाइट",
+    "description": "Action"
+  },
+  "smooth": {
+    "message": "स्मूथ स्क्रॉल",
+    "description": "Action"
+  },
+  "ssogou": {
+    "message": "Sogou",
+    "description": "Action - Website name"
+  },
+  "staobao": {
+    "message": "Taobao",
+    "description": "Action - Website name"
+  },
+  "stenable": {
+    "message": "बाएँ माउस बटन को दबाकर रखते हुए पाठ का चयन करना सक्षम करें(यह कभी-कभी माउस जेस्चर को अमान्य बना देता है)",
+    "description": "Enable select text while holding the left mouse(It makes Mouse Gestures invalid sometimes)"
+  },
+  "stineyeimage": {
+    "message": "TinEye",
+    "description": "TinEye"
+  },
+  "stractleft": {
+    "message": "बायाँ बटन क्लिक करें:",
+    "description": "Options on Rocker Gestures page"
+  },
+  "stractmiddle": {
+    "message": "मध्य बटन क्लिक करें:",
+    "description": "Options on Rocker Gestures page"
+  },
+  "stractright": {
+    "message": "दायाँ बटन क्लिक करें",
+    "description": "Options on Rocker Gestures page"
+  },
+  "strleft": {
+    "message": "बायाँ बटन दबाए रखें",
+    "description": "Section on Rocker Gestures page"
+  },
+  "strmiddle": {
+    "message": "मध्य बटन दबाए रखें",
+    "description": "Section on Rocker Gestures page"
+  },
+  "stroke": {
+    "message": "माउस ट्रैक दिखाएं",
+    "description": "Option in Appearance section on Mouse Gestures page"
+  },
+  "strokegesture": {
+    "message": "घुमाव जेस्चर",
+    "description": "Side navigation in Settings"
+  },
+  "strpress": {
+    "message": "क्रिया कब ट्रिगर की जा सकती है:",
+    "description": "Text on Rocker Gestures page"
+  },
+  "strpressdown": {
+    "message": "माउस नीचे",
+    "description": "Option on Rocker Gestures page"
+  },
+  "strpressup": {
+    "message": "माउस ऊपर",
+    "description": "Option on Rocker Gestures page"
+  },
+  "strright": {
+    "message": "दायाँ बटन दबाए रखें",
+    "description": "Option on Rocker Gestures page"
+  },
+  "swiki": {
+    "message": "विकिपीडिया",
+    "description": "Action - Website name"
+  },
+  "syahoo": {
+    "message": "Yahoo",
+    "description": "Action - Website name"
+  },
+  "syandex": {
+    "message": "Yandex",
+    "description": "Action - Website name"
+  },
+  "sync": {
+    "message": "सिंक कॉंफ़िगरेशन",
+    "description": "Section on Advanced Settings page"
+  },
+  "syncdes": {
+    "message": "<a href=\"https://accounts.google.com/ServiceLogin?service=chromiumsync\" target=\"_blank\">लॉग इन किए हुए</a> उपयोगकर्ता के लिए कॉन्फ़िगरेशन Chrome के साथ अपने आप सिंक हो जाएगा, बशर्ते उपयोगकर्ता ने सिंक सक्षम किया हो।",
+    "description": "Text on Advanced Settings page"
+  },
+  "tablist": {
+    "message": "टैब सूची",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "tablistVisual": {
+    "message": "स्क्रॉल करने पर विज़ुअल टैब सूची दिखाएँ",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "tablistkeyleft": {
+    "message": "बाएँ बटन को दबाकर स्क्रॉल करें।",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "tablistkeyright": {
+    "message": "दाएँ बटन को दबाकर स्क्रॉल करें।",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "testlink": {
+    "message": "परीक्षण लिंक",
+    "description": "Text in new Link Super Drag Gesture window"
+  },
+  "testwords": {
+    "message": "परीक्षण स्ट्रिंग्स",
+    "description": "Text in new Text Super Drag Gesture window"
+  },
+  "text": {
+    "message": "पाठ",
+    "description": "Buttons in New section on Super Drag page"
+  },
+  "thanks": {
+    "message": "धन्यवाद",
+    "description": "Section on About page"
+  },
+  "time": {
+    "message": "अवधि",
+    "description": "Option in Miscellaneous section on General Settings"
+  },
+  "timeout": {
+    "message": "टाइमआउट",
+    "description": "Option in Miscellaneous section on General Settings"
+  },
+  "titlechromepage": {
+    "message": "क्रिया नाम टूलटिप, Chrome आंतरिक पते के स्थान पर \"%name\" का उपयोग करें",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titlecopyuser": {
+    "message": "क्रिया नाम टूलटिप, कस्टम स्वरूप नाम के स्थान पर \"%name\" का उपयोग करें",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titleisearch": {
+    "message": "क्रिया नाम टूलटिप,खोज इंजन नाम के बजाय \"%नाम\" का उपयोग करें",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titlenewusertab": {
+    "message": "क्रिया नाम टूलटिप, साइट नाम के बजाय \"%नाम\" का उपयोग करें",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titlenexpre": {
+    "message": "मिलान शब्द, \"।\" के साथ कई शब्दों को अलग करें और एक्सटेंशन rel, rev, id, innerHTML, शीर्षक, वर्ग का बारी बारी पता लगा लेगा।",
+    "description": "Placeholder in Actions"
+  },
+  "titlesearchuser": {
+    "message": "URL,बाद के कीवर्ड के बजाए \"%s\" का उपयोग करें",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titletsearch": {
+    "message": "क्रिया नाम टूलटिप, खोज इंजन के बजाय \"%नाम\" का, सामग्री के बजाए \"%s\" का उपयोग करें",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titleuserscript": {
+    "message": "क्रिया नाम टूलटिप, स्क्रिप्ट नाम के बजाय \"%नाम\" का उपयोग करें",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "tooltip": {
+    "message": "क्रिया नाम प्रदर्शित करें",
+    "description": "Option in Appearance section on Super Drag and Mouse Gestures pages"
+  },
+  "translate": {
+    "message": "अनुवाद करें",
+    "description": "Translate"
+  },
+  "unclose": {
+    "message": "निम्न URL को बंद न करें और खोलें नहीं",
+    "description": "Do not close, and open the following URL"
+  },
+  "unpinned": {
+    "message": "पिन हटाएं",
+    "description": "Action"
+  },
+  "valuechromepage": {
+    "message": "%नाम खोलें",
+    "description": "Placeholder in Actions"
+  },
+  "valueisearch": {
+    "message": "छवि खोजने के लिए %नाम का उपयोग करें",
+    "description": "Placeholder in Actions"
+  },
+  "valuenewusertab": {
+    "message": "%नाम खोलें",
+    "description": "Placeholder in Actions"
+  },
+  "valuenone": {
+    "message": "कोई नहीं",
+    "description": "Action"
+  },
+  "valuetsearch": {
+    "message": "\"%s\" खोजने के लिए %नाम का उपयोग करें",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "valueuserscript": {
+    "message": "स्क्रिप्ट चलाएं: \"%नाम\"",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "version": {
+    "message": "संस्करण",
+    "description": "Version"
+  },
+  "width": {
+    "message": "चौड़ाई:",
+    "description": "Option in Appearance section on Super Drag and Mouse Gestures pages"
+  },
+  "offmodepopup": {
+    "message": "Crx Mouse बंद है",
+    "description": "Text on ext. popup when Crx Mouse is off"
+  },
+  "offmodesettings": {
+    "message": "Crx Mouse अक्षम है",
+    "description": "Text in Settings on General Settings page when Crx Mouse is off"
+  },
+  "enabletochange": {
+    "message": "कोई भी परिवर्तन करने के लिए सक्षम करें",
+    "description": "Text in Settings on General Settings page when Crx Mouse is off"
+  },
+  "offmodetooltip": {
+    "message": "Crx Mouse को बंद करें",
+    "description": "Tooltip next to on/off toggle of Crx Mouse on ext. popup"
+  },
+  "onmodetooltip": {
+    "message": "Crx Mouse को चालू करें",
+    "description": "Tooltip next to on/off toggle of Crx Mouse on ext. popup"
+  },
+  "popuppopular": {
+    "message": "लोकप्रिय जेस्चर",
+    "description": "Headline of popular gestures section on ext. popup"
+  },
+  "mygestures": {
+    "message": "सक्रिय जेस्चर",
+    "description": "Headline of default, edited or new gestures section on ext. popup"
+  },
+  "popupaddtooltip": {
+    "message": "नया जोड़ें",
+    "description": "Tooltip when hovering on plus icon in Active Gestures section"
+  },
+  "popupfooterhelptooltip": {
+    "message": "सहायता",
+    "description": "Tooltip when hovering on question mark icon in footer on ext. popup"
+  },
+  "popupvideotool": {
+    "message": "Crx Mouse का उपयोग कैसे करें",
+    "description": "Tooltip when hovering on video icon in footer on ext. popup"
+  },
+  "popuponboarding": {
+    "message": "समझ गए, धन्यवाद।",
+    "description": "Text on onboarding window to close window"
+  },
+  "popupnewscope": {
+    "message": "क्षेत्र चुनें",
+    "description": "Section name in new gesture window on ext. popup"
+  },
+  "popupnewscopeglobal": {
+    "message": "सभी साइटें",
+    "description": "Option in new gesture window on ext. popup"
+  },
+  "popupnewaction": {
+    "message": "क्रिया चुनें",
+    "description": "Section name in new gesture window on ext. popup"
+  },
+  "popupnewgesture": {
+    "message": "जेस्चर चुनें",
+    "description": "Section name in new gesture window on ext. popup"
+  },
+  "popuprecordsave": {
+    "message": "जेस्चर सहेजें",
+    "description": "Button to save new gesture in new gesture window on ext. popup"
+  },
+  "popupgesturecancel": {
+    "message": "रद्द करें",
+    "description": "Button to cancel new/edit gesture on ext. popup"
+  },
+  "popupsuccess": {
+    "message": "'$GestureName$' के लिए जेस्चर सहेजा जाता है",
+    "description": "Text in notification for gesture saved/edited on ext. popup. Note! Do not translate text next to $",
+    "placeholders": {
+      "GestureName": {
+        "content": "$1"
+      }
+    }
+  },
+  "popupeditgesture": {
+    "message": "परिवर्तन लागू करें",
+    "description": "Button to apply changes for existing gesture on ext. popup"
+  },
+  "popuptooltipedit": {
+    "message": "संपादित करें",
+    "description": "Tooltip when hovering on edit icon on ext. popup"
+  },
+  "popuptooltipdelete": {
+    "message": "हटाएँ",
+    "description": "Tooltip when hovering on delete icon on ext. popup"
+  },
+  "showwhitelist": {
+    "message": "व्हाइटलिस्ट दिखाएँ",
+    "description": "Opens a section that sets the scope of the gesture. Appears on all gesture boxes"
+  },
+  "hidewhitelist": {
+    "message": "व्हाइटलिस्ट छुपाएँ",
+    "description": "Hides a section that sets the scope of the gesture. Appears on all gesture boxes"
+  },
+  "headlineforwhitelist": {
+    "message": "प्रति पंक्ति एक url या उसका भाग",
+    "description": "Text in whitelist section on all gesture boxes. Appears on all gesture boxes"
+  },
+  "tipforwhitelist": {
+    "message": "टिप: आप एक पूर्ण url या इसके एक हिस्से का उपयोग कर सकते हैं। उदाहरण के लिए, \"cnn.com\" इसमें cnn.com के साथ किसी भी url का समर्थन करेगा।",
+    "description": "Text in whitelist section on all gesture boxes. Appears on all gesture boxes"
+  },
+  "savewhitelist": {
+    "message": "सहेजें",
+    "description": "save whitelist changes. Appears on all gesture boxes"
+  },
+  "optmode": {
+    "message": "लोकप्रिय जेस्चर चालू करें (अज्ञात डेटा भेजता है)",
+    "description": "Text of opt in/out checkbox"
+  },
+  "optmodealert": {
+    "message": "हम आपको लोकप्रिय जेस्चर दिखान जारी नहीं रख पाएंगे। आप उन्हें चेक सुविधा के चेकबॉक्स को चुनकर किसी भी समय पुनः सक्रिय कर सकते हैं।",
+    "description": "text on opt in/out alert window"
+  },
+  "optoutmodetitle": {
+    "message": "लोकप्रिय जेस्चर निष्क्रिय हैं।",
+    "description": "Title of opt out mode on ext. popup"
+  },
+  "optoutmodemessage": {
+    "message": "लोकप्रिय जेस्चर सक्रिय करने के लिए, <a href=\"$link$\" target=\"_blank\">सेटिंग</a>पर जाएँ",
+    "description": "Description of opt out mode on ext. popup",
+    "placeholders": {
+      "link": {
+        "content": "$1"
+      }
+    }
+  },
+  "moreaffecteddomains": {
+    "message": "अधिक डोमेन प्रभावित डोमेन संपादित करें",
+    "description": "Shown on hover when gesture is associated to more than one domain on Edit Gesture screen."
+  },
+  "nopopulargestures": {
+    "message": "इस पृष्ठ के लिए कोई लोकप्रिय जेस्चर नहीं. जेस्चर का उपयोग करने वाले पहले व्यक्ति बनें और हमारे हब में योगदान दें.",
+    "description": "shown in popup when user visits a site with no popular gestures available for it"
+  },
+  "rateus": {
+    "message": "हमें पसंद करते हैं? हमें रेट करें!",
+    "description": "located in Settings section inside sidebar. Asking the users to rate the extension. Translation should be max 21 characters"
+  },
+  "gesturedeleted": {
+    "message": "जेस्चर हटाया गया",
+    "description": "Appears in notification window when a gesture is deleted. Indicating that the gesture was deleted successfully."
+  },
+  "set_your_mouse_gestures_on": {
+    "message": "Mouse Gestures को डिफ़ॉल्ट रूप से ऑन होने के लिए सेट करें",
+    "description": "Option in More section on Mouse Gestures page to have mouse gestures enabled by default"
+  },
+  "keytodisablemousegestures": {
+    "message": "माउस जेस्चर अक्षम करने के लिए एक कुंजी असाइन करें:",
+    "description": "Option in More section on Mouse Gestures page to choose key to disable gestures"
+  },
+  "noteforkeytoenable": {
+    "message": "नोट: चुनी गई कुंजी को क्लिक करने पर, माउस जैस्चर डिफ़ॉल्ट रूप से अक्षम हो जाएंगे और राइट-क्लिक कार्यक्षमता सक्षम हो जाएगी",
+    "description": "Note on Options in More section on Mouse Gestures page for key to enable gestures"
+  },
+  "noteforkeytodisable": {
+    "message": "नोट: चुनी गई कुंजी को क्लिक करने पर, माउस जैस्चर डिफ़ॉल्ट रूप से सक्षम हो जाएंगे और राइट-क्लिक कार्यक्षमता अक्षम हो जाएगी",
+    "description": "Note on Options in More section on Mouse Gestures page for key to disable gestures"
+  },
+  "set_your_mouse_gestures_off": {
+    "message": "Mouse Gestures को डिफ़ॉल्ट रूप से ऑफ़ होने के लिए सेट करें",
+    "description": "Option in More section on Mouse Gestures page to have mouse gestures enabled by default"
+  },
+  "keytoenablemousegestures": {
+    "message": "Mouse Gestures को सक्षम करने के लिए एक कुंजी असाइन करें:",
+    "description": "Option in More section on Mouse Gestures page to choose key to enable gestures"
+  },
+  "cancelgesture": {
+    "message": "रद्द करें",
+    "description": "Message that appears in trash bin area for dragging mouse gestures to cancel them"
+  },
+  "wheelgesturealert": {
+    "message": "ध्यान दें कि ये दो फ़ंक्शन ओवरलैप हो जाते हैं",
+    "description": "An alert that jumps up when users choose two options that overlap in the Wheel Gestures section"
+  },
+  "ctatoenableadvanced": {
+    "message": "उन्नत सुविधाएं सक्षम करें",
+    "description": "CTA for enabling advanced features on sidebar inside Settings area. Make sure any translation is limited to 24 characters"
+  },
+  "missedgesture": {
+    "message": "जेस्चर काम नहीं कर रहे? रिपोर्ट करें",
+    "description": "Message for when gestures didn't work. Click on 'Report' sends to a form to fill. Should be maximun 30 charachters"
+  },
+  "mousecursor": {
+    "message": "माउस कर्सर",
+    "description": "Headline for the Mouse cursor customization section in the Settings page"
+  },
+  "currentcursor": {
+    "message": "आपका माउस कर्सर",
+    "description": "Headline for the Current cursor section in the Settings page"
+  },
+  "mousecursoruploadinstructions": {
+    "message": "अपना माउस कर्सर अपलोड करें। 48px × 48px PNG। 20kb तक।",
+    "description": "Instructions for the image file a user can upload for the mouse cursor"
+  },
+  "mousecursorupload": {
+    "message": "कंप्यूटर से अपलोड करें",
+    "description": "Uploading an image to be used as a mouse cursor"
+  },
+  "mousecursorreturndefault": {
+    "message": "डिफ़ॉल्ट कर्सर पर लौटें",
+    "description": "Link to switch back to default mouse cursor image"
+  },
+  "mousecursorscale": {
+    "message": "पैमाना",
+    "description": "Scale of mouse custom cursor image"
+  },
+  "cancelgesturehidetrash": {
+    "message": "ट्रैश छुपाएं",
+    "description": "An option to hide the icon of the trash bin that appears when performing a gesture. The trashbin enables canceling the performed gestute."
+  },
+  "cancelgesturehidetrashinfo": {
+    "message": "ट्रैश बिन सुविधा को छुपाने के लिए यह विकल्प ऑन करें।",
+    "description": "Instructions that appear below the option of hiding the icon of the trash bin."
+  },
+  "rate_us_title": {
+    "message": "CRX Mouse का आनंद ले रहे हैं?",
+    "description": "Title crx mouse overlay for rate us"
+  },
+  "rate_us_never_show_again": {
+    "message": "दोबारा कभी न दिखाएँ",
+    "description": "button in crx mouse rate us overlay"
+  },
+  "rate_us_remind_me_later": {
+    "message": "बाद में याद दिलाएं",
+    "description": "button in crx mouse rate us overlay"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "3302": {
+    "preprocessor": "env_mobile"
+  },
+  "3619": {
+    "preprocessor": "ext_ubol"
+  },
+  "4009": {
+    "preprocessor": "!env_mv3"
+  }
+}

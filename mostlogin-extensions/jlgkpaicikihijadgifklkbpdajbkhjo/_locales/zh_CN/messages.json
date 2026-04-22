@@ -1,0 +1,1492 @@
+{
+  "appName": {
+    "message": "crxMouse Chrome™ 手势",
+    "Description": "Name of extension. Do not translate name."
+  },
+  "appName_Edge": {
+    "message": "CrxMouse Edge™ 手势",
+    "Description": "Name of extension. Do not translate name."
+  },
+  "G_BmManager": {
+    "message": "打开收藏夹管理",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_ZoomIn": {
+    "message": "放大",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_ZoomOut": {
+    "message": "缩小",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_back": {
+    "message": "后退",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_bookmark": {
+    "message": "添加书签",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_bookmarks": {
+    "message": "书签管理器",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_bottom": {
+    "message": "到底部",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_capture": {
+    "message": "截图",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_chromepage": {
+    "message": "打开Chrome内部地址",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_close": {
+    "message": "关闭标签页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closelefttabs": {
+    "message": "关闭左侧标签页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closeothers": {
+    "message": "关闭其他标签页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closerighttabs": {
+    "message": "关闭右侧标签页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closewindow": {
+    "message": "关闭窗口",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closewindows": {
+    "message": "关闭所有窗口",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copyaslink": {
+    "message": "复制当前页标题和网址为链接",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copytab": {
+    "message": "复制当前标签",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copytitle": {
+    "message": "复制当前页标题",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copyurl": {
+    "message": "复制当前页网址",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copyuser": {
+    "message": "复制标题及网址为自定义格式",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_crxsettings": {
+    "message": "进入扩展设置页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_down": {
+    "message": "向下滚动",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_downloads": {
+    "message": "下载内容",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_firsttab": {
+    "message": "首标签页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_fullscreen": {
+    "message": "全屏",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_go": {
+    "message": "前进",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_goparent": {
+    "message": "转到上一级目录",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_history": {
+    "message": "历史记录",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_incognito": {
+    "message": "新建隐身窗口",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_lasttab": {
+    "message": "尾标签页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_left": {
+    "message": "向左滚动",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_lefttab": {
+    "message": "左侧标签页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_mergeTab": {
+    "message": "合并所有窗口",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_movetowindow": {
+    "message": "分离标签页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_newtab": {
+    "message": "新建标签页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_newusertab": {
+    "message": "打开自定义网站...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_newwindow": {
+    "message": "新建窗口",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_none": {
+    "message": "无",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_openclipurl": {
+    "message": "尝试打开剪贴板中的网址",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_pin": {
+    "message": "固定标签页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reclosedtab": {
+    "message": "重新打开关闭的标签页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reload": {
+    "message": "刷新",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reloadall": {
+    "message": "刷新所有标签",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reloadclear": {
+    "message": "强制刷新",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reloadframe": {
+    "message": "刷新框架",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_right": {
+    "message": "向右滚动",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_righttab": {
+    "message": "右侧标签页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_settings": {
+    "message": "Chrome浏览器设置",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_splitTab": {
+    "message": "将右侧及当前标签在新窗口种打开",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_stop": {
+    "message": "停止载入",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_stopall": {
+    "message": "停止所有标签页载入",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_top": {
+    "message": "到顶部",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_tostop": {
+    "message": "在当前页临时禁用本扩展",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_trynext": {
+    "message": "尝试转到下一页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_tryprev": {
+    "message": "尝试转到上一页",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_up": {
+    "message": "向上滚动",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_userscript": {
+    "message": "运行自定义脚本...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_viewsource": {
+    "message": "查看网页源代码",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_windowmax": {
+    "message": "最大化窗口",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_windowmin": {
+    "message": "最小化窗口",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_copyurl": {
+    "message": "复制图片网址",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_open": {
+    "message": "打开图片",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_save": {
+    "message": "保存图片(Dev Only)",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_saveback": {
+    "message": "图片另存为(Dev Only)...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_search": {
+    "message": "搜索此图片",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_searchuser": {
+    "message": "使用自定义搜索引擎搜索此图片",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_bookmark": {
+    "message": "添加书签",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copyaslink": {
+    "message": "复制文字及网址为链接",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copytext": {
+    "message": "复制链接文字",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copyurl": {
+    "message": "复制链接地址",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copyuser": {
+    "message": "复制文字及网址为自定义格式",
+    "description": "Advanced actions"
+  },
+  "L_open": {
+    "message": "打开链接",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "T_copytext": {
+    "message": "复制选中文本",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "T_search": {
+    "message": "搜索拖动文字",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "T_searchuser": {
+    "message": "使用自定义搜索...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "about": {
+    "message": "关于",
+    "description": "Title of About page in Settings area"
+  },
+  "bug": {
+    "message": "报告错误",
+    "description": "Link to report a bug"
+  },
+  "addtipgesture": {
+    "message": "按住鼠标右键，移动鼠标画出轨迹，松开右键并选取需要的操作.",
+    "description": "Instructions for how to add a new gesture thourh the Settings area - appears when clicking on the 'Add New' button in the 'New section on the 'Mouse Gestures' page."
+  },
+  "addtipimage": {
+    "message": "使用鼠标左键拖动下面的图片，然后画出轨迹，松开鼠标后选取相应的操作.",
+    "description": "Instructions for how to add a new Super Drag Gesture for an Image - appears when clicking on the 'Image' button in the 'New' section on the 'Super Drag' page."
+  },
+  "addtiplink": {
+    "message": "使用鼠标左键拖动下面的链接，并画出轨迹，然后松开鼠标并选取需要的操作.",
+    "description": "Instructions for how to add a new Super Drag Gesture for a link - appears when clicking on the 'Link' button in the 'New' section on the 'Super Drag' page."
+  },
+  "addtiptext": {
+    "message": "选中下面的文字，使用鼠标左键拖动并画出轨迹，然后松开鼠标并选取需要的操作.",
+    "description": "Instructions for how to add a new Super Drag Gesture for a text - appears when clicking on the 'Text' button in the 'New' section on the 'Super Drag' page"
+  },
+  "advanced": {
+    "message": "高级选项",
+    "description": "Side navigation and Title of page in 'Settings' area"
+  },
+  "alertaction": {
+    "message": "请选择需要的操作.",
+    "description": "Alert window - promopted of user tries to save new gesture before selecting an action."
+  },
+  "alertconfigerror": {
+    "message": "导入的配置文件错误.",
+    "description": "Error message - prompted when there is an issue with an imported file."
+  },
+  "alertname": {
+    "message": "无法保存。请检查哪个字段缺失。",
+    "description": "Error message when trying to edit gesture with text field empty."
+  },
+  "alertrepeat": {
+    "message": "手势重复，请重试.",
+    "description": "Error message when trying to create gesture with an already used gesture."
+  },
+  "alerttooltip": {
+    "message": "请输入欲显示的提示文字.",
+    "description": "Error message when creating new gesture of new action without giving it a name. "
+  },
+  "alerturl": {
+    "message": "未输入网址或网址错误.",
+    "description": "Error message when creating new gesture for opening a specific url without specifying the url."
+  },
+  "author": {
+    "message": "作者",
+    "description": "Author"
+  },
+  "blackList": {
+    "message": "不在这些网站运行本扩展",
+    "description": "List for sites that should exclude mouse gestures. Located on General Settings page."
+  },
+  "blacklistTip": {
+    "message": "注意:1: crxMouse 将不会在这些网站运行. 2:每行一个网址，不要包含 http:// or https://",
+    "description": "Note listed below message box of site blacklist. Located on General Settings page."
+  },
+  "bookmarkfailnotifi": {
+    "message": "书签已经存在!",
+    "description": "Error message when trying to create gesture for bookmark that already exists."
+  },
+  "bookmarknotifi": {
+    "message": "添加书签成功!",
+    "description": "Notification for bookmark saved."
+  },
+  "cancel": {
+    "message": "取消",
+    "description": "Cancel adding new gesture."
+  },
+  "cancelcontextmenu": {
+    "message": "消除Linux/Mac右键菜单对本扩展的影响(<span style='color:red'>双击弹出右键菜单</span>).",
+    "description": "Text of Linux/Mac options check box located on General Settings page. Note! Do not translate html tags."
+  },
+  "cancelcontextmenudes": {
+    "message": "该选项修复非Windows平台上,右键菜单影响某些功能的正常使用,强烈建议Linux/Mac用户勾选此项.",
+    "description": "Tooltip about Linux/Mac options located on General Settings page"
+  },
+  "changelog": {
+    "message": "开发日志",
+    "description": "Super Drag Action."
+  },
+  "chrome": {
+    "message": "Chrome默认",
+    "description": "Referrs to the default tab opening (left or right) settings in Chrome."
+  },
+  "clearsyncdata": {
+    "message": "清空同步数据",
+    "description": "For logged in users, they can clear any data that was synced between machines."
+  },
+  "close": {
+    "message": "关闭",
+    "description": "Action list - close tab"
+  },
+  "color": {
+    "message": "颜色：",
+    "description": "A design option for how mouse gestures appear, under the 'Appearance' section on the Settings area."
+  },
+  "crbookmarks": {
+    "message": "书签管理器",
+    "description": "Action list - open bookmarks manager"
+  },
+  "crdownloads": {
+    "message": "下载内容",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crextensions": {
+    "message": "扩展程序",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crflags": {
+    "message": "Chrome实验室",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crhistory": {
+    "message": "历史记录",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crsettings": {
+    "message": "Chrome浏览器设置",
+    "description": "Actions list - referrs to "
+  },
+  "curfront": {
+    "message": "覆盖当前标签页",
+    "description": "Actions list - referrs to the current tab opened and visited."
+  },
+  "dbclicktime": {
+    "message": "双击间隔最长时间(ms):",
+    "description": "milliseconds between 2 clicks for accessing the right-click menu on Mac and Linux."
+  },
+  "delete": {
+    "message": "删除",
+    "description": "Delete a gesture."
+  },
+  "description": {
+    "message": "原名:Gestures for Chrome(TM)汉化版.方便,快捷,充分发掘鼠标的所有操作.",
+    "description": "Long Store title"
+  },
+  "descriptionjson": {
+    "message": "原名:Gestures for Chrome(TM)汉化版.方便,快捷,充分发掘鼠标的所有操作.功能包括:鼠标手势,超级拖曳,滚轮手势,摇杆手势,平滑滚动,标签页列表等.",
+    "description": "Short Store description"
+  },
+  "dholdkey": {
+    "message": "按住以下键,临时禁用超级拖曳:",
+    "description": "Users can choose a keyboard key that will disable the super drag feature on specific ocassions."
+  },
+  "direct": {
+    "message": "显示轨迹方向提示",
+    "description": "Appearance option that let's user choose whether or not to see the path of a mouse gesture, when performing it."
+  },
+  "downimgtooltip": {
+    "message": "正在保存图片...",
+    "description": "Tooltip for when saving image using super drag gesture."
+  },
+  "drag": {
+    "message": "超级拖曳",
+    "description": "Side navigation and title of page in Settings area."
+  },
+  "draginput": {
+    "message": "选中并拖动文本框中的文字时,使用超级拖曳.",
+    "description": "Option in More section on Super Drag page"
+  },
+  "dragui": {
+    "message": "鼠标手势外观",
+    "description": "Section name in the Settings area."
+  },
+  "editgesture": {
+    "message": "编辑手势",
+    "description": "Section name"
+  },
+  "editimage": {
+    "message": "编辑 拖曳-图片",
+    "description": "Section name on Super Drag page"
+  },
+  "editlink": {
+    "message": "编辑 拖曳-链接",
+    "description": "Section name on Super Drag page"
+  },
+  "editsgsleft": {
+    "message": "滚轮手势-左键<br /><span class='opttitledes'>(按住鼠标左键,然后滚动滚轮)</span>",
+    "description": "Section name on Wheel Gestures page. Note! do not translate html tags (the br and span open and close tags)."
+  },
+  "editsgsright": {
+    "message": "滚轮手势-右键<br /><span class='opttitledes'>(按住鼠标右键,然后滚动滚轮)</span>",
+    "description": "Section name on Super Drag page. Note! do not translate html tag (the span open and close tags)."
+  },
+  "edittext": {
+    "message": "编辑 拖曳-文字",
+    "description": "Section name on Super Drag page"
+  },
+  "enabledragimage": {
+    "message": "启用超级拖曳-图片",
+    "description": "Option in More section on Super Drag page"
+  },
+  "enabledraglink": {
+    "message": "启用超级拖曳-链接",
+    "description": "Option in More section on Super Drag page"
+  },
+  "enabledragtext": {
+    "message": "启用超级拖曳-文字",
+    "description": "Option in More section on Super Drag page"
+  },
+  "export": {
+    "message": "导出",
+    "description": "Buttom in Advanced Settings page"
+  },
+  "extauthor": {
+    "message": "WeKnowNet",
+    "description": "Author name inside options.html"
+  },
+  "extnamejson": {
+    "message": "CrxMouse",
+    "description": "Extension name"
+  },
+  "extthanks": {
+    "message": "\r\n\t\t&gt; os0x</a></a><br />\r\n\t\t&gt; ArcCosine</a></a><br />\r\n\t\t&gt; Jan Odvarko</a></a><br />\r\n\t\t&gt; 感谢使用本扩展程序和/或向我提供反馈以帮助改进本扩展程序的各位",
+    "description": "Thanks section in About page. Note! do not translate html tag."
+  },
+  "fastSwitch": {
+    "message": "向上滚动鼠标切换到左边标签页，向下滚动则切换到右边标签页",
+    "description": "Switch tab to the left when Scrolling up, to the right when scrolling down"
+  },
+  "fastreset": {
+    "message": "出错了，本扩展程序无法正常运行，请点击此处重置为默认配置。如果依然无法正常运行，请将 Chrome 升级为最新版本 (V23+) 并重试。",
+    "description": "Error message when extension is down"
+  },
+  "fndrag": {
+    "message": "开启超级拖曳",
+    "description": "Enable options on General Settings page"
+  },
+  "fngesture": {
+    "message": "开启鼠标手势",
+    "description": "Enable options on General Settings page"
+  },
+  "fnscroll": {
+    "message": "开启鼠标滚轮功能 ",
+    "description": "Enable options on General Settings page"
+  },
+  "fnscrollgesture": {
+    "message": "开启滚轮手势",
+    "description": "Enable options on General Settings page"
+  },
+  "fnsmooth": {
+    "message": "启用平滑滚动",
+    "description": "Enable options on General Settings page"
+  },
+  "fnstrokegesture": {
+    "message": "开启摇杆手势",
+    "description": "Enable options on General Settings page"
+  },
+  "fnswitch": {
+    "message": "功能开启",
+    "description": "Enable options on General Settings page"
+  },
+  "gesPos": {
+    "message": "鼠标手势名称位置",
+    "description": "Option in Appearance section on Mouse Gestures page"
+  },
+  "gesPosBC": {
+    "message": "底部中间",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosBL": {
+    "message": "左下角",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosBR": {
+    "message": "右下角",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosCC": {
+    "message": "页面正中",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosCL": {
+    "message": "左侧中间",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosCR": {
+    "message": "右侧中间",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosTC": {
+    "message": "顶部中间",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosTL": {
+    "message": "左上角",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosTR": {
+    "message": "右上角",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "geskey": {
+    "message": "鼠标手势操作方式:",
+    "description": "Option in More section on Mouse Gestures page"
+  },
+  "geskeydes": {
+    "message": "注:1,这只是为不能正常使用右键的Linux/Mac用户提供一种替代方案,不建议Windows用户修改此项;<br />2,使用左键存在诸多问题,包括:不能选取文字,不能使用超级拖曳&gt;拖曳文字,图片/链接上不能使用手势,某些页面内操作会触发手势操作等等,此时可以配合下面这个选项来使用.",
+    "description": "Description text in More section on Mouse Gestures page"
+  },
+  "geskeyleft": {
+    "message": "鼠标左键",
+    "description": "Key associated to mouse gesture on Mouse Gestures page"
+  },
+  "geskeymiddle": {
+    "message": "鼠标中键",
+    "description": "Key associated to mouse gesture on Mouse Gestures page"
+  },
+  "geskeyright": {
+    "message": "鼠标右键",
+    "description": "Key associated to mouse gesture on Mouse Gestures page"
+  },
+  "gesture": {
+    "message": "鼠标手势",
+    "description": "Page name"
+  },
+  "gestureui": {
+    "message": "鼠标手势外观",
+    "description": "Section name"
+  },
+  "gholdkey": {
+    "message": "按住以下键,临时禁用鼠标手势:",
+    "description": "Option in More section on Mouse Gestures page"
+  },
+  "head": {
+    "message": "首",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "howtablist": {
+    "message": "操作方式：",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "image": {
+    "message": "图片",
+    "description": "Buttons in New section on Super Drag page"
+  },
+  "imgfirst": {
+    "message": "按住以下键,将带图片的链接识别为图片,以使用拖曳图片功能:",
+    "description": "Option in More section on Super Drag page"
+  },
+  "imgfirstcheck": {
+    "message": "带图片的链接,优先识别为图片,以使用拖曳图片功能",
+    "description": "Option in More section on Super Drag page"
+  },
+  "import": {
+    "message": "导入",
+    "description": "Option on Advanced Setttings page"
+  },
+  "incog": {
+    "message": "隐身窗口",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "last": {
+    "message": "尾",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "left": {
+    "message": "左",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "link": {
+    "message": "链接",
+    "description": "Buttons in New section on Super Drag page"
+  },
+  "linuxsettings": {
+    "message": "Linux/Mac选项",
+    "description": "Section name on General Settings page"
+  },
+  "listaction": {
+    "message": "动作：",
+    "description": "Section in Edit Gesture section on Mouse Gestures page"
+  },
+  "listgesture": {
+    "message": "手势：",
+    "description": "Section in Edit Gesture section on Mouse Gestures page"
+  },
+  "local": {
+    "message": "zh_CN",
+    "description": "en"
+  },
+  "localtrans": {
+    "message": "true",
+    "description": "FALSE"
+  },
+  "minilength": {
+    "message": "手势起效的最小长度(px):",
+    "description": "Option in Miscellaneous section on General Settings page"
+  },
+  "moreChromepagetitle": {
+    "message": "Chrome内部地址",
+    "description": "Placeholder in Actions"
+  },
+  "moreCloseoptstitle": {
+    "message": "如果关闭的是最后一个标签页,是否关闭整个窗口?",
+    "description": "Placeholder in Actions"
+  },
+  "moreCloseseltitle": {
+    "message": "关闭后,选中哪个标签页?",
+    "description": "Placeholder in Actions"
+  },
+  "moreCloseurltitle": {
+    "message": "网址,如果不关闭窗口,则打开此网址",
+    "description": "Placeholder in Actions"
+  },
+  "moreCopystyletitle": {
+    "message": "自定义格式，使用\"%title\"替换标题/字词，\"%url\"替换网址，\"\\n\"进行换行",
+    "description": "Placeholder in Actions. Note! do not translate text inside \"%."
+  },
+  "moreDes": {
+    "message": "功能提示文字，使用%name代替搜索关键词",
+    "description": "Placeholder in Actions. Note! do not translate text inside \"%."
+  },
+  "moreDestitle": {
+    "message": "功能提示文字",
+    "description": "Option in Appearance section on Super Drag and Mouse Gestures pages"
+  },
+  "moreIsearchtitle": {
+    "message": "图片搜索引擎",
+    "description": "Action"
+  },
+  "moreName": {
+    "message": "名称",
+    "description": "Name"
+  },
+  "morePinnedtitle": {
+    "message": "是否固定标签页",
+    "description": "Action"
+  },
+  "morePositiontitle": {
+    "message": "新标签页相当当前标签页的位置",
+    "description": "Action"
+  },
+  "moreScript": {
+    "message": "脚本",
+    "description": "Action"
+  },
+  "moreScripttitle": {
+    "message": "脚本内容",
+    "description": "Placeholder in Run Script Action"
+  },
+  "moreTarget": {
+    "message": "位置",
+    "description": "Action"
+  },
+  "moreTargettitle": {
+    "message": "打开新标签的方式:新/当前标签,前/后台",
+    "description": "Placeholder in Actions"
+  },
+  "moreTsearchtitle": {
+    "message": "文字搜索引擎",
+    "description": "Action"
+  },
+  "moreURL": {
+    "message": "网址",
+    "description": "Action"
+  },
+  "moreURLtitle": {
+    "message": "网址.使用\"%s\"表示搜索关键词",
+    "description": "Placeholder in Actions. Note! do not translate text inside \"%."
+  },
+  "moreaboutdrag": {
+    "message": "细节设置",
+    "description": "Section name"
+  },
+  "morecur": {
+    "message": "覆盖当前标签页",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "morenew": {
+    "message": "新标签页,前台",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "morenewback": {
+    "message": "新标签页,后台",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "moresettings": {
+    "message": "更多设置",
+    "description": "Section name"
+  },
+  "morestrges": {
+    "message": "细节设置",
+    "description": "Section name on Rocker Gestures page"
+  },
+  "msgbox": {
+    "message": "配置已保存,部分设置需要刷新后才能生效!",
+    "description": "Message when making changes or clicking on save inside Settings "
+  },
+  "newadd": {
+    "message": "新增",
+    "description": "Options in Actions"
+  },
+  "newback": {
+    "message": "新标签页,后台",
+    "description": "Options in Actions"
+  },
+  "newfront": {
+    "message": "新标签页,前台",
+    "description": "Options in Actions"
+  },
+  "newgesture": {
+    "message": "添加新手势",
+    "description": "Button on Mouse Gestures page"
+  },
+  "newtabdes": {
+    "message": "打开%name",
+    "description": "Placeholder in Actions"
+  },
+  "normal": {
+    "message": "基本设置",
+    "description": "Side navigation in Settings"
+  },
+  "opa": {
+    "message": "透明度：",
+    "description": "Option in Appearance section"
+  },
+  "optgrpapp": {
+    "message": "APP",
+    "description": "Action"
+  },
+  "optgrpcopy": {
+    "message": "复制",
+    "description": "Action"
+  },
+  "optgrpload": {
+    "message": "加载",
+    "description": "Action"
+  },
+  "optgrpnav": {
+    "message": "导航",
+    "description": "Action"
+  },
+  "optgrpnone": {
+    "message": "无",
+    "description": "Action"
+  },
+  "optgrpother": {
+    "message": "其他",
+    "description": "Action"
+  },
+  "optgrpsave": {
+    "message": "保存",
+    "description": "Action"
+  },
+  "optgrpscroll": {
+    "message": "滚动",
+    "description": "Action"
+  },
+  "optgrpsearch": {
+    "message": "搜索",
+    "description": "Action"
+  },
+  "optgrptab": {
+    "message": "标签页",
+    "description": "Action"
+  },
+  "optgrptabnav": {
+    "message": "标签页导航",
+    "description": "Action"
+  },
+  "optgrpwindow": {
+    "message": "窗口",
+    "description": "Action"
+  },
+  "pinned": {
+    "message": "固定",
+    "description": "Action"
+  },
+  "placeholderconfig": {
+    "message": "将配置内容复制到这里，然后点击 导入 即可将完成配置导入；点击 导出 后，当前扩展的配置信息将显示在这里，你可以复制，然后再行保存.",
+    "description": "Text on Advanced Settings page"
+  },
+  "placeholdername": {
+    "message": "名称",
+    "description": "Placeholder in Actions"
+  },
+  "placeholderscript": {
+    "message": "脚本",
+    "description": "Placeholder in Actions"
+  },
+  "placeholdersearchurl": {
+    "message": "网址，使用%s替换关键字",
+    "description": "Placeholder in Actions"
+  },
+  "placeholdertooltip": {
+    "message": "功能提示文字",
+    "description": "Placeholder in Actions"
+  },
+  "placeholderurl": {
+    "message": "网址",
+    "description": "Placeholder in Actions"
+  },
+  "port": {
+    "message": "导入/导出配置",
+    "description": "Section name on Advanced Settings page"
+  },
+  "porttip": {
+    "message": "注:1.导入配置后,将自动重启本扩展,重启后,已经打开的标签页需要刷新一次后,本扩展才能起效!<br />2.建议只导入从这里导出的配置,不建议手动修改配置文件,否则导入后可能会出现一些奇怪的问题.<br />3.如遇错误,请重置为默认配置. ",
+    "description": "Text on Advanced Settings page. Note! Do not translate html tags"
+  },
+  "poschrome": {
+    "message": "Chrome默认",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "poshead": {
+    "message": "首",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "poslast": {
+    "message": "尾",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "posleft": {
+    "message": "左",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "posright": {
+    "message": "右",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "reset": {
+    "message": "重置配置",
+    "description": "Section name on Advanced Settings page"
+  },
+  "resetall": {
+    "message": "重置所有配置",
+    "description": "Reset button on Advanced Settings page"
+  },
+  "resetpage": {
+    "message": "重置本页设置",
+    "description": "Reset button on Gestures pages"
+  },
+  "resettip": {
+    "message": "注:该操作会清空当前的所有配置,并将配置重置为扩展的默认设置.该操作不能撤销,请谨慎操作!",
+    "description": "Text on Advanced Settings page"
+  },
+  "reverseFS": {
+    "message": "反向",
+    "description": "Action"
+  },
+  "right": {
+    "message": "右",
+    "description": "Action"
+  },
+  "s360": {
+    "message": "360",
+    "description": "Action - Website name"
+  },
+  "samazon": {
+    "message": "Amazon",
+    "description": "Action - Website name"
+  },
+  "save": {
+    "message": "保存",
+    "description": "Save button"
+  },
+  "sbaidu": {
+    "message": "百度",
+    "description": "Action - Website name"
+  },
+  "sbaiduimage": {
+    "message": "百度识图",
+    "description": "Action - Website name"
+  },
+  "sbing": {
+    "message": "必应",
+    "description": "Action - Website name"
+  },
+  "scractdown": {
+    "message": "向下滚动:",
+    "description": "Action"
+  },
+  "scractup": {
+    "message": "向上滚动:",
+    "description": "Action"
+  },
+  "scriptdes": {
+    "message": "运行脚本：%name",
+    "description": "Placeholder in Actions"
+  },
+  "scroll": {
+    "message": "滚轮功能",
+    "description": "Side navigation in Settings"
+  },
+  "scrollaccele": {
+    "message": "滚动加速值",
+    "description": "Option on Scrolling page"
+  },
+  "scrolleffects": {
+    "message": "使用滚动特效(上/下滚动,到底部/顶部).",
+    "description": "Option in Miscellaneous section on General Settings"
+  },
+  "scrollgesture": {
+    "message": "滚轮手势",
+    "description": "Side navigation in Settings"
+  },
+  "scrollspeed": {
+    "message": "滚动速度",
+    "description": "Option on Scrolling page"
+  },
+  "searchdes": {
+    "message": "使用%name搜索：\"%s\"",
+    "description": "Placeholder in Actions. Note! do not translate text next to %."
+  },
+  "setdragurl": {
+    "message": "当拖动的文字为网址时,识别为拖曳链接(正则匹配得不够理想,效果欠佳,慎用).",
+    "description": "Option in More section on Super Drag page"
+  },
+  "settings": {
+    "message": "设置",
+    "description": "Settings"
+  },
+  "sgoogle": {
+    "message": "Google",
+    "description": "Action - Website name"
+  },
+  "sgoogleimage": {
+    "message": "Google以图搜图",
+    "description": "Action - Website name"
+  },
+  "sgooglelens": {
+    "message": "Google 智能镜头搜索",
+    "description": "Action - Website name"
+  },
+  "site": {
+    "message": "官网",
+    "description": "Action"
+  },
+  "smooth": {
+    "message": "平滑滚动",
+    "description": "Action"
+  },
+  "ssogou": {
+    "message": "搜狗",
+    "description": "Action - Website name"
+  },
+  "staobao": {
+    "message": "淘宝",
+    "description": "Action - Website name"
+  },
+  "stenable": {
+    "message": "使用左键时,可以选中文字(勾选此项,会造成很多时候鼠标手势失效!)",
+    "description": "Enable select text while holding the left mouse(It makes Mouse Gestures invalid sometimes)"
+  },
+  "stineyeimage": {
+    "message": "TinEye",
+    "description": "TinEye"
+  },
+  "stractleft": {
+    "message": "点击左键:",
+    "description": "Options on Rocker Gestures page"
+  },
+  "stractmiddle": {
+    "message": "点击中键:",
+    "description": "Options on Rocker Gestures page"
+  },
+  "stractright": {
+    "message": "点击右键:",
+    "description": "Options on Rocker Gestures page"
+  },
+  "strleft": {
+    "message": "按住鼠标左键",
+    "description": "Section on Rocker Gestures page"
+  },
+  "strmiddle": {
+    "message": "按住鼠标中键",
+    "description": "Section on Rocker Gestures page"
+  },
+  "stroke": {
+    "message": "显示轨迹",
+    "description": "Option in Appearance section on Mouse Gestures page"
+  },
+  "strokegesture": {
+    "message": "摇杆手势",
+    "description": "Side navigation in Settings"
+  },
+  "strpress": {
+    "message": "触发摇杆手势的方式:",
+    "description": "Text on Rocker Gestures page"
+  },
+  "strpressdown": {
+    "message": "当按下鼠标时",
+    "description": "Option on Rocker Gestures page"
+  },
+  "strpressup": {
+    "message": "当鼠标弹起时",
+    "description": "Option on Rocker Gestures page"
+  },
+  "strright": {
+    "message": "按住鼠标右键",
+    "description": "Option on Rocker Gestures page"
+  },
+  "swiki": {
+    "message": "维基百科",
+    "description": "Action - Website name"
+  },
+  "syahoo": {
+    "message": "雅虎",
+    "description": "Action - Website name"
+  },
+  "syandex": {
+    "message": "Yandex",
+    "description": "Action - Website name"
+  },
+  "sync": {
+    "message": "同步配置",
+    "description": "Section on Advanced Settings page"
+  },
+  "syncdes": {
+    "message": "已<a href=\"https://accounts.google.com/ServiceLogin?service=chromiumsync\" target=\"_blank\">登录Chrome</a>用户,将自动同步配置文件.",
+    "description": "Text on Advanced Settings page"
+  },
+  "tablist": {
+    "message": "标签页列表",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "tablistVisual": {
+    "message": "滚动时显示网站列表",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "tablistkeyleft": {
+    "message": "按住鼠标左键，并滚动滚轮.",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "tablistkeyright": {
+    "message": "按住鼠标右键，并滚动滚轮.",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "testlink": {
+    "message": "测试链接",
+    "description": "Text in new Link Super Drag Gesture window"
+  },
+  "testwords": {
+    "message": "测试文字",
+    "description": "Text in new Text Super Drag Gesture window"
+  },
+  "text": {
+    "message": "文字",
+    "description": "Buttons in New section on Super Drag page"
+  },
+  "thanks": {
+    "message": "致谢",
+    "description": "Section on About page"
+  },
+  "time": {
+    "message": "时长(s)：",
+    "description": "Option in Miscellaneous section on General Settings"
+  },
+  "timeout": {
+    "message": "超过以下时间取消操作",
+    "description": "Option in Miscellaneous section on General Settings"
+  },
+  "titlechromepage": {
+    "message": "功能提示文字,使用\"%name\"替换Chrome内部地址名称",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titlecopyuser": {
+    "message": "功能提示文字,使用\"%name\"替换自定义格式名称",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titleisearch": {
+    "message": "功能提示文字,使用\"%name\"替换搜索引擎名称",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titlenewusertab": {
+    "message": "功能提示文字,使用\"%name\"替换自定义网站名称",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titlenexpre": {
+    "message": "检测的关键字,多个关键字间用\"|\"隔开,扩展将依次检测rel,rev,id,innerHTML,title,class",
+    "description": "Placeholder in Actions"
+  },
+  "titlesearchuser": {
+    "message": "网址.使用\"%s\"表示搜索关键词",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titletsearch": {
+    "message": "操作名称工具提示，使用\"%name\"替换搜索引擎，\"%s\"替换内容",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titleuserscript": {
+    "message": "功能提示文字,使用\"%name\"替换脚本名称",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "tooltip": {
+    "message": "显示功能提示文字",
+    "description": "Option in Appearance section on Super Drag and Mouse Gestures pages"
+  },
+  "translate": {
+    "message": "翻译",
+    "description": "Translate"
+  },
+  "unclose": {
+    "message": "不关闭,打开以下地址",
+    "description": "Do not close, and open the following URL"
+  },
+  "unpinned": {
+    "message": "不固定",
+    "description": "Action"
+  },
+  "valuechromepage": {
+    "message": "打开%name",
+    "description": "Placeholder in Actions"
+  },
+  "valueisearch": {
+    "message": "使用%name搜索图片",
+    "description": "Placeholder in Actions"
+  },
+  "valuenewusertab": {
+    "message": "打开%name",
+    "description": "Placeholder in Actions"
+  },
+  "valuenone": {
+    "message": "无",
+    "description": "Action"
+  },
+  "valuetsearch": {
+    "message": "使用%name搜索\"%s\"",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "valueuserscript": {
+    "message": "运行脚本:\"%name\"",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "version": {
+    "message": "版本",
+    "description": "Version"
+  },
+  "width": {
+    "message": "宽度：",
+    "description": "Option in Appearance section on Super Drag and Mouse Gestures pages"
+  },
+  "offmodepopup": {
+    "message": "Crx Mouse 已关闭",
+    "description": "Text on ext. popup when Crx Mouse is off"
+  },
+  "offmodesettings": {
+    "message": "Crx Mouse 已禁用",
+    "description": "Text in Settings on General Settings page when Crx Mouse is off"
+  },
+  "enabletochange": {
+    "message": "启用以进行任何更改",
+    "description": "Text in Settings on General Settings page when Crx Mouse is off"
+  },
+  "offmodetooltip": {
+    "message": "关闭 Crx Mouse",
+    "description": "Tooltip next to on/off toggle of Crx Mouse on ext. popup"
+  },
+  "onmodetooltip": {
+    "message": "开启 Crx Mouse",
+    "description": "Tooltip next to on/off toggle of Crx Mouse on ext. popup"
+  },
+  "popuppopular": {
+    "message": "热门手势",
+    "description": "Headline of popular gestures section on ext. popup"
+  },
+  "mygestures": {
+    "message": "可用手势",
+    "description": "Headline of default, edited or new gestures section on ext. popup"
+  },
+  "popupaddtooltip": {
+    "message": "添加新手势",
+    "description": "Tooltip when hovering on plus icon in Active Gestures section"
+  },
+  "popupfooterhelptooltip": {
+    "message": "帮助",
+    "description": "Tooltip when hovering on question mark icon in footer on ext. popup"
+  },
+  "popupvideotool": {
+    "message": "如何使用 Crx Mouse",
+    "description": "Tooltip when hovering on video icon in footer on ext. popup"
+  },
+  "popuponboarding": {
+    "message": "明白了，谢谢。",
+    "description": "Text on onboarding window to close window"
+  },
+  "popupnewscope": {
+    "message": "选择范围",
+    "description": "Section name in new gesture window on ext. popup"
+  },
+  "popupnewscopeglobal": {
+    "message": "所有网站",
+    "description": "Option in new gesture window on ext. popup"
+  },
+  "popupnewaction": {
+    "message": "选择操作",
+    "description": "Section name in new gesture window on ext. popup"
+  },
+  "popupnewgesture": {
+    "message": "选择手势",
+    "description": "Section name in new gesture window on ext. popup"
+  },
+  "popuprecordsave": {
+    "message": "保存手势",
+    "description": "Button to save new gesture in new gesture window on ext. popup"
+  },
+  "popupgesturecancel": {
+    "message": "取消",
+    "description": "Button to cancel new/edit gesture on ext. popup"
+  },
+  "popupsuccess": {
+    "message": "“$GestureName$”手势已保存",
+    "description": "Text in notification for gesture saved/edited on ext. popup. Note! Do not translate text next to $",
+    "placeholders": {
+      "GestureName": {
+        "content": "$1"
+      }
+    }
+  },
+  "popupeditgesture": {
+    "message": "应用更改",
+    "description": "Button to apply changes for existing gesture on ext. popup"
+  },
+  "popuptooltipedit": {
+    "message": "编辑",
+    "description": "Tooltip when hovering on edit icon on ext. popup"
+  },
+  "popuptooltipdelete": {
+    "message": "删除",
+    "description": "Tooltip when hovering on delete icon on ext. popup"
+  },
+  "showwhitelist": {
+    "message": "显示白名单",
+    "description": "Opens a section that sets the scope of the gesture. Appears on all gesture boxes"
+  },
+  "hidewhitelist": {
+    "message": "隐藏白名单",
+    "description": "Hides a section that sets the scope of the gesture. Appears on all gesture boxes"
+  },
+  "headlineforwhitelist": {
+    "message": "每行一个网址或部分网址",
+    "description": "Text in whitelist section on all gesture boxes. Appears on all gesture boxes"
+  },
+  "tipforwhitelist": {
+    "message": "提示：您可以使用完整的网址或部分网址。例如，\"cnn.com\"会支持带有 cnn.com 的任何网址。",
+    "description": "Text in whitelist section on all gesture boxes. Appears on all gesture boxes"
+  },
+  "savewhitelist": {
+    "message": "保存",
+    "description": "save whitelist changes. Appears on all gesture boxes"
+  },
+  "optmode": {
+    "message": "开启热门手势（发送匿名数据）",
+    "description": "Text of opt in/out checkbox"
+  },
+  "optmodealert": {
+    "message": "我们将无法继续为您显示热门手势。您可以通过选中查看功能的复选框来随时重新激活它们。",
+    "description": "text on opt in/out alert window"
+  },
+  "optoutmodetitle": {
+    "message": "热门手势已停用。",
+    "description": "Title of opt out mode on ext. popup"
+  },
+  "optoutmodemessage": {
+    "message": "要激活热门手势，请转到<a href=\"$link$\" target=\"_blank\">设置</a>",
+    "description": "Description of opt out mode on ext. popup",
+    "placeholders": {
+      "link": {
+        "content": "$1"
+      }
+    }
+  },
+  "moreaffecteddomains": {
+    "message": "更多受影响的域。编辑域。",
+    "description": "Shown on hover when gesture is associated to more than one domain on Edit Gesture screen."
+  },
+  "nopopulargestures": {
+    "message": "此页面没有热门手势。率先使用手势，为我们的中心做贡献。",
+    "description": "shown in popup when user visits a site with no popular gestures available for it"
+  },
+  "rateus": {
+    "message": "LIKE US? RATE US!",
+    "description": "located in Settings section inside sidebar. Asking the users to rate the extension. Translation should be max 21 characters"
+  },
+  "gesturedeleted": {
+    "message": "已删除手势",
+    "description": "Appears in notification window when a gesture is deleted. Indicating that the gesture was deleted successfully."
+  },
+  "set_your_mouse_gestures_on": {
+    "message": "将鼠标手势设为默认启用",
+    "description": "Option in More section on Mouse Gestures page to have mouse gestures enabled by default"
+  },
+  "keytodisablemousegestures": {
+    "message": "按住以下键,临时禁用鼠标手势:",
+    "description": "Option in More section on Mouse Gestures page to choose key to disable gestures"
+  },
+  "noteforkeytoenable": {
+    "message": "注意：单击所选键时，默认情况下将停用鼠标手势，右键单击则会启用功能",
+    "description": "Note on Options in More section on Mouse Gestures page for key to enable gestures"
+  },
+  "noteforkeytodisable": {
+    "message": "注意：单击所选键时，默认情况下将启用鼠标手势，右键单击则会禁用功能",
+    "description": "Note on Options in More section on Mouse Gestures page for key to disable gestures"
+  },
+  "set_your_mouse_gestures_off": {
+    "message": "将鼠标手势设为默认关闭",
+    "description": "Option in More section on Mouse Gestures page to have mouse gestures enabled by default"
+  },
+  "keytoenablemousegestures": {
+    "message": "分配一个键来激活鼠标手势：",
+    "description": "Option in More section on Mouse Gestures page to choose key to enable gestures"
+  },
+  "cancelgesture": {
+    "message": "取消",
+    "description": "Message that appears in trash bin area for dragging mouse gestures to cancel them"
+  },
+  "wheelgesturealert": {
+    "message": "注意这两项功能会有重叠",
+    "description": "An alert that jumps up when users choose two options that overlap in the Wheel Gestures section"
+  },
+  "ctatoenableadvanced": {
+    "message": "启用高级功能",
+    "description": "CTA for enabling advanced features on sidebar inside Settings area. Make sure any translation is limited to 24 characters"
+  },
+  "missedgesture": {
+    "message": "手势不管用？报告",
+    "description": "Message for when gestures didn't work. Click on 'Report' sends to a form to fill. Should be maximun 30 charachters"
+  },
+  "mousecursor": {
+    "message": "鼠标光标",
+    "description": "Headline for the Mouse cursor customization section in the Settings page"
+  },
+  "currentcursor": {
+    "message": "你的鼠标光标",
+    "description": "Headline for the Current cursor section in the Settings page"
+  },
+  "mousecursoruploadinstructions": {
+    "message": "上传您自己的鼠标光标。48px × 48px PNG。最大 20 kb。",
+    "description": "Instructions for the image file a user can upload for the mouse cursor"
+  },
+  "mousecursorupload": {
+    "message": "从电脑上传",
+    "description": "Uploading an image to be used as a mouse cursor"
+  },
+  "mousecursorreturndefault": {
+    "message": "返回默认光标",
+    "description": "Link to switch back to default mouse cursor image"
+  },
+  "mousecursorscale": {
+    "message": "比例缩放",
+    "description": "Scale of mouse custom cursor image"
+  },
+  "cancelgesturehidetrash": {
+    "message": "隐藏垃圾箱",
+    "description": "An option to hide the icon of the trash bin that appears when performing a gesture. The trashbin enables canceling the performed gestute."
+  },
+  "cancelgesturehidetrashinfo": {
+    "message": "打开此选项可隐藏“垃圾箱”功能。",
+    "description": "Instructions that appear below the option of hiding the icon of the trash bin."
+  },
+  "rate_us_title": {
+    "message": "喜欢 CRX 鼠标？",
+    "description": "Title crx mouse overlay for rate us"
+  },
+  "rate_us_never_show_again": {
+    "message": "永远不再显示",
+    "description": "button in crx mouse rate us overlay"
+  },
+  "rate_us_remind_me_later": {
+    "message": "稍后提醒我",
+    "description": "button in crx mouse rate us overlay"
+  },
+  "wrongGesture": {
+    "message": "手势错误。再试一次",
+    "description": "message flashing when user is making the wrong move"
+  },
+  "startGame": {
+    "message": "开始游戏",
+    "description": "Game reminder popup - start game"
+  },
+  "playLater": {
+    "message": "稍后再玩",
+    "description": "Game reminder popup - play later"
+  }
+}
