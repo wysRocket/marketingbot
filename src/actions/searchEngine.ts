@@ -78,35 +78,47 @@ export async function searchAndNavigate(
     await page.goto(serpUrl, { waitUntil: "domcontentloaded", timeout: 30_000 });
     await randomDelay(page, 800, 1_600);
 
-    // Step 2: Handle consent.
-    // Race between results appearing and a consent gate appearing.
-    // Whichever wins first tells us what state the page is in.
-    const initialState = await racePageState(page, cfg.resultsContainer, 15_000);
+    // Step 2: Fail fast on Google's CAPTCHA/sorry page — detected by URL before
+    // wasting time waiting for selectors that will never appear.
+    if (isCaptchaPage(page.url())) {
+      throw new Error(`CAPTCHA/blocked page on ${engineHostname} (${page.url()})`);
+    }
+
+    // Step 3: Race between results and consent gate.
+    // Budget: 8s — if Google is serving a CAPTCHA the race times out quickly.
+    const initialState = await racePageState(page, cfg.resultsContainer, 8_000);
 
     if (initialState === "consent") {
       // A consent button became visible before results — click it and wait for
       // the page to navigate back to the SERP (redirect) or dismiss the overlay.
       await clickConsentButton(page);
-      await page.waitForLoadState("domcontentloaded", { timeout: 15_000 }).catch(() => {});
-      await randomDelay(page, 500, 1_000);
-    }
-
-    // Step 3: Wait for the organic results container.
-    // If we just handled consent the SERP may still be loading; give it more time.
-    const resultsAppeared = await page
-      .waitForSelector(cfg.resultsContainer, { timeout: 15_000 })
-      .then(() => true)
-      .catch(() => false);
-
-    if (!resultsAppeared) {
+      await page.waitForLoadState("domcontentloaded", { timeout: 12_000 }).catch(() => {});
+      await randomDelay(page, 400, 800);
+    } else if (initialState === "timeout") {
+      // Neither results nor consent appeared — likely a CAPTCHA or block page.
+      // Fail immediately rather than burning another 15s on a second wait.
       throw new Error(
         `Results container ("${cfg.resultsContainer}") not found on ${engineHostname} — possible CAPTCHA or block`,
       );
     }
 
+    // Step 4: Wait for the organic results container.
+    // Only reached when consent was handled (initialState === "consent") or
+    // results appeared immediately (initialState === "results", already visible).
+    const resultsAppeared = await page
+      .waitForSelector(cfg.resultsContainer, { timeout: 10_000 })
+      .then(() => true)
+      .catch(() => false);
+
+    if (!resultsAppeared) {
+      throw new Error(
+        `Results container ("${cfg.resultsContainer}") not found on ${engineHostname} after consent`,
+      );
+    }
+
     await randomDelay(page, 300, 700);
 
-    // Step 4: Find the first result link
+    // Step 5: Find the first result link
     const selector = cfg.resultLinkSelector(targetHostname);
     const resultLink = page.locator(selector).first();
     const found = await resultLink
@@ -156,6 +168,21 @@ export async function searchAndNavigate(
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
+
+/**
+ * Return true when the current page URL indicates Google/Bing has served a
+ * CAPTCHA or "unusual traffic" block instead of real search results.
+ * Checking the URL is instant — no selector polling needed.
+ */
+function isCaptchaPage(url: string): boolean {
+  return (
+    url.includes("google.com/sorry/") ||
+    url.includes("sorry/index") ||
+    url.includes("bing.com/ck/a") ||           // Bing click-tracking redirect
+    url.includes("ipv6.google.com/sorry") ||
+    /google\.[a-z.]+\/sorry/i.test(url)
+  );
+}
 
 /**
  * Build a direct SERP URL.
