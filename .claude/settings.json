@@ -6,7 +6,15 @@
         "ts-node",
         "src/mcp/mostlogin/server.ts"
       ],
-      "cwd": "/Users/wysmyfree/Projects/marketingbot"
+      "cwd": "/home/user/marketingbot"
+    },
+    "patchright": {
+      "command": "npx",
+      "args": [
+        "patchright-mcp@latest",
+        "--headless"
+      ],
+      "cwd": "/home/user/marketingbot"
     }
   }
 }
