@@ -1,0 +1,97 @@
+import "dotenv/config";
+import { chromium } from "patchright";
+import { createDashboardServer } from "../observability/dashboardServer";
+import { createExtensionTelemetryInterceptor, type ExtensionTelemetryEvent } from "../observability/extensionTelemetry";
+
+const TARGET_DOMAIN = process.env.TARGET_DOMAIN ?? "eurocookflows.com";
+const DASHBOARD_PORT = parseInt(process.env.DASHBOARD_PORT ?? "3001", 10);
+
+async function run(): Promise<void> {
+  // 1. Start dashboard
+  const dashboard = createDashboardServer({ port: DASHBOARD_PORT, maxEvents: 10000 });
+  await dashboard.start();
+
+  // 2. Launch Patchright with extensions
+  const extensionPath = process.env.EXTENSIONS_DIR ?? "mostlogin-extensions";
+  const userDataDir = process.env.USER_DATA_DIR ?? undefined;
+
+  const browser = await chromium.launchPersistentContext(userDataDir ?? "", {
+    headless: false,
+    args: [
+      `--disable-extensions-except=${extensionPath}`,
+      `--load-extension=${extensionPath}`,
+      "--disable-background-timer-throttling",
+      "--disable-renderer-backgrounding",
+    ],
+    viewport: { width: 1280, height: 800 },
+  });
+
+  const page = await browser.newPage();
+
+  // 3. Attach extension telemetry interceptor
+  const interceptor = createExtensionTelemetryInterceptor(
+    (event: ExtensionTelemetryEvent) => {
+      dashboard.addEvent(event);
+      const short = event.url.length > 80 ? event.url.slice(0, 80) + "…" : event.url;
+      console.log(`[${event.matchedDomain}] ${event.method} ${short}`);
+      if (event.requestBody) {
+        console.log(`  → req body: ${event.requestBody.length} chars`);
+      }
+      if (event.responseBody) {
+        console.log(`  ← res body: ${event.responseBody.length} chars`);
+      }
+    }
+  );
+  await interceptor.attach(page);
+
+  // 4. Navigate to target
+  console.log(`\n🌐 Navigating to https://${TARGET_DOMAIN}`);
+  await page.goto(`https://${TARGET_DOMAIN}`, { waitUntil: "domcontentloaded" });
+
+  // 5. Browse for a while to generate extension traffic
+  console.log(`📊 Dashboard: http://localhost:${DASHBOARD_PORT}`);
+  console.log(`⏳ Browsing for 120s to capture extension telemetry…\n`);
+
+  // Wait and interact
+  await page.waitForTimeout(5000);
+
+  // Scroll
+  await page.evaluate(() => window.scrollBy(0, 500));
+  await page.waitForTimeout(3000);
+
+  // Visit subpages
+  const links = await page.$$eval("a[href]", (anchors) =>
+    anchors.slice(0, 5).map((a) => (a as HTMLAnchorElement).href).filter((h) => h.startsWith("http"))
+  );
+  for (const link of links.slice(0, 3)) {
+    try {
+      await page.goto(link, { waitUntil: "domcontentloaded", timeout: 10000 });
+      await page.waitForTimeout(4000);
+    } catch {
+      // ignore navigation errors
+    }
+  }
+
+  // Idle to catch delayed extension pings (Mixpanel batches, GrowthBook flag evals)
+  await page.waitForTimeout(30000);
+
+  // 6. Summary
+  console.log(`\n✅ Session complete. Dashboard still running at http://localhost:${DASHBOARD_PORT}`);
+  console.log(`   Press Ctrl+C to stop.\n`);
+
+  // Keep alive until interrupted
+  await new Promise<void>((resolve) => {
+    process.on("SIGINT", async () => {
+      console.log("\n🛑 Shutting down…");
+      await interceptor.detach();
+      await browser.close();
+      await dashboard.stop();
+      resolve();
+    });
+  });
+}
+
+run().catch((error) => {
+  console.error("Fatal:", error);
+  process.exit(1);
+});

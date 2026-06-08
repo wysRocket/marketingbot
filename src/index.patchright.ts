@@ -705,6 +705,11 @@ async function runProfileSession(
 // ENTRY POINT
 // -------------------------------------------------------------------
 async function main(): Promise<void> {
+  if (process.env.BOT_ENABLED !== "1") {
+    console.log("[startup] BOT_ENABLED is not set — bot is paused. Set BOT_ENABLED=1 in Railway env vars to start.");
+    await new Promise(() => {}); // keep process alive for heartbeat
+  }
+
   const minConcurrent = Math.max(1, Math.min(MIN_CONCURRENT, MAX_CONCURRENT));
   const backoffStep = Math.max(1, CONCURRENCY_BACKOFF_STEP);
   const recoveryStep = Math.max(1, CONCURRENCY_RECOVERY_STEP);

@@ -20,6 +20,9 @@
     "mcp:patchright": "ts-node src/mcp/patchright/server.ts",
     "start:patchright": "BOT_SITE_PROFILE=eurocookflow ts-node src/index.patchright.ts",
     "check:similarweb": "ts-node src/scripts/checkSimilarwebSignal.ts",
+    "telemetry:dashboard": "ts-node src/observability/dashboardServer.ts",
+    "telemetry:extension-watch": "ts-node --transpile-only src/scripts/extensionTelemetrySession.ts",
+    "telemetry:probe": "ts-node --transpile-only src/scripts/probeExtensionTelemetry.ts",
     "ga:report": "ts-node src/scripts/checkGaReport.ts",
     "test:unit": "vitest run",
     "test:watch": "vitest",
@@ -32,12 +35,16 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/ws": "^8.18.1",
     "axios": "^1.13.5",
     "dotenv": "^17.3.1",
+    "express": "^5.2.1",
     "patchright": "^1.58.2",
     "patchright-mcp": "^0.0.68",
     "playwright": "^1.58.2",
     "ts-node": "^10.9.2",
+    "ws": "^8.21.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
