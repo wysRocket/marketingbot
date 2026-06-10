@@ -1,25 +1,64 @@
 import "dotenv/config";
 import { chromium } from "patchright";
+import * as fsSync from "node:fs";
+import path from "node:path";
 import { createDashboardServer } from "../observability/dashboardServer";
 import { createExtensionTelemetryInterceptor, type ExtensionTelemetryEvent } from "../observability/extensionTelemetry";
+import { ensureDisplay, getChromeMode } from "../utils/display";
 
-const TARGET_DOMAIN = process.env.TARGET_DOMAIN ?? "eurocookflows.com";
+const TARGET_DOMAIN = process.env.TARGET_DOMAIN ?? "guidenza.com";
 const DASHBOARD_PORT = parseInt(process.env.DASHBOARD_PORT ?? "3001", 10);
 
+/** Returns comma-separated absolute paths to each extension subdirectory. */
+function resolveExtensionPaths(rootDir: string): string[] {
+  const abs = path.resolve(process.cwd(), rootDir);
+  try {
+    return fsSync.readdirSync(abs)
+      .map((name) => path.join(abs, name))
+      .filter((p) => {
+        try {
+          return fsSync.statSync(p).isDirectory() &&
+            fsSync.existsSync(path.join(p, "manifest.json"));
+        } catch { return false; }
+      });
+  } catch {
+    console.warn(`⚠  Extensions directory not found: ${abs}`);
+    return [];
+  }
+}
+
 async function run(): Promise<void> {
-  // 1. Start dashboard
+  // 1. Start dashboard (also persists events to telemetry/extension-events.jsonl)
   const dashboard = createDashboardServer({ port: DASHBOARD_PORT, maxEvents: 10000 });
   await dashboard.start();
 
-  // 2. Launch Patchright with extensions
-  const extensionPath = process.env.EXTENSIONS_DIR ?? "mostlogin-extensions";
-  const userDataDir = process.env.USER_DATA_DIR ?? undefined;
+  // 2. Resolve extension paths (comma-sep for --load-extension)
+  const extensionsRoot = process.env.EXTENSIONS_DIR ?? ".extensions";
+  const extensionPaths = resolveExtensionPaths(extensionsRoot);
+  const userDataDir = process.env.USER_DATA_DIR ?? "";
 
-  const browser = await chromium.launchPersistentContext(userDataDir ?? "", {
-    headless: false,
+  if (extensionPaths.length === 0) {
+    console.warn("⚠  No extensions found — running without extensions (traffic monitoring only)");
+  } else {
+    console.log(`📦 Loading ${extensionPaths.length} extensions from ${extensionsRoot}`);
+  }
+
+  const extensionArgs = extensionPaths.length > 0
+    ? [
+        `--load-extension=${extensionPaths.join(",")}`,
+        `--disable-extensions-except=${extensionPaths.join(",")}`,
+      ]
+    : ["--disable-extensions"];
+
+  // 3. Ensure display (Xvfb on Linux, macOS native) then launch
+  const displayInfo = await ensureDisplay({ verbose: true });
+  const { headless, extraArgs } = getChromeMode(displayInfo);
+
+  const browser = await chromium.launchPersistentContext(userDataDir, {
+    headless,
     args: [
-      `--disable-extensions-except=${extensionPath}`,
-      `--load-extension=${extensionPath}`,
+      ...extensionArgs,
+      ...extraArgs,           // --headless=new only when no display available
       "--disable-background-timer-throttling",
       "--disable-renderer-backgrounding",
     ],

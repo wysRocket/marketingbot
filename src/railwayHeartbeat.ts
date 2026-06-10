@@ -1,8 +1,51 @@
 import http from "http";
+import { botController } from "./control/runtimeController";
+
+/**
+ * Heartbeat + control server.
+ *
+ * - GET /health, GET /            → unauthenticated "ok" (Railway healthcheck)
+ * - GET /status                   → JSON run status (token-guarded)
+ * - POST /control/start           → begin the visit loop (token-guarded)
+ * - POST /control/stop            → pause the visit loop (token-guarded)
+ *
+ * Control endpoints require CONTROL_TOKEN to be set in the environment and a
+ * matching `Authorization: Bearer <token>` or `X-Control-Token: <token>`
+ * header. This is reached by the Hermes gateway over Railway's private
+ * network (http://marketingbot.railway.internal:$PORT).
+ */
+function isAuthorized(req: http.IncomingMessage): boolean {
+  const token = process.env.CONTROL_TOKEN;
+  if (!token) return false; // control disabled until a token is configured
+  const auth = req.headers["authorization"];
+  const bearer =
+    typeof auth === "string" && auth.startsWith("Bearer ")
+      ? auth.slice("Bearer ".length).trim()
+      : undefined;
+  const headerToken = req.headers["x-control-token"];
+  const provided =
+    bearer ?? (typeof headerToken === "string" ? headerToken : undefined);
+  return provided === token;
+}
+
+function sendJson(
+  res: http.ServerResponse,
+  status: number,
+  body: unknown,
+): void {
+  res.statusCode = status;
+  res.setHeader("content-type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(body));
+}
 
 export function startRailwayHeartbeatServer(): void {
   const rawPort = process.env.PORT;
-  if (!rawPort) return;
+  if (!rawPort) {
+    console.warn(
+      "[railway] PORT not set — heartbeat/control server disabled (loop can only be controlled via BOT_ENABLED at boot).",
+    );
+    return;
+  }
 
   const port = Number.parseInt(rawPort, 10);
   if (!Number.isFinite(port) || port <= 0) {
@@ -11,10 +54,42 @@ export function startRailwayHeartbeatServer(): void {
   }
 
   const server = http.createServer((req, res) => {
-    if (req.url === "/health" || req.url === "/") {
+    const url = req.url ?? "/";
+    const method = req.method ?? "GET";
+
+    // Unauthenticated liveness probe.
+    if (method === "GET" && (url === "/health" || url === "/")) {
       res.statusCode = 200;
       res.setHeader("content-type", "text/plain; charset=utf-8");
       res.end("ok");
+      return;
+    }
+
+    // Everything below is control surface and requires the token.
+    if (url === "/status" || url.startsWith("/control/")) {
+      if (!isAuthorized(req)) {
+        sendJson(res, 401, { error: "unauthorized" });
+        return;
+      }
+
+      if (method === "GET" && url === "/status") {
+        sendJson(res, 200, botController.status());
+        return;
+      }
+
+      if (method === "POST" && url === "/control/start") {
+        const changed = botController.start("api");
+        sendJson(res, 200, { changed, status: botController.status() });
+        return;
+      }
+
+      if (method === "POST" && url === "/control/stop") {
+        const changed = botController.stop("api");
+        sendJson(res, 200, { changed, status: botController.status() });
+        return;
+      }
+
+      sendJson(res, 405, { error: "method not allowed" });
       return;
     }
 
@@ -24,6 +99,11 @@ export function startRailwayHeartbeatServer(): void {
   });
 
   server.listen(port, "0.0.0.0", () => {
-    console.log(`[railway] Heartbeat server listening on 0.0.0.0:${port}`);
+    const controlState = process.env.CONTROL_TOKEN
+      ? "enabled"
+      : "disabled (no CONTROL_TOKEN)";
+    console.log(
+      `[railway] Heartbeat + control server listening on 0.0.0.0:${port} | control endpoints: ${controlState}`,
+    );
   });
 }

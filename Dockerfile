@@ -27,7 +27,7 @@ ENV NODE_ENV=production
 # Conservative default for smaller Railway instances.
 # Increase via env var if your service has enough RAM.
 ENV CONCURRENCY=1
-ENV BOT_SITE_PROFILE=eurocookflow
+ENV BOT_SITE_PROFILE=guidenza
 ENV SKIP_IP_CHECK=1
 
 CMD ["npx", "ts-node", "src/index.patchright.ts"]

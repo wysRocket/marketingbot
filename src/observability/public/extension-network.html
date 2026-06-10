@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extension Network Inspector</title>
+<style>
+:root {
+  --bg: #0d1117; --bg2: #161b22; --bg3: #21262d; --bg4: #2d333b;
+  --border: #30363d; --text: #e6edf3; --muted: #8b949e;
+  --blue: #58a6ff; --green: #3fb950; --orange: #d29922;
+  --red: #f85149; --purple: #bc8cff; --yellow: #e3b341;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;font-size:13px}
+
+/* ── HEADER ── */
+#header{background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+#header h1{font-size:15px;font-weight:700;color:var(--blue);white-space:nowrap}
+#summary-pills{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+.pill{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:2px 10px;font-size:11px;white-space:nowrap}
+.pill .n{font-weight:700;color:var(--blue);margin-right:3px}
+.pill.suspicious .n{color:var(--red)}
+.pill.ok .n{color:var(--green)}
+#live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0}
+#live-dot.offline{background:var(--muted);animation:none}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+#clear-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);padding:4px 12px;border-radius:6px;cursor:pointer;font-size:12px;white-space:nowrap}
+#clear-btn:hover{color:var(--text);border-color:var(--muted)}
+
+/* ── TOOLBAR ── */
+#toolbar{background:var(--bg2);padding:6px 16px;display:flex;gap:8px;align-items:center;flex-shrink:0;border-bottom:1px solid var(--border);flex-wrap:wrap}
+#search{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:5px 10px;border-radius:6px;font-size:12px;width:220px}
+#search:focus{outline:none;border-color:var(--blue)}
+select.filter{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:5px 8px;border-radius:6px;font-size:12px;cursor:pointer}
+#suspicious-wrap{display:flex;align-items:center;gap:5px;cursor:pointer;font-size:12px;color:var(--muted);user-select:none}
+#suspicious-wrap:hover{color:var(--text)}
+#suspicious-cb{accent-color:var(--red)}
+#event-count{font-size:11px;color:var(--muted);margin-left:auto}
+
+/* ── LAYOUT ── */
+#main{display:flex;flex:1;overflow:hidden}
+
+/* ── PHONE HOME MAP ── */
+#phonehome{width:280px;min-width:220px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;overflow:hidden}
+#phonehome-header{padding:10px 14px;border-bottom:1px solid var(--border);font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;flex-shrink:0}
+#phonehome-list{flex:1;overflow-y:auto;padding:8px 0}
+.domain-group{margin-bottom:2px}
+.domain-group-header{display:flex;align-items:center;gap:6px;padding:6px 14px;cursor:pointer;user-select:none;border-radius:0}
+.domain-group-header:hover{background:var(--bg3)}
+.domain-group-header.active{background:var(--bg3);border-left:2px solid var(--blue)}
+.domain-badge{font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;white-space:nowrap}
+.d-similarweb{background:#0e2a1a;color:#3fb950}
+.d-mixpanel{background:#2e1e0a;color:#d29922}
+.d-growthbook{background:#0a1e2e;color:#58a6ff}
+.d-suspicious{background:#2e0a0a;color:#f85149}
+.d-other{background:var(--bg3);color:var(--muted)}
+.domain-count{margin-left:auto;font-size:11px;color:var(--muted);font-weight:600}
+.domain-suspicious-flag{font-size:10px;color:var(--red)}
+.endpoints-list{overflow:hidden}
+.endpoints-list.collapsed{display:none}
+.endpoint-item{display:flex;align-items:center;gap:6px;padding:3px 14px 3px 28px;font-size:11px;color:var(--muted);cursor:pointer}
+.endpoint-item:hover{color:var(--text);background:var(--bg3)}
+.endpoint-method{font-weight:700;font-size:10px;width:30px;flex-shrink:0}
+.m-GET{color:var(--green)}
+.m-POST{color:var(--orange)}
+.m-PUT{color:var(--blue)}
+.m-DELETE{color:var(--red)}
+.endpoint-path{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:10px}
+.endpoint-count{font-size:10px;color:var(--blue);font-weight:600;flex-shrink:0}
+
+/* ── EVENTS TABLE ── */
+#events-panel{flex:1;display:flex;flex-direction:column;overflow:hidden}
+#table-wrap{flex:1;overflow-y:auto}
+table{width:100%;border-collapse:collapse}
+thead{position:sticky;top:0;z-index:2}
+th{background:var(--bg2);color:var(--muted);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;padding:7px 10px;border-bottom:1px solid var(--border);white-space:nowrap;user-select:none}
+td{padding:5px 10px;border-bottom:1px solid #1a1f26;vertical-align:middle}
+tr.event-row{cursor:pointer}
+tr.event-row:hover td{background:var(--bg2)}
+tr.event-row.selected td{background:#1a2744}
+tr.event-row.suspicious td{background:#1f0f0f}
+tr.event-row.suspicious:hover td{background:#2a1010}
+.td-time{font-size:10px;color:var(--muted);font-family:'SF Mono',Monaco,Consolas,monospace;white-space:nowrap}
+.td-domain{}
+.td-extid{font-size:10px;font-family:'SF Mono',Monaco,Consolas,monospace;color:var(--muted);max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.td-method{font-weight:700;font-size:11px}
+.td-endpoint{font-family:'SF Mono',Monaco,Consolas,monospace;font-size:11px;color:var(--muted);max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.td-status{font-size:11px;font-weight:600}
+.status-2xx{color:var(--green)}
+.status-3xx{color:var(--blue)}
+.status-4xx,.status-5xx{color:var(--red)}
+.td-body{font-size:10px;font-family:'SF Mono',Monaco,Consolas,monospace;color:var(--muted);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.has-body{color:var(--yellow)}
+.no-body{color:#3d4450}
+
+/* ── DETAIL PANEL ── */
+#detail{background:var(--bg2);border-top:2px solid var(--border);flex-shrink:0;display:none;flex-direction:column;max-height:40vh;overflow:hidden}
+#detail.open{display:flex}
+#detail-topbar{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg3)}
+#detail-close{cursor:pointer;color:var(--muted);font-size:16px;line-height:1;flex-shrink:0}
+#detail-close:hover{color:var(--text)}
+#detail-url{font-family:'SF Mono',Monaco,Consolas,monospace;font-size:11px;color:var(--blue);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#detail-meta{display:flex;gap:16px;flex-wrap:wrap;padding:6px 14px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2)}
+.detail-meta-item{font-size:11px}
+.detail-meta-item .k{color:var(--muted);margin-right:4px}
+.detail-meta-item .v{color:var(--text);font-weight:600}
+#detail-tabs{display:flex;gap:0;padding:0 14px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--bg2)}
+.tab-btn{background:none;border:none;color:var(--muted);padding:7px 14px;font-size:12px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
+.tab-btn .badge{background:var(--bg3);color:var(--muted);font-size:9px;padding:1px 5px;border-radius:8px;margin-left:4px}
+.tab-btn.active .badge{background:var(--blue);color:#fff}
+#detail-body{flex:1;overflow-y:auto;padding:12px 14px}
+#detail-body pre{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:11px;white-space:pre-wrap;word-break:break-all;line-height:1.5;overflow-x:auto}
+#detail-body .empty{color:var(--muted);font-size:12px;font-style:italic;padding:8px}
+.header-table{width:100%;border-collapse:collapse;font-size:11px;font-family:'SF Mono',Monaco,Consolas,monospace}
+.header-table td{padding:2px 8px;vertical-align:top;border-bottom:1px solid #1a1f26}
+.header-table td:first-child{color:var(--muted);white-space:nowrap;width:220px;padding-right:12px}
+.header-table td:last-child{color:var(--text);word-break:break-all}
+.header-table tr.important td:first-child{color:var(--orange)}
+.header-table tr.important td:last-child{color:var(--yellow)}
+
+/* ── JSON HIGHLIGHTING ── */
+.json-key{color:#79c0ff}
+.json-string{color:#a5d6ff}
+.json-number{color:#79c0ff}
+.json-bool{color:var(--purple)}
+.json-null{color:var(--muted)}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--muted)}
+
+/* ── EMPTY STATE ── */
+#empty{display:none;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);padding:60px;gap:10px;font-size:13px}
+#empty.show{display:flex}
+#empty .icon{font-size:40px}
+#empty .title{font-weight:600;color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div id="header">
+  <h1>🔬 Ext Network Inspector</h1>
+  <div id="summary-pills"></div>
+  <button id="clear-btn">Clear</button>
+  <div id="live-dot" class="offline" title="WebSocket status"></div>
+</div>
+
+<!-- TOOLBAR -->
+<div id="toolbar">
+  <input type="text" id="search" placeholder="Search URL / payload…">
+  <select class="filter" id="domain-filter"><option value="">All Domains</option></select>
+  <select class="filter" id="method-filter">
+    <option value="">All Methods</option>
+    <option value="GET">GET</option>
+    <option value="POST">POST</option>
+    <option value="PUT">PUT</option>
+    <option value="DELETE">DELETE</option>
+  </select>
+  <select class="filter" id="extid-filter"><option value="">All Extensions</option></select>
+  <label id="suspicious-wrap"><input type="checkbox" id="suspicious-cb"> ⚠ Suspicious only</label>
+  <span id="event-count">0 events</span>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+  <!-- PHONE HOME MAP -->
+  <div id="phonehome">
+    <div id="phonehome-header">📡 Phone Home Map</div>
+    <div id="phonehome-list">
+      <div id="empty-phm" style="padding:20px 14px;font-size:12px;color:var(--muted)">Waiting for extension traffic…</div>
+    </div>
+  </div>
+
+  <!-- EVENTS TABLE + DETAIL -->
+  <div id="events-panel">
+    <div id="table-wrap">
+      <div id="empty" class="show">
+        <div class="icon">📡</div>
+        <div class="title">No extension traffic yet</div>
+        <div>Run <code>npm run telemetry:extension-watch</code> to start capturing</div>
+      </div>
+      <table id="events-table" style="display:none">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Domain</th>
+            <th>Ext ID</th>
+            <th>Method</th>
+            <th>Endpoint</th>
+            <th>Status</th>
+            <th>Req Body</th>
+            <th>Res Body</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- DETAIL PANEL -->
+    <div id="detail">
+      <div id="detail-topbar">
+        <span id="detail-close" title="Close">✕</span>
+        <span id="detail-url"></span>
+      </div>
+      <div id="detail-meta"></div>
+      <div id="detail-tabs">
+        <button class="tab-btn active" data-tab="req-body">Req Body <span class="badge" id="tab-badge-req-body">0</span></button>
+        <button class="tab-btn" data-tab="req-headers">Req Headers <span class="badge" id="tab-badge-req-headers">0</span></button>
+        <button class="tab-btn" data-tab="res-body">Res Body <span class="badge" id="tab-badge-res-body">0</span></button>
+        <button class="tab-btn" data-tab="res-headers">Res Headers <span class="badge" id="tab-badge-res-headers">0</span></button>
+      </div>
+      <div id="detail-body"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  var allEvents = [];
+  var filteredEvents = [];
+  var selectedIdx = -1;
+  var activeTab = 'req-body';
+  var expandedDomains = {};
+
+  var KNOWN_DOMAINS = [
+    'similarweb.com','data.similarweb.com','rank.similarweb.com',
+    'sw-extension.s3.amazonaws.com','cdn.growthbook.io',
+    'api.mixpanel.com','mixpanel.com'
+  ];
+
+  var IMPORTANT_HEADERS = [
+    'authorization','x-api-key','x-sw-apikey','x-sw-api-key',
+    'x-client-id','x-user-id','x-session-id','x-mixpanel-token',
+    'cookie','x-forwarded-for','user-agent','x-device-id',
+    'x-fingerprint','x-tracking-id'
+  ];
+
+  function isSuspicious(domain) {
+    return !KNOWN_DOMAINS.some(function(d) { return domain === d || domain.endsWith('.' + d); });
+  }
+
+  function domainClass(domain) {
+    if (!domain) return 'd-other';
+    if (domain.includes('similarweb')) return 'd-similarweb';
+    if (domain.includes('mixpanel')) return 'd-mixpanel';
+    if (domain.includes('growthbook')) return 'd-growthbook';
+    if (isSuspicious(domain)) return 'd-suspicious';
+    return 'd-other';
+  }
+
+  function fmtTime(ts) {
+    var d = new Date(ts);
+    var hh = String(d.getHours()).padStart(2,'0');
+    var mm = String(d.getMinutes()).padStart(2,'0');
+    var ss = String(d.getSeconds()).padStart(2,'0');
+    var ms = String(d.getMilliseconds()).padStart(3,'0');
+    return hh + ':' + mm + ':' + ss + '.' + ms;
+  }
+
+  function esc(s) {
+    if (s == null) return '';
+    var d = document.createElement('div');
+    d.textContent = String(s);
+    return d.innerHTML;
+  }
+
+  function shortBody(b) {
+    if (!b) return null;
+    var s = b.trim();
+    return s.length > 80 ? s.slice(0, 80) + '…' : s;
+  }
+
+  function shortExtId(id) {
+    if (!id) return '—';
+    return id.slice(0, 8) + '…';
+  }
+
+  function getEndpoint(url) {
+    try {
+      var u = new URL(url);
+      var p = u.pathname;
+      return p.length > 40 ? '…' + p.slice(-38) : p;
+    } catch(e) {
+      return url.length > 40 ? url.slice(0, 40) + '…' : url;
+    }
+  }
+
+  function statusClass(code) {
+    if (!code) return '';
+    if (code >= 200 && code < 300) return 'status-2xx';
+    if (code >= 300 && code < 400) return 'status-3xx';
+    if (code >= 400 && code < 500) return 'status-4xx';
+    return 'status-5xx';
+  }
+
+  // ── JSON pretty-print with syntax highlighting ──
+  function syntaxHighlight(jsonStr) {
+    var escaped = jsonStr
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+    return escaped.replace(
+      /("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,
+      function(match) {
+        var cls = 'json-number';
+        if (/^"/.test(match)) {
+          if (/:$/.test(match)) cls = 'json-key';
+          else cls = 'json-string';
+        } else if (/true|false/.test(match)) {
+          cls = 'json-bool';
+        } else if (/null/.test(match)) {
+          cls = 'json-null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+      }
+    );
+  }
+
+  function prettyBody(raw) {
+    if (!raw) return null;
+    try {
+      var parsed = JSON.parse(raw);
+      var pretty = JSON.stringify(parsed, null, 2);
+      return syntaxHighlight(pretty);
+    } catch(e) {
+      // Try URL-encoded
+      try {
+        var decoded = decodeURIComponent(raw);
+        return esc(decoded);
+      } catch(e2) {
+        return esc(raw);
+      }
+    }
+  }
+
+  // ── Phone Home Map ──
+  function buildSummary(events) {
+    var map = {};
+    for (var i = 0; i < events.length; i++) {
+      var e = events[i];
+      var dom = e.matchedDomain || 'unknown';
+      if (!map[dom]) map[dom] = { count: 0, endpoints: {} };
+      map[dom].count++;
+      var endpoint = 'unknown';
+      try {
+        var u = new URL(e.url);
+        endpoint = e.method + ' ' + u.pathname;
+      } catch(err) {}
+      if (!map[dom].endpoints[endpoint]) {
+        map[dom].endpoints[endpoint] = { count: 0, method: e.method, path: endpoint, sampleReqBody: null };
+      }
+      map[dom].endpoints[endpoint].count++;
+      if (!map[dom].endpoints[endpoint].sampleReqBody && e.requestBody) {
+        map[dom].endpoints[endpoint].sampleReqBody = e.requestBody.slice(0, 400);
+      }
+    }
+    // Convert to sorted array
+    var result = Object.keys(map).map(function(dom) {
+      var eps = Object.keys(map[dom].endpoints).map(function(k) {
+        return map[dom].endpoints[k];
+      }).sort(function(a, b) { return b.count - a.count; });
+      return { domain: dom, count: map[dom].count, suspicious: isSuspicious(dom), endpoints: eps };
+    }).sort(function(a, b) { return b.count - a.count; });
+    return result;
+  }
+
+  function renderPhoneHome(events) {
+    var summary = buildSummary(events);
+    var list = document.getElementById('phonehome-list');
+
+    if (summary.length === 0) {
+      list.innerHTML = '<div id="empty-phm" style="padding:20px 14px;font-size:12px;color:var(--muted)">Waiting for extension traffic…</div>';
+      return;
+    }
+
+    var html = '';
+    for (var i = 0; i < summary.length; i++) {
+      var item = summary[i];
+      var dc = domainClass(item.domain);
+      var expanded = expandedDomains[item.domain] !== false; // default open
+      html += '<div class="domain-group" data-domain="' + esc(item.domain) + '">';
+      html += '<div class="domain-group-header" data-toggle="' + esc(item.domain) + '">';
+      html += '<span class="domain-badge ' + dc + '">' + esc(item.domain) + '</span>';
+      if (item.suspicious) html += '<span class="domain-suspicious-flag" title="Unknown domain">⚠</span>';
+      html += '<span class="domain-count">' + item.count + '</span>';
+      html += '</div>';
+      html += '<div class="endpoints-list' + (expanded ? '' : ' collapsed') + '" data-eps="' + esc(item.domain) + '">';
+      for (var j = 0; j < Math.min(item.endpoints.length, 8); j++) {
+        var ep = item.endpoints[j];
+        var parts = ep.path.split(' ');
+        var method = parts[0] || '';
+        var eppath = parts.slice(1).join(' ') || '/';
+        html += '<div class="endpoint-item" data-domain="' + esc(item.domain) + '" data-path="' + esc(eppath) + '">';
+        html += '<span class="endpoint-method m-' + esc(method) + '">' + esc(method) + '</span>';
+        html += '<span class="endpoint-path" title="' + esc(eppath) + '">' + esc(eppath) + '</span>';
+        html += '<span class="endpoint-count">' + ep.count + '</span>';
+        html += '</div>';
+      }
+      if (item.endpoints.length > 8) {
+        html += '<div style="padding:3px 14px 3px 28px;font-size:10px;color:var(--muted)">+' + (item.endpoints.length - 8) + ' more</div>';
+      }
+      html += '</div>';
+      html += '</div>';
+    }
+    list.innerHTML = html;
+  }
+
+  // ── Filters ──
+  function getFilters() {
+    return {
+      domain: document.getElementById('domain-filter').value,
+      method: document.getElementById('method-filter').value,
+      extid: document.getElementById('extid-filter').value,
+      search: document.getElementById('search').value.toLowerCase().trim(),
+      suspicious: document.getElementById('suspicious-cb').checked
+    };
+  }
+
+  function applyFilters(events) {
+    var f = getFilters();
+    return events.filter(function(e) {
+      if (f.domain && !e.matchedDomain.includes(f.domain)) return false;
+      if (f.method && e.method !== f.method) return false;
+      if (f.extid && e.extensionId !== f.extid) return false;
+      if (f.suspicious && !isSuspicious(e.matchedDomain)) return false;
+      if (f.search) {
+        var haystack = (e.url + ' ' + (e.requestBody || '') + ' ' + (e.responseBody || '') + ' ' + (e.matchedDomain || '')).toLowerCase();
+        if (!haystack.includes(f.search)) return false;
+      }
+      return true;
+    });
+  }
+
+  // ── Stats pills ──
+  function updateStats(events) {
+    var domains = {};
+    var extIds = new Set();
+    var suspicious = 0;
+    for (var i = 0; i < events.length; i++) {
+      var e = events[i];
+      domains[e.matchedDomain] = (domains[e.matchedDomain] || 0) + 1;
+      if (e.extensionId) extIds.add(e.extensionId);
+      if (isSuspicious(e.matchedDomain)) suspicious++;
+    }
+    var domKeys = Object.keys(domains).sort(function(a, b) { return domains[b] - domains[a]; });
+    var html = '<span class="pill ok"><span class="n">' + events.length + '</span>events</span>';
+    for (var j = 0; j < Math.min(domKeys.length, 4); j++) {
+      var d = domKeys[j];
+      html += '<span class="pill"><span class="n">' + domains[d] + '</span>' + esc(d) + '</span>';
+    }
+    if (extIds.size > 0) {
+      html += '<span class="pill"><span class="n">' + extIds.size + '</span>ext' + (extIds.size > 1 ? 's' : '') + '</span>';
+    }
+    if (suspicious > 0) {
+      html += '<span class="pill suspicious"><span class="n">⚠ ' + suspicious + '</span>suspicious</span>';
+    }
+    document.getElementById('summary-pills').innerHTML = html;
+  }
+
+  // ── Update filter dropdowns ──
+  function updateFilterDropdowns(events) {
+    var domains = {};
+    var extIds = {};
+    for (var i = 0; i < events.length; i++) {
+      var e = events[i];
+      if (e.matchedDomain) domains[e.matchedDomain] = true;
+      if (e.extensionId) extIds[e.extensionId] = true;
+    }
+    var df = document.getElementById('domain-filter');
+    var cur = df.value;
+    df.innerHTML = '<option value="">All Domains</option>';
+    Object.keys(domains).sort().forEach(function(d) {
+      df.innerHTML += '<option value="' + esc(d) + '"' + (d === cur ? ' selected' : '') + '>' + esc(d) + '</option>';
+    });
+
+    var ef = document.getElementById('extid-filter');
+    var curE = ef.value;
+    ef.innerHTML = '<option value="">All Extensions</option>';
+    Object.keys(extIds).sort().forEach(function(id) {
+      ef.innerHTML += '<option value="' + esc(id) + '"' + (id === curE ? ' selected' : '') + '>' + esc(id.slice(0,16)) + '…</option>';
+    });
+  }
+
+  // ── Render table ──
+  function render() {
+    filteredEvents = applyFilters(allEvents);
+    var tbody = document.getElementById('tbody');
+    var table = document.getElementById('events-table');
+    var empty = document.getElementById('empty');
+    var counter = document.getElementById('event-count');
+
+    counter.textContent = filteredEvents.length + ' of ' + allEvents.length + ' events';
+
+    if (filteredEvents.length === 0) {
+      empty.classList.add('show');
+      table.style.display = 'none';
+      tbody.innerHTML = '';
+      return;
+    }
+    empty.classList.remove('show');
+    table.style.display = '';
+
+    var visible = filteredEvents.slice(0, 500);
+    var html = '';
+    for (var i = 0; i < visible.length; i++) {
+      var e = visible[i];
+      var susp = isSuspicious(e.matchedDomain) ? ' suspicious' : '';
+      var sel = (i === selectedIdx) ? ' selected' : '';
+      var dc = domainClass(e.matchedDomain);
+      var sc = statusClass(e.statusCode);
+      var reqB = shortBody(e.requestBody);
+      var resB = shortBody(e.responseBody);
+
+      html += '<tr class="event-row' + susp + sel + '" data-idx="' + i + '">';
+      html += '<td class="td-time">' + fmtTime(e.timestamp) + '</td>';
+      html += '<td class="td-domain"><span class="domain-badge ' + dc + '">' + esc(e.matchedDomain) + '</span></td>';
+      html += '<td class="td-extid" title="' + esc(e.extensionId || '') + '">' + esc(shortExtId(e.extensionId)) + '</td>';
+      html += '<td class="td-method"><span class="m-' + esc(e.method) + '">' + esc(e.method) + '</span></td>';
+      html += '<td class="td-endpoint" title="' + esc(e.url) + '">' + esc(getEndpoint(e.url)) + '</td>';
+      html += '<td class="td-status ' + sc + '">' + (e.statusCode || '—') + '</td>';
+      html += '<td class="td-body ' + (reqB ? 'has-body' : 'no-body') + '">' + esc(reqB || '—') + '</td>';
+      html += '<td class="td-body ' + (resB ? 'has-body' : 'no-body') + '">' + esc(resB || '—') + '</td>';
+      html += '</tr>';
+    }
+    tbody.innerHTML = html;
+
+    if (filteredEvents.length > 500) {
+      var note = document.createElement('tr');
+      note.innerHTML = '<td colspan="8" style="text-align:center;color:var(--muted);padding:8px;font-size:11px">Showing first 500 of ' + filteredEvents.length + ' events</td>';
+      tbody.appendChild(note);
+    }
+  }
+
+  // ── Detail panel ──
+  function showDetail(idx) {
+    selectedIdx = idx;
+    var e = filteredEvents[idx];
+    if (!e) return;
+
+    document.getElementById('detail').classList.add('open');
+    document.getElementById('detail-url').textContent = e.method + ' ' + e.url;
+
+    // Meta row
+    var metaHtml = '';
+    metaHtml += '<div class="detail-meta-item"><span class="k">Domain:</span><span class="v">' + esc(e.matchedDomain) + '</span></div>';
+    metaHtml += '<div class="detail-meta-item"><span class="k">Status:</span><span class="v ' + statusClass(e.statusCode) + '">' + (e.statusCode || '—') + '</span></div>';
+    metaHtml += '<div class="detail-meta-item"><span class="k">Method:</span><span class="v">' + esc(e.method) + '</span></div>';
+    metaHtml += '<div class="detail-meta-item"><span class="k">Time:</span><span class="v">' + new Date(e.timestamp).toISOString() + '</span></div>';
+    if (e.extensionId) {
+      metaHtml += '<div class="detail-meta-item"><span class="k">Ext ID:</span><span class="v" style="font-family:monospace;font-size:10px">' + esc(e.extensionId) + '</span></div>';
+    }
+    if (isSuspicious(e.matchedDomain)) {
+      metaHtml += '<div class="detail-meta-item" style="color:var(--red)">⚠ Unknown / suspicious domain</div>';
+    }
+    document.getElementById('detail-meta').innerHTML = metaHtml;
+
+    // Update tab badges
+    var reqB = e.requestBody;
+    var resB = e.responseBody;
+    var reqH = e.requestHeaders;
+    var resH = e.responseHeaders;
+    document.getElementById('tab-badge-req-body').textContent = reqB ? fmtSize(reqB.length) : '—';
+    document.getElementById('tab-badge-req-headers').textContent = reqH ? Object.keys(reqH).length : '0';
+    document.getElementById('tab-badge-res-body').textContent = resB ? fmtSize(resB.length) : '—';
+    document.getElementById('tab-badge-res-headers').textContent = resH ? Object.keys(resH).length : '0';
+
+    renderDetailTab(e);
+    render(); // re-render table to show selection
+  }
+
+  function fmtSize(n) {
+    if (n < 1024) return n + 'B';
+    return (n / 1024).toFixed(1) + 'KB';
+  }
+
+  function renderDetailTab(e) {
+    var content = document.getElementById('detail-body');
+    if (!e) { content.innerHTML = ''; return; }
+
+    if (activeTab === 'req-body') {
+      var body = e.requestBody;
+      if (!body) {
+        content.innerHTML = '<div class="empty">No request body</div>';
+      } else {
+        var highlighted = prettyBody(body);
+        content.innerHTML = '<pre>' + highlighted + '</pre>';
+      }
+    } else if (activeTab === 'req-headers') {
+      var hdrs = e.requestHeaders;
+      if (!hdrs || Object.keys(hdrs).length === 0) {
+        content.innerHTML = '<div class="empty">No request headers captured</div>';
+      } else {
+        content.innerHTML = '<table class="header-table"><tbody>' + renderHeaderRows(hdrs) + '</tbody></table>';
+      }
+    } else if (activeTab === 'res-body') {
+      var resBody = e.responseBody;
+      if (!resBody) {
+        content.innerHTML = '<div class="empty">No response body</div>';
+      } else {
+        content.innerHTML = '<pre>' + prettyBody(resBody) + '</pre>';
+      }
+    } else if (activeTab === 'res-headers') {
+      var resHdrs = e.responseHeaders;
+      if (!resHdrs || Object.keys(resHdrs).length === 0) {
+        content.innerHTML = '<div class="empty">No response headers captured</div>';
+      } else {
+        content.innerHTML = '<table class="header-table"><tbody>' + renderHeaderRows(resHdrs) + '</tbody></table>';
+      }
+    }
+  }
+
+  function renderHeaderRows(headers) {
+    var rows = '';
+    var keys = Object.keys(headers).sort();
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i];
+      var isImportant = IMPORTANT_HEADERS.indexOf(k.toLowerCase()) >= 0;
+      rows += '<tr' + (isImportant ? ' class="important"' : '') + '>';
+      rows += '<td>' + esc(k) + (isImportant ? ' ⚑' : '') + '</td>';
+      rows += '<td>' + esc(headers[k]) + '</td>';
+      rows += '</tr>';
+    }
+    return rows;
+  }
+
+  // ── Event wiring ──
+  document.getElementById('tbody').addEventListener('click', function(e) {
+    var row = e.target.closest('tr[data-idx]');
+    if (!row) return;
+    var idx = parseInt(row.getAttribute('data-idx'), 10);
+    if (selectedIdx === idx) {
+      // Toggle off
+      selectedIdx = -1;
+      document.getElementById('detail').classList.remove('open');
+      render();
+    } else {
+      showDetail(idx);
+    }
+  });
+
+  document.getElementById('detail-close').addEventListener('click', function() {
+    selectedIdx = -1;
+    document.getElementById('detail').classList.remove('open');
+    render();
+  });
+
+  document.getElementById('detail-tabs').addEventListener('click', function(e) {
+    var btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    activeTab = btn.getAttribute('data-tab');
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    if (selectedIdx >= 0) renderDetailTab(filteredEvents[selectedIdx]);
+  });
+
+  document.getElementById('phonehome-list').addEventListener('click', function(e) {
+    // Toggle domain section
+    var toggle = e.target.closest('[data-toggle]');
+    if (toggle) {
+      var dom = toggle.getAttribute('data-toggle');
+      var eps = document.querySelector('[data-eps="' + dom + '"]');
+      if (eps) {
+        var collapsed = eps.classList.toggle('collapsed');
+        expandedDomains[dom] = !collapsed;
+      }
+      return;
+    }
+    // Filter by endpoint click
+    var epItem = e.target.closest('.endpoint-item[data-domain]');
+    if (epItem) {
+      var domain = epItem.getAttribute('data-domain');
+      var df = document.getElementById('domain-filter');
+      df.value = domain;
+      triggerFilter();
+    }
+  });
+
+  function triggerFilter() {
+    selectedIdx = -1;
+    document.getElementById('detail').classList.remove('open');
+    render();
+  }
+
+  document.getElementById('search').addEventListener('input', triggerFilter);
+  document.getElementById('domain-filter').addEventListener('change', triggerFilter);
+  document.getElementById('method-filter').addEventListener('change', triggerFilter);
+  document.getElementById('extid-filter').addEventListener('change', triggerFilter);
+  document.getElementById('suspicious-cb').addEventListener('change', triggerFilter);
+
+  document.getElementById('clear-btn').addEventListener('click', function() {
+    fetch('/api/events', { method: 'DELETE' }).then(function() {
+      allEvents = [];
+      selectedIdx = -1;
+      document.getElementById('detail').classList.remove('open');
+      updateStats([]);
+      updateFilterDropdowns([]);
+      renderPhoneHome([]);
+      render();
+    });
+  });
+
+  // ── WebSocket ──
+  var ws;
+  function connectWS() {
+    var proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+    ws = new WebSocket(proto + '//' + location.host);
+    ws.onopen = function() {
+      document.getElementById('live-dot').classList.remove('offline');
+    };
+    ws.onmessage = function(ev) {
+      var msg;
+      try { msg = JSON.parse(ev.data); } catch(e) { return; }
+      if (msg.type === 'init') {
+        // init sends last 100 events; merge with what we loaded via REST
+        // (REST loaded up to 2000 already, so just broadcast new ones we might not have)
+        var incoming = msg.events || [];
+        for (var i = 0; i < incoming.length; i++) {
+          var ev2 = incoming[i];
+          var found = false;
+          for (var j = 0; j < allEvents.length; j++) {
+            if (allEvents[j].timestamp === ev2.timestamp && allEvents[j].url === ev2.url) { found = true; break; }
+          }
+          if (!found) allEvents.unshift(ev2);
+        }
+        fullRefresh();
+      } else if (msg.type === 'event') {
+        allEvents.unshift(msg.event);
+        fullRefresh();
+      } else if (msg.type === 'cleared') {
+        allEvents = [];
+        selectedIdx = -1;
+        document.getElementById('detail').classList.remove('open');
+        fullRefresh();
+      }
+    };
+    ws.onclose = function() {
+      document.getElementById('live-dot').classList.add('offline');
+      setTimeout(connectWS, 3000);
+    };
+    ws.onerror = function() { ws.close(); };
+  }
+
+  function fullRefresh() {
+    updateStats(allEvents);
+    updateFilterDropdowns(allEvents);
+    renderPhoneHome(allEvents);
+    render();
+  }
+
+  // ── Bootstrap ──
+  fetch('/api/events?limit=2000')
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      allEvents = (d.events || []).reverse();
+      fullRefresh();
+      connectWS();
+    })
+    .catch(function() {
+      connectWS();
+    });
+
+})();
+</script>
+</body>
+</html>

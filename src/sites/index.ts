@@ -1,5 +1,6 @@
 import eurocookflowRaw from "./profiles/eurocookflow.json";
 import focusclockRaw from "./profiles/focusclock.json";
+import guidenzaRaw from "./profiles/guidenza.json";
 import { siteProfileSchema, type FlowFlag, type SiteProfile } from "./schema";
 
 const DEFAULT_SITE_PROFILE_ID = "eurocookflow";
@@ -8,7 +9,11 @@ function parseProfile(raw: unknown): SiteProfile {
   return siteProfileSchema.parse(raw);
 }
 
-const parsedProfiles = [parseProfile(eurocookflowRaw), parseProfile(focusclockRaw)];
+const parsedProfiles = [
+  parseProfile(eurocookflowRaw),
+  parseProfile(focusclockRaw),
+  parseProfile(guidenzaRaw),
+];
 
 const profileMap = new Map<string, SiteProfile>(
   parsedProfiles.map((profile) => [profile.id.toLowerCase(), profile]),

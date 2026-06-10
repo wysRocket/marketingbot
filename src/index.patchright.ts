@@ -23,6 +23,7 @@ import {
   IDENTITY_STICKY_RESET_PATHS,
 } from "./profiles/persistence-policy";
 import { resolveProxyForSession, type RunnerProxyConfig } from "./proxy";
+import { fetchLiveFreeSocks5Proxies } from "./freeSocks5";
 import { attachNetworkDebugger } from "./observability/networkDebug";
 import {
   getSessionPolicyFromEnv,
@@ -31,7 +32,9 @@ import {
 } from "./session/complexSession";
 import { createTelemetryPersistence } from "./session/telemetryPersistence";
 import { startRailwayHeartbeatServer } from "./railwayHeartbeat";
+import { botController } from "./control/runtimeController";
 import { getActiveSiteProfile, isFlowEnabled } from "./sites";
+import { warmupCookies } from "./flows/warmupCookies";
 
 // Force unbuffered output when Node exposes a blocking-capable stream handle.
 type BlockingHandle = { setBlocking?: (enabled: boolean) => void };
@@ -437,6 +440,17 @@ async function fetchProxyList(
 function buildFlowSequence(username: string, password: string): NamedFlow[] {
   const flows: NamedFlow[] = [];
 
+  if (process.env.COOKIE_WARMUP !== "0") {
+    flows.push({
+      name: "warmupCookies",
+      run: async (page, label, ctx) => {
+        const result = await warmupCookies(page, label);
+        for (const url of result.visited) ctx.trackNavigation(url);
+        ctx.addInteraction(result.visited.length);
+      },
+    });
+  }
+
   if (isFlowEnabled(SITE, "browseHomepage")) {
     flows.push({
       name: "browseHomepage",
@@ -705,9 +719,16 @@ async function runProfileSession(
 // ENTRY POINT
 // -------------------------------------------------------------------
 async function main(): Promise<void> {
-  if (process.env.BOT_ENABLED !== "1") {
-    console.log("[startup] BOT_ENABLED is not set — bot is paused. Set BOT_ENABLED=1 in Railway env vars to start.");
-    await new Promise(() => {}); // keep process alive for heartbeat
+  botController.totalRounds = TOTAL_ROUNDS;
+  botController.siteProfile = SITE.id;
+
+  if (process.env.BOT_ENABLED === "1") {
+    botController.start("env");
+    console.log("[startup] BOT_ENABLED=1 — visit loop auto-started at boot.");
+  } else {
+    console.log(
+      "[startup] Observation mode — visit loop paused. Start it with POST /control/start (CONTROL_TOKEN header) or set BOT_ENABLED=1.",
+    );
   }
 
   const minConcurrent = Math.max(1, Math.min(MIN_CONCURRENT, MAX_CONCURRENT));
@@ -774,7 +795,7 @@ async function main(): Promise<void> {
       const uptimeSec = Math.round((Date.now() - startedAt) / 1000);
       const mem = process.memoryUsage();
       console.log(
-        `[alive] uptime=${uptimeSec}s current-round=${round + 1}/${TOTAL_ROUNDS} rss=${formatMb(mem.rss)} heap=${formatMb(mem.heapUsed)}`,
+        `[alive] uptime=${uptimeSec}s running=${botController.running} current-round=${round + 1}/${TOTAL_ROUNDS} rss=${formatMb(mem.rss)} heap=${formatMb(mem.heapUsed)}`,
       );
     },
     Math.max(5_000, ALIVE_LOG_INTERVAL_MS),
@@ -783,8 +804,22 @@ async function main(): Promise<void> {
   aliveTimer.unref();
 
   try {
+    // Observation mode parks here until the controller is started.
+    await botController.waitUntilRunning();
+
     while (round < TOTAL_ROUNDS) {
       try {
+        // If paused at runtime (e.g. Hermes called /control/stop), park here
+        // until started again rather than spinning empty rounds.
+        if (!botController.running) {
+          console.log(
+            `[control] Visit loop paused after round ${round}. Waiting for /control/start...`,
+          );
+          await botController.waitUntilRunning();
+          console.log("[control] Visit loop resumed.");
+        }
+        botController.round = round;
+
         if (shardPoolProfiles.length === 0) {
           throw new Error(
             `[replica] shard ${shardIndex + 1}/${shardCount} has no profiles; increase POOL_SIZE or reduce REPLICA_SHARD_COUNT`,
@@ -800,16 +835,37 @@ async function main(): Promise<void> {
         // Each entry is a real unique IP — unlike the _session- username trick
         // which DataImpulse ignores and routes everything through one exit node.
         let proxyList: Array<ProxyCfg | undefined>;
-        try {
-          proxyList = await fetchProxyList(selected.length);
-          console.log(
-            `[proxy] fetched ${proxyList.filter(Boolean).length}/${selected.length} proxies`,
-          );
-        } catch (err) {
-          console.warn(
-            `[proxy] /api/list failed: ${(err as Error).message} — running without proxy`,
-          );
-          proxyList = Array(selected.length).fill(undefined);
+        const hasDiCreds = Boolean(process.env.DI_USER && process.env.DI_PASS);
+        if (hasDiCreds) {
+          try {
+            proxyList = await fetchProxyList(selected.length);
+            console.log(
+              `[proxy] fetched ${proxyList.filter(Boolean).length}/${selected.length} proxies (DataImpulse)`,
+            );
+          } catch (err) {
+            console.warn(
+              `[proxy] /api/list failed: ${(err as Error).message} — falling back to free SOCKS5`,
+            );
+            proxyList = Array(selected.length).fill(undefined);
+          }
+        } else {
+          console.log(`[proxy] no DI creds — fetching free SOCKS5 proxies`);
+          try {
+            const free = await fetchLiveFreeSocks5Proxies({
+              limit: selected.length,
+              timeoutMs: 3000,
+              concurrency: 30,
+            });
+            proxyList = selected.map((_, i) => free[i] ?? undefined);
+            console.log(
+              `[proxy] ${free.length}/${selected.length} free SOCKS5 proxies live`,
+            );
+          } catch (err) {
+            console.warn(
+              `[proxy] free SOCKS5 fetch failed: ${(err as Error).message} — running without proxy`,
+            );
+            proxyList = Array(selected.length).fill(undefined);
+          }
         }
 
         console.log(

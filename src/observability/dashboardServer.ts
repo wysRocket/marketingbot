@@ -2,6 +2,7 @@ import express from "express";
 import { createServer } from "http";
 import { WebSocketServer, WebSocket } from "ws";
 import path from "node:path";
+import { promises as fs } from "node:fs";
 
 interface TelemetryEvent {
   timestamp: number;
@@ -21,6 +22,7 @@ interface TelemetryEvent {
 interface DashboardServerOptions {
   port: number;
   maxEvents: number;
+  persistPath: string | null;
 }
 
 export class ExtensionTelemetryDashboard {
@@ -31,10 +33,24 @@ export class ExtensionTelemetryDashboard {
   private maxEvents: number;
   private clients: Set<WebSocket> = new Set();
   public port: number;
+  private persistPath: string | null;
+  private persistDir: string | null;
+  private persistReady: Promise<void>;
 
   constructor(options: Partial<DashboardServerOptions> = {}) {
     this.maxEvents = options.maxEvents ?? 10000;
     this.port = options.port ?? 3001;
+
+    // Default persist path: telemetry/extension-events.jsonl relative to cwd
+    const rawPersist = options.persistPath !== undefined
+      ? options.persistPath
+      : path.resolve(process.cwd(), "telemetry", "extension-events.jsonl");
+    this.persistPath = rawPersist;
+    this.persistDir = rawPersist ? path.dirname(rawPersist) : null;
+
+    this.persistReady = this.persistDir
+      ? fs.mkdir(this.persistDir, { recursive: true }).then(() => undefined)
+      : Promise.resolve();
 
     this.app = express();
     this.server = createServer(this.app);
@@ -123,6 +139,13 @@ export class ExtensionTelemetryDashboard {
     this.events.push(event);
     if (this.events.length > this.maxEvents) this.events.shift();
     this.broadcast({ type: "event", event });
+
+    // Persist to JSONL
+    if (this.persistPath) {
+      this.persistReady
+        .then(() => fs.appendFile(this.persistPath!, JSON.stringify(event) + "\n", "utf8"))
+        .catch(() => { /* non-fatal */ });
+    }
   }
 
   start(): Promise<void> {
@@ -145,4 +168,11 @@ export class ExtensionTelemetryDashboard {
 
 export function createDashboardServer(options: Partial<DashboardServerOptions> = {}) {
   return new ExtensionTelemetryDashboard(options);
+}
+
+if (require.main === module) {
+  const dashboard = new ExtensionTelemetryDashboard({ port: 3001 });
+  dashboard.start().then(() => {
+    console.log("Press Ctrl+C to stop.");
+  });
 }
