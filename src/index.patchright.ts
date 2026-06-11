@@ -394,13 +394,29 @@ async function fetchProxyList(
 ): Promise<Array<ProxyCfg | undefined>> {
   const user = process.env.DI_USER;
   const pass = process.env.DI_PASS;
+
+  // ── Proxy-Cheap rotating residential ──────────────────────────────────
+  // Uses a shared gateway; each request gets a random exit IP automatically.
+  const pcUser = process.env.PC_USER;
+  const pcPass = process.env.PC_PASS;
+  const pcHost = process.env.PC_HOST;
+  const pcPort = process.env.PC_PORT;
+  if (pcUser && pcPass && pcHost && pcPort) {
+    console.log(`[proxy] using proxy-cheap rotating residential (${pcHost}:${pcPort})`);
+    return Array.from({ length: count }, () => ({
+      server: `http://${pcHost}:${pcPort}`,
+      username: pcUser,
+      password: pcPass,
+    }));
+  }
+
   if (!user || !pass) return Array(count).fill(undefined);
 
+  // ── DataImpulse /api/list ──────────────────────────────────────────────
   const url = new URL("https://gw.dataimpulse.com:777/api/list");
   url.searchParams.set("quantity", String(count));
   url.searchParams.set("type", "sticky");
   url.searchParams.set("protocol", "http");
-  // No format param — use DataImpulse default so we can inspect raw output.
 
   const auth = Buffer.from(`${user}:${pass}`).toString("base64");
   const res = await fetch(url.toString(), {
@@ -415,8 +431,6 @@ async function fetchProxyList(
   const lines = text.split(/\r?\n/).filter(Boolean);
 
   return lines.slice(0, count).map((line) => {
-    // Default format: login:password@host:port
-    // Each line is a different port on the same gateway → different exit IP.
     const atIdx = line.lastIndexOf("@");
     const portIdx = line.lastIndexOf(":");
     if (atIdx === -1 || portIdx <= atIdx) {
