@@ -75,6 +75,10 @@ export class ExtensionTelemetryDashboard {
   }
 
   private setupRoutes(): void {
+    this.app.get("/api/health", (_req, res) => {
+      res.json({ ok: true, port: this.port, events: this.events.length });
+    });
+
     this.app.get("/api/events", (req, res) => {
       const { limit, domain, since } = req.query as Record<string, string | undefined>;
       let filtered = [...this.events].reverse();
