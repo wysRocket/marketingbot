@@ -9,7 +9,7 @@ import express from "express";
 import { createServer } from "http";
 import path from "node:path";
 
-const PORT = parseInt(process.env.NAV_DASHBOARD_PORT ?? "3000", 10);
+const PORT = parseInt(process.env.NAV_DASHBOARD_PORT ?? "3005", 10);
 
 const app = express();
 app.get("/", (_req, res) => {

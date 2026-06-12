@@ -30,6 +30,13 @@ h1{font-size:16px;font-weight:700;letter-spacing:.1em;color:var(--gold);text-tra
 <div class="subtitle">Real-time dashboards for bot session telemetry, extension activity, and Similarweb correlation</div>
 
 <div class="grid">
+  <a class="card" href="http://localhost:3005" target="_blank">
+    <div class="icon">🧭</div>
+    <h2>Observability Nav</h2>
+    <p>Unified index linking all dashboards with live status indicators.</p>
+    <div class="status"><span class="dot" id="s-3005"></span><span id="t-3005">Checking…</span></div>
+  </a>
+
   <a class="card" href="http://localhost:3002" target="_blank">
     <div class="icon">📊</div>
     <h2>Bot Session Dashboard</h2>
@@ -60,12 +67,12 @@ h1{font-size:16px;font-weight:700;letter-spacing:.1em;color:var(--gold);text-tra
 </div>
 
 <div class="footer">
-  <span>Ports: 3001 (ext telemetry) · 3002 (bot sessions) · 3003 (ext network) · 3004 (SW correlation)</span>
+  <span>Ports: 3005 (nav) · 3001 (ext telemetry) · 3002 (bot sessions) · 3003 (ext network) · 3004 (SW correlation)</span>
   <span id="updated-at">—</span>
 </div>
 
 <script>
-const ports = [3001, 3002, 3003, 3004];
+const ports = [3005, 3001, 3002, 3003, 3004];
 async function checkPort(port) {
   try {
     const r = await fetch(`http://localhost:${port}/api/health`, { signal: AbortSignal.timeout(1500) });
