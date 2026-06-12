@@ -13,6 +13,7 @@ export interface ExtensionTelemetryEvent {
   resourceType: string;
   extensionId?: string;
   matchedDomain: string;
+  runId?: string;
 }
 
 export interface ExtensionTelemetryConfig {
