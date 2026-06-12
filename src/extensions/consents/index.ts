@@ -32,8 +32,8 @@ export async function dismissAllConsents(context: AnyContext): Promise<void> {
 
   // Dismiss other known consent dialogs on all pages
   context.on("page", (page: AnyContext) => {
-    dismissHoneyConsents(page as unknown as Page).catch(() => {});
-    dismissGhosteryConsents(page as unknown as Page).catch(() => {});
+    dismissHoneyConsents(page as any).catch(() => {});
+    dismissGhosteryConsents(page as any).catch(() => {});
   });
 
   // Pre-seed SimilarWeb storage via service worker

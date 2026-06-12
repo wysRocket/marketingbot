@@ -714,6 +714,8 @@ async function runProfileSession(
       extensionBundleHash: EXTENSION_BUNDLE.bundleHash,
       extensionSlugs: EXTENSION_BUNDLE.selectedSlugs,
       sessionStatePolicy: profile.sessionStatePolicy,
+      targetDomain: SITE.baseUrl.replace(/^https?:\/\//, "").replace(/\/$/, ""),
+      referrerType: telemetry.flowsRun.length > 0 ? "mixed" : "unknown",
       telemetry,
       policy: SESSION_POLICY,
     }).catch((err) => {

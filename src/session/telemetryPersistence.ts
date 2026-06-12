@@ -19,6 +19,8 @@ const CSV_HEADER = [
   "extensionBundleHash",
   "extensionSlugs",
   "sessionStatePolicy",
+  "targetDomain",
+  "referrerType",
   "startedAt",
   "endedAt",
   "elapsedMs",
@@ -54,6 +56,8 @@ export interface PersistSessionTelemetryInput {
   extensionBundleHash?: string;
   extensionSlugs?: string[];
   sessionStatePolicy?: string;
+  targetDomain?: string;
+  referrerType?: string;
   telemetry: SessionTelemetry;
   policy: SessionPolicy;
 }
@@ -70,6 +74,8 @@ interface TelemetryRecord {
   extensionBundleHash?: string;
   extensionSlugs: string[];
   sessionStatePolicy?: string;
+  targetDomain?: string;
+  referrerType?: string;
   startedAt: string;
   endedAt: string;
   elapsedMs: number;
@@ -118,6 +124,8 @@ function toCsvRow(record: TelemetryRecord): string {
     record.extensionBundleHash ?? "",
     JSON.stringify(record.extensionSlugs),
     record.sessionStatePolicy ?? "",
+    record.targetDomain ?? "",
+    record.referrerType ?? "",
     record.startedAt,
     record.endedAt,
     record.elapsedMs,
@@ -213,6 +221,8 @@ export function createTelemetryPersistence(
       extensionBundleHash: input.extensionBundleHash ?? "",
       extensionSlugs: input.extensionSlugs ?? [],
       sessionStatePolicy: input.sessionStatePolicy ?? "",
+      targetDomain: input.targetDomain ?? "",
+      referrerType: input.referrerType ?? "",
       startedAt: new Date(telemetry.startedAt).toISOString(),
       endedAt: new Date(telemetry.endedAt).toISOString(),
       elapsedMs: telemetry.elapsedMs,
