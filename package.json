@@ -33,6 +33,7 @@
     "warmup:quick:display": "bash scripts/with-display.sh env WARMUP_MODE=quick ts-node --transpile-only src/scripts/cookieWarmup.ts",
     "sw:correlate": "ts-node src/scripts/correlateSimilarwebSignals.ts",
     "sw:dashboard": "ts-node src/observability/similarwebCorrelationDashboard.ts",
+    "dashboard": "ts-node src/observability/navDashboard.ts",
     "ga:report": "ts-node src/scripts/checkGaReport.ts",
     "test:unit": "vitest run",
     "test:watch": "vitest",
