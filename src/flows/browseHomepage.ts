@@ -101,8 +101,11 @@ export async function browseHomepage(
         anchor,
       );
     });
-    await randomDelay(page, 300, 800);
+    await randomDelay(page, 1000, 2000); // Increased delay for extension processing
   }
+
+  // --- Intermediate wait after nav links to allow extensions to process ---
+  await page.waitForTimeout(1_500); // Additional wait to allow extensions to analyze content
 
   // ----- 3. Scroll to #academy and read course names -----
   await page.evaluate((selector) => {

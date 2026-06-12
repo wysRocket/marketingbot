@@ -4,6 +4,8 @@ type AnyContext = any;
 declare const chrome: any;
 
 import { buildSimilarWebSeedState } from "./similarweb";
+import { dismissHoneyConsents } from "./honey";
+import { dismissGhosteryConsents } from "./ghostery";
 
 const CLOSE_URL_PATTERNS = [
   "similarweb.com/corp/extension-welcome",
@@ -26,6 +28,12 @@ export async function dismissAllConsents(context: AnyContext): Promise<void> {
         }
       })
       .catch(() => {});
+  });
+
+  // Dismiss other known consent dialogs on all pages
+  context.on("page", (page: AnyContext) => {
+    dismissHoneyConsents(page as unknown as Page).catch(() => {});
+    dismissGhosteryConsents(page as unknown as Page).catch(() => {});
   });
 
   // Pre-seed SimilarWeb storage via service worker

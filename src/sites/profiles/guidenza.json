@@ -16,7 +16,10 @@
       "/#about",
       "/#pricing",
       "/#faq",
-      "/#contact"
+      "/#contact",
+      "/blog",
+      "/blog/how-to-organize-knowledge",
+      "/blog/ai-tutor-platform"
     ]
   },
   "browseHomepage": {

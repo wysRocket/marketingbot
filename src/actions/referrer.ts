@@ -1,5 +1,5 @@
 /** Weighted pool of realistic HTTP referrers for organic traffic simulation. */
-export type ReferrerType = "search" | "social" | "direct";
+export type ReferrerType = "search" | "social" | "email" | "direct";
 
 export interface ReferrerEntry {
   url: string;
@@ -27,19 +27,21 @@ export interface ReferrerEntry {
  * classifies the session as Organic Social instead of Unassigned.
  */
 const REFERRERS: ReferrerEntry[] = [
-  { url: "https://www.google.com/",    weight: 40, type: "search", queryParam: "q" },
+  { url: "https://www.google.com/",    weight: 35, type: "search", queryParam: "q" },
   { url: "https://www.google.co.uk/", weight: 5,  type: "search", queryParam: "q" },
   { url: "https://www.google.ca/",    weight: 3,  type: "search", queryParam: "q" },
   { url: "https://www.google.com.au/",weight: 2,  type: "search", queryParam: "q" },
-  { url: "https://www.bing.com/",     weight: 10, type: "search", queryParam: "q" },
-  { url: "https://duckduckgo.com/",   weight: 5,  type: "search", queryParam: "q" },
-  { url: "https://www.facebook.com/", weight: 8,  type: "social", utmSource: "facebook" },
-  { url: "https://t.co/",             weight: 4,  type: "social", utmSource: "twitter"  },
-  { url: "https://www.linkedin.com/", weight: 6,  type: "social", utmSource: "linkedin" },
-  { url: "https://www.reddit.com/",   weight: 5,  type: "social", utmSource: "reddit"   },
+  { url: "https://www.bing.com/",     weight: 8,  type: "search", queryParam: "q" },
+  { url: "https://duckduckgo.com/",   weight: 4,  type: "search", queryParam: "q" },
+  { url: "https://www.facebook.com/", weight: 6,  type: "social", utmSource: "facebook" },
+  { url: "https://t.co/",             weight: 3,  type: "social", utmSource: "twitter"  },
+  { url: "https://www.linkedin.com/", weight: 5,  type: "social", utmSource: "linkedin" },
+  { url: "https://www.reddit.com/",   weight: 4,  type: "social", utmSource: "reddit"   },
   { url: "https://www.youtube.com/",  weight: 2,  type: "social", utmSource: "youtube"  },
+  // Email newsletter — UTM-tagged, no referrer URL
+  { url: "",                          weight: 5,  type: "email", utmSource: "newsletter" },
   // Direct visit — no Referer header sent, no UTM params
-  { url: "",                          weight: 10, type: "direct" },
+  { url: "",                          weight: 12, type: "direct" },
 ];
 
 const TOTAL_WEIGHT = REFERRERS.reduce((sum, r) => sum + r.weight, 0);
@@ -84,15 +86,14 @@ export function pickReferrer(): string | undefined {
  * - direct: returns the URL unchanged — no UTM means Direct in GA4.
  */
 export function applyUtmParams(url: string, entry: ReferrerEntry): string {
-  if (entry.type !== "social" || !entry.utmSource) return url;
+  if ((entry.type !== "social" && entry.type !== "email") || !entry.utmSource) return url;
 
   try {
     const parsed = new URL(url);
     parsed.searchParams.set("utm_source", entry.utmSource);
-    parsed.searchParams.set("utm_medium", "social");
+    parsed.searchParams.set("utm_medium", entry.type === "email" ? "email" : "social");
     return parsed.toString();
   } catch {
-    // Malformed URL — return as-is rather than breaking the flow.
     return url;
   }
 }

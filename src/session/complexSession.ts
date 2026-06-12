@@ -58,8 +58,8 @@ interface RunComplexSessionOptions {
 }
 
 const DEFAULT_POLICY: SessionPolicy = {
-  minDurationMs: 150_000,
-  minUniquePages: 6,
+  minDurationMs: 300_000,
+  minUniquePages: 10,
   topUpMinMs: 8_000,
   topUpMaxMs: 22_000,
   maxTopUpCycles: 8,

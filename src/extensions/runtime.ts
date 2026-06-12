@@ -16,7 +16,16 @@ export interface ResolvedExtensionBundle {
   bundleHash: string;
 }
 
-const DEFAULT_RAILWAY_EXTENSION_SLUGS = ["similarweb"];
+const DEFAULT_RAILWAY_EXTENSION_SLUGS = [
+  "similarweb",
+  "wappalyzer",
+  "builtwith",
+  "mozbar",
+  "ahrefs",
+  "ghostery",
+  "honey",
+  "keywords-everywhere",
+];
 
 function normalizeSlugs(slugs: string[]): string[] {
   return Array.from(
