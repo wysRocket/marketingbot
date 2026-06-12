@@ -16,6 +16,10 @@ app.get("/", (_req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
+app.get("/api/health", (_req, res) => {
+  res.json({ ok: true, port: PORT });
+});
+
 const server = createServer(app);
 server.listen(PORT, () => {
   console.log(`🧭 Observability Nav: http://localhost:${PORT}`);
