@@ -13,7 +13,7 @@ const PORT = parseInt(process.env.NAV_DASHBOARD_PORT ?? "3005", 10);
 
 const app = express();
 app.get("/", (_req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "nav.html"));
 });
 
 app.get("/api/health", (_req, res) => {
