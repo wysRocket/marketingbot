@@ -206,11 +206,15 @@ async function load(){
 function render(){
   const c=document.getElementById('content');
   const t=document.getElementById('page-title');
-  if(currentTab==='overview'){t.textContent='Overview';renderOverview(c);}
-  else if(currentTab==='sessions'){t.textContent='Sessions';renderSessions(c);}
-  else if(currentTab==='extensions'){t.textContent='Extension Telemetry';renderExtensions(c);}
-  else if(currentTab==='network'){t.textContent='Extension Network Map';renderNetwork(c);}
-  else if(currentTab==='similarweb'){t.textContent='Similarweb Correlation';renderSW(c);}
+  if(!c)return;
+  try{
+    if(currentTab==='overview'){t.textContent='Overview';renderOverview(c);}
+    else if(currentTab==='sessions'){t.textContent='Sessions';renderSessions(c);}
+    else if(currentTab==='extensions'){t.textContent='Extension Telemetry';renderExtensions(c);}
+    else if(currentTab==='network'){t.textContent='Extension Network Map';renderNetwork(c);}
+    else if(currentTab==='similarweb'){t.textContent='Similarweb Correlation';renderSW(c);}
+  }catch(e){console.error('Render error:',e);c.innerHTML='<div style="padding:20px;color:var(--red)">Render error: '+e.message+'</div>';}
+}
 }
 
 // ── Overview ─────────────────────────────────────────────────────────────────
