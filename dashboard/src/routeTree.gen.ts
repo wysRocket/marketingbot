@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SimilarwebRouteImport } from './routes/similarweb'
+import { Route as SessionsRouteImport } from './routes/sessions'
+import { Route as NetworkRouteImport } from './routes/network'
+import { Route as ExtensionsRouteImport } from './routes/extensions'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SimilarwebRoute = SimilarwebRouteImport.update({
+  id: '/similarweb',
+  path: '/similarweb',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SessionsRoute = SessionsRouteImport.update({
+  id: '/sessions',
+  path: '/sessions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NetworkRoute = NetworkRouteImport.update({
+  id: '/network',
+  path: '/network',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExtensionsRoute = ExtensionsRouteImport.update({
+  id: '/extensions',
+  path: '/extensions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,78 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/extensions': typeof ExtensionsRoute
+  '/network': typeof NetworkRoute
+  '/sessions': typeof SessionsRoute
+  '/similarweb': typeof SimilarwebRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/extensions': typeof ExtensionsRoute
+  '/network': typeof NetworkRoute
+  '/sessions': typeof SessionsRoute
+  '/similarweb': typeof SimilarwebRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/extensions': typeof ExtensionsRoute
+  '/network': typeof NetworkRoute
+  '/sessions': typeof SessionsRoute
+  '/similarweb': typeof SimilarwebRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/extensions' | '/network' | '/sessions' | '/similarweb'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/extensions' | '/network' | '/sessions' | '/similarweb'
+  id:
+    | '__root__'
+    | '/'
+    | '/extensions'
+    | '/network'
+    | '/sessions'
+    | '/similarweb'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExtensionsRoute: typeof ExtensionsRoute
+  NetworkRoute: typeof NetworkRoute
+  SessionsRoute: typeof SessionsRoute
+  SimilarwebRoute: typeof SimilarwebRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/similarweb': {
+      id: '/similarweb'
+      path: '/similarweb'
+      fullPath: '/similarweb'
+      preLoaderRoute: typeof SimilarwebRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sessions': {
+      id: '/sessions'
+      path: '/sessions'
+      fullPath: '/sessions'
+      preLoaderRoute: typeof SessionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/network': {
+      id: '/network'
+      path: '/network'
+      fullPath: '/network'
+      preLoaderRoute: typeof NetworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/extensions': {
+      id: '/extensions'
+      path: '/extensions'
+      fullPath: '/extensions'
+      preLoaderRoute: typeof ExtensionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +127,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExtensionsRoute: ExtensionsRoute,
+  NetworkRoute: NetworkRoute,
+  SessionsRoute: SessionsRoute,
+  SimilarwebRoute: SimilarwebRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

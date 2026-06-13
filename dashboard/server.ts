@@ -4,6 +4,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 
 const TELEMETRY_DIR = path.resolve(process.cwd(), '..', 'telemetry')
+const PUBLIC_DIR = path.join(process.cwd(), 'dist')
 
 async function readJsonl<T>(filePath: string, limit?: number): Promise<T[]> {
   try {
@@ -17,6 +18,7 @@ async function readJsonl<T>(filePath: string, limit?: number): Promise<T[]> {
 const app = express()
 app.use(cors())
 
+// API
 app.get('/api/data', async (_req, res) => {
   try {
     const [sessions, extEvents, swObservations] = await Promise.all([
@@ -29,8 +31,14 @@ app.get('/api/data', async (_req, res) => {
   } catch (e) { res.status(500).json({ error: String(e) }) }
 })
 
-app.use(express.static(path.join(process.cwd(), 'dist', 'public')))
-app.get('*', (_req, res) => res.sendFile(path.join(process.cwd(), 'dist', 'public', 'index.html')))
+// Static files
+app.use(express.static(PUBLIC_DIR))
+
+// SPA fallback
+app.get(/.*/, (req, res) => {
+  if (req.path.startsWith('/api')) return res.status(404).json({ error: 'Not found' })
+  res.sendFile(path.join(PUBLIC_DIR, 'index.html'))
+})
 
 const PORT = parseInt(process.env.PORT || '3005', 10)
 app.listen(PORT, () => console.log(`Dashboard at http://localhost:${PORT}`))
