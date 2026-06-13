@@ -13,6 +13,7 @@ import { login } from "./flows/login";
 import { explorePricing } from "./flows/explorePricing";
 import { accountDashboard } from "./flows/accountDashboard";
 import { loadCatalog, type LoadedCatalog } from "./profiles/catalog";
+import { startTelemetryApi } from "./observability/telemetryApi";
 import {
   validateShardConfig,
   shardCatalogProfiles,
@@ -1009,6 +1010,9 @@ async function main(): Promise<void> {
 
   console.log("\nAll rounds complete.");
 }
+
+// Start telemetry API server for dashboard
+startTelemetryApi()
 
 void main().catch((err) => {
   console.error(
