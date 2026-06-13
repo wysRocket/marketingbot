@@ -3,7 +3,7 @@ import cors from 'cors'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 
-const TELEMETRY_DIR = path.resolve(process.cwd(), '..', 'telemetry')
+const TELEMETRY_DIR = process.env.TELEMETRY_DIR || path.resolve(process.cwd(), '..', 'telemetry')
 const PUBLIC_DIR = path.join(process.cwd(), 'dist')
 
 async function readJsonl<T>(filePath: string, limit?: number): Promise<T[]> {
@@ -18,7 +18,12 @@ async function readJsonl<T>(filePath: string, limit?: number): Promise<T[]> {
 const app = express()
 app.use(cors())
 
-// API
+// Health check
+app.get('/api/health', (_req, res) => {
+  res.json({ ok: true, timestamp: new Date().toISOString() })
+})
+
+// Data endpoint
 app.get('/api/data', async (_req, res) => {
   try {
     const [sessions, extEvents, swObservations] = await Promise.all([
@@ -40,5 +45,5 @@ app.get(/.*/, (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'index.html'))
 })
 
-const PORT = parseInt(process.env.PORT || '3005', 10)
+const PORT = parseInt(process.env.PORT || '3000', 10)
 app.listen(PORT, () => console.log(`Dashboard at http://localhost:${PORT}`))
