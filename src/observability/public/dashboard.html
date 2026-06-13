@@ -2,475 +2,221 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Marketingbot</title>
 <style>
-:root{
-  --bg:#0b0d11;--surface:#11151c;--surface2:#181c24;--surface3:#1e2330;
-  --border:#2a2f3a;--border2:#363c48;
-  --gold:#f4c430;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--blue:#60a5fa;--purple:#a78bfa;--pink:#f472b6;--cyan:#22d3ee;
-  --text:#c9d1d9;--text2:#8b949e;--text3:#484f58;
-  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --mono:'JetBrains Mono','Fira Code',ui-monospace,monospace;
-  --sidebar-w:48px;--sidebar-w-expanded:200px;
-}
+:root{--bg:#0b0d11;--s1:#11151c;--s2:#181c24;--s3:#1e2330;--b1:#2a2f3a;--b2:#363c48;--gold:#f4c430;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--blue:#60a5fa;--purple:#a78bfa;--text:#c9d1d9;--t2:#8b949e;--t3:#484f58;--font:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--mono:'JetBrains Mono',monospace}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13px;height:100vh;display:flex;overflow:hidden}
-
-/* ── Sidebar ─────────────────────────────────────────────────────────────── */
-.sb{width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;flex-shrink:0;z-index:10}
+.sb{width:48px;background:var(--s1);border-right:1px solid var(--b1);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;flex-shrink:0}
 .sb-logo{width:32px;height:32px;border-radius:6px;background:linear-gradient(135deg,var(--gold),var(--amber));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#000;margin-bottom:12px;cursor:pointer}
-.sb-btn{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;color:var(--text3);position:relative}
-.sb-btn:hover{background:var(--surface2);color:var(--text2)}
-.sb-btn.active{background:var(--surface3);color:var(--gold)}
-.sb-btn .ico{font-size:16px}
-.sb-btn .tip{display:none;position:absolute;left:48px;top:50%;transform:translateY(-50%);background:var(--surface3);border:1px solid var(--border);padding:4px 10px;border-radius:4px;font-size:11px;white-space:nowrap;z-index:100;color:var(--text)}
-.sb-btn:hover .tip{display:block}
-.sb-sep{height:1px;background:var(--border);width:24px;margin:4px 0}
-.sb-spacer{flex:1}
-
-/* ── Main ────────────────────────────────────────────────────────────────── */
+.sb-btn{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;color:var(--t3)}
+.sb-btn:hover{background:var(--s2);color:var(--t2)}
+.sb-btn.active{background:var(--s3);color:var(--gold)}
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
-
-/* Top bar */
-.topbar{height:40px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:12px;flex-shrink:0}
-.topbar h1{font-size:13px;font-weight:600;color:var(--text)}
+.topbar{height:40px;background:var(--s1);border-bottom:1px solid var(--b1);display:flex;align-items:center;padding:0 16px;gap:12px;flex-shrink:0}
+.topbar h1{font-size:13px;font-weight:600}
 .topbar .sp{flex:1}
-.topbar .time{font-size:11px;color:var(--text3);font-family:var(--mono)}
-.topbar .status{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
-.status.live{color:var(--green);background:rgba(34,197,94,.1)}
-.status.dead{color:var(--red);background:rgba(239,68,68,.1)}
-
-/* Panels area */
+.topbar .time{font-size:11px;color:var(--t3);font-family:var(--mono)}
 .panels{flex:1;overflow-y:auto;padding:12px}
-.panel-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
-
-/* Panel */
-.panel{background:var(--surface);border:1px solid var(--border);border-radius:6px;display:flex;flex-direction:column;overflow:hidden}
-.panel-hdr{padding:8px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);flex-shrink:0}
-.panel-hdr h2{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text2);flex:1}
-.panel-hdr .act{font-size:10px;color:var(--text3);cursor:pointer;padding:2px 6px;border-radius:3px;transition:all .15s}
-.panel-hdr .act:hover{background:var(--surface3);color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+.panel{background:var(--s1);border:1px solid var(--b1);border-radius:6px;display:flex;flex-direction:column;overflow:hidden}
+.panel-hdr{padding:8px 12px;display:flex;align-items:center;border-bottom:1px solid var(--b1);flex-shrink:0}
+.panel-hdr h2{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--t2)}
 .panel-body{padding:12px;flex:1;overflow:auto}
-
-/* Panel sizes */
-.p-12{grid-column:span 12}.p-8{grid-column:span 8}.p-6{grid-column:span 6}.p-4{grid-column:span 4}.p-3{grid-column:span 3}
-
-/* Stat cards */
-.stat-row{display:flex;gap:1px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:12px}
-.stat-cell{flex:1;background:var(--surface);padding:10px 12px}
-.stat-cell .lbl{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:4px}
-.stat-cell .val{font-size:22px;font-weight:700;font-family:var(--mono)}
-.stat-cell .sub{font-size:10px;color:var(--text3);margin-top:2px}
-
-/* Tables */
+.p-12{grid-column:span 12}.p-8{grid-column:span 8}.p-6{grid-column:span 6}.p-4{grid-column:span 4}
+.stat-row{display:flex;gap:1px;background:var(--b1);border-radius:4px;overflow:hidden;margin-bottom:12px}
+.stat-cell{flex:1;background:var(--s1);padding:10px 12px}
+.stat-cell .lbl{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:4px}
+.stat-cell .val{font-size:20px;font-weight:700;font-family:var(--mono)}
+.stat-cell .sub{font-size:10px;color:var(--t3);margin-top:2px}
 table{width:100%;border-collapse:collapse}
-thead th{border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);white-space:nowrap;font-weight:600;position:sticky;top:0;background:var(--surface)}
-tbody tr{border-bottom:1px solid rgba(42,47,58,.4);cursor:pointer;transition:background .1s}
-tbody tr:hover{background:var(--surface2)}
-tbody tr.expanded{background:rgba(244,196,48,.04)}
+thead th{border-bottom:1px solid var(--b1);padding:6px 10px;text-align:left;font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);white-space:nowrap;font-weight:600;position:sticky;top:0;background:var(--s1)}
+tbody tr{border-bottom:1px solid rgba(42,47,58,.4);cursor:pointer}
+tbody tr:hover{background:var(--s2)}
 tbody td{padding:6px 10px;font-size:11px;white-space:nowrap;font-family:var(--mono)}
-td.wrap{white-space:normal;max-width:200px}
-
-/* Badges */
 .badge{display:inline-flex;align-items:center;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:600}
-.badge-live{color:var(--green);background:rgba(34,197,94,.1)}
-.badge-dead{color:var(--red);background:rgba(239,68,68,.1)}
-.badge-warn{color:var(--amber);background:rgba(245,158,11,.1)}
-.badge-info{color:var(--blue);background:rgba(96,165,250,.1)}
-.badge-mute{color:var(--text3);background:var(--surface2)}
-
-/* Pills */
+.badge-g{color:var(--green);background:rgba(34,197,94,.1)}
+.badge-r{color:var(--red);background:rgba(239,68,68,.1)}
+.badge-a{color:var(--amber);background:rgba(245,158,11,.1)}
+.badge-b{color:var(--blue);background:rgba(96,165,250,.1)}
+.badge-m{color:var(--t3);background:var(--s2)}
 .pill{display:inline-block;padding:1px 5px;border-radius:3px;font-size:9px;font-family:var(--mono);margin:1px}
 .pill-g{background:rgba(244,196,48,.1);color:var(--gold)}
 .pill-b{background:rgba(96,165,250,.1);color:var(--blue)}
-.pill-p{background:rgba(167,139,250,.1);color:var(--purple)}
-
-/* Detail */
-.drow td{padding:0}
-.dinner{padding:10px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;background:rgba(0,0,0,.2)}
-.dgrp h4{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:4px}
-.dgrp li{font-size:10px;padding:2px 5px;background:rgba(255,255,255,.02);border-radius:2px;border-left:2px solid var(--border);word-break:break-all;list-style:none;margin-bottom:1px}
-.dgrp li.warn{border-left-color:var(--amber);color:var(--amber)}
-
-/* Toolbar */
-.toolbar{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
-.toolbar label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
-.toolbar select,.toolbar input{
-  background:var(--surface2);border:1px solid var(--border);color:var(--text);
-  padding:4px 8px;border-radius:4px;font-family:var(--mono);font-size:11px;outline:none
-}
-.toolbar select:focus,.toolbar input:focus{border-color:var(--gold)}
-
-/* Chart placeholder */
-.chart{height:120px;display:flex;align-items:flex-end;gap:2px;padding:8px 0}
-.chart-bar{flex:1;border-radius:2px 2px 0 0;min-height:2px;transition:height .3s}
+.chart{height:100px;display:flex;align-items:flex-end;gap:2px;padding:8px 0 0}
+.chart-bar{flex:1;border-radius:2px 2px 0 0;min-height:2px}
 .chart-bar:hover{opacity:.8}
-
-/* Colors */
+.toolbar{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.toolbar label{font-size:10px;color:var(--t3);text-transform:uppercase}
+.toolbar select,.toolbar input{background:var(--s2);border:1px solid var(--b1);color:var(--text);padding:4px 8px;border-radius:4px;font-family:var(--mono);font-size:11px;outline:none}
 .pos{color:var(--green)}.neg{color:var(--red)}.neu{color:var(--amber)}
-
-/* Scrollbar */
-::-webkit-scrollbar{width:6px;height:6px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-
-/* Mobile */
-@media(max-width:768px){
-  .p-8,.p-6,.p-4,.p-3{grid-column:span 12}
-}
 </style>
 </head>
 <body>
-
-<!-- Sidebar -->
 <div class="sb">
-  <div class="sb-logo" id="sb-home" title="Home">M</div>
-  <div class="sb-btn active" data-tab="overview" title="Overview">
-    <span class="ico">📊</span><span class="tip">Overview</span>
-  </div>
-  <div class="sb-btn" data-tab="sessions" title="Sessions">
-    <span class="ico">🖥</span><span class="tip">Sessions</span>
-  </div>
-  <div class="sb-sep"></div>
-  <div class="sb-btn" data-tab="extensions" title="Extensions">
-    <span class="ico">🔌</span><span class="tip">Extensions</span>
-  </div>
-  <div class="sb-btn" data-tab="network" title="Network Map">
-    <span class="ico">🌐</span><span class="tip">Network Map</span>
-  </div>
-  <div class="sb-btn" data-tab="similarweb" title="Similarweb">
-    <span class="ico">📈</span><span class="tip">Similarweb</span>
-  </div>
-  <div class="sb-spacer"></div>
-  <div class="sb-btn" id="sb-refresh" title="Refresh">
-    <span class="ico">↻</span><span class="tip">Refresh</span>
-  </div>
+  <div class="sb-logo">M</div>
+  <div class="sb-btn active" data-t="overview" title="Overview">📊</div>
+  <div class="sb-btn" data-t="sessions" title="Sessions">🖥</div>
+  <div style="height:1px;background:var(--b1);width:24px;margin:4px 0"></div>
+  <div class="sb-btn" data-t="extensions" title="Extensions">🔌</div>
+  <div class="sb-btn" data-t="network" title="Network">🌐</div>
+  <div class="sb-btn" data-t="sw" title="Similarweb">📈</div>
+  <div style="flex:1"></div>
+  <div class="sb-btn" id="btn-refresh" title="Refresh">↻</div>
 </div>
-
-<!-- Main -->
 <div class="main">
-  <div class="topbar">
-    <h1 id="page-title">Overview</h1>
-    <div class="sp"></div>
-    <span class="time" id="last-update">—</span>
-    <span class="status live" id="conn-status">LIVE</span>
-  </div>
-
-  <div class="panels">
-    <div class="panel-grid" id="content"></div>
-  </div>
+  <div class="topbar"><h1 id="pt">Overview</h1><div class="sp"></div><span class="time" id="lu">—</span></div>
+  <div class="panels"><div class="grid" id="content"></div></div>
 </div>
-
 <script>
-const fmt={
-  time:t=>{const d=new Date(t);return d.getMonth()+1+'/'+d.getDate()+' '+d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})},
-  dur:m=>m<1000?m+'ms':m<60000?(m/1000).toFixed(1)+'s':Math.floor(m/60000)+'m '+Math.round((m%60000)/1000)+'s',
-  bytes:b=>!b?'—':b<1048576?(b/1024).toFixed(0)+' KB':(b/1048576).toFixed(1)+' MB',
-  pct:(n,d)=>d===0?'—':Math.round(n/d*100)+'%',
-  num:n=>n!=null?n.toLocaleString():'—'
-};
+const F={time:t=>{const d=new Date(t);return(d.getMonth()+1)+'/'+d.getDate()+' '+d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})},dur:m=>m<60000?(m/1000).toFixed(1)+'s':Math.floor(m/60000)+'m',bytes:b=>b<1048576?(b/1024).toFixed(0)+'KB':(b/1048576).toFixed(1)+'MB',pct:(n,d)=>d?(Math.round(n/d*100)+'%'):'—',num:n=>n!=null?n.toLocaleString():'—'};
+const $=id=>document.getElementById(id);
+let TAB='overview',DATA={sessions:[],extEvents:[],swObservations:[]};
 
 function badge(t,c){return'<span class="badge badge-'+c+'">'+t+'</span>'}
 function pill(t,c){return'<span class="pill pill-'+c+'">'+t+'</span>'}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 
-let DATA={sessions:[],extEvents:[],swObservations:[]};
-let currentTab='overview';
-
-// Tab switching
-document.querySelectorAll('.sb-btn[data-tab]').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.sb-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    currentTab=btn.dataset.tab;
-    render();
-  });
+document.querySelectorAll('.sb-btn[data-t]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.sb-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');TAB=b.dataset.t;render();
 });
-document.getElementById('sb-home').addEventListener('click',()=>{currentTab='overview';render();});
-document.getElementById('sb-refresh').addEventListener('click',load);
+$('btn-refresh').onclick=load;
 
-// Load data
 async function load(){
-  try{
-    const r=await fetch('/api/data');DATA=await r.json();
-    document.getElementById('conn-status').className='status live';document.getElementById('conn-status').textContent='LIVE';
-    document.getElementById('last-update').textContent='Updated '+new Date().toLocaleTimeString();
-    render();
-  }catch(e){
-    document.getElementById('conn-status').className='status dead';document.getElementById('conn-status').textContent='ERROR';
-    console.error(e);
-  }
+  try{const r=await fetch('/api/data');DATA=await r.json();$('lu').textContent='Updated '+new Date().toLocaleTimeString();render();}
+  catch(e){console.error(e);}
 }
 
 function render(){
-  const c=document.getElementById('content');
-  const t=document.getElementById('page-title');
-  if(!c)return;
-  try{
-    if(currentTab==='overview'){t.textContent='Overview';renderOverview(c);}
-    else if(currentTab==='sessions'){t.textContent='Sessions';renderSessions(c);}
-    else if(currentTab==='extensions'){t.textContent='Extension Telemetry';renderExtensions(c);}
-    else if(currentTab==='network'){t.textContent='Extension Network Map';renderNetwork(c);}
-    else if(currentTab==='similarweb'){t.textContent='Similarweb Correlation';renderSW(c);}
-  }catch(e){console.error('Render error:',e);c.innerHTML='<div style="padding:20px;color:var(--red)">Render error: '+e.message+'</div>';}
-}
+  const c=$('content'),t=$('pt');
+  if(TAB==='overview'){t.textContent='Overview';rOverview(c);}
+  else if(TAB==='sessions'){t.textContent='Sessions';rSessions(c);}
+  else if(TAB==='extensions'){t.textContent='Extensions';rExtensions(c);}
+  else if(TAB==='network'){t.textContent='Network Map';rNetwork(c);}
+  else if(TAB==='sw'){t.textContent='Similarweb';rSW(c);}
 }
 
-// ── Overview ─────────────────────────────────────────────────────────────────
-function renderOverview(c){
-  const s=DATA.sessions,n=s.length;
-  const passed=s.filter(x=>x.metMinDuration&&x.metMinUniquePages).length;
+function rOverview(c){
+  const s=DATA.sessions,n=s.length,passed=s.filter(x=>x.metMinDuration&&x.metMinUniquePages).length;
   const avgDur=n?Math.round(s.reduce((a,x)=>a+(x.elapsedMs||0),0)/n/1000):0;
   const totalTraf=s.reduce((a,x)=>a+(x.trafficBytesTotal||0),0);
   const exts=new Set(s.flatMap(x=>x.extensionSlugs||[]));
   const domains=new Set(s.map(x=>x.targetDomain).filter(Boolean));
-  const swObs=DATA.swObservations.length;
-  const extEvts=DATA.extEvents.length;
-
-  c.innerHTML=`
-    <div class="panel p-12"><div class="panel-body">
-      <div class="stat-row">
-        <div class="stat-cell"><div class="lbl">Sessions</div><div class="val">${n}</div></div>
-        <div class="stat-cell"><div class="lbl">Avg Duration</div><div class="val">${avgDur}s</div></div>
-        <div class="stat-cell"><div class="lbl">Pass Rate</div><div class="val">${fmt.pct(passed,n)}</div><div class="sub">${passed}/${n} met both gates</div></div>
-        <div class="stat-cell"><div class="lbl">Total Traffic</div><div class="val">${fmt.bytes(totalTraf)}</div></div>
-        <div class="stat-cell"><div class="lbl">Extensions</div><div class="val">${exts.size}</div><div class="sub">unique loaded</div></div>
-        <div class="stat-cell"><div class="lbl">Domains</div><div class="val">${domains.size}</div><div class="sub">targeted</div></div>
-        <div class="stat-cell"><div class="lbl">Ext Events</div><div class="val">${extEvts}</div><div class="sub">HTTP calls</div></div>
-        <div class="stat-cell"><div class="lbl">SW Obs</div><div class="val">${swObs}</div><div class="sub">snapshots</div></div>
-      </div>
-    </div></div>
-
-    <div class="panel p-6"><div class="panel-hdr"><h2>Sessions / Day</h2></div><div class="panel-body"><div class="chart" id="chart-sessions"></div></div></div>
-    <div class="panel p-6"><div class="panel-hdr"><h2>Traffic / Day</h2></div><div class="panel-body"><div class="chart" id="chart-traffic"></div></div></div>
-
-    <div class="panel p-12"><div class="panel-hdr"><h2>Recent Sessions</h2></div><div class="panel-body"><table>
-      <thead><tr><th>Time</th><th>Profile</th><th>Domain</th><th>Duration</th><th>Pages</th><th>Extensions</th><th>Quality</th></tr></thead>
-      <tbody>${s.slice(-30).reverse().map(r=>`<tr>
-        <td>${fmt.time(r.recordedAt)}</td>
-        <td>${badge(esc(r.profileId||'?'),'mute')}</td>
-        <td>${esc(r.targetDomain||'—')}</td>
-        <td>${fmt.dur(r.elapsedMs)}</td>
-        <td>${r.uniquePageCount}</td>
-        <td>${(r.extensionSlugs||[]).slice(0,3).map(e=>pill(e,b)).join('')||'—'}</td>
-        <td>${r.metMinDuration&&r.metMinUniquePages?badge('PASS','live'):badge('FAIL','dead')}</td>
-      </tr>`).join('')||'<tr><td colspan="7" style="text-align:center;color:var(--text3);padding:20px">No sessions yet</td></tr>'}
-    </tbody></table></div></div>`;
-
-  // Charts
   const byDay=new Map();
-  s.forEach(r=>{const d=(r.endedAt||r.recordedAt).slice(0,10);if(!byDay.has(d))byDay.set(d,{sessions:0,traffic:0});byDay.get(d).sessions++;byDay.get(d).traffic+=r.trafficBytesTotal||0;});
+  s.forEach(r=>{const d=(r.endedAt||r.recordedAt).slice(0,10);if(!byDay.has(d))byDay.set(d,{s:0,t:0});byDay.get(d).s++;byDay.get(d).t+=r.trafficBytesTotal||0;});
   const days=[...byDay.entries()].sort((a,b)=>a[0].localeCompare(b[0])).slice(-14);
-  const maxS=Math.max(...days.map(d=>d[1].sessions),1);
-  const maxT=Math.max(...days.map(d=>d[1].traffic),1);
-
-  document.getElementById('chart-sessions').innerHTML=days.map(d=>
-    `<div class="chart-bar" style="height:${d[1].sessions/maxS*100}%;background:var(--blue)" title="${d[0]}: ${d[1].sessions} sessions"></div>`
-  ).join('')||'<div style="color:var(--text3);font-size:11px">No data</div>';
-
-  document.getElementById('chart-traffic').innerHTML=days.map(d=>
-    `<div class="chart-bar" style="height:${d[1].traffic/maxT*100}%;background:var(--purple)" title="${d[0]}: ${fmt.bytes(d[1].traffic)}"></div>`
-  ).join('')||'<div style="color:var(--text3);font-size:11px">No data</div>';
+  const maxS=Math.max(...days.map(d=>d[1].s),1);
+  let chartS='',chartT='';
+  days.forEach(d=>{chartS+='<div class="chart-bar" style="height:'+(d[1].s/maxS*100)+'%;background:var(--blue)" title="'+d[0]+': '+d[1].s+' sessions"></div>';chartT+='<div class="chart-bar" style="height:'+(d[1].t/Math.max(...days.map(x=>x[1].t),1)*100)+'%;background:var(--purple)" title="'+d[0]+': '+F.bytes(d[1].t)+'"></div>';});
+  const rows=s.slice(-20).reverse().map(r=>'<tr><td>'+F.time(r.recordedAt)+'</td><td>'+badge(esc(r.profileId||'?'),'m')+'</td><td>'+esc(r.targetDomain||'—')+'</td><td>'+F.dur(r.elapsedMs)+'</td><td>'+r.uniquePageCount+'</td><td>'+(r.metMinDuration&&r.metMinUniquePages?badge('PASS','g'):badge('FAIL','r'))+'</td></tr>').join('');
+  c.innerHTML='<div class="panel p-12"><div class="panel-body"><div class="stat-row">'+
+    '<div class="stat-cell"><div class="lbl">Sessions</div><div class="val">'+n+'</div></div>'+
+    '<div class="stat-cell"><div class="lbl">Avg Duration</div><div class="val">'+avgDur+'s</div></div>'+
+    '<div class="stat-cell"><div class="lbl">Pass Rate</div><div class="val">'+F.pct(passed,n)+'</div><div class="sub">'+passed+'/'+n+'</div></div>'+
+    '<div class="stat-cell"><div class="lbl">Traffic</div><div class="val">'+F.bytes(totalTraf)+'</div></div>'+
+    '<div class="stat-cell"><div class="lbl">Extensions</div><div class="val">'+exts.size+'</div></div>'+
+    '<div class="stat-cell"><div class="lbl">Domains</div><div class="val">'+domains.size+'</div></div>'+
+    '<div class="stat-cell"><div class="lbl">Ext Events</div><div class="val">'+DATA.extEvents.length+'</div></div>'+
+    '<div class="stat-cell"><div class="lbl">SW Obs</div><div class="val">'+DATA.swObservations.length+'</div></div>'+
+    '</div></div></div>'+
+    '<div class="panel p-6"><div class="panel-hdr"><h2>Sessions/Day</h2></div><div class="panel-body"><div class="chart">'+chartS+'</div></div></div>'+
+    '<div class="panel p-6"><div class="panel-hdr"><h2>Traffic/Day</h2></div><div class="panel-body"><div class="chart">'+chartT+'</div></div></div>'+
+    '<div class="panel p-12"><div class="panel-hdr"><h2>Recent Sessions</h2></div><div class="panel-body"><table><thead><tr><th>Time</th><th>Profile</th><th>Domain</th><th>Duration</th><th>Pages</th><th>Quality</th></tr><thead><tbody>'+rows+'</tbody></table></div></div>';
 }
 
-// ── Sessions ─────────────────────────────────────────────────────────────────
-function renderSessions(c){
+function rSessions(c){
   const profs=[...new Set(DATA.sessions.map(s=>s.profileId))].sort();
-  c.innerHTML=`
-    <div class="panel p-12"><div class="panel-body">
-      <div class="toolbar">
-        <label>Profile</label><select id="s-prof"><option value="">All</option>${profs.map(p=>'<option value="'+p+'">'+esc(p)+'</option>').join('')}</select>
-        <label>Domain</label><input id="s-dom" placeholder="Filter…" style="width:140px">
-        <label>Sort</label><select id="s-sort"><option value="t_desc">Newest</option><option value="t_asc">Oldest</option><option value="d_desc">Longest</option></select>
-        <span id="s-count" style="margin-left:auto;font-size:11px;color:var(--text3)"></span>
-      </div>
-      <table><thead><tr><th>Time</th><th>Runner</th><th>Profile</th><th>Label</th><th>Domain</th><th>Duration</th><th>Pages</th><th>Extensions</th><th>Flows</th><th>Traffic</th><th>Quality</th></tr></thead>
-      <tbody id="sess-body"></tbody></table>
-    </div></div>`;
-
-  const renderFiltered=()=>{
+  c.innerHTML='<div class="panel p-12"><div class="panel-body"><div class="toolbar"><label>Profile</label><select id="s-p"><option value="">All</option>'+profs.map(p=>'<option value="'+p+'">'+esc(p)+'</option>').join('')+'</select><label>Domain</label><input id="s-d" placeholder="Filter…" style="width:120px"><label>Sort</label><select id="s-s"><option value="t_d">Newest</option><option value="t_a">Oldest</option><option value="d_d">Longest</option></select><span id="s-n" style="margin-left:auto;font-size:11px;color:var(--t3)"></span></div><table><thead><tr><th>Time</th><th>Runner</th><th>Profile</th><th>Domain</th><th>Duration</th><th>Pages</th><th>Extensions</th><th>Flows</th><th>Traffic</th><th>Quality</th></tr></thead><tbody></tbody></table></div></div>';
+  const render=()=>{
     let list=[...DATA.sessions];
-    const prof=document.getElementById('s-prof').value;
-    const dom=(document.getElementById('s-dom').value||'').toLowerCase();
-    const sort=document.getElementById('s-sort').value;
-    if(prof)list=list.filter(s=>s.profileId===prof);
-    if(dom)list=list.filter(s=>(s.targetDomain||'').toLowerCase().includes(dom)||(s.uniquePages||[]).some(p=>p.toLowerCase().includes(dom)));
-    const [f,d]=sort.split('_');
-    list.sort((a,b)=>{let av=a[f],bv=b[f];if(typeof av==='string')av=av.toLowerCase();if(typeof bv==='string')bv=String(bv).toLowerCase();return d==='desc'?(av<bv?1:-1):(av<bv?-1:1);});
-    document.getElementById('s-count').textContent=list.length+' sessions';
-    document.getElementById('sess-body').innerHTML=list.slice(0,500).map(s=>{
-      const qOk=s.metMinDuration&&s.metMinUniquePages;
-      return`<tr data-id="${esc(s.runId)}">
-        <td>${fmt.time(s.recordedAt)}</td><td>${badge(esc(s.runner||'?'),'info')}</td><td>${badge(esc(s.profileId||'?'),'mute')}</td>
-        <td class="wrap" style="max-width:100px">${esc(s.label||'—')}</td><td>${esc(s.targetDomain||'—')}</td>
-        <td>${fmt.dur(s.elapsedMs)}</td><td>${s.uniquePageCount}</td>
-        <td>${(s.extensionSlugs||[]).slice(0,4).map(e=>pill(e,b)).join('')||'—'}</td>
-        <td>${(s.flowsRun||[]).slice(0,3).map(f=>pill(f,g)).join('')||'—'}</td>
-        <td>${fmt.bytes(s.trafficBytesTotal||0)}</td>
-        <td>${qOk?badge('PASS','live'):badge('FAIL','dead')}</td>
-      </tr>${s._expanded?detailRow(s):''}`;
-    }).join('')||'<tr><td colspan="11" style="text-align:center;color:var(--text3);padding:20px">No sessions</td></tr>`;
+    const p=$('s-p').value,d=($('s-d').value||'').toLowerCase(),sort=$('s-s').value;
+    if(p)list=list.filter(s=>s.profileId===p);
+    if(d)list=list.filter(s=>(s.targetDomain||'').toLowerCase().includes(d)||(s.uniquePages||[]).some(u=>u.toLowerCase().includes(d)));
+    const [f,dir]=sort.split('_');
+    list.sort((a,b)=>{let av=a[f],bv=b[f];if(typeof av==='string')av=av.toLowerCase();if(typeof bv==='string')bv=String(bv).toLowerCase();return dir==='d'?(av<bv?1:-1):(av<bv?-1:1);});
+    $('s-n').textContent=list.length+' sessions';
+    const tbody=c.querySelector('tbody');
+    tbody.innerHTML=list.slice(0,500).map(s=>{
+      const q=s.metMinDuration&&s.metMinUniquePages;
+      return'<tr data-id="'+esc(s.runId)+'"><td>'+F.time(s.recordedAt)+'</td><td>'+badge(s.runner||'?','b')+'</td><td>'+badge(s.profileId||'?','m')+'</td><td>'+esc(s.targetDomain||'—')+'</td><td>'+F.dur(s.elapsedMs)+'</td><td>'+s.uniquePageCount+'</td><td>'+(s.extensionSlugs||[]).slice(0,4).map(e=>pill(e,'b')).join('')+'</td><td>'+(s.flowsRun||[]).slice(0,3).map(fl=>pill(fl,'g')).join('')+'</td><td>'+F.bytes(s.trafficBytesTotal||0)+'</td><td>'+(q?badge('PASS','g'):badge('FAIL','r'))+'</td></tr>';
+    }).join('');
+    tbody.querySelectorAll('tr[data-id]').forEach(tr=>tr.onclick=()=>{
+      const s=DATA.sessions.find(x=>x.runId===tr.dataset.id);if(s){s._expand=!s._expand;render();}
+    });
   };
-
-  renderFiltered();
-  document.getElementById('s-prof').addEventListener('change',renderFiltered);
-  document.getElementById('s-dom').addEventListener('input',renderFiltered);
-  document.getElementById('s-sort').addEventListener('change',renderFiltered);
-
-  document.getElementById('sess-body').addEventListener('click',e=>{
-    const tr=e.target.closest('tr[data-id]');if(!tr)return;
-    const s=DATA.sessions.find(x=>x.runId===tr.dataset.id);if(!s)return;
-    s._expanded=!s._expanded;renderFiltered();
-  });
+  render();
+  $('s-p').onchange=render;$('s-d').oninput=render;$('s-s').onchange=render;
 }
 
-function detailRow(s){
-  const pages=(s.uniquePages||[]).map(p=>'<li>'+esc(p)+'</li>').join('')||'<li>—</li>';
-  const exts=(s.extensionSlugs||[]).map(e=>'<li>'+esc(e)+'</li>').join('')||'<li>—</li>';
-  const warns=(s.warnings||[]).map(w=>'<li class="warn">⚠ '+esc(w)+'</li>').join('')||'<li>None</li>';
-  const flows=(s.flowsRun||[]).map(f=>'<li>'+esc(f)+'</li>').join('')||'<li>—</li>';
-  return`<tr class="drow"><td colspan="11"><div class="dinner">
-    <div class="dgrp"><h4>Pages (${s.uniquePageCount})</h4><ul>${pages}</ul></div>
-    <div class="dgrp"><h4>Extensions</h4><ul>${exts}</ul></div>
-    <div class="dgrp"><h4>Flows</h4><ul>${flows}</ul></div>
-    <div class="dgrp"><h4>Warnings</h4><ul>${warns}</ul></div>
-    <div class="dgrp"><h4>Quality</h4><ul><li>Duration: ${s.policy?s.policy.minDurationMs/1000:0}s — ${s.metMinDuration?'✓ met':'✗ missed'}</li><li>Pages: ${s.policy?s.policy.minUniquePages:0} — ${s.metMinUniquePages?'✓ met':'✗ missed'}</li></ul></div>
-    <div class="dgrp"><h4>IDs</h4><ul><li>Run: ${esc(s.runId||'—')}</li><li>Runner: ${esc(s.runner||'—')}</li>${s.targetDomain?'<li>Target: '+esc(s.targetDomain)+'</li>':''}</ul></div>
-  </div></td></tr>`;
-}
-
-// ── Extensions ───────────────────────────────────────────────────────────────
-function renderExtensions(c){
-  c.innerHTML=`
-    <div class="panel p-12"><div class="panel-body">
-      <div class="toolbar">
-        <label>Domain</label><select id="e-dom"><option value="">All</option></select>
-        <label>Method</label><select id="e-met"><option value="">All</option><option value="GET">GET</option><option value="POST">POST</option></select>
-        <span class="act" id="e-clear">Clear All</span>
-        <span id="e-count" style="margin-left:auto;font-size:11px;color:var(--text3)"></span>
-      </div>
-      <table><thead><tr><th>Time</th><th>Domain</th><th>Method</th><th>URL</th><th>Request</th><th>Response</th></tr></thead>
-      <tbody id="ext-body"></tbody></table>
-    </div></div>`;
-
-  const renderFiltered=()=>{
+function rExtensions(c){
+  const doms=[...new Set(DATA.extEvents.map(e=>e.matchedDomain))].sort();
+  c.innerHTML='<div class="panel p-12"><div class="panel-body"><div class="toolbar"><label>Domain</label><select id="e-d"><option value="">All</option>'+doms.map(d=>'<option value="'+d+'">'+esc(d)+'</option>').join('')+'</select><label>Method</label><select id="e-m"><option value="">All</option><option value="GET">GET</option><option value="POST">POST</option></select><span id="e-n" style="margin-left:auto;font-size:11px;color:var(--t3)"></span></div><table><thead><tr><th>Time</th><th>Domain</th><th>Method</th><th>URL</th><th>Request</th><th>Response</th></tr></thead><tbody></tbody></table></div></div>';
+  const render=()=>{
     let list=[...DATA.extEvents];
-    const dom=document.getElementById('e-dom').value;
-    const met=document.getElementById('e-met').value;
-    if(dom)list=list.filter(e=>e.matchedDomain.includes(dom));
-    if(met)list=list.filter(e=>e.method===met);
-    const allDoms=[...new Set(DATA.extEvents.map(e=>e.matchedDomain))].sort();
-    const dSel=document.getElementById('e-dom');
-    if(dSel.options.length<=1){dSel.innerHTML='<option value="">All</option>'+allDoms.map(d=>'<option value="'+d+'">'+esc(d)+'</option>').join('');dSel.value=dom;}
-    document.getElementById('e-count').textContent=list.length+' events';
-    document.getElementById('ext-body').innerHTML=list.slice(0,500).map(e=>`<tr>
-      <td>${new Date(e.timestamp).toLocaleTimeString()}</td>
-      <td>${badge(esc(e.matchedDomain),'info')}</td>
-      <td><span class="badge badge-mute">${e.method}</span></td>
-      <td class="wrap" style="max-width:300px;font-size:10px">${esc(e.url)}</td>
-      <td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;font-size:10px;color:var(--text3)">${esc((e.requestBody||'—').slice(0,60))}</td>
-      <td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;font-size:10px;color:var(--text3)">${esc((e.responseBody||'—').slice(0,60))}</td>
-    `).join('')||'<tr><td colspan="6" style="text-align:center;color:var(--text3);padding:20px">No extension events</td></tr>`;
+    const d=$('e-d').value,m=$('e-m').value;
+    if(d)list=list.filter(e=>e.matchedDomain.includes(d));
+    if(m)list=list.filter(e=>e.method===m);
+    $('e-n').textContent=list.length+' events';
+    c.querySelector('tbody').innerHTML=list.slice(0,500).map(e=>'<tr><td>'+new Date(e.timestamp).toLocaleTimeString()+'</td><td>'+badge(e.matchedDomain,'b')+'</td><td>'+badge(e.method,'m')+'</td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis">'+esc(e.url)+'</td><td style="max-width:80px;overflow:hidden;text-overflow:ellipsis;font-size:10px;color:var(--t3)">'+esc((e.requestBody||'—').slice(0,50))+'</td><td style="max-width:80px;overflow:hidden;text-overflow:ellipsis;font-size:10px;color:var(--t3)">'+esc((e.responseBody||'—').slice(0,50))+'</td></tr>').join('');
   };
-  renderFiltered();
-  document.getElementById('e-dom').addEventListener('change',renderFiltered);
-  document.getElementById('e-met').addEventListener('change',renderFiltered);
-  document.getElementById('e-clear').addEventListener('click',async()=>{await fetch('/api/clear-events',{method:'POST'});load();});
+  render();$('e-d').onchange=render;$('e-m').onchange=render;
 }
 
-// ── Network ──────────────────────────────────────────────────────────────────
-function renderNetwork(c){
-  const events=DATA.extEvents;
+function rNetwork(c){
   const domMap=new Map();
-  events.forEach(e=>{
+  DATA.extEvents.forEach(e=>{
     const d=e.matchedDomain;
-    if(!domMap.has(d))domMap.set(d,{count:0,methods:new Set(),endpoints:new Map()});
-    const dm=domMap.get(d);dm.count++;dm.methods.add(e.method);
-    let key='unknown';try{const u=new URL(e.url);key=e.method+' '+u.pathname;}catch{}
+    if(!domMap.has(d))domMap.set(d,{count:0,endpoints:new Map()});
+    const dm=domMap.get(d);dm.count++;
+    let key='try{const u=new URL(e.url);key=e.method+u.pathname}catch{}';
+    key=e.method+' '+(()=>{try{return new URL(e.url).pathname}catch(e){return'?'}})();
     let ep=dm.endpoints.get(key);if(!ep)ep={count:0,body:''};ep.count++;
-    if(!ep.body&&e.requestBody)ep.body=e.requestBody.slice(0,200);
+    if(!ep.body&&e.requestBody)ep.body=e.requestBody.slice(0,150);
     dm.endpoints.set(key,ep);
   });
   const rows=[...domMap.entries()].sort((a,b)=>b[1].count-a[1].count);
-
-  c.innerHTML=rows.map(([d,dd])=>`
-    <div class="panel p-6">
-      <div class="panel-hdr"><h2>${esc(d)}</h2>${badge(dd.count+' events','info')}${[...dd.methods].map(m=>badge(m,'mute')).join('')}</div>
-      <div class="panel-body">
-        <div style="display:flex;flex-wrap:wrap;gap:4px">
-          ${[...dd.endpoints.entries()].sort((a,b)=>b[1].count-a[1].count).slice(0,20).map(([k,v])=>`
-            <div style="background:var(--surface2);padding:4px 8px;border-radius:4px;font-size:10px;border:1px solid var(--border)">
-              <span style="color:var(--gold)">${esc(k)}</span>
-              <span style="color:var(--text3);margin-left:4px">×${v.count}</span>
-              ${v.body?`<div style="margin-top:3px;color:var(--text3);max-width:280px;overflow:hidden;text-overflow:ellipsis" title="${esc(v.body)}">${esc(v.body.slice(0,80))}</div>`:''}
-            </div>`).join('')}
-        </div>
-      </div>
-    </div>`).join('')||'<div class="panel p-12"><div class="panel-body"><div style="text-align:center;color:var(--text3);padding:40px">No extension network events</div></div></div>';
+  let html='';
+  rows.forEach(([d,dd])=>{
+    let eps='';
+    [...dd.endpoints.entries()].sort((a,b)=>b[1].count-a[1].count).slice(0,15).forEach(([k,v])=>{
+      eps+='<div style="background:var(--s2);padding:4px 8px;border-radius:4px;font-size:10px;border:1px solid var(--b1)"><span style="color:var(--gold)">'+esc(k)+'</span><span style="color:var(--t3);margin-left:4px">×'+v.count+'</span>'+(v.body?'<div style="margin-top:2px;color:var(--t3);max-width:250px;overflow:hidden;text-overflow:ellipsis" title="'+esc(v.body)+'">'+esc(v.body.slice(0,60))+'</div>':'')+'</div>';
+    });
+    html+='<div class="panel p-6"><div class="panel-hdr"><h2>'+esc(d)+'</h2>'+badge(dd.count+' events','b')+'</div><div class="panel-body"><div style="display:flex;flex-wrap:wrap;gap:4px">'+eps+'</div></div></div>';
+  });
+  c.innerHTML=html||'<div class="panel p-12"><div class="panel-body"><div style="text-align:center;color:var(--t3);padding:40px">No extension network events</div></div></div>';
 }
 
-// ── Similarweb ───────────────────────────────────────────────────────────────
-function renderSW(c){
+function rSW(c){
   const allDoms=[...new Set(DATA.swObservations.map(o=>o.domain))].sort();
-  c.innerHTML=`
-    <div class="panel p-12"><div class="panel-body">
-      <div class="toolbar">
-        <label>Domain</label><select id="sw-dom">${allDoms.map(d=>'<option value="'+d+'">'+esc(d)+'</option>').join('')}</select>
-        <label>Window</label><select id="sw-hrs"><option value="24">24h</option><option value="48">48h</option><option value="168" selected>7d</option><option value="720">30d</option></select>
-      </div>
-    </div></div>
-    <div id="sw-content"></div>`;
-
-  const renderDomain=()=>{
-    const domain=document.getElementById('sw-dom').value||allDoms[0]||'eurocookflow.com';
-    const hours=parseInt(document.getElementById('sw-hrs').value);
-    const cutoff=Date.now()-hours*3600000;
+  c.innerHTML='<div class="panel p-12"><div class="panel-body"><div class="toolbar"><label>Domain</label><select id="sw-d">'+allDoms.map(d=>'<option value="'+d+'">'+esc(d)+'</option>').join('')+'</select><label>Window</label><select id="sw-h"><option value="24">24h</option><option value="168" selected>7d</option></select></div></div></div><div id="sw-c"></div>';
+  const renderD=()=>{
+    const domain=$('sw-d').value||allDoms[0]||'eurocookflow.com',hours=parseInt($('sw-h').value),cutoff=Date.now()-hours*3600000;
     const obs=DATA.swObservations.filter(o=>o.domain===domain&&Date.parse(o.observedAt)>=cutoff).sort((a,b)=>a.observedAt.localeCompare(b.observedAt));
     const sessions=DATA.sessions.filter(s=>{const ts=Date.parse(s.endedAt||s.recordedAt);return ts>=cutoff&&s.uniquePages.some(p=>p.includes(domain));});
-    const byDay=new Map();sessions.forEach(s=>{const day=(s.endedAt||s.recordedAt).slice(0,10);if(!byDay.has(day))byDay.set(day,[]);byDay.get(day).push(s);});
+    const byDay=new Map();sessions.forEach(s=>{const d=(s.endedAt||s.recordedAt).slice(0,10);if(!byDay.has(d))byDay.set(d,[]);byDay.get(d).push(s);});
     const buckets=[...byDay.entries()].sort((a,b)=>a[0].localeCompare(b[0]));
     const first=obs[0],last=obs[obs.length-1];
-    const vDelta=first?.similarweb?.snapshot?.visitsTotalCount!=null&&last?.similarweb?.snapshot?.visitsTotalCount!=null?last.similarweb.snapshot.visitsTotalCount-first.similarweb.snapshot.visitsTotalCount:null;
-    const rDelta=first?.similarweb?.snapshot?.globalRank!=null&&last?.similarweb?.snapshot?.globalRank!=null?last.similarweb.snapshot.globalRank-first.similarweb.snapshot.globalRank:null;
-
-    document.getElementById('sw-content').innerHTML=`
-      <div class="panel p-12"><div class="panel-body"><div class="stat-row">
-        <div class="stat-cell"><div class="lbl">Sessions</div><div class="val">${sessions.length}</div></div>
-        <div class="stat-cell"><div class="lbl">Days Active</div><div class="val">${buckets.length}</div></div>
-        <div class="stat-cell"><div class="lbl">Visits Δ</div><div class="val ${vDelta>0?'pos':vDelta<0?'neg':''}">${vDelta!==null?(vDelta>=0?'+':'')+vDelta:'—'}</div><div class="sub">${vDelta!==null?fmt.num(first.similarweb.snapshot.visitsTotalCount)+' → '+fmt.num(last.similarweb.snapshot.visitsTotalCount):''}</div></div>
-        <div class="stat-cell"><div class="lbl">Rank Δ</div><div class="val ${rDelta<0?'pos':rDelta>0?'neg':''}">${rDelta!==null?(rDelta>=0?'+':'')+rDelta:'—'}</div><div class="sub">${rDelta!==null?fmt.num(first.similarweb.snapshot.globalRank)+' → '+fmt.num(last.similarweb.snapshot.globalRank):''}</div></div>
-        <div class="stat-cell"><div class="lbl">Observations</div><div class="val">${obs.length}</div></div>
-      </div></div></div>
-
-      <div class="panel p-6"><div class="panel-hdr"><h2>Sessions by Day</h2></div><div class="panel-body"><table>
-        <thead><tr><th>Date</th><th>Sessions</th><th>Avg Duration</th><th>Avg Pages</th><th>Pass Rate</th><th>Extensions</th></tr></thead>
-        <tbody>${buckets.map(b=>{const recs=b[1],n=recs.length;return`<tr><td>${b[0]}</td><td>${n}</td><td>${Math.round(recs.reduce((a,r)=>a+(r.elapsedSec||0),0)/n)}s</td><td>${(recs.reduce((a,r)=>a+r.uniquePageCount,0)/n).toFixed(1)}</td><td>${fmt.pct(recs.filter(r=>r.metMinDuration).length,n)}</td><td>${[...new Set(recs.flatMap(r=>r.extensionSlugs||[]))].map(e=>pill(e,b)).join('')}</td></tr>`;}).join('')||'<tr><td colspan="6" style="text-align:center;color:var(--text3);padding:20px">No sessions</td></tr>'}
-      </tbody></table></div></div>
-
-      <div class="panel p-6"><div class="panel-hdr"><h2>SW Snapshot Timeline</h2></div><div class="panel-body"><table>
-        <thead><tr><th>Observed</th><th>Source</th><th>Visits</th><th>Rank</th><th>Pages/Visit</th><th>Bounce</th></tr></thead>
-        <tbody>${obs.map(o=>`<tr><td>${fmt.time(o.observedAt)}</td><td>${badge(esc(o.fetch?.source||'—'),'mute')}</td><td>${fmt.num(o.similarweb?.snapshot?.visitsTotalCount)}</td><td>${fmt.num(o.similarweb?.snapshot?.globalRank)}</td><td>${o.similarweb?.snapshot?.pagesPerVisit||'—'}</td><td>${o.similarweb?.snapshot?.bounceRate!=null?(o.similarweb.snapshot.bounceRate*100).toFixed(1)+'%':'—'}</td></tr>`).join('')||'<tr><td colspan="6" style="text-align:center;color:var(--text3);padding:20px">No observations</td></tr>'}
-      </tbody></table></div></div>
-
-      <div class="panel p-12"><div class="panel-hdr"><h2>Recommendation</h2></div><div class="panel-body"><div style="font-size:12px;line-height:1.6">${getRec(sessions,obs,vDelta)}</div></div></div>`;
+    const vD=first?.similarweb?.snapshot?.visitsTotalCount!=null&&last?.similarweb?.snapshot?.visitsTotalCount!=null?last.similarweb.snapshot.visitsTotalCount-first.similarweb.snapshot.visitsTotalCount:null;
+    const rD=first?.similarweb?.snapshot?.globalRank!=null&&last?.similarweb?.snapshot?.globalRank!=null?last.similarweb.snapshot.globalRank-first.similarweb.snapshot.globalRank:null;
+    let bucketRows='',snapRows='';
+    buckets.forEach(b=>{
+      const recs=b[1],n=recs.length,avg=Math.round(recs.reduce((a,r)=>a+(r.elapsedSec||0),0)/n),pg=+(recs.reduce((a,r)=>a+r.uniquePageCount,0)/n).toFixed(1),pass=recs.filter(r=>r.metMinDuration).length;
+      bucketRows+='<tr><td>'+b[0]+'</td><td>'+n+'</td><td>'+avg+'s</td><td>'+pg+'</td><td>'+F.pct(pass,n)+'</td><td>'+[...new Set(recs.flatMap(r=>r.extensionSlugs||[]))].map(e=>pill(e,'b')).join('')+'</td></tr>';
+    });
+    obs.forEach(o=>{
+      snapRows+='<tr><td>'+F.time(o.observedAt)+'</td><td>'+badge(o.fetch?.source||'—','m')+'</td><td>'+F.num(o.similarweb?.snapshot?.visitsTotalCount)+'</td><td>'+F.num(o.similarweb?.snapshot?.globalRank)+'</td><td>'+o.similarweb?.snapshot?.pagesPerVisit||'—'+'</td><td>'+(o.similarweb?.snapshot?.bounceRate!=null?(o.similarweb.snapshot.bounceRate*100).toFixed(1)+'%':'—')+'</td></tr>';
+    });
+    const rec=!sessions.length?'Run the bot first.':obs.length<2?'Not enough SW observations.':vD===null?'SW snapshot data unavailable.':vD>0?'<span class="pos">POSITIVE:</span> visits +'+vD+'. '+sessions.length+' sessions with: '+[...new Set(sessions.flatMap(s=>s.extensionSlugs||[]))].join(', '):vD===0?'<span class="neu">NEUTRAL:</span> no change.':'<span class="neg">Decreased</span> by '+Math.abs(vD)+'.';
+    $('sw-c').innerHTML='<div class="panel p-12"><div class="panel-body"><div class="stat-row"><div class="stat-cell"><div class="lbl">Sessions</div><div class="val">'+sessions.length+'</div></div><div class="stat-cell"><div class="lbl">Days</div><div class="val">'+buckets.length+'</div></div><div class="stat-cell"><div class="lbl">Visits Δ</div><div class="val '+(vD>0?'pos':vD<0?'neg':'')+'">'+(vD!==null?(vD>=0?'+':'')+vD:'—')+'</div></div><div class="stat-cell"><div class="lbl">Rank Δ</div><div class="val '+(rD<0?'pos':rD>0?'neg':'')+'">'+(rD!==null?(rD>=0?'+':'')+rD:'—')+'</div></div></div></div></div>'+
+    '<div class="panel p-6"><div class="panel-hdr"><h2>Sessions by Day</h2></div><div class="panel-body"><table><thead><tr><th>Date</th><th>Sessions</th><th>Avg Dur</th><th>Avg Pg</th><th>Pass</th><th>Extensions</th></tr></thead><tbody>'+bucketRows+'</tbody></table></div></div>'+
+    '<div class="panel p-6"><div class="panel-hdr"><h2>SW Snapshots</h2></div><div class="panel-body"><table><thead><tr><th>Time</th><th>Source</th><th>Visits</th><th>Rank</th><th>Pg/Visit</th><th>Bounce</th></tr></thead><tbody>'+snapRows+'</tbody></table></div></div>'+
+    '<div class="panel p-12"><div class="panel-hdr"><h2>Recommendation</h2></div><div class="panel-body"><div style="font-size:12px;line-height:1.6">'+rec+'</div></div></div>';
   };
-
-  renderDomain();
-  document.getElementById('sw-dom').addEventListener('change',renderDomain);
-  document.getElementById('sw-hrs').addEventListener('change',renderDomain);
+  renderD();$('sw-d').onchange=renderD;$('sw-h').onchange=renderD;
 }
 
-function getRec(sessions,obs,vDelta){
-  if(!sessions.length)return'Run the bot first to see correlation analysis.';
-  if(obs.length<2)return'Not enough Similarweb observations. Run check:similarweb at least 2x over 48h.';
-  if(vDelta===null)return'Similarweb snapshot data unavailable. Check SCRAPFLY_KEY for bypassed fetches.';
-  if(vDelta>0)return`<span class="pos">POSITIVE:</span> visits increased by <strong>${vDelta}</strong>. ${sessions.length} sessions ran with extensions: <strong>${[...new Set(sessions.flatMap(s=>s.extensionSlugs||[]))].join(', ')||'(none)'}</strong>. Extension-loaded sessions correlate with Similarweb signal.`;
-  if(vDelta===0)return`<span class="neu">NEUTRAL:</span> visits unchanged. May need more time (24-48h reporting lag) or higher volume.`;
-  return`Visits decreased by <strong>${Math.abs(vDelta)}</strong>. May be natural fluctuation. Continue monitoring.`;
-}
-
-// ── Init ─────────────────────────────────────────────────────────────────────
 load();
 setInterval(load,5000);
 </script>

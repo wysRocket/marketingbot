@@ -76,7 +76,11 @@ async function loadAllData() {
     loadJsonl<ExtEvent>(path.join(TELEMETRY_DIR, "extension-events.jsonl")),
     loadJsonl<SWObservation>(path.join(TELEMETRY_DIR, "similarweb.observations.jsonl")),
   ]);
-  return { sessions, extEvents, swObservations };
+  return {
+    sessions: sessions.slice(-500),
+    extEvents: extEvents.slice(-200),
+    swObservations,
+  };
 }
 
 // ── Server ──────────────────────────────────────────────────────────────────
