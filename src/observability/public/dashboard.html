@@ -72,7 +72,7 @@ tbody td{padding:6px 10px;font-size:11px;white-space:nowrap;font-family:var(--mo
 <script>
 const F={time:t=>{const d=new Date(t);return(d.getMonth()+1)+'/'+d.getDate()+' '+d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})},dur:m=>m<60000?(m/1000).toFixed(1)+'s':Math.floor(m/60000)+'m',bytes:b=>b<1048576?(b/1024).toFixed(0)+'KB':(b/1048576).toFixed(1)+'MB',pct:(n,d)=>d?(Math.round(n/d*100)+'%'):'—',num:n=>n!=null?n.toLocaleString():'—'};
 const $=id=>document.getElementById(id);
-let TAB='overview',DATA={sessions:[],extEvents:[],swObservations:[]};
+let TAB='overview',DATA={sessions:[],extEvents:[],swObservations:[]},LAST_FP='';
 
 function badge(t,c){return'<span class="badge badge-'+c+'">'+t+'</span>'}
 function pill(t,c){return'<span class="pill pill-'+c+'">'+t+'</span>'}
@@ -85,8 +85,14 @@ document.querySelectorAll('.sb-btn[data-t]').forEach(b=>b.onclick=()=>{
 $('btn-refresh').onclick=load;
 
 async function load(){
-  try{const r=await fetch('/api/data');DATA=await r.json();$('lu').textContent='Updated '+new Date().toLocaleTimeString();render();}
-  catch(e){console.error(e);}
+  try{
+    const r=await fetch('/api/data');
+    const d=await r.json();
+    const fp=d.sessions.length+':'+(d.sessions[d.sessions.length-1]?.recordedAt||'');
+    if(fp===LAST_FP)return;
+    LAST_FP=fp;DATA=d;$('lu').textContent='Updated '+new Date().toLocaleTimeString();
+    render();
+  }catch(e){console.error(e);}
 }
 
 function render(){
