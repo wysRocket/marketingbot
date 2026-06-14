@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useServerFn } from '@tanstack/react-start'
 import { useEffect, useState, useCallback } from 'react'
 import { getDashboardData } from '#/lib/api'
 
@@ -21,11 +20,11 @@ interface DashboardData {
 function OverviewPage() {
   const [data, setData] = useState<DashboardData | null>(null)
   const [lastFp, setLastFp] = useState('')
-  const getFn = useServerFn(getDashboardData)
+  
 
   const fetchData = useCallback(async () => {
     try {
-      const d = await getFn()
+      const d = await getDashboardData()
       if (d.fingerprint !== lastFp) {
         setLastFp(d.fingerprint)
         setData(d as DashboardData)

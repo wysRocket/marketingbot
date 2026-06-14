@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useServerFn } from '@tanstack/react-start'
 import { useEffect, useState, useCallback, useMemo } from 'react'
 import { getDashboardData } from '#/lib/api'
 
@@ -28,11 +27,11 @@ function SessionsPage() {
   const [domainFilter, setDomainFilter] = useState('')
   const [sortField, setSortField] = useState<'t' | 'd'>('t')
   const [sortDir, setSortDir] = useState<'d' | 'a'>('d')
-  const getFn = useServerFn(getDashboardData)
+  
 
   const fetchData = useCallback(async () => {
     try {
-      const d = await getFn()
+      const d = await getDashboardData()
       if (d.fingerprint !== lastFp) {
         setLastFp(d.fingerprint)
         setData(d as DashboardData)

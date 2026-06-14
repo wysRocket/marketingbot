@@ -1,11 +1,10 @@
-import { createServerFn } from '@tanstack/react-start'
-import { promises as fs } from 'node:fs'
-import path from 'node:path'
-import readline from 'node:readline'
+// API client — fetches from the bot telemetry API (/api/data)
+// Replaces TanStack Start createServerFn with plain fetch()
+// so the app works as a static SPA
 
-const TELEMETRY_DIR = path.resolve(process.cwd(), '..', 'telemetry')
+const API_BASE = ''
 
-interface SessionRecord {
+export interface SessionRecord {
   recordedAt: string; runId: string; runner: string; label: string;
   profileId: string; extensionBundleHash?: string; extensionSlugs: string[];
   sessionStatePolicy?: string; targetDomain?: string; referrerType?: string;
@@ -17,13 +16,13 @@ interface SessionRecord {
   mostloginProfileId?: string; railwayReplicaId?: string; profileSource?: string;
 }
 
-interface ExtEvent {
+export interface ExtEvent {
   timestamp: number; type: string; url: string; method: string;
   matchedDomain: string; extensionId?: string;
   requestBody?: string; responseBody?: string; statusCode?: number;
 }
 
-interface SWObservation {
+export interface SWObservation {
   observedAt: string; domain: string;
   similarweb: {
     snapshot: {
@@ -34,28 +33,15 @@ interface SWObservation {
   };
 }
 
-async function readJsonl<T>(filePath: string, limit?: number): Promise<T[]> {
-  try {
-    const raw = await fs.readFile(filePath, 'utf8')
-    const lines = raw.split('\n').filter(Boolean)
-    const sliced = limit ? lines.slice(-limit) : lines
-    return sliced.map(l => JSON.parse(l) as T)
-  } catch { return [] }
+export interface DashboardData {
+  sessions: SessionRecord[]
+  extEvents: ExtEvent[]
+  swObservations: SWObservation[]
+  fingerprint: string
 }
 
-export const getDashboardData = createServerFn({ method: 'GET' }).handler(async () => {
-  const sessionsP = readJsonl<SessionRecord>(
-    path.join(TELEMETRY_DIR, 'patchright.sessions.jsonl'), 500
-  )
-  const extEventsP = readJsonl<ExtEvent>(
-    path.join(TELEMETRY_DIR, 'extension-events.jsonl'), 200
-  )
-  const swObsP = readJsonl<SWObservation>(
-    path.join(TELEMETRY_DIR, 'similarweb.observations.jsonl')
-  )
-  const [sessions, extEvents, swObservations] = await Promise.all([sessionsP, extEventsP, swObsP])
-
-  const fingerprint = sessions.length + ':' + (sessions[sessions.length - 1]?.recordedAt || '')
-
-  return { sessions, extEvents, swObservations, fingerprint }
-})
+export async function getDashboardData(): Promise<DashboardData> {
+  const res = await fetch(`${API_BASE}/api/data`)
+  if (!res.ok) throw new Error(`API error: ${res.status}`)
+  return res.json()
+}

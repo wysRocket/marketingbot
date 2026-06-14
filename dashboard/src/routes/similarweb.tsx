@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useServerFn } from '@tanstack/react-start'
 import { useEffect, useState, useCallback, useMemo } from 'react'
 import { getDashboardData } from '#/lib/api'
 
@@ -34,11 +33,11 @@ function SimilarwebPage() {
   const [lastFp, setLastFp] = useState('')
   const [domain, setDomain] = useState('')
   const [hours, setHours] = useState(168)
-  const getFn = useServerFn(getDashboardData)
+  
 
   const fetchData = useCallback(async () => {
     try {
-      const d = await getFn()
+      const d = await getDashboardData()
       if (d.fingerprint !== lastFp) { setLastFp(d.fingerprint); setData(d as DashboardData) }
     } catch (e) { console.error(e) }
   }, [lastFp, getFn])
