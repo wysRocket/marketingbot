@@ -1,17 +1,14 @@
-FROM node:20-bookworm-slim
-
-WORKDIR /app
-
+FROM node:20-bookworm-slim AS builder
+WORKDIR /build
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
+COPY . .
+RUN npx vite build
 
-COPY dist/ ./dist/
-COPY server.ts ./
-
-ENV NODE_ENV=production
+FROM node:20-bookworm-slim
+WORKDIR /app
+COPY --from=builder /build/dist/ ./dist/
+COPY server.mjs ./
 ENV PORT=3000
-ENV TELEMETRY_DIR=/data/telemetry
-
 EXPOSE 3000
-
-CMD ["node", "server.ts"]
+CMD ["node", "server.mjs"]
