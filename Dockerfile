@@ -1,8 +1,8 @@
 FROM node:20-alpine
-WORKDIR /app
-COPY dashboard/package*.json ./dashboard/
-RUN cd dashboard && npm ci
+WORKDIR /app/dashboard
+COPY dashboard/package*.json ./
+RUN npm ci
 COPY dashboard/ ./
-RUN cd dashboard && npm run build
+RUN npm run build
 EXPOSE 3000
-CMD ["node", "dashboard/server.mjs"]
+CMD ["node", "server.mjs"]
