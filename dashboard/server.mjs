@@ -39,4 +39,4 @@ http.createServer((req, res) => {
     res.writeHead(404);
     res.end('Not found');
   }
-}).listen(PORT, () => console.log(`Dashboard at http://localhost:${PORT}`));
+}).listen(PORT, '0.0.0.0', () => console.log(`Dashboard at http://localhost:${PORT}`));
