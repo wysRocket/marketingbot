@@ -1,0 +1,635 @@
+{
+  "github": {
+    "message": "Fork Wappalyzer su GitHub!"
+  },
+  "twitter": {
+    "message": "Follow Wappalyzer su Twitter"
+  },
+  "website": {
+    "message": "Vai su wappalyzer.com"
+  },
+  "options": {
+    "message": "Opzioni"
+  },
+  "optionsSave": {
+    "message": "Salva opzioni"
+  },
+  "optionsSaved": {
+    "message": "Salvato"
+  },
+  "optionUpgradeMessage": {
+    "message": "Parlami dell'upgrade"
+  },
+  "optionDynamicIcon": {
+    "message": "Use application icon instead of Wappalyzer logo"
+  },
+  "optionTracking": {
+    "message": "Inviare anonimamente un report sulle applicazioni rilevate a wappalyzer.com per l'analisi"
+  },
+  "optionThemeMode": {
+    "message": "Abilita compatibilità con la modalità scura."
+  },
+  "optionBadge": {
+    "message": "Mostra il numero di tecnologie identificate sull'icona"
+  },
+  "optionShowCached": {
+    "message": "Includi i rilevamenti memorizzati nella cache nei risultati"
+  },
+  "optionApiKey": {
+    "message": "Chiave API"
+  },
+  "optionApiKeyDescription": {
+    "message": "ottieni la tua chiave API"
+  },
+  "disableOnDomain": {
+    "message": "Disabilita su questo sito web"
+  },
+  "clearCache": {
+    "message": "Cancella i rilevamenti memorizzati nella cache"
+  },
+  "nothingToDo": {
+    "message": "Niente da fare qui."
+  },
+  "noAppsDetected": {
+    "message": "Nessuna applicazione rilevata."
+  },
+  "reloadPage": {
+    "message": "Ricarica"
+  },
+  "categoryPin": {
+    "message": "Mostra sempre l'icona"
+  },
+  "termsAccept": {
+    "message": "Mi sta bene"
+  },
+  "termsDecline": {
+    "message": "Disattiva"
+  },
+  "termsContent": {
+    "message": "Questa estensione invia informazioni anonime sui siti web che visiti, inclusi il nome di dominio e le tecnologie rilevate, a <a href='https://www.wappalyzer.com'>wappalyzer.com</a>. Puoi disattivarlo nelle impostazioni."
+  },
+  "privacyPolicy": {
+    "message": "Informativa sulla privacy"
+  },
+  "createAlert": {
+    "message": "Crea un avviso per questo sito web"
+  },
+  "leadLists": {
+    "message": "Strumenti per la generazione di lead"
+  },
+  "tabTechnologies": {
+    "message": "Tecnologie"
+  },
+  "tabPlus": {
+    "message": "Altre info"
+  },
+  "creditBalance": {
+    "message": "Crediti:"
+  },
+  "plusMessageHeading": {
+    "message": "Ottieni Plus per $$10/mese"
+  },
+  "plusMessage": {
+    "message": "Con Plus, qui vengono mostrati i dettagli dell'azienda e i contatti dei siti web che visiti."
+  },
+  "plusButton": {
+    "message": "Registrati"
+  },
+  "plusEmpty": {
+    "message": "Nessun risultato trovato."
+  },
+  "plusCrawl": {
+    "message": "Nessun risultato trovato, riprova più tardi."
+  },
+  "formSave": {
+    "message": "Salva"
+  },
+  "issue": {
+    "message": "C'è qualcosa che non va o manca?"
+  },
+  "setCompany": {
+    "message": "Informazioni aziendali"
+  },
+  "setKeywords": {
+    "message": "Parole chiave"
+  },
+  "setEmail": {
+    "message": "Indirizzi email"
+  },
+  "setPhone": {
+    "message": "Numeri di telefono"
+  },
+  "setAddress": {
+    "message": "Indirizzi"
+  },
+  "setContact": {
+    "message": "Dettagli di contatto"
+  },
+  "setSocial": {
+    "message": "Account social media"
+  },
+  "setMeta": {
+    "message": "Metadati"
+  },
+  "setLocale": {
+    "message": "Impostazioni locali"
+  },
+  "setTrackers": {
+    "message": "Tracker"
+  },
+  "setSecurity": {
+    "message": "Sicurezza"
+  },
+  "setSignals": {
+    "message": "Segnali"
+  },
+  "attributeTechnologySpend": {
+    "message": "Spesa tecnologica"
+  },
+  "attributeIpCountry": {
+    "message": "Paese IP"
+  },
+  "attributeIpRegion": {
+    "message": "Regione IP"
+  },
+  "attributeLanguage": {
+    "message": "Lingua"
+  },
+  "attributeEmail": {
+    "message": "Indirizzo email"
+  },
+  "attributeVerifiedEmail": {
+    "message": "Indirizzo email (verificato)"
+  },
+  "attributeSafeEmail": {
+    "message": "Indirizzo email (sicuro)"
+  },
+  "attributePhone": {
+    "message": "Numero di telefono"
+  },
+  "attributeSkype": {
+    "message": "Skype"
+  },
+  "attributeWhatsapp": {
+    "message": "WhatsApp"
+  },
+  "attributeInferredCompanyName": {
+    "message": "Nome azienda dedotto"
+  },
+  "attributeTwitter": {
+    "message": "Twitter"
+  },
+  "attributeFacebook": {
+    "message": "Facebook"
+  },
+  "attributeInstagram": {
+    "message": "Instagram"
+  },
+  "attributeGithub": {
+    "message": "GitHub"
+  },
+  "attributeTiktok": {
+    "message": "TikTok"
+  },
+  "attributeYoutube": {
+    "message": "YouTube"
+  },
+  "attributePinterest": {
+    "message": "Pinterest"
+  },
+  "attributeLinkedin": {
+    "message": "LinkedIn"
+  },
+  "attributeOwler": {
+    "message": "Owler"
+  },
+  "attributeTitle": {
+    "message": "Titolo"
+  },
+  "attributeDescription": {
+    "message": "Descrizione"
+  },
+  "attributeCopyright": {
+    "message": "Diritti d'autore"
+  },
+  "attributeCopyrightYear": {
+    "message": "Anno di copyright"
+  },
+  "attributeResponsive": {
+    "message": "Responsive"
+  },
+  "attributeCertInfo_subjectOrg": {
+    "message": "Cert organisation"
+  },
+  "attributeCertInfo_subjectCountry": {
+    "message": "Cert country"
+  },
+  "attributeCertInfo_subjectState": {
+    "message": "Cert state"
+  },
+  "attributeCertInfo_subjectLocality": {
+    "message": "Cert locality"
+  },
+  "attributeCertInfo_issuer": {
+    "message": "Cert issuer"
+  },
+  "attributeCertInfo_protocol": {
+    "message": "Cert protocol"
+  },
+  "attributeCertInfo_validTo": {
+    "message": "Cert expiry"
+  },
+  "attributeTrackerGoogleAnalytics": {
+    "message": "Google Analytics"
+  },
+  "attributeTrackerGoogleAdSense": {
+    "message": "Google AdSense"
+  },
+  "attributeTrackerMedianet": {
+    "message": "Medianet"
+  },
+  "attributeTrackerFacebook": {
+    "message": "Facebook"
+  },
+  "attributeTrackerOptimizely": {
+    "message": "Optimizely"
+  },
+  "attributeCompanyName": {
+    "message": "Nome azienda"
+  },
+  "attributeIndustry": {
+    "message": "Settore"
+  },
+  "attributeAbout": {
+    "message": "Informazioni"
+  },
+  "attributeLocations": {
+    "message": "Sedi"
+  },
+  "attributeCompanySize": {
+    "message": "Dimensioni dell'azienda"
+  },
+  "attributeCompanyType": {
+    "message": "Tipo di azienda"
+  },
+  "attributeCompanyFounded": {
+    "message": "Azienda fondata nel"
+  },
+  "attributeKeywords": {
+    "message": "Parole chiave"
+  },
+  "attributeEmployees": {
+    "message": "Persone"
+  },
+  "attributeDns_spf": {
+    "message": "Record SPF"
+  },
+  "attributeDns_dmarc": {
+    "message": "Record DMARC"
+  },
+  "attributeSchemaOrgTypes": {
+    "message": "Tipi schema.org"
+  },
+  "attributeFundingTotalUsd": {
+    "message": "Finanziamento totale"
+  },
+  "attributeFundingRounds": {
+    "message": "Round di finanziamento"
+  },
+  "attributeStockSymbol": {
+    "message": "Simbolo azionario"
+  },
+  "attributeSemrushGlobalRank": {
+    "message": "Posizione globale Semrush"
+  },
+  "attributeSemrushVisits": {
+    "message": "Visite mensili Semrush"
+  },
+  "categoryName1": {
+    "message": "CMS"
+  },
+  "categoryName2": {
+    "message": "Forum"
+  },
+  "categoryName3": {
+    "message": "Gestore di Database"
+  },
+  "categoryName4": {
+    "message": "Strumento di documentazione"
+  },
+  "categoryName5": {
+    "message": "Widget"
+  },
+  "categoryName6": {
+    "message": "eCommerce"
+  },
+  "categoryName7": {
+    "message": "Galleria fotografica"
+  },
+  "categoryName8": {
+    "message": "Wiki"
+  },
+  "categoryName9": {
+    "message": "Pannello Hosting"
+  },
+  "categoryName10": {
+    "message": "Analisi"
+  },
+  "categoryName11": {
+    "message": "Blog"
+  },
+  "categoryName12": {
+    "message": "Framework JavaScript"
+  },
+  "categoryName13": {
+    "message": "Tracciatore di problemi"
+  },
+  "categoryName14": {
+    "message": "Player Video"
+  },
+  "categoryName15": {
+    "message": "Sistema di commenti"
+  },
+  "categoryName16": {
+    "message": "Sicurezza"
+  },
+  "categoryName17": {
+    "message": "Font Script"
+  },
+  "categoryName18": {
+    "message": "Framework Web"
+  },
+  "categoryName19": {
+    "message": "Miscellanea"
+  },
+  "categoryName20": {
+    "message": "Strumenti di editing"
+  },
+  "categoryName21": {
+    "message": "LMS"
+  },
+  "categoryName22": {
+    "message": "Web Server"
+  },
+  "categoryName23": {
+    "message": "Cache Tool"
+  },
+  "categoryName24": {
+    "message": "Editor di Testo Ricco"
+  },
+  "categoryName25": {
+    "message": "JavaScript Graphics"
+  },
+  "categoryName26": {
+    "message": "Framework Mobile"
+  },
+  "categoryName27": {
+    "message": "Linguaggio di programmazione"
+  },
+  "categoryName28": {
+    "message": "Sistema Operativo"
+  },
+  "categoryName29": {
+    "message": "Motore di Ricerca"
+  },
+  "categoryName30": {
+    "message": "Posta web"
+  },
+  "categoryName31": {
+    "message": "CDN"
+  },
+  "categoryName32": {
+    "message": "Marketing Automation"
+  },
+  "categoryName33": {
+    "message": "Estensione Web Server"
+  },
+  "categoryName34": {
+    "message": "Database"
+  },
+  "categoryName35": {
+    "message": "Mappa"
+  },
+  "categoryName36": {
+    "message": "Network Pubblicitario"
+  },
+  "categoryName37": {
+    "message": "Network Service"
+  },
+  "categoryName38": {
+    "message": "Media Server"
+  },
+  "categoryName39": {
+    "message": "Webcam"
+  },
+  "categoryName40": {
+    "message": "Stampante"
+  },
+  "categoryName41": {
+    "message": "Processore di pagamenti"
+  },
+  "categoryName42": {
+    "message": "Gestore tag"
+  },
+  "categoryName44": {
+    "message": "Sistema Build/CI"
+  },
+  "categoryName46": {
+    "message": "Accesso"
+  },
+  "categoryName47": {
+    "message": "Strumenti di Sviluppo"
+  },
+  "categoryName48": {
+    "message": "Network Storage"
+  },
+  "categoryName49": {
+    "message": "Lettore di Feed"
+  },
+  "categoryName50": {
+    "message": "Sistema di Gestione Documenti"
+  },
+  "categoryName51": {
+    "message": "Creatore di pagine di destinazione"
+  },
+  "categoryName52": {
+    "message": "Chat dal vivo"
+  },
+  "categoryName53": {
+    "message": "CRM"
+  },
+  "categoryName54": {
+    "message": "SEO"
+  },
+  "categoryName55": {
+    "message": "Contabilità"
+  },
+  "categoryName56": {
+    "message": "Mineratore di criptovalute"
+  },
+  "categoryName57": {
+    "message": "Generatori di siti statici"
+  },
+  "categoryName58": {
+    "message": "Inserimento utenti"
+  },
+  "categoryName59": {
+    "message": "JavaScript Libraries"
+  },
+  "categoryName60": {
+    "message": "Contenitori"
+  },
+  "categoryName61": {
+    "message": "SaaS"
+  },
+  "categoryName62": {
+    "message": "PaaS"
+  },
+  "categoryName63": {
+    "message": "IaaS"
+  },
+  "categoryName64": {
+    "message": "Proxy inverso"
+  },
+  "categoryName65": {
+    "message": "Bilanciatori di carico"
+  },
+  "categoryName66": {
+    "message": "UI Frameworks"
+  },
+  "categoryName67": {
+    "message": "Conformità dei cookie"
+  },
+  "categoryName68": {
+    "message": "Accessibilità"
+  },
+  "categoryName69": {
+    "message": "Autenticazione"
+  },
+  "categoryName70": {
+    "message": "SSL/TLS certificate authority"
+  },
+  "categoryName71": {
+    "message": "Programmi di affiliazione"
+  },
+  "categoryName72": {
+    "message": "Pianificazione appuntamenti"
+  },
+  "categoryName73": {
+    "message": "Sondaggi"
+  },
+  "categoryName74": {
+    "message": "Test A/B"
+  },
+  "categoryName75": {
+    "message": "Posta elettronica"
+  },
+  "categoryName76": {
+    "message": "Personalizzazione"
+  },
+  "categoryName77": {
+    "message": "Ritargetizzazione"
+  },
+  "categoryName78": {
+    "message": "RUM"
+  },
+  "categoryName79": {
+    "message": "Geolocalizzazione"
+  },
+  "categoryName80": {
+    "message": "Temi WordPress"
+  },
+  "categoryName81": {
+    "message": "Temi Shopify"
+  },
+  "categoryName82": {
+    "message": "Temi Drupal"
+  },
+  "categoryName83": {
+    "message": "Fingerprinting del browser"
+  },
+  "categoryName84": {
+    "message": "Fedeltà e premi"
+  },
+  "categoryName85": {
+    "message": "Gestione delle funzionalità"
+  },
+  "categoryName86": {
+    "message": "Segmentazione"
+  },
+  "categoryName87": {
+    "message": "Plugin WordPress"
+  },
+  "categoryName88": {
+    "message": "Servizi di hosting"
+  },
+  "categoryName89": {
+    "message": "Traduzione"
+  },
+  "categoryName90": {
+    "message": "Recensioni"
+  },
+  "categoryName91": {
+    "message": "Acquista ora, paga dopo"
+  },
+  "categoryName92": {
+    "message": "Prestazioni"
+  },
+  "categoryName93": {
+    "message": "Prenotazioni e consegne"
+  },
+  "categoryName94": {
+    "message": "Marketing di segnalazione"
+  },
+  "categoryName95": {
+    "message": "Gestione degli asset digitali"
+  },
+  "categoryName96": {
+    "message": "Curatela dei contenuti"
+  },
+  "categoryName97": {
+    "message": "Piattaforma dati clienti"
+  },
+  "categoryName98": {
+    "message": "Abbandono del carrello"
+  },
+  "categoryName99": {
+    "message": "Corrieri di spedizione"
+  },
+  "categoryName100": {
+    "message": "App Shopify"
+  },
+  "categoryName101": {
+    "message": "Reclutamento e gestione del personale"
+  },
+  "categoryName102": {
+    "message": "Resi"
+  },
+  "categoryName103": {
+    "message": "Streaming dal vivo"
+  },
+  "categoryName104": {
+    "message": "Prenotazione biglietti"
+  },
+  "categoryName105": {
+    "message": "Realtà aumentata"
+  },
+  "categoryName106": {
+    "message": "Ecommerce transfrontaliero"
+  },
+  "categoryName107": {
+    "message": "Evasione ordini"
+  },
+  "categoryName108": {
+    "message": "Frontend ecommerce"
+  },
+  "categoryName109": {
+    "message": "Parcheggio domini"
+  },
+  "categoryName110": {
+    "message": "Generatori di moduli"
+  },
+  "categoryName111": {
+    "message": "Raccolta fondi e donazioni"
+  }
+}

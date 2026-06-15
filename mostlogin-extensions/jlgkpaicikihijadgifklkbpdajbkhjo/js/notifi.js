@@ -1,0 +1,1 @@
+window.navigator.language,document.getElementById("notifi-zh").style.display="block";

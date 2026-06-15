@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Analyze AI Overview</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/ytstats.css">
+  <style>
+    .xt-aio-entities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 12px 0 16px;
+    }
+    .xt-aio-entity {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: #f5f5f5;
+      color: #000;
+      font-size: 12px;
+      text-decoration: none;
+    }
+    .xt-aio-query-display {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    .xt-aio-table th, .xt-aio-table td,
+    .xt-aio-table .xt-aio-th, .xt-aio-table .xt-aio-td {
+      padding: 8px 10px;
+      font-size: 12px;
+      vertical-align: middle;
+      text-align: center;
+    }
+    .xt-aio-table .xt-aio-th.xt-aio-left,
+    .xt-aio-table .xt-aio-td.xt-aio-left {
+      text-align: left;
+    }
+    .xt-aio-table th.right, .xt-aio-table td.right,
+    .xt-aio-table .xt-aio-th.right, .xt-aio-table .xt-aio-td.right {
+      text-align: right;
+    }
+    /* Make last four numeric columns follow the same zebra striping */
+    .xt-aio-table.diff-table td.right {
+      background-color: transparent;
+    }
+    /* Remove vertical separator line between main and numeric columns */
+    .xt-aio-table.diff-table td.right.first,
+    .xt-aio-table.diff-table th.right.first {
+      border-left: none;
+    }
+    .xt-aio-table td a, .xt-aio-table .td-url {
+      color: #2176ff;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .xt-aio-muted {
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="xt-ke-page-wrapper">
+    <div class="xt-ke-container">
+      <div class="xt-ke-d-flex xt-ke-align-items-center xt-ke-mb-xl">
+        <div class="xt-ke-d-flex xt-ke-align-items-center">
+          <img src="/img/icon64.png" class="xt-ke-mr-sm">
+
+          <div class="xt-ke-flex-fill">
+            <h1 class="xt-ke-my-0">Keywords Everywhere</h1>
+            <div id="main-line" class="xt-ke-cl-mt xt-ke-mt-0">Analyze AI Overview</div>
+          </div>
+        </div>
+
+        <div class="xt-ke-d-flex xt-ke-ms-auto" style="flex-direction:column;align-items:flex-end;">
+          <div style="display:flex;align-items:center;">
+            <button id="xt-aio-copy" class="xt-copy-csv xt-ke-btn xt-ke-mr-md">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copy
+            </button>
+            <button id="xt-aio-export" class="xt-export-csv xt-ke-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Export
+            </button>
+          </div>
+          <div style="margin-top:6px;">
+            <a href="https://keywordseverywhere.com/ai-overview-metrics.html" target="_blank">How these metrics are calculated</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="xt-aio-context" class="xt-ke-card"></div>
+      <div id="xt-aio-entities"></div>
+      <div id="xt-aio-result" class="xt-ke-card"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/js/aio-overview.js"></script>
+</body>
+</html>

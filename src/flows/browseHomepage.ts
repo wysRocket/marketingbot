@@ -1,14 +1,23 @@
 import { Page } from "playwright";
 import { navigate, blockHeavyAssets } from "../actions/navigate";
 import { scrollDown, randomBrowse, randomDelay } from "../actions/interact";
-import { pickReferrer } from "../actions/referrer";
+import { pickReferrerEntry, applyUtmParams } from "../actions/referrer";
+import { searchAndNavigate } from "../actions/searchEngine";
 import { getText, getAll, getLinks } from "../actions/scrape";
+import {
+  findExpectedText,
+  matchesExpectedText,
+  readBodyText,
+  resolveBrowseWindow,
+  waitForHydratedContent,
+} from "./utils";
 import {
   assertFlowEnabled,
   getActiveSiteProfile,
   resolveSiteUrl,
   type SiteProfile,
 } from "../sites";
+import type { SessionPolicy } from "../session/complexSession";
 
 export interface BrowseResult {
   heroHeading: string;
@@ -30,6 +39,7 @@ export interface BrowseResult {
 export async function browseHomepage(
   page: Page,
   site: SiteProfile = getActiveSiteProfile(),
+  policy?: Pick<SessionPolicy, "minDurationMs" | "maxTopUpCycles">,
 ): Promise<BrowseResult> {
   assertFlowEnabled(site, "browseHomepage");
 
@@ -37,16 +47,29 @@ export async function browseHomepage(
   await blockHeavyAssets(page);
 
   // ----- 1. Land on homepage -----
-  await navigate(page, resolveSiteUrl(site, cfg.homePath), pickReferrer());
-  await page.waitForSelector(cfg.heroHeadingSelector, { timeout: 15_000 });
+  const referrer = pickReferrerEntry();
+  const targetUrl = applyUtmParams(
+    resolveSiteUrl(site, cfg.homePath),
+    referrer,
+  );
 
-  const heroHeading = await getText(page, cfg.heroHeadingSelector);
-  if (
-    cfg.heroHeadingIncludes.length > 0 &&
-    !cfg.heroHeadingIncludes.some((value) =>
-      heroHeading.toLowerCase().includes(value.toLowerCase()),
-    )
-  ) {
+  if (referrer.type === "search") {
+    await searchAndNavigate(page, referrer, targetUrl, site.id);
+  } else {
+    await navigate(page, targetUrl, referrer.url || undefined);
+  }
+  await waitForHydratedContent(page, {
+    selectors: [cfg.heroHeadingSelector, cfg.membersSectionSelector],
+    expectedText: cfg.heroHeadingIncludes,
+    timeoutMs: 30_000,
+  });
+
+  const bodyText = await readBodyText(page);
+  const heroHeading =
+    (await getText(page, cfg.heroHeadingSelector).catch(() => "")) ||
+    findExpectedText(bodyText, cfg.heroHeadingIncludes) ||
+    "";
+  if (!matchesExpectedText(heroHeading || bodyText, cfg.heroHeadingIncludes)) {
     throw new Error(
       `Unexpected hero heading: "${heroHeading}" (expected one of: ${cfg.heroHeadingIncludes.join(", ")})`,
     );
@@ -78,8 +101,11 @@ export async function browseHomepage(
         anchor,
       );
     });
-    await randomDelay(page, 300, 800);
+    await randomDelay(page, 1000, 2000); // Increased delay for extension processing
   }
+
+  // --- Intermediate wait after nav links to allow extensions to process ---
+  await page.waitForTimeout(1_500); // Additional wait to allow extensions to analyze content
 
   // ----- 3. Scroll to #academy and read course names -----
   await page.evaluate((selector) => {
@@ -106,14 +132,21 @@ export async function browseHomepage(
     document.querySelector(selector)?.scrollIntoView({ behavior: "smooth" });
   }, cfg.membersSectionSelector);
   await page.waitForTimeout(1_200);
-  const pricingLinks = await getLinks(page, cfg.pricingLinksSelector);
-  const pricingRegex = new RegExp(cfg.pricingPlanRegex, "i");
-  const pricingTiers = pricingLinks
-    .map((href) => {
-      const match = href.match(pricingRegex);
-      return match?.[1]?.replace(/-/g, " ") ?? "";
-    })
-    .filter(Boolean);
+  let pricingTiers: string[] = [];
+  for (const selector of cfg.pricingTierSelectors ?? []) {
+    pricingTiers = await getAll(page, selector).catch((): string[] => []);
+    if (pricingTiers.length > 0) break;
+  }
+  if (pricingTiers.length === 0) {
+    const pricingLinks = await getLinks(page, cfg.pricingLinksSelector);
+    const pricingRegex = new RegExp(cfg.pricingPlanRegex, "i");
+    pricingTiers = pricingLinks
+      .map((href) => {
+        const match = href.match(pricingRegex);
+        return match?.[1]?.replace(/-/g, " ") ?? "";
+      })
+      .filter(Boolean);
+  }
 
   // ----- 6. Scroll to footer -----
   await scrollDown(page, 2);
@@ -129,7 +162,12 @@ export async function browseHomepage(
   }
 
   // Stay on the page longer with organic interaction before leaving the flow.
-  await randomBrowse(page, 12_000, 28_000);
+  const browseWindow = resolveBrowseWindow(
+    policy,
+    { minMs: 12_000, maxMs: 28_000 },
+    { minMs: 2_500, maxMs: 6_000 },
+  );
+  await randomBrowse(page, browseWindow.minMs, browseWindow.maxMs);
 
   return { heroHeading, navLinks, featureNames, pricingTiers, footerLinks };
 }

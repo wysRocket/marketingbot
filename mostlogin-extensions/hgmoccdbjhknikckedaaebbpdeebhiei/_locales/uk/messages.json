@@ -1,0 +1,821 @@
+{
+  "manifest_name": {
+    "message": "Ahrefs SEO Toolbar: On-Page та SERP інструменти",
+    "description": "Don't translate: 'Ahrefs SEO Toolbar'"
+  },
+  "manifest_description": {
+    "message": "Заощадьте години з повним набором інструментів в одному SEO розширенні. Аналітика для сторінок, аналіз ключових слів та аналіз посилань на будь-якій веб-сторінці."
+  },
+  "shared__ok": {
+    "message": "Гаразд"
+  },
+  "shared__broken": {
+    "message": "Бите/пошкоджене"
+  },
+  "shared__redirect": {
+    "message": "Редирект"
+  },
+  "shared__export": {
+    "message": "Експорт"
+  },
+  "shared__words": {
+    "message": "слова",
+    "description": "Example: 1500 words"
+  },
+  "shared__default": {
+    "message": "За замовчуванням"
+  },
+  "shared__default_browser": {
+    "message": "За замовчуванням (Ваш браузер)"
+  },
+  "shared__value": {
+    "message": "Значення"
+  },
+  "shared__not_available": {
+    "message": "Н/Д"
+  },
+  "shared_of": {
+    "message": "з",
+    "description": "e.g. 3 of 15 links"
+  },
+  "shared_overview": {
+    "message": "Огляд",
+    "description": "Link to Ahrefs Overview"
+  },
+  "shared_upgrade": {
+    "message": "Оновити",
+    "description": "Plans and pricing"
+  },
+  "shared__how_to_fix": {
+    "message": "Як виправити"
+  },
+  "shared__copy": {
+    "message": "Копіювати"
+  },
+  "shared__not_now": {
+    "message": "Не зараз"
+  },
+  "shared__load_more": {
+    "message": "Завантажити більше"
+  },
+  "shared__domain": {
+    "message": "Домен"
+  },
+  "shared__page": {
+    "message": "Сторінка"
+  },
+  "shared__edit": {
+    "message": "Редагувати"
+  },
+  "shared__custom": {
+    "message": "Індивідуальні налаштування"
+  },
+  "shared__all": {
+    "message": "Весь період"
+  },
+  "shared__mismatch": {
+    "message": "Невідповідність"
+  },
+  "shared__missing": {
+    "message": "Відсутні"
+  },
+  "shared__not_found": {
+    "message": "Не знайдено"
+  },
+  "shared__empty": {
+    "message": "Порожній"
+  },
+  "shared__not_empty": {
+    "message": "Немає порожніх"
+  },
+  "shared__no_results": {
+    "message": "Немає результатів"
+  },
+  "shared__disallowed_in_robots_txt": {
+    "message": "Заборонено в robots.txt"
+  },
+  "shared__self_canonical": {
+    "message": "Автоканонічні"
+  },
+  "shared__non_canonical": {
+    "message": "Неканонічні"
+  },
+  "shared__noindex_page": {
+    "message": "NoindexPage"
+  },
+  "shared__clear": {
+    "message": "Очистити"
+  },
+  "shared__default_report": {
+    "message": "Стандартний звіт"
+  },
+  "shared__last_opened": {
+    "message": "Востаннє відкрито"
+  },
+  "shared__shortcuts": {
+    "message": "Скорочення"
+  },
+  "shared__open_in": {
+    "message": "Відкрити в",
+    "description": "The button used to open selected item in another app, service, etc"
+  },
+  "shared__in_http_headers": {
+    "message": "У HTTP-заголовках"
+  },
+  "popup_menu__metrics": {
+    "message": "Метрики"
+  },
+  "popup_menu__content": {
+    "message": "Контент"
+  },
+  "popup_menu__indexability": {
+    "message": "Можливість індексації"
+  },
+  "popup_menu__struct_data": {
+    "message": "Структуровані дані"
+  },
+  "popup_menu__social": {
+    "message": "Соціальні теги"
+  },
+  "popup_menu__social_image_fail": {
+    "message": "Не вдалося отримати"
+  },
+  "popup_menu__images": {
+    "message": "Зображення"
+  },
+  "popup_menu__http_headers": {
+    "message": "HTTP-заголовки"
+  },
+  "popup_menu__outgoing_links": {
+    "message": "Вихідні посилання"
+  },
+  "popup_menu__outgoing_links_short": {
+    "message": "Посилання"
+  },
+  "popup_menu__saved_urls": {
+    "message": "Збережені URL-адреси"
+  },
+  "popup_menu__ua": {
+    "message": "Агент користувача"
+  },
+  "popup_menu__ua_texarea_label": {
+    "message": "Рядок user-agent"
+  },
+  "popup_menu__metrics_bar": {
+    "message": "Панель метрик"
+  },
+  "popup_menu__search_tools": {
+    "message": "Інструменти пошуку"
+  },
+  "popup_menu__settings": {
+    "message": "Налаштування"
+  },
+  "sign_up": {
+    "message": "Зареєструватися"
+  },
+  "sign_up__content": {
+    "message": "або перегляньте наші",
+    "descriptions": "Full sentence: Sign up or check our free SEO tools"
+  },
+  "sign_up__link": {
+    "message": "безкоштовні SEO-інструменти",
+    "descriptions": "Full sentence: Sign up or check our free SEO tools"
+  },
+  "sign_in": {
+    "message": "Увійти"
+  },
+  "sign_in__long": {
+    "message": "Увійти з Ahrefs",
+    "description": "Uses on Serp and Content toolbar"
+  },
+  "sign_out": {
+    "message": "Вийти"
+  },
+  "suggest_feature": {
+    "message": "Запропонувати функцію"
+  },
+  "how_to_use": {
+    "message": "Як використовувати"
+  },
+  "web_vitals": {
+    "message": "Web Vitals"
+  },
+  "web_vitals__info_main": {
+    "message": "Core Web Vitals — це швидкісні метрики, що є частиною сигналів користувацького досвіду сторінки від Google, використовувані для оцінки користувацького досвіду. Ці дані засновані на реальному досвіді користувачів Chrome із вашою сторінкою. CWV є незначним фактором ранжирування для Google."
+  },
+  "web_vitals__not_found": {
+    "message": "Core Web Vitals використовує дані реальних користувачів Chrome. Якщо одні або всі метрики не доступні для сторінки, це означає, що немає достатньо даних про користувацький досвід з цією сторінкою. У такому випадку деякі інші інструменти, включаючи Огляди швидкості сторінки від Google, покажуть метрики CWV для домашньої сторінки."
+  },
+  "web_vitals__lcp": {
+    "message": "Найбільше змістовне завантаження (LCP) — це найбільший видимий елемент, що завантажується в області перегляду. Зазвичай це основне зображення або H1. Вимірюється у секундах."
+  },
+  "web_vitals__cls": {
+    "message": "Кумулятивне зміщення макета (CLS) вимірює, як елементи переміщуються або наскільки стабільний макет сторінки. Враховується розмір контенту та відстань його переміщення."
+  },
+  "web_vitals__inp": {
+    "message": "Взаємодія до наступного завантаження (INP) оцінює респонсивність сторінки. Вимірює затримку всіх взаємодій користувача зі сторінкою та показує одне значення, нижче якого були всі чи майже всі взаємодії. Низьке значення INP означає, що сторінка здебільшого змогла швидко відповісти на всі, чи більшість користувацьких взаємодій."
+  },
+  "try_starter": {
+    "message": "Спробуйте план Starter"
+  },
+  "new": {
+    "message": "Нові"
+  },
+  "url": {
+    "message": "URL-адреса"
+  },
+  "shared__search": {
+    "message": "Пошук"
+  },
+  "learn_more": {
+    "message": "Дізнатися більше"
+  },
+  "get_started": {
+    "message": "Початок роботи"
+  },
+  "raw_vs_rendered": {
+    "message": "Код / Рендеринг",
+    "description": "Button on popup content. Raw HTML- server-returned source. Rendered HTML- final DOM."
+  },
+  "raw": {
+    "message": "Сирий",
+    "description": "Raw HTML- server-returned source"
+  },
+  "rendered": {
+    "message": "Відображений",
+    "description": "Rendered HTML- final DOM."
+  },
+  "content__changes_button": {
+    "message": "Переглянути зміни"
+  },
+  "meta": {
+    "message": "Мета"
+  },
+  "title": {
+    "message": "Заголовок"
+  },
+  "title__too_short": {
+    "message": "Можливо, заголовок занадто короткий. Заголовок сторінки є ключовим елементом, на який покладається Google для розуміння сторінок. Короткі заголовки можуть не ефективно передавати головну ідею сторінки."
+  },
+  "title__too_long": {
+    "message": "Можливо, заголовок занадто довгий. Довгі заголовки сторінок ризикують бути обрізаними при виведенні в результатах пошуку Google. Рекомендована максимальна довжина заголовка — ~60 символів."
+  },
+  "description": {
+    "message": "Опис"
+  },
+  "description__too_short": {
+    "message": "Можливо, мета-опис занадто короткий. Рекомендовано писати довші описи, оскільки вони надають пояснення контенту сторінки для Google."
+  },
+  "description__too_long": {
+    "message": "Можливо, мета-опис занадто довгий. Рекомендується підтримувати ваші мета-описи в межах приблизно 160 символів. Довші описи ризикують бути обрізаними у SERP, якщо Google вирішить показати їх як текст фрагменту."
+  },
+  "dates": {
+    "message": "Дати"
+  },
+  "published": {
+    "message": "Опубліковано"
+  },
+  "modified": {
+    "message": "Змінено"
+  },
+  "content": {
+    "message": "Контент"
+  },
+  "word_count": {
+    "message": "Кількість слів"
+  },
+  "headings": {
+    "message": "Заголовки"
+  },
+  "copy_headings": {
+    "message": "Копіювати заголовки"
+  },
+  "canonical_url": {
+    "message": "Канонічний URL"
+  },
+  "in_html_code": {
+    "message": "У відрендереному HTML",
+    "description": "Means that the information is analyzed directly within the client-side rendered HTML code of the page"
+  },
+  "in_raw_html_code": {
+    "message": "У сирому HTML",
+    "description": "Means that the information is analyzed directly within the server-returned source"
+  },
+  "noindex_page": {
+    "message": "Сторінка noindex"
+  },
+  "robots": {
+    "message": "Роботи"
+  },
+  "robots__txt": {
+    "message": "Robots.txt"
+  },
+  "robots__meta_tag": {
+    "message": "Мета-тег метароботів"
+  },
+  "robots__tag_http": {
+    "message": "X-Robots-Tag HTTP"
+  },
+  "sitemaps": {
+    "message": "Карта сайту"
+  },
+  "hreflangs": {
+    "message": "Hreflangs"
+  },
+  "validate_sd": {
+    "message": "Перевірити"
+  },
+  "validate_sd__placegolder": {
+    "message": "Перевірити структуру даних на цій сторінці"
+  },
+  "validate_sd__rich_results_test": {
+    "message": "Тест на багаті результати"
+  },
+  "validate_sd__schema_markup_validator": {
+    "message": "Перевірник розмітки Schema"
+  },
+  "jsonld__not_found": {
+    "message": "JSON-LD структурованих даних не знайдено"
+  },
+  "open_graph_tags": {
+    "message": "Теги Open Graph"
+  },
+  "x_card": {
+    "message": "X (Twitter) картка"
+  },
+  "card__missing_or_incomplete": {
+    "message": "Відсутні або неповні"
+  },
+  "image__not_found": {
+    "message": "Зображення не знайдено"
+  },
+  "image__image": {
+    "message": "Зображення"
+  },
+  "image__all": {
+    "message": "Всі"
+  },
+  "image__alt": {
+    "message": "Alt"
+  },
+  "image__alt_missing": {
+    "message": "Відсутній альтернативний текст"
+  },
+  "image__alt_empty": {
+    "message": "Порожній текст alt"
+  },
+  "image__alt_text": {
+    "message": "Альтернативний текст"
+  },
+  "image__url": {
+    "message": "URL-адреса"
+  },
+  "image__file_too_large": {
+    "message": "Розмір файлу зображення занадто великий"
+  },
+  "outgoing_links__dropdown_description": {
+    "message": "Надіслати до 10 останніх URL-адрес зі списку до Ahrefs"
+  },
+  "outgoing_links__dropdown_item_1": {
+    "message": "Перетин посилань"
+  },
+  "outgoing_links__dropdown_item_2": {
+    "message": "Content Gap"
+  },
+  "outgoing_links__check_status": {
+    "message": "Перевірити стан"
+  },
+  "outgoing_links__status": {
+    "message": "Статус"
+  },
+  "outgoing_links__highlight": {
+    "message": "Виділити"
+  },
+  "outgoing_links__dofollow": {
+    "message": "Dofollow"
+  },
+  "outgoing_links__nofollow": {
+    "message": "Nofollow"
+  },
+  "outgoing_links__link_type": {
+    "message": "Тип посилання"
+  },
+  "outgoing_links__internal": {
+    "message": "Внутрішні"
+  },
+  "outgoing_links__external": {
+    "message": "Зовнішні"
+  },
+  "outgoing_links__target_url": {
+    "message": "Цільова URL-сторінка"
+  },
+  "saved_urls__current_tab": {
+    "message": "Поточна вкладка"
+  },
+  "saved_urls__all_tabs": {
+    "message": "Усі вкладки"
+  },
+  "saved_urls__copy_list": {
+    "message": "Копіювати список"
+  },
+  "ua__warning_important": {
+    "message": "Важливо!"
+  },
+  "ua__warning_body": {
+    "message": "Вимикайте користувацький user agent, коли більше не потребуєте його."
+  },
+  "settings__appearance": {
+    "message": "Оформлення"
+  },
+  "settings__light": {
+    "message": "Світла тема",
+    "description": "Theme color"
+  },
+  "settings__dark": {
+    "message": "Темна тема",
+    "description": "Theme color"
+  },
+  "settings__system": {
+    "message": "Система",
+    "description": "Theme color"
+  },
+  "settings__position": {
+    "message": "Позиція"
+  },
+  "settings__top": {
+    "message": "Топ",
+    "description": "Location of the toolbar on the screen"
+  },
+  "settings__bottom": {
+    "message": "Нижня частина",
+    "description": "Location of the toolbar on the screen"
+  },
+  "settings__exclude_list": {
+    "message": "Виключити список"
+  },
+  "settings__exlude_list_warn": {
+    "message": "Введіть домени, URL-адреси або шлях URL, де ви не хочете бачити панель інструментів."
+  },
+  "settings__exlude_list_warn_2": {
+    "message": "Використовуйте * для шляхів URL, наприклад, https://ahrefs.com/blog/*"
+  },
+  "settings__exlude_list_warn_3": {
+    "message": "Один запис на рядок."
+  },
+  "search_tools__menu_title": {
+    "message": "Налаштування пошуку"
+  },
+  "search_tools__kw_title": {
+    "message": "Метрики ключових слів"
+  },
+  "search_tools__position_numbers_title": {
+    "message": "Номери позицій"
+  },
+  "search_tools__results_metrics_title": {
+    "message": "Метрики результатів пошуку"
+  },
+  "search_tools__trends_title": {
+    "message": "Метрики ключових слів у Трендах"
+  },
+  "search_tools__ls_menu_title": {
+    "message": "Симулятор локального пошуку"
+  },
+  "search_tools__location": {
+    "message": "Локація"
+  },
+  "search_tools__language": {
+    "message": "Мова"
+  },
+  "search_tools__device": {
+    "message": "Пристрій"
+  },
+  "search_tools__desktop": {
+    "message": "Десктопна версія"
+  },
+  "search_tools__reset": {
+    "message": "Скинути"
+  },
+  "search_tools__tip_body": {
+    "message": "Використовуйте цю кнопку, щоб імітувати локальний пошук"
+  },
+  "search_tools__highlight_title": {
+    "message": "Виділити результати"
+  },
+  "search_tools__highlight_placeholder": {
+    "message": "Введіть домени, які ви хочете виділити в результатах пошуку."
+  },
+  "modal__shortcuts_description": {
+    "message": "Ви можете використовувати наступні скорочення з Ahrefs SEO Toolbar:\n$SHORTCUT_TOOLBAR$ для ввімкнення/вимкнення панелі метрик\n$SHORTCUT_POPUP$ для відкриття звітів на сторінці та налаштувань\nВи можете змінити ці клавіші у",
+    "description": "Example of the last sentence 'You can change these key bindings in your browser settings'",
+    "placeholders": {
+      "shortcut_toolbar": {
+        "content": "$1",
+        "example": "Ctrl+Cmd+A"
+      },
+      "shortcut_popup": {
+        "content": "$2",
+        "example": "Ctrl+Cmd+A"
+      }
+    }
+  },
+  "modal__shortcuts_button_settings": {
+    "message": "налаштуваннях браузера",
+    "description": "The button used to open the browser settings e.g. chrome://extensions/shortcuts"
+  },
+  "modal__shortcuts_button_ok": {
+    "message": "Готово"
+  },
+  "modal__blocklist_description": {
+    "message": "Чи хочете ви вимкнути Панель з метриками для цього сайту або сторінки?\n(Ви можете змінити список блокувань у налаштуваннях)"
+  },
+  "modal__blocklist_btn_positive_page": {
+    "message": "Для цієї сторінки",
+    "description": "Button label in a modal that asks the user 'Do you want to disable the Toolbar with metrics for this website or page?'"
+  },
+  "modal__blocklist_btn_positive_domain": {
+    "message": "Для домену",
+    "description": "Button label in a modal that asks the user 'Do you want to disable the Toolbar with metrics for this website or page?'"
+  },
+  "modal__blocklist_btn_negative": {
+    "message": "Не вимикати",
+    "description": "Button label in a modal that asks the user 'Do you want to disable the Toolbar with metrics for this website or page?'"
+  },
+  "icon_tip__hide_toolbar": {
+    "message": "Перманентно сховати панель інструментів на цьому сайті, сторінці або шляху. \n(Ви можете редагувати список блокувань у налаштуваннях)"
+  },
+  "icon_tip__add": {
+    "message": "Зберегти цю URL-адресу у список.\nЩоб отримати доступ до збережених URL, натисніть на іконку розширення та перейдіть на вкладку 'Збережено'.\nДесять найостанніших URL-адрес зі списку можна швидко надіслати в інструменти Перетин посилань або Content Gap в Ahrefs (тільки для платних користувачів)"
+  },
+  "icon_tip__present_in_list": {
+    "message": "Цей URL в списку збережених URL-адрес і може бути відправлений до Перетину посилань або Content Gap.\nЩоб отримати доступ до збережених URL, натисніть на іконку розширення та перейдіть у вкладку 'Збережено'.\nДесять останніх URL зі списку можна швидко надіслати у інструменти Перетин посилань або Content Gap в Ahrefs."
+  },
+  "icon_tip__present": {
+    "message": "URL знаходиться у списку збережених URL-адрес.\nЩоб отримати доступ до збережених URL-адрес, натисніть на іконку розширення і перейдіть на вкладку \"Збережені\".\nДесять останніх URL-адрес зі списку можуть бути швидко надіслані у Перетин посилань або Content Gap інструменти в Ahrefs."
+  },
+  "metrics__sign_up_free_button": {
+    "message": "Почати безкоштовно"
+  },
+  "metrics__sign_up_free_description": {
+    "message": "Отримайте безкоштовний доступ до DR, AR та UR з обліковим записом AWT."
+  },
+  "metrics__rp_label_lg": {
+    "message": "Реферальні сторінки"
+  },
+  "metrics__rp_title": {
+    "message": "Реферальні сторінки (RP)"
+  },
+  "metrics__rp_description": {
+    "message": "Загальна кількість унікальних веб-сторінок, які містять посилання на цільову сторінку."
+  },
+  "metrics__bl_label_lg": {
+    "message": "Беклінки"
+  },
+  "metrics__bl_title": {
+    "message": "Беклінки (BL)"
+  },
+  "metrics__bl_description": {
+    "message": "Загальна кількість посилань з інших вебсайтів, які вказують на вашу цільову сторінку."
+  },
+  "metrics__kw_label_lg": {
+    "message": "Ключові слова"
+  },
+  "metrics__kw_title": {
+    "message": "Органічні ключові слова (KW)"
+  },
+  "metrics__kw_description": {
+    "message": "Загальна кількість унікальних ключових слів, за якими ціль займає перші 100 позицій в результатах органічного пошуку у всіх країнах нашої бази даних."
+  },
+  "metrics__rd_label_lg": {
+    "message": "Реферальні домени"
+  },
+  "metrics__rd_title": {
+    "message": "Реферальні домени (RD)"
+  },
+  "metrics__rd_description": {
+    "message": "Загальна кількість унікальних доменів, які мають посилання на ціль."
+  },
+  "metrics__st_label_lg": {
+    "message": "Пошуковий трафік"
+  },
+  "metrics__st_title": {
+    "message": "Органічний пошуковий трафік (ST)"
+  },
+  "metrics__st_description": {
+    "message": "Орієнтовна кількість щомісячних відвідувань, які ціль отримує з органічного пошуку."
+  },
+  "metrics__ur_label_lg": {
+    "message": "Рейтинг URL"
+  },
+  "metrics__ur_title": {
+    "message": "Рейтинг URL (UR)"
+  },
+  "metrics__ur_description": {
+    "message": "Рейтинг URL (UR) показує силу профілю беклінків цільової сторінки за 100-бальною логарифмічною шкалою."
+  },
+  "metrics__tv_title": {
+    "message": "Цінність трафіку (TV)"
+  },
+  "metrics__tv_description": {
+    "message": "Щомісячна вартість еквіваленту органічного пошукового трафіку для вебсайту або вебсторінки, розрахована на підставі припущення, що такий же обсяг трафіку був отриманий через рекламу з оплатою за клік (PPC), а не шляхом органічного пошуку."
+  },
+  "metrics__w_label_lg": {
+    "message": "Слова"
+  },
+  "metrics__w_title": {
+    "message": "Слова на сторінці"
+  },
+  "metrics__w_description": {
+    "message": "Кількість слів на вебсторінці, згідно з даними сканера Ahrefs у коді сторінки. Це число може трохи відрізнятися від того, що ви бачите у браузері, коли відкриваєте сторінку."
+  },
+  "metrics__ar_label_lg": {
+    "message": "Ahrefs Rank"
+  },
+  "metrics__ar_title": {
+    "message": "Ahrefs Rank (AR)"
+  },
+  "metrics__ar_description": {
+    "message": "Показує силу профілю беклінків вебсайту порівняно з іншими вебсайтами у нашій базі даних, де рейтинг №1 є найсильнішим."
+  },
+  "metrics__dr_label_lg": {
+    "message": "Рейтинг домену"
+  },
+  "metrics__dr_title": {
+    "message": "Рейтинг домену (DR)"
+  },
+  "metrics__dr_description": {
+    "message": "Показує силу профілю беклінків вебсайту за 100-бальною логарифмічною шкалою."
+  },
+  "metrics__paid_keywords_label_lg": {
+    "message": "Платні ключові слова"
+  },
+  "metrics__paid_keywords_title": {
+    "message": "Платні ключові слова"
+  },
+  "metrics__paid_keywords_description": {
+    "message": "Загальна кількість ключових слів, за якими ваш цільовий ресурс ранжується в результатах платного пошуку."
+  },
+  "metrics__paid_traffic_label_lg": {
+    "message": "Платний трафік"
+  },
+  "metrics__paid_traffic_title": {
+    "message": "Платний трафік"
+  },
+  "metrics__paid_traffic_description": {
+    "message": "Орієнтовна кількість щомісячних відвідувань, які ваш цільовий ресурс отримує з платного пошуку."
+  },
+  "metrics__ads_label_lg": {
+    "message": "Оголошення"
+  },
+  "metrics__ads_title": {
+    "message": "Оголошення"
+  },
+  "metrics__ads_description": {
+    "message": "Загальна кількість унікальних оголошень цільового сайту або URL-адреси в результатах платного пошуку."
+  },
+  "metrics__cost_label_lg": {
+    "message": "Вартість"
+  },
+  "metrics__cost_title": {
+    "message": "Вартість платного трафіку"
+  },
+  "metrics__cost_description": {
+    "message": "Розрахункова вартість вашого цільового щомісячного платного пошукового трафіку."
+  },
+  "kw_metrics__kd_title": {
+    "message": "Складність ключового слова (KD)"
+  },
+  "kw_metrics__kd_description": {
+    "message": "Оцінює, наскільки складно буде зайняти місце в топ-10 результатів органічного пошуку за запитом на 100-бальній шкалі."
+  },
+  "kw_metrics__sw_title": {
+    "message": "Обсяг пошуку"
+  },
+  "kw_metrics__sw_description": {
+    "message": "Оцінка середньої щомісячної кількості запитів за ключовим словом у даній країні."
+  },
+  "kw_metrics__gv_title": {
+    "message": "Обсяг глобального пошуку (GV)"
+  },
+  "kw_metrics__gv_description": {
+    "message": "Оцінка середньої щомісячної кількості запитів за ключовим словом у всіх країнах нашої бази даних."
+  },
+  "kw_metrics__tp_title": {
+    "message": "Потенціал трафіку (TP)"
+  },
+  "kw_metrics__tp_description": {
+    "message": "Показує суму органічного пошукового трафіку, яку отримує сторінка з першим місцем для цільового ключового слова з усіх ключових слів, за якими вона ранжується."
+  },
+  "kw_metrics__c_title": {
+    "message": "Кліки"
+  },
+  "kw_metrics__c_description": {
+    "message": "Оцінка кількості кліків, які люди здійснюють на результати пошуку за даним ключовим словом на місяць. Деякі запити не генерують кліків, тоді як інші викликають кілька кліків на сторінці результатів пошуку."
+  },
+  "kw_metrics__cpc_title": {
+    "message": "Ціна за клік (CPC)"
+  },
+  "kw_metrics__cpc_description": {
+    "message": "Оцінка середньої ціни, яку рекламодавці платять за кожен клік по рекламі в платних результатах пошуку за ключовим словом."
+  },
+  "serp__save_urls_button": {
+    "message": "Зберегти URL"
+  },
+  "serp__export_button": {
+    "message": "Експорт CSV"
+  },
+  "serp__kw_ideas": {
+    "message": "Ідеї ключових слів"
+  },
+  "serp__ppa": {
+    "message": "Люди також запитують"
+  },
+  "serp__adv": {
+    "message": "Спробуйте цей пошук на Yep"
+  },
+  "serp__local_search": {
+    "message": "Локальний пошук"
+  },
+  "serp__local_search_active": {
+    "message": "Відображення симульованих SERP"
+  },
+  "serp__tip_conf": {
+    "message": "Натисніть на іконку розширення для налаштування"
+  },
+  "feedback__main_q": {
+    "message": "Подобається панель інструментів Ahrefs SEO?"
+  },
+  "feedback__positive_answ": {
+    "message": "Чудово! Будь ласка, розкажіть, що вам подобається."
+  },
+  "feedback__negative_answ": {
+    "message": "Будь ласка, допоможіть нам поліпшити сервіс."
+  },
+  "starter__q": {
+    "message": "Отримайте доступ до показників Ahrefs із нашим планом Starter всього за $PRICE$/місяць.",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "feedback__send_answ": {
+    "message": "Надіслати відгук"
+  },
+  "feedback__negative_button_1": {
+    "message": "Не дуже"
+  },
+  "feedback__positive_button_1": {
+    "message": "Так!"
+  },
+  "feedback__positive_button_2": {
+    "message": "Написати огляд"
+  },
+  "error__fetching_data": {
+    "message": "Помилка отримання даних. Будь ласка, спробуйте пізніше."
+  },
+  "error__inactive": {
+    "message": "Ваш статус користувача у підключеному робочому просторі наразі \"Неактивний.\""
+  },
+  "error__monthly_limit": {
+    "message": "Досягнуто місячний ліміт для вашого робочого простору."
+  },
+  "error__usage_limit_head": {
+    "message": "Ви досягли ліміту використання"
+  },
+  "error__usage_limit_body": {
+    "message": "Щоб продовжити, будь ласка, $UPGRADE_BUTTON$ або зачекайте, поки ваш ліміт не скинеться.",
+    "placeholders": {
+      "upgrade_button": {
+        "content": "$1"
+      }
+    },
+    "description": "Sentence with an inline error__usage_limit_body_button"
+  },
+  "error__usage_limit_body_button": {
+    "message": "оновити план",
+    "description": "The button used as the placeholder in error__usage_limit_body"
+  },
+  "error__try_again_later": {
+    "message": "Помилка. Спробуйте пізніше."
+  },
+  "error__too_many_sessions_text_body": {
+    "message": "Помилка: забагато сесій. Цей аккаунт може використовуватись на іншому пристрої. Будь ласка",
+    "description": "Full text of the error: 'Error: too many sessions. This account may be used on another device. Please sign in again.'"
+  },
+  "error__too_many_sessions_sign_in": {
+    "message": "увійти",
+    "description": "Full text of the error: 'Error: too many sessions. This account may be used on another device. Please sign in again.'"
+  },
+  "error__too_many_sessions_text_end": {
+    "message": "увійдіть знову.",
+    "description": "Full text of the error: 'Error: too many sessions. This account may be used on another device. Please sign in again.'"
+  },
+  "freeplan_banner__limit_description": {
+    "message": "SEO-метрики для Панелі інструментів доступні з одним із",
+    "description": "Full sentence: SEO metrics for the Toolbar are available with one of the paid plans"
+  },
+  "freeplan_banner__limit_link": {
+    "message": "платних планів",
+    "description": "Full sentence: SEO metrics for the Toolbar are available with one of the paid plans"
+  }
+}

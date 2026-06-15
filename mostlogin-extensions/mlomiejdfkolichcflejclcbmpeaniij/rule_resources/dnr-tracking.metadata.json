@@ -1,0 +1,26 @@
+{
+  "7201": {
+    "preprocessor": "env_safari"
+  },
+  "8875": {
+    "preprocessor": "env_safari"
+  },
+  "16871": {
+    "preprocessor": "env_safari"
+  },
+  "30224": {
+    "preprocessor": "env_safari"
+  },
+  "40320": {
+    "preprocessor": "env_safari"
+  },
+  "46136": {
+    "preprocessor": "env_safari"
+  },
+  "56250": {
+    "preprocessor": "env_chromium"
+  },
+  "56296": {
+    "preprocessor": "!(cap_html_filtering)"
+  }
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+<rect x="5" y="34" width="22" height="29" rx="1" transform="rotate(-90 5 34)" fill="#F3F5FF"/>
+<path d="M7.00005 22H19" stroke="#DDE8F9" stroke-linecap="round"/>
+<path d="M7.00005 24H19" stroke="#DDE8F9" stroke-linecap="round"/>
+<path d="M7.50003 29H13.5" stroke="#5B96EE" stroke-width="2" stroke-linecap="round"/>
+<path d="M7.00003 26H15" stroke="#DDE8F9" stroke-linecap="round"/>
+<rect x="23" y="21" width="8" height="8" rx="2" fill="white" stroke="#5B96EE" stroke-linecap="round" stroke-dasharray="1 2"/>
+<circle cx="7.5" cy="14.5" r="0.5" fill="#3C454D"/>
+<circle cx="9.5" cy="14.5" r="0.5" fill="#3C454D"/>
+<circle cx="11.5" cy="14.5" r="0.5" fill="#3C454D"/>
+<path d="M34 17.5V14C34 12.8954 33.1046 12 32 12H7C5.89543 12 5 12.8954 5 14V31C5 32.1046 5.89543 33 7 33L32 33C33.1046 33 34 32.1046 34 31V18.5" stroke="#DDE8F9" stroke-linecap="round"/>
+<path d="M34 30V14C34 12.8954 33.1046 12 32 12H7C5.89543 12 5 12.8954 5 14V32C5 33.1046 5.89543 34 7 34H32C33.1046 34 34 33.1046 34 32V28.5" stroke="#3C454D" stroke-linecap="round"/>
+<path d="M7.00011 17.5L32 17.5" stroke="#DDE8F9" stroke-linecap="round"/>
+<path d="M7.00011 17L32 17" stroke="#3C454D" stroke-linecap="round"/>
+<path d="M1 34L35 34" stroke="#3C454D" stroke-linecap="round"/>
+<path d="M37 34H39" stroke="#3C454D" stroke-linecap="round"/>
+<path d="M30.1385 6.13818L38.1523 14.1521" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.3008 2.70033L31.8866 4.11453M30.0009 1.3335V3.3335M26.7011 2.70033L28.1153 4.11453M25.3343 6.00016H27.3343M26.7011 9.3L28.1153 7.8858M33.3008 9.3L31.8866 7.8858" stroke="#5B96EE" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="33.25" y="7.12939" width="3" height="4.375" rx="1" transform="rotate(135 33.25 7.12939)" fill="white"/>
+<rect x="39.4375" y="13.3164" width="3" height="9.625" rx="1" transform="rotate(135 39.4375 13.3164)" fill="#5B96EE"/>
+<rect x="39.3144" y="13.8994" width="2" height="13" rx="0.5" transform="rotate(135 39.3144 13.8994)" stroke="#3C454D"/>
+</svg>

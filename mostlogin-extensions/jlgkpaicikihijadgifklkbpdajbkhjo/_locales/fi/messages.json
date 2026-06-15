@@ -1,0 +1,1484 @@
+{
+  "appName": {
+    "message": "CrxMouse Chrome™ -eleet",
+    "Description": "Name of extension. Do not translate name."
+  },
+  "appName_Edge": {
+    "message": "CrxMouse Edge™ -eleet",
+    "Description": "Name of extension. Do not translate name."
+  },
+  "G_BmManager": {
+    "message": "Avaa kirjanmerkkien hallinta",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_ZoomIn": {
+    "message": "Lähennä",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_ZoomOut": {
+    "message": "Loitonna",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_back": {
+    "message": "Takaisin",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_bookmark": {
+    "message": "Lisää kirjanmerkki",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_bookmarks": {
+    "message": "Kirjanmerkkien hallinta",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_bottom": {
+    "message": "Vieritä alalaitaan",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_capture": {
+    "message": "Kuvakaappaus",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_chromepage": {
+    "message": "Avaa Chromen sisäinen osoite",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_close": {
+    "message": "Sulje välilehti",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closelefttabs": {
+    "message": "Sulje kaikki välilehdet vasemmalta",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closeothers": {
+    "message": "Sulje muut välilehdet",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closerighttabs": {
+    "message": "Sulje kaikki välilehdet oikealta",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closewindow": {
+    "message": "Sulje ikkuna",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_closewindows": {
+    "message": "Sulje kaikki ikkunat",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copyaslink": {
+    "message": "Kopioi otsikko ja URL-osoite linkkinä",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copytab": {
+    "message": "Kopioi nykyinen välilehti",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copytitle": {
+    "message": "Kopioi nykyisen välilehden otsikko",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copyurl": {
+    "message": "Kopioi nykyisen välilehden URL",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_copyuser": {
+    "message": "Kopioi otsikko ja URL-osoite mukautetussa muodossa",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_crxsettings": {
+    "message": "CrxMousen asetukset",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_down": {
+    "message": "Vieritä alas",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_downloads": {
+    "message": "Lataukset",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_firsttab": {
+    "message": "Ensimmäinen välilehti",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_fullscreen": {
+    "message": "Koko näyttö",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_go": {
+    "message": "Eteenpäin",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_goparent": {
+    "message": "Siirry ylätason URLiin",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_history": {
+    "message": "Historia",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_incognito": {
+    "message": "Uusi incognito-ikkuna",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_lasttab": {
+    "message": "Viimeinen välilehti",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_left": {
+    "message": "Vieritä vasemmalle",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_lefttab": {
+    "message": "Vasen välilehti",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_mergeTab": {
+    "message": "Yhdistä välilehdet",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_movetowindow": {
+    "message": "Irrota välilehti",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_newtab": {
+    "message": "Uusi välilehti",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_newusertab": {
+    "message": "Mukautettu välilehti...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_newwindow": {
+    "message": "Uusi ikkuna",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_none": {
+    "message": "Ei mitään",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_openclipurl": {
+    "message": "Yritä avata URL leikepöydältä",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_pin": {
+    "message": "Kiinnitä välilehti",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reclosedtab": {
+    "message": "Avaa suljettu välilehti uudelleen",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reload": {
+    "message": "Lataa uudelleen",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reloadall": {
+    "message": "Lataa kaikki välilehdet uudelleen",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reloadclear": {
+    "message": "Lataa uudelleen ilman välimuistia",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_reloadframe": {
+    "message": "Lataa kehys uudelleen",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_right": {
+    "message": "Vieritä oikealle",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_righttab": {
+    "message": "Oikea välilehti",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_settings": {
+    "message": "Chromen asetukset",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_splitTab": {
+    "message": "Jaa välilehdet",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_stop": {
+    "message": "PYSÄYTÄ",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_stopall": {
+    "message": "Älä enää lataa kaikkia välilehtiä",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_top": {
+    "message": "Vieritä ylälaitaan",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_tostop": {
+    "message": "Poista laajennus tilapäisesti käytöstä tällä sivulla",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_trynext": {
+    "message": "Yritä siirtyä seuraavaan lukuun",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_tryprev": {
+    "message": "Yritä siirtyä edelliseen lukuun",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_up": {
+    "message": "Vieritä ylös",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_userscript": {
+    "message": "Suorita komentosarja...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_viewsource": {
+    "message": "Näytä sivun lähdekoodi",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_windowmax": {
+    "message": "Suurenna ikkuna",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "G_windowmin": {
+    "message": "Pienennä ikkuna",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_copyurl": {
+    "message": "Kopioi kuvan URL-osoite",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_open": {
+    "message": "Avaa kuva uudessa välilehdessä",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_save": {
+    "message": "Tallenna kuva",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_saveback": {
+    "message": "Tallenna kuva nimellä (vain dev)...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_search": {
+    "message": "Hae kuvasta",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "I_searchuser": {
+    "message": "Hae kuvasta mukautetulla hakukoneella",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_bookmark": {
+    "message": "Lisää kirjanmerkki",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copyaslink": {
+    "message": "kopioi teksti ja URL-osoite linkkinä",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copytext": {
+    "message": "Kopioi linkin teksti",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copyurl": {
+    "message": "Kopioi linkin URL-osoite",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "L_copyuser": {
+    "message": "Kopioi otsikko ja sivusto mukautetussa muodossa",
+    "description": "Advanced actions"
+  },
+  "L_open": {
+    "message": "Avaa linkki uudessa välilehdessä",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "T_copytext": {
+    "message": "Kopioi teksti",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "T_search": {
+    "message": "Hae tekstistä",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "T_searchuser": {
+    "message": "Mukautettu haku...",
+    "description": "Tooltip that shows when user is performing this gesture"
+  },
+  "about": {
+    "message": "Tietoja",
+    "description": "Title of About page in Settings area"
+  },
+  "bug": {
+    "message": "Ilmoita virheestä",
+    "description": "Link to report a bug"
+  },
+  "addtipgesture": {
+    "message": "Pidä hiiren oikea painike pohjassa ja liikuta hiirtä, niin että se piirtää kuvion, vapauta hiiren oikea painike ja valitse toiminto.",
+    "description": "Instructions for how to add a new gesture thourh the Settings area - appears when clicking on the 'Add New' button in the 'New section on the 'Mouse Gestures' page."
+  },
+  "addtipimage": {
+    "message": "Käytä hiiren vasenta painiketta vetääksesi alla olevaa kuvaa ja piirrä kuvio. Vapauta hiiri sitten ja valitse toiminto.",
+    "description": "Instructions for how to add a new Super Drag Gesture for an Image - appears when clicking on the 'Image' button in the 'New' section on the 'Super Drag' page."
+  },
+  "addtiplink": {
+    "message": "Valitse alla oleva linkki ja piirrä kuvio pitäen hiiren vasen painike pohjassa. Vapauta hiiri sitten ja valitse toiminto.",
+    "description": "Instructions for how to add a new Super Drag Gesture for a link - appears when clicking on the 'Link' button in the 'New' section on the 'Super Drag' page."
+  },
+  "addtiptext": {
+    "message": "Valitse seuraava teksti ja piirrä kuvio pitäen hiiren vasen painike pohjassa. Vapauta hiiri sitten ja valitse toiminto.",
+    "description": "Instructions for how to add a new Super Drag Gesture for a text - appears when clicking on the 'Text' button in the 'New' section on the 'Super Drag' page"
+  },
+  "advanced": {
+    "message": "Lisäasetukset",
+    "description": "Side navigation and Title of page in 'Settings' area"
+  },
+  "alertaction": {
+    "message": "Valitse toiminto.",
+    "description": "Alert window - promopted of user tries to save new gesture before selecting an action."
+  },
+  "alertconfigerror": {
+    "message": "Virhe tuoduissa määrityksissä.",
+    "description": "Error message - prompted when there is an issue with an imported file."
+  },
+  "alertname": {
+    "message": "Tallennus ei onnistu. Tarkista, mikä kenttä on tyhjä.",
+    "description": "Error message when trying to edit gesture with text field empty."
+  },
+  "alertrepeat": {
+    "message": "Ele kahdentui, kokeile toista elettä.",
+    "description": "Error message when trying to create gesture with an already used gesture."
+  },
+  "alerttooltip": {
+    "message": "Anna toiminnolle nimi.",
+    "description": "Error message when creating new gesture of new action without giving it a name. "
+  },
+  "alerturl": {
+    "message": "Ei URL-osoitetta tai URL ei kelpaa.",
+    "description": "Error message when creating new gesture for opening a specific url without specifying the url."
+  },
+  "author": {
+    "message": "Tekijä",
+    "description": "Author"
+  },
+  "blackList": {
+    "message": "Sivuston musta lista",
+    "description": "List for sites that should exclude mouse gestures. Located on General Settings page."
+  },
+  "blacklistTip": {
+    "message": "Huomio 1: crxMouse ei toimi näillä sivuilla. 2: Yksi toimialue riville, lisää rivejä painamalla enter, älä lisää http:// tai https://",
+    "description": "Note listed below message box of site blacklist. Located on General Settings page."
+  },
+  "bookmarkfailnotifi": {
+    "message": "Kirjanmerkki on jo olemassa!",
+    "description": "Error message when trying to create gesture for bookmark that already exists."
+  },
+  "bookmarknotifi": {
+    "message": "Kirjanmerkkien lisääminen onnistui!",
+    "description": "Notification for bookmark saved."
+  },
+  "cancel": {
+    "message": "Peruuta",
+    "description": "Cancel adding new gesture."
+  },
+  "cancelcontextmenu": {
+    "message": "Linuxin/Macin pikavalikon ongelmissa(<span style='color:red'>tuplanapsauta hiiren oikeaa painiketta, niin pikavalikon ponnahdusvalikko tulee näkyviin</span>).",
+    "description": "Text of Linux/Mac options check box located on General Settings page. Note! Do not translate html tags."
+  },
+  "cancelcontextmenudes": {
+    "message": "Asetus, jolla korjataan ei-Windowsin alusta, jossa hiiren oikean painikkeen napsautuksen valikko vaikuttaa tiettyihin normaaleihin toimintoihin. Linuxin/Macin käyttäjien on suositeltavaa valita tämä.",
+    "description": "Tooltip about Linux/Mac options located on General Settings page"
+  },
+  "changelog": {
+    "message": "Muutosloki",
+    "description": "Super Drag Action."
+  },
+  "chrome": {
+    "message": "Chrome oletus",
+    "description": "Referrs to the default tab opening (left or right) settings in Chrome."
+  },
+  "clearsyncdata": {
+    "message": "Poista synkronoidut tiedot",
+    "description": "For logged in users, they can clear any data that was synced between machines."
+  },
+  "close": {
+    "message": "Sulje",
+    "description": "Action list - close tab"
+  },
+  "color": {
+    "message": "Väri:",
+    "description": "A design option for how mouse gestures appear, under the 'Appearance' section on the Settings area."
+  },
+  "crbookmarks": {
+    "message": "Kirjanmerkkien hallinta",
+    "description": "Action list - open bookmarks manager"
+  },
+  "crdownloads": {
+    "message": "Lataukset",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crextensions": {
+    "message": "Laajennukset",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crflags": {
+    "message": "Chrome oletus",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crhistory": {
+    "message": "Historia",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "crsettings": {
+    "message": "Chromen asetukset",
+    "description": "Actions list - referrs to "
+  },
+  "curfront": {
+    "message": "Nykyinen välilehti",
+    "description": "Actions list - referrs to the current tab opened and visited."
+  },
+  "dbclicktime": {
+    "message": "Kaksoisnapsautuksen enimmäiskesto (ms):",
+    "description": "milliseconds between 2 clicks for accessing the right-click menu on Mac and Linux."
+  },
+  "delete": {
+    "message": "Poista",
+    "description": "Delete a gesture."
+  },
+  "description": {
+    "message": "Tehosta selailuasi sormenpäilläsi",
+    "description": "Long Store title"
+  },
+  "descriptionjson": {
+    "message": "Paranna tuottavuutta navigoimalla hiiren pikavalinnoilla, kuten hiirieleillä, tehovetämisellä, rullaeleillä ja painike-eleillä.",
+    "description": "Short Store description"
+  },
+  "dholdkey": {
+    "message": "Määritä näppäin poistaaksesi tehovetämisen käytöstä:",
+    "description": "Users can choose a keyboard key that will disable the super drag feature on specific ocassions."
+  },
+  "direct": {
+    "message": "Näytä suunta",
+    "description": "Appearance option that let's user choose whether or not to see the path of a mouse gesture, when performing it."
+  },
+  "downimgtooltip": {
+    "message": "Kuvan tallennus...",
+    "description": "Tooltip for when saving image using super drag gesture."
+  },
+  "drag": {
+    "message": "Tehovetäminen",
+    "description": "Side navigation and title of page in Settings area."
+  },
+  "draginput": {
+    "message": "Ota tekstin veto käyttöön tekstilaatikoille.",
+    "description": "Option in More section on Super Drag page"
+  },
+  "dragui": {
+    "message": "Ulkoasu",
+    "description": "Section name in the Settings area."
+  },
+  "editgesture": {
+    "message": "Muokkaa eleitä",
+    "description": "Section name"
+  },
+  "editimage": {
+    "message": "Kuvan veto",
+    "description": "Section name on Super Drag page"
+  },
+  "editlink": {
+    "message": "Linkin veto",
+    "description": "Section name on Super Drag page"
+  },
+  "editsgsleft": {
+    "message": "Rullaeleet VASEN<br /><span class='opttitledes'>(Pidä vasen painike pohjassa ja vieritä)</span>",
+    "description": "Section name on Wheel Gestures page. Note! do not translate html tags (the br and span open and close tags)."
+  },
+  "editsgsright": {
+    "message": "Rullaeleet OIKEA<br /><span class='opttitledes'>(Pidä oikea painike pohjassa ja vieritä)</span>",
+    "description": "Section name on Super Drag page. Note! do not translate html tag (the span open and close tags)."
+  },
+  "edittext": {
+    "message": "Tekstin veto",
+    "description": "Section name on Super Drag page"
+  },
+  "enabledragimage": {
+    "message": "Ota kuvan veto käyttöön",
+    "description": "Option in More section on Super Drag page"
+  },
+  "enabledraglink": {
+    "message": "Ota linkin veto käyttöön",
+    "description": "Option in More section on Super Drag page"
+  },
+  "enabledragtext": {
+    "message": "Ota tekstin veto käyttöön",
+    "description": "Option in More section on Super Drag page"
+  },
+  "export": {
+    "message": "Vienti",
+    "description": "Buttom in Advanced Settings page"
+  },
+  "extauthor": {
+    "message": "WeKnowNet",
+    "description": "Author name inside options.html"
+  },
+  "extnamejson": {
+    "message": "CrxMouse",
+    "description": "Extension name"
+  },
+  "extthanks": {
+    "message": "\r\n\t\t&gt; os0x</a></a><br />\r\n\t\t&gt; ArcCosine</a></a><br />\r\n\t\t&gt; Jan Odvarko</a></a><br />\r\n\t\t&gt; Kiitos tämän laajennuksen käyttäjille ja/tai niille, jotka lähettävät minulle palautetta, että voin tehdä laajennuksesta entistä paremman.",
+    "description": "Thanks section in About page. Note! do not translate html tag."
+  },
+  "fastSwitch": {
+    "message": "Vaihda välilehti vasemmalle vierittämällä ylös ja oikealle vierittämällä alas.",
+    "description": "Switch tab to the left when Scrolling up, to the right when scrolling down"
+  },
+  "fastreset": {
+    "message": "Jotain on pielessä ja laajennus ei toimi. Palauta oletusasetukset napsauttamalla tästä. Jos laajennus ei edelleenkään toimi, päivitä Chromen uusimpaan versioon (V23+) ja yritä uudelleen.",
+    "description": "Error message when extension is down"
+  },
+  "fndrag": {
+    "message": "Ota tehovetäminen käyttöön",
+    "description": "Enable options on General Settings page"
+  },
+  "fngesture": {
+    "message": "Ota hiirieleet käyttöön",
+    "description": "Enable options on General Settings page"
+  },
+  "fnscroll": {
+    "message": "Ota vierittäminen käyttöön ",
+    "description": "Enable options on General Settings page"
+  },
+  "fnscrollgesture": {
+    "message": "Ota rullaeleet käyttöön",
+    "description": "Enable options on General Settings page"
+  },
+  "fnsmooth": {
+    "message": "Ota tasainen vieritys käyttöön",
+    "description": "Enable options on General Settings page"
+  },
+  "fnstrokegesture": {
+    "message": "Ota keinupainikkeen eleet käyttöön",
+    "description": "Enable options on General Settings page"
+  },
+  "fnswitch": {
+    "message": "Ota CrxMouse käyttöön",
+    "description": "Enable options on General Settings page"
+  },
+  "gesPos": {
+    "message": "Hiirieleen sijainti",
+    "description": "Option in Appearance section on Mouse Gestures page"
+  },
+  "gesPosBC": {
+    "message": "Alhaalla keskellä",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosBL": {
+    "message": "Alavasemmalla",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosBR": {
+    "message": "Alaoikealla",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosCC": {
+    "message": "Keskitä",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosCL": {
+    "message": "Keskellä vasemmalla",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosCR": {
+    "message": "Keskellä oikealla",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosTC": {
+    "message": "Ylhäällä keskellä",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosTL": {
+    "message": "Ylävasemmalla",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "gesPosTR": {
+    "message": "Yläoikealla",
+    "description": "Position of mouse gestures on Mouse Gestures page"
+  },
+  "geskey": {
+    "message": "Hiirieleissä käytettävä painike:",
+    "description": "Option in More section on Mouse Gestures page"
+  },
+  "geskeydes": {
+    "message": "Huomio: 1. Tämä on vaihtoehto Linux-/Mac-käyttäjille, jotka eivät voi käyttää hiiren oikeaa painiketta. Windows-käyttäjien ei kannata vaihtaa tätä asetusta.<br />2. Jos ilmeni monia ongelmia, esim. et voi valita tekstiä tai käyttää tekstin tehovetämistä tai hiirieleitä kuville ja linkeille, voit ottaa alla olevan asetuksen käyttöön.",
+    "description": "Description text in More section on Mouse Gestures page"
+  },
+  "geskeyleft": {
+    "message": "Hiiren vasen painike",
+    "description": "Key associated to mouse gesture on Mouse Gestures page"
+  },
+  "geskeymiddle": {
+    "message": "Hiiren keskipainike",
+    "description": "Key associated to mouse gesture on Mouse Gestures page"
+  },
+  "geskeyright": {
+    "message": "Hiiren oikea painike",
+    "description": "Key associated to mouse gesture on Mouse Gestures page"
+  },
+  "gesture": {
+    "message": "Hiirieleet",
+    "description": "Page name"
+  },
+  "gestureui": {
+    "message": "Ulkoasu",
+    "description": "Section name"
+  },
+  "gholdkey": {
+    "message": "Määritä näppäin poistaaksesi hiirieleet käytöstä:",
+    "description": "Option in More section on Mouse Gestures page"
+  },
+  "head": {
+    "message": "Pää",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "howtablist": {
+    "message": "Miten välilehtiluetteloa käytetään:",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "image": {
+    "message": "Kuva",
+    "description": "Buttons in New section on Super Drag page"
+  },
+  "imgfirst": {
+    "message": "Määritä näppäin kuvan tehovetämiselle linkin vetämisen sijaan:",
+    "description": "Option in More section on Super Drag page"
+  },
+  "imgfirstcheck": {
+    "message": "Jos linkissä on kuva, käytä kuvan tehovetämistä linkin vetämisen sijaan",
+    "description": "Option in More section on Super Drag page"
+  },
+  "import": {
+    "message": "Tuonti",
+    "description": "Option on Advanced Setttings page"
+  },
+  "incog": {
+    "message": "Incognito-ikkuna",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "last": {
+    "message": "Viimeinen",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "left": {
+    "message": "jäljellä",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "link": {
+    "message": "Linkki",
+    "description": "Buttons in New section on Super Drag page"
+  },
+  "linuxsettings": {
+    "message": "Linuxin/Macin asetukset",
+    "description": "Section name on General Settings page"
+  },
+  "listaction": {
+    "message": "Toiminto:",
+    "description": "Section in Edit Gesture section on Mouse Gestures page"
+  },
+  "listgesture": {
+    "message": "Ele:",
+    "description": "Section in Edit Gesture section on Mouse Gestures page"
+  },
+  "local": {
+    "message": "en",
+    "description": "en"
+  },
+  "localtrans": {
+    "message": "FALSE",
+    "description": "FALSE"
+  },
+  "minilength": {
+    "message": "Kuvion vähimmäispituus (px):",
+    "description": "Option in Miscellaneous section on General Settings page"
+  },
+  "moreChromepagetitle": {
+    "message": "Chromen sisäinen osoite, kuten:\"chrome://...\"",
+    "description": "Placeholder in Actions"
+  },
+  "moreCloseoptstitle": {
+    "message": "Suljetaanko ikkuna, kun viimeinen välilehti on suljettu?",
+    "description": "Placeholder in Actions"
+  },
+  "moreCloseseltitle": {
+    "message": "Mikä välilehti valitaan, kun nykyinen välilehti on suljettu?",
+    "description": "Placeholder in Actions"
+  },
+  "moreCloseurltitle": {
+    "message": "URL, jos et sulje Chromen ikkunaa, avaa tämä URL-osoite",
+    "description": "Placeholder in Actions"
+  },
+  "moreCopystyletitle": {
+    "message": "mukautettu muoto, Käytä \"%title\" otsikon/sanojen sijaan, \"%url\" sivuston url:n sijaan, uusi rivi on \"\\n\"",
+    "description": "Placeholder in Actions. Note! do not translate text inside \"%."
+  },
+  "moreDes": {
+    "message": "Toiminnon kehoteteksti, käytä \"%name\" avainsanojen sijaan",
+    "description": "Placeholder in Actions. Note! do not translate text inside \"%."
+  },
+  "moreDestitle": {
+    "message": "Toiminnon nimi",
+    "description": "Option in Appearance section on Super Drag and Mouse Gestures pages"
+  },
+  "moreIsearchtitle": {
+    "message": "Kuvahakukoneet",
+    "description": "Action"
+  },
+  "moreName": {
+    "message": "Nimi",
+    "description": "Name"
+  },
+  "morePinnedtitle": {
+    "message": "Kiinnitä/irrota välilehti",
+    "description": "Action"
+  },
+  "morePositiontitle": {
+    "message": "Uuden välilehden sijainti verrattuna nykyiseen välilehteen",
+    "description": "Action"
+  },
+  "moreScript": {
+    "message": "Komentosarja",
+    "description": "Action"
+  },
+  "moreScripttitle": {
+    "message": "Komentosarjan sisältö",
+    "description": "Placeholder in Run Script Action"
+  },
+  "moreTarget": {
+    "message": "Sijainti",
+    "description": "Action"
+  },
+  "moreTargettitle": {
+    "message": "Uuden välilehden avaaminen: uusi/nykyinen välilehti, eteen/taustalle",
+    "description": "Placeholder in Actions"
+  },
+  "moreTsearchtitle": {
+    "message": "Tekstihakukoneet",
+    "description": "Action"
+  },
+  "moreURL": {
+    "message": "URL",
+    "description": "Action"
+  },
+  "moreURLtitle": {
+    "message": "URL, käytä \"%s\" avainsanojen sijaan",
+    "description": "Placeholder in Actions. Note! do not translate text inside \"%."
+  },
+  "moreaboutdrag": {
+    "message": "Lisää...",
+    "description": "Section name"
+  },
+  "morecur": {
+    "message": "Nykyinen välilehti",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "morenew": {
+    "message": "Uusi välilehti & eteen",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "morenewback": {
+    "message": "Uusi välilehti & taustalle",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "moresettings": {
+    "message": "Sekalaista",
+    "description": "Section name"
+  },
+  "morestrges": {
+    "message": "lisäasetukset",
+    "description": "Section name on Rocker Gestures page"
+  },
+  "msgbox": {
+    "message": "Määritykset tallennettu! Osa muutoksista tulee käyttöön vasta ladattuasi sivun uudelleen.",
+    "description": "Message when making changes or clicking on save inside Settings "
+  },
+  "newadd": {
+    "message": "Uusi",
+    "description": "Options in Actions"
+  },
+  "newback": {
+    "message": "Uusi välilehti & taustalle",
+    "description": "Options in Actions"
+  },
+  "newfront": {
+    "message": "Uusi välilehti & eteen",
+    "description": "Options in Actions"
+  },
+  "newgesture": {
+    "message": "Lisää uusi",
+    "description": "Button on Mouse Gestures page"
+  },
+  "newtabdes": {
+    "message": "Avaa %name",
+    "description": "Placeholder in Actions"
+  },
+  "normal": {
+    "message": "Yleisasetukset",
+    "description": "Side navigation in Settings"
+  },
+  "opa": {
+    "message": "Läpinäkyvyys:",
+    "description": "Option in Appearance section"
+  },
+  "optgrpapp": {
+    "message": "SOVELLUS",
+    "description": "Action"
+  },
+  "optgrpcopy": {
+    "message": "Kopioi",
+    "description": "Action"
+  },
+  "optgrpload": {
+    "message": "Lataa",
+    "description": "Action"
+  },
+  "optgrpnav": {
+    "message": "Navigointi",
+    "description": "Action"
+  },
+  "optgrpnone": {
+    "message": "Ei mitään",
+    "description": "Action"
+  },
+  "optgrpother": {
+    "message": "Muu",
+    "description": "Action"
+  },
+  "optgrpsave": {
+    "message": "Tallenna",
+    "description": "Action"
+  },
+  "optgrpscroll": {
+    "message": "Vieritä",
+    "description": "Action"
+  },
+  "optgrpsearch": {
+    "message": "Hae",
+    "description": "Action"
+  },
+  "optgrptab": {
+    "message": "Välilehti",
+    "description": "Action"
+  },
+  "optgrptabnav": {
+    "message": "Välilehtien navigointi",
+    "description": "Action"
+  },
+  "optgrpwindow": {
+    "message": "Ikkuna",
+    "description": "Action"
+  },
+  "pinned": {
+    "message": "Kiinnitä",
+    "description": "Action"
+  },
+  "placeholderconfig": {
+    "message": "Liitä määritykset tähän ja tuo ne napsauttamalla Tuo-painiketta. Määritykset näytetään, kun napsautat Vie ja ne ovat valmiina käyttöön.",
+    "description": "Text on Advanced Settings page"
+  },
+  "placeholdername": {
+    "message": "Nimi",
+    "description": "Placeholder in Actions"
+  },
+  "placeholderscript": {
+    "message": "Komentosarja",
+    "description": "Placeholder in Actions"
+  },
+  "placeholdersearchurl": {
+    "message": "URL, käytä %s avainsanojen sijaan",
+    "description": "Placeholder in Actions"
+  },
+  "placeholdertooltip": {
+    "message": "Toiminnon nimi",
+    "description": "Placeholder in Actions"
+  },
+  "placeholderurl": {
+    "message": "URL",
+    "description": "Placeholder in Actions"
+  },
+  "port": {
+    "message": "Tuo/vie määritykset",
+    "description": "Section name on Advanced Settings page"
+  },
+  "porttip": {
+    "message": "Huomio: 1. Määritysten tuominen käynnistää tämän laajennuksen uudelleen ja avoinna olevat välilehdet täytyy päivittää, että laajennus on käytössä niissä.<br />  2. Voit tuoda vain määrityksiä, jotka on viety täältä. Ei ole suositeltavaa muokata määrityksiä itse.<br /> 3. Jos tapahtuu virhe, palauta oletusmääritykset. ",
+    "description": "Text on Advanced Settings page. Note! Do not translate html tags"
+  },
+  "poschrome": {
+    "message": "Chrome oletus",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "poshead": {
+    "message": "Pää",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "poslast": {
+    "message": "Viimeinen",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "posleft": {
+    "message": "jäljellä",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "posright": {
+    "message": "Oikea",
+    "description": "Options under Open Chrome internal address Action"
+  },
+  "reset": {
+    "message": "Palauta",
+    "description": "Section name on Advanced Settings page"
+  },
+  "resetall": {
+    "message": "Palauta kaikki",
+    "description": "Reset button on Advanced Settings page"
+  },
+  "resetpage": {
+    "message": "Palauta tämä sivu",
+    "description": "Reset button on Gestures pages"
+  },
+  "resettip": {
+    "message": "Huomio: Tämä toiminto poistaa kaikki määritykset ja palauttaa asetuksesi oletusasetuksiin. Toimintoa ei voi perua, joten harkitse tarkkaan!",
+    "description": "Text on Advanced Settings page"
+  },
+  "reverseFS": {
+    "message": "Muuta suunta käänteiseksi",
+    "description": "Action"
+  },
+  "right": {
+    "message": "Oikea",
+    "description": "Action"
+  },
+  "s360": {
+    "message": "360",
+    "description": "Action - Website name"
+  },
+  "samazon": {
+    "message": "Amazon",
+    "description": "Action - Website name"
+  },
+  "save": {
+    "message": "Tallenna",
+    "description": "Save button"
+  },
+  "sbaidu": {
+    "message": "Baidu",
+    "description": "Action - Website name"
+  },
+  "sbaiduimage": {
+    "message": "Baidu-haku kuvan kanssa",
+    "description": "Action - Website name"
+  },
+  "sbing": {
+    "message": "Bing",
+    "description": "Action - Website name"
+  },
+  "scractdown": {
+    "message": "Vieritä alas:",
+    "description": "Action"
+  },
+  "scractup": {
+    "message": "Vieritä ylös:",
+    "description": "Action"
+  },
+  "scriptdes": {
+    "message": "Suorita komentosarja: %name",
+    "description": "Placeholder in Actions"
+  },
+  "scroll": {
+    "message": "Vieritys",
+    "description": "Side navigation in Settings"
+  },
+  "scrollaccele": {
+    "message": "Vierityksen nopeutus",
+    "description": "Option on Scrolling page"
+  },
+  "scrolleffects": {
+    "message": "Tehosteiden kanssa (sivu alas/ylös/ylälaitaan/alalaitaan).",
+    "description": "Option in Miscellaneous section on General Settings"
+  },
+  "scrollgesture": {
+    "message": "Rullaeleet",
+    "description": "Side navigation in Settings"
+  },
+  "scrollspeed": {
+    "message": "Vierityksen nopeus",
+    "description": "Option on Scrolling page"
+  },
+  "searchdes": {
+    "message": "Käytä %name kun haet:\"%s\"",
+    "description": "Placeholder in Actions. Note! do not translate text next to %."
+  },
+  "setdragurl": {
+    "message": "Ota linkin veto käyttöön, jos merkkijono tunnistaan linkiksi (kokeellinen).",
+    "description": "Option in More section on Super Drag page"
+  },
+  "settings": {
+    "message": "Asetukset",
+    "description": "Settings"
+  },
+  "sgoogle": {
+    "message": "Google",
+    "description": "Action - Website name"
+  },
+  "sduckduckgo": {
+    "message": "DuckDuckGo",
+    "description": "Action - Website name"
+  },
+  "sgoogleimage": {
+    "message": "Google-haku kuvan kanssa",
+    "description": "Action - Website name"
+  },
+  "sgooglelens": {
+    "message": "Google Lens-haku",
+    "description": "Action - Website name"
+  },
+  "site": {
+    "message": "Verkkosivu",
+    "description": "Action"
+  },
+  "smooth": {
+    "message": "Tasainen vieritys",
+    "description": "Action"
+  },
+  "ssogou": {
+    "message": "Sogou",
+    "description": "Action - Website name"
+  },
+  "staobao": {
+    "message": "Taobao",
+    "description": "Action - Website name"
+  },
+  "stenable": {
+    "message": "Ota tekstin valinta käyttöön, kun hiiren vasen painike on pohjassa (nollaa joskus hiirieleet)",
+    "description": "Enable select text while holding the left mouse(It makes Mouse Gestures invalid sometimes)"
+  },
+  "stineyeimage": {
+    "message": "TinEye",
+    "description": "TinEye"
+  },
+  "stractleft": {
+    "message": "Napsauta vasenta painiketta:",
+    "description": "Options on Rocker Gestures page"
+  },
+  "stractmiddle": {
+    "message": "Napsauta keskipainiketta",
+    "description": "Options on Rocker Gestures page"
+  },
+  "stractright": {
+    "message": "Napsauta oikeaa painiketta:",
+    "description": "Options on Rocker Gestures page"
+  },
+  "strleft": {
+    "message": "Pidä vasen painike pohjassa",
+    "description": "Section on Rocker Gestures page"
+  },
+  "strmiddle": {
+    "message": "Pidä keskipainike pohjassa",
+    "description": "Section on Rocker Gestures page"
+  },
+  "stroke": {
+    "message": "Näytä hiiren piirtämä kuvio",
+    "description": "Option in Appearance section on Mouse Gestures page"
+  },
+  "strokegesture": {
+    "message": "Keinupainikkeen eleet",
+    "description": "Side navigation in Settings"
+  },
+  "strpress": {
+    "message": "Milloin toiminto käynnistyy:",
+    "description": "Text on Rocker Gestures page"
+  },
+  "strpressdown": {
+    "message": "Hiiri alas",
+    "description": "Option on Rocker Gestures page"
+  },
+  "strpressup": {
+    "message": "Hiiri ylös",
+    "description": "Option on Rocker Gestures page"
+  },
+  "strright": {
+    "message": "Pidä oikea painike pohjassa",
+    "description": "Option on Rocker Gestures page"
+  },
+  "swiki": {
+    "message": "Wikipedia",
+    "description": "Action - Website name"
+  },
+  "syahoo": {
+    "message": "Yahoo",
+    "description": "Action - Website name"
+  },
+  "syandex": {
+    "message": "Yandex",
+    "description": "Action - Website name"
+  },
+  "sync": {
+    "message": "Synkronoi määritykset",
+    "description": "Section on Advanced Settings page"
+  },
+  "syncdes": {
+    "message": "Määritykset synkronoidaan automaattisesti Chromen kanssa, jos käyttäjä on <a href=\"https://accounts.google.com/ServiceLogin?service=chromiumsync\" target=\"_blank\">kirjautunut</a>, ja jos käyttäjällä on synkronointi käytössä.",
+    "description": "Text on Advanced Settings page"
+  },
+  "tablist": {
+    "message": "Välilehtiluettelo",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "tablistVisual": {
+    "message": "Näytä välilehtiluettelo vieritettäessä",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "tablistkeyleft": {
+    "message": "Pidä vasen painike pohjassa ja vieritä.",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "tablistkeyright": {
+    "message": "Pidä oikea painike pohjassa ja vieritä.",
+    "description": "Option in Tab List section on Wheel Gestures page"
+  },
+  "testlink": {
+    "message": "Linkin testaus",
+    "description": "Text in new Link Super Drag Gesture window"
+  },
+  "testwords": {
+    "message": "Merkkijonojen testaus",
+    "description": "Text in new Text Super Drag Gesture window"
+  },
+  "text": {
+    "message": "Teksti",
+    "description": "Buttons in New section on Super Drag page"
+  },
+  "thanks": {
+    "message": "Kiitos",
+    "description": "Section on About page"
+  },
+  "time": {
+    "message": "Kesto",
+    "description": "Option in Miscellaneous section on General Settings"
+  },
+  "timeout": {
+    "message": "Aikakatkaisu",
+    "description": "Option in Miscellaneous section on General Settings"
+  },
+  "titlechromepage": {
+    "message": "Toiminnon nimen työkaluvihje, Käytä \"%name\" Chromen sisäisen osoitteen sijaan",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titlecopyuser": {
+    "message": "Toiminnon nimen työkaluvihje, Käytä \"%name\" mukautetun muodon nimen sijaan",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titleisearch": {
+    "message": "Toiminnon nimen työkaluvihje, Käytä \"%name\" hakukoneen nimen sijaan",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titlenewusertab": {
+    "message": "Toiminnon nimen työkaluvihje, Käytä \"%name\" sivuston nimen sijaan",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titlenexpre": {
+    "message": "Vastaavat sanat, erota useat sanat merkillä \"|\", niin laajennus havaitsee kohteet rel, rev, id, innerHTML, title ja class vuorollaan.",
+    "description": "Placeholder in Actions"
+  },
+  "titlesearchuser": {
+    "message": "URL, käytä \"%s\" avainsanojen sijaan",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titletsearch": {
+    "message": "Toiminnon nimen työkaluvihje, Käytä \"%name\" hakukoneen sijaan, \"%s\" sisällön sijaan",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "titleuserscript": {
+    "message": "Toiminnon nimen työkaluvihje, Käytä \"%name\" komentosarjan nimen sijaan",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "tooltip": {
+    "message": "Näytä toiminnon nimi",
+    "description": "Option in Appearance section on Super Drag and Mouse Gestures pages"
+  },
+  "translate": {
+    "message": "Käännä",
+    "description": "Translate"
+  },
+  "unclose": {
+    "message": "Älä sulje ja avaa seuraava URL",
+    "description": "Do not close, and open the following URL"
+  },
+  "unpinned": {
+    "message": "Irrota",
+    "description": "Action"
+  },
+  "valuechromepage": {
+    "message": "avaa %name",
+    "description": "Placeholder in Actions"
+  },
+  "valueisearch": {
+    "message": "Käytä %name hakiessasi kuvia",
+    "description": "Placeholder in Actions"
+  },
+  "valuenewusertab": {
+    "message": "avaa %name",
+    "description": "Placeholder in Actions"
+  },
+  "valuenone": {
+    "message": "Ei mitään",
+    "description": "Action"
+  },
+  "valuetsearch": {
+    "message": "Käytä %name kun haet\"%s\"",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "valueuserscript": {
+    "message": "Suorita komentosarja: \"%name\"",
+    "description": "Placeholder in Actions. Note! Do not translate text next to %."
+  },
+  "version": {
+    "message": "Versio",
+    "description": "Version"
+  },
+  "width": {
+    "message": "Leveys:",
+    "description": "Option in Appearance section on Super Drag and Mouse Gestures pages"
+  },
+  "offmodepopup": {
+    "message": "Crx Mouse ei ole käytössä",
+    "description": "Text on ext. popup when Crx Mouse is off"
+  },
+  "offmodesettings": {
+    "message": "Crx Mouse on poistettu käytöstä",
+    "description": "Text in Settings on General Settings page when Crx Mouse is off"
+  },
+  "enabletochange": {
+    "message": "Ota käyttöön tehdäksesi muutoksia",
+    "description": "Text in Settings on General Settings page when Crx Mouse is off"
+  },
+  "offmodetooltip": {
+    "message": "Sulje Crx Mouse",
+    "description": "Tooltip next to on/off toggle of Crx Mouse on ext. popup"
+  },
+  "onmodetooltip": {
+    "message": "Käynnistä Crx Mouse",
+    "description": "Tooltip next to on/off toggle of Crx Mouse on ext. popup"
+  },
+  "popuppopular": {
+    "message": "Suositut eleet",
+    "description": "Headline of popular gestures section on ext. popup"
+  },
+  "mygestures": {
+    "message": "Aktiiviset eleet",
+    "description": "Headline of default, edited or new gestures section on ext. popup"
+  },
+  "popupaddtooltip": {
+    "message": "Lisää uusi",
+    "description": "Tooltip when hovering on plus icon in Active Gestures section"
+  },
+  "popupfooterhelptooltip": {
+    "message": "Ohje",
+    "description": "Tooltip when hovering on question mark icon in footer on ext. popup"
+  },
+  "popupvideotool": {
+    "message": "Miten Crx Mousea käytetään",
+    "description": "Tooltip when hovering on video icon in footer on ext. popup"
+  },
+  "popuponboarding": {
+    "message": "Selvä homma.",
+    "description": "Text on onboarding window to close window"
+  },
+  "popupnewscope": {
+    "message": "Valitse laajuus",
+    "description": "Section name in new gesture window on ext. popup"
+  },
+  "popupnewscopeglobal": {
+    "message": "Kaikki sivut",
+    "description": "Option in new gesture window on ext. popup"
+  },
+  "popupnewaction": {
+    "message": "Valitse toiminto",
+    "description": "Section name in new gesture window on ext. popup"
+  },
+  "popupnewgesture": {
+    "message": "Valitse ele",
+    "description": "Section name in new gesture window on ext. popup"
+  },
+  "popuprecordsave": {
+    "message": "Tallenna ele",
+    "description": "Button to save new gesture in new gesture window on ext. popup"
+  },
+  "popupgesturecancel": {
+    "message": "Peruuta",
+    "description": "Button to cancel new/edit gesture on ext. popup"
+  },
+  "popupsuccess": {
+    "message": "Ele \"$GestureName$\" on tallennettu",
+    "description": "Text in notification for gesture saved/edited on ext. popup. Note! Do not translate text next to $",
+    "placeholders": {
+      "GestureName": {
+        "content": "$1"
+      }
+    }
+  },
+  "popupeditgesture": {
+    "message": "Ota muutokset käyttöön",
+    "description": "Button to apply changes for existing gesture on ext. popup"
+  },
+  "popuptooltipedit": {
+    "message": "Muokkaa",
+    "description": "Tooltip when hovering on edit icon on ext. popup"
+  },
+  "popuptooltipdelete": {
+    "message": "Poista",
+    "description": "Tooltip when hovering on delete icon on ext. popup"
+  },
+  "showwhitelist": {
+    "message": "Näytä sallittujen luettelo",
+    "description": "Opens a section that sets the scope of the gesture. Appears on all gesture boxes"
+  },
+  "hidewhitelist": {
+    "message": "Piilota sallittujen luettelo",
+    "description": "Hides a section that sets the scope of the gesture. Appears on all gesture boxes"
+  },
+  "headlineforwhitelist": {
+    "message": "Yksi url tai sen osa riville",
+    "description": "Text in whitelist section on all gesture boxes. Appears on all gesture boxes"
+  },
+  "tipforwhitelist": {
+    "message": "Vinkki: Voit käyttää koko url-osoitetta tai sen osaa. Esimerkiksi, \"cnn.com\" tukee kaikkia osoitteita, joihin sisältyy cnn.com.",
+    "description": "Text in whitelist section on all gesture boxes. Appears on all gesture boxes"
+  },
+  "savewhitelist": {
+    "message": "Tallenna",
+    "description": "save whitelist changes. Appears on all gesture boxes"
+  },
+  "optmode": {
+    "message": "Ota suositut eleet käyttöön (lähettää anonyymejä tietoja)",
+    "description": "Text of opt in/out checkbox"
+  },
+  "optmodealert": {
+    "message": "Emme voi enää näyttää sinulle suosittuja eleitä. Voi ottaa eleet uudelleen käyttöön milloin tahansa valitsemalla ominaisuuden valintaruudun.",
+    "description": "text on opt in/out alert window"
+  },
+  "optoutmodetitle": {
+    "message": "Suositut eleet -toiminto ei ole käytössä",
+    "description": "Title of opt out mode on ext. popup"
+  },
+  "optoutmodemessage": {
+    "message": "Ota suositut eleet käyttöön <a href=\"$link$\" target=\"_blank\">Asetuksista</a>",
+    "description": "Description of opt out mode on ext. popup",
+    "placeholders": {
+      "link": {
+        "content": "$1"
+      }
+    }
+  },
+  "moreaffecteddomains": {
+    "message": "Vaikuttaa useampaan verkkotunnukseen. Muokkaa verkkotunnuksia.",
+    "description": "Shown on hover when gesture is associated to more than one domain on Edit Gesture screen."
+  },
+  "nopopulargestures": {
+    "message": "Tällä sivulla ei ole suosittuja eleitä. Ole ensimmäinen, joka käyttää eleitä ja edistä yhteisöämme.",
+    "description": "shown in popup when user visits a site with no popular gestures available for it"
+  },
+  "rateus": {
+    "message": "PIDÄTKÖ MEISTÄ? ARVOSTELE MEIDÄT!",
+    "description": "located in Settings section inside sidebar. Asking the users to rate the extension. Translation should be max 21 characters"
+  },
+  "gesturedeleted": {
+    "message": "Ele poistettu",
+    "description": "Appears in notification window when a gesture is deleted. Indicating that the gesture was deleted successfully."
+  },
+  "set_your_mouse_gestures_on": {
+    "message": "Aseta hiirieleet päälle oletusarvoisesti",
+    "description": "Option in More section on Mouse Gestures page to have mouse gestures enabled by default"
+  },
+  "keytodisablemousegestures": {
+    "message": "Määritä näppäin poistaaksesi hiirieleet käytöstä:",
+    "description": "Option in More section on Mouse Gestures page to choose key to disable gestures"
+  },
+  "noteforkeytoenable": {
+    "message": "Huomio: Napsauttamalla valittua näppäintä hiirieleet poistetaan käytöstä oletusarvoisesti ja oikean napsautuksen toiminto on käytössä",
+    "description": "Note on Options in More section on Mouse Gestures page for key to enable gestures"
+  },
+  "noteforkeytodisable": {
+    "message": "Huomio: Napsauttamalla valittua näppäintä hiirieleet otetaan käyttöön oletusarvoisesti ja oikean napsautuksen toiminto on käytössä",
+    "description": "Note on Options in More section on Mouse Gestures page for key to disable gestures"
+  },
+  "set_your_mouse_gestures_off": {
+    "message": "Aseta hiirieleet pois päältä oletusarvoisesti",
+    "description": "Option in More section on Mouse Gestures page to have mouse gestures enabled by default"
+  },
+  "keytoenablemousegestures": {
+    "message": "Määritä näppäin ottaaksesi hiirieleet käyttöön:",
+    "description": "Option in More section on Mouse Gestures page to choose key to enable gestures"
+  },
+  "cancelgesture": {
+    "message": "Peruuta",
+    "description": "Message that appears in trash bin area for dragging mouse gestures to cancel them"
+  },
+  "wheelgesturealert": {
+    "message": "Huomaa, että nämä kaksi toimintoa ovat päällekkäisiä",
+    "description": "An alert that jumps up when users choose two options that overlap in the Wheel Gestures section"
+  },
+  "ctatoenableadvanced": {
+    "message": "Ota lisäasetukset käyttöön",
+    "description": "CTA for enabling advanced features on sidebar inside Settings area. Make sure any translation is limited to 24 characters"
+  },
+  "missedgesture": {
+    "message": "Eikö ele toiminut? Tee ilmoitus",
+    "description": "Message for when gestures didn't work. Click on 'Report' sends to a form to fill. Should be maximun 30 charachters"
+  },
+  "mousecursor": {
+    "message": "Hiiren kursori",
+    "description": "Headline for the Mouse cursor customization section in the Settings page"
+  },
+  "currentcursor": {
+    "message": "Sinun Hiiren kursori",
+    "description": "Headline for the Current cursor section in the Settings page"
+  },
+  "mousecursoruploadinstructions": {
+    "message": "Lataa oma kursorisi. 48 × 48 px PNG. Korkeintaan 20 kb.",
+    "description": "Instructions for the image file a user can upload for the mouse cursor"
+  },
+  "mousecursorupload": {
+    "message": "Lataa koneelta",
+    "description": "Uploading an image to be used as a mouse cursor"
+  },
+  "mousecursorreturndefault": {
+    "message": "Palauta oletuskursori",
+    "description": "Link to switch back to default mouse cursor image"
+  },
+  "mousecursorscale": {
+    "message": "Koko",
+    "description": "Scale of mouse custom cursor image"
+  },
+  "cancelgesturehidetrash": {
+    "message": "Piilota roskat",
+    "description": "An option to hide the icon of the trash bin that appears when performing a gesture. The trashbin enables canceling the performed gestute."
+  },
+  "cancelgesturehidetrashinfo": {
+    "message": "Piilota roskakoritoiminto ottamalla tämä vaihtoehto käyttöön.",
+    "description": "Instructions that appear below the option of hiding the icon of the trash bin."
+  },
+  "rate_us_title": {
+    "message": "Nautitko CRX Mousen käytöstä?",
+    "description": "Title crx mouse overlay for rate us"
+  },
+  "rate_us_never_show_again": {
+    "message": "Älä näytä uudelleen",
+    "description": "button in crx mouse rate us overlay"
+  },
+  "rate_us_remind_me_later": {
+    "message": "Muistuta myöhemmin",
+    "description": "button in crx mouse rate us overlay"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "id": "guidenza",
+  "label": "Guidenza",
+  "baseUrl": "https://guidenza.com",
+  "enabledFlows": {
+    "browseHomepage": true,
+    "explorePricing": true,
+    "browseFooterLinks": false,
+    "login": false,
+    "accountDashboard": false
+  },
+  "session": {
+    "seedCandidates": [
+      "/",
+      "/#features",
+      "/#about",
+      "/#pricing",
+      "/#faq",
+      "/#contact",
+      "/blog",
+      "/blog/how-to-organize-knowledge",
+      "/blog/ai-tutor-platform"
+    ]
+  },
+  "browseHomepage": {
+    "homePath": "/",
+    "heroHeadingSelector": "h1",
+    "heroHeadingIncludes": ["Own your knowledge"],
+    "navLinksSelector": "a[href^=\"#\"]",
+    "expectedAnchors": ["#contact"],
+    "academySectionSelector": "#features",
+    "academyFeatureSelectors": [
+      "#features h3, #features h4",
+      "#features h2",
+      "#features p strong, #features [class*='title'], #features [class*='name']"
+    ],
+    "ritualsSectionSelector": null,
+    "membersSectionSelector": "#pricing",
+    "pricingTierSelectors": [
+      "#pricing h3, #pricing h4",
+      "#pricing h2"
+    ],
+    "pricingLinksSelector": "#pricing button, #pricing a",
+    "pricingPlanRegex": "(Free Account|Refinery Exchange|Creator Pro)",
+    "footerLinksSelector": "footer button, footer a",
+    "requiredFooterPaths": []
+  },
+  "browseFooterLinks": {
+    "homePath": "/",
+    "footerPaths": ["/#/privacy", "/#/terms"],
+    "footerContainerSelector": "footer",
+    "footerLinkSelectorTemplate": "footer button, footer a",
+    "headingSelector": "h1, h2"
+  },
+  "login": {
+    "loginPath": "/",
+    "loginFormSelector": "form:has(input[type=\"email\"])",
+    "openLoginSelector": "button:has-text(\"Access Portal\")",
+    "submitResponseUrlIncludes": null,
+    "emailSelector": "input[type=\"email\"]",
+    "passwordSelector": "input[type=\"password\"], input[placeholder=\"••••••••\"]",
+    "submitSelector": "button[type=\"submit\"]",
+    "errorSelector": "[role=\"alert\"], [class*='error'], [class*='invalid']",
+    "failureUrlIncludes": [],
+    "successUrlIncludes": ["#/dashboard"]
+  },
+  "explorePricing": {
+    "pricingPath": "/#pricing",
+    "pricingSectionSelector": "#pricing",
+    "tierNameSelectors": [
+      "#pricing h3, #pricing h4",
+      "#pricing h2"
+    ],
+    "ctaSelector": "#pricing button",
+    "ctaMustContain": "Get Started",
+    "ctaLandingPathIncludes": ["#/dashboard", "#pricing", "/"],
+    "emailSelector": "input[type=\"email\"]",
+    "nameSelector": "input[type=\"text\"], input[placeholder*=\"name\" i]",
+    "passwordSelector": "input[type=\"password\"], input[placeholder=\"••••••••\"]",
+    "syntheticNamePrefix": "Guidenza Visitor",
+    "syntheticPassword": "NotSubmitted123!"
+  },
+  "accountDashboard": {
+    "dashboardPath": "/#/dashboard/buyer/summary",
+    "mustNotIncludePaths": ["/404"],
+    "mustIncludePathFragment": "/dashboard",
+    "mainSelector": "main, [role=\"main\"], [class*='glass-card']",
+    "balanceSelectors": [
+      "h2, h4",
+      "[class*='balance'], [class*='credits']",
+      "input[placeholder*='Search']"
+    ],
+    "paymentPresenceSelector": "#pricing, [class*='pricing'], button",
+    "appLinkSelector": "a[href]",
+    "appLinkIncludes": "#/dashboard",
+    "appLinkExcludes": []
+  }
+}

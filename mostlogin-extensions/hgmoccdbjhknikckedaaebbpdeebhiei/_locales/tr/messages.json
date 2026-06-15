@@ -1,0 +1,821 @@
+{
+  "manifest_name": {
+    "message": "Ahrefs SEO Toolbar: Sayfa İçi Araçlar ve SERP Araçları",
+    "description": "Don't translate: 'Ahrefs SEO Toolbar'"
+  },
+  "manifest_description": {
+    "message": "Tek bir SEO eklentisi ile size saatler kazandıracak eksiksiz bir araç seti. Herhangi bir web sayfasında, sayfa içeriği, Anahtar Kelime Araştırma ve bağlantı analizine yönelik bilgiler edinin."
+  },
+  "shared__ok": {
+    "message": "Tamam"
+  },
+  "shared__broken": {
+    "message": "Bozuk"
+  },
+  "shared__redirect": {
+    "message": "Yeniden yönlendir"
+  },
+  "shared__export": {
+    "message": "Dışarı aktar"
+  },
+  "shared__words": {
+    "message": "kelime",
+    "description": "Example: 1500 words"
+  },
+  "shared__default": {
+    "message": "Varsayılan"
+  },
+  "shared__default_browser": {
+    "message": "Varsayılan (Tarayıcınız)"
+  },
+  "shared__value": {
+    "message": "Değer"
+  },
+  "shared__not_available": {
+    "message": "Geçerli değil"
+  },
+  "shared_of": {
+    "message": "/",
+    "description": "e.g. 3 of 15 links"
+  },
+  "shared_overview": {
+    "message": "Genel Bakış",
+    "description": "Link to Ahrefs Overview"
+  },
+  "shared_upgrade": {
+    "message": "Yüksel",
+    "description": "Plans and pricing"
+  },
+  "shared__how_to_fix": {
+    "message": "Nasıl düzeltilir?"
+  },
+  "shared__copy": {
+    "message": "Kopyala"
+  },
+  "shared__not_now": {
+    "message": "Şimdi değil"
+  },
+  "shared__load_more": {
+    "message": "Daha fazla yükle"
+  },
+  "shared__domain": {
+    "message": "Etki alanı"
+  },
+  "shared__page": {
+    "message": "Sayfa"
+  },
+  "shared__edit": {
+    "message": "Düzenle"
+  },
+  "shared__custom": {
+    "message": "Özel"
+  },
+  "shared__all": {
+    "message": "Tümü"
+  },
+  "shared__mismatch": {
+    "message": "Uyumsuzluk"
+  },
+  "shared__missing": {
+    "message": "Eksik"
+  },
+  "shared__not_found": {
+    "message": "Bulunamadı"
+  },
+  "shared__empty": {
+    "message": "Boş"
+  },
+  "shared__not_empty": {
+    "message": "Boş değil"
+  },
+  "shared__no_results": {
+    "message": "Hiç sonuç yok"
+  },
+  "shared__disallowed_in_robots_txt": {
+    "message": "Robots.txt'e izin verilmeyen"
+  },
+  "shared__self_canonical": {
+    "message": "Kendi kendine kanonik"
+  },
+  "shared__non_canonical": {
+    "message": "Kanonik olmayan"
+  },
+  "shared__noindex_page": {
+    "message": "Noindex Sayfası"
+  },
+  "shared__clear": {
+    "message": "Temizle"
+  },
+  "shared__default_report": {
+    "message": "Varsayılan rapor"
+  },
+  "shared__last_opened": {
+    "message": "Son Açılan"
+  },
+  "shared__shortcuts": {
+    "message": "Kısayollar"
+  },
+  "shared__open_in": {
+    "message": "Şununla aç:",
+    "description": "The button used to open selected item in another app, service, etc"
+  },
+  "shared__in_http_headers": {
+    "message": "HTTP başlıklarında"
+  },
+  "popup_menu__metrics": {
+    "message": "Ölçümler"
+  },
+  "popup_menu__content": {
+    "message": "İçerik"
+  },
+  "popup_menu__indexability": {
+    "message": "Dizine Eklenebilirlik"
+  },
+  "popup_menu__struct_data": {
+    "message": "Yapılandırılmış veriler"
+  },
+  "popup_menu__social": {
+    "message": "Sosyal etiketler"
+  },
+  "popup_menu__social_image_fail": {
+    "message": "Getirilemedi"
+  },
+  "popup_menu__images": {
+    "message": "Görüntüler"
+  },
+  "popup_menu__http_headers": {
+    "message": "HTTP başlıkları"
+  },
+  "popup_menu__outgoing_links": {
+    "message": "Giden bağlantılar"
+  },
+  "popup_menu__outgoing_links_short": {
+    "message": "Bağlantılar"
+  },
+  "popup_menu__saved_urls": {
+    "message": "Kaydedilen URL'ler"
+  },
+  "popup_menu__ua": {
+    "message": "Kullanıcı aracısı"
+  },
+  "popup_menu__ua_texarea_label": {
+    "message": "Kullanıcı-aracı dizesi"
+  },
+  "popup_menu__metrics_bar": {
+    "message": "Ölçümler çubuğu"
+  },
+  "popup_menu__search_tools": {
+    "message": "Arama araçları"
+  },
+  "popup_menu__settings": {
+    "message": "Ayarlar"
+  },
+  "sign_up": {
+    "message": "Kaydolun"
+  },
+  "sign_up__content": {
+    "message": "veya ücretsiz SEO araçlarımıza",
+    "descriptions": "Full sentence: Sign up or check our free SEO tools"
+  },
+  "sign_up__link": {
+    "message": "göz atın",
+    "descriptions": "Full sentence: Sign up or check our free SEO tools"
+  },
+  "sign_in": {
+    "message": "Oturum aç"
+  },
+  "sign_in__long": {
+    "message": "Ahrefs ile oturum açın",
+    "description": "Uses on Serp and Content toolbar"
+  },
+  "sign_out": {
+    "message": "Oturumu kapat"
+  },
+  "suggest_feature": {
+    "message": "Özellik öner"
+  },
+  "how_to_use": {
+    "message": "Nasıl kullanılır?"
+  },
+  "web_vitals": {
+    "message": "Web Vitals"
+  },
+  "web_vitals__info_main": {
+    "message": "Core Web Vitals, Google'ın Sayfa Deneyimi sinyalleri arasında yer alan hız ölçümleridir ve kullanıcı deneyimini ölçmek için kullanılır. Bu veriler, sayfanızla ilgili gerçek Chrome kullanıcılarının deneyimlerine dayanır. CWV, Google için küçük bir sıralama faktörüdür."
+  },
+  "web_vitals__not_found": {
+    "message": "Core Web Vitals, gerçek Chrome kullanıcılarından alınan verileri kullanır. Bir ölçüm veya tüm ölçümler sayfa için mevcut değilse bu sayfayla ilgili yeterli kullanıcı deneyimi verisi olmadığı anlamına gelir. Bu durumda, Google Pagespeed Insights da dâhil olmak üzere bazı diğer araçlar, bunun yerine ana sayfa için CWV ölçümlerini gösterecektir."
+  },
+  "web_vitals__lcp": {
+    "message": "Largest Contentful Paint (LCP), görüş alanında yüklenen tek en büyük görülebilir unsurdur. Genellikle öne çıkan bir görüntü veya H1 olur. Saniye cinsinden ölçülür."
+  },
+  "web_vitals__cls": {
+    "message": "Cumulative Layout Shift (CLS), ögelerin nasıl hareket ettiğini veya sayfa düzeninin ne kadar kararlı olduğunu ölçer. Bu, içeriğin boyutunu ve hareket ettirdiği mesafeyi dikkate alır."
+  },
+  "web_vitals__inp": {
+    "message": "Interaction to Next Paint (INP), bir sayfanın yanıt verme hızını değerlendirir. Sayfanın tüm kullanıcı etkileşimlerinin gecikmesini gözlemler ve tüm (veya neredeyse tüm) etkileşimlerin altında kaldığı tek bir değer raporlar. Düşük INP, sayfanın tüm veya neredeyse tüm kullanıcı etkileşimlerine hızlı bir şekilde yanıt verebildiği anlamına gelir."
+  },
+  "try_starter": {
+    "message": "Başlangıç planını deneyin"
+  },
+  "new": {
+    "message": "Yeni"
+  },
+  "url": {
+    "message": "URL"
+  },
+  "shared__search": {
+    "message": "Ara"
+  },
+  "learn_more": {
+    "message": "Daha fazla bilgi edinin"
+  },
+  "get_started": {
+    "message": "Hemen başlayın"
+  },
+  "raw_vs_rendered": {
+    "message": "Ham - İşlenmiş",
+    "description": "Button on popup content. Raw HTML- server-returned source. Rendered HTML- final DOM."
+  },
+  "raw": {
+    "message": "Ham",
+    "description": "Raw HTML- server-returned source"
+  },
+  "rendered": {
+    "message": "İşlenmiş",
+    "description": "Rendered HTML- final DOM."
+  },
+  "content__changes_button": {
+    "message": "Değişikliklere bak"
+  },
+  "meta": {
+    "message": "Meta"
+  },
+  "title": {
+    "message": "Başlık"
+  },
+  "title__too_short": {
+    "message": "Başlık çok kısa olabilir. Sayfa başlığı, Google'ın sayfaları anlamak için başvurduğu son derece önemli bir unsurdur. Kısa başlıklar, sayfanın ana fikrini Google'a etkili bir şekilde iletemeyebilir."
+  },
+  "title__too_long": {
+    "message": "Başlık çok uzun olabilir. Uzun sayfa başlıkları, Google arama sonuçlarında sunulduğunda kesilme riski taşır. Önerilen maksimum başlık uzunluğu ~60 karakterdir."
+  },
+  "description": {
+    "message": "Açıklama"
+  },
+  "description__too_short": {
+    "message": "Meta açıklaması çok kısa olabilir. Daha uzun açıklamalar sayfanın içeriği hakkında Google'a bilgi verdiğinden bu tarz açıklamaların yazılması tavsiye edilir."
+  },
+  "description__too_long": {
+    "message": "Meta açıklaması çok uzun olabilir. Meta açıklamalarınızı yaklaşık 160 karakter içinde tutmanız önerilir. Google daha uzun açıklamaları snippet metni olarak göstermeyi tercih ederse bu açıklamalar SERP'lerde kesilebilme riski taşır."
+  },
+  "dates": {
+    "message": "Tarihler"
+  },
+  "published": {
+    "message": "Yayınlandı"
+  },
+  "modified": {
+    "message": "Değiştirildi"
+  },
+  "content": {
+    "message": "İçerik"
+  },
+  "word_count": {
+    "message": "Kelime sayısı"
+  },
+  "headings": {
+    "message": "Başlıklar"
+  },
+  "copy_headings": {
+    "message": "Başlıkları kopyala"
+  },
+  "canonical_url": {
+    "message": "Kanonik URL"
+  },
+  "in_html_code": {
+    "message": "Renderlenmiş HTML'de",
+    "description": "Means that the information is analyzed directly within the client-side rendered HTML code of the page"
+  },
+  "in_raw_html_code": {
+    "message": "Ham HTML'de",
+    "description": "Means that the information is analyzed directly within the server-returned source"
+  },
+  "noindex_page": {
+    "message": "Noindex sayfası"
+  },
+  "robots": {
+    "message": "Robots"
+  },
+  "robots__txt": {
+    "message": "Robots.txt"
+  },
+  "robots__meta_tag": {
+    "message": "Robots Meta Etiketi"
+  },
+  "robots__tag_http": {
+    "message": "X-Robots-Tag HTTP"
+  },
+  "sitemaps": {
+    "message": "Site haritaları"
+  },
+  "hreflangs": {
+    "message": "Hreflang'lar"
+  },
+  "validate_sd": {
+    "message": "Doğrula"
+  },
+  "validate_sd__placegolder": {
+    "message": "Bu sayfadaki yapılandırılmış verileri doğrula"
+  },
+  "validate_sd__rich_results_test": {
+    "message": "Zengin Sonuçlar Testi"
+  },
+  "validate_sd__schema_markup_validator": {
+    "message": "Şema İşaretleme Doğrulayıcısı"
+  },
+  "jsonld__not_found": {
+    "message": "JSON-LD yapılandırılmış verisi bulunamadı"
+  },
+  "open_graph_tags": {
+    "message": "Grafik etiketlerini aç"
+  },
+  "x_card": {
+    "message": "X (Twitter) kartı"
+  },
+  "card__missing_or_incomplete": {
+    "message": "Eksik veya tamamlanmamış"
+  },
+  "image__not_found": {
+    "message": "Görüntü bulunamadı"
+  },
+  "image__image": {
+    "message": "Görüntü"
+  },
+  "image__all": {
+    "message": "Tümü"
+  },
+  "image__alt": {
+    "message": "Alternatif"
+  },
+  "image__alt_missing": {
+    "message": "Eksik alternatif metin"
+  },
+  "image__alt_empty": {
+    "message": "Boş alternatif metin"
+  },
+  "image__alt_text": {
+    "message": "Alternatif metin"
+  },
+  "image__url": {
+    "message": "URL"
+  },
+  "image__file_too_large": {
+    "message": "Görüntü dosya boyutu çok büyük"
+  },
+  "outgoing_links__dropdown_description": {
+    "message": "Listeden en fazla 10 en güncel URL'yi Ahrefs'e gönderin"
+  },
+  "outgoing_links__dropdown_item_1": {
+    "message": "Link Intersect"
+  },
+  "outgoing_links__dropdown_item_2": {
+    "message": "Content Gap"
+  },
+  "outgoing_links__check_status": {
+    "message": "Durumu kontrol et"
+  },
+  "outgoing_links__status": {
+    "message": "Durum"
+  },
+  "outgoing_links__highlight": {
+    "message": "Vurgula"
+  },
+  "outgoing_links__dofollow": {
+    "message": "Dofollow"
+  },
+  "outgoing_links__nofollow": {
+    "message": "Nofollow"
+  },
+  "outgoing_links__link_type": {
+    "message": "Bağlantı türü"
+  },
+  "outgoing_links__internal": {
+    "message": "Dâhilî"
+  },
+  "outgoing_links__external": {
+    "message": "Haricî"
+  },
+  "outgoing_links__target_url": {
+    "message": "Hedef URL"
+  },
+  "saved_urls__current_tab": {
+    "message": "Mevcut sekme"
+  },
+  "saved_urls__all_tabs": {
+    "message": "Tüm Sekmeler"
+  },
+  "saved_urls__copy_list": {
+    "message": "Listeyi Kopyala"
+  },
+  "ua__warning_important": {
+    "message": "Önemli!"
+  },
+  "ua__warning_body": {
+    "message": "Özel kullanıcı aracısını artık kullanmaya ihtiyacınız kalmadığında devre dışı bırakın."
+  },
+  "settings__appearance": {
+    "message": "Görünüm"
+  },
+  "settings__light": {
+    "message": "Aydınlık",
+    "description": "Theme color"
+  },
+  "settings__dark": {
+    "message": "Karanlık",
+    "description": "Theme color"
+  },
+  "settings__system": {
+    "message": "Sistem",
+    "description": "Theme color"
+  },
+  "settings__position": {
+    "message": "Pozisyon"
+  },
+  "settings__top": {
+    "message": "Üst",
+    "description": "Location of the toolbar on the screen"
+  },
+  "settings__bottom": {
+    "message": "Alt",
+    "description": "Location of the toolbar on the screen"
+  },
+  "settings__exclude_list": {
+    "message": "Listeden hariç tut"
+  },
+  "settings__exlude_list_warn": {
+    "message": "Araç Çubuğu'nun görünmesini istemediğiniz etki alanlarını, URL'leri veya URL yollarını girin."
+  },
+  "settings__exlude_list_warn_2": {
+    "message": "URL yolları için * kullanın: ör. https://ahrefs.com/blog/*"
+  },
+  "settings__exlude_list_warn_3": {
+    "message": "Satır başına bir giriş."
+  },
+  "search_tools__menu_title": {
+    "message": "Arama ayarları"
+  },
+  "search_tools__kw_title": {
+    "message": "Anahtar kelime ölçümleri"
+  },
+  "search_tools__position_numbers_title": {
+    "message": "Pozisyon numaraları"
+  },
+  "search_tools__results_metrics_title": {
+    "message": "Arama sonucu ölçümleri"
+  },
+  "search_tools__trends_title": {
+    "message": "Trendler'deki anahtar kelime ölçümleri"
+  },
+  "search_tools__ls_menu_title": {
+    "message": "Yerel arama simülatörü"
+  },
+  "search_tools__location": {
+    "message": "Konum"
+  },
+  "search_tools__language": {
+    "message": "Dil"
+  },
+  "search_tools__device": {
+    "message": "Cihaz"
+  },
+  "search_tools__desktop": {
+    "message": "Masaüstü"
+  },
+  "search_tools__reset": {
+    "message": "Sıfırla"
+  },
+  "search_tools__tip_body": {
+    "message": "Yerel arama simüle etmek için bu düğmeyi kullanın"
+  },
+  "search_tools__highlight_title": {
+    "message": "Sonuçları vurgula"
+  },
+  "search_tools__highlight_placeholder": {
+    "message": "Arama sonuçlarında vurgulanmasını istediğiniz etki alanlarını girin."
+  },
+  "modal__shortcuts_description": {
+    "message": "Ahrefs SEO Toolbar ile şu kısayolları kullanabilirsiniz:\n$SHORTCUT_TOOLBAR$ ile ölçüm çubuğunu açma/kapatma\n$SHORTCUT_POPUP$ ile sayfa içi raporları ve ayarları açma\nBu tuş bağlantılarını şuradan değiştirebilirsiniz:",
+    "description": "Example of the last sentence 'You can change these key bindings in your browser settings'",
+    "placeholders": {
+      "shortcut_toolbar": {
+        "content": "$1",
+        "example": "Ctrl+Cmd+A"
+      },
+      "shortcut_popup": {
+        "content": "$2",
+        "example": "Ctrl+Cmd+A"
+      }
+    }
+  },
+  "modal__shortcuts_button_settings": {
+    "message": "tarayıcı ayarları",
+    "description": "The button used to open the browser settings e.g. chrome://extensions/shortcuts"
+  },
+  "modal__shortcuts_button_ok": {
+    "message": "Anladım"
+  },
+  "modal__blocklist_description": {
+    "message": "Bu web sitesi veya sayfa için Araç Çubuğu'nu devre dışı bırakmak istiyor musunuz?\n(Engellenenler listesini ayarlarda düzenleyebilirsiniz)"
+  },
+  "modal__blocklist_btn_positive_page": {
+    "message": "Bu sayfa için",
+    "description": "Button label in a modal that asks the user 'Do you want to disable the Toolbar with metrics for this website or page?'"
+  },
+  "modal__blocklist_btn_positive_domain": {
+    "message": "Etki alanı için",
+    "description": "Button label in a modal that asks the user 'Do you want to disable the Toolbar with metrics for this website or page?'"
+  },
+  "modal__blocklist_btn_negative": {
+    "message": "Devre dışı bırakma",
+    "description": "Button label in a modal that asks the user 'Do you want to disable the Toolbar with metrics for this website or page?'"
+  },
+  "icon_tip__hide_toolbar": {
+    "message": "Araç Çubuğu'nu bu web sitesinde, sayfada veya yolda kalıcı olarak gizleyin. \n(Ayarlar bölümünde engelleme listesini düzenleyebilirsiniz)"
+  },
+  "icon_tip__add": {
+    "message": "URL'yi listeye kaydedin.\nKaydedilen URL'lere erişmek için uzantının simgesine tıklayın ve \"Kaydedilenler\" sekmesine gidin.\nListedeki en son on URL'yi hızlı bir şekilde Ahrefs'teki Link Intersect veya Content Gap araçlarına gönderebilirsiniz (sadece ücretli kullanıcılar için)"
+  },
+  "icon_tip__present_in_list": {
+    "message": "URL, kaydedilen URL'ler listesindedir ve Link Intersect veya Content Gap'e gönderilebilir.\nKaydedilen URL'lere erişmek için uzantının simgesine tıklayın ve \"Kaydedilenler\" sekmesine gidin.\nListedeki en son on URL'yi hızlı bir şekilde Ahrefs'teki Link Intersect veya Content Gap araçlarına gönderebilirsiniz."
+  },
+  "icon_tip__present": {
+    "message": "URL, kaydedilen URL'ler listesindedir.\nKaydedilen URL'lere erişmek için uzantının simgesine tıklayın ve \"Kaydedilenler\" sekmesine gidin.\nListedeki en son on URL'yi hızlı bir şekilde Ahrefs'teki Link Intersect veya Content Gap araçlarına gönderebilirsiniz."
+  },
+  "metrics__sign_up_free_button": {
+    "message": "Ücretsiz şekilde kaydolun"
+  },
+  "metrics__sign_up_free_description": {
+    "message": "AWT hesabınızla DR, AR ve UR'ye ücretsiz erişim kazanın."
+  },
+  "metrics__rp_label_lg": {
+    "message": "Yön. sayfalar"
+  },
+  "metrics__rp_title": {
+    "message": "Yönlendiren sayfalar (RP)"
+  },
+  "metrics__rp_description": {
+    "message": "Hedefe bağlanan özgün web sayfalarının toplam sayısı."
+  },
+  "metrics__bl_label_lg": {
+    "message": "Geri Bağlantılar"
+  },
+  "metrics__bl_title": {
+    "message": "Geri Bağlantılar (BL)"
+  },
+  "metrics__bl_description": {
+    "message": "Diğer web sitelerinden hedefinize yönlendiren bağlantıların toplam sayısı."
+  },
+  "metrics__kw_label_lg": {
+    "message": "Anahtar kelimeler"
+  },
+  "metrics__kw_title": {
+    "message": "Organik anahtar kelimeler (KW)"
+  },
+  "metrics__kw_description": {
+    "message": "Veri tabanımızdaki tüm ülkelerde hedefin en iyi 100 organik arama sonucunda sıralandığı özgün anahtar kelimelerin toplam sayısı."
+  },
+  "metrics__rd_label_lg": {
+    "message": "Ref. etki alanları"
+  },
+  "metrics__rd_title": {
+    "message": "Referans etki alanları (RD)"
+  },
+  "metrics__rd_description": {
+    "message": "Hedefe bağlanan özgün etki alanlarının toplam sayısı."
+  },
+  "metrics__st_label_lg": {
+    "message": "Arama trafiği"
+  },
+  "metrics__st_title": {
+    "message": "Organik arama trafiği (ST)"
+  },
+  "metrics__st_description": {
+    "message": "Hedefin organik aramadan aldığı tahminî aylık ziyaret sayısı."
+  },
+  "metrics__ur_label_lg": {
+    "message": "URL Derecelendirmesi"
+  },
+  "metrics__ur_title": {
+    "message": "URL Derecelendirmesi (UR)"
+  },
+  "metrics__ur_description": {
+    "message": "URL Derecelendirmesi (UR), hedef sayfanın geri bağlantı profilinin gücünü 100 puanlık bir logaritmik ölçekte gösterir."
+  },
+  "metrics__tv_title": {
+    "message": "Trafik değeri (TV)"
+  },
+  "metrics__tv_description": {
+    "message": "Bir web sitesi veya web sayfası için organik arama trafiğinin, aynı miktarda trafiğin organik arama sıralamaları yerine tıklama başına ödeme (PPC) reklamcılığı yoluyla elde edildiği varsayımıyla hesaplanan aylık maliyet eş değeri."
+  },
+  "metrics__w_label_lg": {
+    "message": "Kelimeler"
+  },
+  "metrics__w_title": {
+    "message": "Sayfadaki Kelimeler"
+  },
+  "metrics__w_description": {
+    "message": "Ahrefs tarayıcısının sayfa kodunda gördüğü bir web sayfasındaki kelimelerin sayısı. Bu sayı, tarayıcıda sayfayı açtığınızda gördüğünüzden biraz farklı olabilir."
+  },
+  "metrics__ar_label_lg": {
+    "message": "Ahrefs Rank"
+  },
+  "metrics__ar_title": {
+    "message": "Ahrefs Rank (AR)"
+  },
+  "metrics__ar_description": {
+    "message": "Web sitesinin geri bağlantı profilinin veri tabanımızdaki diğer web siteleri ile karşılaştırıldığında gücünü temsil eder ve 1. sıra en güçlüsüdür."
+  },
+  "metrics__dr_label_lg": {
+    "message": "Etki Alanı Derecelendirmesi"
+  },
+  "metrics__dr_title": {
+    "message": "Etki Alanı Derecelendirmesi (DR)"
+  },
+  "metrics__dr_description": {
+    "message": "Web sitesinin geri bağlantı profilinin 100 puanlık bir logaritmik ölçekte gücünü temsil eder."
+  },
+  "metrics__paid_keywords_label_lg": {
+    "message": "Ücretli anahtar kelimeler"
+  },
+  "metrics__paid_keywords_title": {
+    "message": "Ücretli anahtar kelimeler"
+  },
+  "metrics__paid_keywords_description": {
+    "message": "Hedefinizin ücretli arama sonuçlarında sıralandığı anahtar kelimelerin toplam sayısı."
+  },
+  "metrics__paid_traffic_label_lg": {
+    "message": "Ücretli trafik"
+  },
+  "metrics__paid_traffic_title": {
+    "message": "Ücretli trafik"
+  },
+  "metrics__paid_traffic_description": {
+    "message": "Hedefinizin ücretli aramadan aldığı tahminî aylık ziyaret sayısı."
+  },
+  "metrics__ads_label_lg": {
+    "message": "Reklam"
+  },
+  "metrics__ads_title": {
+    "message": "Reklam"
+  },
+  "metrics__ads_description": {
+    "message": "Hedef bir web sitesinin veya URLʹsinin ücretli arama sonuçlarındaki benzersiz reklamlarının toplam sayısı."
+  },
+  "metrics__cost_label_lg": {
+    "message": "Maliyet"
+  },
+  "metrics__cost_title": {
+    "message": "Ücretli trafik maliyeti"
+  },
+  "metrics__cost_description": {
+    "message": "Hedefinizin aylık ücretli arama trafiğinin tahminî maliyeti."
+  },
+  "kw_metrics__kd_title": {
+    "message": "Kelime zorluğu (KD)"
+  },
+  "kw_metrics__kd_description": {
+    "message": "Bir anahtar kelime için en iyi 10 organik arama sonucunda sıralamanın ne kadar zor olacağına dair 100 puanlık bir ölçekte tahminler yapar."
+  },
+  "kw_metrics__sw_title": {
+    "message": "Arama hacmi"
+  },
+  "kw_metrics__sw_description": {
+    "message": "Belirli bir ülkede bir anahtar kelime için aylık ortalama arama sayısının tahmini."
+  },
+  "kw_metrics__gv_title": {
+    "message": "Küresel arama hacmi (GV)"
+  },
+  "kw_metrics__gv_description": {
+    "message": "Veri tabanımızdaki tüm ülkeler genelinde bir anahtar kelime için aylık ortalama arama sayısının tahmini."
+  },
+  "kw_metrics__tp_title": {
+    "message": "Trafik potansiyeli (TP)"
+  },
+  "kw_metrics__tp_description": {
+    "message": "Hedef anahtar kelime için 1. sıradaki sayfanın sıralandığı tüm anahtar kelimelerden aldığı organik arama trafiğinin toplamını gösterir."
+  },
+  "kw_metrics__c_title": {
+    "message": "Tıklamalar"
+  },
+  "kw_metrics__c_description": {
+    "message": "Belirli bir anahtar kelime için arama sonuçlarında insanların aylık olarak yaptığı tıklamaların sayısının tahmini. Bazı aramalarda tıklama sonucu yokken bazıları ise SERP'lerde birden fazla tıklama oluşturur."
+  },
+  "kw_metrics__cpc_title": {
+    "message": "Tıklama başına maliyet (CPC)"
+  },
+  "kw_metrics__cpc_description": {
+    "message": "Bir anahtar kelime için ücretli arama sonuçlarında reklamverenlerin her bir reklam tıklaması için ödediği tahminî ortalama fiyat."
+  },
+  "serp__save_urls_button": {
+    "message": "URL'leri kaydet"
+  },
+  "serp__export_button": {
+    "message": "CSV’ye aktar"
+  },
+  "serp__kw_ideas": {
+    "message": "Anahtar kelime fikirleri"
+  },
+  "serp__ppa": {
+    "message": "İnsanların sordukları"
+  },
+  "serp__adv": {
+    "message": "Bu aramayı Yep'te deneyin"
+  },
+  "serp__local_search": {
+    "message": "Yerel arama"
+  },
+  "serp__local_search_active": {
+    "message": "Simüle edilen SERP gösteriliyor"
+  },
+  "serp__tip_conf": {
+    "message": "Yapılandırmak için uzantı simgesine tıklayın"
+  },
+  "feedback__main_q": {
+    "message": "Ahrefs SEO Toolbar'ı kullanmaktan keyif alıyor musunuz?"
+  },
+  "feedback__positive_answ": {
+    "message": "Harika! Beğendiğiniz özellikleri lütfen bizimle paylaşın."
+  },
+  "feedback__negative_answ": {
+    "message": "Lütfen geliştirmemize yardım edin."
+  },
+  "starter__q": {
+    "message": "Aylık sadece $PRICE$ karşılığında Başlangıç planımızla Ahrefs ölçümlerine erişin.",
+    "placeholders": {
+      "price": {
+        "content": "$1"
+      }
+    }
+  },
+  "feedback__send_answ": {
+    "message": "Geri bildirim gönder"
+  },
+  "feedback__negative_button_1": {
+    "message": "Pek sayılmaz"
+  },
+  "feedback__positive_button_1": {
+    "message": "Evet!"
+  },
+  "feedback__positive_button_2": {
+    "message": "İnceleme yaz"
+  },
+  "error__fetching_data": {
+    "message": "Veriler getirilirken hata oluştu. Lütfen daha sonra tekrar deneyin."
+  },
+  "error__inactive": {
+    "message": "Bağlı çalışma alanındaki kullanıcı durumunuz şu anda \"Aktif Değil.\""
+  },
+  "error__monthly_limit": {
+    "message": "Çalışma alanınız için aylık sınıra ulaşıldı."
+  },
+  "error__usage_limit_head": {
+    "message": "Kullanım sınırınıza ulaştınız"
+  },
+  "error__usage_limit_body": {
+    "message": "Devam etmek için lütfen $UPGRADE_BUTTON$ veya sınırınız sıfırlanana kadar bekleyin.",
+    "placeholders": {
+      "upgrade_button": {
+        "content": "$1"
+      }
+    },
+    "description": "Sentence with an inline error__usage_limit_body_button"
+  },
+  "error__usage_limit_body_button": {
+    "message": "planınızı yükseltmek",
+    "description": "The button used as the placeholder in error__usage_limit_body"
+  },
+  "error__try_again_later": {
+    "message": "Hata. Daha sonra tekrar deneyin."
+  },
+  "error__too_many_sessions_text_body": {
+    "message": "Hata: Çok fazla oturum açık. Bu hesap başka bir cihazda kullanılıyor olabilir. Lütfen tekrar",
+    "description": "Full text of the error: 'Error: too many sessions. This account may be used on another device. Please sign in again.'"
+  },
+  "error__too_many_sessions_sign_in": {
+    "message": "oturum açmayı",
+    "description": "Full text of the error: 'Error: too many sessions. This account may be used on another device. Please sign in again.'"
+  },
+  "error__too_many_sessions_text_end": {
+    "message": "deneyin.",
+    "description": "Full text of the error: 'Error: too many sessions. This account may be used on another device. Please sign in again.'"
+  },
+  "freeplan_banner__limit_description": {
+    "message": "Araç Çubuğu için SEO ölçümleri,",
+    "description": "Full sentence: SEO metrics for the Toolbar are available with one of the paid plans"
+  },
+  "freeplan_banner__limit_link": {
+    "message": "ücretli planlardan biriyle kullanılabilir",
+    "description": "Full sentence: SEO metrics for the Toolbar are available with one of the paid plans"
+  }
+}

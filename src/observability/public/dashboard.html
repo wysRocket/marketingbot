@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Marketingbot</title>
+<style>
+:root{--bg:#0b0d11;--s1:#11151c;--s2:#181c24;--s3:#1e2330;--b1:#2a2f3a;--b2:#363c48;--gold:#f4c430;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--blue:#60a5fa;--purple:#a78bfa;--text:#c9d1d9;--t2:#8b949e;--t3:#484f58;--font:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--mono:'JetBrains Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13px;height:100vh;display:flex;overflow:hidden}
+.sb{width:48px;background:var(--s1);border-right:1px solid var(--b1);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;flex-shrink:0}
+.sb-logo{width:32px;height:32px;border-radius:6px;background:linear-gradient(135deg,var(--gold),var(--amber));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#000;margin-bottom:12px;cursor:pointer}
+.sb-btn{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;color:var(--t3)}
+.sb-btn:hover{background:var(--s2);color:var(--t2)}
+.sb-btn.active{background:var(--s3);color:var(--gold)}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.topbar{height:40px;background:var(--s1);border-bottom:1px solid var(--b1);display:flex;align-items:center;padding:0 16px;gap:12px;flex-shrink:0}
+.topbar h1{font-size:13px;font-weight:600}
+.topbar .sp{flex:1}
+.topbar .time{font-size:11px;color:var(--t3);font-family:var(--mono)}
+.panels{flex:1;overflow-y:auto;padding:12px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+.panel{background:var(--s1);border:1px solid var(--b1);border-radius:6px;display:flex;flex-direction:column;overflow:hidden}
+.panel-hdr{padding:8px 12px;display:flex;align-items:center;border-bottom:1px solid var(--b1);flex-shrink:0}
+.panel-hdr h2{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--t2)}
+.panel-body{padding:12px;flex:1;overflow:auto}
+.p-12{grid-column:span 12}.p-8{grid-column:span 8}.p-6{grid-column:span 6}.p-4{grid-column:span 4}
+.stat-row{display:flex;gap:1px;background:var(--b1);border-radius:4px;overflow:hidden;margin-bottom:12px}
+.stat-cell{flex:1;background:var(--s1);padding:10px 12px}
+.stat-cell .lbl{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:4px}
+.stat-cell .val{font-size:20px;font-weight:700;font-family:var(--mono)}
+.stat-cell .sub{font-size:10px;color:var(--t3);margin-top:2px}
+table{width:100%;border-collapse:collapse}
+thead th{border-bottom:1px solid var(--b1);padding:6px 10px;text-align:left;font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);white-space:nowrap;font-weight:600;position:sticky;top:0;background:var(--s1)}
+tbody tr{border-bottom:1px solid rgba(42,47,58,.4);cursor:pointer}
+tbody tr:hover{background:var(--s2)}
+tbody td{padding:6px 10px;font-size:11px;white-space:nowrap;font-family:var(--mono)}
+.badge{display:inline-flex;align-items:center;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:600}
+.badge-g{color:var(--green);background:rgba(34,197,94,.1)}
+.badge-r{color:var(--red);background:rgba(239,68,68,.1)}
+.badge-a{color:var(--amber);background:rgba(245,158,11,.1)}
+.badge-b{color:var(--blue);background:rgba(96,165,250,.1)}
+.badge-m{color:var(--t3);background:var(--s2)}
+.pill{display:inline-block;padding:1px 5px;border-radius:3px;font-size:9px;font-family:var(--mono);margin:1px}
+.pill-g{background:rgba(244,196,48,.1);color:var(--gold)}
+.pill-b{background:rgba(96,165,250,.1);color:var(--blue)}
+.chart{height:100px;display:flex;align-items:flex-end;gap:2px;padding:8px 0 0}
+.chart-bar{flex:1;border-radius:2px 2px 0 0;min-height:2px}
+.chart-bar:hover{opacity:.8}
+.toolbar{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.toolbar label{font-size:10px;color:var(--t3);text-transform:uppercase}
+.toolbar select,.toolbar input{background:var(--s2);border:1px solid var(--b1);color:var(--text);padding:4px 8px;border-radius:4px;font-family:var(--mono);font-size:11px;outline:none}
+.pos{color:var(--green)}.neg{color:var(--red)}.neu{color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="sb">
+  <div class="sb-logo">M</div>
+  <div class="sb-btn active" data-t="overview" title="Overview">📊</div>
+  <div class="sb-btn" data-t="sessions" title="Sessions">🖥</div>
+  <div style="height:1px;background:var(--b1);width:24px;margin:4px 0"></div>
+  <div class="sb-btn" data-t="extensions" title="Extensions">🔌</div>
+  <div class="sb-btn" data-t="network" title="Network">🌐</div>
+  <div class="sb-btn" data-t="sw" title="Similarweb">📈</div>
+  <div style="flex:1"></div>
+  <div class="sb-btn" id="btn-refresh" title="Refresh">↻</div>
+</div>
+<div class="main">
+  <div class="topbar"><h1 id="pt">Overview</h1><div class="sp"></div><span class="time" id="lu">—</span></div>
+  <div class="panels"><div class="grid" id="content"></div></div>
+</div>
+<script>
+const F={time:t=>{const d=new Date(t);return(d.getMonth()+1)+'/'+d.getDate()+' '+d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})},dur:m=>m<60000?(m/1000).toFixed(1)+'s':Math.floor(m/60000)+'m',bytes:b=>b<1048576?(b/1024).toFixed(0)+'KB':(b/1048576).toFixed(1)+'MB',pct:(n,d)=>d?(Math.round(n/d*100)+'%'):'—',num:n=>n!=null?n.toLocaleString():'—'};
+const $=id=>document.getElementById(id);
+let TAB='overview',DATA={sessions:[],extEvents:[],swObservations:[]},LAST_FP='';
+
+function badge(t,c){return'<span class="badge badge-'+c+'">'+t+'</span>'}
+function pill(t,c){return'<span class="pill pill-'+c+'">'+t+'</span>'}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+document.querySelectorAll('.sb-btn[data-t]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.sb-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');TAB=b.dataset.t;render();
+});
+$('btn-refresh').onclick=load;
+
+async function load(){
+  try{
+    const r=await fetch('/api/data');
+    const d=await r.json();
+    const fp=d.sessions.length+':'+(d.sessions[d.sessions.length-1]?.recordedAt||'');
+    if(fp===LAST_FP)return;
+    LAST_FP=fp;DATA=d;$('lu').textContent='Updated '+new Date().toLocaleTimeString();
+    render();
+  }catch(e){console.error(e);}
+}
+
+function render(){
+  const c=$('content'),t=$('pt');
+  if(TAB==='overview'){t.textContent='Overview';rOverview(c);}
+  else if(TAB==='sessions'){t.textContent='Sessions';rSessions(c);}
+  else if(TAB==='extensions'){t.textContent='Extensions';rExtensions(c);}
+  else if(TAB==='network'){t.textContent='Network Map';rNetwork(c);}
+  else if(TAB==='sw'){t.textContent='Similarweb';rSW(c);}
+}
+
+function rOverview(c){
+  const s=DATA.sessions,n=s.length,passed=s.filter(x=>x.metMinDuration&&x.metMinUniquePages).length;
+  const avgDur=n?Math.round(s.reduce((a,x)=>a+(x.elapsedMs||0),0)/n/1000):0;
+  const totalTraf=s.reduce((a,x)=>a+(x.trafficBytesTotal||0),0);
+  const exts=new Set(s.flatMap(x=>x.extensionSlugs||[]));
+  const domains=new Set(s.map(x=>x.targetDomain).filter(Boolean));
+  const byDay=new Map();
+  s.forEach(r=>{const d=(r.endedAt||r.recordedAt).slice(0,10);if(!byDay.has(d))byDay.set(d,{s:0,t:0});byDay.get(d).s++;byDay.get(d).t+=r.trafficBytesTotal||0;});
+  const days=[...byDay.entries()].sort((a,b)=>a[0].localeCompare(b[0])).slice(-14);
+  const maxS=Math.max(...days.map(d=>d[1].s),1);
+  let chartS='',chartT='';
+  days.forEach(d=>{chartS+='<div class="chart-bar" style="height:'+(d[1].s/maxS*100)+'%;background:var(--blue)" title="'+d[0]+': '+d[1].s+' sessions"></div>';chartT+='<div class="chart-bar" style="height:'+(d[1].t/Math.max(...days.map(x=>x[1].t),1)*100)+'%;background:var(--purple)" title="'+d[0]+': '+F.bytes(d[1].t)+'"></div>';});
+  const rows=s.slice(-20).reverse().map(r=>'<tr><td>'+F.time(r.recordedAt)+'</td><td>'+badge(esc(r.profileId||'?'),'m')+'</td><td>'+esc(r.targetDomain||'—')+'</td><td>'+F.dur(r.elapsedMs)+'</td><td>'+r.uniquePageCount+'</td><td>'+(r.metMinDuration&&r.metMinUniquePages?badge('PASS','g'):badge('FAIL','r'))+'</td></tr>').join('');
+  c.innerHTML='<div class="panel p-12"><div class="panel-body"><div class="stat-row">'+
+    '<div class="stat-cell"><div class="lbl">Sessions</div><div class="val">'+n+'</div></div>'+
+    '<div class="stat-cell"><div class="lbl">Avg Duration</div><div class="val">'+avgDur+'s</div></div>'+
+    '<div class="stat-cell"><div class="lbl">Pass Rate</div><div class="val">'+F.pct(passed,n)+'</div><div class="sub">'+passed+'/'+n+'</div></div>'+
+    '<div class="stat-cell"><div class="lbl">Traffic</div><div class="val">'+F.bytes(totalTraf)+'</div></div>'+
+    '<div class="stat-cell"><div class="lbl">Extensions</div><div class="val">'+exts.size+'</div></div>'+
+    '<div class="stat-cell"><div class="lbl">Domains</div><div class="val">'+domains.size+'</div></div>'+
+    '<div class="stat-cell"><div class="lbl">Ext Events</div><div class="val">'+DATA.extEvents.length+'</div></div>'+
+    '<div class="stat-cell"><div class="lbl">SW Obs</div><div class="val">'+DATA.swObservations.length+'</div></div>'+
+    '</div></div></div>'+
+    '<div class="panel p-6"><div class="panel-hdr"><h2>Sessions/Day</h2></div><div class="panel-body"><div class="chart">'+chartS+'</div></div></div>'+
+    '<div class="panel p-6"><div class="panel-hdr"><h2>Traffic/Day</h2></div><div class="panel-body"><div class="chart">'+chartT+'</div></div></div>'+
+    '<div class="panel p-12"><div class="panel-hdr"><h2>Recent Sessions</h2></div><div class="panel-body"><table><thead><tr><th>Time</th><th>Profile</th><th>Domain</th><th>Duration</th><th>Pages</th><th>Quality</th></tr><thead><tbody>'+rows+'</tbody></table></div></div>';
+}
+
+function rSessions(c){
+  const profs=[...new Set(DATA.sessions.map(s=>s.profileId))].sort();
+  c.innerHTML='<div class="panel p-12"><div class="panel-body"><div class="toolbar"><label>Profile</label><select id="s-p"><option value="">All</option>'+profs.map(p=>'<option value="'+p+'">'+esc(p)+'</option>').join('')+'</select><label>Domain</label><input id="s-d" placeholder="Filter…" style="width:120px"><label>Sort</label><select id="s-s"><option value="t_d">Newest</option><option value="t_a">Oldest</option><option value="d_d">Longest</option></select><span id="s-n" style="margin-left:auto;font-size:11px;color:var(--t3)"></span></div><table><thead><tr><th>Time</th><th>Runner</th><th>Profile</th><th>Domain</th><th>Duration</th><th>Pages</th><th>Extensions</th><th>Flows</th><th>Traffic</th><th>Quality</th></tr></thead><tbody></tbody></table></div></div>';
+  const render=()=>{
+    let list=[...DATA.sessions];
+    const p=$('s-p').value,d=($('s-d').value||'').toLowerCase(),sort=$('s-s').value;
+    if(p)list=list.filter(s=>s.profileId===p);
+    if(d)list=list.filter(s=>(s.targetDomain||'').toLowerCase().includes(d)||(s.uniquePages||[]).some(u=>u.toLowerCase().includes(d)));
+    const [f,dir]=sort.split('_');
+    list.sort((a,b)=>{let av=a[f],bv=b[f];if(typeof av==='string')av=av.toLowerCase();if(typeof bv==='string')bv=String(bv).toLowerCase();return dir==='d'?(av<bv?1:-1):(av<bv?-1:1);});
+    $('s-n').textContent=list.length+' sessions';
+    const tbody=c.querySelector('tbody');
+    tbody.innerHTML=list.slice(0,500).map(s=>{
+      const q=s.metMinDuration&&s.metMinUniquePages;
+      return'<tr data-id="'+esc(s.runId)+'"><td>'+F.time(s.recordedAt)+'</td><td>'+badge(s.runner||'?','b')+'</td><td>'+badge(s.profileId||'?','m')+'</td><td>'+esc(s.targetDomain||'—')+'</td><td>'+F.dur(s.elapsedMs)+'</td><td>'+s.uniquePageCount+'</td><td>'+(s.extensionSlugs||[]).slice(0,4).map(e=>pill(e,'b')).join('')+'</td><td>'+(s.flowsRun||[]).slice(0,3).map(fl=>pill(fl,'g')).join('')+'</td><td>'+F.bytes(s.trafficBytesTotal||0)+'</td><td>'+(q?badge('PASS','g'):badge('FAIL','r'))+'</td></tr>';
+    }).join('');
+    tbody.querySelectorAll('tr[data-id]').forEach(tr=>tr.onclick=()=>{
+      const s=DATA.sessions.find(x=>x.runId===tr.dataset.id);if(s){s._expand=!s._expand;render();}
+    });
+  };
+  render();
+  $('s-p').onchange=render;$('s-d').oninput=render;$('s-s').onchange=render;
+}
+
+function rExtensions(c){
+  const doms=[...new Set(DATA.extEvents.map(e=>e.matchedDomain))].sort();
+  c.innerHTML='<div class="panel p-12"><div class="panel-body"><div class="toolbar"><label>Domain</label><select id="e-d"><option value="">All</option>'+doms.map(d=>'<option value="'+d+'">'+esc(d)+'</option>').join('')+'</select><label>Method</label><select id="e-m"><option value="">All</option><option value="GET">GET</option><option value="POST">POST</option></select><span id="e-n" style="margin-left:auto;font-size:11px;color:var(--t3)"></span></div><table><thead><tr><th>Time</th><th>Domain</th><th>Method</th><th>URL</th><th>Request</th><th>Response</th></tr></thead><tbody></tbody></table></div></div>';
+  const render=()=>{
+    let list=[...DATA.extEvents];
+    const d=$('e-d').value,m=$('e-m').value;
+    if(d)list=list.filter(e=>e.matchedDomain.includes(d));
+    if(m)list=list.filter(e=>e.method===m);
+    $('e-n').textContent=list.length+' events';
+    c.querySelector('tbody').innerHTML=list.slice(0,500).map(e=>'<tr><td>'+new Date(e.timestamp).toLocaleTimeString()+'</td><td>'+badge(e.matchedDomain,'b')+'</td><td>'+badge(e.method,'m')+'</td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis">'+esc(e.url)+'</td><td style="max-width:80px;overflow:hidden;text-overflow:ellipsis;font-size:10px;color:var(--t3)">'+esc((e.requestBody||'—').slice(0,50))+'</td><td style="max-width:80px;overflow:hidden;text-overflow:ellipsis;font-size:10px;color:var(--t3)">'+esc((e.responseBody||'—').slice(0,50))+'</td></tr>').join('');
+  };
+  render();$('e-d').onchange=render;$('e-m').onchange=render;
+}
+
+function rNetwork(c){
+  const domMap=new Map();
+  DATA.extEvents.forEach(e=>{
+    const d=e.matchedDomain;
+    if(!domMap.has(d))domMap.set(d,{count:0,endpoints:new Map()});
+    const dm=domMap.get(d);dm.count++;
+    let key='try{const u=new URL(e.url);key=e.method+u.pathname}catch{}';
+    key=e.method+' '+(()=>{try{return new URL(e.url).pathname}catch(e){return'?'}})();
+    let ep=dm.endpoints.get(key);if(!ep)ep={count:0,body:''};ep.count++;
+    if(!ep.body&&e.requestBody)ep.body=e.requestBody.slice(0,150);
+    dm.endpoints.set(key,ep);
+  });
+  const rows=[...domMap.entries()].sort((a,b)=>b[1].count-a[1].count);
+  let html='';
+  rows.forEach(([d,dd])=>{
+    let eps='';
+    [...dd.endpoints.entries()].sort((a,b)=>b[1].count-a[1].count).slice(0,15).forEach(([k,v])=>{
+      eps+='<div style="background:var(--s2);padding:4px 8px;border-radius:4px;font-size:10px;border:1px solid var(--b1)"><span style="color:var(--gold)">'+esc(k)+'</span><span style="color:var(--t3);margin-left:4px">×'+v.count+'</span>'+(v.body?'<div style="margin-top:2px;color:var(--t3);max-width:250px;overflow:hidden;text-overflow:ellipsis" title="'+esc(v.body)+'">'+esc(v.body.slice(0,60))+'</div>':'')+'</div>';
+    });
+    html+='<div class="panel p-6"><div class="panel-hdr"><h2>'+esc(d)+'</h2>'+badge(dd.count+' events','b')+'</div><div class="panel-body"><div style="display:flex;flex-wrap:wrap;gap:4px">'+eps+'</div></div></div>';
+  });
+  c.innerHTML=html||'<div class="panel p-12"><div class="panel-body"><div style="text-align:center;color:var(--t3);padding:40px">No extension network events</div></div></div>';
+}
+
+function rSW(c){
+  const allDoms=[...new Set(DATA.swObservations.map(o=>o.domain))].sort();
+  c.innerHTML='<div class="panel p-12"><div class="panel-body"><div class="toolbar"><label>Domain</label><select id="sw-d">'+allDoms.map(d=>'<option value="'+d+'">'+esc(d)+'</option>').join('')+'</select><label>Window</label><select id="sw-h"><option value="24">24h</option><option value="168" selected>7d</option></select></div></div></div><div id="sw-c"></div>';
+  const renderD=()=>{
+    const domain=$('sw-d').value||allDoms[0]||'eurocookflow.com',hours=parseInt($('sw-h').value),cutoff=Date.now()-hours*3600000;
+    const obs=DATA.swObservations.filter(o=>o.domain===domain&&Date.parse(o.observedAt)>=cutoff).sort((a,b)=>a.observedAt.localeCompare(b.observedAt));
+    const sessions=DATA.sessions.filter(s=>{const ts=Date.parse(s.endedAt||s.recordedAt);return ts>=cutoff&&s.uniquePages.some(p=>p.includes(domain));});
+    const byDay=new Map();sessions.forEach(s=>{const d=(s.endedAt||s.recordedAt).slice(0,10);if(!byDay.has(d))byDay.set(d,[]);byDay.get(d).push(s);});
+    const buckets=[...byDay.entries()].sort((a,b)=>a[0].localeCompare(b[0]));
+    const first=obs[0],last=obs[obs.length-1];
+    const vD=first?.similarweb?.snapshot?.visitsTotalCount!=null&&last?.similarweb?.snapshot?.visitsTotalCount!=null?last.similarweb.snapshot.visitsTotalCount-first.similarweb.snapshot.visitsTotalCount:null;
+    const rD=first?.similarweb?.snapshot?.globalRank!=null&&last?.similarweb?.snapshot?.globalRank!=null?last.similarweb.snapshot.globalRank-first.similarweb.snapshot.globalRank:null;
+    let bucketRows='',snapRows='';
+    buckets.forEach(b=>{
+      const recs=b[1],n=recs.length,avg=Math.round(recs.reduce((a,r)=>a+(r.elapsedSec||0),0)/n),pg=+(recs.reduce((a,r)=>a+r.uniquePageCount,0)/n).toFixed(1),pass=recs.filter(r=>r.metMinDuration).length;
+      bucketRows+='<tr><td>'+b[0]+'</td><td>'+n+'</td><td>'+avg+'s</td><td>'+pg+'</td><td>'+F.pct(pass,n)+'</td><td>'+[...new Set(recs.flatMap(r=>r.extensionSlugs||[]))].map(e=>pill(e,'b')).join('')+'</td></tr>';
+    });
+    obs.forEach(o=>{
+      snapRows+='<tr><td>'+F.time(o.observedAt)+'</td><td>'+badge(o.fetch?.source||'—','m')+'</td><td>'+F.num(o.similarweb?.snapshot?.visitsTotalCount)+'</td><td>'+F.num(o.similarweb?.snapshot?.globalRank)+'</td><td>'+o.similarweb?.snapshot?.pagesPerVisit||'—'+'</td><td>'+(o.similarweb?.snapshot?.bounceRate!=null?(o.similarweb.snapshot.bounceRate*100).toFixed(1)+'%':'—')+'</td></tr>';
+    });
+    const rec=!sessions.length?'Run the bot first.':obs.length<2?'Not enough SW observations.':vD===null?'SW snapshot data unavailable.':vD>0?'<span class="pos">POSITIVE:</span> visits +'+vD+'. '+sessions.length+' sessions with: '+[...new Set(sessions.flatMap(s=>s.extensionSlugs||[]))].join(', '):vD===0?'<span class="neu">NEUTRAL:</span> no change.':'<span class="neg">Decreased</span> by '+Math.abs(vD)+'.';
+    $('sw-c').innerHTML='<div class="panel p-12"><div class="panel-body"><div class="stat-row"><div class="stat-cell"><div class="lbl">Sessions</div><div class="val">'+sessions.length+'</div></div><div class="stat-cell"><div class="lbl">Days</div><div class="val">'+buckets.length+'</div></div><div class="stat-cell"><div class="lbl">Visits Δ</div><div class="val '+(vD>0?'pos':vD<0?'neg':'')+'">'+(vD!==null?(vD>=0?'+':'')+vD:'—')+'</div></div><div class="stat-cell"><div class="lbl">Rank Δ</div><div class="val '+(rD<0?'pos':rD>0?'neg':'')+'">'+(rD!==null?(rD>=0?'+':'')+rD:'—')+'</div></div></div></div></div>'+
+    '<div class="panel p-6"><div class="panel-hdr"><h2>Sessions by Day</h2></div><div class="panel-body"><table><thead><tr><th>Date</th><th>Sessions</th><th>Avg Dur</th><th>Avg Pg</th><th>Pass</th><th>Extensions</th></tr></thead><tbody>'+bucketRows+'</tbody></table></div></div>'+
+    '<div class="panel p-6"><div class="panel-hdr"><h2>SW Snapshots</h2></div><div class="panel-body"><table><thead><tr><th>Time</th><th>Source</th><th>Visits</th><th>Rank</th><th>Pg/Visit</th><th>Bounce</th></tr></thead><tbody>'+snapRows+'</tbody></table></div></div>'+
+    '<div class="panel p-12"><div class="panel-hdr"><h2>Recommendation</h2></div><div class="panel-body"><div style="font-size:12px;line-height:1.6">'+rec+'</div></div></div>';
+  };
+  renderD();$('sw-d').onchange=renderD;$('sw-h').onchange=renderD;
+}
+
+load();
+setInterval(load,5000);
+</script>
+</body>
+</html>

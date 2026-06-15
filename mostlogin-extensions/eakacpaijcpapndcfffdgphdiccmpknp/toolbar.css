@@ -1,0 +1,410 @@
+/**
+ Theme
+ */
+.theme-dark {
+    --background-dark: #032F4E;
+    --text-dark: #DFE4EA;
+    --background-dark1: #38587A;
+    --text-dark1: #DFE4EA;
+    --background-light: #E3F2FB;
+    --text-light: #414649;
+    --background-main: #001630;
+    --background-table-odd: #00577D80;
+    --text-main: #ffffff;
+    --text-link: #86C7E0;
+    --background-selected: #86C7E0;
+    --background-button: #86C7E0;
+    --background-badge: #FFD05F;
+    --text-error: red;
+    --card-info-color: #4DBEEB;
+    --card-pie-color: #4DBEEB;
+    --logo-color: #4DBDEB;
+
+    --divider-color: #777;
+
+    --ext-height: 600px;
+    --ext-width: 740px;
+
+    --text-size: 16px;
+    --text-size-medium: 14px;
+    --text-size-small: 12px;
+
+    --h1-size: 30px;
+    --h2-size: 24px;
+    --h3-size: 20px;
+    --menu-size: 14px;
+
+    --link-followed: #B3E5A0;
+    --link-nofollow: #FF7F75;
+    --link-external: #88F0FF;
+    --link-internal: #FFD05F;
+    --link-highlight: #54E8CC;
+}
+.theme-light {
+    --background-dark: #002F50;
+    --text-dark: #DFE4EA;
+    --background-dark1: #37587C;
+    --text-dark1: #DFE4EA;
+    --background-light: #E3F2FC;
+    --text-light: #414649;
+    --background-main: #FFFFFF;
+    --background-table-odd: #E3F2FC;
+    --text-main: #002F50;
+    --text-link: #86C7E0;
+    --background-selected: #86C7E0;
+    --background-button: #002F50;
+    --background-badge: #FFD05F;
+    --text-error: red;
+    --card-info-color: #3A7EE4;
+    --card-pie-color: #0077BB;
+    --logo-color: #4DBDEB;
+
+    --divider-color: #bbb;
+
+    --ext-height: 600px;
+    --ext-width: 740px;
+
+    --text-size: 16px;
+    --text-size-medium: 14px;
+    --text-size-small: 12px;
+
+    --h1-size: 30px;
+    --h2-size: 24px;
+    --h3-size: 20px;
+    --menu-size: 14px;
+
+    --link-followed: #B3E5A0;
+    --link-nofollow: #FF7F75;
+    --link-external: #88F0FF;
+    --link-internal: #FFD05F;
+    --link-highlight: #54E8CC;
+}
+
+#moztoolbar-wrapper {
+    font-family: "Lato", sans-serif !important;
+    display: none !important;
+    position: fixed !important;
+    z-index: 1000000102 !important;
+    top: 0px !important;
+    left: 0px !important;
+    right: 0px !important;
+    height: 48px !important;
+    text-align: left !important;
+}
+#moztoolbar-wrapper.moztoolbar-dock-bottom {
+    top: auto !important;
+    bottom: 0px !important;
+}
+#moztoolbar-wrapper.active {
+    display: block !important;
+}
+#moztoolbar-wrapper .moztoolbar-toolbar {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    z-index: 9999999 !important;
+    box-sizing: border-box !important;
+    height: inherit !important;
+    position: fixed !important;
+    width: 100% !important;
+    background: var(--background-main) !important;
+    border-bottom: 1px solid #d9d9d9 !important;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-decoration: none !important;
+}
+#moztoolbar-anchor {
+    width: 100%;
+    height: 48px !important;
+    position: relative !important;
+    color: var(--text-main) !important;
+}
+#moztoolbar-anchor .checkbox {
+    background-color: unset !important;
+    border: 0px !important;
+}
+#moztoolbar-wrapper.moztoolbar-dock-bottom .moztoolbar-toolbar {
+    border-bottom: none !important;
+    border-top: 1px solid #d9d9d9 !important;
+}
+
+
+#moztoolbar-anchor .moztoolbar-cursor svg {
+    font-size: 24px !important;
+    line-height: 24px !important;
+}
+#moztoolbar-anchor .moztoolbar-logo {
+    fill: #4DBDEB !important;
+    color: #4DBDEB !important;
+    margin-top: 4px !important;
+    margin-left: 20px !important;
+    border: 0px !important;
+    line-height: 24px !important;
+    text-decoration: none !important;
+}
+#moztoolbar-anchor .moztoolbar-h1 {
+    font-family: "Lato", sans-serif !important;
+    font-size: 27px !important;
+    line-height: 30px !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--text-main) !important;
+    border: 0px !important;
+    text-decoration: none !important;
+    letter-spacing: 0px !important;
+}
+#moztoolbar-anchor .moztoolbar-h2 {
+    font-family: "Lato", sans-serif !important;
+    font-size: 15px !important;
+    line-height: 17px !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--text-main) !important;
+    border: 0px !important;
+    text-decoration: none !important;
+    letter-spacing: 0px !important;
+}
+#moztoolbar-anchor .moztoolbar-h2 span {
+    font-family: "Lato", sans-serif !important;
+    font-size: 15px !important;
+    line-height: 17px !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--text-main) !important;
+    border: 0px !important;
+    text-decoration: none !important;
+    letter-spacing: 0px !important;
+}
+#moztoolbar-anchor .moztoolbar-highlight:hover {
+    color: orange !important;
+    cursor: pointer;
+}
+#moztoolbar-anchor .moztoolbar-highlight span:hover {
+    color: orange !important;
+    cursor: pointer;
+}
+#moztoolbar-anchor .moztoolbar-highlight text:hover {
+    color: orange !important;
+    cursor: pointer;
+    fill: orange !important;
+}
+#moztoolbar-anchor .moztoolbar-text {
+    font-family: "Lato", sans-serif !important;
+    font-size: 12px !important;
+    line-height: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--text-main) !important;
+    border: 0px !important;
+    text-decoration: none !important;
+}
+#moztoolbar-anchor .moztoolbar-p {
+    font-family: "Lato", sans-serif !important;
+    font-size: 12px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--text-main) !important;
+    border: 0px !important;
+    text-decoration: none !important;
+}
+#moztoolbar-anchor .moztoolbar-icon {
+    height: 28px !important;
+    color: var(--text-main) !important;
+}
+#moztoolbar-anchor .moztoolbar-icon-command {
+    height: 28px !important;
+    fill: var(--text-main) !important;
+}
+#moztoolbar-anchor .moztoolbar-icon-selected {
+    text-decoration: underline 3px solid #4DBDEB !important;
+    fill: #002F50 !important;
+}
+#moztoolbar-anchor .moztoolbar-cursor {
+    cursor: pointer !important;
+}
+#moztoolbar-anchor .MuiInputBase-colorPrimary {
+    color: var(--text-main) !important;
+    border: 1px solid var(--card-border);
+}
+#moztoolbar-anchor .Mui-disabled {
+    color: var(--button-disabled-color) !important;
+}
+#moztoolbar-anchor .MuiSelect-icon {
+    color: var(--text-main) !important;
+}
+#moztoolbar-anchor .MuiDivider-middle {
+    border-color: var(--divider-color) !important;
+    display: block !important;
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+}
+#moztoolbar-anchor .MuiDividerDiv {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+#moztoolbar-anchor .MuiCheckbox-colorPrimary {
+    color: var(--background-dark1) !important;
+}
+#moztoolbar-anchor .MuiFormControlLabel-label {
+    font-family: "Lato", sans-serif !important;
+    font-size: 12px !important;
+    line-height: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--text-main) !important;
+    border: 0px !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+}
+#moztoolbar-anchor .MuiChip-outlined {
+    border-style: none !important;
+    border-width: 0px !important;
+    font-family: "Lato", sans-serif !important;
+    font-size: 12px !important;
+    line-height: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--text-main) !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+}
+#moztoolbar-anchor .nolabel .MuiChip-label {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+#moztoolbar-anchor .MuiPieArc-root {
+    stroke: none !important;
+    stroke-width: 0 !important;
+}
+#moztoolbar-anchor .PrivateSwitchBase-input {
+    left: 0px !important;
+    width: 0% !important;
+    margin: 0 0px 3px 0 !important;
+}
+#moztoolbar-anchor .checkbox span::before {
+    background: transparent !important;
+    height: inherit !important;
+    width: inherit !important;
+}
+#moztoolbar-anchor .checkbox span {
+    border: inherit !important;
+    background: transparent !important;
+}
+/*
+#moztoolbar-anchor .MuiSwitch-switchBase {
+    border-radius: 50% !important;
+    border: 0px !important;
+    background-color: transparent !important;
+    display: inline-flex !important;
+    place-content: inherit !important;
+    -webkit-transition: inherit !important;
+    transition: inherit !important;
+    height: 38px !important;
+    width: 38px !important;
+}
+#moztoolbar-anchor .MuiSwitch-switchBase .MuiSwitch-thumb {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px !important;
+    background-color: rgb(221, 221, 221) !important;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+}
+#moztoolbar-anchor .MuiSwitch-switchBase .MuiTouchRipple-root {
+    box-shadow: none;
+    border: 0px;
+    background-color: transparent !important;
+    /*background-color: rgb(221, 221, 221) !important;
+    border-radius: 50% !important;
+}
+#moztoolbar-anchor .MuiSwitch-switchBase .MuiSwitch-track {
+    height: 100% !important;
+    width: 100% !important;
+    z-index: -1 !important;
+    background-color: rgb(170, 170, 170) !important;
+    opacity: 0.38 !important;
+    border-radius: 50% !important;
+    transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1), background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}*/
+
+#moztoolbar-anchor hr {
+    width: 0% !important;
+}
+#moztoolbar-anchor input[type=checkbox] {
+    position: fixed !important;
+}
+
+
+/**
+SERP overlay
+ */
+.mozbar-serp-id {
+    max-width: 600px !important;
+    margin-bottom: 10px;
+}
+.mozbar-serp-overlay {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 10px !important;
+    background-color: var(--background-main) !important;
+    color: var(--text-main) !important;
+}
+.mozbar-serp-overlay .mozbar-serp-overlay-header {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    font-size: 14px !important;
+    font-weight: 600;
+    color: var(--text-main) !important;
+}
+.mozbar-serp-overlay .mozbar-serp-overlay-header1 {
+    font-size: 14px !important;
+    font-weight: 600;
+    color: var(--text-main) !important;
+}
+.mozbar-serp-overlay .mozbar-serp-overlay-p {
+    font-size: 10px !important;
+    line-height: 12px !important;
+    font-weight: 400;
+    color: var(--text-main) !important;
+}
+.mozbar-serp-overlay .MuiDivider-middle {
+    border-color: var(--divider-color) !important;
+}
+.mozbar-serp-overlay .moztoolbar-highlight:hover {
+    color: orange !important;
+    cursor: pointer;
+}
+.mozbar-serp-overlay .moztoolbar-highlight text:hover {
+    fill: orange !important;
+    color: orange !important;
+    cursor: pointer;
+}
+.mozbar-serp-overlay .moztoolbar-cursor {
+    cursor: pointer !important;
+}
+.mozbar-serp-overlay .moztoolbar-text {
+    font-size: 10px !important;
+    line-height: 12px !important;
+}
+.mozbar-serp-overlay .MuiPieArc-root {
+    stroke: none !important;
+    stroke-width: 0 !important;
+}
+.moztoolbar-tooltip {
+    z-index: 2147483647 !important;
+}
+
+/**
+Different global styles
+ */
+.MuiTooltip-popper {
+    z-index: 2147483647 !important;
+}
+.MuiPopover-root {
+    z-index: 1000003300 !important;
+}
+.MuiTooltip-popper[data-popper-placement*="bottom"] {
+    margin-top: 10px !important;
+}

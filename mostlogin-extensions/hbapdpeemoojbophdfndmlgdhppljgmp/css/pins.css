@@ -1,0 +1,111 @@
+.xt-pin .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.xt-pin .border-0 {
+  border: 0 !important;
+}
+
+.xt-pin .flex-nowrap {
+  -ms-flex-wrap: nowrap !important;
+      flex-wrap: nowrap !important;
+}
+
+.xt-pin .justify-content-between {
+  -webkit-box-pack: justify !important;
+      -ms-flex-pack: justify !important;
+          justify-content: space-between !important;
+}
+
+.xt-pin .align-items-center {
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
+}
+
+.xt-pin .pt-3,
+.xt-pin .py-3 {
+  padding-top: 1rem !important;
+}
+
+.xt-pin .pb-5,
+.xt-pin .py-5 {
+  padding-bottom: 3rem !important;
+}
+
+.xt-pin .xt-ke-pin-tooltip {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .xt-ke-pin-tooltip {
+/*    width: 50%;*/
+  }
+}
+
+@media (min-width: 992px) {
+  .xt-ke-pin-tooltip {
+/*    width: 33%;*/
+  }
+}
+
+@media (min-width: 1200px) {
+  .xt-ke-pin-tooltip {
+/*    width: 25%;*/
+  }
+}
+
+.xt-pin .xt-ke-pin-tooltip svg {
+  opacity: 0.4;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.xt-pin .xt-ke-pin-tooltip:before {
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  background: #000;
+  border-radius: 4px;
+  color: #fff;
+  content: attr(data-title);
+  font-size: 14px;
+  padding: 6px 10px;
+  top: 36px;
+  left: 50%;
+  white-space: nowrap;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.xt-pin .xt-ke-pin-tooltip:hover svg {
+  opacity: 1;
+}
+
+.xt-pin .xt-ke-pin-tooltip.xt-ke-tooltip-fade-up:before {
+  -webkit-transform: translate3d(-50%, 100%, 0);
+          transform: translate3d(-50%, 100%, 0);
+}
+
+.xt-pin .xt-ke-pin-tooltip.xt-ke-tooltip-fade-up:hover:before {
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+  opacity: 1;
+}
+
+.xt-pin .font-weight-semi-bold {
+  font-weight: 600;
+}
+
+.xt-pin .xt-ke-value {
+  vertical-align: top;
+  white-space: nowrap;
+}

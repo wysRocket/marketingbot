@@ -1,0 +1,17 @@
+{
+  "name": "proxy-rotator",
+  "version": "1.0.0",
+  "description": "SOCKS5 proxy rotation microservice with REST API, validation, telemetry, and live dashboard",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": ["proxy", "socks5", "rotation", "microservice"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

@@ -1,0 +1,1 @@
+var e=``;async function t(){let t=await fetch(`${e}/api/data`);if(!t.ok)throw Error(`API error: ${t.status}`);return t.json()}export{t};

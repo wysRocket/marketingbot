@@ -17,7 +17,10 @@
       "/en/privacy-policy",
       "/en/terms-conditions",
       "/en/token-policy",
-      "/en/contact"
+      "/en/contact",
+      "/en/blog",
+      "/en/blog/time-management-tips",
+      "/en/blog/focus-techniques"
     ]
   },
   "browseHomepage": {
@@ -87,7 +90,9 @@
     ],
     "ctaSelector": "#services a[href*=\"#tab-\"]",
     "ctaMustContain": "#tab-",
-    "signupExpectedPathIncludes": "#tab-",
+    "ctaLandingPathIncludes": [
+      "#tab-"
+    ],
     "emailSelector": "input[type=\"email\"]",
     "nameSelector": "input[name*=\"name\" i], input[placeholder*=\"name\" i], input[type=\"text\"]",
     "passwordSelector": "input[type=\"password\"]",

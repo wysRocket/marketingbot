@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="81" height="80" viewBox="0 0 81 80" fill="none">
+<rect x="10.5" y="68" width="44" height="58" rx="2" transform="rotate(-90 10.5 68)" fill="#F3F5FF"/>
+<path d="M14.5001 44H38.5" stroke="#DDE8F9" stroke-width="2" stroke-linecap="round"/>
+<path d="M14.5001 48H38.5" stroke="#DDE8F9" stroke-width="2" stroke-linecap="round"/>
+<path d="M15.5001 58H27.5" stroke="#5B96EE" stroke-width="4" stroke-linecap="round"/>
+<path d="M14.5001 52H30.5" stroke="#DDE8F9" stroke-width="2" stroke-linecap="round"/>
+<rect x="46.5" y="42" width="16" height="16" rx="4" fill="white" stroke="#5B96EE" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 4"/>
+<circle cx="15.5" cy="29" r="1" fill="#3C454D"/>
+<circle cx="19.5" cy="29" r="1" fill="#3C454D"/>
+<circle cx="23.5" cy="29" r="1" fill="#3C454D"/>
+<path d="M68.5 35V28C68.5 25.7909 66.7091 24 64.5 24H14.5C12.2909 24 10.5 25.7909 10.5 28V62C10.5 64.2091 12.2909 66 14.5 66L64.5 66C66.7091 66 68.5 64.2091 68.5 62V37" stroke="#DDE8F9" stroke-width="2" stroke-linecap="round"/>
+<path d="M68.5 60V28C68.5 25.7909 66.7091 24 64.5 24H14.5C12.2909 24 10.5 25.7909 10.5 28V64C10.5 66.2091 12.2909 68 14.5 68H64.5C66.7091 68 68.5 66.2091 68.5 64V57" stroke="#3C454D" stroke-width="2" stroke-linecap="round"/>
+<path d="M14.5002 35L64.5 35" stroke="#DDE8F9" stroke-width="2" stroke-linecap="round"/>
+<path d="M14.5002 34L64.5 34" stroke="#3C454D" stroke-width="2" stroke-linecap="round"/>
+<path d="M2.5 68L70.5 68" stroke="#3C454D" stroke-width="2" stroke-linecap="round"/>
+<path d="M74.5 68H78.5" stroke="#3C454D" stroke-width="2" stroke-linecap="round"/>
+<path d="M60.7769 12.2764L76.8047 28.3041" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M67.1016 5.40066L64.2732 8.22906M60.5019 2.66699V6.66699M53.9022 5.40066L56.7306 8.22906M51.1686 12.0003H55.1686M53.9022 18.6L56.7306 15.7716M67.1016 18.6L64.2732 15.7716" stroke="#5B96EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="67" y="14.2578" width="6" height="8.75" rx="2" transform="rotate(135 67 14.2578)" fill="white"/>
+<rect x="79.375" y="26.6318" width="6" height="19.25" rx="2" transform="rotate(135 79.375 26.6318)" fill="#5B96EE"/>
+<rect x="79.1288" y="27.7988" width="4" height="26" rx="1" transform="rotate(135 79.1288 27.7988)" stroke="#3C454D" stroke-width="2"/>
+</svg>
