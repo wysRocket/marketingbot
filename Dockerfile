@@ -1,5 +1,5 @@
 FROM node:20-alpine
-WORKDIR /app/dashboard
+WORKDIR /app
 COPY dashboard/package*.json ./
 RUN npm ci
 COPY dashboard/ ./
