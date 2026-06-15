@@ -4,6 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+console.log('Starting server in CWD:', process.cwd());
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const PUBLIC = path.join(__dirname, 'dist');
 const TYPES = { '.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.ico':'image/x-icon','.svg':'image/svg+xml' };
