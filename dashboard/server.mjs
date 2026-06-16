@@ -4,12 +4,19 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-console.log('Starting server in CWD:', process.cwd());
+console.log('=== SERVER START ===');
+console.log('CWD:', process.cwd());
+console.log('__dirname:', __dirname);
+console.log('PORT:', process.env.PORT);
+console.log('dist exists:', fs.existsSync(path.join(__dirname, 'dist')));
+console.log('index.html exists:', fs.existsSync(path.join(__dirname, 'dist', 'index.html')));
+
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const PUBLIC = path.join(__dirname, 'dist');
 const TYPES = { '.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.ico':'image/x-icon','.svg':'image/svg+xml' };
 
 http.createServer((req, res) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
   if (req.url === '/api/health') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     return res.end(JSON.stringify({ ok: true }));
@@ -40,4 +47,4 @@ http.createServer((req, res) => {
     res.writeHead(404);
     res.end('Not found');
   }
-}).listen(PORT, '0.0.0.0', () => console.log(`Dashboard at http://localhost:${PORT}`));
+}).listen(PORT, '0.0.0.0', () => console.log(`=== LISTENING on ${PORT} ===`));
