@@ -6,5 +6,4 @@ telemetry
 .git
 .claude
 *.md
-Dockerfile
 .dockerignore
