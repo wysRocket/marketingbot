@@ -32,7 +32,7 @@ function OverviewPage() {
         if (el) el.textContent = 'Updated ' + new Date().toLocaleTimeString()
       }
     } catch (e) { console.error(e) }
-  }, [lastFp, getFn])
+  }, [lastFp, getDashboardData])
 
   useEffect(() => {
     fetchData()

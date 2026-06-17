@@ -39,7 +39,7 @@ function SessionsPage() {
         if (el && el.textContent) el.textContent = 'Updated ' + new Date().toLocaleTimeString()
       }
     } catch (e) { console.error(e) }
-  }, [lastFp, getFn])
+  }, [lastFp, getDashboardData])
 
   useEffect(() => { fetchData(); const iv = setInterval(fetchData, 5000); return () => clearInterval(iv) }, [fetchData])
 

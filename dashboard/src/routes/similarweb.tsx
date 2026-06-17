@@ -40,7 +40,7 @@ function SimilarwebPage() {
       const d = await getDashboardData()
       if (d.fingerprint !== lastFp) { setLastFp(d.fingerprint); setData(d as DashboardData) }
     } catch (e) { console.error(e) }
-  }, [lastFp, getFn])
+  }, [lastFp, getDashboardData])
 
   useEffect(() => { fetchData(); const iv = setInterval(fetchData, 5000); return () => clearInterval(iv) }, [fetchData])
 
