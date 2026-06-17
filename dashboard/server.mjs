@@ -55,11 +55,23 @@ function parseCookies(header) {
 }
 
 function setCookie(res, name, value, maxAge) {
-  res.setHeader('Set-Cookie', `${name}=${encodeURIComponent(value)}; Path=/; HttpOnly; SameSite=Lax; Secure; Max-Age=${maxAge}`);
+  const cookie = `${name}=${encodeURIComponent(value)}; Path=/; HttpOnly; SameSite=Lax; Secure; Max-Age=${maxAge}`;
+  const existing = res.getHeader('Set-Cookie');
+  if (existing) {
+    res.setHeader('Set-Cookie', Array.isArray(existing) ? [...existing, cookie] : [existing, cookie]);
+  } else {
+    res.setHeader('Set-Cookie', cookie);
+  }
 }
 
 function clearCookie(res, name) {
-  res.setHeader('Set-Cookie', `${name}=; Path=/; HttpOnly; SameSite=Lax; Secure; Max-Age=0`);
+  const cookie = `${name}=; Path=/; HttpOnly; SameSite=Lax; Secure; Max-Age=0`;
+  const existing = res.getHeader('Set-Cookie');
+  if (existing) {
+    res.setHeader('Set-Cookie', Array.isArray(existing) ? [...existing, cookie] : [existing, cookie]);
+  } else {
+    res.setHeader('Set-Cookie', cookie);
+  }
 }
 
 function httpsPost(url, data) {
