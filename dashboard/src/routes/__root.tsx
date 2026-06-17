@@ -1,5 +1,7 @@
-import { Outlet, createRootRoute, Link } from '@tanstack/react-router'
+import { Outlet, createRootRoute, Link, useNavigate } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { useEffect, useState, useCallback } from 'react'
+
 export const Route = createRootRoute({
   component: RootLayout,
 })
@@ -12,7 +14,27 @@ const nav = [
   { to: '/similarweb', icon: '📈', label: 'Similarweb' },
 ]
 
+interface AuthState {
+  authenticated: boolean
+  user: { login: string } | null
+  oauthEnabled: boolean
+}
+
 function RootLayout() {
+  const [auth, setAuth] = useState<AuthState | null>(null)
+
+  const checkAuth = useCallback(async () => {
+    try {
+      const res = await fetch('/api/auth/status')
+      if (res.ok) setAuth(await res.json())
+      else setAuth({ authenticated: false, user: null, oauthEnabled: false })
+    } catch {
+      setAuth({ authenticated: false, user: null, oauthEnabled: false })
+    }
+  }, [])
+
+  useEffect(() => { checkAuth() }, [checkAuth])
+
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'hidden', background: '#0b0d11' }}>
       {/* Sidebar */}
@@ -41,6 +63,27 @@ function RootLayout() {
           </Link>
         ))}
         <div style={{ flex: 1 }} />
+        {/* Auth section */}
+        {auth?.authenticated && auth.user && (
+          <div style={{ textAlign: 'center', padding: '4px 0', marginBottom: 4 }}>
+            <div style={{
+              width: 28, height: 28, borderRadius: '50%', background: '#238636',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 11, fontWeight: 700, color: '#fff', margin: '0 auto 4px',
+              fontFamily: 'monospace',
+            }}>{auth.user.login[0].toUpperCase()}</div>
+            <a href="/api/auth/logout" title="Sign out" style={{
+              fontSize: 9, color: '#484f58', textDecoration: 'none',
+            }}>sign out</a>
+          </div>
+        )}
+        {!auth?.authenticated && auth?.oauthEnabled && (
+          <a href="/api/auth/login" title="Sign in" style={{
+            width: 36, height: 36, borderRadius: 6, display: 'flex',
+            alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: 16,
+            background: '#238636', color: '#fff', marginBottom: 4, textDecoration: 'none',
+          }}>🔑</a>
+        )}
       </div>
 
       {/* Main */}
@@ -51,6 +94,11 @@ function RootLayout() {
         }}>
           <h1 style={{ fontSize: 13, fontWeight: 600, color: '#c9d1d9' }}>Marketingbot</h1>
           <div style={{ flex: 1 }} />
+          {auth?.authenticated && auth.user && (
+            <span style={{ fontSize: 11, color: '#238636', fontWeight: 600 }}>
+              @{auth.user.login}
+            </span>
+          )}
           <span style={{ fontSize: 11, color: '#484f58' }} id="last-update">—</span>
         </div>
         <div style={{ flex: 1, overflow: 'auto', padding: 12 }}>
