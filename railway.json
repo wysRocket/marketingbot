@@ -1,0 +1,9 @@
+{
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "echo 'Skipping tsc build - using ts-node directly'"
+  },
+  "deploy": {
+    "startCommand": "BOT_SITE_PROFILE=guidenza BOT_ENABLED=1 CONCURRENCY=1 TOTAL_ROUNDS=1 ROUND_TIMEOUT_MS=120000 RAILWAY_REPLICA_ID=local npx ts-node --transpile-only src/index.patchright.ts"
+  }
+}
