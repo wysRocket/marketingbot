@@ -11,7 +11,7 @@ export const dashboard = defineService({
     dockerfilePath: 'Dockerfile',
   },
   deploy: {
-    startCommand: 'node server.ts',
+    startCommand: 'node server.mjs',
     healthcheckPath: '/api/health',
     healthcheckTimeout: 30,
     restartPolicyType: 'ON_FAILURE',
