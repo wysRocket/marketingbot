@@ -18,7 +18,7 @@
         "dockerfile": "Dockerfile.dashboard"
       },
       "deploy": {
-        "startCommand": "node server.mjs",
+        "startCommand": "node dashboard/server.mjs",
         "healthcheckPath": "/api/health",
         "healthcheckTimeout": 30,
         "restartPolicyType": "ON_FAILURE",

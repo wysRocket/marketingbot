@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["nodejs_20"]
+
+[phases.build]
+cmd = "cd dashboard && npm ci && npm run build"
+
+[start]
+cmd = "cd dashboard && node server.mjs"
