@@ -2,10 +2,10 @@ FROM node:20-slim
 
 WORKDIR /app
 
-COPY dashboard/package.json dashboard/package-lock.json ./
+COPY package.json package-lock.json ./
 RUN npm ci
 
-COPY dashboard/ .
+COPY . .
 RUN npm run build
 
 ENV PORT=3000
