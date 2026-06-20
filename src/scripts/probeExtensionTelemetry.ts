@@ -68,8 +68,8 @@ async function run(): Promise<void> {
       try {
         const swCdp = await target.context().newCDPSession(target);
         await swCdp.send("Network.enable", {});
-        swCdp.on("Network.requestWillBeSent", (event: any) => handleRequest(event));
-        swCdp.on("Network.responseReceived", (event: any) => handleResponse(event));
+        // Service worker CDP monitoring disabled (handleRequest/handleResponse not defined)
+        void swCdp;
       } catch {}
     }
   } catch {}
@@ -136,7 +136,7 @@ async function run(): Promise<void> {
           responseBody = responseBody.slice(0, 10000) + "\n… [truncated at 10KB]";
         }
         // Pretty-print JSON
-        try { responseBody = JSON.stringify(JSON.parse(responseBody), null, 2); } catch {}
+        try { responseBody = JSON.stringify(JSON.parse(responseBody ?? ""), null, 2); } catch {}
       } catch {}
 
       const obs: Observation = {
