@@ -2,8 +2,8 @@ import "dotenv/config";
 import { chromium } from "patchright";
 import * as fsSync from "node:fs";
 import path from "node:path";
-import { createDashboardServer } from "../observability/dashboardServer";
 import { createExtensionTelemetryInterceptor, type ExtensionTelemetryEvent } from "../observability/extensionTelemetry";
+import { createDashboardServer } from "../observability/unifiedDashboard";
 import { ensureDisplay, getChromeMode } from "../utils/display";
 
 const TARGET_DOMAIN = process.env.TARGET_DOMAIN ?? "guidenza.com";

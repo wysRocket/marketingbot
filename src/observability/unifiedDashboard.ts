@@ -126,6 +126,67 @@ server.listen(PORT, () => {
 
 process.on("SIGINT", () => { server.close(); process.exit(0); });
 
+export function createDashboardServer(options?: { port?: number; maxEvents?: number }) {
+  const PORT = options?.port ?? parseInt(process.env.DASHBOARD_PORT ?? "3000", 10);
+  const maxEvents = options?.maxEvents ?? 10000;
+  
+  const app = express();
+  
+  // Serve static HTML
+  app.get("/", (_req, res) => {
+    res.sendFile(path.join(__dirname, "public", "dashboard.html"));
+  });
+
+  // Unified data endpoint
+  app.get("/api/data", async (_req, res) => {
+    try {
+      const data = await loadAllData();
+      res.json(data);
+    } catch (err) {
+      res.status(500).json({ error: (err as Error).message });
+    }
+  });
+
+  // Health
+  app.get("/api/health", (_req, res) => {
+    res.json({ ok: true, port: PORT });
+  });
+
+  // Clear extension events (for the Extensions tab)
+  app.post("/api/clear-events", async (_req, res) => {
+    try {
+      const eventsPath = path.join(TELEMETRY_DIR, "extension-events.jsonl");
+      await fs.writeFile(eventsPath, "", "utf8");
+      res.json({ ok: true });
+    } catch (err) {
+      res.status(500).json({ error: (err as Error).message });
+    }
+  });
+
+  // Event storage for extension telemetry
+  const events: any[] = [];
+  app.post("/api/events", express.json({ limit: "10mb" }), (req, res) => {
+    const event = req.body;
+    events.push(event);
+    if (events.length > maxEvents) events.shift();
+    res.json({ ok: true });
+  });
+  
+  app.get("/api/events", (_req, res) => {
+    res.json(events);
+  });
+
+  const srv = createServer(app);
+  
+  return {
+    server: srv,
+    app,
+    start: () => srv.listen(PORT, () => console.log(`🧭 Dashboard: http://localhost:${PORT}`)),
+    addEvent: (event: any) => { events.push(event); if (events.length > maxEvents) events.shift(); },
+    stop: () => srv.close(),
+  };
+}
+
 if (require.main === module) {
   // Already started above
 }

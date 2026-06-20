@@ -1,4 +1,4 @@
-import { Page } from "playwright";
+// Page imported from playwright is incompatible with patchright's Page type;
 
 export interface ExtensionTelemetryEvent {
   timestamp: number;
@@ -92,19 +92,19 @@ export class ExtensionTelemetryInterceptor {
     this.config = { ...DEFAULT_CONFIG, ...config } as ExtensionTelemetryConfig;
   }
 
-  async attach(page: Page): Promise<void> {
+  async attach(page: any): Promise<void> {
     this.cdp = await page.context().newCDPSession(page) as typeof this.cdp;
 
     // Enable network domain with request/response bodies
-    await this.cdp.send("Network.enable", {});
+    await this.cdp!.send("Network.enable", {});
 
     // Get response bodies for relevant requests
-    await this.cdp.send("Network.setCacheDisabled", { cacheDisabled: true });
+    await this.cdp!.send("Network.setCacheDisabled", { cacheDisabled: true });
 
-    this.cdp.on("Network.requestWillBeSent", this.onRequestWillBeSent.bind(this));
-    this.cdp.on("Network.responseReceived", this.onResponseReceived.bind(this));
-    this.cdp.on("Network.loadingFinished", this.onLoadingFinished.bind(this));
-    this.cdp.on("Network.loadingFailed", this.onLoadingFailed.bind(this));
+    this.cdp!.on("Network.requestWillBeSent", this.onRequestWillBeSent.bind(this));
+    this.cdp!.on("Network.responseReceived", this.onResponseReceived.bind(this));
+    this.cdp!.on("Network.loadingFinished", this.onLoadingFinished.bind(this));
+    this.cdp!.on("Network.loadingFailed", this.onLoadingFailed.bind(this));
   }
 
   private onRequestWillBeSent(event: any): void {
@@ -125,7 +125,7 @@ export class ExtensionTelemetryInterceptor {
     }
   }
 
-  private async onResponseReceived(event: any): void {
+  private async onResponseReceived(event: any): Promise<void> {
     const { requestId, response } = event;
     if (!response) return;
 
@@ -154,7 +154,7 @@ export class ExtensionTelemetryInterceptor {
     requestId: string,
     encodedDataLength: number,
     errorText: string | null
-  ): void {
+  ): Promise<void> {
     const meta = this.requestIdToMeta.get(requestId);
     if (!meta) return;
 
