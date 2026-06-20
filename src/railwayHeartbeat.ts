@@ -72,8 +72,17 @@ export function startRailwayHeartbeatServer(): void {
       try {
         const telemetryDir = process.env.FLOW_TELEMETRY_DIR ?? "telemetry";
         const jsonlPath = path.resolve(process.cwd(), telemetryDir, "patchright.sessions.jsonl");
-        const raw = fs.readFileSync(jsonlPath, "utf8");
-        const sessions = raw.split("\n").filter(Boolean).slice(-500).map((l: string) => JSON.parse(l));
+        // Read last 100KB of file to get recent sessions (much faster than reading 116MB)
+        const stats = fs.statSync(jsonlPath);
+        const size = stats.size;
+        const chunkSize = Math.min(size, 100 * 1024);
+        const buf = Buffer.alloc(chunkSize);
+        const fd = fs.openSync(jsonlPath, "r");
+        fs.readSync(fd, buf, 0, chunkSize, size - chunkSize);
+        fs.closeSync(fd);
+        const raw = buf.toString("utf8");
+        const lines = raw.split("\n").filter(Boolean);
+        const sessions = lines.slice(-500).map((l: string) => JSON.parse(l));
         res.statusCode = 200;
         res.setHeader("content-type", "application/json; charset=utf-8");
         res.setHeader("Access-Control-Allow-Origin", "*");
