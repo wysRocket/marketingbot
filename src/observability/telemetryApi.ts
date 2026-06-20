@@ -44,5 +44,7 @@ export function startTelemetryApi() {
 
   app.listen(PORT, () => {
     console.log(`📊 Telemetry API running on port ${PORT}`)
+  }).on('error', (err) => {
+    console.error(`[telemetry-api] Failed to start on port ${PORT}: ${err.message}`)
   })
 }
