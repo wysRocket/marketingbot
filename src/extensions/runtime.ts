@@ -99,26 +99,31 @@ export function resolveExtensionBundle(input: {
       ? DEFAULT_RAILWAY_EXTENSION_SLUGS
       : availableExtensions.map((entry) => entry.slug));
 
+  const resolvedSlugs: string[] = [];
   for (const slug of selectedSlugs) {
     if (!availableBySlug.has(slug)) {
-      throw new Error(
-        `PATCHRIGHT_EXTENSION_SLUGS references "${slug}", but ${path.join(input.extensionsDir, slug)} is missing`,
-      );
+      console.warn(`[extensions] slug "${slug}" not found in ${input.extensionsDir}, skipping`);
+      continue;
     }
     if (!manifestBySlug.has(slug)) {
       throw new Error(
         `Extension slug "${slug}" is present in .extensions but missing from the pinned manifest at ${input.manifestPath}`,
       );
     }
+    resolvedSlugs.push(slug);
   }
 
-  const manifestEntries = selectedSlugs.map((slug) => manifestBySlug.get(slug)!);
+  if (resolvedSlugs.length === 0) {
+    console.warn("[extensions] no valid extensions found, running without extensions");
+  }
+
+  const manifestEntries = resolvedSlugs.map((slug) => manifestBySlug.get(slug)!);
 
   return {
-    selectedSlugs,
-    selectedPaths: selectedSlugs.map((slug) => availableBySlug.get(slug)!),
+    selectedSlugs: resolvedSlugs,
+    selectedPaths: resolvedSlugs.map((slug) => availableBySlug.get(slug)!),
     bundleHash: computeExtensionBundleHash({
-      selectedSlugs,
+      selectedSlugs: resolvedSlugs,
       manifestEntries,
     }),
   };
