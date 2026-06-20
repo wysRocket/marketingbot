@@ -16,7 +16,7 @@
     "bridge:install:launchd": "bash scripts/install-mostlogin-bridge-launchd.sh",
     "create:profiles": "ts-node src/scripts/createProfiles.ts",
     "audit:cache": "ts-node src/scripts/auditCacheHeaders.ts",
-    "build": "cd dashboard && npm run build",
+    "build": "cd dashboard && npm ci && npm run build",
     "start:js": "node dist/index.js",
     "mcp": "ts-node src/mcp/server.ts",
     "mcp:mostlogin": "ts-node src/mcp/mostlogin/server.ts",
