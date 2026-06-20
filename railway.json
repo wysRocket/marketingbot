@@ -14,11 +14,11 @@
     },
     "dashboard": {
       "build": {
-        "builder": "NIXPACKS",
-        "buildCommand": "cd dashboard && npm ci && npm run build"
+        "builder": "DOCKERFILE",
+        "dockerfile": "Dockerfile.dashboard"
       },
       "deploy": {
-        "startCommand": "cd dashboard && node server.mjs",
+        "startCommand": "node server.mjs",
         "healthcheckPath": "/api/health",
         "healthcheckTimeout": 30,
         "restartPolicyType": "ON_FAILURE",
