@@ -235,22 +235,26 @@ http.createServer(async (req, res) => {
     return res.end();
   }
 
-  // --- Protected API ---
+  // --- Telemetry data (proxied to marketingbot, no auth required) ---
   if (req.url === '/api/data') {
-    if (!isAuthenticated(req)) return requireAuth(res);
+    const apiUrl = process.env.BOT_API_URL || 'http://marketingbot.railway.internal:8080/api/data';
     try {
-      const raw = fs.readFileSync(path.join(process.env.TELEMETRY_DIR || path.join(__dirname, '..', 'telemetry'), 'patchright.sessions.jsonl'), 'utf8');
-      const sessions = raw.split('\n').filter(Boolean).slice(-500).map(l => JSON.parse(l));
+      const ctrl = new AbortController();
+      const timeout = setTimeout(() => ctrl.abort(), 10000);
+      const resp = await fetch(apiUrl, { signal: ctrl.signal });
+      clearTimeout(timeout);
+      const data = await resp.json();
       res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-      return res.end(JSON.stringify({ sessions, extEvents: [], swObservations: [], fingerprint: sessions.length + ':' + (sessions[sessions.length-1]?.recordedAt || '') }));
+      return res.end(JSON.stringify(data));
     } catch(e) {
-      console.error('[API ERROR]', e.message);
+      console.error('[API ERROR] proxy failed:', e.message);
+      // Fallback: return empty
       res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
       return res.end(JSON.stringify({ sessions: [], extEvents: [], swObservations: [], fingerprint: 'empty' }));
     }
   }
 
-  // --- Static files (protected) ---
+  // --- Protected API ---
   if (!isAuthenticated(req)) {
     // Serve login page for HTML requests
     if (!req.url.startsWith('/api') && (req.url === '/' || !req.url.includes('.'))) {

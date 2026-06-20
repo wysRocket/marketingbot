@@ -1,4 +1,6 @@
 import http from "http";
+import fs from "fs";
+import path from "path";
 import { botController } from "./control/runtimeController";
 
 /**
@@ -62,6 +64,25 @@ export function startRailwayHeartbeatServer(): void {
       res.statusCode = 200;
       res.setHeader("content-type", "text/plain; charset=utf-8");
       res.end("ok");
+      return;
+    }
+
+    // Telemetry data endpoint (unauthenticated, used by dashboard)
+    if (method === "GET" && url === "/api/data") {
+      try {
+        const telemetryDir = process.env.FLOW_TELEMETRY_DIR ?? "telemetry";
+        const jsonlPath = path.resolve(process.cwd(), telemetryDir, "patchright.sessions.jsonl");
+        const raw = fs.readFileSync(jsonlPath, "utf8");
+        const sessions = raw.split("\n").filter(Boolean).slice(-500).map((l: string) => JSON.parse(l));
+        res.statusCode = 200;
+        res.setHeader("content-type", "application/json; charset=utf-8");
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.end(JSON.stringify({ sessions, extEvents: [], swObservations: [], fingerprint: sessions.length + ":" + (sessions[sessions.length-1]?.recordedAt || "") }));
+      } catch (e) {
+        res.statusCode = 500;
+        res.setHeader("content-type", "application/json; charset=utf-8");
+        res.end(JSON.stringify({ error: (e as Error).message }));
+      }
       return;
     }
 
