@@ -14,6 +14,7 @@
     "create:profiles": "ts-node src/scripts/createProfiles.ts",
     "audit:cache": "ts-node src/scripts/auditCacheHeaders.ts",
     "build": "tsc",
+  "postinstall": "npx patchright install chromium 2>&1 || true",
     "start:js": "node dist/index.js",
     "mcp": "ts-node src/mcp/server.ts",
     "mcp:mostlogin": "ts-node src/mcp/mostlogin/server.ts",
