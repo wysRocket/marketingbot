@@ -35,4 +35,5 @@ RUN npm run build
 # Install Chromium for patchright
 RUN npx patchright install chromium
 
-CMD ["npm", "run", "start:patchright"]
+ENV BOT_SITE_PROFILE=guidenza
+CMD ["ts-node", "src/index.patchright.ts"]
