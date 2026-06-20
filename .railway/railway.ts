@@ -7,8 +7,7 @@ export const dashboard = defineService({
     path: './dashboard',
   },
   build: {
-    builder: 'DOCKERFILE',
-    dockerfilePath: 'Dockerfile',
+    builder: 'NIXPACKS',
   },
   deploy: {
     startCommand: 'node server.mjs',
@@ -18,7 +17,7 @@ export const dashboard = defineService({
     restartPolicyMaxRetries: 3,
   },
   variables: {
-    BOT_API_URL: '${{marketingbot.RAILWAY_INTERNAL_URL}}/api/data',
+    BOT_API_URL: 'http://marketingbot:3000/api/data',
     PORT: '3000',
   },
   domains: ['dashboard.wysmyfree.com'],
