@@ -6,9 +6,6 @@ export const dashboard = defineService({
   source: {
     path: './dashboard',
   },
-  build: {
-    builder: 'NIXPACKS',
-  },
   deploy: {
     startCommand: 'node server.mjs',
     healthcheckPath: '/api/health',

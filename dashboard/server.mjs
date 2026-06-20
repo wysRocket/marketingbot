@@ -16,7 +16,7 @@ http.createServer((req, res) => {
   }
   if (req.url === '/api/data') {
     // Proxy to marketingbot telemetry API via Railway internal networking
-    const apiUrl = process.env.BOT_API_URL || 'http://marketingbot:3000/api/data';
+    const apiUrl = process.env.BOT_API_URL || 'http://marketingbot.railway.internal:8080/api/data';
     try {
       const ctrl = new AbortController();
       const timeout = setTimeout(() => ctrl.abort(), 5000);
