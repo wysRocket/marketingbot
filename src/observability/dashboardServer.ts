@@ -65,11 +65,11 @@ export class ExtensionTelemetryDashboard {
     this.app.use(express.json({ limit: "10mb" }));
     this.app.use(express.static(path.join(__dirname, "public")));
 
-    this.app.use((req, res, next) => {
+    this.app.use((req, res, next): void => {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
       res.header("Access-Control-Allow-Headers", "Content-Type");
-      if (req.method === "OPTIONS") return res.sendStatus(200);
+      if (req.method === "OPTIONS") { res.sendStatus(200); return; }
       next();
     });
   }
@@ -111,9 +111,9 @@ export class ExtensionTelemetryDashboard {
       });
     });
 
-    this.app.post("/api/events", (req, res) => {
+    this.app.post("/api/events", (req, res): void => {
       const event = req.body as TelemetryEvent;
-      if (!event || !event.url) return res.status(400).json({ error: "Invalid event" });
+      if (!event || !event.url) { res.status(400).json({ error: "Invalid event" }); return; }
       this.addEvent(event);
       res.json({ success: true, index: this.events.length - 1 });
     });
