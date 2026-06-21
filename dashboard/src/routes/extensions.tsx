@@ -41,7 +41,7 @@ function ExtensionsPage() {
 
   const filtered = useMemo(() => {
     if (!data) return []
-    let list = [...data.extEvents]
+    let list = [...(data.extEvents || [])]
     if (domainFilter) list = list.filter(e => e.matchedDomain.includes(domainFilter))
     if (methodFilter) list = list.filter(e => e.method === methodFilter)
     return list
