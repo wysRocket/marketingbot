@@ -84,7 +84,8 @@ export function startRailwayHeartbeatServer(): void {
         fs.closeSync(fd);
         const raw = buf.toString("utf8");
         const lines = raw.split("\n").filter(Boolean);
-        const sessions = lines.slice(-500).map((l: string) => JSON.parse(l));
+        // Limit to last 50 sessions to keep response small (~100KB max)
+        const sessions = lines.slice(-50).map((l: string) => JSON.parse(l));
 
         // Read extension events (small file, read fully)
         let extEvents: any[] = [];
