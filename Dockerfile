@@ -18,6 +18,9 @@ RUN npm install
 # Download Patchright's patched Chromium (cached in this image layer)
 RUN npx patchright install chromium --with-deps
 
+# Bust cache for src/ layer on each build
+ARG CACHE_BUST=1
+
 COPY src/ ./src/
 COPY mostlogin-extensions/ ./.extensions/
 RUN npx ts-node src/scripts/pullExtensions.ts
