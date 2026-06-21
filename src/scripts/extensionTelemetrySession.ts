@@ -2,7 +2,10 @@ import "dotenv/config";
 import { chromium } from "patchright";
 import * as fsSync from "node:fs";
 import path from "node:path";
-import { createDashboardServer } from "../observability/dashboardServer";
+// Stub: createDashboardServer was removed
+function createDashboardServer(_opts: { port: number; maxEvents: number }) {
+  return { start: async () => {}, stop: async () => {}, addEvent: (_e?: unknown) => {} };
+}
 import { createExtensionTelemetryInterceptor, type ExtensionTelemetryEvent } from "../observability/extensionTelemetry";
 import { ensureDisplay, getChromeMode } from "../utils/display";
 
@@ -81,7 +84,7 @@ async function run(): Promise<void> {
       }
     }
   );
-  await interceptor.attach(page);
+  await interceptor.attach(page as any);
 
   // 4. Navigate to target
   console.log(`\n🌐 Navigating to https://${TARGET_DOMAIN}`);

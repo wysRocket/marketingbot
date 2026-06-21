@@ -74,9 +74,37 @@ export async function searchAndNavigate(
   const cfg = getEngineConfig(engineHostname);
 
   try {
-    // Step 1: Navigate to the pre-built SERP URL
-    await page.goto(serpUrl, { waitUntil: "domcontentloaded", timeout: 30_000 });
-    await randomDelay(page, 800, 1_600);
+    // ── Step 0: Behavioral warmup — visit Google first, type into search box ──
+    // Going straight to a SERP URL is a strong bot signal. Instead, land on
+    // google.com like a real user, then type the query into the search box.
+    if (engineHostname.startsWith("www.google.")) {
+      try {
+        await page.goto("https://www.google.com", { waitUntil: "domcontentloaded", timeout: 15_000 });
+        await randomDelay(page, 800, 2_000);
+        const searchBox = page.locator("textarea[name='q'], input[name='q']").first();
+        await searchBox.waitFor({ timeout: 5_000 }).catch(() => {});
+        if (await searchBox.isVisible().catch(() => false)) {
+          await searchBox.click();
+          await searchBox.fill("");
+          for (const char of query) {
+            await searchBox.type(char, { delay: 50 + Math.random() * 80 });
+          }
+          await randomDelay(page, 300, 800);
+          await page.keyboard.press("Enter");
+          await page.waitForLoadState("domcontentloaded", { timeout: 15_000 }).catch(() => {});
+          await randomDelay(page, 800, 1_600);
+        } else {
+          await page.goto(serpUrl, { waitUntil: "domcontentloaded", timeout: 30_000 });
+          await randomDelay(page, 800, 1_600);
+        }
+      } catch {
+        await page.goto(serpUrl, { waitUntil: "domcontentloaded", timeout: 30_000 });
+        await randomDelay(page, 800, 1_600);
+      }
+    } else {
+      await page.goto(serpUrl, { waitUntil: "domcontentloaded", timeout: 30_000 });
+      await randomDelay(page, 800, 1_600);
+    }
 
     // Step 2: Fail fast on Google's CAPTCHA/sorry page — detected by URL before
     // wasting time waiting for selectors that will never appear.
@@ -89,14 +117,10 @@ export async function searchAndNavigate(
     const initialState = await racePageState(page, cfg.resultsContainer, 8_000);
 
     if (initialState === "consent") {
-      // A consent button became visible before results — click it and wait for
-      // the page to navigate back to the SERP (redirect) or dismiss the overlay.
       await clickConsentButton(page);
       await page.waitForLoadState("domcontentloaded", { timeout: 12_000 }).catch(() => {});
       await randomDelay(page, 400, 800);
     } else if (initialState === "timeout") {
-      // Neither results nor consent appeared — likely a CAPTCHA or block page.
-      // Fail immediately rather than burning another 15s on a second wait.
       throw new Error(
         `Results container ("${cfg.resultsContainer}") not found on ${engineHostname} — possible CAPTCHA or block`,
       );
@@ -153,16 +177,62 @@ export async function searchAndNavigate(
     });
   } catch (err) {
     console.warn(
-      `[searchEngine] fallback to direct navigate (${engineHostname}: ${(err as Error).message})`,
+      `[searchEngine] fallback for ${engineHostname}: ${(err as Error).message}`,
     );
-    // Use the SERP URL as a plain Referer so the session is at least attributed
-    // to the search engine rather than being completely sourceless.
-    await page.goto(targetUrl, {
-      waitUntil: "domcontentloaded",
-      timeout: 60_000,
-      referer: serpUrl,
-    }).catch(() => {});
+    await tryFallbackSearch(page, serpUrl, targetUrl, query, targetHostname).catch(() => {});
   }
+}
+
+/**
+ * Fallback search: try DuckDuckGo (no CAPTCHA), then direct navigate with Referer.
+ */
+async function tryFallbackSearch(
+  page: Page,
+  originalSerpUrl: string,
+  targetUrl: string,
+  query: string,
+  targetHostname: string,
+): Promise<void> {
+  // Try DuckDuckGo first
+  try {
+    const ddgUrl = `https://duckduckgo.com/?q=${encodeURIComponent(query)}&kl=us-en`;
+    await page.goto(ddgUrl, { waitUntil: "domcontentloaded", timeout: 20_000 });
+    await randomDelay(page, 1000, 2000);
+
+    const ddgResults = await page
+      .waitForSelector("[data-testid='result'], #links, .results", { timeout: 8000 })
+      .then(() => true)
+      .catch(() => false);
+
+    if (ddgResults) {
+      const ddgLink = page.locator(`a[href*="${targetHostname}"]`).first();
+      const found = await ddgLink.waitFor({ timeout: 5000 }).then(() => true).catch(() => false);
+      if (found) {
+        const currentUrl = page.url();
+        const href = await ddgLink.getAttribute("href").catch(() => null);
+        const destination =
+          href && (href.startsWith("https://") || href.startsWith("http://"))
+            ? href
+            : targetUrl;
+        await page.goto(destination, {
+          waitUntil: "domcontentloaded",
+          timeout: 30_000,
+          referer: currentUrl,
+        });
+        console.log(`[searchEngine] fallback via DuckDuckGo → ${targetUrl}`);
+        return;
+      }
+    }
+  } catch (ddgErr) {
+    console.warn(`[searchEngine] DuckDuckGo fallback failed: ${(ddgErr as Error).message}`);
+  }
+
+  // Last resort: direct navigation with original SERP as Referer
+  await page.goto(targetUrl, {
+    waitUntil: "domcontentloaded",
+    timeout: 60_000,
+    referer: originalSerpUrl,
+  }).catch(() => {});
 }
 
 // ---------------------------------------------------------------------------

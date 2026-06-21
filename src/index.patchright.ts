@@ -1008,6 +1008,8 @@ async function main(): Promise<void> {
   console.log("\nAll rounds complete.");
 }
 
+// Telemetry API server is started via railwayHeartbeat.ts
+
 void main().catch((err) => {
   console.error(
     `[fatal] Main loop crashed: ${(err as Error).stack ?? (err as Error).message}`,
