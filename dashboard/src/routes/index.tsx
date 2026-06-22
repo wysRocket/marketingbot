@@ -42,7 +42,7 @@ function OverviewPage() {
 
   if (!data) return <div style={{ padding: 20, color: '#484f58' }}>Loading...</div>
 
-  const s = data.sessions, n = s.length
+  const s = data.sessions || [], n = s.length
   const passed = s.filter(x => x.metMinDuration && x.metMinUniquePages).length
   const avgDur = n ? Math.round(s.reduce((a, x) => a + (x.elapsedMs || 0), 0) / n / 1000) : 0
   const totalTraf = s.reduce((a, x) => a + (x.trafficBytesTotal || 0), 0)
