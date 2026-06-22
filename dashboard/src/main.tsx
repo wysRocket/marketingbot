@@ -17,6 +17,7 @@ declare module '@tanstack/react-router' {
 
 const rootElement = document.getElementById('app')!
 
+// Ensure root element exists and is ready
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(<RouterProvider router={router} />)

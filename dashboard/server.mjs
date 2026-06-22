@@ -240,17 +240,17 @@ http.createServer(async (req, res) => {
     const apiUrl = process.env.BOT_API_URL || 'http://marketingbot.railway.internal:8080/api/data';
     try {
       const ctrl = new AbortController();
-      const timeout = setTimeout(() => ctrl.abort(), 10000);
+      const timeout = setTimeout(() => ctrl.abort(), 30000);
       const resp = await fetch(apiUrl, { signal: ctrl.signal });
       clearTimeout(timeout);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
       res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
       return res.end(JSON.stringify(data));
     } catch(e) {
       console.error('[API ERROR] proxy failed:', e.message);
-      // Fallback: return empty
       res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-      return res.end(JSON.stringify({ sessions: [], extEvents: [], swObservations: [], fingerprint: 'empty' }));
+      return res.end(JSON.stringify({ sessions: [], extEvents: [], swObservations: [], fingerprint: 'empty', error: e.message }));
     }
   }
 
