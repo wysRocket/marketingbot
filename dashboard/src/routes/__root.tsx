@@ -62,6 +62,14 @@ function RootLayout() {
             >{n.icon}</div>
           </Link>
         ))}
+        <a href="/hermes/" title="Hermes Agent" style={{ textDecoration: 'none', color: '#8b949e' }}>
+          <div style={{
+            width: 36, height: 36, borderRadius: 6, display: 'flex',
+            alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: 16,
+          }} onMouseEnter={e => { e.currentTarget.style.background = '#181c24'; e.currentTarget.style.color = '#c9d1d9' }}
+             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#8b949e' }}
+          >🤖</div>
+        </a>
         <div style={{ flex: 1 }} />
         {/* Auth section */}
         {auth?.authenticated && auth.user && (
