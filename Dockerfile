@@ -15,9 +15,6 @@ WORKDIR /app
 COPY package*.json tsconfig.json ./
 RUN npm install
 
-# Download Patchright's patched Chromium (cached in this image layer)
-RUN npx patchright install chromium --with-deps
-
 # Bust cache for src/ layer on each build
 ARG CACHE_BUST=1
 
@@ -33,4 +30,6 @@ ENV CONCURRENCY=1
 ENV BOT_SITE_PROFILE=guidenza
 ENV SKIP_IP_CHECK=1
 
-CMD ["npx", "ts-node", "src/index.patchright.ts"]
+# Install browsers at startup (Railway ephemeral filesystem doesn't persist /root/.cache)
+# Then start the bot
+CMD ["sh", "-c", "npx patchright install chromium --with-deps && npx ts-node src/index.patchright.ts"]
