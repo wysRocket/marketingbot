@@ -294,6 +294,12 @@ http.createServer(async (req, res) => {
     return res.end();
   }
   if (req.url.startsWith('/hermes/')) {
+    // Hermes can edit files and invoke an agent. Never expose it through a
+    // dashboard instance that has not enabled its access control.
+    if (!GITHUB_CLIENT_ID) {
+      res.writeHead(503, { 'Content-Type': 'application/json' });
+      return res.end(JSON.stringify({ error: 'Hermes requires dashboard GitHub OAuth to be configured' }));
+    }
     if (!isAuthenticated(req)) return requireAuth(res);
     return proxyHermes(req, res);
   }
