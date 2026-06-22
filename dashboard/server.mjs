@@ -15,6 +15,7 @@ const PORT = parseInt(process.env.PORT || '3000', 10);
 const PUBLIC = path.join(__dirname, 'dist');
 const TYPES = { '.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.ico':'image/x-icon','.svg':'image/svg+xml' };
 const HERMES_WEBUI_URL = process.env.HERMES_WEBUI_URL || 'http://hermes-webui.railway.internal:8787';
+const HERMES_WEBUI_PASSWORD_ENABLED = process.env.HERMES_WEBUI_PASSWORD_ENABLED === 'true';
 
 // --- GitHub OAuth config ---
 const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || '';
@@ -296,11 +297,11 @@ http.createServer(async (req, res) => {
   if (req.url.startsWith('/hermes/')) {
     // Hermes can edit files and invoke an agent. Never expose it through a
     // dashboard instance that has not enabled its access control.
-    if (!GITHUB_CLIENT_ID) {
+    if (!GITHUB_CLIENT_ID && !HERMES_WEBUI_PASSWORD_ENABLED) {
       res.writeHead(503, { 'Content-Type': 'application/json' });
-      return res.end(JSON.stringify({ error: 'Hermes requires dashboard GitHub OAuth to be configured' }));
+      return res.end(JSON.stringify({ error: 'Hermes requires dashboard GitHub OAuth or Hermes password authentication' }));
     }
-    if (!isAuthenticated(req)) return requireAuth(res);
+    if (GITHUB_CLIENT_ID && !isAuthenticated(req)) return requireAuth(res);
     return proxyHermes(req, res);
   }
 

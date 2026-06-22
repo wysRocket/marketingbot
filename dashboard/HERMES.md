@@ -4,7 +4,9 @@ Hermes is served at `/hermes/` through the dashboard service. The WebUI service
 has no public domain: it is only reachable over Railway private networking, and
 the dashboard applies its existing GitHub OAuth gate before proxying the request.
 The proxy fails closed until `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` are
-configured on the `dashboard` service.
+configured on the `dashboard` service, or Hermes' own password login is enabled
+with `HERMES_WEBUI_PASSWORD` on the `hermes-webui` service and
+`HERMES_WEBUI_PASSWORD_ENABLED=true` on the `dashboard` service.
 
 ## Railway service contract
 
