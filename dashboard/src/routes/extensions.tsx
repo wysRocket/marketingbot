@@ -32,7 +32,7 @@ function ExtensionsPage() {
         setData(d as DashboardData)
       }
     } catch (e) { console.error(e) }
-  }, [lastFp, getDashboardData])
+  }, [lastFp, getFn])
 
   useEffect(() => { fetchData(); const iv = setInterval(fetchData, 5000); return () => clearInterval(iv) }, [fetchData])
 

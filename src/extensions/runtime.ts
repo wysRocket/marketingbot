@@ -93,14 +93,13 @@ export function resolveExtensionBundle(input: {
   ) as ExtensionManifestEntry[];
   const manifestBySlug = new Map(manifest.map((entry) => [entry.slug, entry]));
   const requestedSlugs = parseExtensionSlugsEnv(input.extensionSlugsEnv);
-  const selectedSlugs =
-    requestedSlugs ??
-    (input.railwayEnvironment
-      ? DEFAULT_RAILWAY_EXTENSION_SLUGS
-      : availableExtensions.map((entry) => entry.slug));
-
-  for (const slug of selectedSlugs) {
+  const selectedSlugs: string[] = [];
+  for (const slug of (requestedSlugs ?? (input.railwayEnvironment ? DEFAULT_RAILWAY_EXTENSION_SLUGS : availableExtensions.map(e => e.slug)))) {
     if (!availableBySlug.has(slug)) {
+      if (input.railwayEnvironment) {
+        console.warn(`[extensions] skipping "${slug}" — not found in ${input.extensionsDir}`);
+        continue;
+      }
       throw new Error(
         `PATCHRIGHT_EXTENSION_SLUGS references "${slug}", but ${path.join(input.extensionsDir, slug)} is missing`,
       );
@@ -110,6 +109,7 @@ export function resolveExtensionBundle(input: {
         `Extension slug "${slug}" is present in .extensions but missing from the pinned manifest at ${input.manifestPath}`,
       );
     }
+    selectedSlugs.push(slug);
   }
 
   const manifestEntries = selectedSlugs.map((slug) => manifestBySlug.get(slug)!);

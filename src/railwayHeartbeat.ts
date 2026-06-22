@@ -67,12 +67,14 @@ export function startRailwayHeartbeatServer(): void {
       return;
     }
 
-    // Telemetry data endpoint (unauthenticated, used by dashboard)
+    // Telemetry data endpoint (used by dashboard)
     if (method === "GET" && url === "/api/data") {
       try {
         const telemetryDir = process.env.FLOW_TELEMETRY_DIR ?? "telemetry";
-        const jsonlPath = path.resolve(process.cwd(), telemetryDir, "patchright.sessions.jsonl");
-        // Read last 100KB of file to get recent sessions (much faster than reading 116MB)
+        const resolveFile = (name: string) => path.resolve(process.cwd(), telemetryDir, name);
+
+        // Read sessions (last 100KB for performance — file can be 100MB+)
+        const jsonlPath = resolveFile("patchright.sessions.jsonl");
         const stats = fs.statSync(jsonlPath);
         const size = stats.size;
         const chunkSize = Math.min(size, 100 * 1024);
@@ -83,10 +85,25 @@ export function startRailwayHeartbeatServer(): void {
         const raw = buf.toString("utf8");
         const lines = raw.split("\n").filter(Boolean);
         const sessions = lines.slice(-500).map((l: string) => JSON.parse(l));
+
+        // Read extension events (small file, read fully)
+        let extEvents: any[] = [];
+        try {
+          const extRaw = fs.readFileSync(resolveFile("extension-events.jsonl"), "utf8");
+          extEvents = extRaw.split("\n").filter(Boolean).slice(-200).map((l: string) => JSON.parse(l));
+        } catch { /* file may not exist yet */ }
+
+        // Read similarweb observations
+        let swObservations: any[] = [];
+        try {
+          const swRaw = fs.readFileSync(resolveFile("similarweb.observations.jsonl"), "utf8");
+          swObservations = swRaw.split("\n").filter(Boolean).map((l: string) => JSON.parse(l));
+        } catch { /* file may not exist yet */ }
+
         res.statusCode = 200;
         res.setHeader("content-type", "application/json; charset=utf-8");
         res.setHeader("Access-Control-Allow-Origin", "*");
-        res.end(JSON.stringify({ sessions, extEvents: [], swObservations: [], fingerprint: sessions.length + ":" + (sessions[sessions.length-1]?.recordedAt || "") }));
+        res.end(JSON.stringify({ sessions, extEvents, swObservations, fingerprint: sessions.length + ":" + (sessions[sessions.length-1]?.recordedAt || "") }));
       } catch (e) {
         res.statusCode = 500;
         res.setHeader("content-type", "application/json; charset=utf-8");

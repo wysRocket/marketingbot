@@ -13,7 +13,6 @@ import { login } from "./flows/login";
 import { explorePricing } from "./flows/explorePricing";
 import { accountDashboard } from "./flows/accountDashboard";
 import { loadCatalog, type LoadedCatalog } from "./profiles/catalog";
-import { startTelemetryApi } from "./observability/telemetryApi";
 import {
   validateShardConfig,
   shardCatalogProfiles,
@@ -715,8 +714,6 @@ async function runProfileSession(
       extensionBundleHash: EXTENSION_BUNDLE.bundleHash,
       extensionSlugs: EXTENSION_BUNDLE.selectedSlugs,
       sessionStatePolicy: profile.sessionStatePolicy,
-      targetDomain: SITE.baseUrl.replace(/^https?:\/\//, "").replace(/\/$/, ""),
-      referrerType: telemetry.flowsRun.length > 0 ? "mixed" : "unknown",
       telemetry,
       policy: SESSION_POLICY,
     }).catch((err) => {
@@ -1011,8 +1008,7 @@ async function main(): Promise<void> {
   console.log("\nAll rounds complete.");
 }
 
-// Start telemetry API server for dashboard
-startTelemetryApi()
+// Telemetry API server is started via railwayHeartbeat.ts
 
 void main().catch((err) => {
   console.error(

@@ -40,9 +40,9 @@ function OverviewPage() {
     return () => clearInterval(iv)
   }, [fetchData])
 
-  if (!data) return <div style={{ padding: 20, color: '#484f58' }}>Loading...</div>
+  if (!data) return <div style={{ padding: 20, color: '#8b949e' }}>Loading...</div>
 
-  const s = data.sessions || [], n = s.length
+  const s = data.sessions, n = s.length
   const passed = s.filter(x => x.metMinDuration && x.metMinUniquePages).length
   const avgDur = n ? Math.round(s.reduce((a, x) => a + (x.elapsedMs || 0), 0) / n / 1000) : 0
   const totalTraf = s.reduce((a, x) => a + (x.trafficBytesTotal || 0), 0)
@@ -70,7 +70,7 @@ function OverviewPage() {
             ['Extensions', exts.size], ['Domains', domains.size]
           ].map(([l, v]) => (
             <div key={l} style={{ flex: 1, background: '#11151c', padding: '10px 12px' }}>
-              <div style={{ fontSize: 9, textTransform: 'uppercase', letterSpacing: '.08em', color: '#484f58', marginBottom: 4 }}>{l}</div>
+              <div style={{ fontSize: 9, textTransform: 'uppercase', letterSpacing: '.08em', color: '#8b949e', marginBottom: 4 }}>{l}</div>
               <div style={{ fontSize: 20, fontWeight: 700, fontFamily: 'JetBrains Mono, monospace' }}>{v}</div>
             </div>
           ))}
@@ -101,7 +101,7 @@ function OverviewPage() {
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead><tr style={{ borderBottom: '1px solid #2a2f3a' }}>
             {['Time', 'Profile', 'Domain', 'Duration', 'Pages', 'Quality'].map(h => (
-              <th key={h} style={{ padding: '6px 10px', textAlign: 'left', fontSize: 9, textTransform: 'uppercase', letterSpacing: '.06em', color: '#484f58', fontWeight: 600 }}>{h}</th>
+              <th key={h} style={{ padding: '6px 10px', textAlign: 'left', fontSize: 9, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e', fontWeight: 600 }}>{h}</th>
             ))}
           </tr></thead>
           <tbody>

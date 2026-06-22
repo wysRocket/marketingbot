@@ -50,8 +50,8 @@ function SimilarwebPage() {
     if (!data) return { obs: [] as SWObservation[], sessions: [] as SessionRecord[] }
     const domainToUse = domain || allDomains[0] || 'eurocookflow.com'
     const cutoff = Date.now() - hours * 3600000
-    const obs = (data.swObservations || []).filter(o => o.domain === domainToUse && Date.parse(o.observedAt) >= cutoff)
-    const sessions = (data.sessions || []).filter(s => {
+    const obs = data.swObservations.filter(o => o.domain === domainToUse && Date.parse(o.observedAt) >= cutoff)
+    const sessions = data.sessions.filter(s => {
       const ts = Date.parse(s.endedAt || s.recordedAt)
       return ts >= cutoff && s.uniquePages.some(p => p.includes(domainToUse))
     })
@@ -68,7 +68,7 @@ function SimilarwebPage() {
     return [...map.entries()].sort((a, b) => a[0].localeCompare(b[0]))
   }, [filtered.sessions])
 
-  if (!data) return <div style={{ padding: 20, color: '#484f58' }}>Loading...</div>
+  if (!data) return <div style={{ padding: 20, color: '#8b949e' }}>Loading...</div>
 
   const first = filtered.obs[0]
   const last = filtered.obs[filtered.obs.length - 1]
@@ -111,11 +111,11 @@ function SimilarwebPage() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       <div style={{ background: '#11151c', border: '1px solid #2a2f3a', borderRadius: 6, padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-        <label style={{ fontSize: 10, color: '#484f58', textTransform: 'uppercase' }}>Domain</label>
+        <label style={{ fontSize: 10, color: '#8b949e', textTransform: 'uppercase' }}>Domain</label>
         <select value={domain} onChange={e => setDomain(e.target.value)} style={{ background: '#181c24', border: '1px solid #2a2f3a', color: '#c9d1d9', padding: '4px 8px', borderRadius: 4, fontSize: 11 }}>
           {allDomains.map(d => <option key={d} value={d}>{d}</option>)}
         </select>
-        <label style={{ fontSize: 10, color: '#484f58', textTransform: 'uppercase' }}>Window</label>
+        <label style={{ fontSize: 10, color: '#8b949e', textTransform: 'uppercase' }}>Window</label>
         <select value={hours} onChange={e => setHours(parseInt(e.target.value))} style={{ background: '#181c24', border: '1px solid #2a2f3a', color: '#c9d1d9', padding: '4px 8px', borderRadius: 4, fontSize: 11 }}>
           <option value="24">24h</option><option value="168">7d</option><option value="720">30d</option>
         </select>
@@ -131,7 +131,7 @@ function SimilarwebPage() {
               ['SW Obs', filtered.obs.length]
             ].map(([l, v]) => (
               <div key={l} style={{ flex: 1, background: '#11151c', padding: '10px 12px' }}>
-                <div style={{ fontSize: 9, textTransform: 'uppercase', letterSpacing: '.08em', color: '#484f58', marginBottom: 4 }}>{l}</div>
+                <div style={{ fontSize: 9, textTransform: 'uppercase', letterSpacing: '.08em', color: '#8b949e', marginBottom: 4 }}>{l}</div>
                 <div style={{ fontSize: 20, fontWeight: 700, fontFamily: 'JetBrains Mono, monospace', color: typeof v === 'number' && v > 0 ? '#22c55e' : typeof v === 'string' && v.startsWith('+') ? '#22c55e' : typeof v === 'string' && v.startsWith('-') ? '#ef4444' : '#c9d1d9' }}>{v}</div>
               </div>
             ))}
@@ -143,7 +143,7 @@ function SimilarwebPage() {
         <div style={{ padding: '8px 12px', borderBottom: '1px solid #2a2f3a', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e' }}>Sessions by Day</div>
         <table><thead><tr style={{ borderBottom: '1px solid #2a2f3a' }}>
           {['Date', 'Sessions', 'Avg Dur', 'Avg Pg', 'Pass', 'Extensions'].map(h => (
-            <th key={h} style={{ padding: '6px 10px', textAlign: 'left', fontSize: 9, textTransform: 'uppercase', letterSpacing: '.06em', color: '#484f58', fontWeight: 600 }}>{h}</th>
+            <th key={h} style={{ padding: '6px 10px', textAlign: 'left', fontSize: 9, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e', fontWeight: 600 }}>{h}</th>
           ))}
         </tr></thead><tbody>{bucketRows}</tbody></table>
       </div>
@@ -152,7 +152,7 @@ function SimilarwebPage() {
         <div style={{ padding: '8px 12px', borderBottom: '1px solid #2a2f3a', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e' }}>SW Snapshot Timeline</div>
         <table><thead><tr style={{ borderBottom: '1px solid #2a2f3a' }}>
           {['Observed', 'Visits', 'Rank', 'Pg/Visit', 'Bounce'].map(h => (
-            <th key={h} style={{ padding: '6px 10px', textAlign: 'left', fontSize: 9, textTransform: 'uppercase', letterSpacing: '.06em', color: '#484f58', fontWeight: 600 }}>{h}</th>
+            <th key={h} style={{ padding: '6px 10px', textAlign: 'left', fontSize: 9, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e', fontWeight: 600 }}>{h}</th>
           ))}
         </tr></thead><tbody>{snapRows}</tbody></table>
       </div>
