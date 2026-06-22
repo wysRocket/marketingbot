@@ -50,8 +50,8 @@ function SimilarwebPage() {
     if (!data) return { obs: [] as SWObservation[], sessions: [] as SessionRecord[] }
     const domainToUse = domain || allDomains[0] || 'eurocookflow.com'
     const cutoff = Date.now() - hours * 3600000
-    const obs = data.swObservations.filter(o => o.domain === domainToUse && Date.parse(o.observedAt) >= cutoff)
-    const sessions = data.sessions.filter(s => {
+    const obs = (data.swObservations || []).filter(o => o.domain === domainToUse && Date.parse(o.observedAt) >= cutoff)
+    const sessions = (data.sessions || []).filter(s => {
       const ts = Date.parse(s.endedAt || s.recordedAt)
       return ts >= cutoff && s.uniquePages.some(p => p.includes(domainToUse))
     })
