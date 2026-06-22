@@ -83,8 +83,11 @@ export function startRailwayHeartbeatServer(): void {
         fs.readSync(fd, buf, 0, chunkSize, size - chunkSize);
         fs.closeSync(fd);
         const raw = buf.toString("utf8");
-        const lines = raw.split("\n").filter(Boolean);
-        const sessions = lines.slice(-500).map((l: string) => JSON.parse(l));
+        // Skip first line — it's likely partial since we read from an arbitrary offset
+        const lines = raw.split("\n").slice(1).filter(Boolean);
+        const sessions = lines.slice(-50).map((l: string) => {
+          try { return JSON.parse(l); } catch { return null; }
+        }).filter(Boolean);
 
         // Read extension events (small file, read fully)
         let extEvents: any[] = [];
