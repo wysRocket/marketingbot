@@ -1,3 +1,4 @@
+// Cache-bust: force Docker layer invalidation
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
@@ -94,10 +95,7 @@ export function resolveExtensionBundle(input: {
   const manifestBySlug = new Map(manifest.map((entry) => [entry.slug, entry]));
   const requestedSlugs = parseExtensionSlugsEnv(input.extensionSlugsEnv);
   const selectedSlugs: string[] = [];
-  // In Railway mode without explicit slugs, use ALL available extensions
-  // Skip manifest check since directory names are extension IDs, not slugs
-  const slugsToLoad = requestedSlugs ?? availableExtensions.map(e => e.slug);
-  for (const slug of slugsToLoad) {
+  for (const slug of (requestedSlugs ?? (input.railwayEnvironment ? DEFAULT_RAILWAY_EXTENSION_SLUGS : availableExtensions.map(e => e.slug)))) {
     if (!availableBySlug.has(slug)) {
       if (input.railwayEnvironment) {
         console.warn(`[extensions] skipping "${slug}" — not found in ${input.extensionsDir}`);
@@ -108,10 +106,6 @@ export function resolveExtensionBundle(input: {
       );
     }
     if (!manifestBySlug.has(slug)) {
-      if (input.railwayEnvironment) {
-        console.warn(`[extensions] skipping "${slug}" — not in manifest`);
-        continue;
-      }
       throw new Error(
         `Extension slug "${slug}" is present in .extensions but missing from the pinned manifest at ${input.manifestPath}`,
       );
@@ -119,7 +113,7 @@ export function resolveExtensionBundle(input: {
     selectedSlugs.push(slug);
   }
 
-  const manifestEntries = selectedSlugs.map((slug) => manifestBySlug.get(slug)).filter(Boolean) as ExtensionManifestEntry[];
+  const manifestEntries = selectedSlugs.map((slug) => manifestBySlug.get(slug)!);
 
   return {
     selectedSlugs,

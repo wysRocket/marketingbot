@@ -2,7 +2,6 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState, useCallback, useMemo } from 'react'
 import { getDashboardData } from '#/lib/api'
 
-// Extensions page — monitors extension HTTP events captured by the bot
 export const Route = createFileRoute('/extensions')({
   component: ExtensionsPage,
 })
@@ -33,7 +32,7 @@ function ExtensionsPage() {
         setData(d as DashboardData)
       }
     } catch (e) { console.error(e) }
-  }, [lastFp])
+  }, [lastFp, getFn])
 
   useEffect(() => { fetchData(); const iv = setInterval(fetchData, 5000); return () => clearInterval(iv) }, [fetchData])
 
@@ -48,7 +47,7 @@ function ExtensionsPage() {
     return list
   }, [data, domainFilter, methodFilter])
 
-  if (!data) return <div style={{ padding: 20, color: '#484f58', fontSize: 12 }}>Loading extension events...</div>
+  if (!data) return <div style={{ padding: 20, color: '#484f58' }}>Loading...</div>
 
   return (
     <div style={{ background: '#11151c', border: '1px solid #2a2f3a', borderRadius: 6 }}>
