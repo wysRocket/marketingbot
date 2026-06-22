@@ -302,7 +302,12 @@ http.createServer(async (req, res) => {
   const ext = path.extname(file);
   try {
     const content = fs.readFileSync(path.join(PUBLIC, file));
-    res.writeHead(200, { 'Content-Type': TYPES[ext] || 'application/octet-stream' });
+    const isHtml = ext === '.html' || ext === '.js' || ext === '.css';
+    const headers = {
+      'Content-Type': TYPES[ext] || 'application/octet-stream',
+      ...(isHtml ? { 'Cache-Control': 'no-cache, no-store, must-revalidate' } : {}),
+    };
+    res.writeHead(200, headers);
     res.end(content);
   } catch {
     if (!req.url.startsWith('/api')) {
