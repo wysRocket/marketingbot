@@ -23,7 +23,6 @@ COPY mostlogin-extensions/ ./.extensions/
 RUN npx ts-node src/scripts/pullExtensions.ts
 
 ENV NODE_ENV=production
-ENV PLAYWRIGHT_BROWSERS_PATH=/app/pw-browsers
 
 # Conservative default for smaller Railway instances.
 # Increase via env var if your service has enough RAM.
@@ -31,5 +30,4 @@ ENV CONCURRENCY=1
 ENV BOT_SITE_PROFILE=guidenza
 ENV SKIP_IP_CHECK=1
 
-# Install Playwright browsers at startup
-CMD ["sh", "-c", "set -x; export PLAYWRIGHT_BROWSERS_PATH=/app/pw-browsers; mkdir -p /app/pw-browsers; echo 'Checking Chrome...'; ls -la /app/pw-browsers/ 2>/dev/null || echo 'No pw-browsers dir'; echo 'Trying npx install...'; npx patchright install chromium 2>&1 || echo 'npx install failed'; echo 'Checking after install...'; find /app/pw-browsers -name chrome 2>/dev/null || echo 'No chrome found'; echo 'Trying curl...'; curl -v -L --max-time 60 -o /tmp/chrome-test.zip https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux.zip 2>&1 | tail -5 || echo 'curl failed'; ls -la /tmp/chrome-test.zip 2>/dev/null || echo 'No zip file'; npx ts-node src/index.patchright.ts"]
+CMD ["npx", "ts-node", "src/index.patchright.ts"]
