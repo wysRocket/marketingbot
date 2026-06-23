@@ -306,7 +306,11 @@ async function proxyNativeHermesDashboard(req, res) {
   // Basic Auth credentials remain private in Railway; a signed-in Hermes
   // WebUI session is the browser-facing gate.
   if (GITHUB_CLIENT_ID && !isAuthenticated(req)) return requireAuth(res);
-  if (!HERMES_DASHBOARD_BASIC_PASSWORD || !(await hasHermesWebUiSession(req))) {
+  // The WebUI cookie is intentionally scoped to /hermes, so it is not sent
+  // when the browser reaches the native dashboard at /. The return route
+  // below mints this same-origin bridge session after validating that cookie.
+  const hasBridgeSession = validateSession(req) !== null;
+  if (!HERMES_DASHBOARD_BASIC_PASSWORD || (!hasBridgeSession && !(await hasHermesWebUiSession(req)))) {
     res.writeHead(302, { Location: '/hermes/' });
     return res.end();
   }
@@ -428,6 +432,19 @@ http.createServer(async (req, res) => {
   // --- Hermes WebUI (protected private-service proxy) ---
   if (req.url === '/hermes') {
     res.writeHead(302, { Location: '/hermes/' });
+    return res.end();
+  }
+  if (req.url === '/hermes/return-dashboard') {
+    // This route runs under /hermes, so the browser includes the WebUI's
+    // path-scoped auth cookie. Turn it into a dashboard-root cookie before
+    // redirecting, avoiding the otherwise unavoidable auth loop.
+    if (!(await hasHermesWebUiSession(req))) {
+      res.writeHead(302, { Location: '/hermes/' });
+      return res.end();
+    }
+    const bridgeToken = createSession('hermes-webui');
+    setCookie(res, COOKIE_NAME, bridgeToken, 86400);
+    res.writeHead(302, { Location: '/' });
     return res.end();
   }
   if (req.url.startsWith('/hermes/')) {

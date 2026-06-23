@@ -4,7 +4,7 @@
 
     const link = document.createElement('a');
     link.id = 'marketingbot-return-link';
-    link.href = '/';
+    link.href = '/hermes/return-dashboard';
     link.textContent = '← Hermes Dashboard';
     link.setAttribute('aria-label', 'Return to the native Hermes Dashboard');
     link.title = 'Return to Hermes Dashboard';

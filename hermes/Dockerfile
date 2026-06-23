@@ -13,7 +13,7 @@ RUN index="$(find / -type f -path '*/static/index.html' -print -quit)" \
     && test -n "$index" \
     && static_dir="$(dirname "$index")" \
     && cp /tmp/marketingbot-nav.js "$static_dir/marketingbot-nav.js" \
-    && sed -i 's|</head>|<script src="/hermes/static/marketingbot-nav.js?v=2"></script></head>|' "$index" \
+    && sed -i 's|</head>|<script src="/hermes/static/marketingbot-nav.js?v=3"></script></head>|' "$index" \
     && rm /tmp/marketingbot-nav.js
 
 # Railway can inject shell-function environment records whose names are not
