@@ -6,14 +6,14 @@ FROM ghcr.io/nesquena/hermes-webui:latest
 RUN git clone --depth 1 https://github.com/NousResearch/hermes-agent.git /opt/hermes
 ENV HERMES_WEBUI_AGENT_DIR=/opt/hermes
 
-# Add a stable dashboard return link to every proxied Hermes page. The absolute
-# root target resolves to dashboard.wysmyfree.com rather than the Hermes path.
+# Add a stable dashboard return link to every proxied Hermes page. Use an
+# absolute public path so the script also loads on nested session URLs.
 COPY marketingbot-nav.js /tmp/marketingbot-nav.js
 RUN index="$(find / -type f -path '*/static/index.html' -print -quit)" \
     && test -n "$index" \
     && static_dir="$(dirname "$index")" \
     && cp /tmp/marketingbot-nav.js "$static_dir/marketingbot-nav.js" \
-    && sed -i 's|</head>|<script src="static/marketingbot-nav.js?v=1"></script></head>|' "$index" \
+    && sed -i 's|</head>|<script src="/hermes/static/marketingbot-nav.js?v=2"></script></head>|' "$index" \
     && rm /tmp/marketingbot-nav.js
 
 # Railway can inject shell-function environment records whose names are not

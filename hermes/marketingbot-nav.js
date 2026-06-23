@@ -5,9 +5,9 @@
     const link = document.createElement('a');
     link.id = 'marketingbot-return-link';
     link.href = '/';
-    link.textContent = '← Marketingbot';
-    link.setAttribute('aria-label', 'Return to Marketingbot dashboard');
-    link.title = 'Return to Marketingbot dashboard';
+    link.textContent = '← Hermes Dashboard';
+    link.setAttribute('aria-label', 'Return to the native Hermes Dashboard');
+    link.title = 'Return to Hermes Dashboard';
     Object.assign(link.style, {
       position: 'fixed',
       top: '12px',
