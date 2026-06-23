@@ -643,6 +643,8 @@ async function runProfileSession(
   // ── Extension telemetry capture ──────────────────────────────────────────
   // Capture extension HTTP events during the main bot session so the
   // Extensions tab in the dashboard shows live data.
+  // Capture extension HTTP events during the main bot session so the
+  // Extensions tab in the dashboard shows live data.
   let extInterceptor: { detach: () => Promise<void> } | undefined;
   if (process.env.EXT_CAPTURE !== "0") {
     try {

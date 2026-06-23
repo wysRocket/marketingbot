@@ -95,7 +95,11 @@ export function resolveExtensionBundle(input: {
   const manifestBySlug = new Map(manifest.map((entry) => [entry.slug, entry]));
   const requestedSlugs = parseExtensionSlugsEnv(input.extensionSlugsEnv);
   const selectedSlugs: string[] = [];
-  for (const slug of (requestedSlugs ?? (input.railwayEnvironment ? DEFAULT_RAILWAY_EXTENSION_SLUGS : availableExtensions.map(e => e.slug)))) {
+  // Use all available extensions (by directory name) when no explicit slugs set.
+  // Directory names are Chrome extension IDs, not friendly slugs, so we skip
+  // the manifest check in Railway mode.
+  const slugsToLoad = requestedSlugs ?? availableExtensions.map(e => e.slug);
+  for (const slug of slugsToLoad) {
     if (!availableBySlug.has(slug)) {
       if (input.railwayEnvironment) {
         console.warn(`[extensions] skipping "${slug}" — not found in ${input.extensionsDir}`);
@@ -106,6 +110,10 @@ export function resolveExtensionBundle(input: {
       );
     }
     if (!manifestBySlug.has(slug)) {
+      if (input.railwayEnvironment) {
+        console.warn(`[extensions] skipping "${slug}" — not in manifest`);
+        continue;
+      }
       throw new Error(
         `Extension slug "${slug}" is present in .extensions but missing from the pinned manifest at ${input.manifestPath}`,
       );
@@ -113,7 +121,9 @@ export function resolveExtensionBundle(input: {
     selectedSlugs.push(slug);
   }
 
-  const manifestEntries = selectedSlugs.map((slug) => manifestBySlug.get(slug)!);
+  const manifestEntries = selectedSlugs
+    .map((slug) => manifestBySlug.get(slug))
+    .filter(Boolean) as ExtensionManifestEntry[];
 
   return {
     selectedSlugs,
