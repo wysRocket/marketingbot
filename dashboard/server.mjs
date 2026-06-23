@@ -19,6 +19,8 @@ const HERMES_DASHBOARD_URL = process.env.HERMES_DASHBOARD_URL || 'http://hermes-
 const HERMES_WEBUI_PASSWORD_ENABLED = process.env.HERMES_WEBUI_PASSWORD_ENABLED === 'true';
 const HERMES_DASHBOARD_BASIC_USERNAME = process.env.HERMES_DASHBOARD_BASIC_USERNAME || 'hermes';
 const HERMES_DASHBOARD_BASIC_PASSWORD = process.env.HERMES_DASHBOARD_BASIC_PASSWORD || '';
+const MARKETINGBOT_PREFIX = '/marketingbot';
+const NATIVE_DASHBOARD_RETURN_LINK = '<a href="/marketingbot/" aria-label="Return to Marketingbot" style="position:fixed;top:14px;right:18px;z-index:2147483647;display:inline-flex;align-items:center;min-height:34px;padding:0 11px;border:1px solid rgba(255,207,0,.34);border-radius:8px;background:#171724;color:#ffe36b;font:700 13px system-ui,sans-serif;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.25)">← Marketingbot</a>';
 
 // --- GitHub OAuth config ---
 const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || '';
@@ -166,7 +168,7 @@ function cookiePairs(setCookies) {
   return cookieArray(setCookies).map(cookie => cookie.split(';', 1)[0]).filter(Boolean);
 }
 
-function proxyHermes(req, res, { baseUrl, prefix, label, basicAuth = null, extraHeaders = {} }) {
+function proxyHermes(req, res, { baseUrl, prefix, label, basicAuth = null, extraHeaders = {}, htmlInjection = '' }) {
   let target;
   try {
     target = new URL(baseUrl);
@@ -215,8 +217,24 @@ function proxyHermes(req, res, { baseUrl, prefix, label, basicAuth = null, extra
     ) {
       responseHeaders.location = `${prefix}${responseHeaders.location}`;
     }
+    const isHtml = htmlInjection && String(responseHeaders['content-type'] || '').includes('text/html');
+    if (!isHtml) {
+      res.writeHead(upstreamRes.statusCode || 502, responseHeaders);
+      return upstreamRes.pipe(res);
+    }
+
+    // Native Hermes is upstream-owned. Add a small return control at the
+    // proxy boundary rather than forking or patching its dashboard bundle.
+    delete responseHeaders['content-length'];
     res.writeHead(upstreamRes.statusCode || 502, responseHeaders);
-    upstreamRes.pipe(res);
+    const chunks = [];
+    upstreamRes.on('data', chunk => chunks.push(chunk));
+    upstreamRes.on('end', () => {
+      const html = Buffer.concat(chunks).toString('utf8');
+      res.end(html.includes('</body>')
+        ? html.replace('</body>', `${htmlInjection}</body>`)
+        : `${html}${htmlInjection}`);
+    });
   });
 
   upstream.on('error', error => {
@@ -324,12 +342,31 @@ async function proxyNativeHermesDashboard(req, res) {
       prefix: '',
       label: 'Hermes Dashboard',
       extraHeaders: { cookie: session.cookie },
+      htmlInjection: NATIVE_DASHBOARD_RETURN_LINK,
     });
   } catch (error) {
     console.error('[HERMES DASHBOARD AUTH ERROR]', error.message);
     res.writeHead(502, { 'Content-Type': 'application/json' });
     return res.end(JSON.stringify({ error: 'Hermes Dashboard authentication failed' }));
   }
+}
+
+function serveMarketingbotDashboard(req, res) {
+  const requestPath = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+  const relativePath = requestPath === MARKETINGBOT_PREFIX || requestPath === `${MARKETINGBOT_PREFIX}/`
+    ? 'index.html'
+    : requestPath.slice(`${MARKETINGBOT_PREFIX}/`.length);
+  if (relativePath.includes('..')) {
+    res.writeHead(400, { 'Content-Type': 'text/plain' });
+    return res.end('Invalid path');
+  }
+
+  const candidate = path.join(PUBLIC, relativePath);
+  const isStaticAsset = relativePath.startsWith('assets/') && fs.existsSync(candidate);
+  const file = isStaticAsset ? candidate : path.join(PUBLIC, 'index.html');
+  const ext = path.extname(file);
+  res.writeHead(200, { 'Content-Type': TYPES[ext] || 'application/octet-stream' });
+  return res.end(fs.readFileSync(file));
 }
 
 // --- Server ---
@@ -429,6 +466,15 @@ http.createServer(async (req, res) => {
     clearCookie(res, COOKIE_NAME);
     res.writeHead(302, { Location: '/' });
     return res.end();
+  }
+
+  // --- Marketingbot telemetry dashboard ---
+  if (req.url === MARKETINGBOT_PREFIX) {
+    res.writeHead(302, { Location: `${MARKETINGBOT_PREFIX}/` });
+    return res.end();
+  }
+  if (req.url.startsWith(`${MARKETINGBOT_PREFIX}/`)) {
+    return serveMarketingbotDashboard(req, res);
   }
 
   // --- Hermes WebUI (protected private-service proxy) ---

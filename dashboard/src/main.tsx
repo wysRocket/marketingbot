@@ -6,6 +6,7 @@ import './styles.css'
 
 const router = createRouter({
   routeTree,
+  basepath: '/marketingbot',
   defaultPreload: 'intent',
   scrollRestoration: true,
 })
