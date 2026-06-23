@@ -47,7 +47,7 @@ function SessionsPage() {
 
   const filtered = useMemo(() => {
     if (!data) return []
-    let list = [...data.sessions]
+    let list = [...(data.sessions || [])]
     if (profileFilter) list = list.filter(s => s.profileId === profileFilter)
     if (domainFilter) {
       const d = domainFilter.toLowerCase()
