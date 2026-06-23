@@ -640,10 +640,54 @@ async function runProfileSession(
     );
   }
 
+  // ── Extension telemetry capture ──────────────────────────────────────────
+  // Capture extension HTTP events during the main bot session so the
+  // Extensions tab in the dashboard shows live data.
+  let extInterceptor: { detach: () => Promise<void> } | undefined;
+  if (process.env.EXT_CAPTURE !== "0") {
+    try {
+      const { createExtensionTelemetryInterceptor } = await import(
+        "./observability/extensionTelemetry.js"
+      );
+      const { appendExtEvent } = await import("./observability/extEventWriter.js");
+      const interceptor = createExtensionTelemetryInterceptor(
+        (event: any) => {
+          appendExtEvent(event);
+        },
+        {
+          domains: [
+            "similarweb.com",
+            "sw-extension.s3.amazonaws.com",
+            "data.similarweb.com",
+            "rank.similarweb.com",
+            "cdn.growthbook.io",
+            "api.mixpanel.com",
+            "mixpanel.com",
+          ],
+          captureRequestBody: true,
+          captureResponseBody: true,
+          maxBodySize: 50 * 1024,
+        },
+      );
+      extInterceptor = interceptor;
+    } catch (err) {
+      console.warn(`[ext-telemetry] init failed: ${(err as Error).message}`);
+    }
+  }
+
   // Notify caller of the context handle so it can force-close on timeout.
   onContext?.(context);
 
   const page = (await context.newPage()) as unknown as Page;
+
+  // Attach extension telemetry interceptor to the page
+  if (extInterceptor) {
+    try {
+      await (extInterceptor as any).attach(page);
+    } catch (err) {
+      console.warn(`[ext-telemetry] attach failed: ${(err as Error).message}`);
+    }
+  }
 
   try {
     const flows = buildFlowSequence(USERNAME, PASSWORD);
@@ -1036,3 +1080,4 @@ process.once("SIGTERM", () => {
   console.warn("[signal] SIGTERM received from platform, shutting down worker");
   void closeSharedBrowser().finally(() => process.exit(0));
 });
+// build cache bust 1782249705
