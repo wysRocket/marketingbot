@@ -31,21 +31,12 @@ ENV CONCURRENCY=1
 ENV BOT_SITE_PROFILE=guidenza
 ENV SKIP_IP_CHECK=1
 
-# Install browsers at startup to Railway persistent volume
-# Download Chrome for Testing directly since npx playwright install doesn't persist on Railway
+# Install Playwright browsers at startup by launching and closing
+# This triggers patchright's auto-download mechanism
 CMD ["sh", "-c", "\
-  set -e && \
   export PLAYWRIGHT_BROWSERS_PATH=/app/pw-browsers && \
   mkdir -p /app/pw-browsers && \
-  if [ ! -f /app/pw-browsers/chromium-1208/chrome-linux64/chrome ]; then \
-    echo 'Downloading Chrome for Testing 145.0.7632.6...' && \
-    curl -L --retry 3 --max-time 120 -o /tmp/chrome-linux.zip https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux.zip && \
-    unzip -q /tmp/chrome-linux.zip -d /app/pw-browsers/chromium-1208 && \
-    chmod +x /app/pw-browsers/chromium-1208/chrome-linux64/chrome && \
-    rm -f /tmp/chrome-linux.zip && \
-    echo 'Chrome downloaded OK'; \
-  else \
-    echo 'Chrome already present'; \
-  fi && \
+  echo 'Installing browsers via patchright...' && \
+  node -e \"const {chromium} = require('patchright'); (async () => { const b = await chromium.launch(); await b.close(); console.log('Browser installed OK'); })().catch(e => { console.error('Install failed:', e.message); process.exit(1); });\" && \
   echo 'Starting marketingbot...' && \
   npx ts-node src/index.patchright.ts"]
