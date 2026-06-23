@@ -171,7 +171,12 @@ function proxyHermes(req, res, { baseUrl, prefix, label }) {
     headers,
   }, upstreamRes => {
     const responseHeaders = { ...upstreamRes.headers };
-    if (typeof responseHeaders.location === 'string' && responseHeaders.location.startsWith('/')) {
+    if (
+      typeof responseHeaders.location === 'string'
+      && responseHeaders.location.startsWith('/')
+      && responseHeaders.location !== prefix
+      && !responseHeaders.location.startsWith(`${prefix}/`)
+    ) {
       responseHeaders.location = `${prefix}${responseHeaders.location}`;
     }
     res.writeHead(upstreamRes.statusCode || 502, responseHeaders);
