@@ -213,6 +213,23 @@ function proxyHermes(req, res, { baseUrl, prefix, label, basicAuth = null }) {
   req.pipe(upstream);
 }
 
+async function proxyNativeHermesDashboard(req, res) {
+  // The native Hermes dashboard is the primary dashboard surface. Its own
+  // Basic Auth credentials remain private in Railway; a signed-in Hermes
+  // WebUI session is the browser-facing gate.
+  if (GITHUB_CLIENT_ID && !isAuthenticated(req)) return requireAuth(res);
+  if (!HERMES_DASHBOARD_BASIC_PASSWORD || !(await hasHermesWebUiSession(req))) {
+    res.writeHead(302, { Location: '/hermes/' });
+    return res.end();
+  }
+  return proxyHermes(req, res, {
+    baseUrl: HERMES_DASHBOARD_URL,
+    prefix: '',
+    label: 'Hermes Dashboard',
+    basicAuth: `${HERMES_DASHBOARD_BASIC_USERNAME}:${HERMES_DASHBOARD_BASIC_PASSWORD}`,
+  });
+}
+
 // --- Server ---
 http.createServer(async (req, res) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
@@ -332,26 +349,17 @@ http.createServer(async (req, res) => {
     });
   }
 
-  // --- Native Hermes Agent Dashboard (protected by upstream Basic Auth) ---
+  // --- Native Hermes Agent Dashboard ---
+  // Keep the prior prefixed URL working for bookmarks, but make the native
+  // dashboard the only rendered application at this domain.
   if (req.url === '/hermes-dashboard') {
-    res.writeHead(302, { Location: '/hermes-dashboard/' });
+    res.writeHead(302, { Location: '/' });
     return res.end();
   }
   if (req.url.startsWith('/hermes-dashboard/')) {
-    // The native dashboard has its own auth surface. Reuse the authenticated
-    // WebUI session as the user-facing gate, then authenticate the private
-    // hop with the dashboard's Basic credentials so this tab opens directly.
-    if (GITHUB_CLIENT_ID && !isAuthenticated(req)) return requireAuth(res);
-    if (!HERMES_DASHBOARD_BASIC_PASSWORD || !(await hasHermesWebUiSession(req))) {
-      res.writeHead(302, { Location: '/hermes/' });
-      return res.end();
-    }
-    return proxyHermes(req, res, {
-      baseUrl: HERMES_DASHBOARD_URL,
-      prefix: '/hermes-dashboard',
-      label: 'Hermes Dashboard',
-      basicAuth: `${HERMES_DASHBOARD_BASIC_USERNAME}:${HERMES_DASHBOARD_BASIC_PASSWORD}`,
-    });
+    const nextPath = req.url.slice('/hermes-dashboard'.length) || '/';
+    res.writeHead(302, { Location: nextPath });
+    return res.end();
   }
 
   // --- Telemetry data (proxied to marketingbot, no auth required) ---
@@ -372,6 +380,10 @@ http.createServer(async (req, res) => {
       return res.end(JSON.stringify({ sessions: [], extEvents: [], swObservations: [], fingerprint: 'empty' }));
     }
   }
+
+  // All remaining paths, including native dashboard routes and assets, are
+  // forwarded to the Hermes Agent dashboard running on port 9119.
+  return proxyNativeHermesDashboard(req, res);
 
   // --- Protected API ---
   if (!isAuthenticated(req)) {
