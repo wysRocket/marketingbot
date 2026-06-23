@@ -641,6 +641,7 @@ async function runProfileSession(
   }
 
   // ── Extension telemetry capture ──────────────────────────────────────────
+  console.log("[ext-telemetry] BLOCK ENTERED, EXT_CAPTURE=" + process.env.EXT_CAPTURE);
   // Capture extension HTTP events during the main bot session so the
   // Extensions tab in the dashboard shows live data.
   // Capture extension HTTP events during the main bot session so the
