@@ -15,6 +15,7 @@ const PORT = parseInt(process.env.PORT || '3000', 10);
 const PUBLIC = path.join(__dirname, 'dist');
 const TYPES = { '.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.ico':'image/x-icon','.svg':'image/svg+xml' };
 const HERMES_WEBUI_URL = process.env.HERMES_WEBUI_URL || 'http://hermes-webui.railway.internal:8787';
+const HERMES_DASHBOARD_URL = process.env.HERMES_DASHBOARD_URL || 'http://hermes-gateway.railway.internal:9119';
 const HERMES_WEBUI_PASSWORD_ENABLED = process.env.HERMES_WEBUI_PASSWORD_ENABLED === 'true';
 
 // --- GitHub OAuth config ---
@@ -138,27 +139,27 @@ function requireAuth(res) {
   res.end(JSON.stringify({ error: 'unauthorized' }));
 }
 
-function proxyHermes(req, res) {
+function proxyHermes(req, res, { baseUrl, prefix, label }) {
   let target;
   try {
-    target = new URL(HERMES_WEBUI_URL);
+    target = new URL(baseUrl);
     if (!['http:', 'https:'].includes(target.protocol)) throw new Error('unsupported protocol');
   } catch {
     res.writeHead(503, { 'Content-Type': 'application/json' });
-    return res.end(JSON.stringify({ error: 'Hermes WebUI is not configured' }));
+    return res.end(JSON.stringify({ error: `${label} is not configured` }));
   }
 
   // Hermes serves all assets and API calls relative to its base URL. Strip the
-  // dashboard prefix before sending the request upstream so /hermes/ behaves
+  // dashboard prefix before sending the request upstream so each Hermes app
   // like a first-class app while keeping the service private on Railway.
-  const upstreamPath = req.url.slice('/hermes'.length) || '/';
+  const upstreamPath = req.url.slice(prefix.length) || '/';
   const transport = target.protocol === 'https:' ? https : http;
   const headers = {
     ...req.headers,
     host: target.host,
     'x-forwarded-host': req.headers.host || '',
     'x-forwarded-proto': 'https',
-    'x-forwarded-prefix': '/hermes',
+    'x-forwarded-prefix': prefix,
   };
 
   const upstream = transport.request({
@@ -171,7 +172,7 @@ function proxyHermes(req, res) {
   }, upstreamRes => {
     const responseHeaders = { ...upstreamRes.headers };
     if (typeof responseHeaders.location === 'string' && responseHeaders.location.startsWith('/')) {
-      responseHeaders.location = `/hermes${responseHeaders.location}`;
+      responseHeaders.location = `${prefix}${responseHeaders.location}`;
     }
     res.writeHead(upstreamRes.statusCode || 502, responseHeaders);
     upstreamRes.pipe(res);
@@ -181,7 +182,7 @@ function proxyHermes(req, res) {
     console.error('[HERMES PROXY ERROR]', error.message);
     if (!res.headersSent) {
       res.writeHead(502, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ error: 'Hermes WebUI is unavailable' }));
+      res.end(JSON.stringify({ error: `${label} is unavailable` }));
     } else {
       res.destroy(error);
     }
@@ -302,7 +303,24 @@ http.createServer(async (req, res) => {
       return res.end(JSON.stringify({ error: 'Hermes requires dashboard GitHub OAuth or Hermes password authentication' }));
     }
     if (GITHUB_CLIENT_ID && !isAuthenticated(req)) return requireAuth(res);
-    return proxyHermes(req, res);
+    return proxyHermes(req, res, {
+      baseUrl: HERMES_WEBUI_URL,
+      prefix: '/hermes',
+      label: 'Hermes WebUI',
+    });
+  }
+
+  // --- Native Hermes Agent Dashboard (protected by upstream Basic Auth) ---
+  if (req.url === '/hermes-dashboard') {
+    res.writeHead(302, { Location: '/hermes-dashboard/' });
+    return res.end();
+  }
+  if (req.url.startsWith('/hermes-dashboard/')) {
+    return proxyHermes(req, res, {
+      baseUrl: HERMES_DASHBOARD_URL,
+      prefix: '/hermes-dashboard',
+      label: 'Hermes Dashboard',
+    });
   }
 
   // --- Telemetry data (proxied to marketingbot, no auth required) ---
