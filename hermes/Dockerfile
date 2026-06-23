@@ -6,6 +6,11 @@ FROM ghcr.io/nesquena/hermes-webui:latest
 RUN git clone --depth 1 https://github.com/NousResearch/hermes-agent.git /opt/hermes
 ENV HERMES_WEBUI_AGENT_DIR=/opt/hermes
 
+# Add a stable dashboard return link to every proxied Hermes page. The absolute
+# root target resolves to dashboard.wysmyfree.com rather than the Hermes path.
+COPY marketingbot-nav.js /app/static/marketingbot-nav.js
+RUN sed -i 's|</head>|<script src="static/marketingbot-nav.js?v=1"></script></head>|' /app/static/index.html
+
 # Railway can inject shell-function environment records whose names are not
 # valid Bash identifiers. Hermes' upstream startup script reloads its saved
 # environment after dropping privileges; validate a record immediately before
