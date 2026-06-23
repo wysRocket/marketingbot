@@ -155,7 +155,16 @@ async function hasHermesWebUiSession(req) {
   }
 }
 
-function proxyHermes(req, res, { baseUrl, prefix, label, basicAuth = null }) {
+function cookieArray(value) {
+  if (!value) return [];
+  return Array.isArray(value) ? value : [value];
+}
+
+function cookiePairs(setCookies) {
+  return cookieArray(setCookies).map(cookie => cookie.split(';', 1)[0]).filter(Boolean);
+}
+
+function proxyHermes(req, res, { baseUrl, prefix, label, basicAuth = null, extraHeaders = {} }) {
   let target;
   try {
     target = new URL(baseUrl);
@@ -172,6 +181,7 @@ function proxyHermes(req, res, { baseUrl, prefix, label, basicAuth = null }) {
   const transport = target.protocol === 'https:' ? https : http;
   const headers = {
     ...req.headers,
+    ...extraHeaders,
     host: target.host,
     'x-forwarded-host': req.headers.host || '',
     'x-forwarded-proto': 'https',
@@ -188,6 +198,13 @@ function proxyHermes(req, res, { baseUrl, prefix, label, basicAuth = null }) {
     headers,
   }, upstreamRes => {
     const responseHeaders = { ...upstreamRes.headers };
+    const alreadySetCookies = cookieArray(res.getHeader('Set-Cookie'));
+    if (alreadySetCookies.length > 0) {
+      responseHeaders['set-cookie'] = [
+        ...alreadySetCookies,
+        ...cookieArray(responseHeaders['set-cookie']),
+      ];
+    }
     if (
       typeof responseHeaders.location === 'string'
       && responseHeaders.location.startsWith('/')
@@ -213,6 +230,77 @@ function proxyHermes(req, res, { baseUrl, prefix, label, basicAuth = null }) {
   req.pipe(upstream);
 }
 
+function requestNativeDashboard(req, { path: requestPath, method = 'GET', body = '', cookie = '' }) {
+  let target;
+  try {
+    target = new URL(HERMES_DASHBOARD_URL);
+  } catch {
+    return Promise.reject(new Error('Hermes Dashboard URL is not configured'));
+  }
+
+  const transport = target.protocol === 'https:' ? https : http;
+  const headers = {
+    host: target.host,
+    'x-forwarded-host': req.headers.host || '',
+    'x-forwarded-proto': 'https',
+  };
+  if (cookie) headers.cookie = cookie;
+  if (body) {
+    headers['content-type'] = 'application/json';
+    headers['content-length'] = Buffer.byteLength(body);
+  }
+
+  return new Promise((resolve, reject) => {
+    const upstream = transport.request({
+      protocol: target.protocol,
+      hostname: target.hostname,
+      port: target.port || undefined,
+      method,
+      path: `${target.pathname.replace(/\/$/, '')}${requestPath}`,
+      headers,
+    }, upstreamRes => {
+      upstreamRes.resume();
+      upstreamRes.on('end', () => resolve({
+        status: upstreamRes.statusCode || 502,
+        headers: upstreamRes.headers,
+      }));
+    });
+    upstream.on('error', reject);
+    if (body) upstream.write(body);
+    upstream.end();
+  });
+}
+
+async function getNativeDashboardSession(req) {
+  const incomingCookie = req.headers.cookie || '';
+  const existing = await requestNativeDashboard(req, {
+    path: '/api/auth/me',
+    cookie: incomingCookie,
+  });
+  if (existing.status === 200) return { cookie: incomingCookie, setCookies: [] };
+
+  const body = JSON.stringify({
+    provider: 'basic',
+    username: HERMES_DASHBOARD_BASIC_USERNAME,
+    password: HERMES_DASHBOARD_BASIC_PASSWORD,
+    next: '/',
+  });
+  const login = await requestNativeDashboard(req, {
+    path: '/auth/password-login',
+    method: 'POST',
+    body,
+  });
+  const setCookies = cookieArray(login.headers['set-cookie']);
+  if (login.status !== 200 || setCookies.length === 0) {
+    throw new Error(`native dashboard login failed (${login.status})`);
+  }
+
+  return {
+    cookie: [incomingCookie, ...cookiePairs(setCookies)].filter(Boolean).join('; '),
+    setCookies,
+  };
+}
+
 async function proxyNativeHermesDashboard(req, res) {
   // The native Hermes dashboard is the primary dashboard surface. Its own
   // Basic Auth credentials remain private in Railway; a signed-in Hermes
@@ -222,12 +310,20 @@ async function proxyNativeHermesDashboard(req, res) {
     res.writeHead(302, { Location: '/hermes/' });
     return res.end();
   }
-  return proxyHermes(req, res, {
-    baseUrl: HERMES_DASHBOARD_URL,
-    prefix: '',
-    label: 'Hermes Dashboard',
-    basicAuth: `${HERMES_DASHBOARD_BASIC_USERNAME}:${HERMES_DASHBOARD_BASIC_PASSWORD}`,
-  });
+  try {
+    const session = await getNativeDashboardSession(req);
+    if (session.setCookies.length) res.setHeader('Set-Cookie', session.setCookies);
+    return proxyHermes(req, res, {
+      baseUrl: HERMES_DASHBOARD_URL,
+      prefix: '',
+      label: 'Hermes Dashboard',
+      extraHeaders: { cookie: session.cookie },
+    });
+  } catch (error) {
+    console.error('[HERMES DASHBOARD AUTH ERROR]', error.message);
+    res.writeHead(502, { 'Content-Type': 'application/json' });
+    return res.end(JSON.stringify({ error: 'Hermes Dashboard authentication failed' }));
+  }
 }
 
 // --- Server ---
