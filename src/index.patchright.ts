@@ -647,9 +647,9 @@ async function runProfileSession(
   if (process.env.EXT_CAPTURE !== "0") {
     try {
       const { createExtensionTelemetryInterceptor } = await import(
-        "./observability/extensionTelemetry.js"
+        "./observability/extensionTelemetry"
       );
-      const { appendExtEvent } = await import("./observability/extEventWriter.js");
+      const { appendExtEvent } = await import("./observability/extEventWriter");
       const interceptor = createExtensionTelemetryInterceptor(
         (event: any) => {
           appendExtEvent(event);
