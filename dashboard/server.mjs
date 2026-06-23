@@ -149,7 +149,9 @@ async function hasHermesWebUiSession(req) {
     });
     if (!response.ok) return false;
     const status = await response.json();
-    return status.authenticated === true;
+    // nesquena/hermes-webui reports its password-session state as
+    // `logged_in`; retain `authenticated` for compatible WebUI versions.
+    return status.authenticated === true || status.logged_in === true;
   } catch {
     return false;
   }
@@ -455,6 +457,13 @@ http.createServer(async (req, res) => {
       return res.end(JSON.stringify({ error: 'Hermes requires dashboard GitHub OAuth or Hermes password authentication' }));
     }
     if (GITHUB_CLIENT_ID && !isAuthenticated(req)) return requireAuth(res);
+    // WebUI authentication cookies are scoped to /hermes. Once the user is
+    // authenticated there, also issue a root-scoped bridge cookie so a direct
+    // / navigation (including a stale cached return link) can reach the
+    // native dashboard without bouncing back to the last chat session.
+    if (!validateSession(req) && await hasHermesWebUiSession(req)) {
+      setCookie(res, COOKIE_NAME, createSession('hermes-webui'), 86400);
+    }
     return proxyHermes(req, res, {
       baseUrl: HERMES_WEBUI_URL,
       prefix: '/hermes',
