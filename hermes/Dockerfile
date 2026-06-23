@@ -8,8 +8,13 @@ ENV HERMES_WEBUI_AGENT_DIR=/opt/hermes
 
 # Add a stable dashboard return link to every proxied Hermes page. The absolute
 # root target resolves to dashboard.wysmyfree.com rather than the Hermes path.
-COPY marketingbot-nav.js /app/static/marketingbot-nav.js
-RUN sed -i 's|</head>|<script src="static/marketingbot-nav.js?v=1"></script></head>|' /app/static/index.html
+COPY marketingbot-nav.js /tmp/marketingbot-nav.js
+RUN index="$(find / -type f -path '*/static/index.html' -print -quit)" \
+    && test -n "$index" \
+    && static_dir="$(dirname "$index")" \
+    && cp /tmp/marketingbot-nav.js "$static_dir/marketingbot-nav.js" \
+    && sed -i 's|</head>|<script src="static/marketingbot-nav.js?v=1"></script></head>|' "$index" \
+    && rm /tmp/marketingbot-nav.js
 
 # Railway can inject shell-function environment records whose names are not
 # valid Bash identifiers. Hermes' upstream startup script reloads its saved
