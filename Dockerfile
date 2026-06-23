@@ -31,12 +31,18 @@ ENV CONCURRENCY=1
 ENV BOT_SITE_PROFILE=guidenza
 ENV SKIP_IP_CHECK=1
 
-# Install Playwright browsers at startup by launching and closing
-# This triggers patchright's auto-download mechanism
+# Install Playwright browsers at startup by downloading directly
 CMD ["sh", "-c", "\
   export PLAYWRIGHT_BROWSERS_PATH=/app/pw-browsers && \
   mkdir -p /app/pw-browsers && \
-  echo 'Installing browsers via patchright...' && \
-  node -e \"const {chromium} = require('patchright'); (async () => { const b = await chromium.launch(); await b.close(); console.log('Browser installed OK'); })().catch(e => { console.error('Install failed:', e.message); process.exit(1); });\" && \
-  echo 'Starting marketingbot...' && \
+  if [ ! -f /app/pw-browsers/chromium-1208/chrome-linux64/chrome ]; then \
+    echo 'Downloading Chrome for Testing (162MB)...' && \
+    curl -L --retry 5 --max-time 600 -o /tmp/chrome-linux.zip https://cdn.playwright.dev/builds/cft/145.0.7632.6/linux64/chrome-linux.zip && \
+    unzip -q /tmp/chrome-linux.zip -d /app/pw-browsers/chromium-1208 && \
+    chmod +x /app/pw-browsers/chromium-1208/chrome-linux64/chrome && \
+    rm -f /tmp/chrome-linux.zip && \
+    echo 'Chrome OK'; \
+  else \
+    echo 'Chrome already present'; \
+  fi && \
   npx ts-node src/index.patchright.ts"]
