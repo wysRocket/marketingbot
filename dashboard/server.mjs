@@ -17,6 +17,8 @@ const TYPES = { '.html':'text/html','.js':'text/javascript','.css':'text/css','.
 const HERMES_WEBUI_URL = process.env.HERMES_WEBUI_URL || 'http://hermes-webui.railway.internal:8787';
 const HERMES_DASHBOARD_URL = process.env.HERMES_DASHBOARD_URL || 'http://hermes-gateway.railway.internal:9119';
 const HERMES_WEBUI_PASSWORD_ENABLED = process.env.HERMES_WEBUI_PASSWORD_ENABLED === 'true';
+const HERMES_DASHBOARD_BASIC_USERNAME = process.env.HERMES_DASHBOARD_BASIC_USERNAME || 'hermes';
+const HERMES_DASHBOARD_BASIC_PASSWORD = process.env.HERMES_DASHBOARD_BASIC_PASSWORD || '';
 
 // --- GitHub OAuth config ---
 const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || '';
@@ -139,7 +141,21 @@ function requireAuth(res) {
   res.end(JSON.stringify({ error: 'unauthorized' }));
 }
 
-function proxyHermes(req, res, { baseUrl, prefix, label }) {
+async function hasHermesWebUiSession(req) {
+  try {
+    const response = await fetch(new URL('/api/auth/status', HERMES_WEBUI_URL), {
+      headers: { cookie: req.headers.cookie || '' },
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!response.ok) return false;
+    const status = await response.json();
+    return status.authenticated === true;
+  } catch {
+    return false;
+  }
+}
+
+function proxyHermes(req, res, { baseUrl, prefix, label, basicAuth = null }) {
   let target;
   try {
     target = new URL(baseUrl);
@@ -161,6 +177,7 @@ function proxyHermes(req, res, { baseUrl, prefix, label }) {
     'x-forwarded-proto': 'https',
     'x-forwarded-prefix': prefix,
   };
+  if (basicAuth) headers.authorization = `Basic ${Buffer.from(basicAuth).toString('base64')}`;
 
   const upstream = transport.request({
     protocol: target.protocol,
@@ -321,10 +338,19 @@ http.createServer(async (req, res) => {
     return res.end();
   }
   if (req.url.startsWith('/hermes-dashboard/')) {
+    // The native dashboard has its own auth surface. Reuse the authenticated
+    // WebUI session as the user-facing gate, then authenticate the private
+    // hop with the dashboard's Basic credentials so this tab opens directly.
+    if (GITHUB_CLIENT_ID && !isAuthenticated(req)) return requireAuth(res);
+    if (!HERMES_DASHBOARD_BASIC_PASSWORD || !(await hasHermesWebUiSession(req))) {
+      res.writeHead(302, { Location: '/hermes/' });
+      return res.end();
+    }
     return proxyHermes(req, res, {
       baseUrl: HERMES_DASHBOARD_URL,
       prefix: '/hermes-dashboard',
       label: 'Hermes Dashboard',
+      basicAuth: `${HERMES_DASHBOARD_BASIC_USERNAME}:${HERMES_DASHBOARD_BASIC_PASSWORD}`,
     });
   }
 

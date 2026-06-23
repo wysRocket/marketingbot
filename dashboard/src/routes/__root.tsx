@@ -62,7 +62,7 @@ function RootLayout() {
             >{n.icon}</div>
           </Link>
         ))}
-        <a href="/hermes-dashboard/" title="Hermes Dashboard" style={{ textDecoration: 'none', color: '#8b949e' }}>
+        <a href="/hermes-dashboard/sessions" title="Hermes Dashboard" style={{ textDecoration: 'none', color: '#8b949e' }}>
           <div style={{
             width: 36, height: 36, borderRadius: 6, display: 'flex',
             alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: 16,
@@ -109,7 +109,7 @@ function RootLayout() {
           display: 'flex', alignItems: 'center', padding: '0 16px', gap: 12, flexShrink: 0
         }}>
           <h1 style={{ fontSize: 13, fontWeight: 600, color: '#c9d1d9' }}>Marketingbot</h1>
-          <a href="/hermes-dashboard/" style={{
+          <a href="/hermes-dashboard/sessions" style={{
             display: 'inline-flex', alignItems: 'center', height: 26, padding: '0 10px',
             borderRadius: 6, border: '1px solid #3a3347', background: '#1a1823',
             color: '#f4c430', fontSize: 11, fontWeight: 700, textDecoration: 'none',
