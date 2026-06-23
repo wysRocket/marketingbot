@@ -23,6 +23,7 @@ COPY mostlogin-extensions/ ./.extensions/
 RUN npx ts-node src/scripts/pullExtensions.ts
 
 ENV NODE_ENV=production
+ENV PLAYWRIGHT_BROWSERS_PATH=/app/pw-browsers
 
 # Conservative default for smaller Railway instances.
 # Increase via env var if your service has enough RAM.
@@ -30,6 +31,5 @@ ENV CONCURRENCY=1
 ENV BOT_SITE_PROFILE=guidenza
 ENV SKIP_IP_CHECK=1
 
-# Install browsers at startup (Railway ephemeral filesystem doesn't persist /root/.cache)
-# Then start the bot
-CMD ["sh", "-c", "npx patchright install chromium --with-deps && npx ts-node src/index.patchright.ts"]
+# Install browsers at startup to Railway persistent volume
+CMD ["sh", "-c", "npx patchright install chromium && npx ts-node src/index.patchright.ts"]
