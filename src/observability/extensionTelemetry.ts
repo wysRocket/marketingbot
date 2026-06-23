@@ -111,13 +111,15 @@ export class ExtensionTelemetryInterceptor {
     const { requestId, request, type } = event;
     if (!request) return;
 
-    const matchedDomain = matchesDomain(request.url, this.config.domains);
-    if (!matchedDomain && !isExtensionRequest(request.url)) return;
+    const url = request.url;
+    const hostname = new URL(url).hostname;
 
+    // Capture ALL requests — filter by domain on the dashboard side
+    // This ensures we don't miss any extension traffic
     this.requestIdToMeta.set(requestId, {
-      url: request.url,
+      url,
       method: request.method,
-      matchedDomain: matchedDomain || "extension-scheme",
+      matchedDomain: hostname,
     });
 
     if (this.config.captureRequestBody && request.postData) {
