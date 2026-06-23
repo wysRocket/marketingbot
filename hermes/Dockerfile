@@ -11,4 +11,4 @@ ENV HERMES_WEBUI_AGENT_DIR=/opt/hermes
 # environment after dropping privileges; validate a record immediately before
 # Bash dereferences its key. This preserves all legitimate app variables while
 # safely discarding only malformed records.
-RUN sed -i 's|^      if \[ -z "${!key}" \]; then$|      [[ "$key" =~ ^[a-zA-Z_][a-zA-Z0-9_]*$ ]] || continue\n      if [ -z "${!key}" ]; then|' /hermeswebui_init.bash
+RUN sed -i '164i\      [[ "$key" =~ ^[a-zA-Z_][a-zA-Z0-9_]*$ ]] || continue' /hermeswebui_init.bash
