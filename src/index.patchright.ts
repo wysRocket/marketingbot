@@ -397,16 +397,17 @@ async function fetchProxyList(
   const pass = process.env.DI_PASS;
 
   // ── Proxy-Cheap rotating residential ──────────────────────────────────
-  // Uses a shared gateway; each request gets a random exit IP automatically.
+  // Sticky sessions: append "-session-<id>" to username so each concurrent
+  // profile gets a consistent exit IP for the session's lifetime.
   const pcUser = process.env.PC_USER;
   const pcPass = process.env.PC_PASS;
   const pcHost = process.env.PC_HOST;
   const pcPort = process.env.PC_PORT;
   if (pcUser && pcPass && pcHost && pcPort) {
-    console.log(`[proxy] using proxy-cheap rotating residential (${pcHost}:${pcPort})`);
-    return Array.from({ length: count }, () => ({
+    console.log(`[proxy] using proxy-cheap STICKY residential (${pcHost}:${pcPort})`);
+    return Array.from({ length: count }, (_, i) => ({
       server: `http://${pcHost}:${pcPort}`,
-      username: pcUser,
+      username: `${pcUser}-session-${Date.now()}-${i}`,
       password: pcPass,
     }));
   }
