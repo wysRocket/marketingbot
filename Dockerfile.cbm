@@ -66,11 +66,10 @@ RUN python -c "from cloakbrowser.download import ensure_binary; ensure_binary()"
 
 EXPOSE 8080
 
-HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=10s --retries=6 \
  CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8080/api/status')" || exit 1
 
 COPY entrypoint.cbm.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+CMD ["/entrypoint.sh"]
