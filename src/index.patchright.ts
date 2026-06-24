@@ -621,10 +621,25 @@ async function runProfileSession(
   proxy: RunnerProxyConfig | undefined,
   onContext?: (ctx: import("patchright").BrowserContext) => void,
 ): Promise<void> {
-  let context: import("patchright").BrowserContext;
+  let browserContext: import("patchright").BrowserContext;
+  let context: import("patchright").BrowserContext | import("patchright").Page;
 
   if (SHARED_BROWSER_MODE) {
-    context = await createSharedContext(profile, label, proxy);
+    browserContext = await createSharedContext(profile, label, proxy);
+    context = browserContext;
+  } else if (process.env.CBM_CDP_URL || profile.id) {
+    // ── CDP-remote mode: connect to CloakBrowser-Manager ─────────────────
+    // Per-profile CBM URL via CBM_PROFILE_<ID> env var, or global CBM_CDP_URL
+    const cbmUrl = process.env[`CBM_PROFILE_${profile.id}`] || process.env.CBM_CDP_URL;
+    if (!cbmUrl) {
+      throw new Error(`CDP-remote mode: no CBM URL for profile ${profile.id}. Set CBM_PROFILE_${profile.id} or CBM_CDP_URL`);
+    }
+    console.log(`[${label}] CDP-remote mode: connecting to ${cbmUrl}`);
+    const browser = await chromium.connectOverCDP(cbmUrl);
+    browserContext = browser.contexts()[0];
+    const pages = browserContext.pages();
+    context = pages.length > 0 ? pages[0] : await browserContext.newPage();
+    console.log(`[${label}] CDP-remote connected. Pages: ${pages.length}, context type: ${(context as any) === browserContext ? "BrowserContext" : "Page"}`);
   } else {
     // Persistent dir per pool profile — cache survives across rounds.
     const userDataDir = path.join(CACHE_DIR, profile.id);
@@ -642,26 +657,27 @@ async function runProfileSession(
       }
     }
 
-    context = await chromium.launchPersistentContext(userDataDir, {
+    browserContext = await chromium.launchPersistentContext(userDataDir, {
       headless: false, // --headless=new passed via args for extension support
       args: buildChromiumArgsForProfile(profile.launchArgs ?? []),
       ...profile.patchrightProfile.config,
       ...(proxy ? { proxy } : {}),
     });
+    context = browserContext;
   }
 
   // No context.route() calls — Fetch.enable must stay inactive for cache to work.
 
   if (profile.initScript) {
-    await context.addInitScript(profile.initScript);
+    await browserContext.addInitScript(profile.initScript);
   }
 
   // Dismiss SimilarWeb consent tabs / pre-seed storage so the extension never
   // blocks session startup with welcome or options dialogs.
-  await dismissSimilarWebConsents(context as unknown as BrowserContext);
+  await dismissSimilarWebConsents(browserContext as unknown as BrowserContext);
 
   if (process.env.NETWORK_DEBUG === "1") {
-    await attachNetworkDebugger(context as unknown as BrowserContext).catch(
+    await attachNetworkDebugger(browserContext as unknown as BrowserContext).catch(
       () => {},
     );
   }
@@ -705,9 +721,9 @@ async function runProfileSession(
   }
 
   // Notify caller of the context handle so it can force-close on timeout.
-  onContext?.(context);
+  onContext?.(browserContext);
 
-  const page = (await context.newPage()) as unknown as Page;
+  const page = (await browserContext.newPage()) as unknown as Page;
 
   // Attach extension telemetry interceptor to the page
   if (extInterceptor) {
@@ -796,7 +812,13 @@ async function runProfileSession(
     });
   } finally {
     await page.close();
-    await context.close();
+    if (process.env.CBM_CDP_URL) {
+      // CDP-remote: don't close the browser — CBM manages it. Just disconnect.
+      const browser = (browserContext as any).browser?.();
+      if (browser) await browser.close();
+    } else {
+      await browserContext.close();
+    }
     // In non-shared mode, userDataDir is kept and HTTP cache accumulates.
     // resetSessionState() will wipe only proxy/identity state next launch.
   }
