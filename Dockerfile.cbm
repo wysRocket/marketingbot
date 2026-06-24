@@ -6,9 +6,13 @@ RUN git clone --depth 1 https://github.com/CloakHQ/CloakBrowser-Manager.git /cbm
 FROM node:20-slim AS frontend-builder
 WORKDIR /build
 COPY --from=cbm-clone /cbm/frontend/package.json /build/package.json
-COPY --from=cbm-clone /cbm/frontend/package-lock.json* /build/package-lock.json*
+COPY --from=cbm-clone /cbm/frontend/package-lock.json /build/package-lock.json
 RUN npm install
-COPY --from=cbm-clone /cbm/frontend/ /build/
+COPY --from=cbm-clone /cbm/frontend/index.html /build/index.html
+COPY --from=cbm-clone /cbm/frontend/vite.config.* /build/
+COPY --from=cbm-clone /cbm/frontend/tsconfig.* /build/
+COPY --from=cbm-clone /cbm/frontend/src /build/src
+COPY --from=cbm-clone /cbm/frontend/public /build/public
 RUN npm run build
 
 # Stage 2: Production image
