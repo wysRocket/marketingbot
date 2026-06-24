@@ -5,9 +5,10 @@ RUN git clone --depth 1 https://github.com/CloakHQ/CloakBrowser-Manager.git /cbm
 # Stage 1: Build React frontend
 FROM node:20-slim AS frontend-builder
 WORKDIR /build
-COPY --from=cbm-clone /cbm/frontend/package.json frontend/package-lock.json* ./
+COPY --from=cbm-clone /cbm/frontend/package.json /build/package.json
+COPY --from=cbm-clone /cbm/frontend/package-lock.json* /build/package-lock.json*
 RUN npm install
-COPY --from=cbm-clone /cbm/frontend/ ./
+COPY --from=cbm-clone /cbm/frontend/ /build/
 RUN npm run build
 
 # Stage 2: Production image
@@ -46,8 +47,8 @@ RUN wget -q https://github.com/kasmtech/KasmVNC/releases/download/v1.3.3/kasmvnc
 WORKDIR /app
 
 # Python deps
-COPY --from=cbm-clone /cbm/backend/requirements.txt /app/backend/
-RUN pip install --no-cache-dir -r /app/backend/requirements.txt
+COPY --from=cbm-clone /cbm/backend/requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Backend code
 COPY --from=cbm-clone /cbm/backend/ /app/backend/
