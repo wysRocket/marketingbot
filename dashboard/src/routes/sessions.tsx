@@ -61,24 +61,35 @@ function SessionsPage() {
     return list
   }, [data, profileFilter, domainFilter, sortField, sortDir])
 
+  const formatDuration = (session: SessionRecord) =>
+    session.elapsedMs < 60000
+      ? `${(session.elapsedMs / 1000).toFixed(1)}s`
+      : `${Math.floor(session.elapsedMs / 60000)}m`
+
+  const formatTraffic = (session: SessionRecord) =>
+    session.trafficBytesTotal < 1048576
+      ? `${(session.trafficBytesTotal / 1024).toFixed(0)}KB`
+      : `${(session.trafficBytesTotal / 1048576).toFixed(1)}MB`
+
   if (!data) return <div style={{ padding: 20, color: '#8b949e' }}>Loading...</div>
 
   return (
-    <div style={{ background: '#11151c', border: '1px solid #2a2f3a', borderRadius: 6 }}>
-      <div style={{ padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+    <div className="sessions-page" style={{ background: '#11151c', border: '1px solid #2a2f3a', borderRadius: 6 }}>
+      <div className="sessions-toolbar" style={{ padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
         <label style={{ fontSize: 10, color: '#8b949e', textTransform: 'uppercase' }}>Profile</label>
-        <select value={profileFilter} onChange={e => setProfileFilter(e.target.value)} style={{ background: '#181c24', border: '1px solid #2a2f3a', color: '#c9d1d9', padding: '4px 8px', borderRadius: 4, fontSize: 11, fontFamily: 'JetBrains Mono, monospace' }}>
+        <select className="sessions-control" value={profileFilter} onChange={e => setProfileFilter(e.target.value)} style={{ background: '#181c24', border: '1px solid #2a2f3a', color: '#c9d1d9', padding: '4px 8px', borderRadius: 4, fontSize: 11, fontFamily: 'JetBrains Mono, monospace' }}>
           <option value="">All</option>
           {profiles.map(p => <option key={p} value={p}>{p}</option>)}
         </select>
         <label style={{ fontSize: 10, color: '#8b949e', textTransform: 'uppercase' }}>Domain</label>
-        <input value={domainFilter} onChange={e => setDomainFilter(e.target.value)} placeholder="Filter…" style={{ background: '#181c24', border: '1px solid #2a2f3a', color: '#c9d1d9', padding: '4px 8px', borderRadius: 4, fontSize: 11, fontFamily: 'JetBrains Mono, monospace', width: 120 }} />
+        <input className="sessions-control" value={domainFilter} onChange={e => setDomainFilter(e.target.value)} placeholder="Filter…" style={{ background: '#181c24', border: '1px solid #2a2f3a', color: '#c9d1d9', padding: '4px 8px', borderRadius: 4, fontSize: 11, fontFamily: 'JetBrains Mono, monospace', width: 120 }} />
         <label style={{ fontSize: 10, color: '#8b949e', textTransform: 'uppercase' }}>Sort</label>
-        <select value={sortField + '_' + sortDir} onChange={e => { const [f, d] = e.target.value.split('_'); setSortField(f as 't' | 'd'); setSortDir(d as 'd' | 'a') }} style={{ background: '#181c24', border: '1px solid #2a2f3a', color: '#c9d1d9', padding: '4px 8px', borderRadius: 4, fontSize: 11 }}>
+        <select className="sessions-control" value={sortField + '_' + sortDir} onChange={e => { const [f, d] = e.target.value.split('_'); setSortField(f as 't' | 'd'); setSortDir(d as 'd' | 'a') }} style={{ background: '#181c24', border: '1px solid #2a2f3a', color: '#c9d1d9', padding: '4px 8px', borderRadius: 4, fontSize: 11 }}>
           <option value="t_d">Newest</option><option value="t_a">Oldest</option><option value="d_d">Longest</option>
         </select>
-        <span style={{ marginLeft: 'auto', fontSize: 11, color: '#8b949e' }}>{filtered.length} sessions</span>
+        <span className="sessions-count" style={{ marginLeft: 'auto', fontSize: 11, color: '#8b949e' }}>{filtered.length} sessions</span>
       </div>
+      <div className="sessions-table-scroll">
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead><tr style={{ borderBottom: '1px solid #2a2f3a' }}>
           {['Time', 'Runner', 'Profile', 'Label', 'Domain', 'Duration', 'Pages', 'Extensions', 'Flows', 'Traffic', 'Quality'].map(h => (
@@ -96,12 +107,12 @@ function SessionsPage() {
                 <td style={{ padding: '6px 10px' }}><span className="badge badge-m">{s.profileId || '?'}</span></td>
                 <td style={{ padding: '6px 10px', maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis', fontFamily: 'JetBrains Mono, monospace', fontSize: 10 }}>{s.label || '—'}</td>
                 <td style={{ padding: '6px 10px', fontFamily: 'JetBrains Mono, monospace', fontSize: 10 }}>{s.targetDomain || '—'}</td>
-                <td style={{ padding: '6px 10px', fontFamily: 'JetBrains Mono, monospace' }}>{s.elapsedMs < 60000 ? (s.elapsedMs / 1000).toFixed(1) + 's' : Math.floor(s.elapsedMs / 60000) + 'm'}</td>
+                <td style={{ padding: '6px 10px', fontFamily: 'JetBrains Mono, monospace' }}>{formatDuration(s)}</td>
                 <td style={{ padding: '6px 10px' }}>{s.uniquePageCount}</td>
                 <td style={{ padding: '6px 10px' }}>{(s.extensionSlugs || []).slice(0, 4).map(e => <span className="pill pill-b">{e}</span>)}</td>
                 <td style={{ padding: '6px 10px' }}>{(s.flowsRun || []).slice(0, 3).map(f => <span className="pill pill-g">{f}</span>)}</td>
                 <td style={{ padding: '6px 10px', fontFamily: 'JetBrains Mono, monospace', fontSize: 10 }}>
-                  {s.trafficBytesTotal < 1048576 ? (s.trafficBytesTotal / 1024).toFixed(0) + 'KB' : (s.trafficBytesTotal / 1048576).toFixed(1) + 'MB'}
+                  {formatTraffic(s)}
                 </td>
                 <td style={{ padding: '6px 10px' }}>
                   {q ? <span style={{ color: '#22c55e', fontSize: 10, fontWeight: 600 }}>✓ PASS</span> : <span style={{ color: '#ef4444', fontSize: 10, fontWeight: 600 }}>✗ FAIL</span>}
@@ -111,6 +122,26 @@ function SessionsPage() {
           })}
         </tbody>
       </table>
+      </div>
+      <div className="sessions-cards">
+        {filtered.slice(0, 500).map((s, i) => {
+          const q = s.metMinDuration && s.metMinUniquePages
+          return <article className="session-card" key={s.runId || `${s.recordedAt}-${i}`}>
+            <div className="session-card-head">
+              <span className="session-card-time">{new Date(s.recordedAt).toLocaleTimeString()}</span>
+              <span className={q ? 'session-quality pass' : 'session-quality fail'}>{q ? 'PASS' : 'FAIL'}</span>
+            </div>
+            <div className="session-card-title">{s.label || s.targetDomain || 'Untitled session'}</div>
+            <div className="session-card-domain">{s.targetDomain || 'No target domain'}</div>
+            <div className="session-card-meta">
+              <span>{s.profileId || '?'}</span><span>{s.runner || '?'}</span><span>{formatDuration(s)}</span><span>{s.uniquePageCount} pages</span><span>{formatTraffic(s)}</span>
+            </div>
+            {!!(s.extensionSlugs || []).length && <div className="session-card-pills">{s.extensionSlugs.slice(0, 4).map(extension => <span className="pill pill-b" key={extension}>{extension}</span>)}</div>}
+            {!!(s.flowsRun || []).length && <div className="session-card-pills">{s.flowsRun.slice(0, 3).map(flow => <span className="pill pill-g" key={flow}>{flow}</span>)}</div>}
+          </article>
+        })}
+        {filtered.length === 0 && <div className="sessions-empty">No sessions match these filters.</div>}
+      </div>
     </div>
   )
 }

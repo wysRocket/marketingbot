@@ -1,0 +1,47 @@
+# Arbor Research Config — Similarweb Extension Traffic Generation
+# MarketingBot project: /Users/wysmyfree/Projects/marketingbot
+
+task: >
+  Investigate and optimize the Similarweb Chrome extension (v6.12.19) integration
+  in marketingbot to reliably generate extension API calls (data.similarweb.com/api/v1/data)
+  when the bot visits target domains.
+
+  CRITICAL FINDING FROM REVERSE-ENGINEERING:
+  The Similarweb extension does NOT automatically send data to data.similarweb.com
+  on page load. The FETCH_DATA action is ONLY triggered when:
+    1. The user clicks the extension icon to open the popup/panel
+    2. The panel React component sends chrome.runtime.sendMessage({action: "fetchData", domain: ...})
+  
+  The background script's onUpdated handler only:
+    - Sets the popup URL based on whether the URL is banned (ee() function)
+    - Updates the icon badge with rank data (via onGlobalRatingFetched custom event)
+  
+  The panel.js (1.6MB) contains the actual data fetcher:
+    chrome.runtime.sendMessage({action: bp.FETCH_DATA, domain: Ci.toUnicode(e)})
+  
+  This means: visiting a page does NOT trigger data.similarweb.com/api/v1/data.
+  Only clicking the extension icon does.
+
+  Research areas:
+  (A) Can we programmatically trigger the FETCH_DATA message from a content script injection?
+  (B) Can we simulate the extension icon click via chrome.action API or devtools protocol?
+  (C) Can we modify the content script to auto-fetch on page load?
+  (D) What does the panel.js FETCH_DATA response look like — what data is sent?
+  (E) Is there a way to trigger the onGlobalRatingFetched event to make the extension think the page is "analyzed"?
+  (F) Can we intercept and replay the fetch request to data.similarweb.com/api/v1/data?
+
+  Do NOT modify the Similarweb extension files directly (they're in .extensions/similarweb/).
+  Do NOT modify authentication or proxy logic files.
+  Focus on: content script injection, CDP protocol commands, extension message simulation.
+
+coordinator:
+  max_cycles: 8
+  merge_threshold: 3.0
+  ui:
+    interaction_mode: auto
+
+executor:
+  max_turns: 100
+
+search:
+  enabled: false

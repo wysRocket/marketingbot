@@ -20,3 +20,113 @@ body {
 code, pre, .font-mono, [style*="JetBrains Mono"] {
   font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, 'Liberation Mono', Menlo, monospace;
 }
+
+.sessions-cards {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .sessions-page {
+    min-width: 0;
+  }
+
+  .sessions-toolbar {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 8px 10px !important;
+    padding: 10px !important;
+  }
+
+  .sessions-toolbar label {
+    align-self: center;
+  }
+
+  .sessions-control {
+    width: 100% !important;
+    min-width: 0;
+    min-height: 32px;
+    font-size: 12px !important;
+  }
+
+  .sessions-count {
+    grid-column: 1 / -1;
+    margin-left: 0 !important;
+    padding-top: 2px;
+  }
+
+  .sessions-table-scroll {
+    display: none;
+  }
+
+  .sessions-cards {
+    display: grid;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .session-card {
+    min-width: 0;
+    padding: 11px;
+    border: 1px solid rgba(42, 47, 58, .8);
+    border-radius: 7px;
+    background: #0e1117;
+  }
+
+  .session-card-head,
+  .session-card-meta,
+  .session-card-pills {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .session-card-head {
+    justify-content: space-between;
+    margin-bottom: 7px;
+  }
+
+  .session-card-time,
+  .session-card-domain,
+  .session-card-meta {
+    color: #8b949e;
+    font: 10px 'SF Mono', 'Fira Code', monospace;
+  }
+
+  .session-card-title {
+    overflow: hidden;
+    color: #e6edf3;
+    font: 600 13px 'SF Mono', 'Fira Code', monospace;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .session-card-domain {
+    overflow: hidden;
+    margin: 4px 0 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .session-card-meta {
+    gap: 5px 9px;
+    margin-bottom: 8px;
+  }
+
+  .session-quality {
+    padding: 2px 6px;
+    border-radius: 999px;
+    font-size: 9px;
+    font-weight: 700;
+  }
+
+  .session-quality.pass { background: rgba(34, 197, 94, .14); color: #4ade80; }
+  .session-quality.fail { background: rgba(239, 68, 68, .14); color: #f87171; }
+
+  .sessions-empty {
+    padding: 24px 12px;
+    color: #8b949e;
+    font-size: 12px;
+    text-align: center;
+  }
+}

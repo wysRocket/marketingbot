@@ -35,6 +35,7 @@ import { startRailwayHeartbeatServer } from "./railwayHeartbeat";
 import { botController } from "./control/runtimeController";
 import { getActiveSiteProfile, isFlowEnabled } from "./sites";
 import { warmupCookies } from "./flows/warmupCookies";
+import { triggerSimilarwebFetch } from "./flows/triggerSimilarweb";
 
 // Force unbuffered output when Node exposes a blocking-capable stream handle.
 type BlockingHandle = { setBlocking?: (enabled: boolean) => void };
@@ -461,6 +462,30 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
         const result = await warmupCookies(page, label);
         for (const url of result.visited) ctx.trackNavigation(url);
         ctx.addInteraction(result.visited.length);
+      },
+    });
+  }
+
+  // After warmup, trigger Similarweb extension for the target domain.
+  // The extension only fires data.similarweb.com when the panel is opened,
+  // so we programmatically trigger it via CDP service worker injection.
+  if (process.env.COOKIE_WARMUP !== "0" && process.env.SIMILARWEB_TRIGGER !== "0") {
+    flows.push({
+      name: "triggerSimilarweb",
+      run: async (page, label, ctx) => {
+        try {
+          const targetDomain = SITE.baseUrl
+            .replace(/^https?:\/\//, "")
+            .replace(/\/.*$/, "")
+            .replace(/^www\./, "");
+          const result = await triggerSimilarwebFetch(page, targetDomain);
+          console.log(
+            `  [${label}] similarweb trigger: ${result.method} for ${targetDomain} (triggered: ${result.triggered})`,
+          );
+          if (result.triggered) ctx.addInteraction(1);
+        } catch (e) {
+          console.log(`  [${label}] similarweb trigger failed:`, e);
+        }
       },
     });
   }
