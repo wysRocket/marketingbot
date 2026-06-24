@@ -1,5 +1,4 @@
 import { Page } from "playwright";
-import { triggerSimilarwebFetch } from "./triggerSimilarweb";
 
 const DEFAULT_WARMUP_SITES = [
   "https://www.google.com",
@@ -31,18 +30,6 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-/**
- * Extract the domain from a URL (e.g. "https://www.google.com" → "google.com").
- */
-function extractDomain(url: string): string {
-  try {
-    const u = new URL(url);
-    return u.hostname.replace(/^www\./, "");
-  } catch {
-    return url;
-  }
-}
-
 export async function warmupCookies(page: Page, label: string): Promise<{ visited: string[]; skipped: string[] }> {
   const sites = resolveWarmupSites();
   const visited: string[] = [];
@@ -56,13 +43,7 @@ export async function warmupCookies(page: Page, label: string): Promise<{ visite
       });
       await sleep(WARMUP_DWELL_MS);
 
-      // Trigger Similarweb extension data fetch for this domain.
-      // The extension only fires data.similarweb.com calls when the panel is opened,
-      // so we programmatically trigger it via CDP service worker injection.
-      const domain = extractDomain(url);
-      await triggerSimilarwebFetch(page, domain).catch(() => {
-        // Non-fatal — extension trigger is best-effort
-      });
+      // Removed Similarweb API call from warmup — save API budget for target domain only.
 
       visited.push(url);
     } catch {

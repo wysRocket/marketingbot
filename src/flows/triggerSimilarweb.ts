@@ -25,6 +25,16 @@ const SIMILARWEB_API = "https://data.similarweb.com/api/v1/data";
 const EXTENSION_ID = "cbgieeklabamclkihcckkmgchnjbndld";
 const EXTENSION_VERSION = "6.12.19";
 const REQUEST_TIMEOUT_MS = 15_000;
+const MAX_RETRIES = 2;
+const RETRY_BASE_MS = 3_000;
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+function randomDelay(): number {
+  return 2_000 + Math.floor(Math.random() * 5_000);
+}
 
 export interface SimilarwebApiResult {
   domain: string;
@@ -42,41 +52,56 @@ export async function triggerSimilarwebFetch(
   _page: unknown, // kept for API compatibility with warmupCookies signature
   domain: string,
 ): Promise<{ triggered: boolean; method: string }> {
-  try {
-    const response = await axios.get(SIMILARWEB_API, {
-      params: { domain },
-      headers: {
-        "Content-Type": "application/json",
-        "X-Extension-Version": EXTENSION_VERSION,
-        "Origin": `chrome-extension://${EXTENSION_ID}`,
-        "User-Agent":
-          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
-      },
-      timeout: REQUEST_TIMEOUT_MS,
-      validateStatus: () => true,
-    });
+  // Random initial delay to avoid burst rate limiting
+  await sleep(randomDelay());
 
-    if (response.status === 200 && response.data) {
-      console.log(
-        `  [similarweb] ✓ ${domain}: status=${response.status}, ` +
-          `rank=${response.data?.GlobalRank?.Rank ?? "N/A"}, ` +
-          `visits=${response.data?.Engagments?.Visits ?? "N/A"}`,
-      );
-      return { triggered: true, method: "direct-api" };
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      const response = await axios.get(SIMILARWEB_API, {
+        params: { domain },
+        headers: {
+          "Content-Type": "application/json",
+          "X-Extension-Version": EXTENSION_VERSION,
+          "Origin": `chrome-extension://${EXTENSION_ID}`,
+          "User-Agent":
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+        },
+        timeout: REQUEST_TIMEOUT_MS,
+        validateStatus: () => true,
+      });
+
+      if (response.status === 200 && response.data) {
+        console.log(
+          `  [similarweb] ✓ ${domain}: status=${response.status}, ` +
+            `rank=${response.data?.GlobalRank?.Rank ?? "N/A"}, ` +
+            `visits=${response.data?.Engagments?.Visits ?? "N/A"}`,
+        );
+        return { triggered: true, method: "direct-api" };
+      }
+
+      // Retry on 403 with exponential backoff
+      if (response.status === 403 && attempt < MAX_RETRIES) {
+        const backoff = RETRY_BASE_MS * Math.pow(2, attempt) + Math.floor(Math.random() * 2000);
+        console.log(`  [similarweb] ⏳ ${domain}: HTTP 403, retry ${attempt + 1}/${MAX_RETRIES} in ${backoff}ms`);
+        await sleep(backoff);
+        continue;
+      }
+
+      console.log(`  [similarweb] ✗ ${domain}: HTTP ${response.status}`);
+      return { triggered: false, method: "direct-api" };
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : String(error);
+      if (attempt < MAX_RETRIES) {
+        const backoff = RETRY_BASE_MS * Math.pow(2, attempt) + Math.floor(Math.random() * 2000);
+        console.log(`  [similarweb] ⏳ ${domain}: ${msg}, retry ${attempt + 1}/${MAX_RETRIES} in ${backoff}ms`);
+        await sleep(backoff);
+        continue;
+      }
+      console.log(`  [similarweb] ✗ ${domain}: ${msg}`);
+      return { triggered: false, method: "direct-api" };
     }
-
-    console.log(
-      `  [similarweb] ✗ ${domain}: HTTP ${response.status}`,
-    );
-    return {
-      triggered: false,
-      method: "direct-api",
-    };
-  } catch (error) {
-    const msg = error instanceof Error ? error.message : String(error);
-    console.log(`  [similarweb] ✗ ${domain}: ${msg}`);
-    return { triggered: false, method: "direct-api" };
   }
+  return { triggered: false, method: "direct-api" };
 }
 
 /**
