@@ -72,4 +72,7 @@ HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
 COPY entrypoint.cbm.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
