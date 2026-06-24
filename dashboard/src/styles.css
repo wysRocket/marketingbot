@@ -25,6 +25,54 @@ code, pre, .font-mono, [style*="JetBrains Mono"] {
   display: none;
 }
 
+/* Desktop table: horizontal scroll on overflow */
+.sessions-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Pill styling */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 4px;
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+}
+
+.pill-b {
+  background: rgba(99, 179, 237, 0.12);
+  color: #63b3ed;
+  padding: 1px 6px;
+  font-size: 9px;
+}
+
+.pill-g {
+  background: rgba(72, 187, 120, 0.12);
+  color: #48bb78;
+  padding: 1px 6px;
+  font-size: 9px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+.badge-b {
+  background: rgba(99, 179, 237, 0.12);
+  color: #63b3ed;
+}
+
+.badge-m {
+  background: rgba(159, 122, 234, 0.12);
+  color: #9f7aea;
+}
+
 @media (max-width: 720px) {
   .sessions-page {
     min-width: 0;

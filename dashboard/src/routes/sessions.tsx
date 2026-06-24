@@ -20,6 +20,24 @@ interface DashboardData {
   fingerprint: string
 }
 
+function friendlyExtName(slug: string): string {
+  const map: Record<string, string> = {
+    'similarweb': 'SW',
+    'honey': 'Honey',
+    'hola': 'Hola',
+    'ghostery': 'Ghost',
+    'wappalyzer': 'Wapp',
+    'builtwith': 'Built',
+    'mozbar': 'Moz',
+    'ahrefs': 'Ahrefs',
+    'keywords-everywhere': 'KE',
+  }
+  if (map[slug]) return map[slug]
+  // For chrome extension IDs, show first 6 chars
+  if (slug.length > 12) return slug.slice(0, 8)
+  return slug
+}
+
 function SessionsPage() {
   const [data, setData] = useState<DashboardData | null>(null)
   const [lastFp, setLastFp] = useState('')
@@ -89,11 +107,11 @@ function SessionsPage() {
         </select>
         <span className="sessions-count" style={{ marginLeft: 'auto', fontSize: 11, color: '#8b949e' }}>{filtered.length} sessions</span>
       </div>
-      <div className="sessions-table-scroll">
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <div className="sessions-table-scroll" style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 700 }}>
         <thead><tr style={{ borderBottom: '1px solid #2a2f3a' }}>
-          {['Time', 'Runner', 'Profile', 'Label', 'Domain', 'Duration', 'Pages', 'Extensions', 'Flows', 'Traffic', 'Quality'].map(h => (
-            <th key={h} style={{ padding: '6px 10px', textAlign: 'left', fontSize: 9, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e', fontWeight: 600 }}>{h}</th>
+          {['Time', 'Runner', 'Profile', 'Label', 'Duration', 'Pages', 'Ext', 'Flows', 'Traffic', 'Quality'].map(h => (
+            <th key={h} style={{ padding: '6px 8px', textAlign: 'left', fontSize: 9, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e', fontWeight: 600, whiteSpace: 'nowrap' }}>{h}</th>
           ))}
         </tr></thead>
         <tbody>
@@ -102,19 +120,27 @@ function SessionsPage() {
             return (
               <tr key={i} style={{ borderBottom: '1px solid rgba(42,47,58,.4)', cursor: 'pointer' }}
                 onClick={() => { const el = document.getElementById('sess-detail-' + i); if (el) el.style.display = el.style.display === 'none' ? 'table-row' : 'none' }}>
-                <td style={{ padding: '6px 10px', fontSize: 11, fontFamily: 'JetBrains Mono, monospace' }}>{new Date(s.recordedAt).toLocaleTimeString()}</td>
-                <td style={{ padding: '6px 10px' }}><span className="badge badge-b">{s.runner || '?'}</span></td>
-                <td style={{ padding: '6px 10px' }}><span className="badge badge-m">{s.profileId || '?'}</span></td>
-                <td style={{ padding: '6px 10px', maxWidth: 100, overflow: 'hidden', textOverflow: 'ellipsis', fontFamily: 'JetBrains Mono, monospace', fontSize: 10 }}>{s.label || '—'}</td>
-                <td style={{ padding: '6px 10px', fontFamily: 'JetBrains Mono, monospace', fontSize: 10 }}>{s.targetDomain || '—'}</td>
-                <td style={{ padding: '6px 10px', fontFamily: 'JetBrains Mono, monospace' }}>{formatDuration(s)}</td>
-                <td style={{ padding: '6px 10px' }}>{s.uniquePageCount}</td>
-                <td style={{ padding: '6px 10px' }}>{(s.extensionSlugs || []).slice(0, 4).map(e => <span className="pill pill-b">{e}</span>)}</td>
-                <td style={{ padding: '6px 10px' }}>{(s.flowsRun || []).slice(0, 3).map(f => <span className="pill pill-g">{f}</span>)}</td>
-                <td style={{ padding: '6px 10px', fontFamily: 'JetBrains Mono, monospace', fontSize: 10 }}>
+                <td style={{ padding: '6px 8px', fontSize: 11, fontFamily: 'JetBrains Mono, monospace', whiteSpace: 'nowrap' }}>{new Date(s.recordedAt).toLocaleTimeString()}</td>
+                <td style={{ padding: '6px 8px' }}><span className="badge badge-b">{s.runner || '?'}</span></td>
+                <td style={{ padding: '6px 8px' }}><span className="badge badge-m">{s.profileId || '?'}</span></td>
+                <td style={{ padding: '6px 8px', maxWidth: 80, overflow: 'hidden', textOverflow: 'ellipsis', fontFamily: 'JetBrains Mono, monospace', fontSize: 10, whiteSpace: 'nowrap' }}>{s.label || '—'}</td>
+                <td style={{ padding: '6px 8px', fontFamily: 'JetBrains Mono, monospace', whiteSpace: 'nowrap' }}>{formatDuration(s)}</td>
+                <td style={{ padding: '6px 8px', textAlign: 'center' }}>{s.uniquePageCount}</td>
+                <td style={{ padding: '6px 8px' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
+                    {(s.extensionSlugs || []).slice(0, 5).map(e => <span key={e} className="pill pill-b" style={{ fontSize: 9, padding: '1px 5px' }}>{friendlyExtName(e)}</span>)}
+                    {(s.extensionSlugs || []).length > 5 && <span className="pill" style={{ fontSize: 9, padding: '1px 5px', color: '#8b949e' }}>+{s.extensionSlugs.length - 5}</span>}
+                  </div>
+                </td>
+                <td style={{ padding: '6px 8px' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
+                    {(s.flowsRun || []).map(f => <span key={f} className="pill pill-g" style={{ fontSize: 9, padding: '1px 5px' }}>{f}</span>)}
+                  </div>
+                </td>
+                <td style={{ padding: '6px 8px', fontFamily: 'JetBrains Mono, monospace', fontSize: 10, whiteSpace: 'nowrap' }}>
                   {formatTraffic(s)}
                 </td>
-                <td style={{ padding: '6px 10px' }}>
+                <td style={{ padding: '6px 8px', whiteSpace: 'nowrap' }}>
                   {q ? <span style={{ color: '#22c55e', fontSize: 10, fontWeight: 600 }}>✓ PASS</span> : <span style={{ color: '#ef4444', fontSize: 10, fontWeight: 600 }}>✗ FAIL</span>}
                 </td>
               </tr>
@@ -136,7 +162,7 @@ function SessionsPage() {
             <div className="session-card-meta">
               <span>{s.profileId || '?'}</span><span>{s.runner || '?'}</span><span>{formatDuration(s)}</span><span>{s.uniquePageCount} pages</span><span>{formatTraffic(s)}</span>
             </div>
-            {!!(s.extensionSlugs || []).length && <div className="session-card-pills">{s.extensionSlugs.slice(0, 4).map(extension => <span className="pill pill-b" key={extension}>{extension}</span>)}</div>}
+            {!!(s.extensionSlugs || []).length && <div className="session-card-pills">{s.extensionSlugs.slice(0, 4).map(ext => <span className="pill pill-b" key={ext}>{friendlyExtName(ext)}</span>)}</div>}
             {!!(s.flowsRun || []).length && <div className="session-card-pills">{s.flowsRun.slice(0, 3).map(flow => <span className="pill pill-g" key={flow}>{flow}</span>)}</div>}
           </article>
         })}
