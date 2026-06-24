@@ -1,5 +1,6 @@
 // Cache-bust: force Docker layer invalidation
 import { createHash } from "node:crypto";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -94,11 +95,54 @@ export function resolveExtensionBundle(input: {
   ) as ExtensionManifestEntry[];
   const manifestBySlug = new Map(manifest.map((entry) => [entry.slug, entry]));
   const requestedSlugs = parseExtensionSlugsEnv(input.extensionSlugsEnv);
+
+  // ── Random subset selection ──────────────────────────────────────────
+  // EXT_MIN_COUNT / EXT_MAX_COUNT: randomly pick this many extensions
+  // from the available pool on each startup. "similarweb" is always kept.
+  // This ensures each instance / restart has a different extension count,
+  // making profiles look more natural to analytics platforms.
+  const extMinRaw = process.env.EXT_MIN_COUNT;
+  const extMaxRaw = process.env.EXT_MAX_COUNT;
+  let slugsToLoad: string[];
+
+  if (extMinRaw && extMaxRaw && !requestedSlugs) {
+    const minCount = Math.max(1, parseInt(extMinRaw, 10));
+    const maxCount = Math.min(
+      availableExtensions.length,
+      Math.max(minCount, parseInt(extMaxRaw, 10)),
+    );
+    const targetCount =
+      minCount === maxCount
+        ? minCount
+        : minCount + crypto.randomInt(maxCount - minCount + 1);
+
+    // Always include similarweb (essential for the task)
+    const mustInclude = ["similarweb"];
+    const candidates = availableExtensions
+      .map((e) => e.slug)
+      .filter((s) => !mustInclude.includes(s));
+
+    // Fisher-Yates shuffle and pick
+    for (let i = candidates.length - 1; i > 0; i--) {
+      const j = crypto.randomInt(i + 1);
+      [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+    }
+
+    const selected = [
+      ...mustInclude,
+      ...candidates.slice(0, Math.max(0, targetCount - mustInclude.length)),
+    ];
+
+    slugsToLoad = normalizeSlugs(selected);
+    console.log(
+      `[extensions] random subset: ${slugsToLoad.length}/${availableExtensions.length} extensions loaded (min=${minCount}, max=${maxCount}, target=${targetCount})`,
+    );
+    console.log(`[extensions] selected: ${slugsToLoad.join(", ")}`);
+  } else {
+    slugsToLoad = requestedSlugs ?? availableExtensions.map((e) => e.slug);
+  }
+
   const selectedSlugs: string[] = [];
-  // Use all available extensions (by directory name) when no explicit slugs set.
-  // Directory names are Chrome extension IDs, not friendly slugs, so we skip
-  // the manifest check in Railway mode.
-  const slugsToLoad = requestedSlugs ?? availableExtensions.map(e => e.slug);
   for (const slug of slugsToLoad) {
     if (!availableBySlug.has(slug)) {
       if (input.railwayEnvironment) {
