@@ -405,11 +405,14 @@ async function fetchProxyList(
   const pcPort = process.env.PC_PORT;
   if (pcUser && pcPass && pcHost && pcPort) {
     console.log(`[proxy] using proxy-cheap STICKY residential (${pcHost}:${pcPort})`);
-    return Array.from({ length: count }, (_, i) => ({
-      server: `http://${pcHost}:${pcPort}`,
-      username: `${pcUser}-session-${Date.now()}-${i}`,
-      password: pcPass,
-    }));
+    return Array.from({ length: count }, (_, i) => {
+      const sessionId = `sess${Date.now()}${i}`;
+      return {
+        server: `http://${pcHost}:${pcPort}`,
+        username: pcUser,
+        password: `${pcPass}_session-${sessionId}`,
+      };
+    });
   }
 
   if (!user || !pass) return Array(count).fill(undefined);
