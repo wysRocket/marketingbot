@@ -2,11 +2,11 @@
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
     "builder": "DOCKERFILE",
-    "dockerfilePath": "Dockerfile"
+    "dockerfilePath": "Dockerfile.cbm"
   },
   "deploy": {
-    "startCommand": "bash start.sh",
-    "healthcheckPath": "/health",
+    "startCommand": "bash entrypoint.cbm.sh",
+    "healthcheckPath": "/api/status",
     "healthcheckTimeout": 120,
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
