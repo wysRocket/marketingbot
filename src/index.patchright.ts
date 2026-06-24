@@ -248,28 +248,9 @@ async function createSharedContext(
     ...(proxy ? { proxy } : {}),
   };
 
-  // Block video/audio/media resources — allow only document, script, stylesheet, image, font, xhr, fetch
-  async function blockMediaResources(context: import("patchright").BrowserContext) {
-    await context.route("**/*", (route) => {
-      const resourceType = route.request().resourceType();
-      const BLOCKED_TYPES = new Set(["media", "manifest", "object", "other"]);
-      if (BLOCKED_TYPES.has(resourceType)) {
-        return route.abort();
-      }
-      const url = route.request().url();
-      const BLOCKED_EXTENSIONS = /\.(mp4|webm|ogg|mp3|wav|flac|aac|m3u8|ts|mts|mov|avi|wmv|mkv|webp)(\?|$)/i;
-      if (BLOCKED_EXTENSIONS.test(url)) {
-        return route.abort();
-      }
-      return route.continue();
-    });
-  }
-
   try {
     const browser = await getSharedBrowser();
-    const context = await browser.newContext(contextOptions);
-    await blockMediaResources(context);
-    return context;
+    return await browser.newContext(contextOptions);
   } catch (err) {
     if (!isClosedTargetError(err)) {
       throw err;
@@ -280,9 +261,7 @@ async function createSharedContext(
     );
     await closeSharedBrowser();
     const browser = await getSharedBrowser();
-    const context = await browser.newContext(contextOptions);
-    await blockMediaResources(context);
-    return context;
+    return await browser.newContext(contextOptions);
   }
 }
 
@@ -664,7 +643,7 @@ async function runProfileSession(
     }
 
     context = await chromium.launchPersistentContext(userDataDir, {
-      headless: true,
+      headless: false, // --headless=new passed via args for extension support
       args: buildChromiumArgsForProfile(profile.launchArgs ?? []),
       ...profile.patchrightProfile.config,
       ...(proxy ? { proxy } : {}),
