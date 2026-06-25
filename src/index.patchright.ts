@@ -627,19 +627,18 @@ async function runProfileSession(
   if (SHARED_BROWSER_MODE) {
     browserContext = await createSharedContext(profile, label, proxy);
     context = browserContext;
-  } else if (process.env.CBM_CDP_URL || profile.id) {
+  } else if (process.env[`CBM_PROFILE_${profile.id}`] || (process.env.CBM_CDP_URL && process.env.CBM_PROFILES?.split(",").includes(profile.id))) {
     // ── CDP-remote mode: connect to CloakBrowser-Manager ─────────────────
-    // Per-profile CBM URL via CBM_PROFILE_<ID> env var, or global CBM_CDP_URL
+    // Per-profile: CBM_PROFILE_<ID>=<url>
+    // Global:     CBM_CDP_URL=<url> + CBM_PROFILES=fp-00,fp-02 (comma-separated list)
     const cbmUrl = process.env[`CBM_PROFILE_${profile.id}`] || process.env.CBM_CDP_URL;
-    if (!cbmUrl) {
-      throw new Error(`CDP-remote mode: no CBM URL for profile ${profile.id}. Set CBM_PROFILE_${profile.id} or CBM_CDP_URL`);
-    }
     console.log(`[${label}] CDP-remote mode: connecting to ${cbmUrl}`);
+    if (!cbmUrl) throw new Error(`No CBM URL for profile ${profile.id}`);
     const browser = await chromium.connectOverCDP(cbmUrl);
     browserContext = browser.contexts()[0];
     const pages = browserContext.pages();
     context = pages.length > 0 ? pages[0] : await browserContext.newPage();
-    console.log(`[${label}] CDP-remote connected. Pages: ${pages.length}, context type: ${(context as any) === browserContext ? "BrowserContext" : "Page"}`);
+    console.log(`[${label}] CDP-remote connected. Pages: ${pages.length}`);
   } else {
     // Persistent dir per pool profile — cache survives across rounds.
     const userDataDir = path.join(CACHE_DIR, profile.id);
