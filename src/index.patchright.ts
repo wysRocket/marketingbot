@@ -891,6 +891,8 @@ async function main(): Promise<void> {
   console.log(
     `[startup] site-profile=${SITE.id} profile-source=${catalog.source} shard-profiles=${shardPoolProfiles.map((profile) => profile.id).join(", ") || "(none)"}`,
   );
+  console.log(`[startup] CBM_CDP_URL=${process.env.CBM_CDP_URL ? "SET(" + process.env.CBM_CDP_URL.substring(0, 60) + ")" : "NOT SET"}`);
+  console.log(`[startup] SHARED_BROWSER_MODE=${process.env.SHARED_BROWSER_MODE}`);
   console.log(
     `[config] pool: ${POOL_SIZE} | concurrency: ${MAX_CONCURRENT} (min=${minConcurrent}) | rounds: ${TOTAL_ROUNDS} | mode: ${SHARED_BROWSER_MODE ? "shared-browser" : (process.env.CBM_CDP_URL ? "cdp-remote" : "persistent-context")} | round-timeout-ms: ${ROUND_TIMEOUT_MS} | session-timeout-ms: ${SESSION_TIMEOUT_MS} | launch-stagger-ms: ${SESSION_LAUNCH_STAGGER_MS} | alive-log-ms: ${ALIVE_LOG_INTERVAL_MS} | backoff-step: ${backoffStep} | recovery-step: ${recoveryStep}/${recoveryRounds} round(s)\n`,
   );
