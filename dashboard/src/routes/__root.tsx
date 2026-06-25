@@ -12,6 +12,7 @@ const nav = [
   { to: '/extensions', icon: '🔌', label: 'Extensions' },
   { to: '/network', icon: '🌐', label: 'Network' },
   { to: '/similarweb', icon: '📈', label: 'Similarweb' },
+  { to: '/cbm', icon: '🕵️', label: 'CBM' },
 ]
 
 interface AuthState {

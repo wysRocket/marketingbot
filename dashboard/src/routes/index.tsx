@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState, useCallback } from 'react'
 import { getDashboardData } from '#/lib/api'
+import { ModeSelector } from '#/components/ModeSelector'
 
 export const Route = createFileRoute('/')({
   component: OverviewPage,
@@ -15,10 +16,12 @@ interface SessionRecord {
 interface DashboardData {
   sessions: SessionRecord[]
   fingerprint: string
+  modeConfig?: { cbmProfiles: string[]; cbmUrl: string | null }
 }
 
 function OverviewPage() {
   const [data, setData] = useState<DashboardData | null>(null)
+  const [config, setConfig] = useState<{ cbmProfiles: string[]; cbmUrl: string | null } | undefined>(undefined)
   const [lastFp, setLastFp] = useState('')
   
 
@@ -28,6 +31,7 @@ function OverviewPage() {
       if (d.fingerprint !== lastFp) {
         setLastFp(d.fingerprint)
         setData(d as DashboardData)
+        if (d.modeConfig) setConfig(d.modeConfig)
         const el = document.getElementById('last-update')
         if (el) el.textContent = 'Updated ' + new Date().toLocaleTimeString()
       }
@@ -77,6 +81,12 @@ function OverviewPage() {
         </div>
       </div>
 
+      {/* Mode Selector */}
+      <div style={{ gridColumn: 'span 12', background: '#11151c', border: '1px solid #2a2f3a', borderRadius: 6, padding: '8px 12px' }}>
+        <div style={{ fontSize: 9, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e', marginBottom: 6 }}>Browser Mode (per-session, live)</div>
+        <ModeSelector />
+      </div>
+
       {/* Charts */}
       <div style={{ gridColumn: 'span 6', background: '#11151c', border: '1px solid #2a2f3a', borderRadius: 6 }}>
         <div style={{ padding: '8px 12px', borderBottom: '1px solid #2a2f3a', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e' }}>Sessions / Day</div>
@@ -100,7 +110,7 @@ function OverviewPage() {
         <div style={{ padding: '8px 12px', borderBottom: '1px solid #2a2f3a', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e' }}>Recent Sessions</div>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead><tr style={{ borderBottom: '1px solid #2a2f3a' }}>
-            {['Time', 'Profile', 'Domain', 'Duration', 'Pages', 'Quality'].map(h => (
+            {['Time', 'Profile', 'Mode', 'Domain', 'Duration', 'Pages', 'Quality'].map(h => (
               <th key={h} style={{ padding: '6px 10px', textAlign: 'left', fontSize: 9, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e', fontWeight: 600 }}>{h}</th>
             ))}
           </tr></thead>
@@ -109,6 +119,13 @@ function OverviewPage() {
               <tr key={i} style={{ borderBottom: '1px solid rgba(42,47,58,.4)' }}>
                 <td style={{ padding: '6px 10px', fontSize: 11, fontFamily: 'JetBrains Mono, monospace' }}>{new Date(r.recordedAt).toLocaleTimeString()}</td>
                 <td style={{ padding: '6px 10px' }}><span className="badge badge-m">{r.profileId || '?'}</span></td>
+                <td style={{ padding: '6px 10px' }}>
+                  <span style={{
+                    fontSize: 8, fontWeight: 700, padding: '1px 5px', borderRadius: 3,
+                    background: (config?.cbmProfiles?.includes(r.profileId)) ? 'rgba(167,139,250,.15)' : 'rgba(107,114,128,.15)',
+                    color: (config?.cbmProfiles?.includes(r.profileId)) ? '#a78bfa' : '#6b7280',
+                  }}>{(config?.cbmProfiles?.includes(r.profileId)) ? 'CBM' : 'PR'}</span>
+                </td>
                 <td style={{ padding: '6px 10px', fontFamily: 'JetBrains Mono, monospace', fontSize: 10 }}>{r.targetDomain || '—'}</td>
                 <td style={{ padding: '6px 10px', fontFamily: 'JetBrains Mono, monospace' }}>{r.elapsedMs < 60000 ? (r.elapsedMs / 1000).toFixed(1) + 's' : Math.floor(r.elapsedMs / 60000) + 'm'}</td>
                 <td style={{ padding: '6px 10px' }}>{r.uniquePageCount}</td>

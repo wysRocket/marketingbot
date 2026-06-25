@@ -13,6 +13,7 @@ import { Route as SimilarwebRouteImport } from './routes/similarweb'
 import { Route as SessionsRouteImport } from './routes/sessions'
 import { Route as NetworkRouteImport } from './routes/network'
 import { Route as ExtensionsRouteImport } from './routes/extensions'
+import { Route as CbmRouteImport } from './routes/cbm'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SimilarwebRoute = SimilarwebRouteImport.update({
@@ -35,6 +36,11 @@ const ExtensionsRoute = ExtensionsRouteImport.update({
   path: '/extensions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CbmRoute = CbmRouteImport.update({
+  id: '/cbm',
+  path: '/cbm',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +49,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cbm': typeof CbmRoute
   '/extensions': typeof ExtensionsRoute
   '/network': typeof NetworkRoute
   '/sessions': typeof SessionsRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cbm': typeof CbmRoute
   '/extensions': typeof ExtensionsRoute
   '/network': typeof NetworkRoute
   '/sessions': typeof SessionsRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cbm': typeof CbmRoute
   '/extensions': typeof ExtensionsRoute
   '/network': typeof NetworkRoute
   '/sessions': typeof SessionsRoute
@@ -65,12 +74,19 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/extensions' | '/network' | '/sessions' | '/similarweb'
+  fullPaths:
+    | '/'
+    | '/cbm'
+    | '/extensions'
+    | '/network'
+    | '/sessions'
+    | '/similarweb'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/extensions' | '/network' | '/sessions' | '/similarweb'
+  to: '/' | '/cbm' | '/extensions' | '/network' | '/sessions' | '/similarweb'
   id:
     | '__root__'
     | '/'
+    | '/cbm'
     | '/extensions'
     | '/network'
     | '/sessions'
@@ -79,6 +95,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CbmRoute: typeof CbmRoute
   ExtensionsRoute: typeof ExtensionsRoute
   NetworkRoute: typeof NetworkRoute
   SessionsRoute: typeof SessionsRoute
@@ -115,6 +132,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExtensionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cbm': {
+      id: '/cbm'
+      path: '/cbm'
+      fullPath: '/cbm'
+      preLoaderRoute: typeof CbmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -127,6 +151,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CbmRoute: CbmRoute,
   ExtensionsRoute: ExtensionsRoute,
   NetworkRoute: NetworkRoute,
   SessionsRoute: SessionsRoute,

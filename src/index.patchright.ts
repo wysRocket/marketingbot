@@ -632,7 +632,7 @@ async function runProfileSession(
     // Per-profile: CBM_PROFILE_<ID>=<url>
     // Global:     CBM_CDP_URL=<url> + CBM_PROFILES=fp-00,fp-02 (comma-separated list)
     const cbmUrl = process.env[`CBM_PROFILE_${profile.id}`] || process.env.CBM_CDP_URL;
-    console.log(`[${label}] CDP-remote mode: connecting to ${cbmUrl}`);
+    console.log(`[${label}] CDP-remote mode: connecting to ${cbmUrl} (profile=${profile.id} CBM_PROFILES=${process.env.CBM_PROFILES})`);
     if (!cbmUrl) throw new Error(`No CBM URL for profile ${profile.id}`);
     const browser = await chromium.connectOverCDP(cbmUrl);
     browserContext = browser.contexts()[0];

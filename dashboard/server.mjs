@@ -549,6 +549,46 @@ http.createServer(async (req, res) => {
     }
   }
 
+  // --- Mode config (proxied to marketingbot, requires CONTROL_TOKEN) ---
+  if (req.url === '/api/mode' && req.method === 'GET') {
+    const apiUrl = (process.env.BOT_API_URL || 'http://marketingbot.railway.internal:8080/api/data').replace('/data', '/mode');
+    try {
+      const resp = await fetch(apiUrl, {
+        headers: { 'Authorization': `Bearer ${process.env.CONTROL_TOKEN || ''}` },
+      });
+      const data = await resp.json();
+      res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+      return res.end(JSON.stringify(data));
+    } catch(e) {
+      res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+      return res.end(JSON.stringify({ cbmProfiles: [], cbmUrl: null }));
+    }
+  }
+  if (req.url === '/api/mode' && req.method === 'POST') {
+    const apiUrl = (process.env.BOT_API_URL || 'http://marketingbot.railway.internal:8080/api/data').replace('/data', '/mode');
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', async () => {
+      try {
+        const resp = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${process.env.CONTROL_TOKEN || ''}`,
+          },
+          body,
+        });
+        const data = await resp.json();
+        res.writeHead(resp.status, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+        return res.end(JSON.stringify(data));
+      } catch(e) {
+        res.writeHead(500, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+        return res.end(JSON.stringify({ error: e.message }));
+      }
+    });
+    return;
+  }
+
   // All remaining paths, including native dashboard routes and assets, are
   // forwarded to the Hermes Agent dashboard running on port 9119.
   return proxyNativeHermesDashboard(req, res);
