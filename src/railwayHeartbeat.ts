@@ -106,7 +106,7 @@ export function startRailwayHeartbeatServer(): void {
         res.statusCode = 200;
         res.setHeader("content-type", "application/json; charset=utf-8");
         res.setHeader("Access-Control-Allow-Origin", "*");
-        res.end(JSON.stringify({ sessions, extEvents, swObservations, fingerprint: sessions.length + ":" + (sessions[sessions.length-1]?.recordedAt || "") }));
+        res.end(JSON.stringify({ sessions, extEvents, swObservations, fingerprint: sessions.length + ":" + (sessions[sessions.length-1]?.recordedAt || ""), modeConfig: { cbmProfiles: (process.env.CBM_PROFILES || "").split(",").filter(Boolean), cbmUrl: process.env.CBM_CDP_URL || null } }));
       } catch (e) {
         res.statusCode = 500;
         res.setHeader("content-type", "application/json; charset=utf-8");
@@ -116,7 +116,7 @@ export function startRailwayHeartbeatServer(): void {
     }
 
     // Everything below is control surface and requires the token.
-    if (url === "/status" || url.startsWith("/control/")) {
+    if (url === "/status" || url.startsWith("/control/") || url.startsWith("/api/mode")) {
       if (!isAuthorized(req)) {
         sendJson(res, 401, { error: "unauthorized" });
         return;
@@ -136,6 +136,58 @@ export function startRailwayHeartbeatServer(): void {
       if (method === "POST" && url === "/control/stop") {
         const changed = botController.stop("api");
         sendJson(res, 200, { changed, status: botController.status() });
+        return;
+      }
+
+      // Mode selection: set CBM_CDP_URL + CBM_PROFILES for next round
+      if (method === "POST" && url === "/api/mode") {
+        let body = "";
+        req.on("data", (chunk) => (body += chunk));
+        req.on("end", () => {
+          try {
+            const data = JSON.parse(body || "{}");
+            const { profileId, mode, cbmUrl } = data;
+            if (!profileId || !mode) {
+              sendJson(res, 400, { error: "profileId and mode required" });
+              return;
+            }
+            if (mode === "cbm") {
+              if (!cbmUrl && !process.env.CBM_CDP_URL) {
+                sendJson(res, 400, { error: "cbmUrl required when CBM_CDP_URL not set" });
+                return;
+              }
+              // Set global CBM URL (first time or override)
+              if (cbmUrl) process.env.CBM_CDP_URL = cbmUrl;
+              // Add profile to CBM_PROFILES list
+              const current = (process.env.CBM_PROFILES || "").split(",").filter(Boolean);
+              if (!current.includes(profileId)) current.push(profileId);
+              process.env.CBM_PROFILES = current.join(",");
+              console.log(`[mode] ${profileId} → CBM (url=${process.env.CBM_CDP_URL?.substring(0, 50)}...)`);
+            } else {
+              // Remove profile from CBM_PROFILES list (revert to Patchright)
+              const current = (process.env.CBM_PROFILES || "").split(",").filter(Boolean);
+              const updated = current.filter((id) => id !== profileId);
+              process.env.CBM_PROFILES = updated.join(",");
+              console.log(`[mode] ${profileId} → Patchright`);
+            }
+            sendJson(res, 200, {
+              ok: true,
+              cbmProfiles: process.env.CBM_PROFILES || "",
+              cbmUrl: process.env.CBM_CDP_URL || null,
+            });
+          } catch (e) {
+            sendJson(res, 400, { error: "invalid JSON: " + (e as Error).message });
+          }
+        });
+        return;
+      }
+
+      // GET /api/mode — return current mode config
+      if (method === "GET" && url === "/api/mode") {
+        sendJson(res, 200, {
+          cbmProfiles: (process.env.CBM_PROFILES || "").split(",").filter(Boolean),
+          cbmUrl: process.env.CBM_CDP_URL || null,
+        });
         return;
       }
 
