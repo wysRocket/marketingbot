@@ -628,6 +628,7 @@ async function runProfileSession(
     browserContext = await createSharedContext(profile, label, proxy);
     context = browserContext;
   } else if (process.env[`CBM_PROFILE_${profile.id}`] || (process.env.CBM_CDP_URL && process.env.CBM_PROFILES?.split(",").includes(profile.id))) {
+    console.log(`[${label}] CBM match: profile.id=${profile.id} CBM_PROFILE_${profile.id}=${process.env[`CBM_PROFILE_${profile.id}`]} CBM_PROFILES=${process.env.CBM_PROFILES}`);
     // ── CDP-remote mode: connect to CloakBrowser-Manager ─────────────────
     // Per-profile: CBM_PROFILE_<ID>=<url>
     // Global:     CBM_CDP_URL=<url> + CBM_PROFILES=fp-00,fp-02 (comma-separated list)
