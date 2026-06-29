@@ -322,33 +322,10 @@ async function getNativeDashboardSession(req) {
 }
 
 async function proxyNativeHermesDashboard(req, res) {
-  // The native Hermes dashboard is the primary dashboard surface. Its own
-  // Basic Auth credentials remain private in Railway; a signed-in Hermes
-  // WebUI session is the browser-facing gate.
-  if (GITHUB_CLIENT_ID && !isAuthenticated(req)) return requireAuth(res);
-  // The WebUI cookie is intentionally scoped to /hermes, so it is not sent
-  // when the browser reaches the native dashboard at /. The return route
-  // below mints this same-origin bridge session after validating that cookie.
-  const hasBridgeSession = validateSession(req) !== null;
-  if (!HERMES_DASHBOARD_BASIC_PASSWORD || (!hasBridgeSession && !(await hasHermesWebUiSession(req)))) {
-    res.writeHead(302, { Location: '/hermes/' });
-    return res.end();
-  }
-  try {
-    const session = await getNativeDashboardSession(req);
-    if (session.setCookies.length) res.setHeader('Set-Cookie', session.setCookies);
-    return proxyHermes(req, res, {
-      baseUrl: HERMES_DASHBOARD_URL,
-      prefix: '',
-      label: 'Hermes Dashboard',
-      extraHeaders: { cookie: session.cookie },
-      htmlInjection: NATIVE_DASHBOARD_RETURN_LINK,
-    });
-  } catch (error) {
-    console.error('[HERMES DASHBOARD AUTH ERROR]', error.message);
-    res.writeHead(502, { 'Content-Type': 'application/json' });
-    return res.end(JSON.stringify({ error: 'Hermes Dashboard authentication failed' }));
-  }
+  // Unmatched paths: serve the marketingbot SPA (fallback for client-side routes).
+  const idx = fs.readFileSync(path.join(PUBLIC, 'index.html'));
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  return res.end(idx);
 }
 
 function serveMarketingbotDashboard(req, res) {
@@ -532,11 +509,11 @@ http.createServer(async (req, res) => {
 
   // --- Telemetry data (proxied to marketingbot, no auth required) ---
   if (req.url === '/api/data') {
-    const apiUrl = process.env.BOT_API_URL || 'http://marketingbot.railway.internal:8080/api/data';
+    const botBase = process.env.BOT_API_URL || 'http://marketingbot.railway.internal:8080';
     try {
       const ctrl = new AbortController();
       const timeout = setTimeout(() => ctrl.abort(), 10000);
-      const resp = await fetch(apiUrl, { signal: ctrl.signal });
+      const resp = await fetch(`${botBase}/api/data`, { signal: ctrl.signal });
       clearTimeout(timeout);
       const data = await resp.json();
       res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
@@ -550,43 +527,62 @@ http.createServer(async (req, res) => {
   }
 
   // --- Mode config (proxied to marketingbot, requires CONTROL_TOKEN) ---
-  if (req.url === '/api/mode' && req.method === 'GET') {
-    const apiUrl = (process.env.BOT_API_URL || 'http://marketingbot.railway.internal:8080/api/data').replace('/data', '/mode');
+  // --- CBM proxy (CloakBrowser Manager) ---
+  const CBM_URL = process.env.CBM_URL || 'https://cloakbrowser-production-a859.up.railway.app';
+  if (req.url.startsWith('/api/cbm/')) {
+    const cbmPath = req.url.slice('/api/cbm'.length) || '/';
+    const isPost = req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE';
+    let body = '';
+    if (isPost) {
+      req.on('data', chunk => body += chunk);
+      await new Promise(resolve => req.on('end', resolve));
+    }
     try {
-      const resp = await fetch(apiUrl, {
-        headers: { 'Authorization': `Bearer ${process.env.CONTROL_TOKEN || ''}` },
+      const ctrl = new AbortController();
+      const timeout = setTimeout(() => ctrl.abort(), 10000);
+      const resp = await fetch(`${CBM_URL}${cbmPath}`, {
+        method: req.method,
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        ...(isPost && body ? { body } : {}),
+        signal: ctrl.signal,
       });
-      const data = await resp.json();
-      res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+      clearTimeout(timeout);
+      const text = await resp.text();
+      let data;
+      try { data = JSON.parse(text); } catch { data = text; }
+      res.writeHead(resp.status, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
       return res.end(JSON.stringify(data));
     } catch(e) {
-      res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-      return res.end(JSON.stringify({ cbmProfiles: [], cbmUrl: null }));
+      console.error('[CBM PROXY ERROR]', e.message);
+      res.writeHead(502, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+      return res.end(JSON.stringify({ error: 'CBM unavailable', detail: e.message }));
     }
   }
-  if (req.url === '/api/mode' && req.method === 'POST') {
-    const apiUrl = (process.env.BOT_API_URL || 'http://marketingbot.railway.internal:8080/api/data').replace('/data', '/mode');
+
+  const modeBaseUrl = process.env.BOT_API_URL || 'http://marketingbot.railway.internal:8080';
+  if (req.url === '/api/mode') {
+    const isPost = req.method === 'POST';
     let body = '';
-    req.on('data', chunk => body += chunk);
-    req.on('end', async () => {
-      try {
-        const resp = await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.CONTROL_TOKEN || ''}`,
-          },
-          body,
-        });
-        const data = await resp.json();
-        res.writeHead(resp.status, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-        return res.end(JSON.stringify(data));
-      } catch(e) {
-        res.writeHead(500, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-        return res.end(JSON.stringify({ error: e.message }));
-      }
-    });
-    return;
+    if (isPost) {
+      req.on('data', chunk => body += chunk);
+      await new Promise(resolve => req.on('end', resolve));
+    }
+    try {
+      const resp = await fetch(`${modeBaseUrl}/api/mode`, {
+        method: req.method,
+        headers: {
+          'Content-Type': 'application/json',
+          ...(process.env.CONTROL_TOKEN ? { 'Authorization': `Bearer ${process.env.CONTROL_TOKEN}` } : {}),
+        },
+        ...(isPost && body ? { body } : {}),
+      });
+      const data = await resp.json();
+      res.writeHead(resp.status, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+      return res.end(JSON.stringify(data));
+    } catch(e) {
+      res.writeHead(resp?.status || 500, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+      return res.end(JSON.stringify({ error: e.message }));
+    }
   }
 
   // All remaining paths, including native dashboard routes and assets, are

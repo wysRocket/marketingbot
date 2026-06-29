@@ -1,0 +1,74 @@
+{
+  "id": "maven",
+  "label": "Maven",
+  "baseUrl": "https://maven.com",
+  "enabledFlows": {
+    "browseHomepage": true,
+    "explorePricing": false,
+    "browseFooterLinks": false,
+    "login": false,
+    "accountDashboard": false
+  },
+  "session": {
+    "seedCandidates": ["/", "/courses", "/teach", "/about"]
+  },
+  "browseHomepage": {
+    "homePath": "/",
+    "heroHeadingSelector": "h1",
+    "heroHeadingIncludes": ["Learn", "Course", "Maven"],
+    "navLinksSelector": "nav a",
+    "expectedAnchors": ["/courses", "/teach"],
+    "academySectionSelector": "main",
+    "academyFeatureSelectors": ["h2", "h3", "[class*='course']"],
+    "ritualsSectionSelector": null,
+    "membersSectionSelector": "main",
+    "pricingTierSelectors": ["h3", "h4"],
+    "pricingLinksSelector": "a[href*='course']",
+    "pricingPlanRegex": ".*",
+    "footerLinksSelector": "footer a",
+    "requiredFooterPaths": []
+  },
+  "browseFooterLinks": {
+    "homePath": "/",
+    "footerPaths": ["/about", "/terms"],
+    "footerContainerSelector": "footer",
+    "footerLinkSelectorTemplate": "footer a",
+    "headingSelector": "h1, h2"
+  },
+  "login": {
+    "loginPath": "/",
+    "loginFormSelector": "form",
+    "openLoginSelector": null,
+    "submitResponseUrlIncludes": null,
+    "emailSelector": "input[type='email']",
+    "passwordSelector": "input[type='password']",
+    "submitSelector": "button[type='submit']",
+    "errorSelector": "[role='alert']",
+    "failureUrlIncludes": [],
+    "successUrlIncludes": []
+  },
+  "explorePricing": {
+    "pricingPath": "/",
+    "pricingSectionSelector": "main",
+    "tierNameSelectors": ["h3"],
+    "ctaSelector": "a[href*='course']",
+    "ctaMustContain": "Explore",
+    "ctaLandingPathIncludes": ["/"],
+    "emailSelector": "input[type='email']",
+    "nameSelector": "input[type='text']",
+    "passwordSelector": "input[type='password']",
+    "syntheticNamePrefix": "Maven Visitor",
+    "syntheticPassword": "NotSubmitted123!"
+  },
+  "accountDashboard": {
+    "dashboardPath": "/",
+    "mustNotIncludePaths": ["/404"],
+    "mustIncludePathFragment": "/",
+    "mainSelector": "main",
+    "balanceSelectors": ["h2"],
+    "paymentPresenceSelector": "main",
+    "appLinkSelector": "a[href]",
+    "appLinkIncludes": "/",
+    "appLinkExcludes": []
+  }
+}

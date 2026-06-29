@@ -1,4 +1,4 @@
-export type ProfileSource = "mostlogin" | "snapshot" | "generator";
+export type ProfileSource = "mostlogin" | "snapshot" | "generator" | "cbm";
 export type SessionStatePolicy = "cache-only" | "identity-sticky";
 
 export interface MostLoginProxyConfig {

@@ -93,8 +93,6 @@ export class ExtensionTelemetryInterceptor {
 
   async attach(page: Page): Promise<void> {
     this.cdp = await page.context().newCDPSession(page) as typeof this.cdp;
-
-    // Enable network domain with request/response bodies
     if (!this.cdp) return;
     await this.cdp.send("Network.enable", {});
 

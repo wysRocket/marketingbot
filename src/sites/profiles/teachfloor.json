@@ -1,0 +1,74 @@
+{
+  "id": "teachfloor",
+  "label": "Teachfloor",
+  "baseUrl": "https://teachfloor.com",
+  "enabledFlows": {
+    "browseHomepage": true,
+    "explorePricing": false,
+    "browseFooterLinks": false,
+    "login": false,
+    "accountDashboard": false
+  },
+  "session": {
+    "seedCandidates": ["/", "/features", "/pricing", "/about"]
+  },
+  "browseHomepage": {
+    "homePath": "/",
+    "heroHeadingSelector": "h1",
+    "heroHeadingIncludes": ["People", "Learning", "Teachfloor", "Platform"],
+    "navLinksSelector": "nav a",
+    "expectedAnchors": ["/features", "/pricing"],
+    "academySectionSelector": "main",
+    "academyFeatureSelectors": ["h2", "h3", "[class*='feature']"],
+    "ritualsSectionSelector": null,
+    "membersSectionSelector": "main",
+    "pricingTierSelectors": ["h3", "h4"],
+    "pricingLinksSelector": "a[href*='pricing']",
+    "pricingPlanRegex": ".*",
+    "footerLinksSelector": "footer a",
+    "requiredFooterPaths": []
+  },
+  "browseFooterLinks": {
+    "homePath": "/",
+    "footerPaths": ["/about", "/terms"],
+    "footerContainerSelector": "footer",
+    "footerLinkSelectorTemplate": "footer a",
+    "headingSelector": "h1, h2"
+  },
+  "login": {
+    "loginPath": "/",
+    "loginFormSelector": "form",
+    "openLoginSelector": null,
+    "submitResponseUrlIncludes": null,
+    "emailSelector": "input[type='email']",
+    "passwordSelector": "input[type='password']",
+    "submitSelector": "button[type='submit']",
+    "errorSelector": "[role='alert']",
+    "failureUrlIncludes": [],
+    "successUrlIncludes": []
+  },
+  "explorePricing": {
+    "pricingPath": "/pricing",
+    "pricingSectionSelector": "main",
+    "tierNameSelectors": ["h3"],
+    "ctaSelector": "a[href*='demo'], a[href*='trial']",
+    "ctaMustContain": "Start",
+    "ctaLandingPathIncludes": ["/"],
+    "emailSelector": "input[type='email']",
+    "nameSelector": "input[type='text']",
+    "passwordSelector": "input[type='password']",
+    "syntheticNamePrefix": "Teachfloor Visitor",
+    "syntheticPassword": "NotSubmitted123!"
+  },
+  "accountDashboard": {
+    "dashboardPath": "/",
+    "mustNotIncludePaths": ["/404"],
+    "mustIncludePathFragment": "/",
+    "mainSelector": "main",
+    "balanceSelectors": ["h2"],
+    "paymentPresenceSelector": "main",
+    "appLinkSelector": "a[href]",
+    "appLinkIncludes": "/",
+    "appLinkExcludes": []
+  }
+}

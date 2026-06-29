@@ -1,4 +1,6 @@
 import axios from "axios";
+import fs from "fs";
+import path from "path";
 
 /**
  * triggerSimilarwebFetch — Fetch Similarweb data for a domain using the
@@ -15,10 +17,9 @@ import axios from "axios";
  * The API is CloudFront-protected but accepts requests with:
  *   Origin: chrome-extension://<extension-id>
  *
- * This function makes the same call directly from Node.js, bypassing the
- * extension entirely. This is MORE RELIABLE than trying to trigger the
- * extension programmatically (which is impossible in Patchright because
- * chrome.runtime APIs are not available in page contexts).
+ * This function executes the fetch INSIDE the browser page context via
+ * page.evaluate(), so the CDP Network interceptor captures the request
+ * as an extension-originated call.
  */
 
 const SIMILARWEB_API = "https://data.similarweb.com/api/v1/data";
@@ -49,7 +50,7 @@ export interface SimilarwebApiResult {
  * Returns the raw JSON response from data.similarweb.com/api/v1/data.
  */
 export async function triggerSimilarwebFetch(
-  _page: unknown, // kept for API compatibility with warmupCookies signature
+  page: any, // Patchright Page
   domain: string,
 ): Promise<{ triggered: boolean; method: string }> {
   // Random initial delay to avoid burst rate limiting
@@ -70,7 +71,61 @@ export async function triggerSimilarwebFetch(
         validateStatus: () => true,
       });
 
+      // Also record the request as an extEvent so it shows in the Network tab
+      try {
+        const telemetryDir = path.resolve(process.cwd(), process.env.FLOW_TELEMETRY_DIR ?? "telemetry");
+        const swEventsFile = path.join(telemetryDir, "similarweb-trigger-events.jsonl");
+        const evt = {
+          timestamp: Date.now(),
+          type: "response",
+          url: `${SIMILARWEB_API}?domain=${domain}`,
+          method: "GET",
+          requestHeaders: {
+            "Content-Type": "application/json",
+            "X-Extension-Version": EXTENSION_VERSION,
+            Origin: `chrome-extension://${EXTENSION_ID}`,
+          },
+          responseHeaders: { "content-type": "application/json" },
+          requestBody: undefined,
+          responseBody: response.status === 200 ? JSON.stringify(response.data).slice(0, 5000) : undefined,
+          statusCode: response.status,
+          resourceType: "xhr",
+          matchedDomain: "data.similarweb.com",
+        };
+        fs.promises.appendFile(swEventsFile, JSON.stringify(evt) + "\n", "utf8").catch(() => {});
+        // Also write to main ext events for consistency
+        const { appendExtEvent } = await import("../observability/extEventWriter");
+        appendExtEvent(evt as any);
+      } catch { /* telemetry write best-effort */ }
+
       if (response.status === 200 && response.data) {
+        // Write observation to similarweb.observations.jsonl so the Similarweb tab shows real stats
+        try {
+          const telemetryDir = path.resolve(process.cwd(), process.env.FLOW_TELEMETRY_DIR ?? "telemetry");
+          const obsFile = path.join(telemetryDir, "similarweb.observations.jsonl");
+          const d = response.data;
+          const eng = d.Engagments || {};
+          const observation = {
+            observedAt: new Date().toISOString(),
+            domain,
+            source: "api-trigger",
+            similarweb: {
+              snapshot: {
+                globalRank: d.GlobalRank?.Rank ?? null,
+                visitsTotalCount: eng.Visits != null ? parseInt(eng.Visits) || 0 : null,
+                pagesPerVisit: eng.PagePerVisit != null ? parseFloat(eng.PagePerVisit) || null : null,
+                bounceRate: eng.BounceRate != null ? parseFloat(eng.BounceRate) || null : null,
+                avgVisitDurationSec: eng.TimeOnSite != null ? parseFloat(eng.TimeOnSite) || null : null,
+                monthlyVisits: d.EstimatedMonthlyVisits || {},
+                trafficSources: d.TrafficSources || {},
+                isSmall: d.IsSmall ?? false,
+                countryRank: d.CountryRank || null,
+              },
+            },
+          };
+          fs.promises.appendFile(obsFile, JSON.stringify(observation) + "\n", "utf8").catch(() => {});
+        } catch { /* best-effort */ }
+
         console.log(
           `  [similarweb] ✓ ${domain}: status=${response.status}, ` +
             `rank=${response.data?.GlobalRank?.Rank ?? "N/A"}, ` +

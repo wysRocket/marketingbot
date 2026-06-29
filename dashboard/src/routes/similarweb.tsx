@@ -7,12 +7,15 @@ export const Route = createFileRoute('/similarweb')({
 })
 
 interface SWObservation {
-  observedAt: string; domain: string;
+  observedAt: string; domain: string; source?: string;
   similarweb: {
     snapshot: {
       globalRank: number | null; visitsTotalCount: number | null;
       pagesPerVisit: number | null; bounceRate: number | null;
-      visitsAvgDurationFormatted: string | null;
+      avgVisitDurationSec: number | null;
+      monthlyVisits: Record<string, number> | null;
+      trafficSources: Record<string, number> | null;
+      isSmall: boolean;
     } | null;
   };
 }
@@ -53,7 +56,11 @@ function SimilarwebPage() {
     const obs = (data.swObservations || []).filter(o => o.domain === domainToUse && Date.parse(o.observedAt) >= cutoff)
     const sessions = (data.sessions || []).filter(s => {
       const ts = Date.parse(s.endedAt || s.recordedAt)
-      return ts >= cutoff && s.uniquePages.some(p => p.includes(domainToUse))
+      if (ts < cutoff) return false
+      // Check uniquePages OR trafficTopOrigins for domain match
+      const hasPage = s.uniquePages?.some(p => p.includes(domainToUse))
+      const hasOrigin = (s as any).trafficTopOrigins?.some((o: any) => o.key?.includes(domainToUse))
+      return hasPage || hasOrigin
     })
     return { obs, sessions }
   }, [data, domain, hours, allDomains])
@@ -84,15 +91,23 @@ function SimilarwebPage() {
     : vD === 0 ? 'NEUTRAL: visits unchanged. May need more time (24-48h lag).'
     : `Decreased by ${Math.abs(vD)}. May be natural fluctuation.`
 
-  const snapRows = filtered.obs.map((o, i) => (
-    <tr key={i} style={{ borderBottom: '1px solid rgba(42,47,58,.4)' }}>
-      <td style={{ padding: '6px 10px', fontSize: 11, fontFamily: 'JetBrains Mono, monospace' }}>{new Date(o.observedAt).toLocaleString()}</td>
-      <td style={{ padding: '6px 10px' }}>{o.similarweb?.snapshot?.visitsTotalCount != null ? o.similarweb.snapshot.visitsTotalCount.toLocaleString() : '—'}</td>
-      <td style={{ padding: '6px 10px' }}>{o.similarweb?.snapshot?.globalRank != null ? o.similarweb.snapshot.globalRank.toLocaleString() : '—'}</td>
-      <td style={{ padding: '6px 10px' }}>{o.similarweb?.snapshot?.pagesPerVisit || '—'}</td>
-      <td style={{ padding: '6px 10px' }}>{o.similarweb?.snapshot?.bounceRate != null ? (o.similarweb.snapshot.bounceRate * 100).toFixed(1) + '%' : '—'}</td>
-    </tr>
-  ))
+  const snapRows = filtered.obs.map((o, i) => {
+    const s = o.similarweb?.snapshot;
+    const dur = s?.avgVisitDurationSec != null ? `${Math.round(s.avgVisitDurationSec)}s` : '—';
+    const monthlyVisits = s?.monthlyVisits ? Object.entries(s.monthlyVisits).map(([k,v]) => `${k.slice(0,7)}: ${(v as number).toLocaleString()}`).join(', ') : '—';
+    return (
+      <tr key={i} style={{ borderBottom: '1px solid rgba(42,47,58,.4)' }}>
+        <td style={{ padding: '6px 10px', fontSize: 11, fontFamily: 'JetBrains Mono, monospace' }}>{new Date(o.observedAt).toLocaleString()}</td>
+        <td style={{ padding: '6px 10px' }}>{s?.visitsTotalCount != null ? s.visitsTotalCount.toLocaleString() : '—'}</td>
+        <td style={{ padding: '6px 10px' }}>{s?.globalRank != null ? s.globalRank.toLocaleString() : '—'}</td>
+        <td style={{ padding: '6px 10px' }}>{s?.pagesPerVisit?.toFixed(1) || '—'}</td>
+        <td style={{ padding: '6px 10px' }}>{s?.bounceRate != null ? (s.bounceRate * 100).toFixed(1) + '%' : '—'}</td>
+        <td style={{ padding: '6px 10px' }}>{dur}</td>
+        <td style={{ padding: '6px 10px', fontSize: 9, color: '#6b7280' }}>{monthlyVisits}</td>
+        <td style={{ padding: '6px 10px' }}>{s?.isSmall ? <span style={{ color: '#f59e0b', fontSize: 10 }}>small</span> : <span style={{ color: '#22c55e', fontSize: 10 }}>indexed</span>}</td>
+      </tr>
+    );
+  })
 
   const bucketRows = byDay.map(b => {
     const recs = b[1]; const n = recs.length
@@ -151,7 +166,7 @@ function SimilarwebPage() {
       <div style={{ background: '#11151c', border: '1px solid #2a2f3a', borderRadius: 6 }}>
         <div style={{ padding: '8px 12px', borderBottom: '1px solid #2a2f3a', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e' }}>SW Snapshot Timeline</div>
         <table><thead><tr style={{ borderBottom: '1px solid #2a2f3a' }}>
-          {['Observed', 'Visits', 'Rank', 'Pg/Visit', 'Bounce'].map(h => (
+          {['Observed', 'Visits', 'Rank', 'Pg/Visit', 'Bounce', 'Duration', 'Monthly Visits', 'Status'].map(h => (
             <th key={h} style={{ padding: '6px 10px', textAlign: 'left', fontSize: 9, textTransform: 'uppercase', letterSpacing: '.06em', color: '#8b949e', fontWeight: 600 }}>{h}</th>
           ))}
         </tr></thead><tbody>{snapRows}</tbody></table>

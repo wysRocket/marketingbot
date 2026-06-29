@@ -88,31 +88,31 @@ export async function setProfileMode(profileId: string, mode: 'patchright' | 'cb
   return res.json()
 }
 
-// --- CBM direct API calls (no auth required) ---
-const CBM_URL = 'https://cloakbrowser-production-a859.up.railway.app'
+// --- CBM proxy (routed through dashboard server to avoid CORS) ---
+const CBM_PROXY = '/api/cbm'
 
 export async function cbmGetStatus(): Promise<CbmStatus> {
-  const res = await fetch(`${CBM_URL}/api/status`)
+  const res = await fetch(`${CBM_PROXY}/api/status`)
   return res.json()
 }
 
 export async function cbmGetProfiles(): Promise<CbmProfile[]> {
-  const res = await fetch(`${CBM_URL}/api/profiles`)
+  const res = await fetch(`${CBM_PROXY}/api/profiles`)
   return res.json()
 }
 
 export async function cbmLaunchProfile(id: string): Promise<any> {
-  const res = await fetch(`${CBM_URL}/api/profiles/${id}/launch`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
+  const res = await fetch(`${CBM_PROXY}/api/profiles/${id}/launch`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
   return res.json()
 }
 
 export async function cbmStopProfile(id: string): Promise<any> {
-  const res = await fetch(`${CBM_URL}/api/profiles/${id}/stop`, { method: 'POST' })
+  const res = await fetch(`${CBM_PROXY}/api/profiles/${id}/stop`, { method: 'POST' })
   return res.json()
 }
 
 export async function cbmCreateProfile(name: string, fingerprintSeed: number): Promise<CbmProfile> {
-  const res = await fetch(`${CBM_URL}/api/profiles`, {
+  const res = await fetch(`${CBM_PROXY}/api/profiles`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, fingerprint_seed: fingerprintSeed, auto_launch: false }),

@@ -33,7 +33,7 @@ import {
 import { createTelemetryPersistence } from "./session/telemetryPersistence";
 import { startRailwayHeartbeatServer } from "./railwayHeartbeat";
 import { botController } from "./control/runtimeController";
-import { getActiveSiteProfile, isFlowEnabled } from "./sites";
+import { getActiveSiteProfile, getRotatingSiteProfile, isFlowEnabled } from "./sites";
 import { warmupCookies } from "./flows/warmupCookies";
 import { triggerSimilarwebFetch } from "./flows/triggerSimilarweb";
 
@@ -69,7 +69,7 @@ const USERNAME = process.env.BOT_USERNAME ?? "";
 const PASSWORD = process.env.BOT_PASSWORD ?? "";
 const SESSION_POLICY = getSessionPolicyFromEnv();
 const TELEMETRY = createTelemetryPersistence("patchright");
-const SITE = getActiveSiteProfile();
+let SITE = getActiveSiteProfile();
 
 // Keep Railway service health checks green even for non-HTTP bot workers.
 startRailwayHeartbeatServer();
@@ -474,16 +474,27 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
     flows.push({
       name: "triggerSimilarweb",
       run: async (page, label, ctx) => {
+        const EXTRA_DOMAINS = [
+          "eurocookflow.com",
+          "aicontentstudio.net",
+        ];
         try {
           const targetDomain = SITE.baseUrl
             .replace(/^https?:\/\//, "")
             .replace(/\/.*$/, "")
             .replace(/^www\./, "");
-          const result = await triggerSimilarwebFetch(page, targetDomain);
-          console.log(
-            `  [${label}] similarweb trigger: ${result.method} for ${targetDomain} (triggered: ${result.triggered})`,
-          );
-          if (result.triggered) ctx.addInteraction(1);
+          const allDomains = [targetDomain, ...EXTRA_DOMAINS];
+          for (const domain of allDomains) {
+            try {
+              const result = await triggerSimilarwebFetch(page, domain);
+              console.log(
+                `  [${label}] similarweb trigger: ${result.method} for ${domain} (triggered: ${result.triggered})`,
+              );
+              if (result.triggered) ctx.addInteraction(1);
+            } catch (e) {
+              console.log(`  [${label}] similarweb trigger failed for ${domain}:`, e);
+            }
+          }
         } catch (e) {
           console.log(`  [${label}] similarweb trigger failed:`, e);
         }
@@ -627,12 +638,19 @@ async function runProfileSession(
   if (SHARED_BROWSER_MODE) {
     browserContext = await createSharedContext(profile, label, proxy);
     context = browserContext;
+  } else if (profile.cbmUrl) {
+    // ── CDP-remote mode: connect to CloakBrowser-Manager (via catalog profile) ──
+    console.log(`[${label}] CDP-remote mode (catalog): connecting to ${profile.cbmUrl}`);
+    const browser = await chromium.connectOverCDP(profile.cbmUrl);
+    browserContext = browser.contexts()[0];
+    context = browserContext;
+    console.log(`[${label}] CDP-remote connected to CBM profile ${profile.cbmProfileId ?? profile.id}`);
   } else if (process.env[`CBM_PROFILE_${profile.id}`] || (process.env.CBM_CDP_URL && process.env.CBM_PROFILES?.split(",").includes(profile.id))) {
-    // ── CDP-remote mode: connect to CloakBrowser-Manager ─────────────────
+    // ── CDP-remote mode: connect to CloakBrowser-Manager (env-var driven) ──
     // Per-profile: CBM_PROFILE_<ID>=<url>
     // Global:     CBM_CDP_URL=<url> + CBM_PROFILES=fp-00,fp-02 (comma-separated list)
     const cbmUrl = process.env[`CBM_PROFILE_${profile.id}`] || process.env.CBM_CDP_URL;
-    console.log(`[${label}] CDP-remote mode: connecting to ${cbmUrl}`);
+    console.log(`[${label}] CDP-remote mode (env): connecting to ${cbmUrl}`);
     if (!cbmUrl) throw new Error(`No CBM URL for profile ${profile.id}`);
     const browser = await chromium.connectOverCDP(cbmUrl);
     browserContext = browser.contexts()[0];
@@ -811,7 +829,7 @@ async function runProfileSession(
     });
   } finally {
     await page.close();
-    if (process.env.CBM_CDP_URL) {
+    if (profile.cbmUrl || process.env.CBM_CDP_URL) {
       // CDP-remote: don't close the browser — CBM manages it. Just disconnect.
       const browser = (browserContext as any).browser?.();
       if (browser) await browser.close();
@@ -890,7 +908,9 @@ async function main(): Promise<void> {
   console.log(
     `[startup] site-profile=${SITE.id} profile-source=${catalog.source} shard-profiles=${shardPoolProfiles.map((profile) => profile.id).join(", ") || "(none)"}`,
   );
-  console.log(`[startup] CBM_CDP_URL=${process.env.CBM_CDP_URL ? "SET(" + process.env.CBM_CDP_URL.substring(0, 60) + ")" : "NOT SET"}`);
+  console.log(
+    `[startup] CBM_CDP_URL=${process.env.CBM_CDP_URL ? "SET(" + process.env.CBM_CDP_URL.substring(0, 60) + ")" : "NOT SET"} ${process.env.CBM_API_URL ? `| CBM_API_URL=${process.env.CBM_API_URL}` : ""}`,
+  );
   console.log(`[startup] SHARED_BROWSER_MODE=${process.env.SHARED_BROWSER_MODE}`);
   console.log(
     `[config] pool: ${POOL_SIZE} | concurrency: ${MAX_CONCURRENT} (min=${minConcurrent}) | rounds: ${TOTAL_ROUNDS} | mode: ${SHARED_BROWSER_MODE ? "shared-browser" : (process.env.CBM_CDP_URL ? "cdp-remote" : "persistent-context")} | round-timeout-ms: ${ROUND_TIMEOUT_MS} | session-timeout-ms: ${SESSION_TIMEOUT_MS} | launch-stagger-ms: ${SESSION_LAUNCH_STAGGER_MS} | alive-log-ms: ${ALIVE_LOG_INTERVAL_MS} | backoff-step: ${backoffStep} | recovery-step: ${recoveryStep}/${recoveryRounds} round(s)\n`,
@@ -929,6 +949,13 @@ async function main(): Promise<void> {
           console.log("[control] Visit loop resumed.");
         }
         botController.round = round;
+
+        // ── Multi-site rotation: switch site per round ──
+        if (process.env.BOT_SITE_PROFILES) {
+          SITE = getRotatingSiteProfile();
+          botController.siteProfile = SITE.id;
+          console.log(`[rotation] round ${round + 1}: site=${SITE.id} (${SITE.baseUrl})`);
+        }
 
         if (shardPoolProfiles.length === 0) {
           throw new Error(

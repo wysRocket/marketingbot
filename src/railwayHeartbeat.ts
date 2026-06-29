@@ -89,18 +89,44 @@ export function startRailwayHeartbeatServer(): void {
           try { return JSON.parse(l); } catch { return null; }
         }).filter(Boolean);
 
-        // Read extension events (small file, read fully)
+        // Read extension events (read last 200KB for performance)
         let extEvents: any[] = [];
         try {
-          const extRaw = fs.readFileSync(resolveFile("extension-events.jsonl"), "utf8");
-          extEvents = extRaw.split("\n").filter(Boolean).slice(-200).map((l: string) => JSON.parse(l));
-        } catch { /* file may not exist yet */ }
+          const extPath = resolveFile("extension-events.jsonl");
+          const extStat = fs.statSync(extPath);
+          const extSize = extStat.size;
+          const extChunkSize = Math.min(extSize, 1024 * 1024);
+          const extBuf = Buffer.alloc(extChunkSize);
+          const extFd = fs.openSync(extPath, "r");
+          fs.readSync(extFd, extBuf, 0, extChunkSize, extSize - extChunkSize);
+          fs.closeSync(extFd);
+          const extRaw = extBuf.toString("utf8");
+          const extLines = extRaw.split("\n").filter(Boolean);
+          const extSkipFirst = extChunkSize < extSize;
+          const extFiltered = extSkipFirst ? extLines.slice(1) : extLines;
+          extEvents = extFiltered.slice(-500).map((l: string) => {
+            try { return JSON.parse(l); } catch { return null; }
+          }).filter(Boolean);
+        } catch (err) { /* file may not exist yet */ }
 
-        // Read similarweb observations
+        // Read similarweb observations (tail-read, same pattern as extEvents)
         let swObservations: any[] = [];
         try {
-          const swRaw = fs.readFileSync(resolveFile("similarweb.observations.jsonl"), "utf8");
-          swObservations = swRaw.split("\n").filter(Boolean).map((l: string) => JSON.parse(l));
+          const swPath = resolveFile("similarweb.observations.jsonl");
+          const swStat = fs.statSync(swPath);
+          const swSize = swStat.size;
+          const swChunkSize = Math.min(swSize, 50 * 1024);
+          const swBuf = Buffer.alloc(swChunkSize);
+          const swFd = fs.openSync(swPath, "r");
+          fs.readSync(swFd, swBuf, 0, swChunkSize, swSize - swChunkSize);
+          fs.closeSync(swFd);
+          const swRaw = swBuf.toString("utf8");
+          const swLines = swRaw.split("\n").filter(Boolean);
+          // Skip first line only if we read from an offset (partial file)
+          const startIdx = swChunkSize < swSize ? 1 : 0;
+          swObservations = swLines.slice(startIdx).map((l: string) => {
+            try { return JSON.parse(l); } catch { return null; }
+          }).filter(Boolean);
         } catch { /* file may not exist yet */ }
 
         res.statusCode = 200;
@@ -192,6 +218,87 @@ export function startRailwayHeartbeatServer(): void {
       }
 
       sendJson(res, 405, { error: "method not allowed" });
+      return;
+    }
+
+    // Similarweb check endpoint — triggers observation fetch + write
+    if (method === "POST" && url === "/api/similarweb-check") {
+      if (!isAuthorized(req)) {
+        sendJson(res, 401, { error: "unauthorized" });
+        return;
+      }
+      // Run async — respond immediately, write in background
+      (async () => {
+        try {
+          const {
+            summarizeTelemetryWindow,
+            fetchSimilarwebHtml,
+            parseSimilarwebAppDataFromHtml,
+            extractSimilarwebSnapshot,
+            appendSimilarwebObservation,
+          } = await import("./observability/similarwebSignal");
+
+          const telemetryDir = process.env.FLOW_TELEMETRY_DIR ?? "telemetry";
+          const sessionsPath = path.resolve(process.cwd(), telemetryDir, "patchright.sessions.jsonl");
+          const obsPath = path.resolve(process.cwd(), telemetryDir, "similarweb.observations.jsonl");
+          const domain = process.env.SIMILARWEB_DOMAIN ?? "eurocookflow.com";
+          const hours = Number.parseInt(process.env.SIMILARWEB_WINDOW_HOURS ?? "2", 10);
+
+          // Tail-read sessions (last 100KB)
+          let records: any[] = [];
+          try {
+            const stat = fs.statSync(sessionsPath);
+            const chunkSize = Math.min(stat.size, 100 * 1024);
+            const buf = Buffer.alloc(chunkSize);
+            const fd = fs.openSync(sessionsPath, "r");
+            fs.readSync(fd, buf, 0, chunkSize, stat.size - chunkSize);
+            fs.closeSync(fd);
+            const lines = buf.toString("utf8").split("\n").slice(1).filter(Boolean);
+            records = lines.map((l) => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+          } catch { /* sessions file missing */ }
+
+          const telemetry = summarizeTelemetryWindow(records, { windowHours: hours });
+
+          let snapshot = null;
+          let fetchSource: "none" | "scrapfly" | "direct" = "none";
+          let fetchStatus: number | null = null;
+          let challengeHeader: string | null = null;
+
+          try {
+            const fetched = await fetchSimilarwebHtml(domain);
+            fetchSource = fetched.source;
+            fetchStatus = fetched.status;
+            challengeHeader = fetched.challengeHeader;
+            if (fetched.html.trim()) {
+              const appData = parseSimilarwebAppDataFromHtml(fetched.html);
+              snapshot = extractSimilarwebSnapshot(appData, domain);
+            }
+          } catch (err) {
+            challengeHeader = (err as Error).message;
+          }
+
+          const note = snapshot
+            ? "public Similarweb snapshot captured successfully"
+            : challengeHeader
+              ? `Similarweb fetch issue: ${challengeHeader}`
+              : "no snapshot available";
+
+          const record = {
+            observedAt: new Date().toISOString(),
+            domain,
+            hours,
+            telemetry,
+            fetch: { source: fetchSource, status: fetchStatus, challengeHeader },
+            similarweb: { snapshot, note },
+          };
+
+          await appendSimilarwebObservation(record, obsPath);
+          console.log(`[similarweb-check] Observation written: domain=${domain} sessions=${telemetry.sessionCount} snapshot=${snapshot ? "yes" : "no"}`);
+        } catch (err) {
+          console.error(`[similarweb-check] Failed: ${(err as Error).message}`);
+        }
+      })();
+      sendJson(res, 200, { ok: true, note: "similarweb check running in background" });
       return;
     }
 
