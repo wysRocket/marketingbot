@@ -144,6 +144,25 @@ export async function ensureCbmProfileRunning(
   });
 
   if (!res.ok) {
+    // 409 Conflict means the profile is already running — that's fine
+    if (res.status === 409) {
+      // Fetch the CDP URL for the already-running profile
+      const profileUrl = `${baseUrl()}/api/profiles/${cbmProfileId}`;
+      const profileRes = await fetch(profileUrl, {
+        headers: buildHeaders(),
+        signal: AbortSignal.timeout(10_000),
+      });
+      if (profileRes.ok) {
+        const profileData = await profileRes.json();
+        const cdp: string | null = profileData?.cdp_url ?? null;
+        if (cdp) {
+          const fullCdpUrl = cdp.startsWith("http") ? cdp : `${baseUrl()}${cdp.startsWith("/") ? "" : "/"}${cdp}`;
+          return fullCdpUrl;
+        }
+      }
+      // Fallback: construct CDP URL from profile ID
+      return `${baseUrl()}/api/profiles/${cbmProfileId}/cdp`;
+    }
     const text = await res.text().catch(() => "(no body)");
     throw new Error(
       `CBM launch error for ${cbmProfileId}: ${res.status} ${res.statusText} — ${text}`,
@@ -237,7 +256,36 @@ export async function initCbmPool(
 ): Promise<Map<string, string>> {
   const cdpUrls = new Map<string, string>();
 
-  const toStart = profiles.slice(0, Math.min(count, profiles.length));
+  // First, check if any profiles are already running by querying CBM
+  let alreadyRunning = new Set<string>();
+  try {
+    const statusUrl = `${baseUrl()}/api/profiles`;
+    const res = await fetch(statusUrl, {
+      headers: buildHeaders(),
+      signal: AbortSignal.timeout(10_000),
+    });
+    if (res.ok) {
+      const allProfiles: Array<{ id: string; status: string }> = await res.json();
+      for (const p of allProfiles) {
+        if (p.status === "running") {
+          alreadyRunning.add(p.id);
+        }
+      }
+    }
+  } catch {
+    // If we can't check, just try launching
+  }
+
+  const toStart = profiles
+    .filter((p) => !(p.cbmProfileId && alreadyRunning.has(p.cbmProfileId)))
+    .slice(0, Math.min(count, profiles.length));
+
+  // For already-running profiles, just construct CDP URLs
+  for (const profile of profiles) {
+    if (profile.cbmProfileId && alreadyRunning.has(profile.cbmProfileId)) {
+      cdpUrls.set(profile.id, `${baseUrl()}/api/profiles/${profile.cbmProfileId}/cdp`);
+    }
+  }
 
   // Stagger launches to avoid hitting CBM's resource limits
   const STAGGER_MS = 5_000;
