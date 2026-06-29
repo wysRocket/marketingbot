@@ -478,6 +478,7 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
         const EXTRA_DOMAINS = [
           "eurocookflow.com",
           "aicontentstudio.net",
+          "guidenza.com",
         ];
         try {
           const targetDomain = SITE.baseUrl
