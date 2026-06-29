@@ -13,6 +13,7 @@ import { login } from "./flows/login";
 import { explorePricing } from "./flows/explorePricing";
 import { accountDashboard } from "./flows/accountDashboard";
 import { loadCatalog, type LoadedCatalog } from "./profiles/catalog";
+import { ensureCbmProfileRunning, initCbmPool, stopAllCbmProfiles } from "./profiles/sources/cbm";
 import {
   validateShardConfig,
   shardCatalogProfiles,
@@ -640,8 +641,10 @@ async function runProfileSession(
     context = browserContext;
   } else if (profile.cbmUrl) {
     // ── CDP-remote mode: connect to CloakBrowser-Manager (via catalog profile) ──
-    console.log(`[${label}] CDP-remote mode (catalog): connecting to ${profile.cbmUrl}`);
-    const browser = await chromium.connectOverCDP(profile.cbmUrl);
+    // Ensure the profile is running, then connect via CDP
+    const actualCdpUrl = await ensureCbmProfileRunning(profile.cbmProfileId!);
+    console.log(`[${label}] CDP-remote: connecting to ${profile.name} via ${actualCdpUrl}`);
+    const browser = await chromium.connectOverCDP(actualCdpUrl);
     browserContext = browser.contexts()[0];
     context = browserContext;
     console.log(`[${label}] CDP-remote connected to CBM profile ${profile.cbmProfileId ?? profile.id}`);
@@ -916,6 +919,12 @@ async function main(): Promise<void> {
     `[config] pool: ${POOL_SIZE} | concurrency: ${MAX_CONCURRENT} (min=${minConcurrent}) | rounds: ${TOTAL_ROUNDS} | mode: ${SHARED_BROWSER_MODE ? "shared-browser" : (process.env.CBM_CDP_URL ? "cdp-remote" : "persistent-context")} | round-timeout-ms: ${ROUND_TIMEOUT_MS} | session-timeout-ms: ${SESSION_TIMEOUT_MS} | launch-stagger-ms: ${SESSION_LAUNCH_STAGGER_MS} | alive-log-ms: ${ALIVE_LOG_INTERVAL_MS} | backoff-step: ${backoffStep} | recovery-step: ${recoveryStep}/${recoveryRounds} round(s)\n`,
   );
 
+  // ── CBM pool init: start profiles at boot ─────────────────────────────
+  if (catalog.source === "cbm" && !SHARED_BROWSER_MODE) {
+    const poolSize = Math.min(Math.max(minConcurrent, MAX_CONCURRENT), shardPoolProfiles.length);
+    await initCbmPool(shardPoolProfiles, poolSize);
+  }
+
   let round = 0;
   let dynamicConcurrent = MAX_CONCURRENT;
   let healthyRounds = 0;
@@ -1126,6 +1135,11 @@ async function main(): Promise<void> {
   } finally {
     clearInterval(aliveTimer);
     await closeSharedBrowser();
+    if (catalog.source === "cbm") {
+      await stopAllCbmProfiles(shardPoolProfiles).catch((err) =>
+        console.warn("[cbm] shutdown error:", (err as Error).message),
+      );
+    }
   }
 
   console.log("\nAll rounds complete.");
