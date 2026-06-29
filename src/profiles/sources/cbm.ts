@@ -239,21 +239,26 @@ export async function initCbmPool(
 
   const toStart = profiles.slice(0, Math.min(count, profiles.length));
 
-  await Promise.all(
-    toStart.map(async (profile) => {
-      try {
-        const url = await ensureCbmProfileRunning(profile.cbmProfileId!);
-        cdpUrls.set(profile.id, url);
-        console.log(
-          `[cbm] started ${profile.name} (${profile.cbmProfileId}) → CDP ready`,
-        );
-      } catch (err) {
-        console.warn(
-          `[cbm] failed to start ${profile.name}: ${(err as Error).message}`,
-        );
-      }
-    }),
-  );
+  // Stagger launches to avoid hitting CBM's resource limits
+  const STAGGER_MS = 5_000;
+  for (let i = 0; i < toStart.length; i++) {
+    const profile = toStart[i];
+    try {
+      const url = await ensureCbmProfileRunning(profile.cbmProfileId!);
+      cdpUrls.set(profile.id, url);
+      console.log(
+        `[cbm] started ${profile.name} (${profile.cbmProfileId}) → CDP ready`,
+      );
+    } catch (err) {
+      console.warn(
+        `[cbm] failed to start ${profile.name}: ${(err as Error).message}`,
+      );
+    }
+    // Stagger between launches to let CBM's Chromium processes settle
+    if (i < toStart.length - 1) {
+      await new Promise((r) => setTimeout(r, STAGGER_MS));
+    }
+  }
 
   console.log(`[cbm] pool ready: ${cdpUrls.size}/${count} profiles running`);
 
