@@ -40,7 +40,7 @@ import {
   injectSimilarwebVisit,
   injectSimilarwebBatch,
 } from "./flows/injectSimilarwebVisit";
-import { checkProxyIspFromPage } from "./flows/checkProxyIsp";
+import { checkProxyIsp } from "./flows/checkProxyIsp";
 
 // Force unbuffered output when Node exposes a blocking-capable stream handle.
 type BlockingHandle = { setBlocking?: (enabled: boolean) => void };
@@ -491,18 +491,16 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
             .replace(/^www\./, "");
           const allDomains = [targetDomain, ...EXTRA_DOMAINS];
 
-          // Check which ISP this proxy routes through
+          // Check ISP (Node-side — shows Railway datacenter, not proxy IP)
+          // The proxy ISP check from page context fails due to guidenza.com CSP
           try {
-            const ispInfo = await checkProxyIspFromPage(page);
-            console.log(`  [${label}] proxy ISP: ${ispInfo.isp} (${ispInfo.country}) partner=${ispInfo.isPartnerIsp} residential=${ispInfo.isResidential}`);
+            const ispInfo = await checkProxyIsp();
+            console.log(`  [${label}] server ISP: ${ispInfo.isp} (${ispInfo.city}, ${ispInfo.country})`);
             if (!ispInfo.isResidential) {
-              console.log(`  [${label}] ⚠️  Proxy is NOT residential -- may not be counted by SimilarWeb's ISP data feed`);
-            }
-            if (!ispInfo.isPartnerIsp) {
-              console.log(`  [${label}] ⚠️  Proxy ISP is NOT a known SimilarWeb partner`);
+              console.log(`  [${label}] ⚠️  Server is NOT residential (expected for Railway) — Mixpanel events fire from Node.js directly`);
             }
           } catch (e) {
-            console.log(`  [${label}] proxy ISP check failed:`, e);
+            console.log(`  [${label}] ISP check skipped:`, e);
           }
 
           // Inject mp_page_view events for each domain
