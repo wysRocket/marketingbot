@@ -40,7 +40,6 @@ import {
   injectSimilarwebVisit,
   injectSimilarwebBatch,
 } from "./flows/injectSimilarwebVisit";
-import { checkProxyIsp } from "./flows/checkProxyIsp";
 
 // Force unbuffered output when Node exposes a blocking-capable stream handle.
 type BlockingHandle = { setBlocking?: (enabled: boolean) => void };
@@ -394,6 +393,25 @@ function pickRandom<T>(items: T[], limit: number): T[] {
 // -------------------------------------------------------------------
 type ProxyCfg = RunnerProxyConfig;
 
+/**
+ * Generate a v4 UUID for session identification.
+ */
+function uuid(): string {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
+  });
+}
+
+/**
+ * Fetch proxies for the current round.
+ *
+ * Priority order:
+ *  1. Proxy-Cheat rotating residential   (PC_USER / PC_PASS / PC_HOST / PC_PORT)
+ *  2. DataImpulse residential gateway    (DI_RESIDENTIAL=1 — EU country targeting)
+ *  3. DataImpulse sticky datacenter      (DI_USER / DI_PASS — /api/list endpoint)
+ *  4. Free SOCKS5 fallback
+ */
 async function fetchProxyList(
   count: number,
 ): Promise<Array<ProxyCfg | undefined>> {
@@ -418,7 +436,23 @@ async function fetchProxyList(
 
   if (!user || !pass) return Array(count).fill(undefined);
 
-  // ── DataImpulse /api/list ──────────────────────────────────────────────
+  // ── DataImpulse residential gateway (country-targeted, EU) ────────────
+  // Uses port 823 (residential pool) with country targeting via username
+  // parameter. Each session gets a unique session-id for sticky IP.
+  // Confirmed working: returns ~88.11.x.x (Vodafone ES), ~89.93.x.x (Orange FR)
+  if (process.env.DI_RESIDENTIAL === "1") {
+    const euCountries = process.env.DI_EU_COUNTRIES || "de,fr,es,it,gb,nl,be,at,pl,se";
+    console.log(
+      `[proxy] DataImpulse residential gateway — EU countries: ${euCountries}, sessions: ${count}`,
+    );
+    return Array.from({ length: count }, (_, i) => ({
+      server: "http://gw.dataimpulse.com:823",
+      username: `${user}__cr.${euCountries};session-id.${uuid()}`,
+      password: pass,
+    }));
+  }
+
+  // ── DataImpulse /api/list (sticky datacenter) ─────────────────────────
   const url = new URL("https://gw.dataimpulse.com:777/api/list");
   url.searchParams.set("quantity", String(count));
   url.searchParams.set("type", "sticky");
@@ -471,6 +505,37 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
     });
   }
 
+  // ── Proxy ISP check: find the real exit IP through the proxy ─────────
+  // Must run on about:blank (no CSP) before navigating to target site
+  if (process.env.COOKIE_WARMUP !== "0" && process.env.SIMILARWEB_TRIGGER !== "0") {
+    flows.push({
+      name: "checkProxyIsp",
+      run: async (page, label, ctx) => {
+        try {
+          // Navigate to about:blank to bypass CSP, check real proxy IP
+          await page.goto("about:blank", { waitUntil: "domcontentloaded", timeout: 10000 }).catch(() => {});
+          const ipInfo = await page.evaluate(async () => {
+            try {
+              const resp = await fetch("https://ipinfo.io/json", { signal: AbortSignal.timeout(5000) });
+              const data = await resp.json();
+              return { ip: data.ip, org: data.org, country: data.country, city: data.city };
+            } catch {
+              return null;
+            }
+          });
+          if (ipInfo && ipInfo.ip) {
+            const isResidential = /comcast|xfinity|verizon|att|deutsche\s+telekom|bt|orange|vodafone|kpn|swisscom|telia|telenor|telstra|bell|rogers|charter|spectrum|centurylink|frontier|cogeco|shaw|cox|t-mobile|singtel|kddi/i.test(ipInfo.org ?? "");
+            console.log(`  [${label}] 🌍 proxy exit: ${ipInfo.ip} (${ipInfo.city ?? "?"}, ${ipInfo.country}) org=${ipInfo.org} residential=${isResidential}`);
+          } else {
+            console.log(`  [${label}] ⚠️  ISP check from page returned no data`);
+          }
+        } catch (e) {
+          console.log(`  [${label}] ⚠️  ISP check failed:`, e);
+        }
+      },
+    });
+  }
+
   // ── Visit injection: fire Mixpanel mp_page_view events for the target site ──
   // Bypasses the extension's broken data pipeline by POSTing directly to
   // SimilarWeb's Mixpanel project from the page context with their production
@@ -491,17 +556,8 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
             .replace(/^www\./, "");
           const allDomains = [targetDomain, ...EXTRA_DOMAINS];
 
-          // Check ISP (Node-side — shows Railway datacenter, not proxy IP)
-          // The proxy ISP check from page context fails due to guidenza.com CSP
-          try {
-            const ispInfo = await checkProxyIsp();
-            console.log(`  [${label}] server ISP: ${ispInfo.isp} (${ispInfo.city}, ${ispInfo.country})`);
-            if (!ispInfo.isResidential) {
-              console.log(`  [${label}] ⚠️  Server is NOT residential (expected for Railway) — Mixpanel events fire from Node.js directly`);
-            }
-          } catch (e) {
-            console.log(`  [${label}] ISP check skipped:`, e);
-          }
+          // Mixpanel events fire from Node.js directly (bypasses CORS/CSP)
+          // Proxy ISP was checked in the checkProxyIsp flow step above
 
           // Inject mp_page_view events for each domain
           for (const domain of allDomains) {
