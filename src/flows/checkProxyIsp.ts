@@ -162,19 +162,40 @@ export async function checkProxyIsp(
     proxyUrl?: string; // e.g. "socks5://user:pass@host:port"
   },
 ): Promise<IspInfo> {
-  // Node-side check only works without proxy or with explicit agent.
-  // For proxied sessions, use checkProxyIspFromPage() instead.
-  // Fallback: return unknown.
-  return {
-    ip: "use-page-check",
-    isp: "use checkProxyIspFromPage() for proxied sessions",
-    org: "use checkProxyIspFromPage() for proxied sessions",
-    country: "unknown",
-    city: "unknown",
-    isResidential: false,
-    isPartnerIsp: false,
-    asn: null,
-  };
+  // Without a socks-proxy-agent, this returns the Railway datacenter IP,
+  // not the proxy ISP. Use checkProxyIspFromPage() for proxy-accurate results.
+  try {
+    const { data } = await axios.get("https://ipinfo.io/json", { timeout: 8000 });
+    const asnMatch = (data.org ?? "").match(/AS(\d+)/i);
+    const result: IspInfo = {
+      ip: data.ip ?? "unknown",
+      isp: data.org ?? "unknown",
+      org: data.org ?? "unknown",
+      country: data.country ?? "unknown",
+      city: data.city ?? "unknown",
+      isResidential: isResidential(data.org ?? "", data.org ?? ""),
+      isPartnerIsp: isPartnerIsp(data.org ?? "", data.org ?? ""),
+      asn: asnMatch ? `AS${asnMatch[1]}` : null,
+    };
+    console.log(
+      `  [proxy-isp] ${result.ip} (${result.city}, ${result.country}) ` +
+        `org=${result.org} residential=${result.isResidential} partner=${result.isPartnerIsp} (node-side, no proxy)`,
+    );
+    return result;
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error);
+    console.log(`  [proxy-isp] ✗ Node-side check failed: ${msg}`);
+    return {
+      ip: "use-page-check",
+      isp: "use checkProxyIspFromPage() for proxied sessions",
+      org: "use checkProxyIspFromPage() for proxied sessions",
+      country: "unknown",
+      city: "unknown",
+      isResidential: false,
+      isPartnerIsp: false,
+      asn: null,
+    };
+  }
 }
 
 /**
