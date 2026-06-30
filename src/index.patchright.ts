@@ -36,7 +36,11 @@ import { startRailwayHeartbeatServer } from "./railwayHeartbeat";
 import { botController } from "./control/runtimeController";
 import { getActiveSiteProfile, getRotatingSiteProfile, isFlowEnabled } from "./sites";
 import { warmupCookies } from "./flows/warmupCookies";
-import { triggerSimilarwebFetch } from "./flows/triggerSimilarweb";
+import {
+  injectSimilarwebVisit,
+  injectSimilarwebBatch,
+} from "./flows/injectSimilarwebVisit";
+import { checkProxyIspFromPage } from "./flows/checkProxyIsp";
 
 // Force unbuffered output when Node exposes a blocking-capable stream handle.
 type BlockingHandle = { setBlocking?: (enabled: boolean) => void };
@@ -189,15 +193,14 @@ function buildChromiumArgsForProfile(extraArgs: string[] = []): string[] {
     // We pass headless: false to Playwright to prevent it from injecting
     // the legacy --headless flag, then add --headless=new here instead.
     "--headless=new",
-    "--disable-background-networking",
     "--disable-component-update",
     "--disable-default-apps",
     "--disable-sync",
-    "--metrics-recording-only",
+    "--disable-background-timer-throttling",
     "--mute-audio",
     "--no-first-run",
     "--no-default-browser-check",
-    "--blink-settings=imagesEnabled=false,loadsImagesAutomatically=false",
+    "--blink-settings=loadsImagesAutomatically=false",
     "--use-mock-keychain",
     ...extraArgs,
     ...extensionArgs,
@@ -468,12 +471,13 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
     });
   }
 
-  // After warmup, trigger Similarweb extension for the target domain.
-  // The extension only fires data.similarweb.com when the panel is opened,
-  // so we programmatically trigger it via CDP service worker injection.
+  // ── Visit injection: fire Mixpanel mp_page_view events for the target site ──
+  // Bypasses the extension's broken data pipeline by POSTing directly to
+  // SimilarWeb's Mixpanel project from the page context with their production
+  // token. Each page = one mp_page_view event.
   if (process.env.COOKIE_WARMUP !== "0" && process.env.SIMILARWEB_TRIGGER !== "0") {
     flows.push({
-      name: "triggerSimilarweb",
+      name: "injectSimilarwebVisit",
       run: async (page, label, ctx) => {
         const EXTRA_DOMAINS = [
           "eurocookflow.com",
@@ -486,19 +490,36 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
             .replace(/\/.*$/, "")
             .replace(/^www\./, "");
           const allDomains = [targetDomain, ...EXTRA_DOMAINS];
+
+          // Check which ISP this proxy routes through
+          try {
+            const ispInfo = await checkProxyIspFromPage(page);
+            console.log(`  [${label}] proxy ISP: ${ispInfo.isp} (${ispInfo.country}) partner=${ispInfo.isPartnerIsp} residential=${ispInfo.isResidential}`);
+            if (!ispInfo.isResidential) {
+              console.log(`  [${label}] ⚠️  Proxy is NOT residential -- visits may not be counted by SimilarWeb's ISP data feeds`);
+            }
+            if (!ispInfo.isPartnerIsp) {
+              console.log(`  [${label}] ⚠️  Proxy ISP is NOT a known SimilarWeb partner -- ISP data feed may not capture this traffic`);
+            }
+          } catch (e) {
+            console.log(`  [${label}] proxy ISP check failed:`, e);
+          }
+
+          // Inject mp_page_view events for each domain
           for (const domain of allDomains) {
             try {
-              const result = await triggerSimilarwebFetch(page, domain);
+              const fullUrl = domain.startsWith("http") ? domain : `https://www.${domain}/`;
+              const result = await injectSimilarwebVisit(page, fullUrl);
               console.log(
-                `  [${label}] similarweb trigger: ${result.method} for ${domain} (triggered: ${result.triggered})`,
+                `  [${label}] visit inject: ${result.method} for ${domain} (injected: ${result.injected})`,
               );
-              if (result.triggered) ctx.addInteraction(1);
+              if (result.injected) ctx.addInteraction(1);
             } catch (e) {
-              console.log(`  [${label}] similarweb trigger failed for ${domain}:`, e);
+              console.log(`  [${label}] visit inject failed for ${domain}:`, e);
             }
           }
         } catch (e) {
-          console.log(`  [${label}] similarweb trigger failed:`, e);
+          console.log(`  [${label}] visit inject flow failed:`, e);
         }
       },
     });
