@@ -524,7 +524,7 @@ function buildFlowSequence(username: string, password: string): NamedFlow[] {
             }
           });
           if (ipInfo && ipInfo.ip) {
-            const isResidential = /comcast|xfinity|verizon|att|deutsche\s+telekom|bt|orange|vodafone|kpn|swisscom|telia|telenor|telstra|bell|rogers|charter|spectrum|centurylink|frontier|cogeco|shaw|cox|t-mobile|singtel|kddi/i.test(ipInfo.org ?? "");
+            const isResidential = /comcast|xfinity|verizon|att|deutsche\s+telekom|bt|british\s+telecom|orange\s+s\.a|orange\s+espagne|vodafone|virgin\s+media|kpn|swisscom|telia|telenor|telstra|bell|rogers|charter|spectrum|centurylink|frontier|cogeco|shaw|cox|t-mobile|singtel|kddi|telefonica|sky\s+uk|talktalk|plusnet|free\.fr|sfr|bouygues|numericable|proximus|telenet|telecom\s+italia|tim|wind\s+tre|o2|e-plus/i.test(ipInfo.org ?? "");
             console.log(`  [${label}] 🌍 proxy exit: ${ipInfo.ip} (${ipInfo.city ?? "?"}, ${ipInfo.country}) org=${ipInfo.org} residential=${isResidential}`);
           } else {
             console.log(`  [${label}] ⚠️  ISP check from page returned no data`);
