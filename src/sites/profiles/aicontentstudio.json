@@ -1,0 +1,125 @@
+{
+  "id": "aicontentstudio",
+  "label": "AI Content Studio",
+  "baseUrl": "https://aicontentstudio.net",
+  "enabledFlows": {
+    "browseHomepage": true,
+    "explorePricing": true,
+    "browseFooterLinks": true,
+    "login": true,
+    "accountDashboard": true
+  },
+  "session": {
+    "seedCandidates": [
+      "/",
+      "/features",
+      "/pricing",
+      "/faq",
+      "/login",
+      "/register"
+    ]
+  },
+  "browseHomepage": {
+    "homePath": "/",
+    "heroHeadingSelector": "h1",
+    "heroHeadingIncludes": [
+      "AI Content Studio"
+    ],
+    "navLinksSelector": "nav a, header a",
+    "expectedAnchors": [
+      "/features",
+      "/how-it-works",
+      "/pricing",
+      "/faq"
+    ],
+    "academySectionSelector": "section:has(h2:has-text(\"Tools designed\"))",
+    "academyFeatureSelectors": [
+      "section:has(h2:has-text(\"Tools designed\")) h3",
+      "section:has(h2:has-text(\"Tools designed\")) h2",
+      "section:has(h2:has-text(\"Tools designed\")) p strong"
+    ],
+    "ritualsSectionSelector": "section:has(h2:has-text(\"Simple credit-based\"))",
+    "membersSectionSelector": "section:has(h2:has-text(\"Credit packages\"))",
+    "pricingTierSelectors": [
+      "section:has(h2:has-text(\"Credit packages\")) h3",
+      "section:has(h2:has-text(\"Credit packages\")) h2"
+    ],
+    "pricingLinksSelector": "section:has(h2:has-text(\"Credit packages\")) button, section:has(h2:has-text(\"Credit packages\")) a",
+    "pricingPlanRegex": "(Starter|Professional|Enterprise)",
+    "footerLinksSelector": "footer a, contentinfo a",
+    "requiredFooterPaths": [
+      "/privacy",
+      "/terms",
+      "/contact"
+    ]
+  },
+  "browseFooterLinks": {
+    "homePath": "/",
+    "footerPaths": [
+      "/privacy",
+      "/terms",
+      "/contact"
+    ],
+    "footerContainerSelector": "footer, contentinfo",
+    "footerLinkSelectorTemplate": "footer a[href*=\"{{path}}\"], contentinfo a[href*=\"{{path}}\"]",
+    "headingSelector": "h1, h2"
+  },
+  "login": {
+    "loginPath": "/login",
+    "loginFormSelector": "form:has(input[type=\"email\"]):has(input[type=\"password\"])",
+    "openLoginSelector": "button:has-text(\"Sign in\")",
+    "submitResponseUrlIncludes": null,
+    "emailSelector": "input[type=\"email\"]",
+    "passwordSelector": "input[type=\"password\"]",
+    "submitSelector": "button[type=\"submit\"]:has-text(\"Sign in\"), button[type=\"submit\"]",
+    "errorSelector": "[role=\"alert\"], [class*=\"error\"], [class*=\"invalid\"]",
+    "failureUrlIncludes": [
+      "/login"
+    ],
+    "successUrlIncludes": [
+      "/dashboard",
+      "/account"
+    ]
+  },
+  "explorePricing": {
+    "pricingPath": "/pricing",
+    "pricingSectionSelector": "section:has(h2:has-text(\"Credit packages\"))",
+    "tierNameSelectors": [
+      "section:has(h2:has-text(\"Credit packages\")) h3",
+      "section:has(h2:has-text(\"Credit packages\")) h2"
+    ],
+    "ctaSelector": "section:has(h2:has-text(\"Credit packages\")) button",
+    "ctaMustContain": "Buy credits",
+    "ctaLandingPathIncludes": [
+      "/login",
+      "/register",
+      "/checkout"
+    ],
+    "emailSelector": "input[type=\"email\"]",
+    "nameSelector": "input[name*=\"name\" i], input[placeholder*=\"name\" i], input[type=\"text\"]",
+    "passwordSelector": "input[type=\"password\"]",
+    "syntheticNamePrefix": "AIC Studio Visitor",
+    "syntheticPassword": "NotSubmitted123!"
+  },
+  "accountDashboard": {
+    "dashboardPath": "/dashboard",
+    "mustNotIncludePaths": [
+      "/login",
+      "/register"
+    ],
+    "mustIncludePathFragment": "/dashboard",
+    "mainSelector": "main, [role=\"main\"]",
+    "balanceSelectors": [
+      "[class*=\"credit\"]",
+      "[class*=\"balance\"]",
+      "h2, h3, h4"
+    ],
+    "paymentPresenceSelector": "[class*=\"pricing\"], [class*=\"credit\"], button:has-text(\"Buy\"), a[href*=\"pricing\"]",
+    "appLinkSelector": "a[href]",
+    "appLinkIncludes": "/dashboard",
+    "appLinkExcludes": [
+      "/login",
+      "/register"
+    ]
+  }
+}

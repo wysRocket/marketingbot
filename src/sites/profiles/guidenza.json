@@ -5,9 +5,9 @@
   "enabledFlows": {
     "browseHomepage": true,
     "explorePricing": true,
-    "browseFooterLinks": false,
-    "login": false,
-    "accountDashboard": false
+    "browseFooterLinks": true,
+    "login": true,
+    "accountDashboard": true
   },
   "session": {
     "seedCandidates": [
